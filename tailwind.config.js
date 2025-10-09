@@ -1,9 +1,7 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 const { createThemes } = require("tw-colors");
-const { obsidianTheme } = require("./src/styles/themes/obsidian");
-const { midnightTheme } = require("./src/styles/themes/midnight");
-const { charcoalTheme } = require("./src/styles/themes/charcoal");
-const { snowlightTheme } = require("./src/styles/themes/snowlight");
+const { darkTheme } = require("./src/styles/themes/dark");
+const { lightTheme } = require("./src/styles/themes/light");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -78,7 +76,7 @@ module.exports = {
   safelist: [
     {
       pattern: /^(shadow-(?:sm|md|lg|xl|2xl|none))$/,
-      variants: ["snowlight", "obsidian", "midnight", "charcoal"],
+      variants: ["light", "dark"],
     },
     {
       pattern:
@@ -110,10 +108,8 @@ module.exports = {
   ],
   plugins: [
     createThemes({
-      snowlight: snowlightTheme,
-      midnight: midnightTheme,
-      charcoal: charcoalTheme,
-      obsidian: obsidianTheme,
+      light: lightTheme,
+      dark: darkTheme,
     }),
   ],
 };

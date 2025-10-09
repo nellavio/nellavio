@@ -103,7 +103,7 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
   const { theme } = useTheme();
 
   const chartColors = useChartColors(
-    theme as "charcoal" | "midnight" | "obsidian" | "snowlight"
+    theme as "dark" | "light"
   );
 
   const { width: windowWidth } = useWindowDimensions();

@@ -33,29 +33,29 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
             className="h-46 sm-24 lg:h-28 1xl:h-28 pt-4 1xl:pt-5 3xl:p-6 3xl:h-32 pr-[0.8rem] md:!pr-[0.5rem] lg:!pr-[0.8rem] xl:!pr-[0.1rem] 2xl:!pr-[1.2rem] pl-5 2xl:pl-7"
           >
             <div className="flex small-box max-[420px]:-ml-3 flex-col sm:flex-row justify-between md:justify-normal">
-              <div className="flex flex-col w-full sm:w-1/2 mt-[0.35rem] lg:mt-0 lg:gap-1 pl-1 sm:pl-0">
-                <div className="flex flex-row lg:flex-col items-center lg:items-start">
-                  <div className="text-primaryText font-medium text-md sm:text-md lg:text-xs 1xl:text-sm tracking-tight flex sm:block items-center lg:mr-0 mr-2 mb-0 mt-1">
+              <div className="flex w-full sm:w-1/2 mt-[0.35rem] lg:mt-0 lg:gap-5 pl-1 sm:pl-0">
+                <div className="flex flex-col items-start gap-[0.1rem]">
+                  <div className="text-primaryText font-medium text-md sm:text-md lg:text-xs 1xl:text-sm tracking-tight flex sm:block items-center lg:mr-0 mr-2 mb-0">
                     {item.title}
+                  </div>
+                  <div className="pb-1 lg:pb-0 text-[1.1rem] lg:text-[1.2rem] lg:text-md 1xl:text-[1.15rem] 3xl:text-[1.8rem] font-semibold text-primaryText flex">
+                    {item.metric}
+                  </div>
+                  <div className="flex lg:hidden xl:flex text-xs text-gray-400 whitespace-nowrap">
+                    {item.changeText}
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="pb-1 lg:pb-0 text-[1.1rem] lg:text-[1.2rem] lg:text-md 1xl:text-[1.15rem] 3xl:text-[2rem] font-semibold text-primaryText flex">
-                    {item.metric}
-                  </div>
                   <div className="flex">
                     {item.increased ? (
-                      <div className="text-xs text-green-600">
+                      <div className="text-xs text-green-600/80 border border-green-800/50 rounded px-1.5 py-0.5">
                         +{item.changeValue}%
                       </div>
                     ) : (
-                      <div className="text-xs text-red-500">
+                      <div className="text-xs text-red-500/80 border border-red-900/50 rounded px-1.5 py-0.5">
                         -{item.changeValue}%
                       </div>
                     )}
-                    <div className="flex lg:hidden xl:flex text-xs text-gray-400 ml-1 whitespace-nowrap">
-                      {item.changeText}
-                    </div>
                   </div>
                 </div>
               </div>

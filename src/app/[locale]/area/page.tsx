@@ -14,9 +14,7 @@ const Area = () => {
   const { theme } = useTheme();
 
   const colorSchemes: { [key: string]: string[] } = {
-    obsidian: ["gray", "emerald"],
-    midnight: ["indigo", "cyan"],
-    charcoal: ["gray", "blue"],
+    dark: ["gray", "emerald"],
   };
 
   const defaultTheme = "midnight";

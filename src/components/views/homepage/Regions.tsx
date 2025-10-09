@@ -11,7 +11,7 @@ import { useChartColors } from "../../../hooks/useChartColors";
 const CustomRegionsLegend = ({ data }: { data: RegionData[] }) => {
   const { theme } = useTheme();
   const chartColors = useChartColors(
-    theme as "charcoal" | "midnight" | "obsidian" | "snowlight"
+    theme as "dark" | "light"
   );
 
   const [isMounted, setIsMounted] = useState(false);

@@ -107,7 +107,7 @@ export const RevenueOverTime = ({
   const { theme } = useTheme();
 
   const chartColors = useChartColors(
-    theme as "charcoal" | "midnight" | "obsidian" | "snowlight"
+    theme as "dark" | "light"
   );
 
   const { width: windowWidth } = useWindowDimensions();

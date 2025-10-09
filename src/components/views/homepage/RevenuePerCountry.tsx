@@ -58,7 +58,7 @@ export const RevenuePerCountry = ({
   const { theme } = useTheme();
 
   const chartColors = useChartColors(
-    theme as "charcoal" | "midnight" | "obsidian" | "snowlight"
+    theme as "dark" | "light"
   );
 
   const HIGHLIGHT_COLOR = chartColors.primary.fill;
@@ -115,7 +115,7 @@ export const RevenuePerCountry = ({
                           fill={
                             countryData
                               ? HIGHLIGHT_COLOR
-                              : theme === "snowlight"
+                              : theme === "light"
                                 ? "rgb(0,0,0,0.13)"
                                 : "rgba(255, 255, 255, 0.1)"
                           }

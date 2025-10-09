@@ -35,7 +35,7 @@ export const Layout = ({ children }: LayoutProps) => {
     const storedTheme = localStorage.getItem("theme");
 
     if (storedTheme && !themes.includes(storedTheme)) {
-      setTheme("obsidian");
+      setTheme("dark");
     }
   }, [setTheme, themes]);
 

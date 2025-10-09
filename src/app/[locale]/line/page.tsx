@@ -56,10 +56,8 @@ const Line = () => {
   const { theme } = useTheme();
 
   const colorSchemes: { [key: string]: string } = {
-    obsidian: "emerald",
-    midnight: "cyan",
-    charcoal: "blue",
-    snowlight: "blue",
+    dark: "emerald",
+    light: "blue",
   };
 
   const defaultTheme = "midnight";

@@ -1,4 +1,4 @@
-export const snowlightTheme = {
+export const lightTheme = {
   // Texts
   primaryText: "rgb(22, 40, 74)",
   secondaryText: "rgb(0,0,0,0.6)",
@@ -63,6 +63,7 @@ export const snowlightTheme = {
   inputBorder: "rgb(0,0,0,0.15)",
   inputBorderHover: "rgb(0,0,0,0.3)",
   calendarBorder: "rgb(0,0,0,0.1)",
+  cardBorder: "rgb(0,0,0,0.06)",
 
   tremor: {
     brand: {

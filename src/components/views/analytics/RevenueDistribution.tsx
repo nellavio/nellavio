@@ -79,7 +79,7 @@ export const RevenueDistribution = ({
   const { theme } = useTheme();
 
   const chartColors = useChartColors(
-    theme as "charcoal" | "midnight" | "obsidian" | "snowlight"
+    theme as "dark" | "light"
   );
 
   return (

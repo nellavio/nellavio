@@ -87,7 +87,7 @@
 
 ## 1.0.10 (17-03-2025)
 
-- adjust charts on snowlight theme
+- adjust charts on light theme
 - fix 404 page bug
 - add option to use local data
 - adjust table buttons
