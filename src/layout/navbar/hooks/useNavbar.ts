@@ -26,7 +26,7 @@ export const useNavbar = () => {
   };
 
   const themes = ["light", "dark"];
-  const themesDisplayNames = ["Snowlight", "Obsidian"];
+  const themesDisplayNames = ["light", "dark"];
 
   useEffect(() => {
     if (typeof window !== "undefined") {

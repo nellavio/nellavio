@@ -23,7 +23,7 @@ const QUERY_MAP: QueryMap = {
   products: PRODUCTS_QUERY,
 };
 
-const switchToBackupData = false;
+const switchToBackupData = true;
 
 export const getData = async (pageName: string) => {
   // Use this if you don't want to setup NodeJS/GraphQL backend

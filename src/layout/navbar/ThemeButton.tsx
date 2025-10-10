@@ -1,88 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Tooltip } from "../../components/common/Tooltip";
-import { Dropdown } from "../../components/common/Dropdown";
 import { ThemeButtonProps } from "./types";
-import { PaletteIcon } from "../../assets/icons/PaletteIcon";
-import { CheckIcon } from "../../assets/icons/CheckIcon";
-import { ArrowDownIcon } from "../../assets/icons/ArrowDownIcon";
-import { ArrowUpIcon } from "../../assets/icons/ArrowUpIcon";
+import { MoonIcon } from "../../assets/icons/MoonIcon";
+import { SunIcon } from "../../assets/icons/SunIcon";
 
-export const ThemeButton = ({
-  theme,
-  paletteTooltip,
-  themeDropdown,
-  languageDropdown,
-  userDropdown,
-  closeMobileMenu,
-  selectTheme,
-  cycleThemeUp,
-  cycleThemeDown,
-  themes,
-  themesDisplayNames,
-  t,
-  searchClose,
-}: ThemeButtonProps) => (
-  <div
-    className="relative"
-    ref={themeDropdown.ref}
-    onMouseEnter={paletteTooltip.showTooltip}
-    onMouseLeave={paletteTooltip.hideTooltip}
-  >
+export const ThemeButton = ({ theme, selectTheme }: ThemeButtonProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const currentTheme = theme || "light";
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    selectTheme(currentTheme === "dark" ? "light" : "dark");
+  };
+
+  return (
     <div
-      className="text-white fill-white stroke-secondaryText cursor-pointer hover:stroke-primaryText transition"
-      onClick={() => {
-        themeDropdown.toggle();
-        closeMobileMenu();
-        languageDropdown.close();
-        userDropdown.close();
-        searchClose();
+      className="relative flex items-center bg-secondaryBg border border-mainBorder hover:bg-white/7 rounded-full p-0.5 cursor-pointer"
+      onClick={toggleTheme}
+      role="button"
+      aria-label={`Przełącz na motyw ${
+        currentTheme === "dark" ? "jasny" : "ciemny"
+      }`}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          toggleTheme();
+        }
       }}
     >
-      <PaletteIcon />
-    </div>
-    {paletteTooltip.isTooltipVisible &&
-      !userDropdown.isOpen &&
-      !themeDropdown.isOpen &&
-      !languageDropdown.isOpen && (
-        <div className="absolute top-10 right-2 pointer-events-none hidden xl:flex">
-          <Tooltip
-            text={t("changeTheme")}
-            className="h-8 px-2 min-w-[7rem] pointer-events-none"
-          />
-        </div>
+      {isMounted && (
+        <div
+          className="absolute left-0.5 top-0.5 w-[42px] h-[42px] bg-themeToggleActiveBg border border-themeToggleActiveBorder rounded-full shadow-sm transition-transform duration-300 ease-out"
+          style={{
+            transform:
+              currentTheme === "dark" ? "translateX(42px)" : "translateX(0px)",
+          }}
+        />
       )}
-    {themeDropdown.isOpen && (
-      <Dropdown className="w-[11rem] min-w-[11rem] right-0 top-11">
-        {themes.map((themeName, index) => (
-          <div
-            key={themeName}
-            className="h-10 text-sm 1xl:text-sm 2xl:text-base cursor-pointer px-4 hover:bg-dropdownBgHover py-2 flex justify-between"
-            onClick={() => selectTheme(themeName)}
-          >
-            {themesDisplayNames[index]}
-            {theme === themeName && (
-              <div className="text-secondaryText">
-                <CheckIcon />
-              </div>
-            )}
-          </div>
-        ))}
-        <div className="h-10 flex w-full border-t border-mainBorder">
-          <div
-            onClick={cycleThemeDown}
-            className="cursor-pointer w-1/2 flex justify-center items-center hover:bg-dropdownBgHover"
-          >
-            <ArrowDownIcon />
-          </div>
-          <div
-            onClick={cycleThemeUp}
-            className="cursor-pointer w-1/2 flex justify-center items-center hover:bg-dropdownBgHover"
-          >
-            <ArrowUpIcon />
-          </div>
-        </div>
-      </Dropdown>
-    )}
-  </div>
-);
+      <div
+        className={`relative z-10 w-[42px] h-[42px] rounded-full flex items-center justify-center transition-colors duration-200 ${
+          isMounted && currentTheme === "light"
+            ? "text-primaryText"
+            : "text-grayIcon"
+        }`}
+      >
+        <SunIcon />
+      </div>
+      <div
+        className={`relative z-10 w-[42px] h-[42px] rounded-full flex items-center justify-center transition-colors duration-200 ${
+          isMounted && currentTheme === "dark"
+            ? "text-primaryText"
+            : "text-grayIcon"
+        }`}
+      >
+        <MoonIcon />
+      </div>
+    </div>
+  );
+};

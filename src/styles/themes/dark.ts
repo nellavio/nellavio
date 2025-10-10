@@ -56,14 +56,16 @@ export const darkTheme = {
   activeProductBg: "rgb(255,255,255,0.07)",
   calendarMainColor: "rgb(61, 142, 108)",
   scrollbarThumb: "rgba(94, 98, 105, 0.7)",
+  themeToggleActiveBg: "rgb(42, 46, 51)",
 
   // Borders
   mainBorder: "rgb(255,255,255,0.08)",
-  mainBorderHover: "rgb(255,255,255, 0.25)",
+  mainBorderHover: "rgb(255,255,255, 0.15)",
   inputBorder: "rgb(255,255,255,0.15)",
   inputBorderHover: "rgb(255,255,255,0.25)",
   calendarBorder: "rgb(255,255,255,0.15)",
   cardBorder: "rgb(255,255,255,0.05)",
+  themeToggleActiveBorder: "rgb(255, 255, 255, 0.12)",
 
   tremor: {
     brand: {

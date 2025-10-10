@@ -13,11 +13,9 @@ export const lightTheme = {
   redBadgeText: "rgb(213, 61, 79)",
   orangeBadgeText: "rgb(151, 96, 39)",
   logoBasicText: "black",
-
   // Icons
   grayIcon: "rgb(0,0,0,0.6)",
   navItemIconActive: "rgb(101, 150, 231)",
-
   // Backgrounds
   primaryBg: "white",
   secondaryBg: "rgb(247, 247, 247)",
@@ -56,6 +54,7 @@ export const lightTheme = {
   activeProductBg: "rgb(242, 241, 241, 0.8)",
   calendarMainColor: "rgb(118, 167, 247)",
   scrollbarThumb: "rgba(94, 98, 105, 0.5)",
+  themeToggleActiveBg: "white",
 
   // Borders
   mainBorder: "rgb(0,0,0,0.12)",
@@ -64,6 +63,7 @@ export const lightTheme = {
   inputBorderHover: "rgb(0,0,0,0.3)",
   calendarBorder: "rgb(0,0,0,0.1)",
   cardBorder: "rgb(0,0,0,0.06)",
+  themeToggleActiveBorder: "rgb(0, 0, 0, 0.1)",
 
   tremor: {
     brand: {

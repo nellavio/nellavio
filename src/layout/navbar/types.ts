@@ -34,19 +34,7 @@ export interface LanguageButtonProps {
 
 export interface ThemeButtonProps {
   theme: string | undefined;
-  isMobileMenuOpen: boolean;
-  paletteTooltip: TooltipProps;
-  themeDropdown: DropdownProps;
-  languageDropdown: DropdownProps;
-  userDropdown: DropdownProps;
-  closeMobileMenu: () => void;
-  selectTheme: (themeName: string) => void;
-  cycleThemeUp: () => void;
-  cycleThemeDown: () => void;
-  themes: string[];
-  themesDisplayNames: string[];
-  t: (key: string) => string;
-  searchClose: () => void;
+  selectTheme: (theme: string) => void;
 }
 
 export interface UserButtonProps {

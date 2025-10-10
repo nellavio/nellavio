@@ -42,15 +42,11 @@ export const Navbar = () => {
     isSideMenuOpen,
     closeMobileMenu,
     session,
-    themes,
-    themesDisplayNames,
     userIconBtnRef,
     themeDropdown,
     userDropdown,
     languageDropdown,
     selectTheme,
-    cycleThemeUp,
-    cycleThemeDown,
     searchDropdown,
   } = useNavbar();
 
@@ -78,7 +74,7 @@ export const Navbar = () => {
   return (
     <>
       <div
-        className={`w-screen flex items-center z-30  fixed h-[4.5rem]  3xl:h-20 bg-primaryBg w-full border-b border-solid border-mainBorder `}
+        className={`w-screen flex items-center z-30  fixed h-[4.5rem]  3xl:h-20  w-full border-none border-solid border-mainBorder `}
       >
         {/* Placeholder for maintaining consistent spacing with page wrapper  */}
         <div
@@ -110,22 +106,7 @@ export const Navbar = () => {
             />
           </div>
           <div className="flex items-center gap-[0.5rem] md:gap-2 xl:gap-7 z-[99]">
-            <ThemeButton
-              theme={theme}
-              isMobileMenuOpen={isMobileMenuOpen}
-              paletteTooltip={paletteTooltip}
-              themeDropdown={themeDropdown}
-              languageDropdown={languageDropdown}
-              userDropdown={userDropdown}
-              closeMobileMenu={closeMobileMenu}
-              selectTheme={selectTheme}
-              cycleThemeUp={cycleThemeUp}
-              cycleThemeDown={cycleThemeDown}
-              themes={themes}
-              themesDisplayNames={themesDisplayNames}
-              t={t}
-              searchClose={searchDropdown.close}
-            />
+            <ThemeButton theme={theme} selectTheme={selectTheme} />
             <div className="hidden xl:flex">
               <LanguageButton
                 currentLanguage={currentLanguage}
