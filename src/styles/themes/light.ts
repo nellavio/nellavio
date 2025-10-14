@@ -5,16 +5,20 @@ export const lightTheme = {
   secondaryTextHover: "rgb(0,0,0,0.8)",
   coloredText: "rgb(0, 96, 255)",
   coloredTextHover: "rgb(76, 144, 255)",
-  navItemText: "rgba(0,0,0,0.9)",
+  navItemText: "rgba(0,0,0,0.85)",
   navItemTextActive: "rgb(0, 96, 255)",
   navSectionTitle: "black",
   tableCellText: "rgb(68, 68, 68)",
   greenBadgeText: "rgb(35, 140, 99)",
   redBadgeText: "rgb(213, 61, 79)",
   orangeBadgeText: "rgb(151, 96, 39)",
+  percentageBadgeGreenText: "rgb(20, 120, 80)",
+  percentageBadgeRedText: "rgb(180, 40, 60)",
+  percentageBadgeGreenTextAccented: "rgb(20, 120, 80)",
+  percentageBadgeRedTextAccented: "rgb(180, 40, 60)",
   logoBasicText: "black",
   // Icons
-  grayIcon: "rgb(0,0,0,0.6)",
+  grayIcon: "rgb(0,0,0,0.7)",
   navItemIconActive: "rgb(101, 150, 231)",
   // Backgrounds
   primaryBg: "white",
@@ -27,6 +31,7 @@ export const lightTheme = {
   navItemActiveBgHover: "rgb(101, 150, 231, 0.2)",
   inputBg: "rgb(240, 240, 245, 0.1)",
   inputBgHover: "white",
+  paginationActiveBg: "rgb(0, 0, 0, 0.08)",
   buttonActiveBg: "rgb(0,0,0,0.1)",
   outlinedButtonBg: "white",
   outlinedButtonBgHover: "rgba(210, 210, 210, 0.4)",
@@ -54,10 +59,15 @@ export const lightTheme = {
   activeProductBg: "rgb(242, 241, 241, 0.8)",
   calendarMainColor: "rgb(118, 167, 247)",
   scrollbarThumb: "rgba(94, 98, 105, 0.5)",
+  themeToggleBg: "rgb(240, 240, 245)",
   themeToggleActiveBg: "white",
+  percentageBadgeGreenBg: "rgba(35, 140, 99, 0.08)",
+  percentageBadgeRedBg: "rgba(213, 61, 79, 0.08)",
+  percentageBadgeGreenBorder: "rgba(35, 140, 99, 0.3)",
+  percentageBadgeRedBorder: "rgba(213, 61, 79, 0.3)",
 
   // Notifications
-  notificationBadgeBg: "rgb(22, 163, 74)",
+  notificationBadgeBg: "rgb(0, 96, 255)",
   notificationItemBg: "rgb(255, 255, 255)",
   notificationItemBgHover: "rgb(249, 250, 251)",
   notificationHeaderBg: "rgb(255, 255, 255)",
@@ -65,11 +75,13 @@ export const lightTheme = {
   // Borders
   mainBorder: "rgb(0,0,0,0.12)",
   mainBorderHover: "rgb(0,0,0,0.2)",
+  outlinedButtonBorder: "rgb(0,0,0,0.18)",
   inputBorder: "rgb(0,0,0,0.15)",
   inputBorderHover: "rgb(0,0,0,0.3)",
   calendarBorder: "rgb(0,0,0,0.1)",
   cardBorder: "rgb(0,0,0,0.06)",
   themeToggleActiveBorder: "rgb(0, 0, 0, 0.1)",
+  mapCountryBorder: "rgb(0,0,0,0.18)",
 
   tremor: {
     brand: {

@@ -78,9 +78,13 @@ export const RevenueDistribution = ({
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
+
+  // RevenueDistribution has unique color scheme:
+  // Dark mode: inStore=blue, online=gray
+  // Light mode: inStore=blue, online=teal
+  const inStoreColor = theme === "dark" ? chartColors.secondary.stroke : chartColors.secondary.inverted; // blue on both modes
+  const onlineColor = theme === "dark" ? "rgb(86,92,101)" : chartColors.primary.inverted; // gray on dark, teal on light
 
   return (
     <Card className="h-full" id="revenueDistribution" title={t("title")}>
@@ -121,7 +125,7 @@ export const RevenueDistribution = ({
               dataKey="inStore"
               name={t("inStore")}
               stackId="a"
-              fill="rgb(83,133,198)"
+              fill={inStoreColor}
               radius={[0, 4, 4, 0]}
               barSize={30}
               isAnimationActive={false}
@@ -130,7 +134,7 @@ export const RevenueDistribution = ({
               dataKey="online"
               name={t("online")}
               stackId="a"
-              fill="rgb(86,92,101)"
+              fill={onlineColor}
               radius={[0, 4, 4, 0]}
               barSize={30}
               isAnimationActive={false}

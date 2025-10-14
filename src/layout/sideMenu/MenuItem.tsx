@@ -77,7 +77,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
           className={`menuItemIcon pr-3 ${
             isActive
               ? "stroke-mainColor fill-mainColor text-mainColor text-mainColor"
-              : "stroke-gray-400 fill-gray-400 text-gray-400 text-gray-400"
+              : "stroke-grayIcon fill-grayIcon text-grayIcon text-grayIcon"
           }
         ${!isSideMenuOpen && isDesktop && "pl-4"}
          `}
@@ -86,7 +86,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
         </div>
         {(isSideMenuOpen || !isDesktop) && (
           <div
-            className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-normal tracking-wide ${
+            className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide ${
               outfit.className
             }  ${
               isActive

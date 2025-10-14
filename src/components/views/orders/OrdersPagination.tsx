@@ -44,8 +44,8 @@ export const OrdersPagination = ({
             onClick={() => goToPage(page)}
             className={
               currentPage === page
-                ? "bg-inputBg bg-inputBg px-1 text-primaryText text-primaryText"
-                : "px-1 text-primaryText text-primaryText"
+                ? "bg-paginationActiveBg px-1 text-primaryText"
+                : "px-1 text-primaryText"
             }
             disabled={currentPage === page}
           >

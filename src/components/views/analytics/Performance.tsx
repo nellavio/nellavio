@@ -102,9 +102,7 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
 
@@ -163,7 +161,7 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
             <Bar
               dataKey="sales"
               name={t("sales")}
-              fill="rgb(83,133,198)"
+              fill={chartColors.secondary.inverted}
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               minPointSize={5}
@@ -172,8 +170,7 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
             <Bar
               dataKey="profit"
               name={t("profit")}
-              // fill="rgb(61,185,133)"
-              fill={chartColors.primary.stroke}
+              fill={chartColors.primary.inverted}
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               minPointSize={5}

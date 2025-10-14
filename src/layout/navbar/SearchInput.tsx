@@ -38,7 +38,7 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
               value={searchText}
               onChange={handleSearchChange}
               onFocus={handleInputFocus}
-              className="z-30 pl-8 text-primaryText text-sm 1xl:text-base pt-[0.1rem] bg-[rgb(255,255,255,0.01)] w-full h-full border border-mainBorder hover:border-mainBorderHover rounded-md"
+              className="z-30 pl-8 text-primaryText text-xs 1xl:text-sm pt-[0.1rem] bg-[rgb(255,255,255,0.01)] w-full h-full border border-mainBorder hover:border-mainBorderHover rounded-md placeholder:text-xs placeholder:1xl:text-sm"
             />
             <div className="absolute stroke-grayIcon fill-grayIcon top-[0.65rem] xl:top-[0.65rem] 2xl:top-[0.65rem] left-2">
               <SearchIcon />

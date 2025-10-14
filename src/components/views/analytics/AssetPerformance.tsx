@@ -40,7 +40,7 @@ export const AssetPerformance = ({
         </Flex>
         <Col numColSpan={1} numColSpanLg={2}>
           <Flex className="block md:hidden lg:block">
-            <Text>
+            <Text className="text-secondaryText">
               <Bold>+/-% {t("sinceTransaction")} </Bold>
             </Text>
           </Flex>
@@ -54,7 +54,7 @@ export const AssetPerformance = ({
                   ${index === 6 ? "hidden 1xl:flex" : ""} 
                   pb-2 pt-2 1xl:py-2`}
                 >
-                  <div className="text-xs 1xl:text-sm 3xl:text-base">
+                  <div className="text-xs 1xl:text-sm 3xl:text-base text-secondaryText">
                     {" "}
                     {asset.name}{" "}
                   </div>

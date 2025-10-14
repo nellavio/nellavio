@@ -125,9 +125,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
 
@@ -149,24 +147,24 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 <linearGradient id="colorPhones" x1="0" y1="0" x2="0" y2="1">
                   <stop
                     offset="5%"
-                    stopColor="rgb(83,133,198)"
+                    stopColor={chartColors.secondary.inverted}
                     stopOpacity={0.3}
                   />
                   <stop
                     offset="95%"
-                    stopColor="rgb(83,133,198)"
+                    stopColor={chartColors.secondary.inverted}
                     stopOpacity={0}
                   />
                 </linearGradient>
                 <linearGradient id="colorLaptops" x1="0" y1="0" x2="0" y2="1">
                   <stop
                     offset="5%"
-                    stopColor={chartColors.primary.stroke}
+                    stopColor={chartColors.primary.inverted}
                     stopOpacity={0.3}
                   />
                   <stop
                     offset="95%"
-                    stopColor={chartColors.primary.stroke}
+                    stopColor={chartColors.primary.inverted}
                     stopOpacity={0}
                   />
                 </linearGradient>
@@ -204,7 +202,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 name="phones"
                 type="monotone"
                 dataKey="phones"
-                stroke="rgb(83,133,198)"
+                stroke={chartColors.secondary.inverted}
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorPhones)"
@@ -214,7 +212,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 name="laptops"
                 type="monotone"
                 dataKey="laptops"
-                stroke={chartColors.primary.stroke}
+                stroke={chartColors.primary.inverted}
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorLaptops)"

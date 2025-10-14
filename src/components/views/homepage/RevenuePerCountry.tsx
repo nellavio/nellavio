@@ -62,6 +62,7 @@ export const RevenuePerCountry = ({
   );
 
   const HIGHLIGHT_COLOR = chartColors.primary.fill;
+  const BORDER_COLOR = theme === "light" ? "rgb(0,0,0,0.18)" : "rgb(255,255,255,0.1)";
 
   return (
     <Card
@@ -85,7 +86,7 @@ export const RevenuePerCountry = ({
                 marginLeft: "-4rem",
                 marginTop: "3rem",
               }}
-              stroke="rgb(255,255,255, 0.1)"
+              stroke={BORDER_COLOR}
               projectionConfig={{
                 scale: 200,
               }}

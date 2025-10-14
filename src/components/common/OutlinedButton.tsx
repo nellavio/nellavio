@@ -29,7 +29,7 @@ export const OutlinedButton = forwardRef<
     },
     ref
   ) => {
-    const buttonClassName = `text-xs xsm:text-sm 3xl:text-base flex rounded-md justify-center items-center gap-2 w-full h-full p-2 px-4 !outline-0 border border-mainBorder bg-outlinedButtonBg hover:bg-outlinedButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon  ${className}`;
+    const buttonClassName = `text-xs xsm:text-sm 3xl:text-base flex rounded-md justify-center items-center gap-2 w-full h-full p-2 px-4 !outline-0 border border-outlinedButtonBorder bg-outlinedButtonBg hover:bg-outlinedButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon  ${className}`;
 
     return (
       <button

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { HomeSmallCardsProps } from "./types";
 import { Card } from "../../common/Card";
+import { Badge } from "../../common/Badge";
 
 export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
   const t = useTranslations("homepage.homeSmallCards");
@@ -22,6 +23,18 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
 
   const cardIds = ["salesCard", "profitCard", "trafficCard", "customersCard"];
 
+  // Helper function to format numbers with commas
+  const formatMetric = (metric: string) => {
+    // If it already has formatting ($ or commas), return as is
+    if (metric.includes(',') || metric.includes('$')) {
+      return metric;
+    }
+    // Otherwise, add thousand separators
+    const num = parseInt(metric.replace(/\D/g, ''));
+    if (isNaN(num)) return metric;
+    return num.toLocaleString('en-US');
+  };
+
   return (
     <>
       {translatedData.map((item, index) => {
@@ -38,24 +51,15 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
                   <div className="text-primaryText font-medium text-md sm:text-md lg:text-xs 1xl:text-sm tracking-tight flex sm:block items-center lg:mr-0 mr-2 mb-0">
                     {item.title}
                   </div>
-                  <div className="pb-1 lg:pb-0 text-[1.1rem] lg:text-[1.2rem] lg:text-md 1xl:text-[1.15rem] 3xl:text-[1.75rem] font-semibold text-primaryText flex">
-                    {item.metric}
+                  <div className="pb-1 lg:pb-0 text-[1.1rem] lg:text-[1.2rem] lg:text-md 1xl:text-[1.15rem] 3xl:text-[1.75rem] font-semibold text-primaryText flex items-center gap-[1.2rem]">
+                    {formatMetric(item.metric)}
+                    <Badge
+                      value={item.changeValue}
+                      type={item.increased ? "increase" : "decrease"}
+                    />
                   </div>
-                  <div className="flex lg:hidden xl:flex text-xs text-gray-400 whitespace-nowrap">
+                  <div className="flex lg:hidden xl:flex text-xs text-secondaryText whitespace-nowrap">
                     {item.changeText}
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex">
-                    {item.increased ? (
-                      <div className="text-xs text-green-600/80 border border-green-800/50 rounded px-1.5 py-0.5">
-                        +{item.changeValue}%
-                      </div>
-                    ) : (
-                      <div className="text-xs text-red-500/80 border border-red-900/50 rounded px-1.5 py-0.5">
-                        -{item.changeValue}%
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>

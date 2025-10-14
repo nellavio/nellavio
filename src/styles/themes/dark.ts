@@ -12,6 +12,10 @@ export const darkTheme = {
   greenBadgeText: "rgb(110, 231, 183)",
   redBadgeText: "rgb(253, 164, 175)",
   orangeBadgeText: "rgb(253, 186, 116)",
+  percentageBadgeGreenText: "rgb(35, 140, 99)",
+  percentageBadgeRedText: "rgb(213, 61, 79)",
+  percentageBadgeGreenTextAccented: "rgb(110, 231, 183)",
+  percentageBadgeRedTextAccented: "rgb(253, 164, 175)",
   logoBasicText: "rgb(255,255,255)",
 
   // Icons
@@ -29,6 +33,7 @@ export const darkTheme = {
   navItemActiveBgHover: "rgb(255,255,255,0.1)",
   inputBg: "rgb(255, 255, 255, 0.05)",
   inputBgHover: "rgb(255, 255, 255, 0.07)",
+  paginationActiveBg: "rgb(255, 255, 255, 0.05)",
   buttonActiveBg: "rgb(35, 42, 49)",
   outlinedButtonBg: "rgb(255, 255, 255, 0.05)",
   outlinedButtonBgHover: "rgb(255, 255, 255, 0.07)",
@@ -56,7 +61,12 @@ export const darkTheme = {
   activeProductBg: "rgb(255,255,255,0.07)",
   calendarMainColor: "rgb(61, 142, 108)",
   scrollbarThumb: "rgba(94, 98, 105, 0.7)",
-  themeToggleActiveBg: "rgb(42, 46, 51)",
+  themeToggleBg: "rgb(32, 35, 38)",
+  themeToggleActiveBg: "rgb(41, 43, 48)",
+  percentageBadgeGreenBg: "rgba(110, 231, 183, 0.05)",
+  percentageBadgeRedBg: "rgba(253, 164, 175, 0.05)",
+  percentageBadgeGreenBorder: "rgba(110, 231, 183, 0.3)",
+  percentageBadgeRedBorder: "rgba(255, 100, 120, 0.35)",
 
   // Notifications
   notificationBadgeBg: "rgb(34, 154, 90)",
@@ -65,13 +75,15 @@ export const darkTheme = {
   notificationHeaderBg: "rgb(31, 34, 38)",
 
   // Borders
-  mainBorder: "rgb(255,255,255,0.08)",
-  mainBorderHover: "rgb(255,255,255, 0.15)",
-  inputBorder: "rgb(255,255,255,0.15)",
-  inputBorderHover: "rgb(255,255,255,0.25)",
-  calendarBorder: "rgb(255,255,255,0.15)",
-  cardBorder: "rgb(255,255,255,0.05)",
-  themeToggleActiveBorder: "rgb(255, 255, 255, 0.12)",
+  mainBorder: "rgb(255,255,255,0.11)",
+  mainBorderHover: "rgb(255,255,255,0.2)",
+  outlinedButtonBorder: "rgb(255,255,255,0.11)",
+  inputBorder: "rgb(255,255,255,0.11)",
+  inputBorderHover: "rgb(255,255,255,0.2)",
+  calendarBorder: "rgb(255,255,255,0.09)",
+  cardBorder: "rgb(255,255,255,0.08)",
+  themeToggleActiveBorder: "rgb(255, 255, 255, 0.11)",
+  mapCountryBorder: "rgb(255,255,255,0.1)",
 
   tremor: {
     brand: {

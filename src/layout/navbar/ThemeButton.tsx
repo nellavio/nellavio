@@ -35,7 +35,7 @@ export const ThemeButton = ({
       onMouseLeave={themeTooltip.hideTooltip}
     >
       <div
-        className="relative flex items-center bg-secondaryBg border border-mainBorder hover:bg-white/7 rounded-full p-0.5 cursor-pointer"
+        className="relative flex items-center bg-themeToggleBg border border-mainBorder hover:bg-white/7 rounded-full p-0.5 cursor-pointer"
         onClick={toggleTheme}
         role="button"
         aria-label={t("changeTheme")}

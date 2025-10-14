@@ -78,7 +78,7 @@ export const Select = ({
           {value || placeholder}
         </div>
         <div
-          className="text-secondaryText absolute top-2 right-1 w-6 h-6 cursor-pointer"
+          className="text-secondaryText absolute top-2 right-1 w-6 h-6 cursor-pointer pointer-events-none"
           onClick={() => setIsSelectOpen(!isSelectOpen)}
           aria-label={isSelectOpen ? "Collapse dropdown" : "Expand dropdown"}
         >

@@ -53,7 +53,7 @@ export const CustomersPagination = ({
               onClick={() => goToPage(page)}
               className={
                 currentPage === page
-                  ? "bg-inputBg px-1 text-primaryText"
+                  ? "bg-paginationActiveBg px-1 text-primaryText"
                   : "px-1 text-primaryText"
               }
               disabled={currentPage === page}

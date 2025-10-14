@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { BadgeDelta, DonutChart, List, ListItem } from "@tremor/react";
+import { DonutChart, List, ListItem } from "@tremor/react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { RegionData, RegionsProps } from "./types";
 import { Card } from "../../common/Card";
+import { Badge } from "../../common/Badge";
 import { useChartColors } from "../../../hooks/useChartColors";
 
 const CustomRegionsLegend = ({ data }: { data: RegionData[] }) => {
@@ -85,9 +86,11 @@ export const Regions = ({ regionsData }: RegionsProps) => {
         {translatedData.map((city) => (
           <ListItem key={city.name}>
             {city.name}
-            <BadgeDelta deltaType={city.deltaType} size="xs">
-              {city.delta}
-            </BadgeDelta>
+            <Badge
+              value={city.delta}
+              type={city.deltaType === "increase" ? "increase" : "decrease"}
+              accented
+            />
           </ListItem>
         ))}
       </List>

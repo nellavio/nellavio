@@ -101,9 +101,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   return (
     <Card
@@ -133,16 +131,16 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             <Radar
               name="profitMargin"
               dataKey="phones"
-              stroke="rgb(83,133,198)"
-              fill="rgb(83,133,198)"
+              stroke={chartColors.secondary.inverted}
+              fill={chartColors.secondary.inverted}
               fillOpacity={0.3}
               isAnimationActive={false}
             />
             <Radar
               name="salesVolume"
               dataKey="laptops"
-              stroke={chartColors.primary.stroke}
-              fill={chartColors.primary.stroke}
+              stroke={chartColors.primary.inverted}
+              fill={chartColors.primary.inverted}
               fillOpacity={0.3}
               isAnimationActive={false}
             />
