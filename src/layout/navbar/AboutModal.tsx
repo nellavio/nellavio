@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 
 import { CloseIcon } from "../../assets/icons/CloseIcon";
@@ -10,6 +10,17 @@ export const AboutModal = ({ closeModal }: AboutModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useCloseModal(modalRef, closeModal);
+
+  // Block body scroll when modal is open
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   return (
     // I didn't use common modal component here because this modal needs unique padding values for mobile and tablet

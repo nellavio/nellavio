@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 import { CloseIcon } from "../../assets/icons/CloseIcon";
 import { useCloseModal } from "../../hooks/useCloseModal";
@@ -12,6 +12,17 @@ export const ChangelogModal = ({ closeModal }: ChangelogModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useCloseModal(modalRef, closeModal);
+
+  // Block body scroll when modal is open
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   return (
     <div className="alternativeScrollbar">
