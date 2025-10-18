@@ -56,7 +56,7 @@ export const lightTheme = {
   galleryBg: "rgb(255, 255, 255, 0.01)",
   galleryThumbnailBg: "rgb(255, 255, 255, 0.2)",
   datepickerHeaderBg: "rgb(240, 240, 245, 0.4)",
-  tooltipBg: "rgb(249, 249, 251)",
+  tooltipBg: "rgb(255, 255, 255)",
   scrollbarBg: "rgb(249, 249, 251)",
   activeProductBg: "rgb(242, 241, 241, 0.8)",
   calendarMainColor: "rgb(118, 167, 247)",

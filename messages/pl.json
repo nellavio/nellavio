@@ -25,7 +25,8 @@
       "Last 3 weeks": "3 tygodnie",
       "Last month": "30 dni",
       "Yesterday": "Wczoraj",
-      "Last week": "7 dni"
+      "Last week": "7 dni",
+      "monthlyTarget": "Miesięczny cel"
     },
     "regions": {
       "title": "Regiony",

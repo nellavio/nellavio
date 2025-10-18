@@ -25,7 +25,8 @@
       "Last 3 weeks": "Last 3 weeks",
       "Last month": "Last month",
       "Yesterday": "Yesterday",
-      "Last week": "Last week"
+      "Last week": "Last week",
+      "monthlyTarget": "Monthly target"
     },
     "regions": {
       "title": "Regions",

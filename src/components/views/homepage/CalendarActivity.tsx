@@ -9,6 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useTheme } from "next-themes";
 import { Card } from "../../common/Card";
 import { UpdateIcon } from "../../../assets/icons/UpdateIcon";
 import { UsersIcon } from "../../../assets/icons/UsersIcon";
@@ -52,7 +53,8 @@ const bestsellingData = [
   { name: "Product 3", value1: 2000, value2: 1000 },
   { name: "Product 4", value1: 5000, value2: 3000 },
   { name: "Product 5", value1: 3500, value2: 2700 },
-  { name: "Product 6", value1: 5500, value2: 3200 },
+  { name: "Product 6", value1: 2500, value2: 6200 },
+  { name: "Product 7", value1: 4200, value2: 2800 },
 ];
 
 interface TooltipPayload {
@@ -114,6 +116,7 @@ const BestsellingProductsTooltip = ({
 
 const BestsellingProducts = () => {
   const { width: windowWidth } = useWindowDimensions();
+  const { theme } = useTheme();
 
   return (
     <div className="px-4 pt-8 pb-4">
@@ -130,7 +133,7 @@ const BestsellingProducts = () => {
           >
             <CartesianGrid
               strokeDasharray="0"
-              stroke="rgb(45, 50, 55)"
+              stroke={theme === "light" ? "rgb(240, 240, 240)" : "rgb(45, 50, 55)"}
               vertical={false}
             />
             <XAxis

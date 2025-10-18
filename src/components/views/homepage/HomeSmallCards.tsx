@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
+import { useState } from "react";
 import {
   PieChart,
   Pie,
@@ -11,11 +12,13 @@ import { useTranslateData } from "../../../hooks/useTranslateData";
 import { HomeSmallCardsProps } from "./types";
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
+import { Tooltip } from "../../common/Tooltip";
 
 export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
   const t = useTranslations("homepage.homeSmallCards");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
+  const [hoveredChart, setHoveredChart] = useState<number | null>(null);
 
   const translations = {
     Sales: t("sales"),
@@ -45,32 +48,43 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
     return colors[index];
   };
 
-  const renderCircularChart = (percentage: number, color: string) => {
+  const renderCircularChart = (percentage: number, color: string, index: number) => {
     const data = [
       { name: "completed", value: percentage },
       { name: "remaining", value: 100 - percentage },
     ];
 
+    // Color for the remaining part of the pie chart
+    const remainingColor = theme === "light" 
+      ? "rgba(0, 0, 0, 0.1)" 
+      : "rgba(255, 255, 255, 0.1)";
+
     return (
-      <ResponsiveContainer width={110} height={110}>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={38}
-            outerRadius={50}
-            startAngle={90}
-            endAngle={-270}
-            dataKey="value"
-            stroke="none"
-            isAnimationActive={false}
-          >
-            <Cell fill={color} />
-            <Cell fill="rgba(255, 255, 255, 0.1)" />
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+      <div 
+        style={{ transform: 'scale(0.95) translateY(0.1rem)', transformOrigin: 'center' }}
+        onMouseEnter={() => setHoveredChart(index)}
+        onMouseLeave={() => setHoveredChart(null)}
+      >
+        <ResponsiveContainer width={110} height={110}>
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={38}
+              outerRadius={50}
+              startAngle={90}
+              endAngle={-270}
+              dataKey="value"
+              stroke="none"
+              isAnimationActive={false}
+            >
+              <Cell fill={color} />
+              <Cell fill={remainingColor} />
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
     );
   };
 
@@ -97,12 +111,17 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
               </p>
             </div>
             <div className="relative flex items-center justify-center flex-shrink-0">
-              {renderCircularChart(hardcodedPercentages[index], getChartColor(index))}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                 <span className="text-primaryText text-base font-bold">
                   {hardcodedPercentages[index]}%
                 </span>
               </div>
+              {renderCircularChart(hardcodedPercentages[index], getChartColor(index), index)}
+              {hoveredChart === index && (
+                <div className="absolute pointer-events-none" style={{ top: '-24px', right: '-79px', zIndex: 999999999 }}>
+                  <Tooltip text={t("monthlyTarget")} />
+                </div>
+              )}
             </div>
           </div>
         ))}
