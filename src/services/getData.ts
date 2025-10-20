@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 import { client } from "./apolloClient";
+import { switchToBackupData } from "./providers";
 import { ORDERS_QUERY } from "../queries/OrdersQuery";
 import { ANALYTICS_QUERY } from "../queries/AnalyticsQuery";
 import { EVENTS_QUERY } from "../queries/EventsQuery";
@@ -32,8 +33,6 @@ const QUERY_MAP: QueryMap = {
   orders: ORDERS_QUERY,
   products: PRODUCTS_QUERY,
 };
-
-const switchToBackupData = false;
 
 // Map page names to their return types
 interface PageDataMap {

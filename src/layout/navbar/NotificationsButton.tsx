@@ -7,6 +7,7 @@ import { UpdateIcon } from "../../assets/icons/UpdateIcon";
 import { UsersIcon } from "../../assets/icons/UsersIcon";
 import { DocumentIcon } from "../../assets/icons/DocumentIcon";
 import { CheckIcon } from "../../assets/icons/CheckIcon";
+import { useNotificationsData } from "./hooks/useNotificationsData";
 
 export const NotificationsButton = ({
   notificationsDropdown,
@@ -17,42 +18,9 @@ export const NotificationsButton = ({
   searchClose,
   t,
 }: NotificationsButtonProps) => {
-  const mockNotifications = [
-    {
-      id: 1,
-      titleKey: "notificationUpdateTitle",
-      descriptionKey: "notificationUpdateDesc",
-      timeKey: "notificationTimeToday",
-      icon: "update",
-      isNew: true,
-    },
-    {
-      id: 2,
-      titleKey: "notificationConnectionTitle",
-      descriptionKey: "notificationConnectionDesc",
-      timeKey: "notificationTimeYesterday",
-      icon: "users",
-      isNew: true,
-    },
-    {
-      id: 3,
-      titleKey: "notificationTaskTitle",
-      descriptionKey: "notificationTaskDesc",
-      timeKey: "notificationTime2Days",
-      icon: "check",
-      isNew: false,
-    },
-    {
-      id: 4,
-      titleKey: "notificationReportTitle",
-      descriptionKey: "notificationReportDesc",
-      time: "11 Aug",
-      icon: "document",
-      isNew: false,
-    },
-  ];
+  const { notifications } = useNotificationsData();
 
-  const newNotificationsCount = mockNotifications.filter(n => n.isNew).length;
+  const newNotificationsCount = notifications.filter(n => n.isNew).length;
 
   const getIcon = (iconType: string) => {
     switch (iconType) {
@@ -123,7 +91,7 @@ export const NotificationsButton = ({
           
           {/* Notifications list */}
           <div className="max-h-[400px] overflow-y-auto">
-            {mockNotifications.map((notification) => (
+            {notifications.map((notification) => (
               <div
                 key={notification.id}
                 className="px-5 py-3 hover:bg-notificationItemBgHover cursor-pointer border-b border-mainBorder transition-colors bg-notificationItemBg"
@@ -141,14 +109,14 @@ export const NotificationsButton = ({
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start gap-2 mb-1">
                       <h4 className="font-medium text-sm text-primaryText">
-                        {t(notification.titleKey)}
+                        {notification.title}
                       </h4>
                       <span className="text-xs text-secondaryText whitespace-nowrap">
-                        {notification.timeKey ? t(notification.timeKey) : notification.time}
+                        {notification.time}
                       </span>
                     </div>
                     <p className="text-sm text-secondaryText line-clamp-2">
-                      {t(notification.descriptionKey)}
+                      {notification.description}
                     </p>
                   </div>
                 </div>

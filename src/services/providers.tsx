@@ -9,6 +9,9 @@ import { client } from "./apolloClient";
 
 export const THEMES_ARRAY = ["light", "dark"];
 
+// Set to true to use backup JSON file instead of an actual backend
+export const switchToBackupData = true;
+
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ClerkProvider
