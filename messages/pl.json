@@ -413,6 +413,8 @@
   "sideMenu": {
     "main": "Intro",
     "dashboard": "Panel główny",
+    "homepage1": "Strona główna 1",
+    "homepage2": "Strona główna 2",
     "eCommerce": "E-commerce",
     "orders": "Zamówienia",
     "customers": "Klienci",

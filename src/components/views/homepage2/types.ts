@@ -65,17 +65,17 @@ export interface RevenueOverTimeProps {
   revenueOverTimeData: Revenue[];
 }
 
-interface OldHomepageData {
+interface Homepage2Data {
   bestSellingProducts: BestSellingProductsProps["bestSellingProductsData"];
   customerSatisfaction: CustomerSatisfactionProps["customerSatisfactionData"];
-  oldHomeSmallCards: HomeSmallCardsProps["homeSmallCardsData"];
+  homeSmallCards: HomeSmallCardsProps["homeSmallCardsData"];
   regions: RegionsProps["regionsData"];
   revenueOverTime: RevenueOverTimeProps["revenueOverTimeData"];
   revenuePerCountry: RevenuePerCountryProps["revenuePerCountryData"];
 }
 
-export interface OldHomepageViewProps {
-  oldHomepageData: OldHomepageData;
+export interface Homepage2ViewProps {
+  homepage2Data: Homepage2Data;
 }
 
 export interface Country {

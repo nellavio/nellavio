@@ -7,18 +7,18 @@ import { Regions } from "./Regions";
 import { BestSellingProducts } from "../homepage/BestSellingProducts";
 import { CustomerSatisfaction } from "../homepage/CustomerSatisfaction";
 import { RevenuePerCountry } from "../homepage/RevenuePerCountry";
-import { OldHomepageViewProps } from "./types";
+import { Homepage2ViewProps } from "./types";
 import { HomeSmallCards2 } from "./HomeSmallCards2";
 import { RevenueOverTime2 } from "./RevenueOverTime2";
 
-export const OldHomepageView = ({ oldHomepageData }: OldHomepageViewProps) => {
+export const Homepage2View = ({ homepage2Data }: Homepage2ViewProps) => {
   return (
     <>
       {/* First row */}
       <Grid numItems={2} numItemsLg={4} className="gap-x-4 gap-y-4">
-        {oldHomepageData?.oldHomeSmallCards && (
+        {homepage2Data?.homeSmallCards && (
           <HomeSmallCards2
-            homeSmallCardsData={oldHomepageData.oldHomeSmallCards}
+            homeSmallCardsData={homepage2Data.homeSmallCards}
           />
         )}
       </Grid>
@@ -31,15 +31,15 @@ export const OldHomepageView = ({ oldHomepageData }: OldHomepageViewProps) => {
         className="gap-x-4 1xl:gap-x-6 gap-y-6"
       >
         <Col numColSpan={1} numColSpanLg={2}>
-          {oldHomepageData?.revenueOverTime && (
+          {homepage2Data?.revenueOverTime && (
             <RevenueOverTime2
-              revenueOverTimeData={oldHomepageData.revenueOverTime}
+              revenueOverTimeData={homepage2Data.revenueOverTime}
             />
           )}
         </Col>
         <Col numColSpan={1} numColSpanLg={1}>
-          {oldHomepageData?.regions && (
-            <Regions regionsData={oldHomepageData.regions} />
+          {homepage2Data?.regions && (
+            <Regions regionsData={homepage2Data.regions} />
           )}
         </Col>
       </Grid>
@@ -52,16 +52,16 @@ export const OldHomepageView = ({ oldHomepageData }: OldHomepageViewProps) => {
         className="gap-x-4 1xl:gap-x-6 gap-y-6"
       >
         <Col numColSpan={1} numColSpanLg={1}>
-          {oldHomepageData?.bestSellingProducts && (
+          {homepage2Data?.bestSellingProducts && (
             <BestSellingProducts
-              bestSellingProductsData={oldHomepageData.bestSellingProducts}
+              bestSellingProductsData={homepage2Data.bestSellingProducts}
             />
           )}
         </Col>
         <Col numColSpan={1} numColSpanLg={2}>
-          {oldHomepageData?.customerSatisfaction && (
+          {homepage2Data?.customerSatisfaction && (
             <CustomerSatisfaction
-              customerSatisfactionData={oldHomepageData.customerSatisfaction}
+              customerSatisfactionData={homepage2Data.customerSatisfaction}
             />
           )}
         </Col>
@@ -69,7 +69,7 @@ export const OldHomepageView = ({ oldHomepageData }: OldHomepageViewProps) => {
       {/* Fourth row */}
       <div className="hidden lg:flex w-full 1xl:w-full">
         <RevenuePerCountry
-          revenuePerCountryData={oldHomepageData.revenuePerCountry}
+          revenuePerCountryData={homepage2Data.revenuePerCountry}
         />
       </div>
     </>

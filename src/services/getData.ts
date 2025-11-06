@@ -9,7 +9,7 @@ import { EVENTS_QUERY } from "../queries/EventsQuery";
 import { CUSTOMERS_QUERY } from "../queries/CustomersQuery";
 import { PRODUCTS_QUERY } from "../queries/ProductsQuery";
 import { HOMEPAGE_QUERY } from "../queries/HomepageQuery";
-import { OLD_HOMEPAGE_QUERY } from "../queries/OldHomepageQuery";
+import { HOMEPAGE2_QUERY } from "../queries/Homepage2Query";
 
 import type { OrderType } from "../components/views/orders/types";
 import type { Customer } from "../components/views/customers/types";
@@ -17,7 +17,7 @@ import type { ProductCategory } from "../components/views/products/types";
 import type { CalendarEvent } from "../components/views/calendar/types";
 import type { AnalyticsViewProps } from "../components/views/analytics/types";
 import type { HomepageViewProps } from "../components/views/homepage/types";
-import type { OldHomepageViewProps } from "../components/views/oldHomepage/types";
+import type { Homepage2ViewProps } from "../components/views/homepage2/types";
 
 interface QueryMap {
   [key: string]: DocumentNode;
@@ -28,7 +28,7 @@ const QUERY_MAP: QueryMap = {
   events: EVENTS_QUERY,
   customers: CUSTOMERS_QUERY,
   homepage: HOMEPAGE_QUERY,
-  oldHomepage: OLD_HOMEPAGE_QUERY,
+  homepage2: HOMEPAGE2_QUERY,
   orders: ORDERS_QUERY,
   products: PRODUCTS_QUERY,
 };
@@ -41,7 +41,7 @@ interface PageDataMap {
   events: CalendarEvent[];
   analytics: AnalyticsViewProps["analyticsData"];
   homepage: HomepageViewProps["homepageData"];
-  oldHomepage: OldHomepageViewProps["oldHomepageData"];
+  homepage2: Homepage2ViewProps["homepage2Data"];
 }
 
 type PageName = keyof PageDataMap;
@@ -90,7 +90,9 @@ export const getData = async <T extends PageName>(
 
     switch (pageName) {
       case "homepage":
-      case "oldHomepage":
+        return data as PageDataMap[T];
+      case "homepage2":
+        return data.homepage2 as PageDataMap[T];
       case "analytics":
         return data as PageDataMap[T];
       default:

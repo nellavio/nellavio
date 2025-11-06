@@ -1162,7 +1162,7 @@
       }
     ]
   },
-  "oldHomepage": {
+  "homepage2": {
     "bestSellingProducts": [
       {
         "name": "iPad Z50",
@@ -1284,7 +1284,7 @@
         "numberOfOrders": 1047
       }
     ],
-    "oldHomeSmallCards": [
+    "homeSmallCards": [
       {
         "title": "Sales",
         "metric": "$12,699",
@@ -1521,13 +1521,43 @@
       },
       {
         "date": "Aug 23",
-        "websiteSales": 5500,
-        "inStoreSales": 2100
+        "websiteSales": 3200,
+        "inStoreSales": 3200
       },
       {
         "date": "Sep 23",
-        "websiteSales": 6900,
-        "inStoreSales": 5300
+        "websiteSales": 4100,
+        "inStoreSales": 2700
+      },
+      {
+        "date": "Oct 23",
+        "websiteSales": 4200,
+        "inStoreSales": 5100
+      },
+      {
+        "date": "Nov 23",
+        "websiteSales": 3700,
+        "inStoreSales": 6700
+      },
+      {
+        "date": "Dec 23",
+        "websiteSales": 7600,
+        "inStoreSales": 4100
+      },
+      {
+        "date": "Jan 24",
+        "websiteSales": 5800,
+        "inStoreSales": 4800
+      },
+      {
+        "date": "Feb 24",
+        "websiteSales": 5100,
+        "inStoreSales": 2800
+      },
+      {
+        "date": "Mar 24",
+        "websiteSales": 6600,
+        "inStoreSales": 3500
       }
     ],
     "revenuePerCountry": [
@@ -1957,7 +1987,7 @@
           "value": "2532x1170 pixels at 460 ppi"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "146.7x71.5x7.65, 174 grams"
         },
         {
@@ -2036,7 +2066,7 @@
           "value": "2400x1080 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "151.7x71.2x7.9, 169 grams"
         },
         {
@@ -2115,7 +2145,7 @@
           "value": "2340x1080 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "144.7x70.4x8.0, 151 grams"
         },
         {
@@ -2194,7 +2224,7 @@
           "value": "2400x1080 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "160.7x74.1x8.4, 188 grams"
         },
         {
@@ -2273,7 +2303,7 @@
           "value": "2400x1080 FHD+"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "163.7x76.4x7.8, 196 grams"
         },
         {
@@ -2352,7 +2382,7 @@
           "value": "2360x1640 pixels at 264 ppi"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "247x178x6.1, 458 grams"
         },
         {
@@ -2431,7 +2461,7 @@
           "value": "2800x1752 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "285x185x5.7, 575 grams"
         },
         {
@@ -2510,7 +2540,7 @@
           "value": "2880x1920 (267 PPI)"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "287x208x7.3, 774 grams"
         },
         {
@@ -2589,7 +2619,7 @@
           "value": "2560x1600 (339 ppi)"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "231x158x7.8, 374 grams"
         },
         {
@@ -2668,7 +2698,7 @@
           "value": "1920x1200"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "244x153x8, 460 grams"
         },
         {
@@ -2747,7 +2777,7 @@
           "value": "2560x1600 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "304.1x212.4x16.1, 1.29 kg"
         },
         {
@@ -2826,7 +2856,7 @@
           "value": "1920x1080 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "357.1x235.8x18, 1.83 kg"
         },
         {
@@ -2905,7 +2935,7 @@
           "value": "1920x1080 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "360x262x24, 2.45 kg"
         },
         {
@@ -2984,7 +3014,7 @@
           "value": "1920x1080 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "329x227x17.9, 1.46 kg"
         },
         {
@@ -3063,7 +3093,7 @@
           "value": "3840x2160 pixels"
         },
         {
-          "title": "Dimensions & weight",
+          "title": "Dimensions \u0026 weight",
           "value": "354x220x18.9, 1.8 kg"
         },
         {

@@ -414,6 +414,8 @@
   "sideMenu": {
     "main": "Main",
     "dashboard": "Dashboard",
+    "homepage1": "Homepage 1",
+    "homepage2": "Homepage 2",
     "eCommerce": "E-commerce",
     "orders": "Orders",
     "customers": "Customers",
