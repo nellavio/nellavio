@@ -20,7 +20,7 @@ export const NotificationsButton = ({
 }: NotificationsButtonProps) => {
   const { notifications } = useNotificationsData();
 
-  const newNotificationsCount = notifications.filter(n => n.isNew).length;
+  const newNotificationsCount = notifications.filter((n) => n.isNew).length;
 
   const getIcon = (iconType: string) => {
     switch (iconType) {
@@ -88,7 +88,7 @@ export const NotificationsButton = ({
               </span>
             )}
           </div>
-          
+
           {/* Notifications list */}
           <div className="max-h-[400px] overflow-y-auto">
             {notifications.map((notification) => (
@@ -104,7 +104,7 @@ export const NotificationsButton = ({
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-outlinedButtonBg border border-mainBorder flex items-center justify-center stroke-grayIcon fill-grayIcon">
                     {getIcon(notification.icon)}
                   </div>
-                  
+
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start gap-2 mb-1">
@@ -131,7 +131,7 @@ export const NotificationsButton = ({
                 // Mock action - do nothing
                 notificationsDropdown.close();
               }}
-              className="w-full py-2.5 px-4 rounded-lg bg-notificationBadgeBg hover:bg-green-700 text-white font-medium text-sm transition-colors"
+              className="w-full py-2.5 px-4 rounded-lg bg-notificationBadgeBg hover:bg-notificationBadgeBgHover text-white font-medium text-sm transition-colors"
             >
               READ ALL NOTIFICATIONS
             </button>

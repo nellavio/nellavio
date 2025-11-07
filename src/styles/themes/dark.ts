@@ -70,9 +70,11 @@ export const darkTheme = {
   percentageBadgeRedBg: "rgba(253, 164, 175, 0.05)",
   percentageBadgeGreenBorder: "rgba(110, 231, 183, 0.3)",
   percentageBadgeRedBorder: "rgba(255, 100, 120, 0.35)",
+  modalBg: "hsl(210deg 9.5% 15.95%)",
 
   // Notifications
   notificationBadgeBg: "rgb(34, 154, 90)",
+  notificationBadgeBgHover: "rgb(27, 130, 75)",
   notificationItemBg: "rgb(36, 39, 43)",
   notificationItemBgHover: "rgb(42, 46, 51)",
   notificationHeaderBg: "rgb(31, 34, 38)",

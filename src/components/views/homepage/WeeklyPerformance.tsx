@@ -229,7 +229,7 @@ const ActivityItem = ({ activity }: { activity: WeeklyActivity }) => {
   };
 
   return (
-    <div className="flex items-start gap-3 py-5 border-b border-mainBorder last:border-b-0 hover:bg-navItemBgHover transition-colors px-4 cursor-pointer">
+    <div className="flex items-start gap-3 py-2.5 1xl:py-5 border-b border-mainBorder last:border-b-0 hover:bg-navItemBgHover transition-colors px-3 1xl:px-4 cursor-pointer">
       <div
         className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
         style={{
@@ -269,8 +269,8 @@ export const WeeklyPerformance = ({
         <WeeklyPerformanceChart data={weeklyPerformanceData} />
 
         {/* Activity Section */}
-        <div className="mt-4">
-          <div className="px-4 mb-2">
+        <div className="mt-1 2xl:mt-3">
+          <div className="px-4 mb-0 2xl:mb-1">
             <h3 className="text-sm font-semibold text-primaryText">
               {t("activity")}
             </h3>

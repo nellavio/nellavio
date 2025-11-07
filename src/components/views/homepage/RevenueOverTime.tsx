@@ -13,10 +13,7 @@ import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 
-import {
-  RevenueOverTimeProps,
-  RevenueOverTimeTooltipProps,
-} from "./types";
+import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "./types";
 import { useBackendTranslations } from "../../../hooks/useBackendTranslations";
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { BaseTooltip } from "../../common/BaseTooltip";
@@ -84,13 +81,13 @@ export const RevenueOverTime = ({
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
-  
-  const [timeRange, setTimeRange] = useState<"Monthly" | "Quarterly">("Monthly");
+
+  const [timeRange, setTimeRange] = useState<"Monthly" | "Quarterly">(
+    "Monthly"
+  );
 
   // Function to group monthly data into quarterly data
   const processDataByTimeRange = (data: typeof translatedData) => {
@@ -99,24 +96,40 @@ export const RevenueOverTime = ({
     }
 
     // Group by quarters
-    const quarters: { [key: string]: { websiteSales: number; inStoreSales: number; count: number } } = {};
-    
+    const quarters: {
+      [key: string]: {
+        websiteSales: number;
+        inStoreSales: number;
+        count: number;
+      };
+    } = {};
+
     data.forEach((item) => {
       // Extract month and year from date (e.g., "Mar 23" -> month=03, year=23)
       const [monthStr, yearStr] = item.date.split(" ");
       const monthMap: { [key: string]: number } = {
-        Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-        Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
+        Jan: 0,
+        Feb: 1,
+        Mar: 2,
+        Apr: 3,
+        May: 4,
+        Jun: 5,
+        Jul: 6,
+        Aug: 7,
+        Sep: 8,
+        Oct: 9,
+        Nov: 10,
+        Dec: 11,
       };
-      
+
       const month = monthMap[monthStr];
       const quarter = Math.floor(month / 3) + 1;
       const quarterKey = `Q${quarter} ${yearStr}`;
-      
+
       if (!quarters[quarterKey]) {
         quarters[quarterKey] = { websiteSales: 0, inStoreSales: 0, count: 0 };
       }
-      
+
       quarters[quarterKey].websiteSales += item.websiteSales;
       quarters[quarterKey].inStoreSales += item.inStoreSales;
       quarters[quarterKey].count += 1;
@@ -138,7 +151,7 @@ export const RevenueOverTime = ({
         <span className="text-[0.9rem] 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText">
           {t("title")}
         </span>
-        <span style={{ fontSize: '0.85rem', color: 'rgb(140, 145, 150)' }}>
+        <span style={{ fontSize: "0.85rem", color: "rgb(140, 145, 150)" }}>
           Track revenue changes over time
         </span>
       </div>
@@ -168,8 +181,13 @@ export const RevenueOverTime = ({
   );
 
   return (
-    <Card className="h-full" id="revenueOverTime" customHeader={customHeader} hasSubtitle={true}>
-      <div className="h-[15.5rem] 1xl:h-[16.3rem] 3xl:h-[18.5rem] w-full">
+    <Card
+      className="h-full"
+      id="revenueOverTime"
+      customHeader={customHeader}
+      hasSubtitle={true}
+    >
+      <div className="h-[17rem] 1xl:h-[18rem] 3xl:h-[20rem] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={displayData}

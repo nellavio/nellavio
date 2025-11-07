@@ -28,38 +28,38 @@ export const ProfileView = () => {
       {/* Profile Header Card */}
       <Card className="!p-0 overflow-hidden">
         {/* Banner */}
-        <div className="h-40 bg-gradient-to-r from-chartPrimaryBg to-chartSecondaryBg relative">
+        <div className="h-40 relative bg-gradient-to-r from-[rgb(240,245,255)] to-[rgb(225,235,255)] dark:from-[rgb(30,33,36)] dark:to-[rgb(45,48,52)]">
           <div className="absolute -bottom-12 left-1/2 -translate-x-1/2">
             <div className="w-24 h-24 rounded-full bg-primaryBg border-4 border-primaryBg flex items-center justify-center relative">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-chartPrimaryBg to-chartSecondaryBg flex items-center justify-center text-white text-2xl font-bold">
-                {userData.name.split(' ').map(n => n[0]).join('')}
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-chartSecondaryBg to-chartPrimaryBg dark:from-[rgb(20,60,50)] dark:to-[rgb(55,150,120)] flex items-center justify-center text-white text-2xl font-bold">
+                {userData.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
               </div>
             </div>
           </div>
         </div>
 
         {/* Profile Info */}
-        <div className="pt-16 px-6 pb-4 relative" style={{ minHeight: '160px' }}>
+        <div
+          className="pt-16 px-6 pb-4 relative"
+          style={{ minHeight: "160px" }}
+        >
           {/* Social Links and Edit button - vertically centered in gray area */}
           <div className="absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-6">
             <div className="flex gap-3">
-              <button
-                className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
-              >
+              <button className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group">
                 <div className="w-5 h-5 flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <GithubIcon />
                 </div>
               </button>
-              <button
-                className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
-              >
+              <button className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group">
                 <div className="w-[18px] h-[18px] flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <LinkedinIcon />
                 </div>
               </button>
-              <button
-                className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
-              >
+              <button className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group">
                 <div className="w-[18px] h-[18px] flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <TwitterIcon />
                 </div>
@@ -100,7 +100,7 @@ export const ProfileView = () => {
               <div className="flex items-start gap-4">
                 <div className="w-6 h-6 text-secondaryText mt-0.5">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
                 </div>
                 <div className="flex-1">
@@ -132,19 +132,30 @@ export const ProfileView = () => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs text-subtitleText mb-1">{t("location")}</p>
-                  <p className="text-base text-primaryText">{userData.location}</p>
+                  <p className="text-xs text-subtitleText mb-1">
+                    {t("location")}
+                  </p>
+                  <p className="text-base text-primaryText">
+                    {userData.location}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-6 h-6 text-secondaryText mt-0.5">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2v20M2 12h20"/>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 2v20M2 12h20" />
                   </svg>
                 </div>
                 <div className="flex-1">
                   <p className="text-xs text-subtitleText mb-1">Department</p>
-                  <p className="text-base text-primaryText">Sales & Marketing</p>
+                  <p className="text-base text-primaryText">
+                    Sales & Marketing
+                  </p>
                 </div>
               </div>
             </div>
@@ -157,28 +168,52 @@ export const ProfileView = () => {
             </h2>
             <div className="space-y-5">
               <div className="flex justify-between items-center">
-                <span className="text-base text-secondaryText">{t("totalOrders")}</span>
-                <span className="text-base font-semibold text-primaryText">1,284</span>
+                <span className="text-base text-secondaryText">
+                  {t("totalOrders")}
+                </span>
+                <span className="text-base font-semibold text-primaryText">
+                  1,284
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base text-secondaryText">{t("completedTasks")}</span>
-                <span className="text-base font-semibold text-primaryText">847</span>
+                <span className="text-base text-secondaryText">
+                  {t("completedTasks")}
+                </span>
+                <span className="text-base font-semibold text-primaryText">
+                  847
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base text-secondaryText">{t("activeProjects")}</span>
-                <span className="text-base font-semibold text-primaryText">12</span>
+                <span className="text-base text-secondaryText">
+                  {t("activeProjects")}
+                </span>
+                <span className="text-base font-semibold text-primaryText">
+                  12
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base text-secondaryText">Revenue Generated</span>
-                <span className="text-base font-semibold text-primaryText">$245K</span>
+                <span className="text-base text-secondaryText">
+                  Revenue Generated
+                </span>
+                <span className="text-base font-semibold text-primaryText">
+                  $245K
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base text-secondaryText">Team Members</span>
-                <span className="text-base font-semibold text-primaryText">28</span>
+                <span className="text-base text-secondaryText">
+                  Team Members
+                </span>
+                <span className="text-base font-semibold text-primaryText">
+                  28
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base text-secondaryText">Satisfaction Rate</span>
-                <span className="text-base font-semibold text-primaryText">98.5%</span>
+                <span className="text-base text-secondaryText">
+                  Satisfaction Rate
+                </span>
+                <span className="text-base font-semibold text-primaryText">
+                  98.5%
+                </span>
               </div>
             </div>
           </Card>
@@ -222,7 +257,11 @@ export const ProfileView = () => {
                   </p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input type="checkbox" className="sr-only peer" defaultChecked />
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    defaultChecked
+                  />
                   <div className="w-11 h-6 bg-toggleSwitchBg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-mainBorder after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-chartPrimaryBg"></div>
                 </label>
               </div>
@@ -250,7 +289,11 @@ export const ProfileView = () => {
                   </p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input type="checkbox" className="sr-only peer" defaultChecked />
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    defaultChecked
+                  />
                   <div className="w-11 h-6 bg-toggleSwitchBg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-mainBorder after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-chartPrimaryBg"></div>
                 </label>
               </div>
@@ -291,7 +334,9 @@ export const ProfileView = () => {
                 >
                   <div className="w-2 h-2 rounded-full bg-chartPrimaryBg mt-2 flex-shrink-0"></div>
                   <div className="flex-1">
-                    <p className="text-base text-primaryText">{activity.action}</p>
+                    <p className="text-base text-primaryText">
+                      {activity.action}
+                    </p>
                     <p className="text-sm text-subtitleText mt-0.5">
                       {activity.time}
                     </p>

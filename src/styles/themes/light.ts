@@ -1,13 +1,13 @@
 export const lightTheme = {
   // Texts
-  primaryText: "rgb(22, 40, 74)",
+  primaryText: "rgb(0,0,0,0.9)",
   secondaryText: "rgb(0,0,0,0.6)",
   subtitleText: "rgb(0,0,0,0.4)",
   secondaryTextHover: "rgb(0,0,0,0.8)",
   coloredText: "rgb(0, 96, 255)",
   coloredTextHover: "rgb(76, 144, 255)",
   navItemText: "rgba(0,0,0,0.85)",
-  navItemTextActive: "rgb(0, 96, 255)",
+  navItemTextActive: "hsl(208.21deg 100% 50%)",
   navSectionTitle: "black",
   tableCellText: "rgb(68, 68, 68)",
   greenBadgeText: "rgb(35, 140, 99)",
@@ -68,9 +68,11 @@ export const lightTheme = {
   percentageBadgeRedBg: "rgba(213, 61, 79, 0.08)",
   percentageBadgeGreenBorder: "rgba(35, 140, 99, 0.3)",
   percentageBadgeRedBorder: "rgba(213, 61, 79, 0.3)",
+  modalBg: "white",
 
   // Notifications
-  notificationBadgeBg: "rgb(0, 96, 255)",
+  notificationBadgeBg: "rgb(118, 167, 247)",
+  notificationBadgeBgHover: "rgb(79, 142, 247)",
   notificationItemBg: "rgb(255, 255, 255)",
   notificationItemBgHover: "rgb(249, 250, 251)",
   notificationHeaderBg: "rgb(255, 255, 255)",

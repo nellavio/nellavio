@@ -24,7 +24,7 @@ export const Modal = ({
   // Block body scroll when modal is open
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
-    
+
     document.body.style.overflow = "hidden";
 
     return () => {
@@ -44,7 +44,7 @@ export const Modal = ({
           role="dialog"
           aria-labelledby={ariaLabelledby}
           aria-describedby={ariaDescribedby}
-          className="w-screen h-screen md:w-auto md:h-auto bg-loginModalBg shadow-xl px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem] pb-12 flex flex-col items-center justify-start sm:rounded-2xl relative"
+          className="w-screen h-screen md:w-auto md:h-auto bg-modalBg shadow-xl px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem] pb-12 flex flex-col items-center justify-start sm:rounded-2xl relative"
         >
           <button
             onClick={onClose}
