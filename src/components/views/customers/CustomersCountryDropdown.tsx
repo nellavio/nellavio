@@ -19,12 +19,15 @@ export const CustomersCountryDropdown = ({
   const activeFilter = filters[filterKey];
 
   return (
-    <div className="relative inline-block w-44 2xl:w-48" ref={ref}>
+    <div
+      className="relative inline-block w-44 2xl:w-48 max-[450px]:w-full"
+      ref={ref}
+    >
       <OutlinedButton
         handleClick={toggle}
         icon={<FilterIcon />}
         text={t("button.filterByCountry")}
-        className="text-sm"
+        className="text-sm max-[450px]:w-full"
       />
       {isOpen && (
         <Dropdown className="-right-0 md:-right-0 w-[12rem] top-[3.3rem]">

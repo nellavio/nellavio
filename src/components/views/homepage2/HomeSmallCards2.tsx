@@ -5,7 +5,9 @@ import { useTranslateData } from "../../../hooks/useTranslateData";
 import { HomeSmallCardsProps } from "./types";
 import { Card } from "../../common/Card";
 
-export const HomeSmallCards2 = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
+export const HomeSmallCards2 = ({
+  homeSmallCardsData,
+}: HomeSmallCardsProps) => {
   const t = useTranslations("homepage.homeSmallCards");
   const translations = {
     Sales: t("sales"),
@@ -42,7 +44,7 @@ export const HomeSmallCards2 = ({ homeSmallCardsData }: HomeSmallCardsProps) => 
                     {item.metric}
                   </div>
                 </div>
-                <div className="flex">
+                <div className="flex whitespace-nowrap">
                   {item.increased ? (
                     <div className="text-xs text-green-600">
                       +{item.changeValue}%

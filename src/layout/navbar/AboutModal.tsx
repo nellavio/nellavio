@@ -24,7 +24,7 @@ export const AboutModal = ({ closeModal }: AboutModalProps) => {
               store.
             </p>
             <p className="mb-4 text-base">
-              If you&apos;d like to contribute, check out our{" "}
+              If you&apos;d like to contribute, check out the{" "}
               <button
                 onClick={(e) => {
                   e.stopPropagation();

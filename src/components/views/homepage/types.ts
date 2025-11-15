@@ -96,7 +96,7 @@ export interface WeeklyPerformanceData {
 
 export interface WeeklyActivity {
   id: number;
-  user: string;
+  user?: string;
   action: string;
   time: string;
   icon: "update" | "users" | "check" | "document";

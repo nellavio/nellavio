@@ -131,7 +131,7 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
                     {metric.increased ? "+" : "-"}
                     {metric.changeValue}%
                   </span>
-                  <span className="text-secondaryText text-xs">
+                  <span className="text-secondaryText text-xs whitespace-nowrap">
                     {metric.changeText}
                   </span>
                 </p>
@@ -187,7 +187,7 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
                     {metric.increased ? "+" : "-"}
                     {metric.changeValue}%
                   </span>
-                  <span className="text-secondaryText text-xs">
+                  <span className="text-secondaryText text-xs whitespace-nowrap">
                     {metric.changeText}
                   </span>
                 </p>

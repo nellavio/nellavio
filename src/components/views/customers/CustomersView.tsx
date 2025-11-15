@@ -60,19 +60,23 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
           />
         </div>
         <div className="flex gap-6 flex-wrap w-full md:w-auto mt-6 md:mt-0">
-          <div className="flex w-full md:w-auto justify-between gap-4 md:gap-4 h-9 3xl:h-10">
-            <CustomersCountryDropdown
-              options={countryOptions}
-              filterKey="country"
-              setFilter={setFilter}
-              filters={filters}
-            />
-            <CustomersSortDropdown
-              options={sortOptions}
-              setSorting={setSorting}
-              currentSort={sorting[0]?.id || null}
-              currentDirection={sorting[0]?.desc || false}
-            />
+          <div className="flex w-full md:w-auto justify-between gap-4 md:gap-4 h-9 3xl:h-10 max-[450px]:gap-2">
+            <div className="max-[450px]:w-[calc(50%-0.25rem)]">
+              <CustomersCountryDropdown
+                options={countryOptions}
+                filterKey="country"
+                setFilter={setFilter}
+                filters={filters}
+              />
+            </div>
+            <div className="max-[450px]:w-[calc(50%-0.25rem)]">
+              <CustomersSortDropdown
+                options={sortOptions}
+                setSorting={setSorting}
+                currentSort={sorting[0]?.id || null}
+                currentDirection={sorting[0]?.desc || false}
+              />
+            </div>
           </div>
         </div>
       </div>

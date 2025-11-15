@@ -39,12 +39,12 @@ export const CustomersSortDropdown = ({
   };
 
   return (
-    <div className="relative inline-block w-auto" ref={ref}>
+    <div className="relative inline-block w-auto max-[450px]:w-full" ref={ref}>
       <OutlinedButton
         handleClick={toggle}
         text={t("button.sortBy")}
         icon={<SortIcon />}
-        className="text-sm pr-4 whitespace-nowrap"
+        className="text-sm pr-4 whitespace-nowrap max-[450px]:w-full"
       />
       {isOpen && (
         <Dropdown className="right-0 top-[3.3rem] min-w-[12.5rem]">

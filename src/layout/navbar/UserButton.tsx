@@ -105,7 +105,7 @@ export const UserButton = ({
                 onToggle={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
               >
                 <div
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => {
                     userDropdown.close();
                     handleLoginButton();
@@ -114,7 +114,7 @@ export const UserButton = ({
                   <span>{t("signIn")}</span>
                 </div>
                 <div
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => {
                     userDropdown.close();
                     showSignUpModal();
@@ -123,7 +123,7 @@ export const UserButton = ({
                   <span>{t("register")}</span>
                 </div>
                 <div
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => {
                     userDropdown.close();
                     showLogoutModal();
@@ -133,7 +133,7 @@ export const UserButton = ({
                 </div>
                 <NavigationLink
                   href="/profile"
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => userDropdown.close()}
                 >
                   <span>{t("userProfile")}</span>
@@ -150,7 +150,7 @@ export const UserButton = ({
                 <NavigationLink
                   href="/"
                   locale="en"
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                 >
                   <span>{t("english")}</span>
                   {currentLanguage === "en" && (
@@ -162,7 +162,7 @@ export const UserButton = ({
                 <NavigationLink
                   href="/"
                   locale="pl"
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                 >
                   <span>{t("polish")}</span>
                   {currentLanguage === "pl" && (
@@ -182,7 +182,7 @@ export const UserButton = ({
                   onToggle={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
                 >
                   <div
-                    className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                     onClick={() => {
                       selectTheme("light");
                     }}
@@ -195,7 +195,7 @@ export const UserButton = ({
                     )}
                   </div>
                   <div
-                    className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                     onClick={() => {
                       selectTheme("dark");
                     }}
@@ -266,7 +266,7 @@ export const UserButton = ({
                 onToggle={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
               >
                 <div
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => {
                     userDropdown.close();
                     handleLoginButton();
@@ -275,7 +275,7 @@ export const UserButton = ({
                   <span>{t("signIn")}</span>
                 </div>
                 <div
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => {
                     userDropdown.close();
                     showSignUpModal();
@@ -284,7 +284,7 @@ export const UserButton = ({
                   <span>{t("register")}</span>
                 </div>
                 <div
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => {
                     userDropdown.close();
                     showLogoutModal();
@@ -294,7 +294,7 @@ export const UserButton = ({
                 </div>
                 <NavigationLink
                   href="/profile"
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
                   onClick={() => userDropdown.close()}
                 >
                   <span>{t("userProfile")}</span>
@@ -311,7 +311,7 @@ export const UserButton = ({
                 <NavigationLink
                   href="/"
                   locale="en"
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                 >
                   <span>{t("english")}</span>
                   {currentLanguage === "en" && (
@@ -323,7 +323,7 @@ export const UserButton = ({
                 <NavigationLink
                   href="/"
                   locale="pl"
-                  className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                 >
                   <span>{t("polish")}</span>
                   {currentLanguage === "pl" && (
@@ -343,7 +343,7 @@ export const UserButton = ({
                   onToggle={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
                 >
                   <div
-                    className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                     onClick={() => {
                       selectTheme("light");
                     }}
@@ -356,7 +356,7 @@ export const UserButton = ({
                     )}
                   </div>
                   <div
-                    className="py-2 pr-5 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                     onClick={() => {
                       selectTheme("dark");
                     }}

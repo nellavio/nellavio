@@ -28,7 +28,7 @@ export const CustomerModal = ({
   return (
     <div className="hidden md:flex">
       <Modal onClose={closeModal}>
-        <div className="flex items-center justify-center w-full flex-col gap-2 min-w-[32rem] max-w-[32rem]">
+        <div className="flex items-center justify-center w-full flex-col gap-2 min-w-[20rem] max-w-[32rem]">
           <div className="flex w-full gap-6">
             <div className="flex min-h-[6rem] min-w-[6rem]">
               {!imageLoaded && <SpinnerIcon className="contentSpinner" />}
@@ -56,25 +56,24 @@ export const CustomerModal = ({
             {customerDetails.map((customer) => (
               <div
                 key={customer?.label}
-                className="border-b border-mainBorder w-[47%] my-[0.6rem] pb-2 flex text-nowrap"
+                className="border-b border-mainBorder w-[47%] my-[0.6rem] pb-2 flex min-w-0"
               >
-                <div className="text-secondaryText mr-1">
+                <div className="text-secondaryText mr-1 flex-shrink-0">
                   {customer?.label}:
                 </div>
-                {customer?.value}
+                <div className="truncate">{customer?.value}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex w-full justify-end mt-12 gap-4 h-[2.7rem]">
-          <div className="min-w-[11rem]">
-            <OutlinedButton text={t("orderHistory")} />
-          </div>
-          <div className="min-w-[12rem]">
-            <a href={`tel:5555-5555-5555`} style={{ textDecoration: "none" }}>
-              <ContainedButton text={t("callButton")} icon={<PhoneIcon />} />
-            </a>
-          </div>
+        <div className="flex w-full justify-center mt-12 gap-4 h-[2.7rem]">
+          <OutlinedButton text={t("orderHistory")} />
+          <a
+            href={`tel:5555-5555-5555`}
+            style={{ textDecoration: "none", width: "100%" }}
+          >
+            <ContainedButton text={t("callButton")} icon={<PhoneIcon />} />
+          </a>
         </div>
       </Modal>
     </div>
