@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { getSession } from "../../../lib/auth-server";
+import { isPresentationMode } from "../../../utils/presentationMode";
 
 /**
  * Protected Layout
@@ -15,6 +16,14 @@ export default async function ProtectedLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
+  // Skip auth check if running in presentation mode
+  if (isPresentationMode()) {
+    console.log(
+      "[Protected Layout] Running in presentation mode - skipping auth check"
+    );
+    return <>{children}</>;
+  }
 
   // Check authentication - this runs once for all protected pages
   const session = await getSession();

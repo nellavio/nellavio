@@ -11,8 +11,8 @@ export const Logo = () => {
   return (
     <Link
       href="/"
-      className={`-ml-1 h-[4.2rem] 1xl:h-20 3xl:h-20  
-        text-mainColor fill-mainColor text-center flex justify-center items-center text-[1.3rem] xl:text-[1.1rem] 3xl:text-[1.4rem] font-medium `}
+      className={`-ml-4 h-[4.2rem] 1xl:h-20 3xl:h-20  
+        text-logoBg fill-logoBg text-center flex justify-center items-center text-[1.3rem] xl:text-[1.1rem] 3xl:text-[1.4rem] font-medium `}
     >
       <div className="menuItemLogo ">
         <LogoIcon />

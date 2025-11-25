@@ -10,6 +10,7 @@ import { CUSTOMERS_QUERY } from "../queries/CustomersQuery";
 import { PRODUCTS_QUERY } from "../queries/ProductsQuery";
 import { HOMEPAGE_QUERY } from "../queries/HomepageQuery";
 import { HOMEPAGE2_QUERY } from "../queries/Homepage2Query";
+import { hasValidBackendUrl } from "../utils/presentationMode";
 
 import type { OrderType } from "../components/views/orders/types";
 import type { Customer } from "../components/views/customers/types";
@@ -46,45 +47,54 @@ interface PageDataMap {
 
 type PageName = keyof PageDataMap;
 
-// Set to true to use backup JSON file instead of an actual backend
-export const switchToBackupData = false;
+/**
+ * Helper function to load data from backup JSON file
+ */
+const getBackupData = <T extends PageName>(pageName: T): PageDataMap[T] => {
+  const backupFilePath = path.join(
+    process.cwd(),
+    "public",
+    "backendBackup.json"
+  );
+  try {
+    const raw = fs.readFileSync(backupFilePath, "utf-8");
+    const allData: unknown = JSON.parse(raw);
 
+    // Type guard to ensure data structure
+    if (!allData || typeof allData !== "object") {
+      throw new Error("Invalid backup data structure");
+    }
+
+    const typedData = allData as Record<string, unknown>;
+    if (!typedData[pageName]) {
+      throw new Error(`No backup data for page ${pageName}`);
+    }
+
+    return typedData[pageName] as PageDataMap[T];
+  } catch (error) {
+    throw new Error(`Error reading backup: ${error}`);
+  }
+};
+
+/**
+ * Get data for a specific page
+ * Automatically uses backup JSON if backend is not configured or fails
+ */
 export const getData = async <T extends PageName>(
   pageName: T
 ): Promise<PageDataMap[T]> => {
-  // Use this if you don't want to setup NodeJS/GraphQL backend
-  // Application will read data from public/backendBackup.json instead of fetching it from backend
-  if (switchToBackupData) {
-    const backupFilePath = path.join(
-      process.cwd(),
-      "public",
-      "backendBackup.json"
-    );
-    try {
-      const raw = fs.readFileSync(backupFilePath, "utf-8");
-      const allData: unknown = JSON.parse(raw);
-
-      // Type guard to ensure data structure
-      if (!allData || typeof allData !== "object") {
-        throw new Error("Invalid backup data structure");
-      }
-
-      const typedData = allData as Record<string, unknown>;
-      if (!typedData[pageName]) {
-        throw new Error(`No backup data for page ${pageName}`);
-      }
-
-      return typedData[pageName] as PageDataMap[T];
-    } catch (error) {
-      throw new Error(`Error reading backup: ${error}`);
-    }
+  // Auto-detect: If no valid backend URL, use backup data
+  if (!hasValidBackendUrl()) {
+    console.log(`[Presentation Mode] Using backup data for ${pageName}`);
+    return getBackupData(pageName);
   }
 
-  // Use this if you have working backend
+  // Try to fetch from backend
   const query = QUERY_MAP[pageName];
   if (!query) {
     throw new Error(`Query not found for page: ${pageName}`);
   }
+
   try {
     const { data } = await client.query({ query });
 

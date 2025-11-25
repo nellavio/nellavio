@@ -4,6 +4,7 @@ import createMiddleware from "next-intl/middleware";
 import { getSessionCookie } from "better-auth/cookies";
 
 import { locales, localePrefix, defaultLocale } from "./i18n/navigation";
+import { hasValidBackendUrl, isAuthAvailable } from "./utils/presentationMode";
 
 const handleI18nRouting = createMiddleware({
   locales,
@@ -22,23 +23,28 @@ const isPublicPath = (pathname: string): boolean => {
 };
 
 const middleware = (request: NextRequest) => {
-  // Check if Better Auth environment variables are present
-  const hasBetterAuthEnvs =
-    process.env.NEXT_PUBLIC_AUTH_URL && process.env.BETTER_AUTH_SECRET;
+  // Check if backend and auth are properly configured
+  const hasBackend = hasValidBackendUrl();
+  const hasAuth = isAuthAvailable();
 
-  // If Better Auth envs are missing, skip auth checks and just handle i18n
-  if (!hasBetterAuthEnvs) {
+  // If no backend or auth is configured, run in presentation mode (no route protection)
+  if (!hasBackend || !hasAuth) {
+    console.log(
+      "[Middleware] Running in PRESENTATION MODE - no route protection"
+    );
     return handleI18nRouting(request);
   }
 
-  // 🔐 Route protection enabled
   const sessionCookie = getSessionCookie(request);
   const pathname = request.nextUrl.pathname;
 
   // Redirect to login if not authenticated and trying to access protected route
   if (!sessionCookie && !isPublicPath(pathname)) {
     const locale = pathname.match(/^\/([a-z]{2})\//)?.at(1) || "";
-    const loginUrl = new URL(`/${locale ? locale + "/" : ""}login`, request.url);
+    const loginUrl = new URL(
+      `/${locale ? locale + "/" : ""}login`,
+      request.url
+    );
     return NextResponse.redirect(loginUrl);
   }
 

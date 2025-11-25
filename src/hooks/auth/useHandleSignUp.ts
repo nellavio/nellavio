@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { SignUpData } from "../../components/auth/SignUpForm";
 import { signUp } from "../../lib/auth-client";
+import { isPresentationModeClient } from "../../utils/presentationMode";
 
 export const useHandleSignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,14 @@ export const useHandleSignUp = () => {
   const t = useTranslations("navbar");
 
   const handleSignUp = async (data: SignUpData) => {
+    // Check if running in presentation mode (no backend)
+    if (isPresentationModeClient()) {
+      alert(
+        "Authentication is disabled in the demo version on Vercel. Check README.md to find information on how to connect the backend to make it work."
+      );
+      return;
+    }
+
     setLoading(true);
     setSignUpError("");
 
@@ -30,7 +39,9 @@ export const useHandleSignUp = () => {
       if (error) {
         setLoading(false);
         // Map Better Auth errors to user-friendly messages
-        const errorMessage = mapSignUpError(error.message || error.code || "UNKNOWN_ERROR");
+        const errorMessage = mapSignUpError(
+          error.message || error.code || "UNKNOWN_ERROR"
+        );
         setSignUpError(errorMessage);
         return;
       }
@@ -47,7 +58,10 @@ export const useHandleSignUp = () => {
 
   // Map Better Auth error messages to translation keys
   const mapSignUpError = (errorMessage: string): string => {
-    if (errorMessage.includes("already exists") || errorMessage.includes("User already exists")) {
+    if (
+      errorMessage.includes("already exists") ||
+      errorMessage.includes("User already exists")
+    ) {
       return t("authErrors.emailAlreadyExists");
     }
     if (errorMessage.includes("Invalid email")) {

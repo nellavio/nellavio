@@ -72,6 +72,7 @@ export const lightTheme = {
   percentageBadgeGreenBorder: "rgba(35, 140, 99, 0.3)",
   percentageBadgeRedBorder: "rgba(213, 61, 79, 0.3)",
   modalBg: "white",
+  logoBg: "rgb(118, 167, 247)",
 
   // Notifications
   notificationBadgeBg: "rgb(118, 167, 247)",

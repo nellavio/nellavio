@@ -6,6 +6,11 @@ import { headers } from "next/headers";
  */
 export async function getSession() {
   try {
+    // Check if auth URL is configured
+    if (!process.env.NEXT_PUBLIC_AUTH_URL) {
+      return null;
+    }
+
     const headersList = await headers();
 
     // Call Better Auth backend

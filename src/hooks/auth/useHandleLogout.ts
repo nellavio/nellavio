@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useAppStore } from "../../store/appStore";
 import { signOut } from "../../lib/auth-client";
+import { isPresentationModeClient } from "../../utils/presentationMode";
 
 export const useHandleLogout = () => {
   const [loading, setLoading] = useState(false);
@@ -9,6 +10,14 @@ export const useHandleLogout = () => {
   const setIsLoggingOut = useAppStore((state) => state.setIsLoggingOut);
 
   const handleLogout = async () => {
+    // Check if running in presentation mode (no backend)
+    if (isPresentationModeClient()) {
+      alert(
+        "Authentication is disabled in the demo version on Vercel. Check README.md to find information on how to connect the backend to make it work."
+      );
+      return;
+    }
+
     setLoading(true);
     setIsLoggingOut(true);
 

@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginData } from "../../components/auth/LoginForm";
 import { useAppStore } from "../../store/appStore";
 import { signIn } from "../../lib/auth-client";
+import { isPresentationModeClient } from "../../utils/presentationMode";
 
 export const useHandleLogin = () => {
   const [authError, setAuthError] = useState<string>("");
@@ -23,6 +24,14 @@ export const useHandleLogin = () => {
   const currentPathname = usePathname();
 
   const handleLogin = async (data: LoginData) => {
+    // Check if running in presentation mode (no backend)
+    if (isPresentationModeClient()) {
+      alert(
+        "Authentication is disabled in the demo version on Vercel. Check README.md to find information on how to connect the backend to make it work."
+      );
+      return;
+    }
+
     setIsLoggingIn(true);
     setAuthError("");
 

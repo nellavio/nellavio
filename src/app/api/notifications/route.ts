@@ -4,11 +4,12 @@ import path from "path";
 
 import { client } from "../../../services/apolloClient";
 import { NOTIFICATIONS_QUERY } from "../../../queries/NotificationsQuery";
-import { switchToBackupData } from "../../../services/getData";
+import { hasValidBackendUrl } from "../../../utils/presentationMode";
 
 export async function GET() {
   try {
-    if (switchToBackupData) {
+    // Auto-detect: Use backup if no valid backend
+    if (!hasValidBackendUrl()) {
       // Read from backup JSON file (server-side, fs works here)
       const filePath = path.join(process.cwd(), "public", "backendBackup.json");
       const fileContent = fs.readFileSync(filePath, "utf-8");
@@ -19,14 +20,31 @@ export async function GET() {
       }
 
       return NextResponse.json(allData.notifications);
-    } else {
-      // Fetch from GraphQL backend
+    }
+
+    // Try to fetch from GraphQL backend
+    try {
       const { data } = await client.query({
         query: NOTIFICATIONS_QUERY,
         fetchPolicy: "network-only",
       });
 
       return NextResponse.json(data.notifications);
+    } catch (backendError) {
+      // Fallback to backup if backend fails
+      console.warn(
+        "[Backend Failed] Using backup data for notifications:",
+        backendError
+      );
+      const filePath = path.join(process.cwd(), "public", "backendBackup.json");
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      const allData = JSON.parse(fileContent);
+
+      if (!allData.notifications) {
+        throw new Error("No notifications found in backup data");
+      }
+
+      return NextResponse.json(allData.notifications);
     }
   } catch (error) {
     console.error("Error in notifications API route:", error);

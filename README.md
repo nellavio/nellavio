@@ -18,7 +18,7 @@
   </a>
 </div>
 
-<h4 align="center">Open source and free dashboard template written in NextJS and TypeScript, connected to NodeJS backend with PostgreSQL database containing data for fictional electronic store.</h2>
+<h4 align="center">Open source and free dashboard template written in NextJS and TypeScript</h2>
 <br />
 
 <div align="center">
@@ -27,21 +27,20 @@
 
 ## :gear: Tech stack
 
-React 19, NextJS 15, TypeScript, Tailwind, Zustand, Apollo Client, Recharts, Clerk, Jest
+React 19, NextJS 15, TypeScript, Tailwind, Zustand, Apollo Client, Recharts, Better Auth, Jest
 
 ## :sparkles: Features
 
 - 14 data charts (Recharts, Tremor.so)
 - tables with filtering, sorting, searching, pagination and CSV export (Tanstack-ReactTable v8)
-- authentication (Clerk, React Hook Forms and Yup)
+- authentication (Better Auth, React Hook Forms and Yup)
+- internationalization: english and polish (next-intl)
 - calendar that allows for moving, adding and deleting events (Fullcalendar.io)
 - product gallery with Lightbox popup and PDF export (yet-another-react-lightbox, @react-pdf/renderer)
 - world map with tooltips (react-simple-maps)
-- internationalization: english and polish (next-intl)
 - CI pipeline for testing and linting, working on Github Actions
-- unit and integration tests (Jest, React Testing Library) [in progress]
 - code formatter (Prettier), linter (Eslint) and Git Hooks (Husky)
-- 4 themes (next-themes, tw-colors)
+- dark and light mode (next-themes, tw-colors)
 
 ## :link: Links
 
@@ -49,11 +48,13 @@ Live (dashboard) [https://spireflow.vercel.app/](https://spireflow.vercel.app/)
 
 ## :cloud: Backend
 
-Application is connected to NodeJS backend, which is also open source and available on my Github. You can run it on platforms like Heroku.com or Render.com
+The application is provided along with an associated Node.js backend, which is also open source and available on my GitHub. You can deploy it on platforms like Heroku or Render. 
+
+The dashboard is designed to work as a standalone front-end application by default, so setting up the backend is entirely optional.
 
 [https://github.com/matt765/spireflow-backend](https://github.com/matt765/spireflow-backend)
 
-## :file_folder: Project Structure
+## :file_folder: Project structure
 
 ```shell
 ├── src
@@ -93,16 +94,22 @@ Application is connected to NodeJS backend, which is also open source and availa
 └── package.json                  # Project dependencies and scripts
 ```
 
-## :rocket: Getting started
+## :rocket: Quickstart
 
 You can get started with Spireflow by cloning the repository:
 
 ```bash
 git clone https://github.com/matt765/spireflow.git
 cd spireflow
+npm install
+npm run dev
 ```
 
-All commands are run from the root of the project, from a terminal. Remember to create and configure your .env file using the provided .env.example as a template before starting the development server.
+🎉 **That's it!** Navigate to [http://localhost:3000](http://localhost:3000) to explore the dashboard.
+
+To allow immediate usage without a backend, the app defaults to mock data from `public/backendBackup.json` and bypasses authentication.
+
+## 📋 Available commands
 
 | Command                | Action                                |
 | :--------------------- | :------------------------------------ |
@@ -117,42 +124,58 @@ All commands are run from the root of the project, from a terminal. Remember to 
 | `npm run format`       | Formats code with Prettier            |
 | `npm run format:check` | Checks if code is properly formatted  |
 
-### Configure authentication
+## ⚙️ Configuration (optional)
 
-To begin using Spireflow with authentication, you'll need to set up a Clerk account:
+### Connect to backend & enable authentication
 
-1. Create an account at [Clerk.com](https://clerk.com)
-2. Create a new application within the Clerk Dashboard
-3. Obtain your API credentials from the dashboard
-4. Create a `.env` file in your project root
-5. Add the following environment variables to your `.env` file:
+Want to use real backend and authentication? Follow these steps:
 
-```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_pub_key
-CLERK_SECRET_KEY=your_clerk_secret_key
-```
+#### 1. Set up the backend
 
-### Backend connection
+Clone and run the [Spireflow Backend](https://github.com/matt765/spireflow-backend)
 
-Spireflow is set up to retrieve data from a [GraphQL backend](https://github.com/matt765/spireflow-backend) endpoint. This endpoint is defined by the `GRAPHQL_URL` environment variable in your `.env` file:
+Follow the instructions in the backend README to initialize and seed the database. The backend will run on `http://localhost:4000` by default.
+
+#### 2. Configure environment variables
+
+Create a `.env` file in your project root:
 
 ```env
-GRAPHQL_URL=your_backend_url
+# Backend GraphQL API
+GRAPHQL_URL=http://localhost:4000/graphql
+
+# Better Auth Configuration
+NEXT_PUBLIC_AUTH_URL=http://localhost:4000/api/auth
 ```
 
-### Production notes
+#### 3. Restart the dev server
 
-Route protection in [middleware.ts](https://github.com/matt765/spireflow/blob/main/src/middleware.ts) and registering new accounts in [useHandleSignUp](https://github.com/matt765/spireflow/blob/main/src/hooks/auth/useHandleSignUp.ts) have logic commented out for demo purposes. Remember to uncomment it if you plan to use this application in production environment.
+```bash
+npm run dev
+```
 
-The "Sign in" button on navbar is mostly for demonstration purposes. There are separate [/login](https://spireflow.vercel.app/login) and [/register](https://spireflow.vercel.app/register) pages available for production use.
+That's it! The dashboard will automatically:
 
-### Quickstart without backend and authentication
+- ✅ Connect to your backend for real data
+- ✅ Enable route protection
+- ✅ Allow user registration and login
 
-Dashboard **can work** without environment variables for backend and authentication.
+### How it works
 
-In case of backend, you need to set `switchToBackupData` value to `true` in [getData.ts](https://github.com/matt765/spireflow/blob/main/src/services/getData.ts) file. If you do this, data will be fetched from `public/backendBackup.json` file.
+The application automatically detects your configuration:
 
-As for authentication, `middleware.ts` is configured in a way that will allow to run the application even if you won't provide Clerk environment variables. Dashboard will load, but authentication will not work.
+- **No `.env` file**: Runs standalone with mock data
+- **Backend configured**: Fetches data from GraphQL API
+- **Backend + Auth configured**: Authentication enabled with protected routes
+- **Backend unavailable**: Automatically falls back to mock data (no crashes!)
+
+### Production deployment
+
+For production (e.g., Vercel):
+
+1. Deploy your backend to a hosting service (e.g. Heroku/Render)
+2. Set environment variables in your Vercel project settings
+3. Deploy - the app automatically detects and uses the backend
 
 ## 🧾 Pages
 
@@ -166,17 +189,17 @@ As for authentication, `middleware.ts` is configured in a way that will allow to
 | `/products`  | Product management with gallery and export options |
 | `/login`     | Sign in to your account                            |
 | `/register`  | Create a new account                               |
+| `/profile`   | User profile page                                  |
+| `/homepage2` | Old homepage version, before redesign              |
 
 There are also four filler pages with single charts: `/area`, `/bars`, `/scatter` and `/line`
 
 ## 🤝 Community and contributions
 
-If you have ideas to enhance the project or found some issues, consider submitting a pull request. Prior to contributing, please review the [contribution guidelines](CONTRIBUTING.md), which include information regarding the licensing of your contributions.
+Check out [CONTRIBUTING.md](https://github.com/matt765/spireflow/blob/main/CONTRIBUTING.md) to learn how to get started with contributions.
 
-All forms of project support are valued, including code contributions, issue reporting, and sponsorship through GitHub Sponsors.
+All forms of project support are valued and appreciated, including code contributions, issue reporting, and sponsorship through GitHub Sponsors.
 
 ## 📝 License
 
 This project is licensed under the MIT License - see the [license](https://github.com/matt765/spireflow/blob/main/license) file for more information.
-
-Made with ♥ by [matt765](https://matt765-portfolio.vercel.app/)
