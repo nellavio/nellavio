@@ -88,7 +88,11 @@ export const LineAreaChartComponent = () => {
       addTitleMargin
     >
       <div className="h-96 1xl:h-[28rem] 3xl:h-[32rem] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <AreaChart
             data={chartdata}
             margin={{

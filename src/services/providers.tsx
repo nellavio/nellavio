@@ -1,8 +1,6 @@
 "use client";
-
 import { ThemeProvider } from "next-themes";
-import { ApolloProvider } from "@apollo/client";
-
+import { ApolloProvider } from "@apollo/client/react";
 import { Layout } from "../layout/Layout";
 import { client } from "./apolloClient";
 

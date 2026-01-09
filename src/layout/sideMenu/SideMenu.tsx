@@ -53,7 +53,11 @@ export const SideMenu = () => {
           <Logo />
         </div>
         <MenuCategory title={t("pages")} />
-        <MenuItem title={t("dashboard")} icon={<DashboardIcon />} path="/" />
+        <MenuItem
+          title={t("dashboard")}
+          icon={<DashboardIcon />}
+          path="/"
+        />
         <MenuItemWithSubmenu
           title={t("eCommerce")}
           icon={<EcommerceIcon />}

@@ -9,6 +9,8 @@ interface AppStore {
   setIsLoggingOut: (isLoggingOut: boolean) => void;
   isLoggingIn: boolean;
   setIsLoggingIn: (isLoggingIn: boolean) => void;
+  homepageLayout: "three-cards" | "four-cards";
+  setHomepageLayout: (layout: "three-cards" | "four-cards") => void;
 }
 
 const determineInitialState = () => {
@@ -47,4 +49,6 @@ export const useAppStore = create<AppStore>((set) => ({
   setIsLoggingOut: (isLoggingOut) => set(() => ({ isLoggingOut })),
   isLoggingIn: false,
   setIsLoggingIn: (isLoggingIn) => set(() => ({ isLoggingIn })),
+  homepageLayout: "three-cards",
+  setHomepageLayout: (layout) => set(() => ({ homepageLayout: layout })),
 }));

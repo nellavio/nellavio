@@ -1,15 +1,85 @@
 "use client";
 
-import { LineChart } from "@tremor/react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
+import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartColors } from "../../../hooks/useChartColors";
+
+interface LineChartTooltipProps {
+  active?: boolean;
+  payload?: Array<{ name: string; value: number; color?: string }>;
+  label?: string;
+}
+
+const LineChartTooltip = ({
+  active,
+  payload,
+  label,
+}: LineChartTooltipProps) => {
+  if (!active || !payload || payload.length === 0 || !label) return null;
+
+  return (
+    <BaseTooltip title={label}>
+      {payload.map((entry, index) => (
+        <p
+          key={`linechart-tooltip-${index}`}
+          className="px-3 pb-1 text-primaryText flex items-center justify-between"
+        >
+          <span>
+            <span
+              className="w-2 h-2 mr-2 rounded inline-block"
+              style={{ backgroundColor: entry.color }}
+            />
+            {`${entry.name}:   `}
+          </span>
+          <span className="pl-[0.7rem]">
+            {Intl.NumberFormat("us").format(entry.value)}
+          </span>
+        </p>
+      ))}
+    </BaseTooltip>
+  );
+};
+
+const CustomLegend = ({
+  payload,
+}: {
+  payload?: Array<{ value: string; color?: string }>;
+}) => {
+  return (
+    <div className="flex flex-row justify-end gap-8 text-white w-full mt-6">
+      {payload?.map((entry, index) => (
+        <div key={`legend-${index}`} className="flex items-center">
+          <div
+            className="w-3 h-3 mr-2"
+            style={{ backgroundColor: entry.color }}
+          />
+          <span className="text-xs 1xl:text-sm text-primaryText">
+            {entry.value}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export const LineChartComponent = () => {
   const t = useTranslations("singleCharts.line");
-
   const { width: windowWidth } = useWindowDimensions();
+  const { theme } = useTheme();
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   const dragonPopulationInWesteros = [
     {
@@ -49,19 +119,6 @@ export const LineChartComponent = () => {
       [t("houseVelaryon")]: 0,
     },
   ];
-  const dataFormatter = (number: number) =>
-    `${Intl.NumberFormat("us").format(number).toString()}`;
-
-  const { theme } = useTheme();
-
-  const colorSchemes: { [key: string]: string } = {
-    dark: "emerald",
-    light: "blue",
-  };
-
-  const defaultTheme = "midnight";
-
-  const mainLineColor = colorSchemes[theme || defaultTheme];
 
   return (
     <Card
@@ -71,21 +128,69 @@ export const LineChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <LineChart
-        className="mt-2 1xl:mt-6 h-72 1xl:h-88 3xl:h-96"
-        data={dragonPopulationInWesteros}
-        index="year"
-        categories={[t("houseTargaryen"), t("houseVelaryon")]}
-        colors={[mainLineColor, "slate"]}
-        valueFormatter={dataFormatter}
-        yAxisWidth={40}
-        intervalType="preserveStartEnd"
-      />
+      <div className="mt-2 1xl:mt-6 h-72 1xl:h-88 3xl:h-96">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
+          <LineChart
+            data={dragonPopulationInWesteros}
+            margin={{
+              top: 20,
+              right: windowWidth > 700 ? 30 : 10,
+              left: windowWidth > 700 ? 20 : 5,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={chartColors.primary.grid}
+            />
+            <XAxis
+              dataKey="year"
+              stroke="rgba(255,255,255,0.1)"
+              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+            />
+            <YAxis
+              stroke="rgba(255,255,255,0.1)"
+              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              width={40}
+              tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
+            />
+            <Tooltip
+              content={<LineChartTooltip />}
+              cursor={{ fill: "rgba(255,255,255,0.05)" }}
+            />
+            <Legend
+              verticalAlign="top"
+              align="center"
+              content={<CustomLegend />}
+            />
+            <Line
+              type="monotone"
+              dataKey={t("houseTargaryen")}
+              stroke={chartColors.primary.fill}
+              strokeWidth={2}
+              dot={true}
+              isAnimationActive={false}
+            />
+            <Line
+              type="monotone"
+              dataKey={t("houseVelaryon")}
+              stroke="rgb(148, 163, 184)"
+              strokeWidth={2}
+              dot={true}
+              isAnimationActive={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
       <div className="w-full hidden sm:flex justify-between mx-auto mt-6 1xl:mt-8 ml-8">
         {dragonPopulationInWesteros.map((item, index) => (
           <div
             key={index}
-            className="text-[12px] lg:text-[13px] text-primaryText px-2"
+            className="text-xs lg:text-[13px] text-primaryText px-2"
           >
             {item.title}
           </div>

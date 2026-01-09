@@ -1,12 +1,11 @@
-import { DeltaType, Color } from "@tremor/react";
-
 export interface Asset {
   name: string;
   industry: string;
   sales: number;
   delta: number;
-  deltaType: DeltaType;
-  status: Color;
+  deltaType: string;
+  status: string;
+  [key: string]: any;
 }
 
 export interface AssetPerformanceProps {
@@ -48,6 +47,12 @@ export interface TotalMonthProfit {
 export interface TotalProfitProps {
   totalProfitProducts: ProductProfit[];
   totalProfitSales: TotalMonthProfit[];
+}
+
+export interface TotalProfitTooltipProps {
+  active?: boolean;
+  payload?: Array<{ name: string; value: number; color?: string }>;
+  label?: string;
 }
 
 export interface SingleProductData {

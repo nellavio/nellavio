@@ -1,75 +1,77 @@
 "use client";
 
-import { Grid, Col } from "@tremor/react";
-
-import { HomeSmallCards } from "./HomeSmallCards";
+import { ThreeSmallCards } from "./ThreeSmallCards";
+import { FourSmallCards } from "./FourSmallCards";
 import { RevenueOverTime } from "./RevenueOverTime";
 import { WeeklyPerformance } from "./WeeklyPerformance";
 import { BestSellingProducts } from "./BestSellingProducts";
 import { CustomerSatisfaction } from "./CustomerSatisfaction";
 import { HomepageViewProps } from "./types";
 import { RevenuePerCountry } from "./RevenuePerCountry";
+import { useAppStore } from "../../../store/appStore";
 
 export const HomepageView = ({ homepageData }: HomepageViewProps) => {
+  const homepageLayout = useAppStore((state) => state.homepageLayout);
+
   return (
     <>
-      {/* First and Second row combined */}
-      <Grid
-        numItems={1}
-        numItemsSm={1}
-        numItemsMd={1}
-        numItemsLg={3}
-        className="gap-x-4 1xl:gap-x-6 gap-y-6"
-      >
-        <Col numColSpan={1} numColSpanLg={2} className="flex flex-col gap-6">
-          {/* Top Metrics Cards */}
-          {homepageData?.homeSmallCards && (
-            <HomeSmallCards homeSmallCardsData={homepageData.homeSmallCards} />
+      {/* Four Cards Layout Only */}
+      {homepageLayout === "four-cards" && (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4 mb-6">
+          {homepageData?.fourSmallCards && (
+            <FourSmallCards fourSmallCardsData={homepageData.fourSmallCards} />
           )}
+        </div>
+      )}
 
+      {/* First and Second row combined */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 1xl:gap-x-6 gap-y-6">
+        <div className="lg:col-span-2 flex flex-col gap-6">
+          {/* Top Metrics Cards - Three Cards Layout Only */}
+          {homepageLayout === "three-cards" &&
+            homepageData?.threeSmallCards && (
+              <ThreeSmallCards
+                threeSmallCardsData={homepageData.threeSmallCards}
+              />
+            )}
           {/* Revenue Over Time */}
           {homepageData?.revenueOverTime && (
             <RevenueOverTime
               revenueOverTimeData={homepageData.revenueOverTime}
             />
           )}
-        </Col>
-
-        {/* Calendar & Activity - Extended height */}
-        <Col numColSpan={1} numColSpanLg={1} className="flex">
-          {homepageData?.weeklyPerformance &&
-            homepageData?.weeklyActivities && (
-              <WeeklyPerformance
-                weeklyPerformanceData={homepageData.weeklyPerformance}
-                weeklyActivities={homepageData.weeklyActivities}
-              />
-            )}
-        </Col>
-      </Grid>
-
+        </div>
+        {/* Calendar & Activity */}
+        <div className="flex">
+          {homepageData?.weeklyPerformance && (
+            <WeeklyPerformance
+              weeklyPerformanceData={homepageData.weeklyPerformance}
+              weeklyActivities={
+                homepageLayout === "three-cards"
+                  ? homepageData.weeklyActivities
+                  : []
+              }
+            />
+          )}
+        </div>
+      </div>
       {/* Third row */}
-      <Grid
-        numItems={1}
-        numItemsSm={2}
-        numItemsMd={2}
-        numItemsLg={3}
-        className="gap-x-4 1xl:gap-x-6 gap-y-6"
-      >
-        <Col numColSpan={1} numColSpanLg={1}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 1xl:gap-x-6 gap-y-6">
+        <div>
           {homepageData?.bestSellingProducts && (
             <BestSellingProducts
               bestSellingProductsData={homepageData.bestSellingProducts}
             />
           )}
-        </Col>
-        <Col numColSpan={1} numColSpanLg={2}>
+        </div>
+        <div className="lg:col-span-2">
           {homepageData?.customerSatisfaction && (
             <CustomerSatisfaction
               customerSatisfactionData={homepageData.customerSatisfaction}
             />
           )}
-        </Col>
-      </Grid>
+        </div>
+      </div>
       {/* Fourth row */}
       <div className="hidden lg:flex w-full 1xl:w-full">
         <RevenuePerCountry

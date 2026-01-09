@@ -17,7 +17,7 @@
       "nov": "Lis",
       "dec": "Gru"
     },
-    "homeSmallCards": {
+    "threeSmallCards": {
       "sales": "Obrót",
       "profit": "Zysk",
       "traffic": "Ruch",
@@ -28,10 +28,16 @@
       "Last week": "7 dni",
       "monthlyTarget": "Miesięczny cel"
     },
-    "regions": {
-      "title": "Regiony",
-      "northAmerica": "Ameryka Północna",
-      "europe": "Europa"
+    "fourSmallCards": {
+      "sales": "Obrót",
+      "profit": "Zysk",
+      "traffic": "Ruch",
+      "customers": "Klienci",
+      "Last 3 weeks": "3 tygodnie",
+      "Last month": "30 dni",
+      "Yesterday": "Wczoraj",
+      "Last week": "7 dni",
+      "monthlyTarget": "Miesięczny cel"
     },
     "bestSellingProducts": {
       "title": "Bestsellery",
@@ -419,8 +425,6 @@
   "sideMenu": {
     "main": "Intro",
     "dashboard": "Panel główny",
-    "homepage1": "Strona główna 1",
-    "homepage2": "Strona główna 2",
     "eCommerce": "E-commerce",
     "orders": "Zamówienia",
     "customers": "Klienci",
@@ -514,7 +518,6 @@
       "noResults": "Nie znaleziono wyników",
       "sections": {
         "revenueOverTime": "Dochód miesięczny",
-        "regions": "Regiony",
         "bestsellingProducts": "Bestsellery",
         "customerSatisfaction": "Zadowolenie klientów",
         "revenuePerCountry": "Przychód według kraju",

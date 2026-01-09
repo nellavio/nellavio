@@ -123,7 +123,11 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
         </p> */}
 
       <div className="h-[16rem] 1xl:h-[21rem] 3xl:h-[24rem]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <BarChart
             data={chartData}
             margin={{

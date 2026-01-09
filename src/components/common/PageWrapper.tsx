@@ -7,6 +7,8 @@ import { Breadcrumbs } from "./Breadcrumbs";
 import { DownloadIcon } from "../../assets/icons/DownloadIcon";
 import { exportToCSV } from "../../utils/exportToCSV";
 import { useTooltip } from "../../hooks/useTooltip";
+import { SettingsDrawer } from "../../layout/SettingsDrawer";
+import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 
 interface PageWrapperProps {
   children: ReactNode;
@@ -44,8 +46,23 @@ export const PageWrapper = ({
   );
 
   return (
-    <main
-      className={`flex pb-0 flex-col min-h-screen max-w-full h-full w-full  pb-0 md:pb-0 xl:pb-8 items-center      
+    <>
+      {/* Fixed Settings Button - Desktop Only */}
+      <div className="hidden xl:block fixed bottom-6 right-6 z-50">
+        <SettingsDrawer>
+          <button
+            className="w-16 h-16 rounded-full border border-mainBorder bg-floatingMenuButtonBg hover:bg-floatingMenuButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon shadow-lg flex items-center justify-center transition-colors cursor-pointer"
+            aria-label="Open settings"
+          >
+            <div className="w-9 h-9 flex items-center justify-center">
+              <SettingsIcon />
+            </div>
+          </button>
+        </SettingsDrawer>
+      </div>
+
+      <main
+        className={`flex pb-0 flex-col min-h-screen max-w-full h-full w-full  pb-0 md:pb-0 xl:pb-8 items-center
       ${
         !hidePaper &&
         // Spacing for Orders, Customers, Products and Calendar pages
@@ -64,50 +81,51 @@ export const PageWrapper = ({
         "pt-[4rem] md:!pt-[5.5rem] xl:!pt-[5.5rem] 3xl:!pt-[6rem] md:px-8 xl:px-0 pb-0 md:!pb-8 xl:pb-8"
       }
       `}
-      role="main"
-    >
-      <div className="flex flex-col max-w-full w-full min-h-full lg:h-unset">
-        {!hidePaper && !hideTopBar && (
-          // Breadcrumbs for Orders, Customers, Products and Calendar pages
-          <div className="px-6 xsm:px-8 xl:px-0 w-full flex justify-between items-center">
-            <Breadcrumbs pageName={pageName} />
-            {csvButton}
-          </div>
-        )}
-        {hidePaper ? (
-          <div
-            className="flex flex-col w-full max-w-full h-full py-4 px-6 pt-6 sm:py-6 xsm:px-8 md:p-0"
-            aria-hidden="true"
-          >
-            {!hideTopBar && (
-              <div className="w-full flex justify-between items-center">
-                {/* Breadcrumbs for Home and Analytics pages */}
-                <Breadcrumbs pageName={pageName} />
-                {csvButton}
-              </div>
-            )}
+        role="main"
+      >
+        <div className="flex flex-col max-w-full w-full min-h-full lg:h-unset">
+          {!hidePaper && !hideTopBar && (
+            // Breadcrumbs for Orders, Customers, Products and Calendar pages
+            <div className="px-6 xsm:px-8 xl:px-0 w-full flex justify-between items-center">
+              <Breadcrumbs pageName={pageName} />
+              {csvButton}
+            </div>
+          )}
+          {hidePaper ? (
             <div
-              className={`flex flex-col w-full gap-y-4 1xl:gap-y-6 max-w-full h-full ${hideTopBar ? "pt-5" : "pt-3"}`}
+              className="flex flex-col w-full max-w-full h-full py-4 px-6 pt-6 sm:py-6 xsm:px-8 md:p-0"
+              aria-hidden="true"
             >
-              {/* Content for Home and Analytics pages */}
+              {!hideTopBar && (
+                <div className="w-full flex justify-between items-center">
+                  {/* Breadcrumbs for Home and Analytics pages */}
+                  <Breadcrumbs pageName={pageName} />
+                  {csvButton}
+                </div>
+              )}
+              <div
+                className={`flex flex-col w-full gap-y-4 1xl:gap-y-6 max-w-full h-full ${hideTopBar ? "pt-5" : "pt-3"}`}
+              >
+                {/* Content for Home and Analytics pages */}
+                {children}
+              </div>
+            </div>
+          ) : (
+            <div
+              className={`mt-3 flex w-full max-w-full py-8 bg-primaryBg xl:rounded-[10px] shadow-lg border-t xl:border border-mainBorder min-h-[100vh] xl:min-h-unset xl:rounded-[12px] xl:border ${
+                ["Charts", "UI Elements", "Forms", "Tables"].includes(
+                  pageName || ""
+                )
+                  ? "px-8 xsm:px-10 1xl:px-12"
+                  : "px-6 xsm:p-8 1xl:p-10"
+              }`}
+            >
+              {/* Content for Orders, Customers, Products and Calendar pages */}
               {children}
             </div>
-          </div>
-        ) : (
-          <div
-            className={`mt-3 flex w-full max-w-full py-8 bg-primaryBg xl:rounded-[10px] shadow-lg border-t xl:border border-mainBorder min-h-[100vh] xl:min-h-unset xl:rounded-[12px] xl:border ${
-              ["Charts", "UI Elements", "Forms", "Tables"].includes(
-                pageName || ""
-              )
-                ? "px-8 xsm:px-10 1xl:px-12"
-                : "px-6 xsm:p-8 1xl:p-10"
-            }`}
-          >
-            {/* Content for Orders, Customers, Products and Calendar pages */}
-            {children}
-          </div>
-        )}
-      </div>
-    </main>
+          )}
+        </div>
+      </main>
+    </>
   );
 };

@@ -142,7 +142,11 @@ export const BarChartComponent = () => {
       addTitleMargin
     >
       <div className="h-64 1xl:h-80 w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <BarChart
             data={barChartData}
             margin={{

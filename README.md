@@ -31,7 +31,7 @@ React 19, NextJS 15, TypeScript, Tailwind, Shadcn, Zustand, Apollo Client, Recha
 
 ## :sparkles: Features
 
-- 14 data charts (Recharts, Tremor.so)
+- 14 data charts (Recharts)
 - tables with filtering, sorting, searching, pagination and CSV export (Tanstack-ReactTable v8)
 - authentication (Better Auth, React Hook Forms and Yup)
 - internationalization: english and polish (next-intl)
@@ -41,6 +41,19 @@ React 19, NextJS 15, TypeScript, Tailwind, Shadcn, Zustand, Apollo Client, Recha
 - CI pipeline for testing and linting, working on Github Actions
 - code formatter (Prettier), linter (Eslint) and Git Hooks (Husky)
 - dark and light mode (next-themes, tw-colors)
+
+## ✨ Features
+
+- 🎨 **90+ Components** - Shadcn UI + custom components
+- 📊 **25 Chart Types** - Production-ready with Recharts
+- 🗄️ **Full Backend** - GraphQL + Prisma + PostgreSQL
+- 📋 **Advanced Tables** - TanStack Table v8 with filtering/sorting/export
+- 📅 **Calendar** - FullCalendar with CRUD operations
+- 🎭 **Themes** - Dark/light mode with 111 CSS variables
+- 🌍 **i18n** - English & Polish support
+- 📦 **Standalone Mode** - Works without backend using mock data
+- 🧪 **Testing** - Jest + React Testing Library
+- 🔒 **Auth** - Better Auth integration
 
 ## :link: Links
 
@@ -190,7 +203,6 @@ For remote services (e.g., Vercel):
 | `/login`     | Sign in to your account                            |
 | `/register`  | Create a new account                               |
 | `/profile`   | User profile page                                  |
-| `/homepage2` | Old homepage version, before redesign              |
 
 There are also four filler pages with single charts: `/area`, `/bars`, `/scatter` and `/line`
 

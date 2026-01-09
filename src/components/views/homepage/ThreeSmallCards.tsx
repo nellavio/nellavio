@@ -4,13 +4,13 @@ import { useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 import { useTranslateData } from "../../../hooks/useTranslateData";
-import { HomeSmallCardsProps } from "./types";
+import { ThreeSmallCardsProps } from "./types";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { Tooltip } from "../../common/Tooltip";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
-export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
-  const t = useTranslations("homepage.homeSmallCards");
+export const ThreeSmallCards = ({ threeSmallCardsData }: ThreeSmallCardsProps) => {
+  const t = useTranslations("homepage.threeSmallCards");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const [hoveredChart, setHoveredChart] = useState<number | null>(null);
@@ -28,7 +28,7 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
     "Last week": t("Last week"),
   };
 
-  const translatedData = useTranslateData(homeSmallCardsData, translations);
+  const translatedData = useTranslateData(threeSmallCardsData, translations);
 
   // Take first 3 cards
   const metricsData = translatedData.slice(0, 3);
@@ -82,7 +82,11 @@ export const HomeSmallCards = ({ homeSmallCardsData }: HomeSmallCardsProps) => {
         onMouseLeave={() => setHoveredChart(null)}
         className="w-[112px] h-[112px] xsm:w-[75px] xsm:h-[75px] 2xl:w-[90px] 2xl:h-[90px] transition-transform duration-200 group-hover:scale-110"
       >
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 100, height: 100 }}
+        >
           <PieChart>
             <Pie
               data={data}

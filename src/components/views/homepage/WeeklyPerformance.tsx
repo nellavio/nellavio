@@ -119,7 +119,11 @@ const WeeklyPerformanceChart = ({
   return (
     <div className="px-4 pt-8 pb-4">
       <div className="w-full h-[17rem]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <BarChart data={displayData} margin={getChartMargins()}>
             <CartesianGrid
               strokeDasharray="0"
@@ -287,18 +291,20 @@ export const WeeklyPerformance = ({
         <WeeklyPerformanceChart data={weeklyPerformanceData} />
 
         {/* Activity Section */}
-        <div className="mt-1 2xl:mt-3">
-          <div className="px-4 mb-2 1xl:mb-0 2xl:mb-1">
-            <h3 className="text-sm font-semibold text-primaryText">
-              {t("activity")}
-            </h3>
+        {weeklyActivities && weeklyActivities.length > 0 && (
+          <div className="mt-1 2xl:mt-3">
+            <div className="px-4 mb-2 1xl:mb-0 2xl:mb-1">
+              <h3 className="text-sm font-semibold text-primaryText">
+                {t("activity")}
+              </h3>
+            </div>
+            <div className="flex flex-col">
+              {weeklyActivities.map((activity) => (
+                <ActivityItem key={activity.id} activity={activity} />
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col">
-            {weeklyActivities.map((activity) => (
-              <ActivityItem key={activity.id} activity={activity} />
-            ))}
-          </div>
-        </div>
+        )}
       </div>
     </Card>
   );

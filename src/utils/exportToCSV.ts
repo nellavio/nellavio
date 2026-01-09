@@ -112,8 +112,8 @@ export const prepareDataForExport = <T extends object>(
           homepageData.customerSatisfaction,
           "customerSatisfaction"
         ),
-        ...mapWithDataType(homepageData.homeSmallCards, "homeSmallCards"),
-        ...mapWithDataType(homepageData.regions, "regions"),
+        ...mapWithDataType(homepageData.threeSmallCards, "threeSmallCards"),
+        ...mapWithDataType(homepageData.fourSmallCards, "fourSmallCards"),
         ...mapWithDataType(homepageData.revenueOverTime, "revenueOverTime"),
         ...mapWithDataType(homepageData.revenuePerCountry, "revenuePerCountry"),
       ];

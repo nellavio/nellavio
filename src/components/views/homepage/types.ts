@@ -1,5 +1,3 @@
-import { DeltaType, Color } from "@tremor/react";
-
 export interface BestSellingProduct {
   name: string;
   profit: number;
@@ -21,38 +19,30 @@ export interface CustomerSatisfactionProps {
   customerSatisfactionData: ProductSatisfaction[];
 }
 
-export interface HomeSmallCardChartData {
+export interface SmallCardChartData {
   date: string;
   metric: number;
 }
 
-export interface HomeSmallCard {
+export interface SmallCard {
   title: string;
   metric: string;
   metricPrev: string;
   delta: string;
-  deltaType: DeltaType;
-  color: Color;
+  deltaType: string;
+  color: string;
   increased: boolean;
   changeValue: number;
   changeText: string;
-  chartData: HomeSmallCardChartData[];
+  chartData: SmallCardChartData[];
 }
 
-export interface HomeSmallCardsProps {
-  homeSmallCardsData: HomeSmallCard[];
+export interface ThreeSmallCardsProps {
+  threeSmallCardsData: SmallCard[];
 }
 
-export interface Region {
-  name: string;
-  region: string;
-  sales: number;
-  delta: string;
-  deltaType: string;
-}
-
-export interface RegionsProps {
-  regionsData: Region[];
+export interface FourSmallCardsProps {
+  fourSmallCardsData: SmallCard[];
 }
 
 export interface Revenue {
@@ -68,7 +58,8 @@ export interface RevenueOverTimeProps {
 interface HomepageData {
   bestSellingProducts: BestSellingProductsProps["bestSellingProductsData"];
   customerSatisfaction: CustomerSatisfactionProps["customerSatisfactionData"];
-  homeSmallCards: HomeSmallCardsProps["homeSmallCardsData"];
+  threeSmallCards: ThreeSmallCardsProps["threeSmallCardsData"];
+  fourSmallCards: FourSmallCardsProps["fourSmallCardsData"];
   revenueOverTime: RevenueOverTimeProps["revenueOverTimeData"];
   revenuePerCountry: RevenuePerCountryProps["revenuePerCountryData"];
   weeklyPerformance: WeeklyPerformanceProps["weeklyPerformanceData"];
@@ -116,14 +107,6 @@ export interface BestSellingCustomTooltipProps {
     dataKey?: string;
   }>;
   label?: string;
-}
-
-export interface RegionData {
-  name: string;
-  regionKey: string;
-  sales: number;
-  delta?: string;
-  deltaType?: string;
 }
 
 export interface RevenueOverTimeTooltipPayloadItem {

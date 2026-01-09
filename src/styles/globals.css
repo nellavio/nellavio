@@ -1,9 +1,9 @@
 /* Primary cause for the size of this file is the fact that it's either highly challenging or impossible to apply/overwrite
 styles in more reliable way for some of the external libraries used in this project */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "./themes/light.css";
+@import "./themes/dark.css";
 
 html,
 body {
@@ -213,136 +213,12 @@ a {
   position: relative;
 }
 
-/* Overwrite of some Tremor styles to adjust data charts for multiple themes */
-/* Styles below will cease to be needed once Tremor allows custom colors for charts */
-
-/* Primary chart background for bar chart rectangles, e.g. 1st and 3rd chart in HomeSmallCards component*/
-.recharts-wrapper .fill-purple-500 {
-  @apply !fill-chartPrimaryBg;
-}
-
-/* Primary chart background - for donut charts on Homepage and Analytics page */
-.assetPerformanceCard .recharts-wrapper .fill-blue-500,
-.regionsCard .recharts-wrapper .fill-blue-500 {
-  @apply !fill-chartPrimaryBg;
-}
-
-/* Secondary chart background for bar chart rectangles, e.g. 2nd and 4th chart in HomeSmallCards component */
-.recharts-wrapper .fill-cyan-500 {
-  @apply fill-chartSecondaryBg;
-}
-
-/* Slightly lighter background for bar chart rectangles in Performance chart in Obsidian theme */
-.performanceCard .recharts-wrapper .fill-blue-500 {
-  @apply fill-[#3c76c1] !important;
-}
-.performanceCard .tremor-Legend-root .text-blue-500 {
-  @apply fill-[#3c76c1] !important;
-}
-
-/* Main Tremor card component */
-.tremor-Card-root {
-  @apply border !border-mainBorder bg-primaryBg;
-}
-
-/* Better contrast for Tremor reddish badge */
-.tremor-TableCell-root .text-red-600,
-.tremor-ListItem-root .text-red-600 {
-  @apply text-redBadgeText;
-}
-
-/* Better contrast for Tremor warning badge */
-.tremor-TableCell-root .text-orange-600,
-.tremor-ListItem-root .text-orange-600 {
-  @apply text-orangeBadgeText;
-}
-
-/* Better contrast for Tremor greenish badge */
-.tremor-TableCell-root .text-emerald-600,
-.tremor-ListItem-root .text-emerald-600 {
-  @apply text-greenBadgeText;
-}
-
-/* Fix for "Invalid prop `wrapperStyle`" error specific for Tremor library */
-#salesCard,
-#profitCard,
-#trafficCard,
-#customersCard * {
-  pointer-events: none;
-}
-
-/* Chart backgrounds for dots in Tremor legend/tooltip components */
-.tremor-Legend-root .text-cyan-500 {
-  @apply text-chartSecondaryBg;
-}
-.tremor-Legend-root .text-blue-500 {
-  @apply text-chartPrimaryBg;
-}
-.recharts-tooltip-wrapper .bg-blue-500 {
-  @apply bg-chartPrimaryBg;
-}
-.tremor-Legend-root .text-purple-500 {
-  @apply text-chartPrimaryBg;
-}
-.recharts-tooltip-wrapper .bg-purple-500 {
-  @apply bg-chartPrimaryBg;
-}
-.recharts-tooltip-wrapper .bg-cyan-500 {
-  @apply bg-chartSecondaryBg;
-}
-.recharts-tooltip-stable .tremor-Legend-root .text-blue-500 {
-  @apply text-blue-600;
-}
-.recharts-tooltip-stable .recharts-tooltip-wrapper .bg-blue-500 {
-  @apply bg-blue-600;
-}
-
-.recharts-scatter-symbol {
-  @apply stroke-none;
-}
-
 /* Font color for axis ticks in Recharts charts */
 .recharts-cartesian-axis-tick-value tspan,
 .recharts-polar-angle-axis-tick-value tspan,
 .recharts-cartesian-axis-tick text {
   @apply fill-secondaryText;
 }
-
-/* Disable upper empty part of tooltip on Today Sales section on /analytics page */
-.todaySalesContainer .recharts-tooltip-wrapper .border-b {
-  display: none;
-}
-
-/* Active tab in Today Sales section */
-.todaySalesContainer
-  .tremor-TabList-root
-  button[data-headlessui-state="selected"] {
-  @apply !text-blue-400;
-}
-
-.menuItemIcon svg {
-  @apply w-[20px] h-[20px] 3xl:w-[22px] 3xl:h-[22px];
-}
-
-.menuItemLogo svg {
-  @apply w-[22px] h-[22px] 3xl:w-[32px] 3xl:h-[32px];
-  transform: rotate(0deg);
-}
-
-/* Hide unnecessary grid lines in Tremor bar charts */
-.small-box .recharts-cartesian-grid-horizontal {
-  display: none;
-}
-
-/* Add margin for mobile resolution of legend section im bars single chart page */
-.single-chart-bars .tremor-Legend-root {
-  @apply mb-6 sm:mb-2;
-}
-
-/* Fix selected tab title color in Today Sales section
-.ui-selected\:text-tremor-brand[data-headlessui-state~="selected"] {
-  color: red !important;
-} */
 
 /* Hide outline until better solution for styling input borders on multiple themes is developed */
 /* Accessibility issue */
@@ -352,7 +228,7 @@ a {
 
 /* Overwrite autofill styles for inputs to ensure consistent appearance on multiple themes */
 :root {
-  --primary-text-color: theme("colors.primaryText");
+  --primary-text-color: var(--color-primaryText);
 }
 
 input:-webkit-autofill,
@@ -427,15 +303,24 @@ input:-webkit-autofill {
   @apply fill-primaryText;
 }
 
+.menuItemIcon svg {
+  @apply w-[20px] h-[20px] 3xl:w-[22px] 3xl:h-[22px];
+}
+
+.menuItemLogo svg {
+  @apply w-[22px] h-[22px] 3xl:w-[32px] 3xl:h-[32px];
+  transform: rotate(0deg);
+}
+
 /* Custom Scrollbar */
 :root {
-  --scrollbar-thumb: theme("colors.scrollbarThumb");
-  --scrollbar-bg: theme("colors.scrollbarBg");
+  --scrollbar-thumb: var(--color-scrollbarThumb);
+  --scrollbar-bg: var(--color-scrollbarBg);
 }
 
 .dark {
-  --scrollbar-thumb: theme("colors.scrollbarThumb");
-  --scrollbar-bg: theme("colors.scrollbarBg");
+  --scrollbar-thumb: var(--color-scrollbarThumb);
+  --scrollbar-bg: var(--color-scrollbarBg);
 }
 
 * {
@@ -449,11 +334,24 @@ input:-webkit-autofill {
 }
 
 .alternativeScrollbar {
-  --scrollbar-bg: theme("colors.primaryBg");
+  --scrollbar-bg: var(--color-primaryBg);
 }
 
 /* Prevent stretching customer photo vertically */
 .customersTable img {
   min-width: 40px;
   min-height: 40px;
+}
+
+/* Breakpoints */
+@theme {
+  /* xsm: "480px",
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px", */
+  --breakpoint-xsm: 30rem; /* 480px */
+  --breakpoint-1xl: 87.5rem; /* 1400px */
+  --breakpoint-3xl: 109.375rem; /* 1750px */
+  --breakpoint-5xl: 125rem; /* 2000px */
 }

@@ -1,26 +1,74 @@
-import {
-  Col,
-  DeltaBar,
-  DonutChart,
-  Flex,
-  List,
-  ListItem,
-  Text,
-  Bold,
-  Grid,
-} from "@tremor/react";
+"use client";
+
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { AssetPerformanceProps } from "./types";
 import { Card } from "../../common/Card";
+import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartColors } from "../../../hooks/useChartColors";
+
+interface AssetTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: {
+      name: string;
+      sales: number;
+    };
+  }>;
+}
+
+const AssetTooltip = ({ active, payload }: AssetTooltipProps) => {
+  if (!active || !payload || payload.length === 0) return null;
+
+  const data = payload[0].payload;
+
+  return (
+    <BaseTooltip title={data.name}>
+      <p className="px-3 pb-1 text-primaryText flex items-center justify-between">
+        <span>Sales: </span>
+        <span className="pl-[0.7rem]">
+          {Intl.NumberFormat("us").format(data.sales)} $
+        </span>
+      </p>
+    </BaseTooltip>
+  );
+};
 
 export const AssetPerformance = ({
   assetPerformanceData,
 }: AssetPerformanceProps) => {
   const t = useTranslations("analytics.assetPerformance");
+  const { theme } = useTheme();
+  const chartColors = useChartColors(theme as "dark" | "light");
 
-  const valueFormatter = (number: number) =>
-    `${Intl.NumberFormat("us").format(number).toString()} $`;
+  const COLORS = [
+    chartColors.primary.fill,
+    chartColors.secondary.fill,
+    "rgb(168, 162, 255)",
+    "rgb(100, 200, 180)",
+    "rgb(255, 150, 150)",
+    "rgb(255, 200, 100)",
+    "rgb(150, 150, 255)",
+    "rgb(200, 100, 255)",
+  ];
+
+  const totalSales = assetPerformanceData.reduce(
+    (sum, asset) => sum + asset.sales,
+    0
+  );
+
+  const getDeltaColor = (status: string) => {
+    switch (status) {
+      case "emerald":
+        return "rgb(16, 185, 129)";
+      case "rose":
+        return "rgb(244, 63, 94)";
+      default:
+        return "rgb(156, 163, 175)";
+    }
+  };
 
   return (
     <Card
@@ -28,56 +76,100 @@ export const AssetPerformance = ({
       id="assetPerformance"
       title={t("title")}
     >
-      <Grid numItemsLg={3} className="mt-4 1xl:mt-6 3xl:mt-8 gap-x-10 gap-y-10">
-        <Flex>
-          <DonutChart
-            data={assetPerformanceData}
-            category="sales"
-            variant="donut"
-            valueFormatter={valueFormatter}
-            className="h-40 1xl:h-44 3xl:h-52"
-          />
-        </Flex>
-        <Col numColSpan={1} numColSpanLg={2}>
-          <Flex className="block md:hidden lg:block">
-            <Text className="text-secondaryText">
-              <Bold>+/-% {t("sinceTransaction")} </Bold>
-            </Text>
-          </Flex>
-          <div className=" sm:max-h-32 lg:max-h-full overflow-auto pr-2">
-            <List className="mt-1 1xl:mt-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 mt-4 1xl:mt-6 3xl:mt-8 gap-x-10 gap-y-10">
+        <div className="flex justify-center items-center">
+          <div className="h-52 1xl:h-56 3xl:h-64 w-full relative">
+            <ResponsiveContainer
+              width="100%"
+              height="100%"
+              initialDimension={{ width: 320, height: 200 }}
+            >
+              <PieChart>
+                <Pie
+                  data={assetPerformanceData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="60%"
+                  outerRadius="85%"
+                  fill="#8884d8"
+                  dataKey="sales"
+                  stroke="none"
+                  strokeWidth={0}
+                >
+                  {assetPerformanceData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                      stroke="none"
+                    />
+                  ))}
+                </Pie>
+                <Tooltip content={<AssetTooltip />} />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="text-center">
+                <div className="text-sm 1xl:text-base 3xl:text-lg font-bold text-primaryText">
+                  ${Intl.NumberFormat("en-US").format(totalSales)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="lg:col-span-2">
+          <div className="block md:hidden lg:block">
+            <p className="text-secondaryText font-bold">
+              +/-% {t("sinceTransaction")}
+            </p>
+          </div>
+          <div className="sm:max-h-32 lg:max-h-full overflow-auto pr-2">
+            <ul className="mt-1 1xl:mt-2">
               {assetPerformanceData.map((asset, index) => (
-                <ListItem
+                <li
                   key={asset.name}
-                  className={`
-                  ${index === 7 ? "hidden 3xl:flex" : ""} 
-                  ${index === 6 ? "hidden 1xl:flex" : ""} 
+                  className={`flex items-center justify-between border-b border-inputBorder
+                  ${index === 7 ? "hidden 3xl:flex" : ""}
+                  ${index === 6 ? "hidden 1xl:flex" : ""}
                   pb-2 pt-2 1xl:py-2`}
                 >
                   <div className="text-xs 1xl:text-sm 3xl:text-base text-secondaryText">
-                    {" "}
-                    {asset.name}{" "}
+                    {asset.name}
                   </div>
                   <div>
-                    <Flex justifyContent="end" className="space-x-4">
-                      <Text color={asset.status} className="ml-2">
-                        {asset.delta}%{" "}
-                      </Text>
+                    <div className="flex items-center justify-end space-x-4">
+                      <p
+                        className="ml-2 text-sm"
+                        style={{ color: getDeltaColor(asset.status) }}
+                      >
+                        {asset.delta}%
+                      </p>
                       <div className="hidden lg:block w-44">
-                        <DeltaBar
-                          value={asset.delta}
-                          isIncreasePositive={true}
-                          tooltip=""
-                        />
+                        <div className="relative h-2 w-full bg-secondaryBg rounded-full overflow-hidden">
+                          <div
+                            className="absolute h-full rounded-full transition-all"
+                            style={{
+                              backgroundColor: getDeltaColor(asset.status),
+                              width: `${Math.abs(asset.delta)}%`,
+                              left:
+                                asset.delta >= 0
+                                  ? "50%"
+                                  : `${50 - Math.abs(asset.delta)}%`,
+                            }}
+                          />
+                          <div
+                            className="absolute h-full w-0.5 bg-inputBorder"
+                            style={{ left: "50%" }}
+                          />
+                        </div>
                       </div>
-                    </Flex>
+                    </div>
                   </div>
-                </ListItem>
+                </li>
               ))}
-            </List>
+            </ul>
           </div>
-        </Col>
-      </Grid>
+        </div>
+      </div>
     </Card>
   );
 };

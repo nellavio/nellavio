@@ -9,12 +9,12 @@ import { InfoIcon } from "../../assets/icons/InfoIcon";
 import { GithubIcon } from "../../assets/icons/GithubIcon";
 import { LanguageIcon } from "../../assets/icons/LanguageIcon";
 import { CheckIcon } from "../../assets/icons/CheckIcon";
-import { MoonIcon } from "../../assets/icons/MoonIcon";
-import { SunIcon } from "../../assets/icons/SunIcon";
 import { PaletteIcon } from "../../assets/icons/PaletteIcon";
+import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 import { Link as NavigationLink } from "../../i18n/navigation";
 import { ArrowDownSimpleIcon } from "../../assets/icons/ArrowDownSimpleIcon";
 import { DropdownMenuItem } from "./DropdownMenuItem";
+import { SettingsDrawer } from "../SettingsDrawer";
 
 export const UserButton = ({
   userIconBtnRef,
@@ -95,329 +95,176 @@ export const UserButton = ({
         )}
       {userDropdown.isOpen && (
         <div className="absolute right-[0.5rem] text-sm 1xl:text-sm 2xl:text-base xl:right-0 top-10 xl:top-11 mt-2 w-[13.5rem] border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow">
-          {isLoggedIn ? (
-            <>
-              {/* Auth Section - Expandable */}
-              <DropdownMenuItem
-                icon={<UserIcon />}
-                label={t("auth")}
-                isOpen={isAuthMenuOpen}
-                onToggle={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
-              >
-                <div
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => {
-                    userDropdown.close();
-                    handleLoginButton();
-                  }}
-                >
-                  <span>{t("signIn")}</span>
+          {/* Auth Section - Expandable */}
+          <DropdownMenuItem
+            icon={<UserIcon />}
+            label={t("auth")}
+            isOpen={isAuthMenuOpen}
+            onToggle={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
+          >
+            <div
+              className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+              onClick={() => {
+                userDropdown.close();
+                handleLoginButton();
+              }}
+            >
+              <span>{t("signIn")}</span>
+            </div>
+            <div
+              className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+              onClick={() => {
+                userDropdown.close();
+                showSignUpModal();
+              }}
+            >
+              <span>{t("register")}</span>
+            </div>
+            <div
+              className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+              onClick={() => {
+                userDropdown.close();
+                showLogoutModal();
+              }}
+            >
+              <span>{t("signOut")}</span>
+            </div>
+            <NavigationLink
+              href="/profile"
+              className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
+              onClick={() => userDropdown.close()}
+            >
+              <span>{t("userProfile")}</span>
+            </NavigationLink>
+          </DropdownMenuItem>
+
+          {/* Language Section - Expandable */}
+          <DropdownMenuItem
+            icon={<LanguageIcon />}
+            label={t("language")}
+            isOpen={isLanguageMenuOpen}
+            onToggle={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+          >
+            <NavigationLink
+              href="/"
+              locale="en"
+              className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+            >
+              <span>{t("english")}</span>
+              {currentLanguage === "en" && (
+                <div className="text-secondaryText">
+                  <CheckIcon />
                 </div>
-                <div
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => {
-                    userDropdown.close();
-                    showSignUpModal();
-                  }}
-                >
-                  <span>{t("register")}</span>
+              )}
+            </NavigationLink>
+            <NavigationLink
+              href="/"
+              locale="pl"
+              className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+            >
+              <span>{t("polish")}</span>
+              {currentLanguage === "pl" && (
+                <div className="text-secondaryText">
+                  <CheckIcon />
                 </div>
-                <div
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => {
-                    userDropdown.close();
-                    showLogoutModal();
-                  }}
-                >
-                  <span>{t("signOut")}</span>
-                </div>
-                <NavigationLink
-                  href="/profile"
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => userDropdown.close()}
-                >
-                  <span>{t("userProfile")}</span>
-                </NavigationLink>
-              </DropdownMenuItem>
+              )}
+            </NavigationLink>
+          </DropdownMenuItem>
 
-              {/* Language Section - Expandable */}
-              <DropdownMenuItem
-                icon={<LanguageIcon />}
-                label={t("language")}
-                isOpen={isLanguageMenuOpen}
-                onToggle={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-              >
-                <NavigationLink
-                  href="/"
-                  locale="en"
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                >
-                  <span>{t("english")}</span>
-                  {currentLanguage === "en" && (
-                    <div className="text-secondaryText">
-                      <CheckIcon />
-                    </div>
-                  )}
-                </NavigationLink>
-                <NavigationLink
-                  href="/"
-                  locale="pl"
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                >
-                  <span>{t("polish")}</span>
-                  {currentLanguage === "pl" && (
-                    <div className="text-secondaryText">
-                      <CheckIcon />
-                    </div>
-                  )}
-                </NavigationLink>
-              </DropdownMenuItem>
-
-              {/* Theme Section - Expandable (visible only below xl) */}
-              <div className="xl:hidden">
-                <DropdownMenuItem
-                  icon={<PaletteIcon />}
-                  label={t("theme")}
-                  isOpen={isThemeMenuOpen}
-                  onToggle={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-                >
-                  <div
-                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                    onClick={() => {
-                      selectTheme("light");
-                    }}
-                  >
-                    <span>{t("light")}</span>
-                    {currentTheme === "light" && (
-                      <div className="text-secondaryText">
-                        <CheckIcon />
-                      </div>
-                    )}
-                  </div>
-                  <div
-                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                    onClick={() => {
-                      selectTheme("dark");
-                    }}
-                  >
-                    <span>{t("dark")}</span>
-                    {currentTheme === "dark" && (
-                      <div className="text-secondaryText">
-                        <CheckIcon />
-                      </div>
-                    )}
-                  </div>
-                </DropdownMenuItem>
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-mainBorder"></div>
-
-              {/* Changelog */}
+          {/* Theme Section - Expandable (visible only below xl) */}
+          <div className="xl:hidden">
+            <DropdownMenuItem
+              icon={<PaletteIcon />}
+              label={t("theme")}
+              isOpen={isThemeMenuOpen}
+              onToggle={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
+            >
               <div
-                className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
+                className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
                 onClick={() => {
-                  userDropdown.close();
-                  showChangelogModal();
+                  selectTheme("light");
                 }}
               >
-                <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem]">
-                  <HistoryIcon />
-                </div>
-                <button>{t("changelog")}</button>
-              </div>
-
-              {/* About */}
-              <div
-                className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
-                onClick={() => {
-                  userDropdown.close();
-                  showAboutModal();
-                }}
-              >
-                <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem]">
-                  <InfoIcon />
-                </div>
-                <button aria-label={t("about")}>{t("about")}</button>
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-mainBorder"></div>
-
-              {/* GitHub */}
-              <Link
-                href="https://github.com/matt765/spireflow"
-                target="_blank"
-                className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
-              >
-                <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem] stroke-grayIcon fill-grayIcon">
-                  <GithubIcon />
-                </div>
-                <button>GitHub</button>
-              </Link>
-            </>
-          ) : (
-            <>
-              {/* Auth Section - Expandable */}
-              <DropdownMenuItem
-                icon={<UserIcon />}
-                label={t("auth")}
-                isOpen={isAuthMenuOpen}
-                onToggle={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
-              >
-                <div
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => {
-                    userDropdown.close();
-                    handleLoginButton();
-                  }}
-                >
-                  <span>{t("signIn")}</span>
-                </div>
-                <div
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => {
-                    userDropdown.close();
-                    showSignUpModal();
-                  }}
-                >
-                  <span>{t("register")}</span>
-                </div>
-                <div
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => {
-                    userDropdown.close();
-                    showLogoutModal();
-                  }}
-                >
-                  <span>{t("signOut")}</span>
-                </div>
-                <NavigationLink
-                  href="/profile"
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm"
-                  onClick={() => userDropdown.close()}
-                >
-                  <span>{t("userProfile")}</span>
-                </NavigationLink>
-              </DropdownMenuItem>
-
-              {/* Language Section - Expandable */}
-              <DropdownMenuItem
-                icon={<LanguageIcon />}
-                label={t("language")}
-                isOpen={isLanguageMenuOpen}
-                onToggle={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-              >
-                <NavigationLink
-                  href="/"
-                  locale="en"
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                >
-                  <span>{t("english")}</span>
-                  {currentLanguage === "en" && (
-                    <div className="text-secondaryText">
-                      <CheckIcon />
-                    </div>
-                  )}
-                </NavigationLink>
-                <NavigationLink
-                  href="/"
-                  locale="pl"
-                  className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                >
-                  <span>{t("polish")}</span>
-                  {currentLanguage === "pl" && (
-                    <div className="text-secondaryText">
-                      <CheckIcon />
-                    </div>
-                  )}
-                </NavigationLink>
-              </DropdownMenuItem>
-
-              {/* Theme Section - Expandable (visible only below xl) */}
-              <div className="xl:hidden">
-                <DropdownMenuItem
-                  icon={<PaletteIcon />}
-                  label={t("theme")}
-                  isOpen={isThemeMenuOpen}
-                  onToggle={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-                >
-                  <div
-                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                    onClick={() => {
-                      selectTheme("light");
-                    }}
-                  >
-                    <span>{t("light")}</span>
-                    {currentTheme === "light" && (
-                      <div className="text-secondaryText">
-                        <CheckIcon />
-                      </div>
-                    )}
+                <span>{t("light")}</span>
+                {currentTheme === "light" && (
+                  <div className="text-secondaryText">
+                    <CheckIcon />
                   </div>
-                  <div
-                    className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
-                    onClick={() => {
-                      selectTheme("dark");
-                    }}
-                  >
-                    <span>{t("dark")}</span>
-                    {currentTheme === "dark" && (
-                      <div className="text-secondaryText">
-                        <CheckIcon />
-                      </div>
-                    )}
+                )}
+              </div>
+              <div
+                className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center text-sm"
+                onClick={() => {
+                  selectTheme("dark");
+                }}
+              >
+                <span>{t("dark")}</span>
+                {currentTheme === "dark" && (
+                  <div className="text-secondaryText">
+                    <CheckIcon />
                   </div>
-                </DropdownMenuItem>
+                )}
               </div>
+            </DropdownMenuItem>
+          </div>
 
-              {/* Divider */}
-              <div className="border-t border-mainBorder"></div>
+          {/* Divider */}
+          <div className="border-t border-mainBorder"></div>
 
-              {/* Changelog */}
-              <div
-                className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
-                onClick={() => {
-                  userDropdown.close();
-                  showChangelogModal();
-                }}
-              >
+          {/* Changelog */}
+          <div
+            className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
+            onClick={() => {
+              userDropdown.close();
+              showChangelogModal();
+            }}
+          >
+            <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem]">
+              <HistoryIcon />
+            </div>
+            <button>{t("changelog")}</button>
+          </div>
+
+          {/* About */}
+          <div
+            className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
+            onClick={() => {
+              userDropdown.close();
+              showAboutModal();
+            }}
+          >
+            <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem]">
+              <InfoIcon />
+            </div>
+            <button aria-label={t("about")}>{t("about")}</button>
+          </div>
+
+          {/* Settings - Mobile Only */}
+          <div className="xl:hidden">
+            <SettingsDrawer>
+              <div className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer">
                 <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem]">
-                  <HistoryIcon />
+                  <SettingsIcon />
                 </div>
-                <button>{t("changelog")}</button>
+                <button>Settings</button>
               </div>
+            </SettingsDrawer>
+          </div>
 
-              {/* About */}
-              <div
-                className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
-                onClick={() => {
-                  userDropdown.close();
-                  showAboutModal();
-                }}
-              >
-                <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem]">
-                  <InfoIcon />
-                </div>
-                <button aria-label={t("about")}>{t("about")}</button>
-              </div>
+          {/* Divider */}
+          <div className="border-t border-mainBorder"></div>
 
-              {/* Divider */}
-              <div className="border-t border-mainBorder"></div>
-
-              {/* GitHub */}
-              <Link
-                href="https://github.com/matt765/spireflow"
-                target="_blank"
-                className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
-              >
-                <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem] stroke-grayIcon fill-grayIcon">
-                  <GithubIcon />
-                </div>
-                <button>GitHub</button>
-              </Link>
-            </>
-          )}
+          {/* GitHub */}
+          <Link
+            href="https://github.com/matt765/spireflow"
+            target="_blank"
+            className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer"
+          >
+            <div className="w-5 flex justify-center items-center text-grayIcon mr-[0.8rem] stroke-grayIcon fill-grayIcon">
+              <GithubIcon />
+            </div>
+            <button>GitHub</button>
+          </Link>
         </div>
       )}
     </div>

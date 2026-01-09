@@ -110,7 +110,11 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
       title={t("title")}
     >
       <div className="w-full h-[19rem] lg:h-[21rem] 3x:h-[24rem] mt-6">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <RadarChart
             cx="50%"
             cy="50%"

@@ -133,7 +133,11 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
     <Card className="h-full" id="yearOverview" title={t("title")}>
       <div className="flex gap-8 pt-4">
         <div className="w-full lg:w-3/4 h-[19rem] 1xl:h-[22rem] 3xl:h-[24rem]">
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer
+            width="100%"
+            height="100%"
+            initialDimension={{ width: 320, height: 200 }}
+          >
             <AreaChart
               data={translatedData}
               margin={{

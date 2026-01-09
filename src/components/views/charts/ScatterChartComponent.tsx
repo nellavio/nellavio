@@ -188,7 +188,11 @@ export const ScatterChartComponent = () => {
       addTitleMargin
     >
       <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full mt-2">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <ScatterChart
             margin={{
               top: 40,

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import { useNavbar } from "./useNavbar";
+import { useAppStore } from "../../../store/appStore";
 
 interface Section {
   section: string;
@@ -26,8 +27,9 @@ export const useSearchInput = ({
   const [searchText, setSearchText] = useState("");
   const { currentLanguage } = useNavbar();
   const router = useRouter();
+  const homepageLayout = useAppStore((state) => state.homepageLayout);
 
-  const sections = [
+  const allSections = [
     // Analytics
     { section: "Asset performance", page: "Analytics", id: "assetPerformance" },
     { section: "Today's sales", page: "Analytics", id: "todaysSales" },
@@ -43,7 +45,6 @@ export const useSearchInput = ({
 
     // Homepage
     { section: "Revenue over time", page: "Homepage", id: "revenueOverTime" },
-    { section: "Regions", page: "Homepage", id: "regions" },
     {
       section: "Bestselling products",
       page: "Homepage",
@@ -70,6 +71,19 @@ export const useSearchInput = ({
     { section: "Orders", page: "Orders", id: "orders" },
     { section: "Products", page: "Products", id: "products" },
   ];
+
+  // Filter sections based on homepage layout
+  const sections = allSections.filter((section) => {
+    // If it's the "Customers" card on Homepage and layout is "three-cards", exclude it
+    if (
+      section.page === "Homepage" &&
+      section.id === "customersCard" &&
+      homepageLayout === "three-cards"
+    ) {
+      return false;
+    }
+    return true;
+  });
 
   // Transform sections with translations
   const translatedSections = sections.map((item) => {

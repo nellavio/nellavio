@@ -17,7 +17,7 @@
       "nov": "Nov",
       "dec": "Dec"
     },
-    "homeSmallCards": {
+    "threeSmallCards": {
       "sales": "Sales",
       "profit": "Profit",
       "traffic": "Traffic",
@@ -28,10 +28,16 @@
       "Last week": "Last week",
       "monthlyTarget": "Monthly target"
     },
-    "regions": {
-      "title": "Regions",
-      "northAmerica": "North America",
-      "europe": "Europe"
+    "fourSmallCards": {
+      "sales": "Sales",
+      "profit": "Profit",
+      "traffic": "Traffic",
+      "customers": "Customers",
+      "Last 3 weeks": "Last 3 weeks",
+      "Last month": "Last month",
+      "Yesterday": "Yesterday",
+      "Last week": "Last week",
+      "monthlyTarget": "Monthly target"
     },
     "bestSellingProducts": {
       "title": "Bestselling products",
@@ -420,8 +426,6 @@
   "sideMenu": {
     "main": "Main",
     "dashboard": "Dashboard",
-    "homepage1": "Homepage 1",
-    "homepage2": "Homepage 2",
     "eCommerce": "E-commerce",
     "orders": "Orders",
     "customers": "Customers",
@@ -515,7 +519,6 @@
       "noResults": "No results found",
       "sections": {
         "revenueOverTime": "Revenue over time",
-        "regions": "Regions",
         "bestsellingProducts": "Bestselling products",
         "customerSatisfaction": "Customer satisfaction",
         "revenuePerCountry": "Revenue per country",

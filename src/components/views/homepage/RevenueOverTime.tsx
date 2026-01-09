@@ -188,7 +188,11 @@ export const RevenueOverTime = ({
       hasSubtitle={true}
     >
       <div className="w-full h-[17rem] lg:h-[19rem] 1xl:h-[18rem] 2xl:h-[19rem] 3xl:h-[20rem]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <AreaChart
             data={displayData}
             margin={{

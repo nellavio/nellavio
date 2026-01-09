@@ -71,8 +71,15 @@ export const RadarChartComponent = () => {
       addTitleMargin
     >
       <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full flex flex-col">
-        <ResponsiveContainer width="100%" height="85%">
-          <RadarChart data={chartdata} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+        <ResponsiveContainer
+          width="100%"
+          height="85%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
+          <RadarChart
+            data={chartdata}
+            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+          >
             <PolarGrid stroke={chartColors.primary.grid} />
             <PolarAngleAxis
               dataKey="subject"
@@ -82,7 +89,7 @@ export const RadarChartComponent = () => {
               angle={90}
               domain={[0, 100]}
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 10 }}
-              tickFormatter={(value) => value === 100 ? "" : value.toString()}
+              tickFormatter={(value) => (value === 100 ? "" : value.toString())}
             />
             <Radar
               name="Product A"
@@ -109,14 +116,18 @@ export const RadarChartComponent = () => {
               className="w-3 h-3 mr-2"
               style={{ backgroundColor: chartColors.primary.fill }}
             />
-            <span className="text-xs 1xl:text-sm text-primaryText">Product A</span>
+            <span className="text-xs 1xl:text-sm text-primaryText">
+              Product A
+            </span>
           </div>
           <div className="flex items-center">
             <div
               className="w-3 h-3 mr-2"
               style={{ backgroundColor: chartColors.secondary.fill }}
             />
-            <span className="text-xs 1xl:text-sm text-primaryText">Product B</span>
+            <span className="text-xs 1xl:text-sm text-primaryText">
+              Product B
+            </span>
           </div>
         </div>
       </div>

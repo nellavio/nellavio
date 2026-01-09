@@ -1,14 +1,56 @@
-import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
+"use client";
 
+import { useTranslations } from "next-intl";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { ProgressCirclesProps } from "./types";
 
-// Dynamically import ProgressCircle with SSR disabled
-const ProgressCircle = dynamic(
-  () => import("@tremor/react").then((mod) => mod.ProgressCircle),
-  { ssr: false }
-);
+interface CircularProgressProps {
+  value: number;
+  size: number;
+  strokeWidth: number;
+  children: React.ReactNode;
+}
+
+const CircularProgress = ({
+  value,
+  size,
+  strokeWidth,
+  children,
+}: CircularProgressProps) => {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  const offset = circumference - (value / 100) * circumference;
+
+  return (
+    <div className="relative inline-flex items-center justify-center">
+      <svg width={size} height={size} className="transform -rotate-90">
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="rgb(148, 163, 184, 0.2)"
+          strokeWidth={strokeWidth}
+          fill="none"
+        />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="rgb(148, 163, 184)"
+          strokeWidth={strokeWidth}
+          fill="none"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          strokeLinecap="round"
+          className="transition-all duration-300"
+        />
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center">
+        {children}
+      </div>
+    </div>
+  );
+};
 
 export const ProgressCircles = ({ metrics }: ProgressCirclesProps) => {
   const t = useTranslations("products.metrics");
@@ -23,15 +65,17 @@ export const ProgressCircles = ({ metrics }: ProgressCirclesProps) => {
 
   const getCircleSize = () => {
     if (windowWidth < 490) {
-      return "md";
+      return { size: 80, strokeWidth: 8 };
     } else if (windowWidth < 640) {
-      return "xl";
+      return { size: 120, strokeWidth: 10 };
     } else if (windowWidth < 1400) {
-      return "lg";
+      return { size: 96, strokeWidth: 9 };
     } else {
-      return "xl";
+      return { size: 120, strokeWidth: 10 };
     }
   };
+
+  const circleConfig = getCircleSize();
 
   return (
     <div className="mt-16 w-full flex flex-wrap justify-between items-between gap-0 gap-y-10 px-0">
@@ -43,15 +87,15 @@ export const ProgressCircles = ({ metrics }: ProgressCirclesProps) => {
             className="hover:bg-[rgb(255,255,255,0.01)] transition mx-auto sm:mx-unset w-[90%] sm:w-[48%] px-4 flex justify-center items-center border border-mainBorder py-8 1xl:py-12 rounded-md"
           >
             <div className="flex gap-8 sm:gap-4 md:gap-8 items-center">
-              <ProgressCircle
+              <CircularProgress
                 value={percentage}
-                size={getCircleSize()}
-                color="slate"
+                size={circleConfig.size}
+                strokeWidth={circleConfig.strokeWidth}
               >
                 <span className="text-md 1xl:text-xl text-secondaryText font-medium">
                   {percentage}%
                 </span>
-              </ProgressCircle>
+              </CircularProgress>
               <div className="flex flex-col">
                 <div className="font-medium text-xl sm:text-md md:text-xl 3xl:text-2xl text-primaryText">
                   {index === 1 && "$"}

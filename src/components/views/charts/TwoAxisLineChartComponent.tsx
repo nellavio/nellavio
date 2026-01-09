@@ -109,7 +109,11 @@ export const TwoAxisLineChartComponent = () => {
       addTitleMargin
     >
       <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full" style={{ marginTop: "2rem" }}>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 320, height: 200 }}
+        >
           <LineChart
             data={chartdata}
             margin={{
