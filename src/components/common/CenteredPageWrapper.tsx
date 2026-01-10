@@ -4,6 +4,21 @@ interface CenteredPageWrapperProps {
   children: ReactNode;
 }
 
+/**
+ * Page wrapper component that centers content vertically and horizontally.
+ * Creates a card-like container with responsive padding and rounded corners.
+ * Commonly used for authentication and standalone pages.
+ *
+ * @component
+ * @param {ReactNode} children - Page content to be centered
+ *
+ * @example
+ * ```tsx
+ * <CenteredPageWrapper>
+ *   <LoginForm />
+ * </CenteredPageWrapper>
+ * ```
+ */
 export const CenteredPageWrapper = ({ children }: CenteredPageWrapperProps) => {
   return (
     <main

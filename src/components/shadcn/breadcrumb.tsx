@@ -1,8 +1,20 @@
 import * as React from "react";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "../../lib/utils";
 
+/**
+ * Root breadcrumb navigation component for displaying hierarchical page location.
+ * Provides semantic navigation structure with proper ARIA labels for accessibility.
+ * Automatically wraps BreadcrumbList and BreadcrumbItem components.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Breadcrumb content (typically BreadcrumbList)
+ * @param {React.ReactNode} [separator] - Custom separator element between items
+ * @param {React.Ref} ref - Forwarded ref to the nav element
+ */
 const Breadcrumb = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithoutRef<"nav"> & {
@@ -11,6 +23,15 @@ const Breadcrumb = React.forwardRef<
 >(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
 Breadcrumb.displayName = "Breadcrumb";
 
+/**
+ * Ordered list container for breadcrumb items.
+ * Provides flexbox layout with responsive spacing and text styling.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Breadcrumb items and separators
+ * @param {React.Ref} ref - Forwarded ref to the ol element
+ */
 const BreadcrumbList = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ol">
@@ -26,6 +47,22 @@ const BreadcrumbList = React.forwardRef<
 ));
 BreadcrumbList.displayName = "BreadcrumbList";
 
+/**
+ * Individual breadcrumb item wrapper.
+ * Wraps a single breadcrumb link or page indicator.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Content (typically BreadcrumbLink or BreadcrumbPage)
+ * @param {React.Ref} ref - Forwarded ref to the li element
+ *
+ * @example
+ * ```tsx
+ * <BreadcrumbItem>
+ *   <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+ * </BreadcrumbItem>
+ * ```
+ */
 const BreadcrumbItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentPropsWithoutRef<"li">
@@ -38,13 +75,31 @@ const BreadcrumbItem = React.forwardRef<
 ));
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
+/**
+ * Clickable link for navigating between breadcrumb levels.
+ * Supports hover effects and composition pattern via asChild prop.
+ *
+ * @component
+ * @param {boolean} [asChild=false] - When true, merges props with child element (useful with Next.js Link)
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {string} [href] - URL to navigate to
+ * @param {React.ReactNode} children - Link text content
+ * @param {React.Ref} ref - Forwarded ref to the anchor element
+ *
+ * @example
+ * ```tsx
+ * <BreadcrumbLink href="/products">
+ *   Products
+ * </BreadcrumbLink>
+ * ```
+ */
 const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & {
     asChild?: boolean;
   }
 >(({ asChild, className, ...props }, ref) => {
-  const Comp = asChild ? React.Fragment : "a";
+  const Comp = asChild ? Slot : "a";
 
   return (
     <Comp
@@ -56,6 +111,23 @@ const BreadcrumbLink = React.forwardRef<
 });
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
+/**
+ * Current page indicator (non-clickable).
+ * Marks the active page in breadcrumb trail with proper ARIA attributes.
+ * Typically the last item in the breadcrumb navigation.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Current page name
+ * @param {React.Ref} ref - Forwarded ref to the span element
+ *
+ * @example
+ * ```tsx
+ * <BreadcrumbItem>
+ *   <BreadcrumbPage>Product Details</BreadcrumbPage>
+ * </BreadcrumbItem>
+ * ```
+ */
 const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
@@ -71,6 +143,23 @@ const BreadcrumbPage = React.forwardRef<
 ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
+/**
+ * Visual separator between breadcrumb items.
+ * Defaults to chevron icon but supports custom separators.
+ * Hidden from screen readers with aria-hidden attribute.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} [props.children] - Custom separator content (defaults to ChevronRight icon)
+ * @param {string} [props.className] - Additional CSS classes to apply
+ *
+ * @example
+ * ```tsx
+ * <BreadcrumbSeparator>
+ *   <SlashIcon className="h-4 w-4" />
+ * </BreadcrumbSeparator>
+ * ```
+ */
 const BreadcrumbSeparator = ({
   children,
   className,
@@ -87,6 +176,16 @@ const BreadcrumbSeparator = ({
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
+/**
+ * Ellipsis indicator for collapsed breadcrumb items.
+ * Shows three dots icon to indicate truncated navigation path.
+ * Useful for long breadcrumb trails to maintain compact layout.
+ * Hidden from screen readers with aria-hidden attribute.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes to apply
+ */
 const BreadcrumbEllipsis = ({
   className,
   ...props

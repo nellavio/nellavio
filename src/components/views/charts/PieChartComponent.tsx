@@ -9,6 +9,7 @@ import {
   Legend,
 } from "recharts";
 import { useTheme } from "next-themes";
+
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
@@ -17,6 +18,7 @@ interface DataPoint {
   name: string;
   value: number;
   percentage: number;
+  [key: string]: unknown;
 }
 
 interface PieTooltipProps {
@@ -112,7 +114,9 @@ export const PieChartComponent = () => {
               cx="50%"
               cy="45%"
               labelLine={false}
-              label={({ name, percentage }) => `${name} ${percentage}%`}
+              label={(props) =>
+                `${props.name} ${(props as unknown as DataPoint).percentage}%`
+              }
               outerRadius={120}
               fill="#8884d8"
               dataKey="value"

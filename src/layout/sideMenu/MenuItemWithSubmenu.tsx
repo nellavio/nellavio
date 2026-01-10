@@ -2,6 +2,7 @@
 
 import { useState, useEffect, ReactElement } from "react";
 import { usePathname } from "next/navigation";
+
 import { useAppStore } from "../../store/appStore";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Link } from "../../i18n/navigation";

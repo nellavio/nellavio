@@ -12,6 +12,29 @@ type CardProps = {
   isHeaderDividerVisible?: boolean;
 };
 
+/**
+ * Reusable card container component with optional title and custom header.
+ * Provides consistent styling with border, shadow, and rounded corners.
+ * Used throughout the application for grouping related content.
+ *
+ * @component
+ * @param {ReactNode} children - Card body content
+ * @param {string} [className] - Additional styling classes
+ * @param {string} [id] - Element identifier
+ * @param {string} [title] - Optional title displayed in header
+ * @param {ReactNode|boolean} [customHeader] - Custom header content
+ * @param {boolean} [hasSubtitle=false] - Adds spacing for subtitle
+ * @param {string} [padding='px-6'] - Custom padding
+ * @param {boolean} [addTitleMargin=false] - Extra margin below title
+ * @param {boolean} [isHeaderDividerVisible=false] - Divider line under header
+ *
+ * @example
+ * ```tsx
+ * <Card title="Statistics" addTitleMargin>
+ *   <p>Card content here</p>
+ * </Card>
+ * ```
+ */
 export const Card = ({
   children,
   className,

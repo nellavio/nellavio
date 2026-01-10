@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "next-themes";
+
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -148,7 +149,10 @@ export const StackedBarChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => `${(value / 1000).toFixed(0)}K`}
             />
-            <Tooltip content={<StackedTooltip />} cursor={{ fill: 'rgba(255, 255, 255, 0.02)' }} />
+            <Tooltip
+              content={<StackedTooltip />}
+              cursor={{ fill: "rgba(255, 255, 255, 0.02)" }}
+            />
             <Legend
               verticalAlign="bottom"
               align="center"

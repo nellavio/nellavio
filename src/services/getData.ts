@@ -10,7 +10,6 @@ import { CUSTOMERS_QUERY } from "../queries/CustomersQuery";
 import { PRODUCTS_QUERY } from "../queries/ProductsQuery";
 import { HOMEPAGE_QUERY } from "../queries/HomepageQuery";
 import { hasValidBackendUrl } from "../utils/presentationMode";
-
 import type { OrderType } from "../components/views/orders/types";
 import type { Customer } from "../components/views/customers/types";
 import type { ProductCategory } from "../components/views/products/types";
@@ -18,6 +17,9 @@ import type { CalendarEvent } from "../components/views/calendar/types";
 import type { AnalyticsViewProps } from "../components/views/analytics/types";
 import type { HomepageViewProps } from "../components/views/homepage/types";
 
+/**
+ * Mapping of page names to GraphQL query documents.
+ */
 const QUERY_MAP: Record<string, DocumentNode> = {
   analytics: ANALYTICS_QUERY,
   events: EVENTS_QUERY,
@@ -27,6 +29,9 @@ const QUERY_MAP: Record<string, DocumentNode> = {
   products: PRODUCTS_QUERY,
 };
 
+/**
+ * Type mapping for dashboard page data structures.
+ */
 interface PageDataMap {
   orders: OrderType[];
   customers: Customer[];
@@ -38,6 +43,14 @@ interface PageDataMap {
 
 type PageName = keyof PageDataMap;
 
+/**
+ * Retrieves mock data from backendBackup.json for standalone mode.
+ *
+ * @template T - Page name type
+ * @param {T} pageName - Page identifier
+ * @returns {PageDataMap[T]} Mock data for the page
+ * @private
+ */
 const getBackupData = <T extends PageName>(pageName: T): PageDataMap[T] => {
   const backupFilePath = path.join(
     process.cwd(),
@@ -51,6 +64,17 @@ const getBackupData = <T extends PageName>(pageName: T): PageDataMap[T] => {
   return allData[pageName];
 };
 
+/**
+ * Fetches dashboard data with automatic fallback to mock data.
+ * Works in standalone mode (no backend) or connected mode (GraphQL backend).
+ *
+ * @template T - Page name type
+ * @param {T} pageName - Page identifier ('orders' | 'customers' | 'products' | 'events' | 'analytics' | 'homepage')
+ * @returns {Promise<PageDataMap[T]>} Strongly-typed page data
+ * @throws {Error} If query not found or data invalid
+ *
+ * @see {@link https://github.com/matt765/spireflow-backend Backend setup}
+ */
 export const getData = async <T extends PageName>(
   pageName: T
 ): Promise<PageDataMap[T]> => {

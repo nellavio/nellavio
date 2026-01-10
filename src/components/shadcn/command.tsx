@@ -6,6 +6,14 @@ import { Search } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "./dialog";
 
+/**
+ * Root command menu component for searchable command palette interfaces.
+ * Built on cmdk library with keyboard navigation and filtering.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the command element
+ */
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive>
@@ -23,6 +31,25 @@ Command.displayName = CommandPrimitive.displayName;
 
 interface CommandDialogProps extends DialogProps {}
 
+/**
+ * Command palette displayed in a modal dialog.
+ * Combines Command with Dialog for quick access interfaces.
+ *
+ * @component
+ * @param {React.ReactNode} children - Command menu content
+ *
+ * @example
+ * ```tsx
+ * <CommandDialog open={open} onOpenChange={setOpen}>
+ *   <CommandInput placeholder="Search..." />
+ *   <CommandList>
+ *     <CommandGroup heading="Suggestions">
+ *       <CommandItem>Item 1</CommandItem>
+ *     </CommandGroup>
+ *   </CommandList>
+ * </CommandDialog>
+ * ```
+ */
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
@@ -35,6 +62,14 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   );
 };
 
+/**
+ * Search input for filtering command menu items.
+ * Includes search icon and real-time filtering.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the input element
+ */
 const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
@@ -57,6 +92,13 @@ const CommandInput = React.forwardRef<
 
 CommandInput.displayName = CommandPrimitive.Input.displayName;
 
+/**
+ * Scrollable list container for command items.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the list element
+ */
 const CommandList = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
@@ -70,6 +112,12 @@ const CommandList = React.forwardRef<
 
 CommandList.displayName = CommandPrimitive.List.displayName;
 
+/**
+ * Empty state message displayed when no items match the search.
+ *
+ * @component
+ * @param {React.Ref} ref - Forwarded ref to the empty element
+ */
 const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
@@ -83,6 +131,13 @@ const CommandEmpty = React.forwardRef<
 
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
 
+/**
+ * Group container for related command items with optional heading.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the group element
+ */
 const CommandGroup = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Group>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
@@ -99,6 +154,13 @@ const CommandGroup = React.forwardRef<
 
 CommandGroup.displayName = CommandPrimitive.Group.displayName;
 
+/**
+ * Visual separator between command groups.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the separator element
+ */
 const CommandSeparator = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
@@ -111,6 +173,14 @@ const CommandSeparator = React.forwardRef<
 ));
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
 
+/**
+ * Individual selectable item in the command menu.
+ * Supports keyboard navigation and selection.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the item element
+ */
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
@@ -127,6 +197,20 @@ const CommandItem = React.forwardRef<
 
 CommandItem.displayName = CommandPrimitive.Item.displayName;
 
+/**
+ * Keyboard shortcut indicator displayed at the right edge of command items.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ *
+ * @example
+ * ```tsx
+ * <CommandItem>
+ *   New File
+ *   <CommandShortcut>⌘N</CommandShortcut>
+ * </CommandItem>
+ * ```
+ */
 const CommandShortcut = ({
   className,
   ...props

@@ -4,6 +4,26 @@ import { Circle } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 
+/**
+ * Container for a group of radio button options.
+ * Built on Radix UI RadioGroup primitive with accessibility and keyboard navigation.
+ * Only one item can be selected at a time.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the radio group element
+ * @param {React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>} props - Radix RadioGroup props
+ *
+ * @example
+ * ```tsx
+ * <RadioGroup value={value} onValueChange={setValue}>
+ *   <div className="flex items-center space-x-2">
+ *     <RadioGroupItem value="option1" id="r1" />
+ *     <Label htmlFor="r1">Option 1</Label>
+ *   </div>
+ * </RadioGroup>
+ * ```
+ */
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
@@ -16,6 +36,20 @@ const RadioGroup = React.forwardRef<
 ));
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
+/**
+ * Individual radio button item within a RadioGroup.
+ * Shows a filled circle indicator when selected.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {string} value - Unique value for this radio option
+ * @param {React.Ref} ref - Forwarded ref to the radio item element
+ *
+ * @example
+ * ```tsx
+ * <RadioGroupItem value="default" id="r1" />
+ * ```
+ */
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>

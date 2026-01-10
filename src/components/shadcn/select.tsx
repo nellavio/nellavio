@@ -4,12 +4,47 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 
+/**
+ * Root select component that manages dropdown state.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Select value={value} onValueChange={setValue}>
+ *   <SelectTrigger>
+ *     <SelectValue placeholder="Select option" />
+ *   </SelectTrigger>
+ *   <SelectContent>
+ *     <SelectItem value="1">Option 1</SelectItem>
+ *   </SelectContent>
+ * </Select>
+ * ```
+ */
 const Select = SelectPrimitive.Root;
 
+/**
+ * Groups related select items together with an optional label.
+ *
+ * @component
+ */
 const SelectGroup = SelectPrimitive.Group;
 
+/**
+ * Displays the selected value in the trigger button.
+ *
+ * @component
+ */
 const SelectValue = SelectPrimitive.Value;
 
+/**
+ * Button that opens the select dropdown when clicked.
+ * Displays the current selection and a chevron icon.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Trigger content (typically SelectValue)
+ * @param {React.Ref} ref - Forwarded ref to the trigger element
+ */
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
@@ -30,6 +65,13 @@ const SelectTrigger = React.forwardRef<
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
+/**
+ * Button to scroll up through select options when content overflows.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the button element
+ */
 const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
@@ -47,6 +89,13 @@ const SelectScrollUpButton = React.forwardRef<
 ));
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
 
+/**
+ * Button to scroll down through select options when content overflows.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the button element
+ */
 const SelectScrollDownButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
@@ -65,6 +114,24 @@ const SelectScrollDownButton = React.forwardRef<
 SelectScrollDownButton.displayName =
   SelectPrimitive.ScrollDownButton.displayName;
 
+/**
+ * Dropdown content container for select options.
+ * Includes smooth animations and positioning relative to trigger.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Select items and groups
+ * @param {('popper'|'item-aligned')} [position='popper'] - Positioning strategy
+ * @param {React.Ref} ref - Forwarded ref to the content element
+ *
+ * @example
+ * ```tsx
+ * <SelectContent>
+ *   <SelectItem value="option1">Option 1</SelectItem>
+ *   <SelectItem value="option2">Option 2</SelectItem>
+ * </SelectContent>
+ * ```
+ */
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
@@ -97,13 +164,32 @@ const SelectContent = React.forwardRef<
 ));
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
+/**
+ * Label for grouping related select options.
+ * Typically used within SelectGroup.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the label element
+ *
+ * @example
+ * ```tsx
+ * <SelectGroup>
+ *   <SelectLabel>Fruits</SelectLabel>
+ *   <SelectItem value="apple">Apple</SelectItem>
+ * </SelectGroup>
+ * ```
+ */
 const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pl-2 pr-2 text-sm font-semibold flex items-center", className)}
+    className={cn(
+      "py-1.5 pl-2 pr-2 text-sm font-semibold flex items-center",
+      className
+    )}
     {...props}
   >
     <span className="w-3.5 mr-2 shrink-0" />
@@ -112,6 +198,21 @@ const SelectLabel = React.forwardRef<
 ));
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
+/**
+ * Individual selectable option item.
+ * Shows a checkmark when selected.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Item label text
+ * @param {string} value - Unique value for this option
+ * @param {React.Ref} ref - Forwarded ref to the item element
+ *
+ * @example
+ * ```tsx
+ * <SelectItem value="dark">Dark Mode</SelectItem>
+ * ```
+ */
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
@@ -135,6 +236,13 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
+/**
+ * Visual separator between groups of select options.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the separator element
+ */
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>

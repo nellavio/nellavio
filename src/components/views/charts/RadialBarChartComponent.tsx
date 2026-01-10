@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useTheme } from "next-themes";
+
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
@@ -90,10 +91,8 @@ export const RadialBarChartComponent = () => {
             data={chartdata}
           >
             <RadialBar
-              minAngle={15}
               label={{ position: "insideStart", fill: "#fff" }}
               background={{ fill: "rgba(255,255,255,0.05)" }}
-              clockWise
               dataKey="value"
             />
             <Legend

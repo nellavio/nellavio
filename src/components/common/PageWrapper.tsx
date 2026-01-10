@@ -19,6 +19,25 @@ interface PageWrapperProps {
   hideTopBar?: boolean;
 }
 
+/**
+ * Main page layout wrapper with breadcrumbs
+ * Provides responsive spacing and conditional styling based on page type.
+ *
+ * @component
+ * @param {PageWrapperProps} props - Component props
+ * @param {ReactNode} props.children - Main page content
+ * @param {boolean} [props.hidePaper=false] - Remove card wrapper styling
+ * @param {string} [props.pageName] - Current page identifier
+ * @param {unknown} [props.dataForExport] - Data to enable CSV export
+ * @param {boolean} [props.hideTopBar=false] - Hide navigation bar
+ *
+ * @example
+ * ```tsx
+ * <PageWrapper pageName="Orders" dataForExport={ordersData}>
+ *   <OrdersTable />
+ * </PageWrapper>
+ * ```
+ */
 export const PageWrapper = ({
   children,
   hidePaper = false,

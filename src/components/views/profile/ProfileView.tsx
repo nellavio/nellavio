@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+
 import { Card } from "../../common/Card";
 import { PhoneIcon } from "../../../assets/icons/PhoneIcon";
 import { GithubIcon } from "../../../assets/icons/GithubIcon";

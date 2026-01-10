@@ -1,0 +1,56 @@
+"use client";
+
+import { Plus, MessageSquare, Loader2 } from "lucide-react";
+
+import { Card } from "../../common/Card";
+import { Button } from "../../shadcn/button";
+
+export const ButtonsUI = () => {
+  return (
+    <Card isHeaderDividerVisible addTitleMargin title="Buttons">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4">
+          <span className="text-sm font-medium">Button Variants</span>
+          <div className="flex flex-wrap gap-3">
+            <Button>Default</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="destructive">Destructive</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="link">Link</Button>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <span className="text-sm font-medium">Button Sizes</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button size="sm">Small</Button>
+            <Button size="default">Default</Button>
+            <Button size="lg">Large</Button>
+            <Button size="icon">
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <span className="text-sm font-medium">Buttons with Icons</span>
+          <div className="flex flex-wrap gap-3">
+            <Button>
+              <MessageSquare className="mr-2 h-4 w-4" />
+              With Icon
+            </Button>
+            <Button variant="outline">
+              <Plus className="mr-2 h-4 w-4" />
+              Add Item
+            </Button>
+            <Button disabled>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Loading
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+};

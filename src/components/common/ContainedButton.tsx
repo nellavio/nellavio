@@ -15,6 +15,28 @@ interface ContainedButtonProps {
   ariaPressed?: boolean;
 }
 
+/**
+ * Primary contained button component with filled background.
+ * Supports loading state, icons, and full accessibility attributes.
+ *
+ * @component
+ * @param {string} [text] - Button label
+ * @param {React.ReactNode} [children] - Button content
+ * @param {Function} [handleClick] - Callback on click
+ * @param {boolean} [loading=false] - Loading state with spinner
+ * @param {boolean} [disabled=false] - Disabled state
+ * @param {('button'|'submit'|'reset')} [type='button'] - Button type
+ * @param {React.ReactNode} [icon] - Optional icon
+ * @param {string} [className] - Extra classes
+ * @param {string} [ariaLabel] - Aria label
+ * @param {boolean} [ariaPressed] - Aria pressed state
+ *
+ * @example
+ * ```tsx
+ * <ContainedButton text="Submit" handleClick={handleSubmit} />
+ * <ContainedButton loading={true}>Processing...</ContainedButton>
+ * ```
+ */
 export const ContainedButton = ({
   text,
   children,

@@ -2,6 +2,16 @@ import { useState, useRef } from "react";
 
 import { useClickOutside } from "./useClickOutside";
 
+/**
+ * Dropdown state management with outside-click handling.
+ *
+ * @returns {Object} Dropdown state and controls
+ * @returns {boolean} isOpen - Open state
+ * @returns {Function} toggle - Toggle dropdown
+ * @returns {Function} close - Close dropdown
+ * @returns {Function} open - Open dropdown
+ * @returns {RefObject} ref - Ref to attach to dropdown element
+ */
 export const useDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);

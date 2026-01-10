@@ -1,0 +1,32 @@
+"use client";
+
+import { Card } from "../../common/Card";
+import { Label } from "../../shadcn/label";
+import { Switch } from "../../shadcn/switch";
+
+export const ToggleSwitchForm = () => {
+  return (
+    <Card isHeaderDividerVisible addTitleMargin title="Toggle Switch">
+      <div className="flex flex-col gap-6">
+        <div className="flex items-center space-x-2">
+          <Switch id="airplane-mode" />
+          <Label htmlFor="airplane-mode">Default Switch</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Switch id="checked-switch" defaultChecked />
+          <Label htmlFor="checked-switch">Checked Switch</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Switch id="disabled-switch" disabled />
+          <Label htmlFor="disabled-switch">Disabled Switch</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Switch id="disabled-checked-switch" disabled defaultChecked />
+          <Label htmlFor="disabled-checked-switch">
+            Disabled Checked Switch
+          </Label>
+        </div>
+      </div>
+    </Card>
+  );
+};

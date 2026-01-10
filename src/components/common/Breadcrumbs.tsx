@@ -4,6 +4,24 @@ interface BreadcrumbsProps {
   pageName?: string;
 }
 
+/**
+ * Breadcrumb navigation component with internationalization support.
+ * Automatically categorizes pages into sections (Ecommerce, Components, etc.)
+ * and displays hierarchical navigation path.
+ *
+ * @component
+ * @param {BreadcrumbsProps} props - Component props
+ * @param {string} [props.pageName] - Active page name (e.g., "Orders", "Charts")
+ *
+ * @example
+ * ```tsx
+ * <Breadcrumbs pageName="Orders" />
+ * // Renders: "Ecommerce > Orders"
+ *
+ * <Breadcrumbs pageName="Charts" />
+ * // Renders: "Components > Charts"
+ * ```
+ */
 export const Breadcrumbs = ({ pageName }: BreadcrumbsProps) => {
   const t = useTranslations("breadcrumbs");
 

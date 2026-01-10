@@ -1,13 +1,28 @@
 import * as React from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  MoreHorizontal,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 import { buttonVariants, type ButtonProps } from "./button";
 
+/**
+ * Root pagination navigation component.
+ * Provides semantic HTML structure with proper ARIA labels for accessibility.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ComponentProps<'nav'>} props - Standard nav element props
+ *
+ * @example
+ * ```tsx
+ * <Pagination>
+ *   <PaginationContent>
+ *     <PaginationItem>
+ *       <PaginationLink>1</PaginationLink>
+ *     </PaginationItem>
+ *   </PaginationContent>
+ * </Pagination>
+ * ```
+ */
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
@@ -20,6 +35,14 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   );
 }
 
+/**
+ * Container for pagination items.
+ * Renders as an unordered list with flexbox layout.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ComponentProps<'ul'>} props - Standard ul element props
+ */
 function PaginationContent({
   className,
   ...props
@@ -33,15 +56,44 @@ function PaginationContent({
   );
 }
 
+/**
+ * Individual pagination item wrapper.
+ * Should contain pagination links or controls.
+ *
+ * @component
+ * @param {React.ComponentProps<'li'>} props - Standard li element props
+ */
 function PaginationItem({ ...props }: React.ComponentProps<"li">) {
   return <li data-slot="pagination-item" {...props} />;
 }
 
+/**
+ * Props for the PaginationLink component.
+ *
+ * @typedef {Object} PaginationLinkProps
+ * @property {boolean} [isActive] - Whether this page is currently active
+ * @property {ButtonProps['size']} [size] - Size variant for the button
+ */
 type PaginationLinkProps = {
   isActive?: boolean;
 } & Pick<ButtonProps, "size"> &
   React.ComponentProps<"button">;
 
+/**
+ * Clickable pagination link/button.
+ * Supports active state styling and accessible ARIA attributes.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {boolean} [isActive] - Whether this is the current page
+ * @param {ButtonProps['size']} [size='icon'] - Button size variant
+ * @param {React.ComponentProps<'button'>} props - Standard button props
+ *
+ * @example
+ * ```tsx
+ * <PaginationLink isActive={true}>1</PaginationLink>
+ * ```
+ */
 function PaginationLink({
   className,
   isActive,
@@ -65,6 +117,19 @@ function PaginationLink({
   );
 }
 
+/**
+ * Previous page navigation button.
+ * Displays a chevron icon and "Previous" text label.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ComponentProps<typeof PaginationLink>} props - PaginationLink props
+ *
+ * @example
+ * ```tsx
+ * <PaginationPrevious onClick={() => goToPage(currentPage - 1)} />
+ * ```
+ */
 function PaginationPrevious({
   className,
   ...props
@@ -82,6 +147,19 @@ function PaginationPrevious({
   );
 }
 
+/**
+ * Next page navigation button.
+ * Displays a chevron icon and "Next" text label.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ComponentProps<typeof PaginationLink>} props - PaginationLink props
+ *
+ * @example
+ * ```tsx
+ * <PaginationNext onClick={() => goToPage(currentPage + 1)} />
+ * ```
+ */
 function PaginationNext({
   className,
   ...props
@@ -99,6 +177,20 @@ function PaginationNext({
   );
 }
 
+/**
+ * Ellipsis indicator for truncated page numbers.
+ * Shows "..." to indicate skipped pages in pagination.
+ * Hidden from screen readers with aria-hidden.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ComponentProps<'span'>} props - Standard span element props
+ *
+ * @example
+ * ```tsx
+ * <PaginationEllipsis />
+ * ```
+ */
 function PaginationEllipsis({
   className,
   ...props

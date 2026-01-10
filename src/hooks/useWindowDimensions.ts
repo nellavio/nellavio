@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
 
+/**
+ * Tracks window dimensions with automatic updates on resize.
+ * SSR-safe with initial dimensions set to 0.
+ *
+ * @returns {Object} Window dimensions
+ * @returns {number} width - Current window width
+ * @returns {number} height - Current window height
+ */
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 0,

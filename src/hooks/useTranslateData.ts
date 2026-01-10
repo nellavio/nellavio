@@ -2,9 +2,15 @@ import { useMemo } from "react";
 
 type Translations = { [key: string]: string };
 
-// This hook takes data object from backend, finds english words and replaces them with translations
-// Alternative to this approach is implementing i18 also on backend side, with double tables in database
-
+/**
+ * Recursively translates English keys/values in backend data objects.
+ * Used with useBackendTranslations to localize charts without backend i18n.
+ *
+ * @template T - Data object type
+ * @param {T[]} data - Array of data objects to translate
+ * @param {Translations} translations - Key-value map of English to translated text
+ * @returns {T[]} Translated data array
+ */
 export const useTranslateData = <T extends Record<string, any>>(
   data: T[],
   translations: Translations

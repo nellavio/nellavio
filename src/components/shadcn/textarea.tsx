@@ -2,9 +2,32 @@ import * as React from "react";
 
 import { cn } from "../../lib/utils";
 
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+/**
+ * Props interface for the Textarea component.
+ * Extends all standard HTML textarea attributes.
+ */
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
+/**
+ * Multi-line text input component with consistent theming.
+ * Supports all standard HTML textarea attributes including rows, cols, and maxLength.
+ * Includes focus, disabled, and placeholder state styling.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the textarea element
+ * @param {TextareaProps} props - Standard HTML textarea attributes
+ *
+ * @example
+ * ```tsx
+ * <Textarea
+ *   placeholder="Enter your message"
+ *   rows={5}
+ *   value={message}
+ *   onChange={(e) => setMessage(e.target.value)}
+ * />
+ * ```
+ */
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
     return (

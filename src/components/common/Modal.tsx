@@ -14,6 +14,32 @@ interface ModalProps {
   hasScrollContent?: boolean;
 }
 
+/**
+ * Full-featured modal dialog with backdrop, close button, and accessibility.
+ * Automatically handles body scroll blocking and scrollbar compensation.
+ * Uses portal rendering and supports outside-click to close.
+ *
+ * @component
+ * @param {ModalProps} props - Component props
+ * @param {React.ReactNode} props.children - Dialog content
+ * @param {Function} props.onClose - Close handler
+ * @param {string} [props.ariaLabelledby] - Label reference for a11y
+ * @param {string} [props.ariaDescribedby] - Description reference for a11y
+ * @param {boolean} [props.hasBlur=false] - Blur backdrop
+ * @param {boolean} [props.hasScrollContent=false] - Optimize for scrolling
+ *
+ * @example
+ * ```tsx
+ * <Modal
+ *   onClose={() => setOpen(false)}
+ *   ariaLabelledby="modal-title"
+ *   hasBlur
+ * >
+ *   <h2 id="modal-title">Modal Title</h2>
+ *   <p>Modal content</p>
+ * </Modal>
+ * ```
+ */
 export const Modal = ({
   children,
   onClose,

@@ -1,26 +1,17 @@
 import { useTranslations } from "next-intl";
 
 import { useSession } from "../../lib/auth-client";
-
 import { AnalyticsIcon } from "../../assets/icons/AnalyticsIcon";
-import { AreaIcon } from "../../assets/icons/AreaIcon";
-import { BarsIcon } from "../../assets/icons/BarsIcon";
 import { CalendarIcon } from "../../assets/icons/CalendarIcon";
-import { CustomersIcon } from "../../assets/icons/CustomersIcon";
 import { DashboardIcon } from "../../assets/icons/DashboardIcon";
-import { LineIcon } from "../../assets/icons/LineIcon";
-import { OrdersIcon } from "../../assets/icons/OrdersIcon";
-import { ScatterIcon } from "../../assets/icons/ScatterIcon";
 import { UserIcon } from "../../assets/icons/UserIcon";
 import { useAppStore } from "../../store/appStore";
 import { MenuCategory } from "./MenuCategory";
 import { MenuItem } from "./MenuItem";
 import { MenuItemWithSubmenu } from "./MenuItemWithSubmenu";
-import { ProductsIcon } from "../../assets/icons/ProductsIcon";
 import { useIsFirstRender } from "../../hooks/useIsFirstRender";
 import { SideMenuMobileProps } from "./types";
 import { PasswordIcon } from "../../assets/icons/PasswordIcon";
-import { DocumentIcon } from "../../assets/icons/DocumentIcon";
 import { DonutIcon } from "../../assets/icons/DonutIcon";
 import { EcommerceIcon } from "../../assets/icons/EcommerceIcon";
 import { UserProfileIcon } from "../../assets/icons/UserProfileIcon";
@@ -51,11 +42,7 @@ export const SideMenuMobile = ({
     >
       <div className="px-4 xl:px-6 pt-0 pr-6 transition w-[16rem] pb-2">
         <MenuCategory title={t("pages")} />
-        <MenuItem
-          title={t("dashboard")}
-          icon={<DashboardIcon />}
-          path="/"
-        />
+        <MenuItem title={t("dashboard")} icon={<DashboardIcon />} path="/" />
         <MenuItemWithSubmenu
           title={t("eCommerce")}
           icon={<EcommerceIcon />}

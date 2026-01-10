@@ -4,6 +4,15 @@ import { useAppStore } from "../../store/appStore";
 import { signOut } from "../../lib/auth-client";
 import { isPresentationModeClient } from "../../utils/presentationMode";
 
+/**
+ * Handles user logout via Better Auth. Shows alert in presentation mode.
+ * Reloads page on success to clear session state.
+ *
+ * @returns {Object} Logout handler and state
+ * @returns {Function} handleLogout - Async logout function
+ * @returns {boolean} loading - Loading state
+ * @returns {string} error - Error message if logout fails
+ */
 export const useHandleLogout = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

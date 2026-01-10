@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
+
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";

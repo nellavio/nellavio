@@ -132,8 +132,13 @@ const translationsConfig: TranslationsConfig = {
   },
 };
 
-// This hook provides translations that are later used in useTranslateData hook
-
+/**
+ * Maps English backend data keys to next-intl translations.
+ * Used with useTranslateData to translate chart labels, months, countries, etc.
+ *
+ * @param {string} namespace - Translation namespace (e.g., "analytics.todaySales")
+ * @returns {Object} Key-value pairs of English text to translated text
+ */
 export const useBackendTranslations = (
   namespace: string
 ): { [key: string]: string } => {

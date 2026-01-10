@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
 
+/**
+ * Manages tooltip visibility with automatic hide on outside click.
+ *
+ * @returns {Object} Tooltip state and control functions
+ * @returns {boolean} isTooltipVisible - Current visibility state
+ * @returns {Function} showTooltip - Show tooltip handler
+ * @returns {Function} hideTooltip - Hide tooltip handler
+ */
 export const useTooltip = () => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 

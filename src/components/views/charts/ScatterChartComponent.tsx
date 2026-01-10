@@ -13,6 +13,7 @@ import {
 } from "recharts";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
+
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -33,18 +34,17 @@ interface ScatterTooltipProps {
 }
 
 const ScatterTooltip = ({ active, payload }: ScatterTooltipProps) => {
+  const t = useTranslations("singleCharts.scatter");
+
   if (!active || !payload || payload.length === 0) return null;
 
   const data = payload[0].payload;
-  const t = useTranslations("singleCharts.scatter");
 
   return (
     <BaseTooltip title={data.country}>
       <p className="px-3 pb-1 text-primaryText flex items-center justify-between">
         <span>{t("gdp")}: </span>
-        <span className="pl-[0.7rem]">
-          ${(data.gdp / 1000).toFixed(1)}K
-        </span>
+        <span className="pl-[0.7rem]">${(data.gdp / 1000).toFixed(1)}K</span>
       </p>
       <p className="px-3 pb-1 text-primaryText flex items-center justify-between">
         <span>{t("lifeExpectancy")}: </span>
@@ -244,8 +244,8 @@ export const ScatterChartComponent = () => {
                     index % 3 === 0
                       ? chartColors.primary.fill
                       : index % 3 === 1
-                      ? chartColors.secondary.fill
-                      : "rgb(168, 162, 255)"
+                        ? chartColors.secondary.fill
+                        : "rgb(168, 162, 255)"
                   }
                 />
               ))}

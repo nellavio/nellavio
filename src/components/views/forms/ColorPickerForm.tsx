@@ -1,0 +1,51 @@
+"use client";
+
+import * as React from "react";
+import { HexColorPicker } from "react-colorful";
+
+import { Card } from "../../common/Card";
+import { Label } from "../../shadcn/label";
+import { Button } from "../../shadcn/button";
+import { Input } from "../../shadcn/input";
+import { Popover, PopoverContent, PopoverTrigger } from "../../shadcn/popover";
+
+export const ColorPickerForm = () => {
+  const [color, setColor] = React.useState("#4bbf7d");
+  const [openColorPicker, setOpenColorPicker] = React.useState(false);
+
+  return (
+    <Card isHeaderDividerVisible addTitleMargin title="Color Picker">
+      <div className="flex flex-col gap-6">
+        <div className="grid w-full max-w-sm items-center gap-[0.8rem]">
+          <Label>Pick a Color</Label>
+          <Popover open={openColorPicker} onOpenChange={setOpenColorPicker}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-[11.34rem] justify-start text-left font-normal pl-2"
+              >
+                <div className="flex items-center gap-2">
+                  <div
+                    className="h-6 w-6 rounded-md border border-inputBorder"
+                    style={{ backgroundColor: color }}
+                  />
+                  <div className="text-sm">{color}</div>
+                </div>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-3" align="start">
+              <div className="flex flex-col gap-3">
+                <HexColorPicker color={color} onChange={setColor} />
+                <Input
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className="font-mono px-2 [width:12.5rem]"
+                />
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+      </div>
+    </Card>
+  );
+};

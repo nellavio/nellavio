@@ -10,6 +10,17 @@ import { useAppStore } from "../../store/appStore";
 import { signIn } from "../../lib/auth-client";
 import { isPresentationModeClient } from "../../utils/presentationMode";
 
+/**
+ * Login form management with Better Auth integration.
+ * Handles validation (Yup), error display, and i18n error mapping.
+ *
+ * @returns {Object} Form handlers, validation, and state
+ * @returns {Function} handleLogin - Async login handler
+ * @returns {Function} onSubmit - Form submit handler
+ * @returns {Object} control - React Hook Form control
+ * @returns {Object} errors - Form validation errors
+ * @returns {string} authError - Authentication error message
+ */
 export const useHandleLogin = () => {
   const [authError, setAuthError] = useState<string>("");
 

@@ -3,10 +3,28 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 
 import { cn } from "../../lib/utils";
 
-interface ProgressProps extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
+interface ProgressProps extends React.ComponentPropsWithoutRef<
+  typeof ProgressPrimitive.Root
+> {
   indicatorColor?: string;
 }
 
+/**
+ * Progress bar component for visualizing task completion or loading states.
+ * Built on Radix UI Progress primitive with smooth transitions and customizable colors.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {number} [value] - Current progress value (0-100)
+ * @param {string} [indicatorColor] - Custom CSS color for the indicator
+ * @param {React.Ref} ref - Forwarded ref to the progress root element
+ *
+ * @example
+ * ```tsx
+ * <Progress value={45} />
+ * <Progress value={70} indicatorColor="#00ff00" />
+ * ```
+ */
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   ProgressProps
@@ -23,7 +41,7 @@ const Progress = React.forwardRef<
       className="h-full w-full flex-1 transition-all"
       style={{
         transform: `translateX(-${100 - (value || 0)}%)`,
-        backgroundColor: indicatorColor || 'var(--main-color)',
+        backgroundColor: indicatorColor || "var(--main-color)",
       }}
     />
   </ProgressPrimitive.Root>

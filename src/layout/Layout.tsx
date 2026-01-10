@@ -2,12 +2,12 @@
 
 import React, { ReactNode, useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 import { Navbar } from "./navbar/Navbar";
 import { SideMenu } from "./sideMenu/SideMenu";
 import { useAppStore } from "../store/appStore";
 import { FullScreenLoader } from "../components/common/FullScreenLoader";
-import { useTheme } from "next-themes";
 
 interface LayoutProps {
   children: ReactNode;

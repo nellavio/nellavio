@@ -5,6 +5,14 @@ type Filters<T> = {
   [P in keyof T]: T[P];
 };
 
+/**
+ * Comprehensive table state management for TanStack Table.
+ * Handles sorting, filtering, search, and pagination.
+ *
+ * @template T - Filter keys type
+ * @param {T} initialFilters - Initial filter values
+ * @returns {Object} Table state and control functions
+ */
 export const useTable = <T extends Record<string, unknown>>(
   initialFilters: T
 ) => {

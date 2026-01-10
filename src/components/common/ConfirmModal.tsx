@@ -19,6 +19,35 @@ interface ConfirmModalProps {
   type?: "delete" | "default";
 }
 
+/**
+ * Confirmation modal dialog for critical user actions.
+ * Displays icon, title, subtitle, and action buttons.
+ * Supports loading state and delete/default variants.
+ *
+ * @component
+ * @param {Function} closeModal - Function to close modal
+ * @param {Function} onConfirm - Callback when user confirms
+ * @param {boolean} loading - Shows spinner when true
+ * @param {string} title - Main heading text
+ * @param {string} subtitle - Supporting description
+ * @param {string} confirmButtonText - Confirm button label
+ * @param {string} cancelButtonText - Cancel button label
+ * @param {('delete'|'default')} [type='default'] - Visual variant
+ *
+ * @example
+ * ```tsx
+ * <ConfirmModal
+ *   closeModal={() => setOpen(false)}
+ *   onConfirm={handleDelete}
+ *   loading={isDeleting}
+ *   title="Delete Item?"
+ *   subtitle="This action cannot be undone"
+ *   confirmButtonText="Delete"
+ *   cancelButtonText="Cancel"
+ *   type="delete"
+ * />
+ * ```
+ */
 export const ConfirmModal = ({
   closeModal,
   onConfirm,

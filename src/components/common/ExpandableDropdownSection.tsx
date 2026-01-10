@@ -4,6 +4,23 @@ interface ExpandableDropdownSectionProps {
   children: React.ReactNode;
 }
 
+/**
+ * Indented section container for nested dropdown menu items.
+ * Displays a vertical line indicator and indents child items
+ * to show hierarchical menu structure.
+ *
+ * @component
+ * @param {ExpandableDropdownSectionProps} props - Component props
+ * @param {React.ReactNode} props.children - Nested menu content
+ *
+ * @example
+ * ```tsx
+ * <ExpandableDropdownSection>
+ *   <MenuItem>Sub-item 1</MenuItem>
+ *   <MenuItem>Sub-item 2</MenuItem>
+ * </ExpandableDropdownSection>
+ * ```
+ */
 export const ExpandableDropdownSection: React.FC<
   ExpandableDropdownSectionProps
 > = ({ children }) => {

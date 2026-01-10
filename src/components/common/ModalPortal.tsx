@@ -7,6 +7,24 @@ interface ModalPortalProps {
   children: ReactNode;
 }
 
+/**
+ * Portal component for rendering modals outside the React component tree.
+ * Renders children into document.body using React portals.
+ * Waits for component mount before rendering to avoid SSR hydration issues.
+ *
+ * @component
+ * @param {ModalPortalProps} props - Component props
+ * @param {ReactNode} props.children - Elements to portal to document body
+ *
+ * @example
+ * ```tsx
+ * <ModalPortal>
+ *   <div className="modal-overlay">
+ *     <ModalContent />
+ *   </div>
+ * </ModalPortal>
+ * ```
+ */
 export const ModalPortal = ({ children }: ModalPortalProps) => {
   const [mounted, setMounted] = useState(false);
 

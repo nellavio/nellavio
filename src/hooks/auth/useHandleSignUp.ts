@@ -9,6 +9,18 @@ import { SignUpData } from "../../components/auth/SignUpForm";
 import { signUp } from "../../lib/auth-client";
 import { isPresentationModeClient } from "../../utils/presentationMode";
 
+/**
+ * Sign-up form management with Better Auth integration.
+ * Handles validation (Yup), error display, and i18n error mapping.
+ *
+ * @returns {Object} Form handlers, validation, and state
+ * @returns {Function} handleSignUp - Async sign-up handler
+ * @returns {Function} onSubmit - Form submit handler
+ * @returns {Object} control - React Hook Form control
+ * @returns {Object} errors - Form validation errors
+ * @returns {boolean} loading - Loading state
+ * @returns {string} signUpError - Authentication error message
+ */
 export const useHandleSignUp = () => {
   const [loading, setLoading] = useState(false);
   const [showEmailError, setShowEmailError] = useState(false);

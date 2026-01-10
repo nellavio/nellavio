@@ -15,9 +15,14 @@ interface ChartColors {
   };
 }
 
-export const useChartColors = (
-  theme: "dark" | "light"
-): ChartColors => {
+/**
+ * Returns theme-specific color palettes for Recharts.
+ * Auto-detects theme from document classes if not provided.
+ *
+ * @param {('dark'|'light')} theme - Theme name
+ * @returns {ChartColors} Primary and secondary color sets
+ */
+export const useChartColors = (theme: "dark" | "light"): ChartColors => {
   const themeColors = {
     dark: {
       primary: {

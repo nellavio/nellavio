@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+
 import {
   Drawer,
   DrawerClose,
@@ -40,15 +41,50 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         className="mx-auto"
       >
         {/* Three cards at top - narrower to match left column */}
-        <rect x="4" y="4" width="20" height="16" rx="2" className="fill-selectBg" />
-        <rect x="27" y="4" width="20" height="16" rx="2" className="fill-selectBg" />
-        <rect x="50" y="4" width="20" height="16" rx="2" className="fill-selectBg" />
+        <rect
+          x="4"
+          y="4"
+          width="20"
+          height="16"
+          rx="2"
+          className="fill-selectBg"
+        />
+        <rect
+          x="27"
+          y="4"
+          width="20"
+          height="16"
+          rx="2"
+          className="fill-selectBg"
+        />
+        <rect
+          x="50"
+          y="4"
+          width="20"
+          height="16"
+          rx="2"
+          className="fill-selectBg"
+        />
 
         {/* Large chart - left side */}
-        <rect x="4" y="24" width="66" height="52" rx="3" className="fill-selectBg" />
+        <rect
+          x="4"
+          y="24"
+          width="66"
+          height="52"
+          rx="3"
+          className="fill-selectBg"
+        />
 
         {/* Sidebar - full height on right (same width as four-cards) */}
-        <rect x="80" y="4" width="35" height="72" rx="3" className="fill-selectBg" />
+        <rect
+          x="80"
+          y="4"
+          width="35"
+          height="72"
+          rx="3"
+          className="fill-selectBg"
+        />
       </svg>
     );
   }
@@ -63,16 +99,58 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
       className="mx-auto"
     >
       {/* Four cards at top */}
-      <rect x="4" y="4" width="25" height="18" rx="2" className="fill-selectBg" />
-      <rect x="32" y="4" width="25" height="18" rx="2" className="fill-selectBg" />
-      <rect x="60" y="4" width="25" height="18" rx="2" className="fill-selectBg" />
-      <rect x="88" y="4" width="25" height="18" rx="2" className="fill-selectBg" />
+      <rect
+        x="4"
+        y="4"
+        width="25"
+        height="18"
+        rx="2"
+        className="fill-selectBg"
+      />
+      <rect
+        x="32"
+        y="4"
+        width="25"
+        height="18"
+        rx="2"
+        className="fill-selectBg"
+      />
+      <rect
+        x="60"
+        y="4"
+        width="25"
+        height="18"
+        rx="2"
+        className="fill-selectBg"
+      />
+      <rect
+        x="88"
+        y="4"
+        width="25"
+        height="18"
+        rx="2"
+        className="fill-selectBg"
+      />
 
       {/* Large chart */}
-      <rect x="4" y="26" width="72" height="50" rx="3" className="fill-selectBg" />
+      <rect
+        x="4"
+        y="26"
+        width="72"
+        height="50"
+        rx="3"
+        className="fill-selectBg"
+      />
 
       {/* Sidebar */}
-      <rect x="80" y="26" width="35" height="50" rx="3" className="fill-selectBg" />
+      <rect
+        x="80"
+        y="26"
+        width="35"
+        height="50"
+        rx="3"
+        className="fill-selectBg"
+      />
     </svg>
   );
 };
@@ -88,7 +166,9 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
       <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent className="!bg-primaryBg">
         <DrawerHeader className="bg-settingsDrawerHeaderBg border-b border-settingsDrawerDivider relative">
-          <DrawerTitle className="text-primaryText text-2xl font-semibold">Settings</DrawerTitle>
+          <DrawerTitle className="text-primaryText text-2xl font-semibold">
+            Settings
+          </DrawerTitle>
           <DrawerClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none">
             <svg
               width="20"
@@ -223,7 +303,9 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
               <div className="w-5 h-5 text-grayIcon">
                 <GithubIcon />
               </div>
-              <span className="text-lg font-medium text-settingsDrawerLabelText">GitHub Repository</span>
+              <span className="text-lg font-medium text-settingsDrawerLabelText">
+                GitHub Repository
+              </span>
             </Link>
           </div>
         </div>

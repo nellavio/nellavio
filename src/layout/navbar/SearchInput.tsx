@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { useSearchInput } from "./hooks/useSearchInput";
 

@@ -12,6 +12,27 @@ interface OutlinedButtonProps {
   ariaPressed?: boolean;
 }
 
+/**
+ * Secondary outlined button component with border and transparent background.
+ * Supports icons, ref forwarding, and accessibility features.
+ *
+ * @component
+ * @param {string} [text] - Button label
+ * @param {ReactElement} [icon] - Optional icon
+ * @param {Function} [handleClick] - Click callback
+ * @param {string} [className] - Extra styling
+ * @param {React.ReactNode} [children] - Custom content
+ * @param {Ref} ref - Forwarded ref
+ * @param {('button'|'submit'|'reset')} [type='button'] - HTML type
+ * @param {string} [ariaLabel] - Aria label
+ * @param {boolean} [ariaPressed] - Aria pressed
+ *
+ * @example
+ * ```tsx
+ * <OutlinedButton text="Cancel" handleClick={handleCancel} />
+ * <OutlinedButton icon={<Icon />} text="Edit" />
+ * ```
+ */
 export const OutlinedButton = forwardRef<
   HTMLButtonElement,
   OutlinedButtonProps

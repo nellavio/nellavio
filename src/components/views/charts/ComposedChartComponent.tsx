@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "next-themes";
+
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";

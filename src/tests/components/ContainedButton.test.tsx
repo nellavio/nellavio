@@ -3,11 +3,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { ContainedButton } from "../../components/common/ContainedButton";
-
-// Import the original icon component path
 import { SpinnerIcon } from "../../assets/icons/SpinnerIcon";
 
-// Auto-mock the icon module
 jest.mock("../../assets/icons/SpinnerIcon");
 
 describe("ContainedButton Component", () => {

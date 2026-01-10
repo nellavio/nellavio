@@ -10,12 +10,25 @@ export type CalendarProps = {
   className?: string;
 };
 
-function Calendar({
-  selected,
-  onSelect,
-  className,
-  ...props
-}: CalendarProps) {
+/**
+ * Date picker calendar component for selecting dates.
+ * Built on react-datepicker with inline display.
+ *
+ * @component
+ * @param {Date} [selected] - Currently selected date
+ * @param {Function} [onSelect] - Handler called when user selects a date
+ * @param {string} [className] - Additional CSS classes to apply
+ *
+ * @example
+ * ```tsx
+ * <Calendar
+ *   mode="single"
+ *   selected={date}
+ *   onSelect={setDate}
+ * />
+ * ```
+ */
+function Calendar({ selected, onSelect, className, ...props }: CalendarProps) {
   const handleDateChange = (date: Date | null) => {
     onSelect?.(date || undefined);
   };

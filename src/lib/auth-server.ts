@@ -1,8 +1,14 @@
 import { headers } from "next/headers";
 
 /**
- * Get session on the server side
- * Reference: https://www.better-auth.com/docs/integrations/next#middleware
+ * Retrieves current user session on the server side.
+ * Forwards cookies to Better Auth backend for authentication.
+ *
+ * Returns session data if authenticated, null otherwise.
+ * Use only in Server Components and API routes (not client components).
+ *
+ * @async
+ * @returns {Promise<{user: object, session: object} | null>}
  */
 export async function getSession() {
   try {

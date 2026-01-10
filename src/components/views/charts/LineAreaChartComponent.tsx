@@ -13,6 +13,7 @@ import {
   AreaChart,
 } from "recharts";
 import { useTheme } from "next-themes";
+
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -35,11 +36,7 @@ interface LineAreaTooltipProps {
   label?: string;
 }
 
-const LineAreaTooltip = ({
-  active,
-  payload,
-  label,
-}: LineAreaTooltipProps) => {
+const LineAreaTooltip = ({ active, payload, label }: LineAreaTooltipProps) => {
   if (!active || !payload || payload.length === 0) return null;
 
   return (

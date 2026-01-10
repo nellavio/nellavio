@@ -4,30 +4,69 @@ import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 import { cn } from "../../lib/utils";
 
+/**
+ * Root drawer component that manages drawer state and behavior.
+ * Built on Vaul library with support for multiple directions.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Drawer direction="bottom">
+ *   <DrawerTrigger>Open</DrawerTrigger>
+ *   <DrawerContent>
+ *     <DrawerHeader>
+ *       <DrawerTitle>Title</DrawerTitle>
+ *     </DrawerHeader>
+ *   </DrawerContent>
+ * </Drawer>
+ * ```
+ */
 function Drawer({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />;
 }
 
+/**
+ * Trigger button that opens the drawer when clicked.
+ *
+ * @component
+ */
 function DrawerTrigger({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
   return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
 }
 
+/**
+ * Portal container that renders drawer content outside the DOM hierarchy.
+ *
+ * @component
+ */
 function DrawerPortal({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
   return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
 }
 
+/**
+ * Button to close the drawer.
+ *
+ * @component
+ */
 function DrawerClose({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Close>) {
   return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
 }
 
+/**
+ * Semi-transparent backdrop overlay behind the drawer.
+ * Clicking it closes the drawer.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
 function DrawerOverlay({
   className,
   ...props
@@ -44,6 +83,14 @@ function DrawerOverlay({
   );
 }
 
+/**
+ * Main drawer content container with directional animations.
+ * Supports top, bottom, left, and right drawer directions.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Drawer content
+ */
 function DrawerContent({
   className,
   children,
@@ -71,10 +118,13 @@ function DrawerContent({
   );
 }
 
-function DrawerHeader({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+/**
+ * Header section for drawer title and description.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
+function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-header"
@@ -87,10 +137,13 @@ function DrawerHeader({
   );
 }
 
-function DrawerFooter({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+/**
+ * Footer section typically containing action buttons.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
+function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="drawer-footer"
@@ -100,6 +153,12 @@ function DrawerFooter({
   );
 }
 
+/**
+ * Title heading for the drawer.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
 function DrawerTitle({
   className,
   ...props
@@ -113,6 +172,12 @@ function DrawerTitle({
   );
 }
 
+/**
+ * Descriptive text providing context for the drawer.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
 function DrawerDescription({
   className,
   ...props

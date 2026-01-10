@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "next-themes";
+
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -73,7 +74,10 @@ interface MixedLineLegendProps {
 
 const MixedLineCustomLegend = ({ payload }: MixedLineLegendProps) => {
   return (
-    <div className="flex flex-row justify-center gap-8 text-white w-full" style={{ gap: '2rem' }}>
+    <div
+      className="flex flex-row justify-center gap-8 text-white w-full"
+      style={{ gap: "2rem" }}
+    >
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -141,7 +145,11 @@ export const MixedLineChartComponent = () => {
               tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
             />
             <Tooltip content={<MixedLineTooltip />} />
-            <Legend iconType="line" wrapperStyle={{ paddingTop: '2rem' }} content={<MixedLineCustomLegend />} />
+            <Legend
+              iconType="line"
+              wrapperStyle={{ paddingTop: "2rem" }}
+              content={<MixedLineCustomLegend />}
+            />
             <Line
               type="monotone"
               dataKey="organic"

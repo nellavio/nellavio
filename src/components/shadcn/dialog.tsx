@@ -4,14 +4,54 @@ import { X } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 
+/**
+ * Root dialog component that manages modal state.
+ * Built on Radix UI Dialog primitive with accessibility support.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Dialog open={open} onOpenChange={setOpen}>
+ *   <DialogTrigger>Open Dialog</DialogTrigger>
+ *   <DialogContent>
+ *     <DialogHeader>
+ *       <DialogTitle>Title</DialogTitle>
+ *     </DialogHeader>
+ *   </DialogContent>
+ * </Dialog>
+ * ```
+ */
 const Dialog = DialogPrimitive.Root;
 
+/**
+ * Button that opens the dialog when clicked.
+ *
+ * @component
+ */
 const DialogTrigger = DialogPrimitive.Trigger;
 
+/**
+ * Portal container for rendering dialog content outside the DOM hierarchy.
+ *
+ * @component
+ */
 const DialogPortal = DialogPrimitive.Portal;
 
+/**
+ * Button to close the dialog programmatically.
+ *
+ * @component
+ */
 const DialogClose = DialogPrimitive.Close;
 
+/**
+ * Semi-transparent backdrop overlay behind the dialog.
+ * Clicking it closes the dialog by default.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the overlay element
+ */
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -27,6 +67,25 @@ const DialogOverlay = React.forwardRef<
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
+/**
+ * Main dialog content container with animations and close button.
+ * Centered on screen with backdrop and smooth fade/zoom transitions.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.ReactNode} children - Dialog content
+ * @param {React.Ref} ref - Forwarded ref to the content element
+ *
+ * @example
+ * ```tsx
+ * <DialogContent>
+ *   <DialogHeader>
+ *     <DialogTitle>Confirm Action</DialogTitle>
+ *     <DialogDescription>Are you sure?</DialogDescription>
+ *   </DialogHeader>
+ * </DialogContent>
+ * ```
+ */
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
@@ -51,6 +110,12 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
+/**
+ * Header section for dialog title and description.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
 const DialogHeader = ({
   className,
   ...props
@@ -65,6 +130,12 @@ const DialogHeader = ({
 );
 DialogHeader.displayName = "DialogHeader";
 
+/**
+ * Footer section typically containing action buttons.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ */
 const DialogFooter = ({
   className,
   ...props
@@ -79,6 +150,13 @@ const DialogFooter = ({
 );
 DialogFooter.displayName = "DialogFooter";
 
+/**
+ * Title heading for the dialog.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the title element
+ */
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
@@ -94,6 +172,13 @@ const DialogTitle = React.forwardRef<
 ));
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
+/**
+ * Descriptive text providing context for the dialog.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {React.Ref} ref - Forwarded ref to the description element
+ */
 const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>

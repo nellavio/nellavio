@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
+
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -168,7 +169,9 @@ export const BarChartComponent = () => {
             <YAxis
               stroke="rgba(255,255,255,0.1)"
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
-              tickFormatter={(value) => `$${Intl.NumberFormat("us").format(value)}`}
+              tickFormatter={(value) =>
+                `$${Intl.NumberFormat("us").format(value)}`
+              }
               width={60}
             />
             <Tooltip

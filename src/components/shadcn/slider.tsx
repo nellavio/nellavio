@@ -3,6 +3,27 @@ import * as SliderPrimitive from "@radix-ui/react-slider";
 
 import { cn } from "../../lib/utils";
 
+/**
+ * Range slider component for selecting numeric values.
+ * Built on Radix UI Slider primitive with support for single or multiple thumbs.
+ * Includes keyboard navigation, touch support, and accessibility features.
+ *
+ * @component
+ * @param {string} [className] - Additional CSS classes to apply
+ * @param {number|number[]} [defaultValue] - Initial value(s) for the slider
+ * @param {React.Ref} ref - Forwarded ref to the slider root element
+ * @param {React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>} props - Radix Slider props
+ *
+ * @example
+ * ```tsx
+ * <Slider
+ *   defaultValue={[50]}
+ *   max={100}
+ *   step={1}
+ *   onValueChange={(value) => console.log(value)}
+ * />
+ * ```
+ */
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
