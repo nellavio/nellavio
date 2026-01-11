@@ -13,15 +13,19 @@ import {
 import { Edit, Eye, Columns } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
-import { Checkbox } from "../../shadcn/checkbox";
-import { Popover, PopoverContent, PopoverTrigger } from "../../shadcn/popover";
+import { Button } from "../../common/shadcn/button";
+import { Checkbox } from "../../common/shadcn/checkbox";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../common/shadcn/popover";
 import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
 import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
 import { FilterIcon } from "../../../assets/icons/FilterIcon";
 import { SortIcon } from "../../../assets/icons/SortIcon";
 import { CheckIcon } from "../../../assets/icons/CheckIcon";
-import { Badge } from "../../shadcn/badge";
+import { Badge } from "../../common/shadcn/badge";
 import { Dropdown } from "../../common/Dropdown";
 import { useDropdown } from "../../../hooks/useDropdown";
 

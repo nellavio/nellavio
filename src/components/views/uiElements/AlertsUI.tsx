@@ -3,7 +3,7 @@
 import { Info, AlertCircle } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Alert, AlertDescription, AlertTitle } from "../../shadcn/alert";
+import { Alert, AlertDescription, AlertTitle } from "../../common/shadcn/alert";
 
 export const AlertsUI = () => {
   return (

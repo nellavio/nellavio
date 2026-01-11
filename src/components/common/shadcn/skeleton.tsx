@@ -1,4 +1,4 @@
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 /**
  * Skeleton loader component for displaying placeholder content while data is loading.

@@ -10,12 +10,16 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "../../shadcn/command";
+} from "../../common/shadcn/command";
 
 export const CommandUI = () => {
   return (
     <Card isHeaderDividerVisible addTitleMargin title="Command">
-      <Command className="rounded-lg border border-inputBorder">
+      <Command
+        className="rounded-lg border border-inputBorder"
+        value=""
+        defaultValue=""
+      >
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>

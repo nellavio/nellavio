@@ -5,7 +5,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "../../shadcn/avatar";
+} from "../../common/shadcn/avatar";
 
 export const AvatarsUI = () => {
   return (
@@ -13,10 +13,7 @@ export const AvatarsUI = () => {
       <div className="flex flex-col gap-6">
         <div className="flex gap-4 items-center">
           <Avatar>
-            <AvatarImage
-              src="https://github.com/shadcn.png"
-              alt="@shadcn"
-            />
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <Avatar>
@@ -31,9 +28,7 @@ export const AvatarsUI = () => {
         </div>
 
         <div>
-          <span className="text-sm font-medium mb-2 block">
-            Avatar Group
-          </span>
+          <span className="text-sm font-medium mb-2 block">Avatar Group</span>
           <div className="flex -space-x-2">
             <Avatar className="border-2 border-primaryBg">
               <AvatarFallback>JD</AvatarFallback>

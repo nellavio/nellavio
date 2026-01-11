@@ -1,11 +1,8 @@
 "use client";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "../../shadcn/radio-group";
+import { Label } from "../../common/shadcn/label";
+import { RadioGroup, RadioGroupItem } from "../../common/shadcn/radio-group";
 
 export const RadioButtonsForm = () => {
   return (
@@ -20,11 +17,7 @@ export const RadioButtonsForm = () => {
           <Label htmlFor="option-two">Secondary Radio</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem
-            value="option-three"
-            id="option-three"
-            disabled
-          />
+          <RadioGroupItem value="option-three" id="option-three" disabled />
           <Label htmlFor="option-three">Disabled Radio</Label>
         </div>
       </RadioGroup>

@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
+import { Label } from "../../common/shadcn/label";
 import { CalendarIcon } from "../../../assets/icons/CalendarIcon";
 
 export const DatePickerForm = () => {

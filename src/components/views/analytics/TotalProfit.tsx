@@ -20,8 +20,8 @@ import {
   TotalProfitTooltipProps,
 } from "./types";
 import { Card } from "../../common/Card";
-import { Badge } from "../../shadcn/badge";
-import { Progress } from "../../shadcn/progress";
+import { Badge } from "../../common/shadcn/badge";
+import { Progress } from "../../common/shadcn/progress";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";

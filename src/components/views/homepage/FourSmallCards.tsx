@@ -3,11 +3,9 @@ import { useTranslations } from "next-intl";
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { FourSmallCardsProps } from "./types";
 import { Card } from "../../common/Card";
-import { Badge } from "../../shadcn/badge";
+import { Badge } from "../../common/shadcn/badge";
 
-export const FourSmallCards = ({
-  fourSmallCardsData,
-}: FourSmallCardsProps) => {
+export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
   const t = useTranslations("homepage.fourSmallCards");
   const translations = {
     Sales: t("sales"),
@@ -43,9 +41,12 @@ export const FourSmallCards = ({
                 </div>
                 <Badge
                   variant={item.increased ? "default" : "destructive"}
-                  className={item.increased ? "bg-green-600 hover:bg-green-600/80" : ""}
+                  className={
+                    item.increased ? "bg-green-600 hover:bg-green-600/80" : ""
+                  }
                 >
-                  {item.increased ? "+" : "-"}{item.changeValue}%
+                  {item.increased ? "+" : "-"}
+                  {item.changeValue}%
                 </Badge>
               </div>
               <div className="text-xs text-gray-400 mt-1">

@@ -10,7 +10,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../shadcn/breadcrumb";
+} from "../../common/shadcn/breadcrumb";
 
 export const BreadcrumbsUI = () => {
   return (

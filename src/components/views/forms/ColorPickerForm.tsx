@@ -4,10 +4,14 @@ import * as React from "react";
 import { HexColorPicker } from "react-colorful";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
-import { Button } from "../../shadcn/button";
-import { Input } from "../../shadcn/input";
-import { Popover, PopoverContent, PopoverTrigger } from "../../shadcn/popover";
+import { Label } from "../../common/shadcn/label";
+import { Button } from "../../common/shadcn/button";
+import { Input } from "../../common/shadcn/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../common/shadcn/popover";
 
 export const ColorPickerForm = () => {
   const [color, setColor] = React.useState("#4bbf7d");

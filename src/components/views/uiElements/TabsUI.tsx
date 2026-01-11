@@ -3,9 +3,14 @@
 import { Check } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
-import { Badge } from "../../shadcn/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../shadcn/tabs";
+import { Button } from "../../common/shadcn/button";
+import { Badge } from "../../common/shadcn/badge";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../common/shadcn/tabs";
 
 export const TabsUI = () => {
   return (

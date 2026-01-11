@@ -3,7 +3,7 @@
 import { Plus, MessageSquare, Loader2 } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
+import { Button } from "../../common/shadcn/button";
 
 export const ButtonsUI = () => {
   return (

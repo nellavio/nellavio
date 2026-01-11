@@ -3,25 +3,18 @@
 import * as React from "react";
 
 import { Card } from "../../common/Card";
-import { Progress } from "../../shadcn/progress";
+import { Progress } from "../../common/shadcn/progress";
 
 export const ProgressUI = () => {
-  const [progress, setProgress] = React.useState(13);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Card isHeaderDividerVisible addTitleMargin title="Progress">
       <div className="space-y-6">
         <div>
           <div className="flex justify-between mb-2 text-sm">
             <span>Loading...</span>
-            <span>{progress}%</span>
+            <span>66%</span>
           </div>
-          <Progress value={progress} />
+          <Progress value={66} />
         </div>
         <div>
           <div className="flex justify-between mb-2 text-sm">

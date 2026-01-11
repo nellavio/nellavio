@@ -14,7 +14,7 @@ import {
 import { Search, Edit } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
+import { Button } from "../../common/shadcn/button";
 import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
 import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
 import {
@@ -25,7 +25,7 @@ import {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
-} from "../../shadcn/pagination";
+} from "../../common/shadcn/pagination";
 
 // Types for Inventory Table
 type InventoryItem = {

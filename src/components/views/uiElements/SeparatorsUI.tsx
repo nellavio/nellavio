@@ -1,16 +1,14 @@
 "use client";
 
 import { Card } from "../../common/Card";
-import { Separator } from "../../shadcn/separator";
+import { Separator } from "../../common/shadcn/separator";
 
 export const SeparatorsUI = () => {
   return (
     <Card isHeaderDividerVisible addTitleMargin title="Separators">
       <div className="space-y-8">
         <div>
-          <h4 className="text-sm font-medium mb-4">
-            Horizontal Separator
-          </h4>
+          <h4 className="text-sm font-medium mb-4">Horizontal Separator</h4>
           <div className="space-y-3">
             <p className="text-sm">Content above separator</p>
             <Separator />

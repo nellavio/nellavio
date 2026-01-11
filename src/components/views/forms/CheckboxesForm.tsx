@@ -1,8 +1,8 @@
 "use client";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
-import { Checkbox } from "../../shadcn/checkbox";
+import { Label } from "../../common/shadcn/label";
+import { Checkbox } from "../../common/shadcn/checkbox";
 
 export const CheckboxesForm = () => {
   return (
@@ -22,9 +22,7 @@ export const CheckboxesForm = () => {
         </div>
         <div className="flex items-center space-x-2">
           <Checkbox id="disabled-checked" disabled defaultChecked />
-          <Label htmlFor="disabled-checked">
-            Disabled Checked Checkbox
-          </Label>
+          <Label htmlFor="disabled-checked">Disabled Checked Checkbox</Label>
         </div>
       </div>
     </Card>

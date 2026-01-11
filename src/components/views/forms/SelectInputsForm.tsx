@@ -4,7 +4,7 @@ import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
+import { Label } from "../../common/shadcn/label";
 import {
   Select,
   SelectContent,
@@ -13,8 +13,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../shadcn/select";
-import { Button } from "../../shadcn/button";
+} from "../../common/shadcn/select";
+import { Button } from "../../common/shadcn/button";
 import { cn } from "../../../lib/utils";
 import {
   Command,
@@ -23,8 +23,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "../../shadcn/command";
-import { Popover, PopoverContent, PopoverTrigger } from "../../shadcn/popover";
+} from "../../common/shadcn/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../common/shadcn/popover";
 
 // Mock data for selects
 const frameworks = [

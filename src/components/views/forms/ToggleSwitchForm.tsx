@@ -1,8 +1,8 @@
 "use client";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
-import { Switch } from "../../shadcn/switch";
+import { Label } from "../../common/shadcn/label";
+import { Switch } from "../../common/shadcn/switch";
 
 export const ToggleSwitchForm = () => {
   return (

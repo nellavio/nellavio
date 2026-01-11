@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "../../common/Card";
-import { Skeleton } from "../../shadcn/skeleton";
+import { Skeleton } from "../../common/shadcn/skeleton";
 
 export const SkeletonsUI = () => {
   return (

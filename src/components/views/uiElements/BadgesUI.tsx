@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "../../common/Card";
-import { Badge } from "../../shadcn/badge";
+import { Badge } from "../../common/shadcn/badge";
 
 export const BadgesUI = () => {
   return (

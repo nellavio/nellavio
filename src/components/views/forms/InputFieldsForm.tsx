@@ -4,9 +4,9 @@ import * as React from "react";
 import { Eye, EyeOff, Mail } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Input } from "../../shadcn/input";
-import { Label } from "../../shadcn/label";
-import { Button } from "../../shadcn/button";
+import { Input } from "../../common/shadcn/input";
+import { Label } from "../../common/shadcn/label";
+import { Button } from "../../common/shadcn/button";
 
 export const InputFieldsForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);

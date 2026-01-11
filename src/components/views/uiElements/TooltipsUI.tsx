@@ -3,13 +3,13 @@
 import { Mail, Bell, HelpCircle } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
+import { Button } from "../../common/shadcn/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../../shadcn/tooltip";
+} from "../../common/shadcn/tooltip";
 
 export const TooltipsUI = () => {
   return (

@@ -12,15 +12,15 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../components/shadcn/drawer";
+} from "../components/common/shadcn/drawer";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../components/shadcn/select";
-import { Label } from "../components/shadcn/label";
+} from "../components/common/shadcn/select";
+import { Label } from "../components/common/shadcn/label";
 import { SettingsIcon } from "../assets/icons/SettingsIcon";
 import { GithubIcon } from "../assets/icons/GithubIcon";
 import { useAppStore } from "../store/appStore";

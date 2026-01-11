@@ -14,9 +14,9 @@ import {
 import { Edit, Trash2 } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Input } from "../../shadcn/input";
-import { Button } from "../../shadcn/button";
-import { Checkbox } from "../../shadcn/checkbox";
+import { Input } from "../../common/shadcn/input";
+import { Button } from "../../common/shadcn/button";
+import { Checkbox } from "../../common/shadcn/checkbox";
 import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
 import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
 

@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { Card } from "../../common/Card";
-import { Input } from "../../shadcn/input";
-import { Button } from "../../shadcn/button";
+import { Input } from "../../common/shadcn/input";
+import { Button } from "../../common/shadcn/button";
 import {
   Form,
   FormControl,
@@ -15,7 +15,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../shadcn/form";
+} from "../../common/shadcn/form";
 
 // Form Schema for Validation Example using Yup
 const formSchema = yup.object({

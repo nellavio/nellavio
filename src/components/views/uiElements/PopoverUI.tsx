@@ -3,11 +3,15 @@
 import { User } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
-import { Input } from "../../shadcn/input";
-import { Label } from "../../shadcn/label";
-import { Popover, PopoverContent, PopoverTrigger } from "../../shadcn/popover";
-import { Avatar, AvatarFallback } from "../../shadcn/avatar";
+import { Button } from "../../common/shadcn/button";
+import { Input } from "../../common/shadcn/input";
+import { Label } from "../../common/shadcn/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../common/shadcn/popover";
+import { Avatar, AvatarFallback } from "../../common/shadcn/avatar";
 
 export const PopoverUI = () => {
   return (

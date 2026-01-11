@@ -3,7 +3,7 @@
 import { UploadCloud } from "lucide-react";
 
 import { Card } from "../../common/Card";
-import { Label } from "../../shadcn/label";
+import { Label } from "../../common/shadcn/label";
 
 export const FileUploadForm = () => {
   return (

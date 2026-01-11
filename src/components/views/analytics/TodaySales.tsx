@@ -17,7 +17,12 @@ import { useBackendTranslations } from "../../../hooks/useBackendTranslations";
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { TodaySalesProps } from "./types";
 import { Card } from "../../common/Card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../shadcn/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "../../common/shadcn/tabs";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";

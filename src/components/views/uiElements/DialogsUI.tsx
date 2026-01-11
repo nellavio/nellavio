@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { Card } from "../../common/Card";
-import { Button } from "../../shadcn/button";
+import { Button } from "../../common/shadcn/button";
 import {
   Dialog,
   DialogContent,
@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../shadcn/dialog";
+} from "../../common/shadcn/dialog";
 
 export const DialogsUI = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
