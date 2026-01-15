@@ -1,11 +1,11 @@
 import React from "react";
 
 import { ContainedButton } from "../common/ContainedButton";
-import { OutlinedButton } from "../common/OutlinedButton";
-import { Modal } from "../common/Modal";
+import { Button } from "../common/shadcn/button";
 import { SpinnerIcon } from "../../assets/icons/SpinnerIcon";
 import { ConfirmIcon } from "../../assets/icons/ConfirmIcon";
 import { DeleteIcon } from "../../assets/icons/DeleteIcon";
+import { Dialog, DialogContent, DialogFooter } from "../common/shadcn/dialog";
 
 interface ConfirmModalProps {
   closeModal: () => void;
@@ -60,31 +60,33 @@ export const ConfirmModal = ({
 }: ConfirmModalProps) => {
   return (
     <div>
-      <Modal onClose={closeModal}>
-        <div className="flex items-center justify-center w-full flex-col gap-2 -mt-2">
-          <div className="text-grayIcon rounded-full border border-mainBorder p-4 pl-4 w-16 h-16 flex justify-center items-center mr-[0rem]">
-            {type === "delete" ? <DeleteIcon /> : <ConfirmIcon />}
+      <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
+        <DialogContent className="max-w-[90vw] sm:max-w-[28rem] px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem]">
+          <div className="flex items-center justify-center w-full flex-col gap-2 -mt-2">
+            <div className="text-grayIcon rounded-full border border-mainBorder p-4 pl-4 w-16 h-16 flex justify-center items-center mr-[0rem]">
+              {type === "delete" ? <DeleteIcon /> : <ConfirmIcon />}
+            </div>
+            <h2 className="text-primaryText text-3xl w-full text-center mt-2">
+              {title}
+            </h2>
           </div>
-          <h2 className="text-primaryText text-3xl w-full text-center mt-2">
-            {title}
+          <h2 className="text-primaryText text-base w-full text-secondaryText mt-4 max-w-[24rem] text-center">
+            {subtitle}
           </h2>
-        </div>
-        <h2 className="text-primaryText text-base w-full text-secondaryText mt-4 max-w-[24rem] text-center">
-          {subtitle}
-        </h2>
-        <div className="flex w-full justify-center mt-12 gap-4">
-          <div className="w-[6rem] h-[2.5rem]">
-            <OutlinedButton
-              text={cancelButtonText}
-              handleClick={closeModal}
-              ariaLabel={cancelButtonText}
-            />
-          </div>
-          <div className="w-[6.5rem] h-[2.5rem] pb-0">
+          <DialogFooter footerVariant="centered" className="mt-12 !flex-row">
+            <Button
+              variant="outline"
+              onClick={closeModal}
+              aria-label={cancelButtonText}
+              className="h-[2.5rem]"
+            >
+              {cancelButtonText}
+            </Button>
             <ContainedButton
               handleClick={onConfirm}
               disabled={loading}
               ariaLabel={confirmButtonText}
+              fullWidth={false}
             >
               {loading ? (
                 <div className="pt-[0.3rem]">
@@ -94,9 +96,9 @@ export const ConfirmModal = ({
                 confirmButtonText
               )}
             </ContainedButton>
-          </div>
-        </div>
-      </Modal>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

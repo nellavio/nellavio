@@ -9,6 +9,11 @@ import { Link } from "../../i18n/navigation";
 import { useIsFirstRender } from "../../hooks/useIsFirstRender";
 import { outfit } from "../../styles/fonts";
 import { ChevronDownIcon } from "../../assets/icons/ChevronDownIcon";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../components/common/shadcn/tooltip";
 
 interface SubmenuItem {
   title: string;
@@ -88,8 +93,7 @@ export const MenuItemWithSubmenu = ({
         : "bg-navItemBg hover:bg-navItemBgHover border-l-2 border-transparent"
     }
     ${
-      isCollapsed &&
-      "!pl-1 pl-8 justify-center items-center !w-10 rounded-full"
+      isCollapsed && "!pl-1 pl-8 justify-center items-center !w-10 rounded-full"
     }
   `;
 
@@ -110,15 +114,20 @@ export const MenuItemWithSubmenu = ({
   return (
     <>
       {isCollapsed ? (
-        <Link
-          href={collapsedLinkPath}
-          onClick={handleMenuItemClick}
-          className="flex flex-col justify-center w-full py-0 items-center"
-        >
-          <div className={sharedClassName}>
-            {iconContent}
-          </div>
-        </Link>
+        <Tooltip delayDuration={200}>
+          <TooltipTrigger asChild>
+            <Link
+              href={collapsedLinkPath}
+              onClick={handleMenuItemClick}
+              className="flex flex-col justify-center w-full py-0 items-center"
+            >
+              <div className={sharedClassName}>{iconContent}</div>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right" alignOffset={3} sideOffset={-3} className="hidden xl:block">
+            {title}
+          </TooltipContent>
+        </Tooltip>
       ) : (
         <div className="w-full">
           <div onClick={handleToggle} className={sharedClassName}>
@@ -151,56 +160,58 @@ export const MenuItemWithSubmenu = ({
             )}
           </div>
 
-      {/* Submenu items */}
-      {isExpanded && (isSideMenuOpen || !isDesktop) && (
-        <div className="ml-[1.6rem] relative">
-          <div
-            className="absolute left-0 top-0 w-[2px] bg-cardBorder"
-            style={{ height: "calc(100% - 1.3rem)" }}
-          ></div>
-          {submenuItems.map((item) => {
-            const normalizedPathname = currentPathname?.endsWith("/")
-              ? currentPathname.slice(0, -1)
-              : currentPathname;
-            const normalizedPath = item.path.endsWith("/")
-              ? item.path.slice(0, -1)
-              : item.path;
-            const plPath = `/pl${normalizedPath}`;
-            const isActive =
-              normalizedPathname === normalizedPath ||
-              normalizedPathname === plPath;
+          {/* Submenu items */}
+          {isExpanded && (isSideMenuOpen || !isDesktop) && (
+            <div className="ml-[1.6rem] relative">
+              <div
+                className="absolute left-0 top-0 w-[2px] bg-cardBorder"
+                style={{ height: "calc(100% - 1.3rem)" }}
+              ></div>
+              {submenuItems.map((item) => {
+                const normalizedPathname = currentPathname?.endsWith("/")
+                  ? currentPathname.slice(0, -1)
+                  : currentPathname;
+                const normalizedPath = item.path.endsWith("/")
+                  ? item.path.slice(0, -1)
+                  : item.path;
+                const plPath = `/pl${normalizedPath}`;
+                const isActive =
+                  normalizedPathname === normalizedPath ||
+                  normalizedPathname === plPath;
 
-            return (
-              <Link
-                key={item.path}
-                href={item.path}
-                target={item.newTab ? "_blank" : undefined}
-              >
-                <div
-                  onClick={handleMenuItemClick}
-                  className={`
+                return (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    target={item.newTab ? "_blank" : undefined}
+                  >
+                    <div
+                      onClick={handleMenuItemClick}
+                      className={`
                     flex rounded-md items-center py-[0.4rem] 1xl:py-[0.45rem] 3xl:py-[0.6rem] pl-[3.2rem] -ml-[1.6rem] mb-[1px] 1xl:mb-1 3xl:mb-2 w-[calc(100%+1.6rem)] pr-2 transition ${
                       isActive
                         ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover"
                         : "bg-navItemBg hover:bg-navItemBgHover"
                     }
                   `}
-                >
-                  <div
-                    className={`text-xs xl:text-[11px] 3xl:text-[0.82rem] font-medium tracking-wide ${
-                      outfit.className
-                    } ${
-                      isActive ? "text-navItemTextActive" : "text-navItemText"
-                    }`}
-                  >
-                    {item.title}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      )}
+                    >
+                      <div
+                        className={`text-xs xl:text-[11px] 3xl:text-[0.82rem] font-medium tracking-wide ${
+                          outfit.className
+                        } ${
+                          isActive
+                            ? "text-navItemTextActive"
+                            : "text-navItemText"
+                        }`}
+                      >
+                        {item.title}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </>

@@ -1,11 +1,17 @@
 import { useTranslations } from "next-intl";
 
 import { FilterIcon } from "../../../assets/icons/FilterIcon";
-import { OutlinedButton } from "../../common/OutlinedButton";
-import { Dropdown } from "../../common/Dropdown";
-import { useDropdown } from "../../../hooks/useDropdown";
-import { CheckIcon } from "../../../assets/icons/CheckIcon";
+import { Button } from "../../common/shadcn/button";
 import { CustomersDropdownProps } from "./types";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../common/shadcn/dropdown-menu";
 
 export const CustomersCountryDropdown = ({
   options,
@@ -14,53 +20,36 @@ export const CustomersCountryDropdown = ({
   filters,
 }: CustomersDropdownProps) => {
   const t = useTranslations("customers");
-  const { isOpen, toggle, close, ref } = useDropdown();
 
-  const activeFilter = filters[filterKey];
+  const activeFilter = filters[filterKey] as string | undefined;
 
   return (
-    <div
-      className="relative inline-block w-44 2xl:w-48 max-[450px]:w-full"
-      ref={ref}
-    >
-      <OutlinedButton
-        handleClick={toggle}
-        icon={<FilterIcon />}
-        text={t("button.filterByCountry")}
-        className="text-sm max-[450px]:w-full"
-      />
-      {isOpen && (
-        <Dropdown className="-right-0 md:-right-0 w-[12rem] top-[3.3rem]">
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          className="text-sm max-[450px]:w-full h-full w-auto justify-start gap-2"
+        >
+          <FilterIcon />
+          {t("button.filterByCountry")}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-44" align="start">
+        <DropdownMenuRadioGroup
+          value={activeFilter || ""}
+          onValueChange={(value) => setFilter(filterKey, value)}
+        >
           {options.map((option) => (
-            <div
-              key={option}
-              className={`flex text-sm 3xl:text-base justify-between cursor-pointer px-4 hover:bg-dropdownBgHover py-2 ${
-                activeFilter === option && "bg-dropdownBgHover"
-              }  `}
-              onClick={() => {
-                setFilter(filterKey, option);
-                close();
-              }}
-            >
+            <DropdownMenuRadioItem key={option} value={option}>
               {option}
-              {activeFilter === option && (
-                <div className="text-secondaryText">
-                  <CheckIcon />
-                </div>
-              )}
-            </div>
+            </DropdownMenuRadioItem>
           ))}
-          <div
-            className="px-4 py-2 text-sm 3xl:text-base cursor-pointer hover:bg-dropdownBgHover border-t border-mainBorder"
-            onClick={() => {
-              setFilter(filterKey, undefined);
-              close();
-            }}
-          >
-            {t("button.clearFilter")}
-          </div>
-        </Dropdown>
-      )}
-    </div>
+        </DropdownMenuRadioGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => setFilter(filterKey, undefined)}>
+          {t("button.clearFilter")}
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };

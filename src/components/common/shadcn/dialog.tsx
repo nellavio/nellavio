@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
 
 import { cn } from "../../../lib/utils";
+import { CloseIcon } from "../../../assets/icons/CloseIcon";
 
 /**
  * Root dialog component that manages modal state.
@@ -95,14 +95,14 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-2 border border-inputBorder bg-modalBg p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        "fixed left-[50%] top-[50%] z-50 grid w-screen h-screen md:w-auto md:h-auto translate-x-[-50%] translate-y-[-50%] gap-2 border border-inputBorder bg-loginModalBg shadow-xl px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem] pb-12 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-2xl",
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ringBorder focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondaryBg data-[state=open]:text-secondaryText">
-        <X className="h-4 w-4" />
+      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm text-xl transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none fill-secondaryText stroke-secondaryText hover:stroke-secondaryTextHover hover:fill-secondaryTextHover">
+        <CloseIcon />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
@@ -135,14 +135,19 @@ DialogHeader.displayName = "DialogHeader";
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
+ * @param {('default'|'centered')} [footerVariant='default'] - Layout variant for footer buttons
  */
 const DialogFooter = ({
   className,
+  footerVariant = "default",
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement> & {
+  footerVariant?: "default" | "centered";
+}) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-4 mt-8 [&>button]:px-6",
+      "flex flex-col-reverse sm:flex-row sm:space-x-4 mt-8 [&>button]:min-w-[7rem] [&>a]:min-w-[7rem]",
+      footerVariant === "centered" ? "sm:justify-center [&>*]:max-w-[10rem]" : "sm:justify-end [&>button]:px-6",
       className
     )}
     {...props}

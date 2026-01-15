@@ -12,12 +12,18 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Prevent Radix UI Select from hiding page scrollbar */
+[data-scroll-locked][data-scroll-locked] {
+  overflow-y: scroll !important;
+  margin-right: 0 !important;
+}
+
 html {
   scroll-padding-top: 100px;
 }
 
 #__next {
-  height: 100%;
+  min-height: 100vh;
 }
 a {
   color: inherit;
@@ -33,6 +39,20 @@ button {
 }
 
 /* Main loader animation */
+
+@keyframes loader {
+  to {
+    opacity: 0.1;
+    transform: translateY(-1rem);
+  }
+}
+
+.animate-loader {
+  animation-name: loader;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 
 @layer utilities {
   .animation-delay-200 {
@@ -226,9 +246,9 @@ button {
 
 /* Hide outline until better solution for styling input borders on multiple themes is developed */
 /* Accessibility issue */
-:focus-visible {
+/* :focus-visible {
   outline: none !important;
-}
+} */
 
 /* Overwrite autofill styles for inputs to ensure consistent appearance on multiple themes */
 :root {

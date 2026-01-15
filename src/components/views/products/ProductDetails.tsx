@@ -9,11 +9,20 @@ import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
-import { OutlinedButton } from "../../common/OutlinedButton";
-import { Input } from "../../forms/Input";
+import { Button } from "../../common/shadcn/button";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupAddon,
+  InputGroupButton,
+} from "../../common/shadcn/input-group";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "../../common/shadcn/tooltip";
 import { CopyIcon } from "../../../assets/icons/CopyIcon";
 import { ProgressCircles } from "./ProgressCircles";
-import { Tooltip } from "../../common/Tooltip";
 import { CameraIcon } from "../../../assets/icons/CameraIcon";
 import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
 import { ProductParameter } from "./ProductParameter";
@@ -175,21 +184,34 @@ export const ProductDetails = ({
       <ProgressCircles metrics={activeProduct.metrics} />
       <div className="flex justify-center sm:justify-between items-center w-full mt-8 xsm:mt-14">
         <div className="flex items-center gap-2">
-          <div className="flex justify-center items-center relative max-w-[15.5rem]">
-            <div className="w-10 text-xl text-secondaryText">ID:</div>
-            <Input value={activeProduct.productId} type="text"></Input>
-            <button
-              className="absolute right-2 text-grayIcon hover:text-grayIconHover"
-              onClick={() => handleCopyToClipboard(activeProduct.productId)}
-            >
-              <CopyIcon />
-            </button>
-          </div>
-          {isTooltipVisible && (
-            <div className="hidden sm:flex bottom-1">
-              <Tooltip text={t("clipboard.copiedToClipboard")} />
-            </div>
-          )}
+          <Tooltip open={isTooltipVisible}>
+            <TooltipTrigger asChild>
+              <div className="flex justify-center items-center max-w-[14rem]">
+                <div className="w-10 text-xl text-secondaryText">ID:</div>
+                <InputGroup>
+                  <InputGroupInput
+                    value={activeProduct.productId}
+                    type="text"
+                    readOnly
+                  />
+                  <InputGroupAddon align="inline-end" className="pr-1">
+                    <InputGroupButton
+                      size="icon-xs"
+                      variant="ghost"
+                      onClick={() =>
+                        handleCopyToClipboard(activeProduct.productId)
+                      }
+                    >
+                      <CopyIcon />
+                    </InputGroupButton>
+                  </InputGroupAddon>
+                </InputGroup>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="right" sideOffset={7} alignOffset={3} className="hidden sm:flex">
+              {t("clipboard.copiedToClipboard")}
+            </TooltipContent>
+          </Tooltip>
         </div>
         <div className="hidden sm:flex w-[15rem] h-12 items-center justify-end">
           <DynamicPDFDownloadLink
@@ -200,22 +222,25 @@ export const ProductDetails = ({
               loading ? (
                 "Loading document..."
               ) : (
-                <OutlinedButton
-                  text={t("pdf.exportToPdf")}
-                  className="min-w-[10rem]"
-                />
+                <Button
+                  variant="outline"
+                  className="min-w-[10rem] w-full h-full"
+                >
+                  {t("pdf.exportToPdf")}
+                </Button>
               )
             }
           </DynamicPDFDownloadLink>
         </div>
       </div>
       <div className="flex lg:hidden w-[100%] text-sm sm:text-md xsm:w-[90%] h-12 mx-auto mt-8 xsm:mt-14 items-center justify-center gap-4">
-        <div className="w-1/2">
-          <OutlinedButton
-            text={t("mobileList.showAllProducts")}
-            handleClick={handleShowAllProductsClick}
-          />
-        </div>
+        <Button
+          variant="outline"
+          onClick={handleShowAllProductsClick}
+          className="w-1/2 h-full"
+        >
+          {t("mobileList.showAllProducts")}
+        </Button>
         <div className="flex sm:hidden w-1/2">
           <DynamicPDFDownloadLink
             document={pdfDocument}
@@ -226,10 +251,12 @@ export const ProductDetails = ({
               loading ? (
                 "Loading document..."
               ) : (
-                <OutlinedButton
-                  text={t("pdf.exportToPdf")}
-                  className="w-full"
-                />
+                <Button
+                  variant="outline"
+                  className="w-full h-full"
+                >
+                  {t("pdf.exportToPdf")}
+                </Button>
               )
             }
           </DynamicPDFDownloadLink>

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import { Tooltip } from "../../components/common/Tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../components/common/shadcn/tooltip";
 import { NotificationsButtonProps } from "./types";
 import { BellIcon } from "../../assets/icons/BellIcon";
 import { UpdateIcon } from "../../assets/icons/UpdateIcon";
@@ -13,13 +17,12 @@ import type { Notification } from "./hooks/useNotificationsData";
 
 export const NotificationsButton = ({
   notificationsDropdown,
-  notificationsTooltip,
   themeDropdown,
   languageDropdown,
   userDropdown,
   searchClose,
   t,
-}: NotificationsButtonProps) => {
+}: Omit<NotificationsButtonProps, "notificationsTooltip">) => {
   const { notifications: initialNotifications } = useNotificationsData();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isAllNotificationsModalOpen, setIsAllNotificationsModalOpen] =
@@ -60,52 +63,55 @@ export const NotificationsButton = ({
     }
   };
 
+  const isAnyDropdownOpen =
+    notificationsDropdown.isOpen ||
+    themeDropdown.isOpen ||
+    languageDropdown.isOpen ||
+    userDropdown.isOpen ||
+    isAllNotificationsModalOpen;
+
   return (
-    <div
-      className="relative"
-      ref={notificationsDropdown.ref}
-      onMouseEnter={notificationsTooltip.showTooltip}
-      onMouseLeave={notificationsTooltip.hideTooltip}
-    >
-      <div className="h-10 w-10">
-        <button
-          onClick={() => {
-            // On mobile (<xl), open modal directly
-            if (window.innerWidth < 1280) {
-              setIsAllNotificationsModalOpen(true);
-            } else {
-              notificationsDropdown.toggle();
-            }
-            themeDropdown.close();
-            languageDropdown.close();
-            userDropdown.close();
-            searchClose();
-          }}
-          className="relative text-base flex rounded-full justify-center items-center gap-2 w-full h-full !outline-0 border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon"
-          type="button"
-          aria-label={t("notifications") || "Notifications"}
-        >
-          <BellIcon />
-          {newNotificationsCount > 0 && (
-            <span className="absolute -top-[0.2rem] -right-[0.2rem] flex h-4 w-4 items-center justify-center rounded-full bg-notificationBadgeBg text-[10px] font-semibold text-white">
-              {newNotificationsCount}
-            </span>
-          )}
-        </button>
-      </div>
-      {notificationsTooltip.isTooltipVisible &&
-        !notificationsDropdown.isOpen &&
-        !themeDropdown.isOpen &&
-        !languageDropdown.isOpen &&
-        !userDropdown.isOpen &&
-        !isAllNotificationsModalOpen && (
-          <div className="absolute top-12 right-0 pointer-events-none hidden xl:flex">
-            <Tooltip
-              text={t("notifications") || "Notifications"}
-              className="h-8 px-3 pointer-events-none"
-            />
+    <div className="relative" ref={notificationsDropdown.ref}>
+      <Tooltip delayDuration={200}>
+        <TooltipTrigger asChild>
+          <div className="h-10 w-10">
+            <button
+              onClick={() => {
+                // On mobile (<xl), open modal directly
+                if (window.innerWidth < 1280) {
+                  setIsAllNotificationsModalOpen(true);
+                } else {
+                  notificationsDropdown.toggle();
+                }
+                themeDropdown.close();
+                languageDropdown.close();
+                userDropdown.close();
+                searchClose();
+              }}
+              className="relative text-base flex rounded-full justify-center items-center gap-2 w-full h-full !outline-0 border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon"
+              type="button"
+              aria-label={t("notifications") || "Notifications"}
+            >
+              <BellIcon />
+              {newNotificationsCount > 0 && (
+                <span className="absolute -top-[0.2rem] -right-[0.2rem] flex h-4 w-4 items-center justify-center rounded-full bg-notificationBadgeBg text-[10px] font-semibold text-white">
+                  {newNotificationsCount}
+                </span>
+              )}
+            </button>
           </div>
+        </TooltipTrigger>
+        {!isAnyDropdownOpen && (
+          <TooltipContent
+            side="bottom"
+            align="start"
+            alignOffset={-70}
+            className="hidden xl:block"
+          >
+            {t("notifications") || "Notifications"}
+          </TooltipContent>
         )}
+      </Tooltip>
       {notificationsDropdown.isOpen && (
         <div className="hidden xl:block absolute right-0 top-10 xl:top-11 mt-2 w-[22rem] border border-inputBorder bg-dropdownBg text-primaryText rounded-md shadow-lg overflow-hidden">
           {/* Header */}

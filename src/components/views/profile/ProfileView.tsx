@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { Card } from "../../common/Card";
+import { Switch } from "../../common/shadcn/switch";
 import { PhoneIcon } from "../../../assets/icons/PhoneIcon";
 import { GithubIcon } from "../../../assets/icons/GithubIcon";
 import { LinkedinIcon } from "../../../assets/icons/LinkedinIcon";
@@ -257,14 +258,7 @@ export const ProfileView = () => {
                     {t("emailNotificationsDesc")}
                   </p>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="sr-only peer"
-                    defaultChecked
-                  />
-                  <div className="w-11 h-6 bg-toggleSwitchBg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-mainBorder after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-chartPrimaryBg"></div>
-                </label>
+                <Switch defaultChecked />
               </div>
               <div className="flex items-center justify-between py-3 border-b border-mainBorder">
                 <div>
@@ -275,10 +269,7 @@ export const ProfileView = () => {
                     {t("twoFactorAuthDesc")}
                   </p>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input type="checkbox" className="sr-only peer" />
-                  <div className="w-11 h-6 bg-toggleSwitchBg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-mainBorder after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-chartPrimaryBg"></div>
-                </label>
+                <Switch />
               </div>
               <div className="flex items-center justify-between py-3">
                 <div>
@@ -289,14 +280,7 @@ export const ProfileView = () => {
                     Receive updates about new features and promotions
                   </p>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="sr-only peer"
-                    defaultChecked
-                  />
-                  <div className="w-11 h-6 bg-toggleSwitchBg peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-mainBorder after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-chartPrimaryBg"></div>
-                </label>
+                <Switch defaultChecked />
               </div>
             </div>
           </Card>

@@ -16,7 +16,6 @@ import { HamburgerButton } from "./HamburgerButton";
 import { FloatingMenuButton } from "./FloatingMenuButton";
 import { useNavbar } from "./hooks/useNavbar";
 import { useNavbarModals } from "./hooks/useNavbarModals";
-import { useNavbarTooltips } from "./hooks/useNavbarTooltips";
 import { SearchInput } from "./SearchInput";
 import { Logo } from "../sideMenu/Logo";
 import { useAppStore } from "../../store/appStore";
@@ -68,9 +67,6 @@ export const Navbar = () => {
     handleLoginButton,
   } = useNavbarModals();
 
-  const { userTooltip, notificationsTooltip, themeTooltip } =
-    useNavbarTooltips();
-
   return (
     <>
       <div
@@ -80,7 +76,7 @@ export const Navbar = () => {
         <div
           className={`hidden xl:block xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] h-[3rem]  ${
             !isSideMenuOpen && "xl:!max-w-[3rem] !w-[3rem] xl:!min-w-[4.5rem] "
-          }   
+          }
           `}
         ></div>
         <div
@@ -106,60 +102,57 @@ export const Navbar = () => {
             />
           </div>
           <div className="flex items-center gap-[0.5rem] md:gap-2 xl:gap-3.5 z-[99]">
-            <div className="hidden xl:flex">
-              <ThemeButton
-                theme={theme}
-                selectTheme={selectTheme}
-                themeTooltip={themeTooltip}
-                userDropdown={userDropdown}
-                languageDropdown={languageDropdown}
-                notificationsDropdown={notificationsDropdown}
-                t={t}
-              />
-            </div>
-            <div className="xl:ml-3.5">
-              <NotificationsButton
-                notificationsDropdown={notificationsDropdown}
-                notificationsTooltip={notificationsTooltip}
-                themeDropdown={themeDropdown}
-                languageDropdown={languageDropdown}
-                userDropdown={userDropdown}
-                searchClose={searchDropdown.close}
-                t={t}
-              />
-            </div>
-            <div className="flex items-center ml-auto">
-              <UserButton
-                userIconBtnRef={userIconBtnRef}
-                closeMobileMenu={closeMobileMenu}
-                userDropdown={userDropdown}
-                themeDropdown={themeDropdown}
-                languageDropdown={languageDropdown}
-                notificationsDropdown={notificationsDropdown}
-                userTooltip={userTooltip}
-                showLogoutModal={showLogoutModal}
-                showAboutModal={showAboutModal}
-                showChangelogModal={showChangelogModal}
-                handleLoginButton={handleLoginButton}
-                showSignUpModal={showSignUpModal}
-                session={session}
-                theme={theme}
-                searchClose={searchDropdown.close}
-                currentLanguage={currentLanguage}
-                selectTheme={selectTheme}
-                t={t}
-              />
-              <div className="hidden xl:block">
-                <HamburgerButton
-                  isMobileMenuOpen={isMobileMenuOpen}
-                  toggleMobileMenu={() => {
-                    searchDropdown.close();
-                    toggleMobileMenu();
-                  }}
+              <div className="hidden xl:flex">
+                <ThemeButton
+                  theme={theme}
+                  selectTheme={selectTheme}
+                  userDropdown={userDropdown}
+                  languageDropdown={languageDropdown}
+                  notificationsDropdown={notificationsDropdown}
+                  t={t}
                 />
               </div>
+              <div className="xl:ml-3.5">
+                <NotificationsButton
+                  notificationsDropdown={notificationsDropdown}
+                  themeDropdown={themeDropdown}
+                  languageDropdown={languageDropdown}
+                  userDropdown={userDropdown}
+                  searchClose={searchDropdown.close}
+                  t={t}
+                />
+              </div>
+              <div className="flex items-center ml-auto">
+                <UserButton
+                  userIconBtnRef={userIconBtnRef}
+                  closeMobileMenu={closeMobileMenu}
+                  userDropdown={userDropdown}
+                  themeDropdown={themeDropdown}
+                  languageDropdown={languageDropdown}
+                  notificationsDropdown={notificationsDropdown}
+                  showLogoutModal={showLogoutModal}
+                  showAboutModal={showAboutModal}
+                  showChangelogModal={showChangelogModal}
+                  handleLoginButton={handleLoginButton}
+                  showSignUpModal={showSignUpModal}
+                  session={session}
+                  theme={theme}
+                  searchClose={searchDropdown.close}
+                  currentLanguage={currentLanguage}
+                  selectTheme={selectTheme}
+                  t={t}
+                />
+                <div className="hidden xl:block">
+                  <HamburgerButton
+                    isMobileMenuOpen={isMobileMenuOpen}
+                    toggleMobileMenu={() => {
+                      searchDropdown.close();
+                      toggleMobileMenu();
+                    }}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
         </div>
         <SideMenuMobile
           isMobileMenuOpen={isMobileMenuOpen}

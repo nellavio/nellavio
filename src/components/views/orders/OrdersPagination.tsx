@@ -1,7 +1,22 @@
 import React from "react";
 
 import { OrdersPaginationProps } from "./types";
-import { Select } from "../../forms/Select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../common/shadcn/select";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "../../common/shadcn/pagination";
 
 export const OrdersPagination = ({
   itemsPerPage,
@@ -13,57 +28,68 @@ export const OrdersPagination = ({
   nextPage,
 }: OrdersPaginationProps) => (
   <div className="flex items-center mt-8 gap-4 w-full sm:w-auto sm:gap-8 justify-between sm:justify-end text-primaryText">
-    <div className="w-[4.5rem]">
+    <div className="min-w-[4.5rem]">
       <Select
-        value={itemsPerPage}
-        onChange={(e) => {
-          setItemsPerPage(Number(e.target.value));
+        value={String(itemsPerPage)}
+        onValueChange={(value) => {
+          setItemsPerPage(Number(value));
           goToPage(0);
         }}
-        customOnDesktop={true}
-        customOptions={["10", "50", "100"]}
-        direction="top"
       >
-        <option value={10}>10</option>
-        <option value={50}>50</option>
-        <option value={100}>100</option>
+        <SelectTrigger className="w-full">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent side="top">
+          <SelectItem value="10">10</SelectItem>
+          <SelectItem value="50">50</SelectItem>
+          <SelectItem value="100">100</SelectItem>
+        </SelectContent>
       </Select>
     </div>
-    <div className="flex gap-4">
-      <button onClick={() => goToPage(0)} disabled={currentPage === 0}>
-        &lt;&lt; {/* << */}
-      </button>
-      <button onClick={() => prevPage()} disabled={currentPage === 0}>
-        &lt; {/* < */}
-      </button>
-      {Array.from(Array(totalPage).keys())
-        .slice(Math.max(0, currentPage - 2), currentPage + 3)
-        .map((page) => (
-          <button
-            key={page}
-            onClick={() => goToPage(page)}
-            className={
-              currentPage === page
-                ? "bg-paginationActiveBg px-1 text-primaryText"
-                : "px-1 text-primaryText"
-            }
-            disabled={currentPage === page}
-          >
-            {page + 1}
-          </button>
-        ))}
-      <button
-        onClick={() => nextPage()}
-        disabled={currentPage === totalPage - 1}
-      >
-        &gt; {/* > */}
-      </button>
-      <button
-        onClick={() => goToPage(totalPage - 1)}
-        disabled={currentPage === totalPage - 1}
-      >
-        &gt;&gt; {/* >> */}
-      </button>
-    </div>
+    <Pagination className="m-0 justify-end">
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            onClick={() => prevPage()}
+            disabled={currentPage === 0}
+          />
+        </PaginationItem>
+        {Array.from({ length: totalPage }, (_, i) => i).map((pageIndex) => {
+          // Show first page, last page, current page, and pages around current
+          if (
+            pageIndex === 0 ||
+            pageIndex === totalPage - 1 ||
+            (pageIndex >= currentPage - 1 && pageIndex <= currentPage + 1)
+          ) {
+            return (
+              <PaginationItem key={pageIndex}>
+                <PaginationLink
+                  onClick={() => goToPage(pageIndex)}
+                  isActive={pageIndex === currentPage}
+                >
+                  {pageIndex + 1}
+                </PaginationLink>
+              </PaginationItem>
+            );
+          } else if (
+            pageIndex === currentPage - 2 ||
+            pageIndex === currentPage + 2
+          ) {
+            return (
+              <PaginationItem key={pageIndex}>
+                <PaginationEllipsis />
+              </PaginationItem>
+            );
+          }
+          return null;
+        })}
+        <PaginationItem>
+          <PaginationNext
+            onClick={() => nextPage()}
+            disabled={currentPage === totalPage - 1}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   </div>
 );

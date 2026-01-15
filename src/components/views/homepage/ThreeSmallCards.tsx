@@ -1,19 +1,23 @@
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { ThreeSmallCardsProps } from "./types";
 import { useChartColors } from "../../../hooks/useChartColors";
-import { Tooltip } from "../../common/Tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "../../common/shadcn/tooltip";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
-export const ThreeSmallCards = ({ threeSmallCardsData }: ThreeSmallCardsProps) => {
+export const ThreeSmallCards = ({
+  threeSmallCardsData,
+}: ThreeSmallCardsProps) => {
   const t = useTranslations("homepage.threeSmallCards");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
-  const [hoveredChart, setHoveredChart] = useState<number | null>(null);
   const is2XL = useMediaQuery("(min-width: 1750px)");
   const isMobile = useMediaQuery("(max-width: 479px)");
 
@@ -45,11 +49,7 @@ export const ThreeSmallCards = ({ threeSmallCardsData }: ThreeSmallCardsProps) =
     return colors[index];
   };
 
-  const renderCircularChart = (
-    percentage: number,
-    color: string,
-    index: number
-  ) => {
+  const renderCircularChart = (percentage: number, color: string) => {
     const data = [
       { name: "completed", value: percentage },
       { name: "remaining", value: 100 - percentage },
@@ -77,11 +77,7 @@ export const ThreeSmallCards = ({ threeSmallCardsData }: ThreeSmallCardsProps) =
     }
 
     return (
-      <div
-        onMouseEnter={() => setHoveredChart(index)}
-        onMouseLeave={() => setHoveredChart(null)}
-        className="w-[112px] h-[112px] xsm:w-[75px] xsm:h-[75px] 2xl:w-[90px] 2xl:h-[90px] transition-transform duration-200 group-hover:scale-110"
-      >
+      <div className="w-[112px] h-[112px] xsm:w-[75px] xsm:h-[75px] 2xl:w-[90px] 2xl:h-[90px] transition-transform duration-200 group-hover:scale-110">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -140,26 +136,24 @@ export const ThreeSmallCards = ({ threeSmallCardsData }: ThreeSmallCardsProps) =
                   </span>
                 </p>
               </div>
-              <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-transform duration-200 group-hover:scale-110">
-                  <span className="text-primaryText text-sm font-bold">
-                    {hardcodedPercentages[index]}%
-                  </span>
-                </div>
-                {renderCircularChart(
-                  hardcodedPercentages[index],
-                  getChartColor(index),
-                  index
-                )}
-                {hoveredChart === index && (
-                  <div
-                    className="absolute pointer-events-none"
-                    style={{ top: "-24px", right: "-79px", zIndex: 999999999 }}
-                  >
-                    <Tooltip text={t("monthlyTarget")} />
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-transform duration-200 group-hover:scale-110">
+                      <span className="text-primaryText text-sm font-bold">
+                        {hardcodedPercentages[index]}%
+                      </span>
+                    </div>
+                    {renderCircularChart(
+                      hardcodedPercentages[index],
+                      getChartColor(index)
+                    )}
                   </div>
-                )}
-              </div>
+                </TooltipTrigger>
+                <TooltipContent side="right" align="start" alignOffset={-10} sideOffset={-4}>
+                  <p>{t("monthlyTarget")}</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
         ))}
@@ -196,26 +190,24 @@ export const ThreeSmallCards = ({ threeSmallCardsData }: ThreeSmallCardsProps) =
                   </span>
                 </p>
               </div>
-              <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-transform duration-200 group-hover:scale-110">
-                  <span className="text-primaryText text-sm 1xl:text-base font-bold">
-                    {hardcodedPercentages[index]}%
-                  </span>
-                </div>
-                {renderCircularChart(
-                  hardcodedPercentages[index],
-                  getChartColor(index),
-                  index
-                )}
-                {hoveredChart === index && (
-                  <div
-                    className="absolute pointer-events-none"
-                    style={{ top: "-24px", right: "-79px", zIndex: 999999999 }}
-                  >
-                    <Tooltip text={t("monthlyTarget")} />
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-transform duration-200 group-hover:scale-110">
+                      <span className="text-primaryText text-sm 1xl:text-base font-bold">
+                        {hardcodedPercentages[index]}%
+                      </span>
+                    </div>
+                    {renderCircularChart(
+                      hardcodedPercentages[index],
+                      getChartColor(index)
+                    )}
                   </div>
-                )}
-              </div>
+                </TooltipTrigger>
+                <TooltipContent side="right" align="start" alignOffset={-30} sideOffset={-4}>
+                  <p>{t("monthlyTarget")}</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           ))}
         </div>

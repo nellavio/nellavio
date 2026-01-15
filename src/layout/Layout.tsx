@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 import { Navbar } from "./navbar/Navbar";
 import { SideMenu } from "./sideMenu/SideMenu";
 import { useAppStore } from "../store/appStore";
-import { FullScreenLoader } from "../components/common/FullScreenLoader";
+import { FullScreenLoader } from "./FullScreenLoader";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { SettingsIcon } from "../assets/icons/SettingsIcon";
 
@@ -76,7 +76,7 @@ export const Layout = ({ children }: LayoutProps) => {
         </div>
       )}
 
-      <div className="flex h-full w-full bg-secondaryBg overflow-x-hidden">
+      <div className="flex min-h-screen w-full bg-secondaryBg overflow-x-hidden">
         {showLoader && <FullScreenLoader key="static-loader-key" />}
         {!pathsWithNoLayout.includes(currentPathname) && (
           <>
@@ -84,7 +84,7 @@ export const Layout = ({ children }: LayoutProps) => {
             <Navbar />
           </>
         )}
-        <div className="flex flex-col w-full xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-[102rem] h-full mx-auto relative">
+        <div className="flex flex-col w-full xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-[102rem] mx-auto relative">
           <div className="w-full flex justify-center max-w-full  px-0 md:px-0  xl:pl-3 xl:pr-2 2xl:px-4">
             {children}
           </div>

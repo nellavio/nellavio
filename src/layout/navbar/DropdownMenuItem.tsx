@@ -1,6 +1,23 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { ArrowDownSimpleIcon } from "../../assets/icons/ArrowDownSimpleIcon";
-import { ExpandableDropdownSection } from "../../components/common/ExpandableDropdownSection";
+
+interface ExpandableDropdownSectionProps {
+  children: ReactNode;
+}
+
+const ExpandableDropdownSection = ({
+  children,
+}: ExpandableDropdownSectionProps) => {
+  return (
+    <div className="bg-dropdownBg relative">
+      <div
+        className="absolute left-[1.6rem] top-0 bottom-0 w-[2px] bg-mainBorder"
+        style={{ height: "calc(100% - 1rem)" }}
+      ></div>
+      <div className="ml-[2.4rem] pl-[0.8rem]">{children}</div>
+    </div>
+  );
+};
 
 interface DropdownMenuItemProps {
   icon: ReactNode;
@@ -10,13 +27,13 @@ interface DropdownMenuItemProps {
   children: ReactNode;
 }
 
-export const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({
+export const DropdownMenuItem = ({
   icon,
   label,
   isOpen,
   onToggle,
   children,
-}) => {
+}: DropdownMenuItemProps) => {
   return (
     <div>
       <div

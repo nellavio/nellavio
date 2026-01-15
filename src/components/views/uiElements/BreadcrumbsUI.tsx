@@ -19,7 +19,7 @@ export const BreadcrumbsUI = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">
+              <BreadcrumbLink disabledLink>
                 <Home className="h-4 w-4" />
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -27,7 +27,7 @@ export const BreadcrumbsUI = () => {
               <ChevronRight className="h-4 w-4" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+              <BreadcrumbLink disabledLink>Components</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
               <ChevronRight className="h-4 w-4" />
@@ -41,11 +41,11 @@ export const BreadcrumbsUI = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink disabledLink>Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/products">Products</BreadcrumbLink>
+              <BreadcrumbLink disabledLink>Products</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>

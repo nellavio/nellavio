@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { Tooltip } from "../../components/common/Tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../components/common/shadcn/tooltip";
 import { UserButtonProps } from "./types";
 import { UserIcon } from "../../assets/icons/UserIcon";
 import { HistoryIcon } from "../../assets/icons/HistoryIcon";
@@ -23,7 +27,6 @@ export const UserButton = ({
   themeDropdown,
   languageDropdown,
   notificationsDropdown,
-  userTooltip,
   showLogoutModal,
   showAboutModal,
   showChangelogModal,
@@ -35,64 +38,67 @@ export const UserButton = ({
   currentLanguage,
   theme,
   selectTheme,
-}: UserButtonProps) => {
+}: Omit<UserButtonProps, "userTooltip">) => {
   const isLoggedIn = session?.isLoggedIn || false;
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
   const currentTheme = theme || "light";
 
+  const isAnyDropdownOpen =
+    userDropdown.isOpen ||
+    themeDropdown.isOpen ||
+    languageDropdown.isOpen ||
+    notificationsDropdown.isOpen;
+
   return (
-    <div
-      className="relative ml-3 xl:ml-0"
-      ref={userDropdown.ref}
-      onMouseEnter={userTooltip.showTooltip}
-      onMouseLeave={userTooltip.hideTooltip}
-    >
-      <div className={isLoggedIn ? "h-10 w-auto sm:w-auto" : "h-10 w-10"}>
-        <button
-          ref={userIconBtnRef}
-          onClick={() => {
-            closeMobileMenu();
-            userDropdown.toggle();
-            themeDropdown.close();
-            languageDropdown.close();
-            notificationsDropdown.close();
-            searchClose();
-          }}
-          className={`text-base flex justify-center items-center h-full !outline-0 border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon ${
-            isLoggedIn && session?.username
-              ? "w-10 sm:w-auto sm:px-3 rounded-full sm:rounded-xl"
-              : "w-full rounded-full"
-          }`}
-          type="button"
-          aria-label={t("openUserMenu")}
-        >
-          <UserIcon />
-          {isLoggedIn && session?.username && (
-            <>
-              <span className="hidden sm:inline text-sm font-medium text-primaryText whitespace-nowrap ml-2 mr-2">
-                {session.username}
-              </span>
-              <div className="hidden sm:block text-secondaryText w-5 h-5 ml-2">
-                <ArrowDownSimpleIcon />
-              </div>
-            </>
-          )}
-        </button>
-      </div>
-      {userTooltip.isTooltipVisible &&
-        !userDropdown.isOpen &&
-        !themeDropdown.isOpen &&
-        !languageDropdown.isOpen &&
-        !notificationsDropdown.isOpen && (
-          <div className="absolute top-12 right-4 pointer-events-none hidden xl:flex">
-            <Tooltip
-              text={t("openUserMenu")}
-              className="h-8 px-3 pointer-events-none"
-            />
+    <div className="relative ml-3 xl:ml-0" ref={userDropdown.ref}>
+      <Tooltip delayDuration={200}>
+        <TooltipTrigger asChild>
+          <div className={isLoggedIn ? "h-10 w-auto sm:w-auto" : "h-10 w-10"}>
+            <button
+              ref={userIconBtnRef}
+              onClick={() => {
+                closeMobileMenu();
+                userDropdown.toggle();
+                themeDropdown.close();
+                languageDropdown.close();
+                notificationsDropdown.close();
+                searchClose();
+              }}
+              className={`text-base flex justify-center items-center h-full !outline-0 border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon ${
+                isLoggedIn && session?.username
+                  ? "w-10 sm:w-auto sm:px-3 rounded-full sm:rounded-xl"
+                  : "w-full rounded-full"
+              }`}
+              type="button"
+              aria-label={t("openUserMenu")}
+            >
+              <UserIcon />
+              {isLoggedIn && session?.username && (
+                <>
+                  <span className="hidden sm:inline text-sm font-medium text-primaryText whitespace-nowrap ml-2 mr-2">
+                    {session.username}
+                  </span>
+                  <div className="hidden sm:block text-secondaryText w-5 h-5 ml-2">
+                    <ArrowDownSimpleIcon />
+                  </div>
+                </>
+              )}
+            </button>
           </div>
+        </TooltipTrigger>
+        {!isAnyDropdownOpen && (
+          <TooltipContent
+            side="bottom"
+            align="start"
+            alignOffset={0}
+            className="hidden xl:block"
+          >
+            {t("openUserMenu")}
+          </TooltipContent>
         )}
+      </Tooltip>
       {userDropdown.isOpen && (
         <div className="absolute right-[0.5rem] text-sm 1xl:text-sm 2xl:text-base xl:right-0 top-10 xl:top-11 mt-2 w-[13.5rem] border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow">
           {/* Auth Section - Expandable */}

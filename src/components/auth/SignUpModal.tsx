@@ -1,7 +1,9 @@
-import React from "react";
-
 import { SignUpForm } from "./SignUpForm";
-import { Modal } from "../common/Modal";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "../common/shadcn/dialog";
 
 interface SignUpModalProps {
   closeModal: () => void;
@@ -13,8 +15,11 @@ export const SignUpModal = ({
   switchToSignIn,
 }: SignUpModalProps) => {
   return (
-    <Modal onClose={closeModal} hasBlur={true}>
-      <SignUpForm switchToSignIn={switchToSignIn} />
-    </Modal>
+    <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
+      <DialogContent className="flex flex-col items-center">
+        <DialogTitle className="sr-only">Sign Up</DialogTitle>
+        <SignUpForm switchToSignIn={switchToSignIn} />
+      </DialogContent>
+    </Dialog>
   );
 };

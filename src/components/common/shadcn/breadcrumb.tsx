@@ -81,6 +81,7 @@ BreadcrumbItem.displayName = "BreadcrumbItem";
  *
  * @component
  * @param {boolean} [asChild=false] - When true, merges props with child element (useful with Next.js Link)
+ * @param {boolean} [disabledLink=false] - When true, renders as span instead of anchor (non-clickable)
  * @param {string} [className] - Additional CSS classes to apply
  * @param {string} [href] - URL to navigate to
  * @param {React.ReactNode} children - Link text content
@@ -97,14 +98,19 @@ const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & {
     asChild?: boolean;
+    disabledLink?: boolean;
   }
->(({ asChild, className, ...props }, ref) => {
-  const Comp = asChild ? Slot : "a";
+>(({ asChild, disabledLink, className, ...props }, ref) => {
+  const Comp = disabledLink ? "span" : asChild ? Slot : "a";
 
   return (
     <Comp
-      ref={ref}
-      className={cn("transition-colors hover:text-primaryText", className)}
+      ref={ref as React.Ref<HTMLAnchorElement & HTMLSpanElement>}
+      className={cn(
+        "transition-colors",
+        !disabledLink && "hover:text-primaryText",
+        className
+      )}
       {...props}
     />
   );

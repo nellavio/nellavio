@@ -93,9 +93,9 @@ export const SelectInputsForm = () => {
                       <CommandItem
                         key={framework.value}
                         value={framework.value}
-                        onSelect={(currentValue) => {
+                        onSelect={() => {
                           setComboboxValue(
-                            currentValue === comboboxValue ? "" : currentValue
+                            framework.value === comboboxValue ? "" : framework.value
                           );
                           setOpenCombobox(false);
                         }}

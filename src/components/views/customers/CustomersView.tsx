@@ -3,16 +3,24 @@
 import { useTranslations } from "next-intl";
 
 import { SearchIcon } from "../../../assets/icons/SearchIcon";
-import { OutlinedButton } from "../../common/OutlinedButton";
+import { Button } from "../../common/shadcn/button";
 import { Chip } from "../../forms/Chip";
-import { Input } from "../../forms/Input";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupAddon,
+} from "../../common/shadcn/input-group";
 import { CustomersCountryDropdown } from "./CustomersCountryDropdown";
 import { CustomersPagination } from "./CustomersPagination";
 import { CustomersSortDropdown } from "./CustomersSortDropdown";
 import { CustomersTable } from "./CustomersTable";
 import { useCustomers } from "./useCustomers";
 import { DownloadIcon } from "../../../assets/icons/DownloadIcon";
-import { Tooltip } from "../../common/Tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../common/shadcn/tooltip";
 import { Customer } from "./types";
 
 interface CustomersViewProps {
@@ -42,22 +50,23 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
     sortOptions,
     countryOptions,
     handleExportToCSV,
-    handleMouseEnter,
-    handleMouseLeave,
-    tooltipRef,
   } = useCustomers(customers);
 
   return (
     <div className="flex flex-col w-full h-full">
       <div className="flex justify-between flex-wrap md:flex-wrap w-full">
-        <div className="w-full md:w-1/3 lg:w-1/4 relative flex h-[2.3rem] 3xl:h-[2.6rem]">
-          <Input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={t("searchField.searchCustomers")}
-            icon={<SearchIcon />}
-          />
+        <div className="w-full md:w-1/3 lg:w-1/4 h-[2.3rem] 3xl:h-[2.6rem]">
+          <InputGroup className="h-full">
+            <InputGroupInput
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t("searchField.searchCustomers")}
+            />
+            <InputGroupAddon>
+              <SearchIcon />
+            </InputGroupAddon>
+          </InputGroup>
         </div>
         <div className="flex gap-6 flex-wrap w-full md:w-auto mt-6 md:mt-0">
           <div className="flex w-full md:w-auto justify-between gap-4 md:gap-4 h-9 3xl:h-10 max-[450px]:gap-2">
@@ -108,32 +117,27 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
       </div>
       <div className="flex flex-col sm:flex-row justify-between items-center flex-wrap pb-4">
         <div className="w-[14rem] mt-8 sm:mb-0 flex gap-4 h-10 3xl:h-11">
-          <OutlinedButton
-            handleClick={clearFilters}
-            text={t("button.clearFilters")}
-          />
-          <div
-            className="h-10 3xl:h-11 w-12 relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+          <Button
+            variant="outline"
+            onClick={clearFilters}
+            className="flex-1 !h-full"
           >
-            <OutlinedButton
-              handleClick={() => handleExportToCSV(customers)}
-              className="!px-[0.8rem]"
-            >
-              <DownloadIcon />
-            </OutlinedButton>
-            <div
-              ref={tooltipRef}
-              style={{ visibility: "hidden" }}
-              className="absolute bottom-2 left-14 pointer-events-none"
-            >
-              <Tooltip
-                text={t("button.csv")}
-                className="h-8 px-2 min-w-[7rem] pointer-events-none"
-              />
-            </div>
-          </div>
+            {t("button.clearFilters")}
+          </Button>
+          <Tooltip delayDuration={200}>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                onClick={() => handleExportToCSV(customers)}
+                className="!px-[0.8rem] !h-full w-12"
+              >
+                <DownloadIcon />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="top">
+              {t("button.csv")}
+            </TooltipContent>
+          </Tooltip>
         </div>
         <CustomersPagination
           itemsPerPage={itemsPerPage}

@@ -1,12 +1,16 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 
-import { Modal } from "../../common/Modal";
-import { OutlinedButton } from "../../common/OutlinedButton";
+import { Button } from "../../common/shadcn/button";
 import { ContainedButton } from "../../common/ContainedButton";
 import { PhoneIcon } from "../../../assets/icons/PhoneIcon";
 import { OrderModalIcon } from "../../../assets/icons/OrderModalIcon";
 import { OrderModalProps } from "./types";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+} from "../../common/shadcn/dialog";
 
 export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {
   const t = useTranslations("orders.orderModal");
@@ -28,36 +32,35 @@ export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {
 
   return (
     <div className="hidden md:flex">
-      <Modal onClose={closeModal}>
-        <div className="flex items-center justify-center w-full flex-col gap-2 min-w-[20rem]">
-          <div className="rounded-full border border-mainBorder p-4 w-18 flex justify-center items-center mr-[0rem] text-secondaryText -mt-1">
-            <OrderModalIcon width={30} height={30} />
+      <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
+        <DialogContent className="max-w-[90vw] sm:max-w-[32rem] px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem]">
+          <div className="flex items-center justify-center w-full flex-col gap-2">
+            <div className="rounded-full border border-mainBorder p-4 w-18 flex justify-center items-center mr-[0rem] text-secondaryText -mt-1">
+              <OrderModalIcon width={30} height={30} />
+            </div>
+            <h2 className="text-primaryText text-3xl w-full text-center mt-3 mb-2">
+              {t("title")}
+            </h2>
+            <div className="text-primaryText text-base w-full text-left mt-4 flex flex-wrap justify-between">
+              {orderDetails.map((detail) => (
+                <p
+                  key={detail.label}
+                  className="border-b border-mainBorder w-[47%] my-2 pb-2 flex text-nowrap"
+                >
+                  <div className="text-secondaryText mr-1">{detail.label}:</div>
+                  {detail.value}
+                </p>
+              ))}
+            </div>
           </div>
-          <h2 className="text-primaryText text-3xl w-full text-center mt-3 mb-2">
-            {t("title")}
-          </h2>
-          <div className="text-primaryText text-base w-full text-left mt-4 flex flex-wrap max-w-[26rem] justify-between">
-            {orderDetails.map((detail) => (
-              <p
-                key={detail.label}
-                className="border-b border-mainBorder w-[47%] my-2 pb-2 flex text-nowrap"
-              >
-                <div className="text-secondaryText mr-1">{detail.label}:</div>
-                {detail.value}
-              </p>
-            ))}
-          </div>
-        </div>
-        <div className="flex w-full justify-center mt-12 gap-4 h-[2.7rem]">
-          <OutlinedButton text={t("cancelButton")} />
-          <a
-            href={`tel:5555-5555-5555`}
-            style={{ textDecoration: "none", width: "100%" }}
-          >
+          <DialogFooter className="mt-12 !flex-row [&>*]:flex-1 [&>*]:h-[2.9rem]">
+            <Button variant="outline">
+              {t("cancelButton")}
+            </Button>
             <ContainedButton text={t("callButton")} icon={<PhoneIcon />} />
-          </a>
-        </div>
-      </Modal>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

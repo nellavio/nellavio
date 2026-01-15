@@ -96,6 +96,8 @@
   --color-mutedBg: rgb(247, 247, 247);
   --color-errorBg: rgb(195, 70, 70);
   --color-skeletonBg: rgb(225, 225, 230);
+  --color-navbarSearchInputBg: rgb(240, 240, 245, 0.2);
+  --color-navbarSearchInputBgHover: rgb(240, 240, 245, 0.4);
 
   /* Notifications */
   --color-notificationBadgeBg: rgb(118, 167, 247);
@@ -119,6 +121,8 @@
   --color-ringBorder: rgb(0, 96, 255);
   --color-checkboxBorder: rgb(0, 0, 0, 0.28);
   --color-checkboxBorderDisabled: rgb(0, 0, 0, 0.18);
+  --color-navbarSearchInputBorder: rgb(0, 0, 0, 0.12);
+  --color-navbarSearchInputBorderHover: rgb(0, 0, 0, 0.2);
 
   /* Settings Drawer */
   --color-settingsDrawerHeaderBg: rgb(247, 247, 247);

@@ -1,8 +1,13 @@
-import React, { ChangeEvent } from "react";
 import { useTranslations } from "next-intl";
 
 import { OrderType, OrdersSelectsProps } from "./types";
-import { Select } from "../../forms/Select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../common/shadcn/select";
 
 export const OrderSelects = ({
   filters,
@@ -48,11 +53,11 @@ export const OrderSelects = ({
       setFilterKey: "priceRange",
       placeholder: t("selectPlaceholder.anyPrice"),
       options: ["0-100", "100-500", "500-1000", "1000-5000"],
-      specialHandler: (e: ChangeEvent<HTMLSelectElement>) => {
-        if (e.target.value === "") {
+      specialHandler: (value: string) => {
+        if (value === "") {
           setFilter("priceRange", { min: 0, max: 5000 });
         } else {
-          const [min, max] = e.target.value.split("-").map(Number);
+          const [min, max] = value.split("-").map(Number);
           setFilter("priceRange", { min, max });
         }
       },
@@ -71,6 +76,8 @@ export const OrderSelects = ({
     },
   ];
 
+  const PLACEHOLDER_VALUE = "__placeholder__";
+
   return (
     <div className="flex flex-col md:flex-row w-full md:gap-4">
       {selectsConfig.map(
@@ -80,27 +87,37 @@ export const OrderSelects = ({
         ) => (
           <div key={index} className="w-full md:w-1/3 mb-4">
             <Select
-              value={value}
-              onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-                if (specialHandler) {
-                  specialHandler(e);
+              value={value || PLACEHOLDER_VALUE}
+              onValueChange={(newValue) => {
+                if (newValue === PLACEHOLDER_VALUE) {
+                  if (specialHandler) {
+                    specialHandler("");
+                  } else {
+                    setFilter(setFilterKey as keyof typeof filters, "");
+                  }
                 } else {
-                  setFilter(
-                    setFilterKey as keyof typeof filters,
-                    e.target.value
-                  );
+                  if (specialHandler) {
+                    specialHandler(newValue);
+                  } else {
+                    setFilter(
+                      setFilterKey as keyof typeof filters,
+                      newValue
+                    );
+                  }
                 }
               }}
-              placeholder={placeholder}
-              customOptions={options}
-              customOnDesktop
-              isBottomPlaceholderVisible
             >
-              {options.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={PLACEHOLDER_VALUE}>{placeholder}</SelectItem>
+                {options.map((option) => (
+                  <SelectItem key={option} value={option}>
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
             </Select>
           </div>
         )

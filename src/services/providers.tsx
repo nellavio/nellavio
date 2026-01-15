@@ -5,6 +5,7 @@ import { ApolloProvider } from "@apollo/client/react";
 
 import { Layout } from "../layout/Layout";
 import { client } from "./apolloClient";
+import { TooltipProvider } from "../components/common/shadcn/tooltip";
 
 export const THEMES_ARRAY = ["light", "dark"];
 
@@ -28,7 +29,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
         defaultTheme="dark"
         // disableTransitionOnChange
       >
-        <Layout>{children}</Layout>
+        <TooltipProvider delayDuration={100}>
+          <Layout>{children}</Layout>
+        </TooltipProvider>
       </ThemeProvider>
     </ApolloProvider>
   );

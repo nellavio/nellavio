@@ -13,6 +13,7 @@ interface ContainedButtonProps {
   className?: string;
   ariaLabel?: string;
   ariaPressed?: boolean;
+  fullWidth?: boolean;
 }
 
 /**
@@ -48,6 +49,7 @@ export const ContainedButton = ({
   className,
   ariaLabel,
   ariaPressed,
+  fullWidth = true,
 }: ContainedButtonProps) => {
   return (
     <button
@@ -58,7 +60,7 @@ export const ContainedButton = ({
       aria-busy={loading}
       aria-label={ariaLabel || text}
       aria-pressed={ariaPressed}
-      className={`transition text-nowrap w-full h-full flex items-center justify-center disabled:opacity-75 bg-containedButtonBg 
+      className={`transition text-nowrap ${fullWidth ? "w-full h-full" : ""} flex items-center justify-center disabled:opacity-75 bg-containedButtonBg
       hover:bg-containedButtonBgHover text-white p-2 rounded-md focus:outline-none ${className} text-sm 3xl:text-base`}
     >
       {icon && <div className="mr-2"> {icon}</div>}

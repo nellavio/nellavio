@@ -1,12 +1,17 @@
-import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 
 import { SortIcon } from "../../../assets/icons/SortIcon";
-import { OutlinedButton } from "../../common/OutlinedButton";
-import { Dropdown } from "../../common/Dropdown";
-import { useDropdown } from "../../../hooks/useDropdown";
-import { CheckIcon } from "../../../assets/icons/CheckIcon";
+import { Button } from "../../common/shadcn/button";
 import { SortDropdownProps } from "./types";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../common/shadcn/dropdown-menu";
 
 export const CustomersSortDropdown = ({
   options,
@@ -15,79 +20,61 @@ export const CustomersSortDropdown = ({
   currentDirection,
 }: SortDropdownProps) => {
   const t = useTranslations("customers");
-  const [selectedSort, setSelectedSort] = useState<string | null>(currentSort);
-  const [sortDirection, setSortDirection] = useState<boolean>(currentDirection); // false for Ascending, true for Descending
-  const { isOpen, toggle, close, ref } = useDropdown();
 
-  useEffect(() => {
-    setSelectedSort(currentSort);
-    setSortDirection(currentDirection);
-  }, [currentSort, currentDirection]);
-
-  const handleSortClick = (optionValue: string) => {
-    setSelectedSort(optionValue);
-    setSorting([{ id: optionValue, desc: sortDirection }]);
-    close();
+  const handleSortChange = (value: string) => {
+    setSorting([{ id: value, desc: currentDirection }]);
   };
 
-  const handleDirectionClick = (desc: boolean) => {
-    setSortDirection(desc);
-    if (selectedSort) {
-      setSorting([{ id: selectedSort, desc }]);
-      close();
+  const handleDirectionChange = (value: string) => {
+    const isDesc = value === "desc";
+    if (currentSort) {
+      setSorting([{ id: currentSort, desc: isDesc }]);
     }
   };
 
+  const clearSorting = () => {
+    setSorting([]);
+  };
+
   return (
-    <div className="relative inline-block w-auto max-[450px]:w-full" ref={ref}>
-      <OutlinedButton
-        handleClick={toggle}
-        text={t("button.sortBy")}
-        icon={<SortIcon />}
-        className="text-sm pr-4 whitespace-nowrap max-[450px]:w-full"
-      />
-      {isOpen && (
-        <Dropdown className="right-0 top-[3.3rem] min-w-[12.5rem]">
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          className="text-sm pr-4 whitespace-nowrap max-[450px]:w-full h-full gap-2"
+        >
+          <SortIcon />
+          {t("button.sortBy")}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-44" align="end">
+        <DropdownMenuRadioGroup
+          value={currentSort || ""}
+          onValueChange={handleSortChange}
+        >
           {options.map((option) => (
-            <div
-              key={option.value}
-              className={`flex text-sm 3xl:text-base justify-between cursor-pointer px-4 hover:bg-dropdownBgHover px-4 py-2 ${
-                selectedSort === option.value && "bg-dropdownBgHover"
-              } `}
-              onClick={() => handleSortClick(option.value)}
-            >
+            <DropdownMenuRadioItem key={option.value} value={option.value}>
               {option.label}
-              {selectedSort === option.value && (
-                <div className="text-secondaryText">
-                  <CheckIcon />
-                </div>
-              )}
-            </div>
+            </DropdownMenuRadioItem>
           ))}
-          <div
-            className="text-sm 3xl:text-base px-4 py-2 hover:bg-dropdownBgHover cursor-pointer border-t border-mainBorder"
-            onClick={() => handleDirectionClick(false)}
-          >
+        </DropdownMenuRadioGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuRadioGroup
+          value={currentDirection ? "desc" : "asc"}
+          onValueChange={handleDirectionChange}
+        >
+          <DropdownMenuRadioItem value="asc">
             {t("button.ascending")}
-          </div>
-          <div
-            className=" text-sm 3xl:text-base px-4 py-2 hover:bg-dropdownBgHover cursor-pointer"
-            onClick={() => handleDirectionClick(true)}
-          >
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="desc">
             {t("button.descending")}
-          </div>
-          <div
-            className="text-sm 3xl:text-base px-4 py-2 hover:bg-dropdownBgHover cursor-pointer"
-            onClick={() => {
-              setSelectedSort(null);
-              setSorting([]);
-              close();
-            }}
-          >
-            {t("button.clearSorting")}
-          </div>
-        </Dropdown>
-      )}
-    </div>
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={clearSorting}>
+          {t("button.clearSorting")}
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };

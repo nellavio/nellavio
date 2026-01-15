@@ -2,6 +2,11 @@ import { forwardRef } from "react";
 
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { useSearchInput } from "./hooks/useSearchInput";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupAddon,
+} from "../../components/common/shadcn/input-group";
 
 interface SearchInputProps {
   closeOthers?: () => void;
@@ -29,21 +34,24 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
     return (
       <>
         <div
-          className="2xl:-ml-1 w-[15rem] h-[2.2rem] 1xl:h-[2.5rem] alternativeScrollbar hidden lg:block"
+          className="2xl:-ml-1 w-[17rem] alternativeScrollbar hidden lg:block"
           ref={ref}
         >
-          <div className="relative w-full h-full">
-            <input
-              type="text"
-              placeholder={searchPlaceholder}
-              value={searchText}
-              onChange={handleSearchChange}
-              onFocus={handleInputFocus}
-              className="z-30 pl-8 text-primaryText text-xs 1xl:text-sm pt-[0.1rem] bg-[rgb(255,255,255,0.01)] w-full h-full border border-mainBorder hover:border-mainBorderHover rounded-md placeholder:text-xs placeholder:1xl:text-sm"
-            />
-            <div className="absolute stroke-grayIcon fill-grayIcon top-[0.65rem] xl:top-[0.65rem] 2xl:top-[0.65rem] left-2">
-              <SearchIcon />
-            </div>
+          <div className="relative w-full">
+            <InputGroup className="h-[2.2rem] 1xl:h-[2.5rem]">
+              <InputGroupInput
+                variant="navbarSearch"
+                type="text"
+                placeholder={searchPlaceholder}
+                value={searchText}
+                onChange={handleSearchChange}
+                onFocus={handleInputFocus}
+                className="z-30 text-primaryText text-xs 1xl:text-sm placeholder:text-xs placeholder:1xl:text-sm"
+              />
+              <InputGroupAddon>
+                <SearchIcon />
+              </InputGroupAddon>
+            </InputGroup>
             {isOpen && (
               <div className="absolute top-full left-0 w-[200%] mt-1 bg-dropdownBg border border-inputBorder rounded-md shadow-md z-40 max-h-64 overflow-y-auto">
                 {filteredSections.length > 0 ? (

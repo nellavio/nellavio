@@ -24,10 +24,16 @@ import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
 import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
 import { FilterIcon } from "../../../assets/icons/FilterIcon";
 import { SortIcon } from "../../../assets/icons/SortIcon";
-import { CheckIcon } from "../../../assets/icons/CheckIcon";
 import { Badge } from "../../common/shadcn/badge";
-import { Dropdown } from "../../common/Dropdown";
-import { useDropdown } from "../../../hooks/useDropdown";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../common/shadcn/dropdown-menu";
 
 // Types for User Table
 type User = {
@@ -160,10 +166,6 @@ export const UserTable = () => {
   const [userRoleFilter, setUserRoleFilter] = React.useState<
     string | undefined
   >(undefined);
-
-  // Dropdown hooks for User Table
-  const sortDropdown = useDropdown();
-  const roleFilterDropdown = useDropdown();
 
   // User Table Columns
   const userColumns: ColumnDef<User>[] = [
@@ -322,139 +324,89 @@ export const UserTable = () => {
           {/* Sort and Filter Controls - Right */}
           <div className="flex gap-4">
             {/* Role Filter */}
-            <div className="relative inline-block" ref={roleFilterDropdown.ref}>
-              <Button
-                variant="outline"
-                className="h-[38px] py-2 px-4 text-sm"
-                onClick={roleFilterDropdown.toggle}
-              >
-                <div className="mr-2">
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="h-[38px] py-2 px-4 text-sm gap-2"
+                >
                   <FilterIcon />
-                </div>
-                Filter by role
-              </Button>
-              {roleFilterDropdown.isOpen && (
-                <Dropdown className="right-0 w-[12rem] top-[3.3rem]">
+                  Filter by role
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-44" align="end">
+                <DropdownMenuRadioGroup
+                  value={userRoleFilter || ""}
+                  onValueChange={(value) => setUserRoleFilter(value)}
+                >
                   {["Admin", "Editor", "Viewer"].map((role) => (
-                    <div
-                      key={role}
-                      className={`flex text-sm justify-between items-center cursor-pointer px-4 hover:bg-dropdownBgHover py-2 h-9 ${
-                        userRoleFilter === role && "bg-dropdownBgHover"
-                      }`}
-                      onClick={() => {
-                        setUserRoleFilter(role);
-                        roleFilterDropdown.close();
-                      }}
-                    >
+                    <DropdownMenuRadioItem key={role} value={role}>
                       {role}
-                      {userRoleFilter === role && (
-                        <div className="text-secondaryText flex items-center">
-                          <CheckIcon />
-                        </div>
-                      )}
-                    </div>
+                    </DropdownMenuRadioItem>
                   ))}
-                  <div
-                    className="px-4 py-2 text-sm cursor-pointer hover:bg-dropdownBgHover border-t border-mainBorder"
-                    onClick={() => {
-                      setUserRoleFilter(undefined);
-                      roleFilterDropdown.close();
-                    }}
-                  >
-                    Clear Filter
-                  </div>
-                </Dropdown>
-              )}
-            </div>
+                </DropdownMenuRadioGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => setUserRoleFilter(undefined)}>
+                  Clear Filter
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {/* Sort Dropdown */}
-            <div className="relative inline-block" ref={sortDropdown.ref}>
-              <Button
-                variant="outline"
-                className="h-[38px] py-2 px-4 text-sm"
-                onClick={sortDropdown.toggle}
-              >
-                <div className="mr-2">
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="h-[38px] py-2 px-4 text-sm gap-2"
+                >
                   <SortIcon />
-                </div>
-                Sort by
-              </Button>
-              {sortDropdown.isOpen && (
-                <Dropdown className="right-0 top-[3.3rem] min-w-[12.5rem]">
+                  Sort by
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-44" align="end">
+                <DropdownMenuRadioGroup
+                  value={userSorting[0]?.id || ""}
+                  onValueChange={(value) => {
+                    setUserSorting([
+                      { id: value, desc: userSorting[0]?.desc || false },
+                    ]);
+                  }}
+                >
                   {[
                     { value: "name", label: "Name" },
                     { value: "email", label: "Email" },
                     { value: "role", label: "Role" },
                     { value: "joinDate", label: "Join Date" },
                   ].map((option) => (
-                    <div
-                      key={option.value}
-                      className={`flex text-sm justify-between items-center cursor-pointer px-4 hover:bg-dropdownBgHover py-2 h-9 ${
-                        userSorting[0]?.id === option.value &&
-                        "bg-dropdownBgHover"
-                      }`}
-                      onClick={() => {
-                        setUserSorting([
-                          {
-                            id: option.value,
-                            desc: userSorting[0]?.desc || false,
-                          },
-                        ]);
-                        sortDropdown.close();
-                      }}
-                    >
+                    <DropdownMenuRadioItem key={option.value} value={option.value}>
                       {option.label}
-                      {userSorting[0]?.id === option.value && (
-                        <div className="text-secondaryText flex items-center">
-                          <CheckIcon />
-                        </div>
-                      )}
-                    </div>
+                    </DropdownMenuRadioItem>
                   ))}
-                  <div
-                    className="flex text-sm justify-between items-center px-4 py-2 h-9 hover:bg-dropdownBgHover cursor-pointer border-t border-mainBorder"
-                    onClick={() => {
-                      if (userSorting[0]) {
-                        setUserSorting([{ ...userSorting[0], desc: false }]);
-                      }
-                      sortDropdown.close();
-                    }}
-                  >
+                </DropdownMenuRadioGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                  value={userSorting[0]?.desc ? "desc" : "asc"}
+                  onValueChange={(value) => {
+                    if (userSorting[0]) {
+                      setUserSorting([
+                        { ...userSorting[0], desc: value === "desc" },
+                      ]);
+                    }
+                  }}
+                >
+                  <DropdownMenuRadioItem value="asc">
                     Ascending
-                    {userSorting[0] && !userSorting[0].desc && (
-                      <div className="text-secondaryText flex items-center">
-                        <CheckIcon />
-                      </div>
-                    )}
-                  </div>
-                  <div
-                    className="flex text-sm justify-between items-center px-4 py-2 h-9 hover:bg-dropdownBgHover cursor-pointer"
-                    onClick={() => {
-                      if (userSorting[0]) {
-                        setUserSorting([{ ...userSorting[0], desc: true }]);
-                      }
-                      sortDropdown.close();
-                    }}
-                  >
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="desc">
                     Descending
-                    {userSorting[0] && userSorting[0].desc && (
-                      <div className="text-secondaryText flex items-center">
-                        <CheckIcon />
-                      </div>
-                    )}
-                  </div>
-                  <div
-                    className="text-sm px-4 py-2 hover:bg-dropdownBgHover cursor-pointer"
-                    onClick={() => {
-                      setUserSorting([]);
-                      sortDropdown.close();
-                    }}
-                  >
-                    Clear Sorting
-                  </div>
-                </Dropdown>
-              )}
-            </div>
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => setUserSorting([])}>
+                  Clear Sorting
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
 

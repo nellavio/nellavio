@@ -12,6 +12,12 @@ import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "../../common/shadcn/tabs";
 
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "./types";
 import { useBackendTranslations } from "../../../hooks/useBackendTranslations";
@@ -85,13 +91,13 @@ export const RevenueOverTime = ({
 
   const { width: windowWidth } = useWindowDimensions();
 
-  const [timeRange, setTimeRange] = useState<"Monthly" | "Quarterly">(
-    "Monthly"
+  const [timeRange, setTimeRange] = useState<"monthly" | "quarterly">(
+    "monthly"
   );
 
   // Function to group monthly data into quarterly data
   const processDataByTimeRange = (data: typeof translatedData) => {
-    if (timeRange === "Monthly") {
+    if (timeRange === "monthly") {
       return data;
     }
 
@@ -155,28 +161,22 @@ export const RevenueOverTime = ({
           Track revenue changes over time
         </span>
       </div>
-      <div className="hidden xsm:flex items-center gap-1 bg-tabsBg rounded-lg p-1">
-        <button
-          onClick={() => setTimeRange("Monthly")}
-          className={`px-3 py-1 text-xs rounded-md transition-colors ${
-            timeRange === "Monthly"
-              ? "bg-revenueTabActiveBg text-primaryText"
-              : "text-secondaryText hover:text-primaryText"
-          }`}
-        >
-          Monthly
-        </button>
-        <button
-          onClick={() => setTimeRange("Quarterly")}
-          className={`px-3 py-1 text-xs rounded-md transition-colors ${
-            timeRange === "Quarterly"
-              ? "bg-revenueTabActiveBg text-primaryText"
-              : "text-secondaryText hover:text-primaryText"
-          }`}
-        >
-          Quarterly
-        </button>
-      </div>
+      <Tabs
+        value={timeRange}
+        onValueChange={(value) =>
+          setTimeRange(value as "monthly" | "quarterly")
+        }
+        className="hidden xsm:block"
+      >
+        <TabsList className="bg-tabsBg">
+          <TabsTrigger value="monthly" className="text-xs data-[state=active]:bg-revenueTabActiveBg">
+            Monthly
+          </TabsTrigger>
+          <TabsTrigger value="quarterly" className="text-xs data-[state=active]:bg-revenueTabActiveBg">
+            Quarterly
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
     </div>
   );
 
