@@ -8,7 +8,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -21,7 +20,7 @@ import {
   SelectValue,
 } from "../components/common/shadcn/select";
 import { Label } from "../components/common/shadcn/label";
-import { SettingsIcon } from "../assets/icons/SettingsIcon";
+import { Switch } from "../components/common/shadcn/switch";
 import { GithubIcon } from "../assets/icons/GithubIcon";
 import { useAppStore } from "../store/appStore";
 
@@ -47,7 +46,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
           width="20"
           height="16"
           rx="2"
-          className="fill-selectBg"
+          className="fill-settingsLayoutPreviewBg"
         />
         <rect
           x="27"
@@ -55,7 +54,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
           width="20"
           height="16"
           rx="2"
-          className="fill-selectBg"
+          className="fill-settingsLayoutPreviewBg"
         />
         <rect
           x="50"
@@ -63,7 +62,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
           width="20"
           height="16"
           rx="2"
-          className="fill-selectBg"
+          className="fill-settingsLayoutPreviewBg"
         />
 
         {/* Large chart - left side */}
@@ -73,7 +72,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
           width="66"
           height="52"
           rx="3"
-          className="fill-selectBg"
+          className="fill-settingsLayoutPreviewBg"
         />
 
         {/* Sidebar - full height on right (same width as four-cards) */}
@@ -83,7 +82,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
           width="35"
           height="72"
           rx="3"
-          className="fill-selectBg"
+          className="fill-settingsLayoutPreviewBg"
         />
       </svg>
     );
@@ -105,7 +104,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         width="25"
         height="18"
         rx="2"
-        className="fill-selectBg"
+        className="fill-settingsLayoutPreviewBg"
       />
       <rect
         x="32"
@@ -113,7 +112,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         width="25"
         height="18"
         rx="2"
-        className="fill-selectBg"
+        className="fill-settingsLayoutPreviewBg"
       />
       <rect
         x="60"
@@ -121,7 +120,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         width="25"
         height="18"
         rx="2"
-        className="fill-selectBg"
+        className="fill-settingsLayoutPreviewBg"
       />
       <rect
         x="88"
@@ -129,7 +128,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         width="25"
         height="18"
         rx="2"
-        className="fill-selectBg"
+        className="fill-settingsLayoutPreviewBg"
       />
 
       {/* Large chart */}
@@ -139,7 +138,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         width="72"
         height="50"
         rx="3"
-        className="fill-selectBg"
+        className="fill-settingsLayoutPreviewBg"
       />
 
       {/* Sidebar */}
@@ -149,7 +148,137 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
         width="35"
         height="50"
         rx="3"
-        className="fill-selectBg"
+        className="fill-settingsLayoutPreviewBg"
+      />
+    </svg>
+  );
+};
+
+const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
+  if (type === "expanded") {
+    return (
+      <svg
+        width="100%"
+        height="60"
+        viewBox="0 0 120 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="mx-auto"
+      >
+        {/* Expanded sidebar */}
+        <rect
+          x="4"
+          y="4"
+          width="28"
+          height="72"
+          rx="3"
+          className="fill-settingsLayoutPreviewBg"
+        />
+        {/* Menu items in sidebar */}
+        <rect
+          x="8"
+          y="12"
+          width="20"
+          height="4"
+          rx="1"
+          className="fill-mainColor opacity-60"
+        />
+        <rect
+          x="8"
+          y="20"
+          width="20"
+          height="4"
+          rx="1"
+          className="fill-settingsLayoutPreviewBg"
+        />
+        <rect
+          x="8"
+          y="28"
+          width="20"
+          height="4"
+          rx="1"
+          className="fill-settingsLayoutPreviewBg"
+        />
+        <rect
+          x="8"
+          y="36"
+          width="20"
+          height="4"
+          rx="1"
+          className="fill-settingsLayoutPreviewBg"
+        />
+        {/* Main content area */}
+        <rect
+          x="36"
+          y="4"
+          width="80"
+          height="72"
+          rx="3"
+          className="fill-settingsLayoutPreviewBg"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg
+      width="100%"
+      height="60"
+      viewBox="0 0 120 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="mx-auto"
+    >
+      {/* Collapsed sidebar */}
+      <rect
+        x="4"
+        y="4"
+        width="12"
+        height="72"
+        rx="3"
+        className="fill-settingsLayoutPreviewBg"
+      />
+      {/* Icon placeholders in collapsed sidebar */}
+      <rect
+        x="6"
+        y="12"
+        width="8"
+        height="8"
+        rx="2"
+        className="fill-mainColor opacity-60"
+      />
+      <rect
+        x="6"
+        y="24"
+        width="8"
+        height="8"
+        rx="2"
+        className="fill-settingsLayoutPreviewBg"
+      />
+      <rect
+        x="6"
+        y="36"
+        width="8"
+        height="8"
+        rx="2"
+        className="fill-settingsLayoutPreviewBg"
+      />
+      <rect
+        x="6"
+        y="48"
+        width="8"
+        height="8"
+        rx="2"
+        className="fill-settingsLayoutPreviewBg"
+      />
+      {/* Main content area - larger */}
+      <rect
+        x="20"
+        y="4"
+        width="96"
+        height="72"
+        rx="3"
+        className="fill-settingsLayoutPreviewBg"
       />
     </svg>
   );
@@ -159,6 +288,18 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
   const { theme, setTheme } = useTheme();
   const homepageLayout = useAppStore((state) => state.homepageLayout);
   const setHomepageLayout = useAppStore((state) => state.setHomepageLayout);
+  const fontType = useAppStore((state) => state.fontType);
+  const setFontType = useAppStore((state) => state.setFontType);
+  const sidebarDefaultState = useAppStore((state) => state.sidebarDefaultState);
+  const setSidebarDefaultState = useAppStore(
+    (state) => state.setSidebarDefaultState
+  );
+  const chartAnimationsEnabled = useAppStore(
+    (state) => state.chartAnimationsEnabled
+  );
+  const setChartAnimationsEnabled = useAppStore(
+    (state) => state.setChartAnimationsEnabled
+  );
   const [open, setOpen] = useState(false);
 
   return (
@@ -211,7 +352,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
             </div>
 
             {/* Homepage Layout Section */}
-            <div className="px-6 py-5">
+            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="mb-1">
                 <Label className="text-xs font-medium tracking-wide uppercase text-settingsDrawerSectionTitle">
                   Homepage Layout
@@ -270,6 +411,116 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                     Four Cards
                   </span>
                   {homepageLayout === "four-cards" && (
+                    <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
+                      <svg
+                        width="12"
+                        height="9"
+                        viewBox="0 0 12 9"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 4.5L4.5 8L11 1"
+                          stroke="white"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Alternative Font Section */}
+            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-medium text-primaryText">
+                  Alternative font
+                </Label>
+                <Switch
+                  checked={fontType === "alternative"}
+                  onCheckedChange={(checked) =>
+                    setFontType(checked ? "alternative" : "default")
+                  }
+                />
+              </div>
+            </div>
+
+            {/* Chart Animations Section */}
+            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-medium text-primaryText">
+                  Chart animations
+                </Label>
+                <Switch
+                  checked={chartAnimationsEnabled}
+                  onCheckedChange={setChartAnimationsEnabled}
+                />
+              </div>
+            </div>
+
+            {/* Sidebar Mode Section */}
+            <div className="px-6 py-5">
+              <div className="mb-1">
+                <Label className="text-xs font-medium tracking-wide uppercase text-settingsDrawerSectionTitle">
+                  Sidebar Mode
+                </Label>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mt-4">
+                {/* Expanded Option */}
+                <button
+                  onClick={() => setSidebarDefaultState("expanded")}
+                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                    sidebarDefaultState === "expanded"
+                      ? "border-mainColor bg-primaryBg"
+                      : "border-settingsButtonBorder bg-primaryBg hover:border-mainBorderHover"
+                  }`}
+                >
+                  <div className="w-full flex justify-center">
+                    <SidebarPreview type="expanded" />
+                  </div>
+                  <span className="text-sm font-medium text-settingsDrawerLabelText">
+                    Expanded
+                  </span>
+                  {sidebarDefaultState === "expanded" && (
+                    <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
+                      <svg
+                        width="12"
+                        height="9"
+                        viewBox="0 0 12 9"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 4.5L4.5 8L11 1"
+                          stroke="white"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </button>
+
+                {/* Collapsed Option */}
+                <button
+                  onClick={() => setSidebarDefaultState("collapsed")}
+                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                    sidebarDefaultState === "collapsed"
+                      ? "border-mainColor bg-primaryBg"
+                      : "border-settingsButtonBorder bg-primaryBg hover:border-mainBorderHover"
+                  }`}
+                >
+                  <div className="w-full flex justify-center">
+                    <SidebarPreview type="collapsed" />
+                  </div>
+                  <span className="text-sm font-medium text-settingsDrawerLabelText">
+                    Collapsed
+                  </span>
+                  {sidebarDefaultState === "collapsed" && (
                     <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
                       <svg
                         width="12"

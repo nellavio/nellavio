@@ -25,6 +25,7 @@ import { Progress } from "../../common/shadcn/progress";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const TotalProfitTooltip = ({
   active,
@@ -70,6 +71,7 @@ export const TotalProfit = ({
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   return (
     <Card
@@ -143,7 +145,10 @@ export const TotalProfit = ({
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorSales)"
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </AreaChart>
         </ResponsiveContainer>

@@ -26,6 +26,7 @@ import {
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface TodaySalesTooltipProps {
   active?: boolean;
@@ -93,6 +94,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   return (
     <Card
@@ -168,7 +170,10 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                   stroke={chartColors.primary.fill}
                   strokeWidth={2}
                   dot={false}
-                  isAnimationActive={false}
+                  isAnimationActive={shouldAnimate}
+                  animationBegin={animationBegin}
+                  animationDuration={800}
+                  animationEasing="ease-out"
                 />
                 <Line
                   type="monotone"
@@ -176,7 +181,10 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                   stroke={chartColors.secondary.fill}
                   strokeWidth={2}
                   dot={false}
-                  isAnimationActive={false}
+                  isAnimationActive={shouldAnimate}
+                  animationBegin={animationBegin}
+                  animationDuration={800}
+                  animationEasing="ease-out"
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -229,7 +237,10 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                   stroke={chartColors.primary.fill}
                   strokeWidth={2}
                   dot={false}
-                  isAnimationActive={false}
+                  isAnimationActive={shouldAnimate}
+                  animationBegin={animationBegin}
+                  animationDuration={800}
+                  animationEasing="ease-out"
                 />
                 <Line
                   type="monotone"
@@ -237,7 +248,10 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                   stroke={chartColors.secondary.fill}
                   strokeWidth={2}
                   dot={false}
-                  isAnimationActive={false}
+                  isAnimationActive={shouldAnimate}
+                  animationBegin={animationBegin}
+                  animationDuration={800}
+                  animationEasing="ease-out"
                 />
               </LineChart>
             </ResponsiveContainer>

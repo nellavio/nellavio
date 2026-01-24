@@ -21,6 +21,7 @@ import { DocumentIcon } from "../../../assets/icons/DocumentIcon";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { WeeklyPerformanceProps, WeeklyActivity } from "./types";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface TooltipPayload {
   dataKey: string;
@@ -89,6 +90,7 @@ const WeeklyPerformanceChart = ({
   const { width: windowWidth } = useWindowDimensions();
   const { theme, systemTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   // Limit data to 5 bars in specific ranges
   const getDisplayData = () => {
@@ -158,7 +160,10 @@ const WeeklyPerformanceChart = ({
               }
               radius={[0, 0, 0, 0]}
               barSize={25}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey="profit"
@@ -166,7 +171,10 @@ const WeeklyPerformanceChart = ({
               fill="rgb(83, 133, 198)"
               radius={[4, 4, 0, 0]}
               barSize={25}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

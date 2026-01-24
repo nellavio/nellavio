@@ -7,18 +7,30 @@ import { useTheme } from "next-themes";
 import { Navbar } from "./navbar/Navbar";
 import { SideMenu } from "./sideMenu/SideMenu";
 import { useAppStore } from "../store/appStore";
-import { FullScreenLoader } from "./FullScreenLoader";
+import {
+  FullScreenLoader,
+  LOADER_DURATION_MS,
+} from "./FullScreenLoader";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { SettingsIcon } from "../assets/icons/SettingsIcon";
+import { FontManager } from "../hooks/useFontManager";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-  const { isMobileMenuOpen, toggleMobileMenu } = useAppStore();
+  const {
+    isMobileMenuOpen,
+    toggleMobileMenu,
+    setIsInitialLoad,
+    setShouldStartChartAnimations,
+  } = useAppStore();
   const [showLoader, setShowLoader] = useState(true);
   const loaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const animationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
   const loaderInitializedRef = useRef(false);
 
   const currentPathname = usePathname();
@@ -42,24 +54,35 @@ export const Layout = ({ children }: LayoutProps) => {
   }, [setTheme, themes]);
 
   // Show loader screen for 1 second on first render
+  // Start chart animations at 80% of loader duration
   useEffect(() => {
     if (!loaderInitializedRef.current) {
       loaderInitializedRef.current = true;
 
+      // Start chart animations at 80% of loader duration
+      animationTimeoutRef.current = setTimeout(() => {
+        setShouldStartChartAnimations(true);
+      }, LOADER_DURATION_MS * 0.8);
+
       loaderTimeoutRef.current = setTimeout(() => {
         setShowLoader(false);
-      }, 1000);
+        setIsInitialLoad(false);
+      }, LOADER_DURATION_MS);
     }
 
     return () => {
       if (loaderTimeoutRef.current) {
         clearTimeout(loaderTimeoutRef.current);
       }
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+      }
     };
   }, []);
 
   return (
     <>
+      <FontManager />
       {/* Fixed Settings Button - Desktop Only */}
       {!pathsWithNoLayout.includes(currentPathname) && (
         <div className="hidden xl:block fixed bottom-6 right-6 z-50">

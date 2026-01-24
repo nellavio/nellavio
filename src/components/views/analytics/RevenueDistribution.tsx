@@ -19,6 +19,7 @@ import {
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useTheme } from "next-themes";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const RevenueDistributionTooltip = ({
   active,
@@ -80,6 +81,8 @@ export const RevenueDistribution = ({
 
   const chartColors = useChartColors(theme as "dark" | "light");
 
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+
   // RevenueDistribution has unique color scheme:
   // Dark mode: inStore=blue, online=gray
   // Light mode: inStore=blue, online=teal
@@ -132,7 +135,10 @@ export const RevenueDistribution = ({
               fill={inStoreColor}
               radius={[0, 4, 4, 0]}
               barSize={30}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey="online"
@@ -141,7 +147,10 @@ export const RevenueDistribution = ({
               fill={onlineColor}
               radius={[0, 4, 4, 0]}
               barSize={30}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

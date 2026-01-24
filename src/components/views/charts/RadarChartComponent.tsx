@@ -14,6 +14,7 @@ import { useTheme } from "next-themes";
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   subject: string;
@@ -53,6 +54,7 @@ const RadarTooltip = ({ active, payload, label }: RadarTooltipProps) => {
 export const RadarChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { subject: "Quality", productA: 70, productB: 95, fullMark: 100 },
@@ -99,6 +101,10 @@ export const RadarChartComponent = () => {
               fill={chartColors.primary.fill}
               fillOpacity={0.5}
               strokeWidth={2}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Radar
               name="Product B"
@@ -107,6 +113,10 @@ export const RadarChartComponent = () => {
               fill={chartColors.secondary.fill}
               fillOpacity={0.5}
               strokeWidth={2}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Tooltip content={<RadarTooltip />} />
           </RadarChart>

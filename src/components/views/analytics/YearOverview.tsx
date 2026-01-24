@@ -22,6 +22,7 @@ import {
 } from "./types";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const YearOverviewTooltip = ({
   active,
@@ -129,6 +130,8 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
 
   const { width: windowWidth } = useWindowDimensions();
 
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+
   return (
     <Card className="h-full" id="yearOverview" title={t("title")}>
       <div className="flex gap-8 pt-4">
@@ -210,7 +213,10 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorPhones)"
-                isAnimationActive={false}
+                isAnimationActive={shouldAnimate}
+                animationBegin={animationBegin}
+                animationDuration={800}
+                animationEasing="ease-out"
               />
               <Area
                 name="laptops"
@@ -220,7 +226,10 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorLaptops)"
-                isAnimationActive={false}
+                isAnimationActive={shouldAnimate}
+                animationBegin={animationBegin}
+                animationDuration={800}
+                animationEasing="ease-out"
               />
             </AreaChart>
           </ResponsiveContainer>

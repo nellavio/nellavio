@@ -17,6 +17,7 @@ import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   month: string;
@@ -93,6 +94,7 @@ export const ComposedChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { month: "Jan", revenue: 45000, profit: 13500, margin: 30 },
@@ -160,6 +162,10 @@ export const ComposedChartComponent = () => {
               fill={chartColors.primary.fill}
               name="Revenue"
               radius={[8, 8, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               yAxisId="left"
@@ -167,6 +173,10 @@ export const ComposedChartComponent = () => {
               fill={chartColors.secondary.fill}
               name="Profit"
               radius={[8, 8, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Line
               yAxisId="right"
@@ -176,6 +186,10 @@ export const ComposedChartComponent = () => {
               strokeWidth={3}
               name="Margin %"
               dot={{ r: 5, fill: "rgb(168, 162, 255)", strokeWidth: 2 }}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </ComposedChart>
         </ResponsiveContainer>

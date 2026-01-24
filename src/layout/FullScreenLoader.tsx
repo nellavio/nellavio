@@ -1,5 +1,8 @@
 import React, { memo } from "react";
 
+export const LOADER_DURATION_MS = 1000;
+export const CHART_ANIMATION_DELAY_MS = 600;
+
 /**
  * Full-screen loading overlay with animated spinner.
  * Displays three animated circles in a fixed overlay covering entire viewport.

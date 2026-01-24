@@ -15,6 +15,7 @@ import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   week: string;
@@ -90,6 +91,7 @@ export const TwoAxisLineChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { week: "Week 1", customers: 1240, avgOrderValue: 85 },
@@ -156,6 +158,10 @@ export const TwoAxisLineChartComponent = () => {
               name="New Customers"
               dot={{ r: 5 }}
               activeDot={{ r: 7 }}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Line
               yAxisId="right"
@@ -166,6 +172,10 @@ export const TwoAxisLineChartComponent = () => {
               name="Avg Order Value"
               dot={{ r: 5, fill: chartColors.secondary.fill }}
               activeDot={{ r: 7 }}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </LineChart>
         </ResponsiveContainer>

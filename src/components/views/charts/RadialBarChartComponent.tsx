@@ -12,6 +12,7 @@ import { useTheme } from "next-themes";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   name: string;
@@ -44,6 +45,7 @@ const RadialTooltip = ({ active, payload }: RadialTooltipProps) => {
 export const RadialBarChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     {
@@ -94,6 +96,10 @@ export const RadialBarChartComponent = () => {
               label={{ position: "insideStart", fill: "#fff" }}
               background={{ fill: "rgba(255,255,255,0.05)" }}
               dataKey="value"
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Legend
               iconSize={10}

@@ -15,6 +15,7 @@ import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { MarketMetricsProps, MarketMetricsTooltipProps } from "./types";
 import { useChartColors } from "../../../hooks/useChartColors";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const MarketMetricsTooltip = ({
   active,
@@ -103,6 +104,8 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
 
   const chartColors = useChartColors(theme as "dark" | "light");
 
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+
   return (
     <Card
       className="hidden lg:block h-full"
@@ -130,7 +133,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             />
             <Tooltip
               content={<MarketMetricsTooltip />}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
             />
             <Radar
               name="profitMargin"
@@ -138,7 +141,10 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
               stroke={chartColors.secondary.inverted}
               fill={chartColors.secondary.inverted}
               fillOpacity={0.3}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Radar
               name="salesVolume"
@@ -146,7 +152,10 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
               stroke={chartColors.primary.inverted}
               fill={chartColors.primary.inverted}
               fillOpacity={0.3}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Legend
               verticalAlign="top"

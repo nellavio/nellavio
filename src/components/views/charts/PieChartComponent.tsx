@@ -13,6 +13,7 @@ import { useTheme } from "next-themes";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   name: string;
@@ -77,6 +78,7 @@ const PieCustomLegend = ({ payload }: PieLegendProps) => {
 export const PieChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { name: "Electronics", value: 245000, percentage: 35 },
@@ -122,6 +124,10 @@ export const PieChartComponent = () => {
               dataKey="value"
               stroke="none"
               strokeWidth={0}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             >
               {chartdata.map((entry, index) => (
                 <Cell

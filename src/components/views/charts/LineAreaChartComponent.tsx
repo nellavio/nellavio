@@ -18,6 +18,7 @@ import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   month: string;
@@ -66,6 +67,7 @@ export const LineAreaChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { month: "Jan", orders: 3200, returns: 180 },
@@ -152,6 +154,10 @@ export const LineAreaChartComponent = () => {
               strokeWidth={2}
               fill="url(#colorOrders)"
               name="Orders"
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Area
               type="monotone"
@@ -160,6 +166,10 @@ export const LineAreaChartComponent = () => {
               strokeWidth={2}
               fill="url(#colorReturns)"
               name="Returns"
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </AreaChart>
         </ResponsiveContainer>

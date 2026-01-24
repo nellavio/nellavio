@@ -8,6 +8,7 @@ import { AssetPerformanceProps } from "./types";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface AssetTooltipProps {
   active?: boolean;
@@ -42,6 +43,7 @@ export const AssetPerformance = ({
   const t = useTranslations("analytics.assetPerformance");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   const COLORS = [
     chartColors.primary.fill,
@@ -95,6 +97,10 @@ export const AssetPerformance = ({
                   dataKey="sales"
                   stroke="none"
                   strokeWidth={0}
+                  isAnimationActive={shouldAnimate}
+                  animationBegin={animationBegin}
+                  animationDuration={800}
+                  animationEasing="ease-out"
                 >
                   {assetPerformanceData.map((entry, index) => (
                     <Cell

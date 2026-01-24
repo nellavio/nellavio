@@ -22,6 +22,7 @@ import {
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const BestSellingCustomLegend = ({
   payload,
@@ -104,6 +105,8 @@ export const BestSellingProducts = ({
 
   const { width: windowWidth } = useWindowDimensions();
 
+  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+
   const getBarSize = () => {
     if (windowWidth > 1400) return 25;
     if (windowWidth > 1024) return 20;
@@ -162,14 +165,20 @@ export const BestSellingProducts = ({
               fill={chartColors.secondary.fill}
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey={t("revenueFromLastWeek")}
               fill={chartColors.primary.fill}
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

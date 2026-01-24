@@ -13,11 +13,10 @@ import {
 } from "../../components/common/shadcn/tooltip";
 import { useIsFirstRender } from "../../hooks/useIsFirstRender";
 import { MenuItemProps } from "./types";
-import { outfit } from "../../styles/fonts";
 
 export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
   const toggleMobileMenu = useAppStore((state) => state.toggleMobileMenu);
-  const { isSideMenuOpen } = useAppStore();
+  const isSideMenuOpen = useAppStore((state) => state.isSideMenuOpen);
   const currentPathname = usePathname();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [isActive, setIsActive] = useState(false);
@@ -49,61 +48,44 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
   const isFirstRender = useIsFirstRender();
   if (isFirstRender) return null;
 
+  const isCollapsed = !isSideMenuOpen && isDesktop;
+
   return (
     <Tooltip delayDuration={200}>
       <TooltipTrigger asChild>
-        <Link
-          href={path}
-          className={`${
-            !isSideMenuOpen || !isDesktop
-              ? "flex flex-col justify-center w-full py-0 items-center"
-              : ""
-          }`}
-        >
+        <Link href={path}>
           <div
             onClick={handleMenuItemClick}
-            className={`
-             flex relative rounded-md items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem]  pl-4 mb-[1px] 1xl:mb-1 3xl:mb-2 w-full pr-2  transition ${
-               isActive
-                 ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover hover:bg-navItemActiveBgHover border-l-2 border-transparent"
-                 : "bg-navItemBg hover:bg-navItemBgHover hover:bg-navItemBgHover border-l-2 border-transparent"
-             }
-             ${
-               !isSideMenuOpen &&
-               isDesktop &&
-               "!pl-1 pl-8  justify-center items-center !w-10 rounded-full"
-             }
-            `}
+            className={`flex relative rounded-[6px] items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-[1px] 1xl:mb-1 3xl:mb-2 transition-all duration-200 ${
+              isCollapsed ? "ml-[0.75rem] mr-[0.85rem] pl-[0.6rem]" : "w-full pl-4 pr-2"
+            } ${
+              isActive
+                ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover border-l-2 border-transparent"
+                : "bg-navItemBg hover:bg-navItemBgHover border-l-2 border-transparent"
+            }`}
           >
             <div
               className={`menuItemIcon pr-3 ${
                 isActive
-                  ? "stroke-mainColor fill-mainColor text-mainColor text-mainColor"
-                  : "stroke-grayIcon fill-grayIcon text-grayIcon text-grayIcon"
-              }
-            ${!isSideMenuOpen && isDesktop && "pl-4"}
-             `}
+                  ? "stroke-mainColor fill-mainColor text-mainColor"
+                  : "stroke-grayIcon fill-grayIcon text-grayIcon"
+              }`}
             >
               {icon}
             </div>
-            {(isSideMenuOpen || !isDesktop) && (
-              <div
-                className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide ${
-                  outfit.className
-                }  ${
-                  isActive
-                    ? "text-navItemTextActive text-navItemTextActive"
-                    : "text-navItemText text-navItemText"
-                }
-              `}
-              >
-                {title}
-              </div>
-            )}
+            <div
+              className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide whitespace-nowrap overflow-hidden transition-all duration-200 ${
+                isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"
+              } ${
+                isActive ? "text-navItemTextActive" : "text-navItemText"
+              }`}
+            >
+              {title}
+            </div>
           </div>
         </Link>
       </TooltipTrigger>
-      {!isSideMenuOpen && (
+      {isCollapsed && (
         <TooltipContent side="right" alignOffset={3} sideOffset={-3} className="hidden xl:block">
           {title}
         </TooltipContent>

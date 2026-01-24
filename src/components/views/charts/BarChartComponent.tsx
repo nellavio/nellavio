@@ -17,6 +17,7 @@ import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface TooltipPayload {
   dataKey: string;
@@ -85,6 +86,7 @@ export const BarChartComponent = () => {
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const t = useTranslations("singleCharts.bars");
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const barChartData = [
     {
@@ -187,31 +189,55 @@ export const BarChartComponent = () => {
               dataKey={t("widgets")}
               fill={barColors[0]}
               radius={[4, 4, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey={t("gadgets")}
               fill={barColors[1]}
               radius={[4, 4, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey={t("modules")}
               fill={barColors[2]}
               radius={[4, 4, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey={t("components")}
               fill={barColors[3]}
               radius={[4, 4, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey={t("kits")}
               fill={barColors[4]}
               radius={[4, 4, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey={t("accessories")}
               fill={barColors[5]}
               radius={[4, 4, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

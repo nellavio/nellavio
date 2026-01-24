@@ -131,6 +131,7 @@
   --color-settingsDrawerSectionTitle: rgb(0, 0, 0, 0.5);
   --color-settingsButtonBgHover: rgb(242, 242, 247);
   --color-settingsButtonBorder: rgb(0, 0, 0, 0.18);
+  --color-settingsLayoutPreviewBg: rgb(0, 0, 0, 0.12);
 
   /* Line Tabs */
   --color-tabLineActiveBorder: rgb(37, 99, 235);

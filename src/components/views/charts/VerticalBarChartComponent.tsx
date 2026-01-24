@@ -16,6 +16,7 @@ import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   category: string;
@@ -80,6 +81,7 @@ export const VerticalBarChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { category: "Fashion", sales: 45000 },
@@ -134,6 +136,10 @@ export const VerticalBarChartComponent = () => {
               name="Sales"
               radius={[8, 8, 0, 0]}
               fill={chartColors.primary.fill}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             >
               {chartdata.map((entry, index) => (
                 <Cell

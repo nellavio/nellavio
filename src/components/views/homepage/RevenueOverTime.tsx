@@ -25,6 +25,8 @@ import { useTranslateData } from "../../../hooks/useTranslateData";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useAppStore } from "../../../store/appStore";
 
 const RevenueOverTimeTooltip = ({
   active,
@@ -90,6 +92,11 @@ export const RevenueOverTime = ({
   const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
+
+  const shouldStartChartAnimations = useAppStore(
+    (state) => state.shouldStartChartAnimations
+  );
+  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const [timeRange, setTimeRange] = useState<"monthly" | "quarterly">(
     "monthly"
@@ -169,10 +176,16 @@ export const RevenueOverTime = ({
         className="hidden xsm:block"
       >
         <TabsList className="bg-tabsBg">
-          <TabsTrigger value="monthly" className="text-xs data-[state=active]:bg-revenueTabActiveBg">
+          <TabsTrigger
+            value="monthly"
+            className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+          >
             Monthly
           </TabsTrigger>
-          <TabsTrigger value="quarterly" className="text-xs data-[state=active]:bg-revenueTabActiveBg">
+          <TabsTrigger
+            value="quarterly"
+            className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+          >
             Quarterly
           </TabsTrigger>
         </TabsList>
@@ -191,10 +204,12 @@ export const RevenueOverTime = ({
         <ResponsiveContainer
           width="100%"
           height="100%"
+          minWidth={320}
+          minHeight={200}
           initialDimension={{ width: 320, height: 200 }}
         >
           <AreaChart
-            data={displayData}
+            data={shouldStartChartAnimations ? displayData : []}
             margin={{
               top: 10,
               right: windowWidth > 700 ? 30 : 10,
@@ -257,7 +272,10 @@ export const RevenueOverTime = ({
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorWebsite)"
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Area
               type="linear"
@@ -267,7 +285,10 @@ export const RevenueOverTime = ({
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorInStore)"
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </AreaChart>
         </ResponsiveContainer>

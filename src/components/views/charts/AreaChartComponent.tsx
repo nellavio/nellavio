@@ -17,6 +17,7 @@ import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface TooltipPayload {
   dataKey: string;
@@ -99,6 +100,7 @@ export const AreaChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const t = useTranslations("singleCharts.area");
 
@@ -206,7 +208,7 @@ export const AreaChartComponent = () => {
             />
             <Tooltip
               content={<AreaTooltip />}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
               cursor={{ fill: "rgba(255,255,255,0.05)" }}
             />
             <Legend
@@ -222,7 +224,10 @@ export const AreaChartComponent = () => {
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorViews)"
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Area
               type="linear"
@@ -232,7 +237,10 @@ export const AreaChartComponent = () => {
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorUniqueVisitors)"
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </AreaChart>
         </ResponsiveContainer>

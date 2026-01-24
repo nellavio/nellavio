@@ -17,6 +17,7 @@ import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface LineChartTooltipProps {
   active?: boolean;
@@ -81,6 +82,7 @@ export const LineChartComponent = () => {
   const { width: windowWidth } = useWindowDimensions();
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const dragonPopulationInWesteros = [
     {
@@ -174,7 +176,10 @@ export const LineChartComponent = () => {
               stroke={chartColors.primary.fill}
               strokeWidth={2}
               dot={true}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Line
               type="monotone"
@@ -182,7 +187,10 @@ export const LineChartComponent = () => {
               stroke="rgb(148, 163, 184)"
               strokeWidth={2}
               dot={true}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </LineChart>
         </ResponsiveContainer>

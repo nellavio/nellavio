@@ -1,8 +1,16 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+import type { FontType } from "../styles/fonts";
+
+export type SidebarDefaultState = "expanded" | "collapsed";
+
+export type ChartPageId = "homepage" | "analytics" | "charts";
 
 interface AppStore {
   isMobileMenuOpen: boolean;
   isSideMenuOpen: boolean;
+  setIsSideMenuOpen: (isOpen: boolean) => void;
   toggleMobileMenu: () => void;
   toggleSideMenu: () => void;
   isLoggingOut: boolean;
@@ -11,6 +19,18 @@ interface AppStore {
   setIsLoggingIn: (isLoggingIn: boolean) => void;
   homepageLayout: "three-cards" | "four-cards";
   setHomepageLayout: (layout: "three-cards" | "four-cards") => void;
+  fontType: FontType;
+  setFontType: (fontType: FontType) => void;
+  sidebarDefaultState: SidebarDefaultState;
+  setSidebarDefaultState: (state: SidebarDefaultState) => void;
+  chartAnimationsEnabled: boolean;
+  setChartAnimationsEnabled: (enabled: boolean) => void;
+  isInitialLoad: boolean;
+  setIsInitialLoad: (isInitialLoad: boolean) => void;
+  shouldStartChartAnimations: boolean;
+  setShouldStartChartAnimations: (shouldStart: boolean) => void;
+  visitedChartPages: Set<ChartPageId>;
+  markChartPageAsVisited: (pageId: ChartPageId) => void;
 }
 
 const determineInitialState = () => {
@@ -26,29 +46,64 @@ const determineInitialState = () => {
   };
 };
 
-export const useAppStore = create<AppStore>((set) => ({
-  isMobileMenuOpen: false,
-  isSideMenuOpen: true,
-  toggleMobileMenu: () => {
-    set((state: AppStore) => ({
-      ...state,
-      isMobileMenuOpen: state.isMobileMenuOpen
-        ? false
-        : determineInitialState().isMobileMenuOpen,
-    }));
-  },
-  toggleSideMenu: () => {
-    set((state: AppStore) => ({
-      ...state,
-      isSideMenuOpen: state.isSideMenuOpen
-        ? false
-        : determineInitialState().isSideMenuOpen,
-    }));
-  },
-  isLoggingOut: false,
-  setIsLoggingOut: (isLoggingOut) => set(() => ({ isLoggingOut })),
-  isLoggingIn: false,
-  setIsLoggingIn: (isLoggingIn) => set(() => ({ isLoggingIn })),
-  homepageLayout: "three-cards",
-  setHomepageLayout: (layout) => set(() => ({ homepageLayout: layout })),
-}));
+export const useAppStore = create<AppStore>()(
+  persist(
+    (set) => ({
+      isMobileMenuOpen: false,
+      isSideMenuOpen: true,
+      setIsSideMenuOpen: (isOpen) => set(() => ({ isSideMenuOpen: isOpen })),
+      toggleMobileMenu: () => {
+        set((state: AppStore) => ({
+          ...state,
+          isMobileMenuOpen: state.isMobileMenuOpen
+            ? false
+            : determineInitialState().isMobileMenuOpen,
+        }));
+      },
+      toggleSideMenu: () => {
+        set((state: AppStore) => ({
+          ...state,
+          isSideMenuOpen: state.isSideMenuOpen
+            ? false
+            : determineInitialState().isSideMenuOpen,
+        }));
+      },
+      isLoggingOut: false,
+      setIsLoggingOut: (isLoggingOut) => set(() => ({ isLoggingOut })),
+      isLoggingIn: false,
+      setIsLoggingIn: (isLoggingIn) => set(() => ({ isLoggingIn })),
+      homepageLayout: "three-cards",
+      setHomepageLayout: (layout) => set(() => ({ homepageLayout: layout })),
+      fontType: "default",
+      setFontType: (fontType) => set(() => ({ fontType })),
+      sidebarDefaultState: "expanded",
+      setSidebarDefaultState: (sidebarDefaultState) =>
+        set(() => ({
+          sidebarDefaultState,
+          isSideMenuOpen: sidebarDefaultState === "expanded",
+        })),
+      chartAnimationsEnabled: false,
+      setChartAnimationsEnabled: (chartAnimationsEnabled) =>
+        set(() => ({ chartAnimationsEnabled })),
+      isInitialLoad: true,
+      setIsInitialLoad: (isInitialLoad) => set(() => ({ isInitialLoad })),
+      shouldStartChartAnimations: false,
+      setShouldStartChartAnimations: (shouldStartChartAnimations) =>
+        set(() => ({ shouldStartChartAnimations })),
+      visitedChartPages: new Set<ChartPageId>(),
+      markChartPageAsVisited: (pageId: ChartPageId) =>
+        set((state) => ({
+          visitedChartPages: new Set(state.visitedChartPages).add(pageId),
+        })),
+    }),
+    {
+      name: "app-settings",
+      partialize: (state) => ({
+        homepageLayout: state.homepageLayout,
+        fontType: state.fontType,
+        sidebarDefaultState: state.sidebarDefaultState,
+        chartAnimationsEnabled: state.chartAnimationsEnabled,
+      }),
+    }
+  )
+);

@@ -16,6 +16,7 @@ import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   day: string;
@@ -100,6 +101,7 @@ export const StackedBarChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { day: "Mon", desktop: 4200, mobile: 2800, tablet: 1200 },
@@ -164,6 +166,10 @@ export const StackedBarChartComponent = () => {
               fill={chartColors.primary.fill}
               name="Desktop"
               radius={[0, 0, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey="mobile"
@@ -171,6 +177,10 @@ export const StackedBarChartComponent = () => {
               fill={chartColors.secondary.fill}
               name="Mobile"
               radius={[0, 0, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey="tablet"
@@ -178,6 +188,10 @@ export const StackedBarChartComponent = () => {
               fill="rgb(168, 162, 255)"
               name="Tablet"
               radius={[8, 8, 0, 0]}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

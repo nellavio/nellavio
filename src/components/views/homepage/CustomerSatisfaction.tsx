@@ -20,6 +20,7 @@ import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface CustomerScatterTooltipProps {
   active?: boolean;
@@ -83,6 +84,7 @@ export const CustomerSatisfaction = ({
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   return (
     <Card
@@ -139,6 +141,10 @@ export const CustomerSatisfaction = ({
               data={translatedData}
               fill={chartColors.primary.fill}
               fillOpacity={0.8}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             >
               {translatedData.map((entry: any, index: number) => (
                 <Cell

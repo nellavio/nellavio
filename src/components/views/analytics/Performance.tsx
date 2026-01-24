@@ -22,6 +22,7 @@ import {
 } from "./types";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const PerformanceTooltip = ({
   active,
@@ -106,6 +107,8 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
 
   const { width: windowWidth } = useWindowDimensions();
 
+  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+
   const getBarSize = () => {
     if (windowWidth > 1180) return 24;
     if (windowWidth > 720) return 18;
@@ -154,7 +157,7 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
             />
             <Tooltip
               content={<PerformanceTooltip />}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
               cursor={{ fill: "rgba(255,255,255,0.05)" }}
             />
             <Legend
@@ -169,7 +172,10 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               minPointSize={5}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey="profit"
@@ -178,7 +184,10 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               minPointSize={5}
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>

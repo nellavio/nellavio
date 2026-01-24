@@ -16,6 +16,7 @@ import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   month: string;
@@ -97,6 +98,7 @@ export const MixedLineChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { month: "Jan", organic: 3400, paid: 1200, referral: 800 },
@@ -158,6 +160,10 @@ export const MixedLineChartComponent = () => {
               name="Organic"
               dot={{ r: 4 }}
               activeDot={{ r: 6 }}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Line
               type="monotone"
@@ -167,6 +173,10 @@ export const MixedLineChartComponent = () => {
               name="Paid Ads"
               dot={{ r: 4, fill: chartColors.secondary.fill }}
               activeDot={{ r: 6 }}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
             <Line
               type="monotone"
@@ -176,6 +186,10 @@ export const MixedLineChartComponent = () => {
               name="Referral"
               dot={{ r: 4, fill: "rgb(168, 162, 255)" }}
               activeDot={{ r: 6 }}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             />
           </LineChart>
         </ResponsiveContainer>

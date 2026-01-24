@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from "../../common/shadcn/tooltip";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 export const ThreeSmallCards = ({
   threeSmallCardsData,
@@ -20,6 +21,7 @@ export const ThreeSmallCards = ({
   const chartColors = useChartColors(theme as "dark" | "light");
   const is2XL = useMediaQuery("(min-width: 1750px)");
   const isMobile = useMediaQuery("(max-width: 479px)");
+  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const translations = {
     Sales: t("sales"),
@@ -94,7 +96,10 @@ export const ThreeSmallCards = ({
               endAngle={-270}
               dataKey="value"
               stroke="none"
-              isAnimationActive={false}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             >
               <Cell fill={color} />
               <Cell fill={remainingColor} />

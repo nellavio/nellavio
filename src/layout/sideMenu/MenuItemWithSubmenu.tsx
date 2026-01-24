@@ -7,13 +7,18 @@ import { useAppStore } from "../../store/appStore";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Link } from "../../i18n/navigation";
 import { useIsFirstRender } from "../../hooks/useIsFirstRender";
-import { outfit } from "../../styles/fonts";
 import { ChevronDownIcon } from "../../assets/icons/ChevronDownIcon";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
 } from "../../components/common/shadcn/tooltip";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "../../components/common/shadcn/dropdown-menu";
 
 interface SubmenuItem {
   title: string;
@@ -34,7 +39,7 @@ export const MenuItemWithSubmenu = ({
 }: MenuItemWithSubmenuProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleMobileMenu = useAppStore((state) => state.toggleMobileMenu);
-  const { isSideMenuOpen } = useAppStore();
+  const isSideMenuOpen = useAppStore((state) => state.isSideMenuOpen);
   const currentPathname = usePathname();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [activeSubmenuPath, setActiveSubmenuPath] = useState<string | null>(
@@ -86,16 +91,13 @@ export const MenuItemWithSubmenu = ({
   // When collapsed, link to first submenu item
   const collapsedLinkPath = submenuItems[0]?.path || "/";
 
-  const sharedClassName = `
-    flex relative rounded-md items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] pl-4 mb-[1px] 1xl:mb-1 3xl:mb-2 w-full pr-2 cursor-pointer transition ${
-      isAnySubmenuActive
-        ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover border-l-2 border-transparent"
-        : "bg-navItemBg hover:bg-navItemBgHover border-l-2 border-transparent"
-    }
-    ${
-      isCollapsed && "!pl-1 pl-8 justify-center items-center !w-10 rounded-full"
-    }
-  `;
+  const sharedClassName = `flex relative rounded-[6px] items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-[1px] 1xl:mb-1 3xl:mb-2 cursor-pointer transition-all duration-200 ${
+    isCollapsed ? "ml-[0.75rem] mr-[0.85rem] pl-[0.6rem]" : "w-full pl-4 pr-2"
+  } ${
+    isAnySubmenuActive
+      ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover border-l-2 border-transparent"
+      : "bg-navItemBg hover:bg-navItemBgHover border-l-2 border-transparent"
+  }`;
 
   const iconContent = (
     <div
@@ -103,65 +105,63 @@ export const MenuItemWithSubmenu = ({
         isAnySubmenuActive
           ? "stroke-mainColor fill-mainColor text-mainColor"
           : "stroke-grayIcon fill-grayIcon text-grayIcon"
-      }
-      ${isCollapsed && "pl-4"}
-      `}
+      }`}
     >
       {icon}
     </div>
   );
 
-  return (
-    <>
-      {isCollapsed ? (
-        <Tooltip delayDuration={200}>
-          <TooltipTrigger asChild>
-            <Link
-              href={collapsedLinkPath}
-              onClick={handleMenuItemClick}
-              className="flex flex-col justify-center w-full py-0 items-center"
-            >
-              <div className={sharedClassName}>{iconContent}</div>
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent side="right" alignOffset={3} sideOffset={-3} className="hidden xl:block">
-            {title}
-          </TooltipContent>
-        </Tooltip>
-      ) : (
-        <div className="w-full">
-          <div onClick={handleToggle} className={sharedClassName}>
-            {iconContent}
-            {(isSideMenuOpen || !isDesktop) && (
-              <>
-                <div
-                  className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide flex-1 ${
-                    outfit.className
-                  } ${
-                    isAnySubmenuActive
-                      ? "text-navItemTextActive"
-                      : "text-navItemText"
-                  }`}
-                >
-                  {title}
-                </div>
-                <div
-                  className={`transition-transform ${
-                    isExpanded ? "rotate-180" : "rotate-0"
-                  } ${
-                    isAnySubmenuActive
-                      ? "stroke-grayIcon text-grayIcon"
-                      : "stroke-grayIcon text-grayIcon"
-                  }`}
-                >
-                  <ChevronDownIcon />
-                </div>
-              </>
-            )}
-          </div>
+  const mainContent = (
+    <div
+      onClick={!isCollapsed ? handleToggle : undefined}
+      className={sharedClassName}
+    >
+      {iconContent}
+      <div
+        className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide whitespace-nowrap overflow-hidden transition-all duration-200 ${
+          isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"
+        } ${
+          isAnySubmenuActive ? "text-navItemTextActive" : "text-navItemText"
+        }`}
+      >
+        {title}
+      </div>
+      <div
+        className={`ml-auto transition-all duration-200 ${
+          isExpanded ? "rotate-180" : "rotate-0"
+        } ${
+          isCollapsed ? "w-0 opacity-0 overflow-hidden" : "opacity-100"
+        } stroke-grayIcon text-grayIcon`}
+      >
+        <ChevronDownIcon />
+      </div>
+    </div>
+  );
 
-          {/* Submenu items */}
-          {isExpanded && (isSideMenuOpen || !isDesktop) && (
+  return (
+    <div className={isCollapsed ? "" : "w-full"}>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild disabled={!isCollapsed}>
+          <div>{mainContent}</div>
+        </DropdownMenuTrigger>
+        {isCollapsed && (
+          <DropdownMenuContent side="right" align="start" sideOffset={-4} className="min-w-[140px]">
+            {submenuItems.map((item) => (
+              <DropdownMenuItem key={item.path} asChild>
+                <Link
+                  href={item.path}
+                  target={item.newTab ? "_blank" : undefined}
+                  onClick={handleMenuItemClick}
+                  className="w-full"
+                >
+                  {item.title}
+                </Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        )}
+      </DropdownMenu>
+      {!isCollapsed && isExpanded && (isSideMenuOpen || !isDesktop) && (
             <div className="ml-[1.6rem] relative">
               <div
                 className="absolute left-0 top-0 w-[2px] bg-cardBorder"
@@ -189,16 +189,14 @@ export const MenuItemWithSubmenu = ({
                       onClick={handleMenuItemClick}
                       className={`
                     flex rounded-md items-center py-[0.4rem] 1xl:py-[0.45rem] 3xl:py-[0.6rem] pl-[3.2rem] -ml-[1.6rem] mb-[1px] 1xl:mb-1 3xl:mb-2 w-[calc(100%+1.6rem)] pr-2 transition ${
-                      isActive
-                        ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover"
-                        : "bg-navItemBg hover:bg-navItemBgHover"
-                    }
+                        isActive
+                          ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover"
+                          : "bg-navItemBg hover:bg-navItemBgHover"
+                      }
                   `}
                     >
                       <div
                         className={`text-xs xl:text-[11px] 3xl:text-[0.82rem] font-medium tracking-wide ${
-                          outfit.className
-                        } ${
                           isActive
                             ? "text-navItemTextActive"
                             : "text-navItemText"
@@ -212,8 +210,6 @@ export const MenuItemWithSubmenu = ({
               })}
             </div>
           )}
-        </div>
-      )}
-    </>
+    </div>
   );
 };

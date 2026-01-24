@@ -24,24 +24,22 @@ export const SideMenu = () => {
 
   return (
     <div
-      className={`mt-0 3xl:mt-0 hidden  xl:flex flex-col h-screen xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px]  white pt-0 2xl:pt-0  ${
-        !isSideMenuOpen &&
-        "xl:!max-w-[3rem] !w-[3rem] xl:!min-w-[4.5rem] pr-0 transition"
+      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] white pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
+        !isSideMenuOpen && "xl:!max-w-[3rem] !w-[3rem] xl:!min-w-[4.5rem] pr-0"
       }
       `}
     >
       <div
-        className={`px-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] bg-navigationBg h-full border-r-[1px] border-cardBorder  ${
+        className={`px-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] bg-navigationBg h-full border-r-[1px] border-cardBorder transition-all duration-200 ease-in-out ${
           !isSideMenuOpen &&
-          "xl:!max-w-[3rem] xl:!w-[3rem] xl:!min-w-[4.5rem] justify-center items-center pr-0 pt-4 pl-0 transition pr-[0.1rem]"
+          "xl:!max-w-[3rem] xl:!w-[3rem] xl:!min-w-[4.5rem] justify-center items-center pr-0 pt-4 pl-0 pr-[0.1rem]"
         }
           `}
       >
         <div
-          className={`flex -mb-5 3xl:-mb-4 pt-1 justify-center pr-2     ${
-            !isSideMenuOpen && "xl:!w-[4.5rem] 3xl:pr-2 pl-2"
-          }
-                `}
+          className={`flex -mb-5 3xl:-mb-4 pt-1 pr-2 pl-[2.4rem] transition-all duration-200 ${
+            !isSideMenuOpen && "xl:!w-[4.5rem] 3xl:pr-2 !pl-[1.3rem]"
+          }`}
         >
           <Logo />
         </div>

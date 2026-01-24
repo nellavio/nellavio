@@ -18,6 +18,7 @@ import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
+import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface DataPoint {
   country: string;
@@ -67,6 +68,7 @@ export const ScatterChartComponent = () => {
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const t = useTranslations("singleCharts.scatter");
+  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata = [
     {
@@ -236,6 +238,10 @@ export const ScatterChartComponent = () => {
               data={chartdata}
               fill={chartColors.primary.fill}
               fillOpacity={0.8}
+              isAnimationActive={shouldAnimate}
+              animationBegin={animationBegin}
+              animationDuration={800}
+              animationEasing="ease-out"
             >
               {chartdata.map((entry, index) => (
                 <Cell
