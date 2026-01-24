@@ -1,12 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { Label } from "../../common/shadcn/label";
 import { Switch } from "../../common/shadcn/switch";
 
 export const ToggleSwitchForm = () => {
+  const t = useTranslations("forms");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Toggle Switch">
+    <Card isHeaderDividerVisible addTitleMargin title={t("toggleSwitch")}>
       <div className="flex flex-col gap-6">
         <div className="flex items-center space-x-2">
           <Switch id="airplane-mode" />

@@ -165,7 +165,7 @@ export const RevenueOverTime = ({
           {t("title")}
         </span>
         <span style={{ fontSize: "0.85rem", color: "rgb(140, 145, 150)" }}>
-          Track revenue changes over time
+          {t("subtitle")}
         </span>
       </div>
       <Tabs
@@ -180,13 +180,13 @@ export const RevenueOverTime = ({
             value="monthly"
             className="text-xs data-[state=active]:bg-revenueTabActiveBg"
           >
-            Monthly
+            {t("monthly")}
           </TabsTrigger>
           <TabsTrigger
             value="quarterly"
             className="text-xs data-[state=active]:bg-revenueTabActiveBg"
           >
-            Quarterly
+            {t("quarterly")}
           </TabsTrigger>
         </TabsList>
       </Tabs>

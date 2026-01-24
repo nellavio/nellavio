@@ -1,12 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { Label } from "../../common/shadcn/label";
 import { Checkbox } from "../../common/shadcn/checkbox";
 
 export const CheckboxesForm = () => {
+  const t = useTranslations("forms");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Checkboxes">
+    <Card isHeaderDividerVisible addTitleMargin title={t("checkboxes")}>
       <div className="flex flex-col gap-6">
         <div className="flex items-center space-x-2">
           <Checkbox id="terms" />

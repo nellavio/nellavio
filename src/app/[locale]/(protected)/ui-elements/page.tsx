@@ -5,7 +5,7 @@ import { UIElementsView } from "../../../../components/views/uiElements/UIElemen
 
 const UIElementsPage = () => {
   return (
-    <PageWrapper pageName="UI Elements" hidePaper>
+    <PageWrapper pageName="UI Elements">
       <UIElementsView />
     </PageWrapper>
   );

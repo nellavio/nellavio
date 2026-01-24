@@ -2,6 +2,9 @@
   "homepage": {
     "revenueOverTime": {
       "title": "Dochód miesięczny",
+      "subtitle": "Zestawienie przychodów w czasie",
+      "monthly": "Miesięcznie",
+      "quarterly": "Kwartalnie",
       "websiteSales": "Strona internetowa",
       "inStoreSales": "Sklepy stacjonarne",
       "jan": "Sty",
@@ -65,8 +68,24 @@
       "title": "Wydajność tygodniowa",
       "activity": "Aktywność",
       "revenue": "Przychód",
-      "profit": "Zysk"
+      "profit": "Zysk",
+      "activities": {
+        "henryUploadedReport": "Nowy raport kwartalny",
+        "newTradersFirstPurchase": "Nowi klienci dokonali pierwszego zakupu"
+      },
+      "time": {
+        "dayAgo": "1 dzień temu",
+        "daysAgo": "{count} dni temu"
+      }
     }
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "showing": "Pokazano",
+    "to": "do",
+    "of": "z",
+    "results": "wyników"
   },
   "orders": {
     "selectPlaceholder": {
@@ -585,5 +604,75 @@
     "darkMode": "Tryb ciemny",
     "darkModeDesc": "Włącz ciemny motyw",
     "recentActivity": "Ostatnia aktywność"
+  },
+  "uiElements": {
+    "buttons": "Przyciski",
+    "alerts": "Alerty",
+    "command": "Polecenia",
+    "avatars": "Awatary",
+    "tabs": "Zakładki",
+    "skeletons": "Szkielety",
+    "dialogs": "Dialogi",
+    "badges": "Odznaki",
+    "popover": "Popover",
+    "progress": "Postęp",
+    "tooltips": "Podpowiedzi",
+    "breadcrumbs": "Ścieżka nawigacji",
+    "separators": "Separatory"
+  },
+  "forms": {
+    "inputFields": "Pola tekstowe",
+    "selectInputs": "Pola wyboru",
+    "textarea": "Obszar tekstowy",
+    "colorPicker": "Wybór koloru",
+    "formValidation": "Walidacja formularza",
+    "fileUpload": "Przesyłanie plików",
+    "checkboxes": "Pola wyboru wielokrotnego",
+    "radioButtons": "Przyciski opcji",
+    "toggleSwitch": "Przełączniki",
+    "datePicker": "Wybór daty",
+    "sliders": "Suwaki"
+  },
+  "tables": {
+    "basicTable": "Tabela podstawowa",
+    "advancedTable": "Tabela zaawansowana",
+    "userTable": "Tabela użytkowników",
+    "inventoryTable": "Tabela magazynowa",
+    "cardTitles": {
+      "basicTable": "Tabela podstawowa",
+      "searchAndSelection": "Tabela z wyszukiwaniem i zaznaczaniem",
+      "filters": "Tabela z filtrami",
+      "pagination": "Tabela z paginacją"
+    }
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "theme": "Motyw",
+    "selectTheme": "Wybierz motyw",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "system": "Systemowy",
+    "homepageLayout": "Układ strony głównej",
+    "threeCards": "Trzy karty",
+    "fourCards": "Cztery karty",
+    "alternativeFont": "Alternatywna czcionka",
+    "chartAnimations": "Animacje wykresów",
+    "sidebarMode": "Tryb panelu bocznego",
+    "expanded": "Rozwinięty",
+    "collapsed": "Zwinięty",
+    "githubRepository": "Repozytorium GitHub"
+  },
+  "charts": {
+    "areaChart": "Wykres obszarowy",
+    "scatterChart": "Wykres punktowy",
+    "pieChart": "Wykres kołowy",
+    "radarChart": "Wykres radarowy",
+    "composedChart": "Wykres złożony",
+    "stackedBarChart": "Wykres słupkowy skumulowany",
+    "radialBarChart": "Wykres słupkowy promieniowy",
+    "twoAxisLineChart": "Wykres liniowy dwuosiowy",
+    "mixedLineChart": "Wykres liniowy mieszany",
+    "verticalBarChart": "Wykres słupkowy pionowy",
+    "lineChart": "Wykres liniowy"
   }
 }

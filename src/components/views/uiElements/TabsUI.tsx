@@ -1,6 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Button } from "../../common/shadcn/button";
@@ -13,8 +14,10 @@ import {
 } from "../../common/shadcn/tabs";
 
 export const TabsUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Tabs">
+    <Card isHeaderDividerVisible addTitleMargin title={t("tabs")}>
       <Tabs defaultValue="account" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="account">Account</TabsTrigger>

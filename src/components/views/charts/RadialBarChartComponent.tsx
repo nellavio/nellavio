@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
@@ -43,6 +44,7 @@ const RadialTooltip = ({ active, payload }: RadialTooltipProps) => {
 };
 
 export const RadialBarChartComponent = () => {
+  const t = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
@@ -73,7 +75,7 @@ export const RadialBarChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Radial Bar Chart"
+      title={t("radialBarChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

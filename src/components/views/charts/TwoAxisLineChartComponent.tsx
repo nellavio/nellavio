@@ -11,6 +11,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -88,6 +90,7 @@ const TwoAxisCustomLegend = ({ payload }: TwoAxisLegendProps) => {
 };
 
 export const TwoAxisLineChartComponent = () => {
+  const t = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
@@ -105,7 +108,7 @@ export const TwoAxisLineChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Line Chart (Dual Axis)"
+      title={t("twoAxisLineChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

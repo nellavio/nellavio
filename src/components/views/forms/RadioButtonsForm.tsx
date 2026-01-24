@@ -1,12 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { Label } from "../../common/shadcn/label";
 import { RadioGroup, RadioGroupItem } from "../../common/shadcn/radio-group";
 
 export const RadioButtonsForm = () => {
+  const t = useTranslations("forms");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Radio Buttons">
+    <Card isHeaderDividerVisible addTitleMargin title={t("radioButtons")}>
       <RadioGroup defaultValue="option-one">
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="option-one" id="option-one" />

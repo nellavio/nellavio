@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
@@ -98,6 +99,7 @@ const StackedCustomLegend = ({ payload }: StackedLegendProps) => {
 };
 
 export const StackedBarChartComponent = () => {
+  const t = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
@@ -116,7 +118,7 @@ export const StackedBarChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Stacked Bar Chart"
+      title={t("stackedBarChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

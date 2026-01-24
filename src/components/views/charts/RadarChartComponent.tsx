@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
@@ -52,6 +53,7 @@ const RadarTooltip = ({ active, payload, label }: RadarTooltipProps) => {
 };
 
 export const RadarChartComponent = () => {
+  const t = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
@@ -68,7 +70,7 @@ export const RadarChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Radar Chart"
+      title={t("radarChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

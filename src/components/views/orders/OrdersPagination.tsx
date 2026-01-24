@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 
 import { OrdersPaginationProps } from "./types";
 import {
@@ -26,7 +27,10 @@ export const OrdersPagination = ({
   goToPage,
   prevPage,
   nextPage,
-}: OrdersPaginationProps) => (
+}: OrdersPaginationProps) => {
+  const t = useTranslations("pagination");
+
+  return (
   <div className="flex items-center mt-8 gap-4 w-full sm:w-auto sm:gap-8 justify-between sm:justify-end text-primaryText">
     <div className="min-w-[4.5rem]">
       <Select
@@ -52,6 +56,7 @@ export const OrdersPagination = ({
           <PaginationPrevious
             onClick={() => prevPage()}
             disabled={currentPage === 0}
+            label={t("previous")}
           />
         </PaginationItem>
         {Array.from({ length: totalPage }, (_, i) => i).map((pageIndex) => {
@@ -87,9 +92,11 @@ export const OrdersPagination = ({
           <PaginationNext
             onClick={() => nextPage()}
             disabled={currentPage === totalPage - 1}
+            label={t("next")}
           />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
   </div>
-);
+  );
+};

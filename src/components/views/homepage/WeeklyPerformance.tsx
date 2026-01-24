@@ -186,12 +186,34 @@ const WeeklyPerformanceChart = ({
 const ActivityItem = ({ activity }: { activity: WeeklyActivity }) => {
   const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("homepage.weeklyPerformance");
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const currentTheme = theme === "system" ? systemTheme : theme;
+
+  const getTranslatedAction = (action: string): string => {
+    if (action.includes("uploaded quarterly report")) {
+      return t("activities.henryUploadedReport");
+    }
+    if (action.includes("completed first purchase")) {
+      return t("activities.newTradersFirstPurchase");
+    }
+    return action;
+  };
+
+  const getTranslatedTime = (time: string): string => {
+    if (time === "1 day ago") {
+      return t("time.dayAgo");
+    }
+    const daysMatch = time.match(/^(\d+) days? ago$/);
+    if (daysMatch) {
+      return t("time.daysAgo", { count: daysMatch[1] });
+    }
+    return time;
+  };
 
   const getAvatarBgColor = (color: "green" | "blue") => {
     // If not mounted yet, return transparent to avoid flash
@@ -273,10 +295,14 @@ const ActivityItem = ({ activity }: { activity: WeeklyActivity }) => {
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-sm text-primaryText leading-relaxed">
-          <span className="font-semibold">{activity.user}</span>{" "}
-          {activity.action}
+          {activity.user && (
+            <span className="font-semibold">{activity.user} </span>
+          )}
+          {getTranslatedAction(activity.action)}
         </p>
-        <p className="text-xs text-subtitleText mt-1.5">{activity.time}</p>
+        <p className="text-xs text-subtitleText mt-1.5">
+          {getTranslatedTime(activity.time)}
+        </p>
       </div>
     </div>
   );

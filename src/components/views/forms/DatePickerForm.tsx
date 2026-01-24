@@ -3,17 +3,19 @@
 import * as React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Label } from "../../common/shadcn/label";
 import { CalendarIcon } from "../../../assets/icons/CalendarIcon";
 
 export const DatePickerForm = () => {
+  const t = useTranslations("forms");
   const [date, setDate] = React.useState<Date>(new Date(2025, 3, 23)); // 23.04.2025
   const datePickerRef = React.useRef(null);
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Date Picker">
+    <Card isHeaderDividerVisible addTitleMargin title={t("datePicker")}>
       <div className="flex flex-col gap-[0.8rem]">
         <Label>Select Date</Label>
         <div className="flex relative h-[2.3rem] w-[10rem]">

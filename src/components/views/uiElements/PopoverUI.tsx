@@ -1,6 +1,7 @@
 "use client";
 
 import { User } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Button } from "../../common/shadcn/button";
@@ -14,8 +15,10 @@ import {
 import { Avatar, AvatarFallback } from "../../common/shadcn/avatar";
 
 export const PopoverUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Popover">
+    <Card isHeaderDividerVisible addTitleMargin title={t("popover")}>
       <div className="flex gap-4 flex-wrap">
         <Popover>
           <PopoverTrigger asChild>

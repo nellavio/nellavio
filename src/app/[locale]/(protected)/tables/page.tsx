@@ -5,7 +5,7 @@ import { TablesView } from "../../../../components/views/tables/TablesView";
 
 const TablesPage = () => {
   return (
-    <PageWrapper pageName="Tables" hidePaper>
+    <PageWrapper pageName="Tables">
       <TablesView />
     </PageWrapper>
   );

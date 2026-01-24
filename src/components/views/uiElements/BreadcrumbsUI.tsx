@@ -1,6 +1,7 @@
 "use client";
 
 import { Home, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import {
@@ -13,8 +14,10 @@ import {
 } from "../../common/shadcn/breadcrumb";
 
 export const BreadcrumbsUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Breadcrumbs">
+    <Card isHeaderDividerVisible addTitleMargin title={t("breadcrumbs")}>
       <div className="space-y-4">
         <Breadcrumb>
           <BreadcrumbList>

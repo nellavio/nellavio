@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import {
   Drawer,
@@ -285,6 +286,7 @@ const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
 };
 
 export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
+  const t = useTranslations("settings");
   const { theme, setTheme } = useTheme();
   const homepageLayout = useAppStore((state) => state.homepageLayout);
   const setHomepageLayout = useAppStore((state) => state.setHomepageLayout);
@@ -308,7 +310,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
       <DrawerContent className="!bg-primaryBg">
         <DrawerHeader className="bg-settingsDrawerHeaderBg border-b border-settingsDrawerDivider relative">
           <DrawerTitle className="text-primaryText text-2xl font-semibold">
-            Settings
+            {t("title")}
           </DrawerTitle>
           <DrawerClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none">
             <svg
@@ -336,17 +338,17 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
             <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="mb-1">
                 <Label className="text-xs font-medium tracking-wide uppercase text-settingsDrawerSectionTitle">
-                  Theme
+                  {t("theme")}
                 </Label>
               </div>
               <Select value={theme} onValueChange={setTheme}>
                 <SelectTrigger id="theme-select" className="mt-3">
-                  <SelectValue placeholder="Select theme" />
+                  <SelectValue placeholder={t("selectTheme")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
+                  <SelectItem value="light">{t("light")}</SelectItem>
+                  <SelectItem value="dark">{t("dark")}</SelectItem>
+                  <SelectItem value="system">{t("system")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -355,7 +357,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
             <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="mb-1">
                 <Label className="text-xs font-medium tracking-wide uppercase text-settingsDrawerSectionTitle">
-                  Homepage Layout
+                  {t("homepageLayout")}
                 </Label>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
@@ -372,7 +374,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                     <LayoutPreview type="three-cards" />
                   </div>
                   <span className="text-sm font-medium text-settingsDrawerLabelText">
-                    Three Cards
+                    {t("threeCards")}
                   </span>
                   {homepageLayout === "three-cards" && (
                     <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
@@ -408,7 +410,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                     <LayoutPreview type="four-cards" />
                   </div>
                   <span className="text-sm font-medium text-settingsDrawerLabelText">
-                    Four Cards
+                    {t("fourCards")}
                   </span>
                   {homepageLayout === "four-cards" && (
                     <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
@@ -437,7 +439,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
             <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="flex items-center justify-between">
                 <Label className="text-sm font-medium text-primaryText">
-                  Alternative font
+                  {t("alternativeFont")}
                 </Label>
                 <Switch
                   checked={fontType === "alternative"}
@@ -452,7 +454,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
             <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="flex items-center justify-between">
                 <Label className="text-sm font-medium text-primaryText">
-                  Chart animations
+                  {t("chartAnimations")}
                 </Label>
                 <Switch
                   checked={chartAnimationsEnabled}
@@ -465,7 +467,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
             <div className="px-6 py-5">
               <div className="mb-1">
                 <Label className="text-xs font-medium tracking-wide uppercase text-settingsDrawerSectionTitle">
-                  Sidebar Mode
+                  {t("sidebarMode")}
                 </Label>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
@@ -482,7 +484,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                     <SidebarPreview type="expanded" />
                   </div>
                   <span className="text-sm font-medium text-settingsDrawerLabelText">
-                    Expanded
+                    {t("expanded")}
                   </span>
                   {sidebarDefaultState === "expanded" && (
                     <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
@@ -518,7 +520,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                     <SidebarPreview type="collapsed" />
                   </div>
                   <span className="text-sm font-medium text-settingsDrawerLabelText">
-                    Collapsed
+                    {t("collapsed")}
                   </span>
                   {sidebarDefaultState === "collapsed" && (
                     <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
@@ -555,7 +557,7 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                 <GithubIcon />
               </div>
               <span className="text-lg font-medium text-settingsDrawerLabelText">
-                GitHub Repository
+                {t("githubRepository")}
               </span>
             </Link>
           </div>

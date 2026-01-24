@@ -11,6 +11,7 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 import { Edit, Eye, Columns } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Button } from "../../common/shadcn/button";
@@ -159,6 +160,8 @@ const SortingArrow = ({ isSorted }: { isSorted: false | "asc" | "desc" }) => {
 };
 
 export const UserTable = () => {
+  const t = useTranslations("tables.cardTitles");
+
   // User Table State (with Column Visibility)
   const [userSorting, setUserSorting] = React.useState<SortingState>([]);
   const [userColumnVisibility, setUserColumnVisibility] =
@@ -274,7 +277,7 @@ export const UserTable = () => {
     <Card
       isHeaderDividerVisible
       addTitleMargin
-      title="Table with filtering, chips and columns toggle"
+      title={t("filters")}
     >
       <div className="px-[0.8rem] py-2">
         {/* Controls Row */}

@@ -97,6 +97,7 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
 };
 
 export const AreaChartComponent = () => {
+  const tCharts = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
@@ -140,7 +141,7 @@ export const AreaChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Area Chart"
+      title={tCharts("areaChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

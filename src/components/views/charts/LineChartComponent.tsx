@@ -78,6 +78,7 @@ const CustomLegend = ({
 };
 
 export const LineChartComponent = () => {
+  const tCharts = useTranslations("charts");
   const t = useTranslations("singleCharts.line");
   const { width: windowWidth } = useWindowDimensions();
   const { theme } = useTheme();
@@ -126,7 +127,7 @@ export const LineChartComponent = () => {
   return (
     <Card
       className="w-full !pt-8 !pb-8"
-      title="Number of dragons in Westeros"
+      title={tCharts("lineChart")}
       padding="px-6 md:px-20"
       isHeaderDividerVisible
       addTitleMargin

@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, User, Settings } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import {
@@ -13,8 +14,10 @@ import {
 } from "../../common/shadcn/command";
 
 export const CommandUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Command">
+    <Card isHeaderDividerVisible addTitleMargin title={t("command")}>
       <Command
         className="rounded-lg border border-inputBorder"
         value=""

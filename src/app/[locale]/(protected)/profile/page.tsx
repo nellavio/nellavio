@@ -3,10 +3,7 @@ import { ProfileView } from "../../../../components/views/profile/ProfileView";
 
 const Profile = async () => {
   return (
-    <PageWrapper 
-      hidePaper
-      pageName="Profile"
-    >
+    <PageWrapper pageName="Profile">
       <ProfileView />
     </PageWrapper>
   );

@@ -5,7 +5,7 @@ import { ChartsView } from "../../../../components/views/charts/ChartsView";
 
 const ChartsPage = () => {
   return (
-    <PageWrapper pageName="Charts" hidePaper>
+    <PageWrapper pageName="Charts">
       <ChartsView />
     </PageWrapper>
   );

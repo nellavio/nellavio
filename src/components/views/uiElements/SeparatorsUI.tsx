@@ -1,11 +1,15 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { Separator } from "../../common/shadcn/separator";
 
 export const SeparatorsUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Separators">
+    <Card isHeaderDividerVisible addTitleMargin title={t("separators")}>
       <div className="space-y-8">
         <div>
           <h4 className="text-sm font-medium mb-4">Horizontal Separator</h4>

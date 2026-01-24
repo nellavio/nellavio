@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import {
   Avatar,
@@ -8,8 +10,10 @@ import {
 } from "../../common/shadcn/avatar";
 
 export const AvatarsUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Avatars">
+    <Card isHeaderDividerVisible addTitleMargin title={t("avatars")}>
       <div className="flex flex-col gap-6">
         <div className="flex gap-4 items-center">
           <Avatar>

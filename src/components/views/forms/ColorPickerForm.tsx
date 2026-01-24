@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { HexColorPicker } from "react-colorful";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Label } from "../../common/shadcn/label";
@@ -14,11 +15,12 @@ import {
 } from "../../common/shadcn/popover";
 
 export const ColorPickerForm = () => {
+  const t = useTranslations("forms");
   const [color, setColor] = React.useState("#4bbf7d");
   const [openColorPicker, setOpenColorPicker] = React.useState(false);
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Color Picker">
+    <Card isHeaderDividerVisible addTitleMargin title={t("colorPicker")}>
       <div className="flex flex-col gap-6">
         <div className="grid w-full max-w-sm items-center gap-[0.8rem]">
           <Label>Pick a Color</Label>

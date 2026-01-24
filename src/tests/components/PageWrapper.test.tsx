@@ -67,13 +67,13 @@ describe("PageWrapper Component", () => {
     ); // This should now target the correct 'paper' div
   });
 
-  // Test 2: Rendering with hidePaper=true
-  it("should render children, breadcrumbs, and disabled CSV button without paper background when hidePaper is true", () => {
+  // Test 2: Rendering with content variant (Analytics page)
+  it("should render children, breadcrumbs, and disabled CSV button without paper background for content pages", () => {
     const childContent = "No Paper Content";
-    const page = "AnotherPage";
+    const page = "Analytics";
     // Wrap childContent in a paragraph
     render(
-      <PageWrapper pageName={page} hidePaper={true}>
+      <PageWrapper pageName={page}>
         <p>{childContent}</p>
       </PageWrapper>
     );

@@ -3,6 +3,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Input } from "../../common/shadcn/input";
@@ -30,6 +31,7 @@ const formSchema = yup.object({
 });
 
 export const FormValidationForm = () => {
+  const t = useTranslations("forms");
   // Form definition
   const form = useForm({
     resolver: yupResolver(formSchema),
@@ -44,7 +46,7 @@ export const FormValidationForm = () => {
   }
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Form Validation">
+    <Card isHeaderDividerVisible addTitleMargin title={t("formValidation")}>
       <div className="text-sm text-secondaryText mb-6">
         Using react-hook-form and yup for validation.
       </div>

@@ -1,13 +1,16 @@
 "use client";
 
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Progress } from "../../common/shadcn/progress";
 
 export const ProgressUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Progress">
+    <Card isHeaderDividerVisible addTitleMargin title={t("progress")}>
       <div className="space-y-6">
         <div>
           <div className="flex justify-between mb-2 text-sm">

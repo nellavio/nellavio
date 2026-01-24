@@ -5,7 +5,7 @@ import { FormsView } from "../../../../components/views/forms/FormsView";
 
 export default function FormsPage() {
   return (
-    <PageWrapper pageName="Forms" hidePaper>
+    <PageWrapper pageName="Forms">
       <FormsView />
     </PageWrapper>
   );

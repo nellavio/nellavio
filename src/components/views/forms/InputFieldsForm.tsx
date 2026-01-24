@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Eye, EyeOff, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Input } from "../../common/shadcn/input";
@@ -9,10 +10,11 @@ import { Label } from "../../common/shadcn/label";
 import { Button } from "../../common/shadcn/button";
 
 export const InputFieldsForm = () => {
+  const t = useTranslations("forms");
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Input Fields">
+    <Card isHeaderDividerVisible addTitleMargin title={t("inputFields")}>
       <div className="flex flex-col gap-6">
         <div className="grid w-full max-w-sm items-center gap-[0.8rem]">
           <Label htmlFor="email">Default Input</Label>

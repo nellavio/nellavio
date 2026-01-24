@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Button } from "../../common/shadcn/button";
@@ -15,11 +16,12 @@ import {
 } from "../../common/shadcn/dialog";
 
 export const DialogsUI = () => {
+  const t = useTranslations("uiElements");
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Dialogs">
+    <Card isHeaderDividerVisible addTitleMargin title={t("dialogs")}>
       <div className="flex gap-4">
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>

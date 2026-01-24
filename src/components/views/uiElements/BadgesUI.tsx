@@ -1,11 +1,15 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { Badge } from "../../common/shadcn/badge";
 
 export const BadgesUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Badges">
+    <Card isHeaderDividerVisible addTitleMargin title={t("badges")}>
       <div className="flex flex-wrap gap-3">
         <Badge>Default</Badge>
         <Badge variant="secondary">Secondary</Badge>

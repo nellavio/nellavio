@@ -12,6 +12,7 @@ import {
   ColumnFiltersState,
 } from "@tanstack/react-table";
 import { Edit, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Input } from "../../common/shadcn/input";
@@ -169,6 +170,8 @@ const SortingArrow = ({ isSorted }: { isSorted: false | "asc" | "desc" }) => {
 };
 
 export const AdvancedTable = () => {
+  const t = useTranslations("tables.cardTitles");
+
   // Advanced Table State
   const [advancedSorting, setAdvancedSorting] = React.useState<SortingState>(
     []
@@ -289,7 +292,7 @@ export const AdvancedTable = () => {
     <Card
       isHeaderDividerVisible
       addTitleMargin
-      title="Table with search & selection"
+      title={t("searchAndSelection")}
     >
       <div className="px-[0.8rem] py-2">
         {/* Search and Info */}

@@ -12,6 +12,7 @@ import {
   PaginationState,
 } from "@tanstack/react-table";
 import { Search, Edit } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Button } from "../../common/shadcn/button";
@@ -248,6 +249,9 @@ const SortingArrow = ({ isSorted }: { isSorted: false | "asc" | "desc" }) => {
 };
 
 export const InventoryTable = () => {
+  const t = useTranslations("pagination");
+  const tTables = useTranslations("tables.cardTitles");
+
   // Inventory Table State (with Pagination)
   const [inventorySorting, setInventorySorting] = React.useState<SortingState>(
     []
@@ -340,7 +344,7 @@ export const InventoryTable = () => {
   });
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Table with pagination">
+    <Card isHeaderDividerVisible addTitleMargin title={tTables("pagination")}>
       <div className="px-[0.8rem] py-2">
         <div className="overflow-x-auto">
           <table className="w-full" style={{ tableLayout: "fixed" }}>
@@ -397,17 +401,17 @@ export const InventoryTable = () => {
           style={{ marginTop: "2rem" }}
         >
           <div className="text-sm text-secondaryText whitespace-nowrap">
-            Showing{" "}
+            {t("showing")}{" "}
             {inventoryTable.getState().pagination.pageIndex *
               inventoryTable.getState().pagination.pageSize +
               1}{" "}
-            to{" "}
+            {t("to")}{" "}
             {Math.min(
               (inventoryTable.getState().pagination.pageIndex + 1) *
                 inventoryTable.getState().pagination.pageSize,
               inventoryTableData.length
             )}{" "}
-            of {inventoryTableData.length} results
+            {t("of")} {inventoryTableData.length} {t("results")}
           </div>
           <Pagination className="m-0 justify-end">
             <PaginationContent>
@@ -415,6 +419,7 @@ export const InventoryTable = () => {
                 <PaginationPrevious
                   onClick={() => inventoryTable.previousPage()}
                   disabled={!inventoryTable.getCanPreviousPage()}
+                  label={t("previous")}
                 />
               </PaginationItem>
               {Array.from(
@@ -457,6 +462,7 @@ export const InventoryTable = () => {
                 <PaginationNext
                   onClick={() => inventoryTable.nextPage()}
                   disabled={!inventoryTable.getCanNextPage()}
+                  label={t("next")}
                 />
               </PaginationItem>
             </PaginationContent>

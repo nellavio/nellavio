@@ -9,6 +9,7 @@ import {
   ColumnDef,
   SortingState,
 } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
@@ -136,6 +137,8 @@ const SortingArrow = ({ isSorted }: { isSorted: false | "asc" | "desc" }) => {
 };
 
 export const BasicTable = () => {
+  const t = useTranslations("tables.cardTitles");
+
   // Basic Table State
   const [basicSorting, setBasicSorting] = React.useState<SortingState>([]);
 
@@ -191,7 +194,7 @@ export const BasicTable = () => {
   });
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Basic Table">
+    <Card isHeaderDividerVisible addTitleMargin title={t("basicTable")}>
       <div className="overflow-x-auto px-[0.8rem] py-2">
         <table className="w-full">
           <thead>

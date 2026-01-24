@@ -64,6 +64,7 @@ const ScatterTooltip = ({ active, payload }: ScatterTooltipProps) => {
 };
 
 export const ScatterChartComponent = () => {
+  const tCharts = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
@@ -184,7 +185,7 @@ export const ScatterChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Scatter Chart"
+      title={tCharts("scatterChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

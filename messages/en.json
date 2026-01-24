@@ -2,6 +2,9 @@
   "homepage": {
     "revenueOverTime": {
       "title": "Revenue over time",
+      "subtitle": "Track revenue changes over time",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
       "websiteSales": "Website sales",
       "inStoreSales": "In store sales",
       "jan": "Jan",
@@ -65,8 +68,24 @@
       "title": "Weekly Performance",
       "activity": "Activity",
       "revenue": "Revenue",
-      "profit": "Profit"
+      "profit": "Profit",
+      "activities": {
+        "henryUploadedReport": "Uploaded quarterly report",
+        "newTradersFirstPurchase": "New traders completed first purchase"
+      },
+      "time": {
+        "dayAgo": "1 day ago",
+        "daysAgo": "{count} days ago"
+      }
     }
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "results": "results"
   },
   "orders": {
     "selectPlaceholder": {
@@ -586,5 +605,75 @@
     "darkMode": "Dark Mode",
     "darkModeDesc": "Enable dark mode theme",
     "recentActivity": "Recent Activity"
+  },
+  "uiElements": {
+    "buttons": "Buttons",
+    "alerts": "Alerts",
+    "command": "Command",
+    "avatars": "Avatars",
+    "tabs": "Tabs",
+    "skeletons": "Skeletons",
+    "dialogs": "Dialogs",
+    "badges": "Badges",
+    "popover": "Popover",
+    "progress": "Progress",
+    "tooltips": "Tooltips",
+    "breadcrumbs": "Breadcrumbs",
+    "separators": "Separators"
+  },
+  "forms": {
+    "inputFields": "Input Fields",
+    "selectInputs": "Select Inputs",
+    "textarea": "Textarea",
+    "colorPicker": "Color Picker",
+    "formValidation": "Form Validation",
+    "fileUpload": "File Upload",
+    "checkboxes": "Checkboxes",
+    "radioButtons": "Radio Buttons",
+    "toggleSwitch": "Toggle Switch",
+    "datePicker": "Date Picker",
+    "sliders": "Sliders"
+  },
+  "tables": {
+    "basicTable": "Basic Table",
+    "advancedTable": "Advanced Table",
+    "userTable": "User Table",
+    "inventoryTable": "Inventory Table",
+    "cardTitles": {
+      "basicTable": "Basic Table",
+      "searchAndSelection": "Table with search & selection",
+      "filters": "Table with filters",
+      "pagination": "Table with pagination"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "selectTheme": "Select theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "homepageLayout": "Homepage Layout",
+    "threeCards": "Three Cards",
+    "fourCards": "Four Cards",
+    "alternativeFont": "Alternative font",
+    "chartAnimations": "Chart animations",
+    "sidebarMode": "Sidebar Mode",
+    "expanded": "Expanded",
+    "collapsed": "Collapsed",
+    "githubRepository": "GitHub Repository"
+  },
+  "charts": {
+    "areaChart": "Area Chart",
+    "scatterChart": "Scatter Chart",
+    "pieChart": "Pie Chart",
+    "radarChart": "Radar Chart",
+    "composedChart": "Composed Chart",
+    "stackedBarChart": "Stacked Bar Chart",
+    "radialBarChart": "Radial Bar Chart",
+    "twoAxisLineChart": "Two Axis Line Chart",
+    "mixedLineChart": "Mixed Line Chart",
+    "verticalBarChart": "Vertical Bar Chart",
+    "lineChart": "Line Chart"
   }
 }

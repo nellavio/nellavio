@@ -9,6 +9,7 @@ import {
   Legend,
 } from "recharts";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
@@ -76,6 +77,7 @@ const PieCustomLegend = ({ payload }: PieLegendProps) => {
 };
 
 export const PieChartComponent = () => {
+  const t = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
@@ -99,7 +101,7 @@ export const PieChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Pie Chart"
+      title={t("pieChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Label } from "../../common/shadcn/label";
@@ -40,11 +41,12 @@ const frameworks = [
 ];
 
 export const SelectInputsForm = () => {
+  const t = useTranslations("forms");
   const [openCombobox, setOpenCombobox] = React.useState(false);
   const [comboboxValue, setComboboxValue] = React.useState("");
 
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Select Inputs">
+    <Card isHeaderDividerVisible addTitleMargin title={t("selectInputs")}>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3 w-1/2">
           <Label>Select Option</Label>

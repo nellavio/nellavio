@@ -1,13 +1,16 @@
 "use client";
 
 import { Info, AlertCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { Alert, AlertDescription, AlertTitle } from "../../common/shadcn/alert";
 
 export const AlertsUI = () => {
+  const t = useTranslations("uiElements");
+
   return (
-    <Card isHeaderDividerVisible addTitleMargin title="Alerts">
+    <Card isHeaderDividerVisible addTitleMargin title={t("alerts")}>
       <div className="flex flex-col gap-6">
         <Alert>
           <Info className="h-4 w-4" />

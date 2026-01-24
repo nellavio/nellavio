@@ -12,6 +12,8 @@ import {
   Cell,
 } from "recharts";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
+
 import { Card } from "../../common/Card";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
@@ -78,6 +80,7 @@ const BarCustomLegend = ({ payload }: BarLegendProps) => {
 };
 
 export const VerticalBarChartComponent = () => {
+  const t = useTranslations("charts");
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
@@ -95,7 +98,7 @@ export const VerticalBarChartComponent = () => {
   return (
     <Card
       className="w-full h-full"
-      title="Bar Chart"
+      title={t("verticalBarChart")}
       padding="px-9"
       isHeaderDividerVisible
       addTitleMargin
