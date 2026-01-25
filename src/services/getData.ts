@@ -79,7 +79,6 @@ export const getData = async <T extends PageName>(
   pageName: T
 ): Promise<PageDataMap[T]> => {
   if (!hasValidBackendUrl()) {
-    console.log(`[Presentation Mode] Using backup data for ${pageName}`);
     return getBackupData(pageName);
   }
 

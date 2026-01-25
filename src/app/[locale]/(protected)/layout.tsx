@@ -19,9 +19,6 @@ export default async function ProtectedLayout({
 
   // Skip auth check if running in presentation mode
   if (isPresentationMode()) {
-    console.log(
-      "[Protected Layout] Running in presentation mode - skipping auth check"
-    );
     return <>{children}</>;
   }
 

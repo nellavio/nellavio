@@ -435,36 +435,8 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
               </div>
             </div>
 
-            {/* Alternative Font Section */}
-            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm font-medium text-primaryText">
-                  {t("alternativeFont")}
-                </Label>
-                <Switch
-                  checked={fontType === "alternative"}
-                  onCheckedChange={(checked) =>
-                    setFontType(checked ? "alternative" : "default")
-                  }
-                />
-              </div>
-            </div>
-
-            {/* Chart Animations Section */}
-            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm font-medium text-primaryText">
-                  {t("chartAnimations")}
-                </Label>
-                <Switch
-                  checked={chartAnimationsEnabled}
-                  onCheckedChange={setChartAnimationsEnabled}
-                />
-              </div>
-            </div>
-
             {/* Sidebar Mode Section */}
-            <div className="px-6 py-5">
+            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="mb-1">
                 <Label className="text-xs font-medium tracking-wide uppercase text-settingsDrawerSectionTitle">
                   {t("sidebarMode")}
@@ -542,6 +514,34 @@ export const SettingsDrawer = ({ children }: SettingsDrawerProps) => {
                     </div>
                   )}
                 </button>
+              </div>
+            </div>
+
+            {/* Alternative Font Section */}
+            <div className="px-6 py-5 border-b border-settingsDrawerDivider">
+              <div className="flex items-center justify-between">
+                <Label className="text-[0.9rem] font-medium tracking-wide text-primaryText">
+                  {t("alternativeFont")}
+                </Label>
+                <Switch
+                  checked={fontType === "alternative"}
+                  onCheckedChange={(checked) =>
+                    setFontType(checked ? "alternative" : "default")
+                  }
+                />
+              </div>
+            </div>
+
+            {/* Chart Animations Section */}
+            <div className="px-6 py-5">
+              <div className="flex items-center justify-between">
+                <Label className="text-[0.9rem] font-medium tracking-wide text-primaryText">
+                  {t("chartAnimations")}
+                </Label>
+                <Switch
+                  checked={chartAnimationsEnabled}
+                  onCheckedChange={setChartAnimationsEnabled}
+                />
               </div>
             </div>
           </div>

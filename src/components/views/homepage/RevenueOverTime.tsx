@@ -96,19 +96,37 @@ export const RevenueOverTime = ({
   const shouldStartChartAnimations = useAppStore(
     (state) => state.shouldStartChartAnimations
   );
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const { shouldAnimate, animationBegin } = useChartAnimation("homepage", {
+    earlyStartMs: 400,
+  });
 
   const [timeRange, setTimeRange] = useState<"monthly" | "quarterly">(
     "monthly"
   );
 
+  const monthMap: { [key: string]: number } = {
+    Jan: 0,
+    Feb: 1,
+    Mar: 2,
+    Apr: 3,
+    May: 4,
+    Jun: 5,
+    Jul: 6,
+    Aug: 7,
+    Sep: 8,
+    Oct: 9,
+    Nov: 10,
+    Dec: 11,
+  };
+
   // Function to group monthly data into quarterly data
+  // Returns same number of points for smooth animation
   const processDataByTimeRange = (data: typeof translatedData) => {
     if (timeRange === "monthly") {
       return data;
     }
 
-    // Group by quarters
+    // First, calculate quarterly averages
     const quarters: {
       [key: string]: {
         websiteSales: number;
@@ -118,23 +136,7 @@ export const RevenueOverTime = ({
     } = {};
 
     data.forEach((item) => {
-      // Extract month and year from date (e.g., "Mar 23" -> month=03, year=23)
       const [monthStr, yearStr] = item.date.split(" ");
-      const monthMap: { [key: string]: number } = {
-        Jan: 0,
-        Feb: 1,
-        Mar: 2,
-        Apr: 3,
-        May: 4,
-        Jun: 5,
-        Jul: 6,
-        Aug: 7,
-        Sep: 8,
-        Oct: 9,
-        Nov: 10,
-        Dec: 11,
-      };
-
       const month = monthMap[monthStr];
       const quarter = Math.floor(month / 3) + 1;
       const quarterKey = `Q${quarter} ${yearStr}`;
@@ -148,12 +150,20 @@ export const RevenueOverTime = ({
       quarters[quarterKey].count += 1;
     });
 
-    // Convert to array and calculate averages
-    return Object.entries(quarters).map(([date, values]) => ({
-      date,
-      websiteSales: Math.round(values.websiteSales / values.count),
-      inStoreSales: Math.round(values.inStoreSales / values.count),
-    }));
+    // Map each month to its quarter's average value (keeps same point count)
+    return data.map((item) => {
+      const [monthStr, yearStr] = item.date.split(" ");
+      const month = monthMap[monthStr];
+      const quarter = Math.floor(month / 3) + 1;
+      const quarterKey = `Q${quarter} ${yearStr}`;
+      const quarterData = quarters[quarterKey];
+
+      return {
+        date: `Q${quarter} ${yearStr}`,
+        websiteSales: Math.round(quarterData.websiteSales / quarterData.count),
+        inStoreSales: Math.round(quarterData.inStoreSales / quarterData.count),
+      };
+    });
   };
 
   const displayData = processDataByTimeRange(translatedData);

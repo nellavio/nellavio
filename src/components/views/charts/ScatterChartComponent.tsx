@@ -234,6 +234,7 @@ export const ScatterChartComponent = () => {
             <Tooltip
               content={<ScatterTooltip />}
               cursor={{ strokeDasharray: "3 3" }}
+              isAnimationActive={false}
             />
             <Scatter
               data={chartdata}

@@ -61,7 +61,7 @@ const CustomLegend = ({
   payload?: Array<{ value: string; color?: string }>;
 }) => {
   return (
-    <div className="flex flex-row justify-end gap-8 text-white w-full mt-6">
+    <div className="flex flex-row justify-end gap-8 text-white w-full -mt-10 mb-6">
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -127,10 +127,12 @@ export const LineChartComponent = () => {
   return (
     <Card
       className="w-full !pt-8 !pb-8"
-      title={tCharts("lineChart")}
+      customHeader={
+        <div className="-mx-6 md:-mx-20 px-6 md:px-20 text-[0.9rem] 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
+          {tCharts("lineChart")}
+        </div>
+      }
       padding="px-6 md:px-20"
-      isHeaderDividerVisible
-      addTitleMargin
     >
       <div className="mt-2 1xl:mt-6 h-72 1xl:h-88 3xl:h-96">
         <ResponsiveContainer
@@ -165,6 +167,7 @@ export const LineChartComponent = () => {
             <Tooltip
               content={<LineChartTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.05)" }}
+              isAnimationActive={false}
             />
             <Legend
               verticalAlign="top"

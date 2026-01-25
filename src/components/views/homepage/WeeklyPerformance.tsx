@@ -281,7 +281,7 @@ const ActivityItem = ({ activity }: { activity: WeeklyActivity }) => {
   };
 
   return (
-    <div className="flex items-start gap-3 py-2.5 lg:py-2 1xl:py-5 border-b border-mainBorder last:border-b-0 hover:bg-navItemBgHover transition-colors px-3 1xl:px-4 cursor-pointer">
+    <div className="flex items-start gap-3 py-2.5 lg:py-2 1xl:py-5 border-b border-mainBorder last:border-b-0 hover:bg-navItemBgHover transition-colors px-3 1xl:px-4 rounded-lg">
       <div
         className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
         style={{

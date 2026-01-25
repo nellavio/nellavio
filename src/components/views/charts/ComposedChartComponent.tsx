@@ -152,7 +152,7 @@ export const ComposedChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => `${value}%`}
             />
-            <Tooltip content={<ComposedTooltip />} />
+            <Tooltip content={<ComposedTooltip />} isAnimationActive={false} />
             <Legend
               verticalAlign="bottom"
               align="center"

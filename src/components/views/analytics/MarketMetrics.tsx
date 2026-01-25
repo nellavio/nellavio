@@ -133,7 +133,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             />
             <Tooltip
               content={<MarketMetricsTooltip />}
-              isAnimationActive={shouldAnimate}
+              isAnimationActive={false}
             />
             <Radar
               name="profitMargin"

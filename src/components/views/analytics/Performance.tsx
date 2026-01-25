@@ -157,7 +157,7 @@ export const Performance = ({ performanceData }: PerformanceProps) => {
             />
             <Tooltip
               content={<PerformanceTooltip />}
-              isAnimationActive={shouldAnimate}
+              isAnimationActive={false}
               cursor={{ fill: "rgba(255,255,255,0.05)" }}
             />
             <Legend

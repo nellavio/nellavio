@@ -22,6 +22,7 @@ export const Logo = () => {
         className={`flex whitespace-nowrap overflow-hidden transition-all duration-200 ease-in-out ${
           isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"
         }`}
+        style={{ fontFamily: "var(--font-outfit)" }}
       >
         <div className="ml-[0.7rem] text-logoBasicText mr-[1px] tracking-wider">
           Spire

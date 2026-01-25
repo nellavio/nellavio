@@ -43,89 +43,47 @@ const checkBackendHealth = async (): Promise<{
   }
 };
 
+const getNodeVersion = () => {
+  const g = globalThis as unknown as Record<string, Record<string, string>>;
+  return g.process?.version ?? "unknown";
+};
+
 const printStartupBanner = async () => {
   const status = await checkBackendHealth();
   const port = process.env.PORT || 3000;
   const nodeEnv = process.env.NODE_ENV || "development";
 
+  const separator = "-----";
+
   console.log("");
-  console.log(
-    "╔══════════════════════════════════════════════════════════════╗"
-  );
-  console.log(`║   SPIREFLOW v${packageJson.version.padEnd(47)}║ `);
+  console.log(separator);
+  console.log("");
+  console.log(`SPIREFLOW v${packageJson.version}`);
+  console.log("");
+  console.log(`📊 Environment: ${nodeEnv}`);
+  console.log(`📦 Node: ${getNodeVersion()}`);
+  console.log("");
 
-  console.log(
-    "║                                                              ║"
-  );
-  console.log(`║   📊 Environment: ${nodeEnv.padEnd(43)}║`);
-  console.log(`║   📦 Node: ${process.version.padEnd(51)}║`);
+  const authConfigured = status.graphqlUrl && status.hasAuth;
 
-  // Backend status
-  console.log(
-    "║                                                              ║"
-  );
-  if (status.isOnline) {
-    console.log(
-      "║   🔌 Mode: Connected to backend                              ║"
-    );
-    console.log(`║      ├─ GraphQL: ${(status.graphqlUrl || "").padEnd(43)}║`);
-    if (status.hasAuth) {
-      console.log(`║      └─ Auth: ${(status.authUrl || "").padEnd(47)}║`);
-    } else {
-      console.log(
-        "║      ├─ Auth: Not configured                                ║"
-      );
-      console.log(
-        "║      └─ 🔓 Route protection: disabled                        ║"
-      );
-    }
-  } else if (status.graphqlUrl) {
-    console.log(
-      "║   🔌 Mode: Backend configured but offline                    ║"
-    );
-    console.log(`║      ├─ GraphQL: ${status.graphqlUrl.padEnd(43)}  ║`);
-    console.log(
-      "║      ├─ ⚠️  Backend not responding, using mock data           ║"
-    );
-    console.log(
-      "║      └─ 🔓 Route protection: disabled                        ║"
-    );
-  } else if (status.hasAuth) {
-    console.log(
-      "║   🔌 Mode: Misconfigured                                     ║"
-    );
-    console.log(`║      ├─ Auth: ${(status.authUrl || "").padEnd(47)}║`);
-    console.log(
-      "║      ├─ ⚠️  GRAPHQL_URL required for auth to work             ║"
-    );
-    console.log(
-      "║      └─ 🔓 Route protection: disabled                        ║"
-    );
+  if (status.isOnline && authConfigured) {
+    console.log("🔌 Mode: Connected to backend");
+    console.log("   ├─ Backend: online");
+    console.log("   └─ Route protection: enabled");
+  } else if (authConfigured) {
+    console.log("🔌 Mode: Backend offline");
+    console.log("   ├─ Using mock data");
+    console.log("   └─ Route protection: enabled");
   } else {
-    console.log(
-      "║   🔌 Mode: Standalone (using mock data)                      ║"
-    );
-    console.log(
-      "║      ├─ ⚠️  Set GRAPHQL_URL to connect to backend             ║"
-    );
-    console.log(
-      "║      └─ 🔓 Route protection: disabled                        ║"
-    );
+    console.log("🔌 Mode: Standalone");
+    console.log("   ├─ Using mock data");
+    console.log("   └─ Route protection: disabled");
   }
 
-  // Frontend URL
-  console.log(
-    "║                                                              ║"
-  );
-  console.log(
-    `║   🌐 Dashboard: http://localhost:${String(port).padEnd(27)} ║`
-  );
-
-  // Links
-
-  console.log(
-    "╚══════════════════════════════════════════════════════════════╝"
-  );
+  console.log("");
+  console.log(`🌐 Dashboard: http://localhost:${port}`);
+  console.log("");
+  console.log(separator);
   console.log("");
 };
 

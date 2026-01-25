@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useTranslations } from "next-intl";
+import { Check } from "lucide-react";
 
 import { Card } from "../../common/Card";
 import { Input } from "../../common/shadcn/input";
@@ -15,7 +17,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "../../common/shadcn/form";
 
 // Form Schema for Validation Example using Yup
@@ -32,7 +33,8 @@ const formSchema = yup.object({
 
 export const FormValidationForm = () => {
   const t = useTranslations("forms");
-  // Form definition
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const form = useForm({
     resolver: yupResolver(formSchema),
     defaultValues: {
@@ -41,9 +43,10 @@ export const FormValidationForm = () => {
     },
   });
 
-  function onSubmit(values: yup.InferType<typeof formSchema>) {
+  const onSubmit = (values: yup.InferType<typeof formSchema>) => {
     console.log(values);
-  }
+    setIsSubmitted(true);
+  };
 
   return (
     <Card isHeaderDividerVisible addTitleMargin title={t("formValidation")}>
@@ -57,14 +60,13 @@ export const FormValidationForm = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel className="text-primaryText">Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input className="mt-[0.3rem]" placeholder="shadcn" {...field} />
                 </FormControl>
                 <FormDescription>
                   This is your public display name.
                 </FormDescription>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -73,15 +75,25 @@ export const FormValidationForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-primaryText">Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="m@example.com" {...field} />
+                  <Input className="mt-[0.3rem]" placeholder="m@example.com" {...field} />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          {Object.keys(form.formState.errors).length > 0 && (
+            <p className="text-sm text-errorBg">
+              Please fill in all required fields.
+            </p>
+          )}
+          <Button className="mt-4" type="submit">Submit</Button>
+          {isSubmitted && (
+            <p className="flex items-center gap-2 text-sm text-greenBadgeText mt-3">
+              <Check className="h-4 w-4" />
+              Form submitted
+            </p>
+          )}
         </form>
       </Form>
     </Card>

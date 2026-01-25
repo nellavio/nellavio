@@ -177,10 +177,9 @@ That's it! The dashboard will automatically:
 
 The application automatically detects your configuration:
 
-- **No `.env` file**: Runs standalone with mock data
-- **Backend configured**: Fetches data from GraphQL API
-- **Backend + Auth configured**: Authentication enabled with protected routes
-- **Backend unavailable**: Automatically falls back to mock data (no crashes!)
+- **No env vars**: Standalone demo mode with mock data, all routes accessible
+- **Env vars configured**: Route protection enabled (redirects to /login if not authenticated)
+- **Backend offline**: Falls back to mock data, but route protection stays enabled
 
 ### Remote deployment
 

@@ -158,6 +158,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 <Tooltip
                   content={<TodaySalesTooltip />}
                   cursor={{ fill: "rgba(255,255,255,0.05)" }}
+                  isAnimationActive={false}
                 />
                 <Legend
                   verticalAlign="bottom"
@@ -225,6 +226,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 <Tooltip
                   content={<TodaySalesTooltip />}
                   cursor={{ fill: "rgba(255,255,255,0.05)" }}
+                  isAnimationActive={false}
                 />
                 <Legend
                   verticalAlign="bottom"

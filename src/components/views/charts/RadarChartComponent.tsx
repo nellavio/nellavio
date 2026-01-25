@@ -120,7 +120,7 @@ export const RadarChartComponent = () => {
               animationDuration={800}
               animationEasing="ease-out"
             />
-            <Tooltip content={<RadarTooltip />} />
+            <Tooltip content={<RadarTooltip />} isAnimationActive={false} />
           </RadarChart>
         </ResponsiveContainer>
         <div className="flex flex-row justify-center gap-8 text-white w-full mt-4">

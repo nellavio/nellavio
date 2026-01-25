@@ -315,7 +315,7 @@ export const ProfileView = () => {
               ].map((activity, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 py-2 hover:bg-navItemBgHover rounded-md px-2 -mx-2 transition-colors cursor-pointer"
+                  className="flex items-start gap-3 py-2 hover:bg-navItemBgHover rounded-md px-2 -mx-2 transition-colors"
                 >
                   <div className="w-2 h-2 rounded-full bg-chartPrimaryBg mt-2 flex-shrink-0"></div>
                   <div className="flex-1">

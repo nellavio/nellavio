@@ -23,6 +23,7 @@ import {
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useAppStore } from "../../../store/appStore";
 
 const YearOverviewTooltip = ({
   active,
@@ -131,6 +132,9 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
   const { width: windowWidth } = useWindowDimensions();
 
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const shouldStartChartAnimations = useAppStore(
+    (state) => state.shouldStartChartAnimations
+  );
 
   return (
     <Card className="h-full" id="yearOverview" title={t("title")}>
@@ -142,7 +146,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <AreaChart
-              data={translatedData}
+              data={shouldStartChartAnimations ? translatedData : []}
               margin={{
                 top: 20,
                 right: windowWidth > 500 ? 30 : 15,
@@ -199,6 +203,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
               <Tooltip
                 content={<YearOverviewTooltip />}
                 cursor={{ fill: "rgba(255,255,255,0.05)" }}
+                isAnimationActive={false}
               />
               <Legend
                 verticalAlign="top"

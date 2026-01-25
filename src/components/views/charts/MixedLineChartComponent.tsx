@@ -148,7 +148,7 @@ export const MixedLineChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
             />
-            <Tooltip content={<MixedLineTooltip />} />
+            <Tooltip content={<MixedLineTooltip />} isAnimationActive={false} />
             <Legend
               iconType="line"
               wrapperStyle={{ paddingTop: "2rem" }}

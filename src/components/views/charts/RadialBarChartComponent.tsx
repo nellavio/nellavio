@@ -112,7 +112,7 @@ export const RadialBarChartComponent = () => {
                 paddingLeft: "20px",
               }}
             />
-            <Tooltip content={<RadialTooltip />} />
+            <Tooltip content={<RadialTooltip />} isAnimationActive={false} />
           </RadialBarChart>
         </ResponsiveContainer>
       </div>

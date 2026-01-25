@@ -2,6 +2,7 @@
   /* Texts */
   --color-primaryText: rgb(0, 0, 0, 0.9);
   --color-secondaryText: rgb(0, 0, 0, 0.6);
+  --color-placeholderText: rgb(0, 0, 0, 0.4);
   --color-subtitleText: rgb(0, 0, 0, 0.4);
   --color-secondaryTextHover: rgb(0, 0, 0, 0.8);
   --color-coloredText: rgb(0, 96, 255);

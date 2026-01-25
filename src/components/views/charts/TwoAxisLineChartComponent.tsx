@@ -150,7 +150,7 @@ export const TwoAxisLineChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => `$${value}`}
             />
-            <Tooltip content={<TwoAxisTooltip />} />
+            <Tooltip content={<TwoAxisTooltip />} isAnimationActive={false} />
             <Legend iconType="line" wrapperStyle={{ paddingTop: '2rem' }} content={<TwoAxisCustomLegend />} />
             <Line
               yAxisId="left"

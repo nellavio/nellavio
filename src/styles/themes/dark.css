@@ -2,6 +2,7 @@
   /* Texts */
   --color-primaryText: rgb(231, 233, 236);
   --color-secondaryText: rgb(201, 203, 207);
+  --color-placeholderText: rgb(150, 155, 160);
   --color-subtitleText: rgb(140, 145, 150);
   --color-secondaryTextHover: rgb(255, 255, 255, 0.8);
   --color-coloredText: rgb(61, 185, 133);
@@ -71,10 +72,10 @@
   --color-selectBg: rgb(255, 255, 255, 0.05);
   --color-selectBgHover: rgb(255, 255, 255, 0.07);
   --color-userButtonBg: rgb(25, 32, 39);
-  --color-loginModalBg: rgb(41, 46, 51);
+  --color-loginModalBg: rgb(30, 33, 36);
   --color-navbarButtonBg: rgb(255, 255, 255, 0);
   --color-navbarButtonBgHover: rgb(255, 255, 255, 0.05);
-  --color-navbarIconButtonBgHover: rgb(255, 255, 255, 0.05);
+  --color-navbarIconButtonBgHover: rgb(255, 255, 255, 0.12);
   --color-galleryBg: rgb(0, 0, 0, 0.5);
   --color-galleryThumbnailBg: rgb(255, 255, 255, 0.01);
   --color-datepickerHeaderBg: rgb(41, 43, 48);
@@ -95,7 +96,7 @@
   --color-percentageBadgeRedBg: rgba(253, 164, 175, 0.05);
   --color-percentageBadgeGreenBorder: rgba(110, 231, 183, 0.3);
   --color-percentageBadgeRedBorder: rgba(255, 100, 120, 0.35);
-  --color-modalBg: hsl(210deg 9.5% 15.95%);
+  --color-modalBg: rgb(30, 33, 36);
   --color-logoBg: rgb(53, 136, 101);
   --color-chipBg: rgb(255, 255, 255, 0.07);
   --color-chipBgHover: rgb(255, 255, 255, 0.1);

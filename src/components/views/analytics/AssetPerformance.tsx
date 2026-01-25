@@ -110,7 +110,11 @@ export const AssetPerformance = ({
                     />
                   ))}
                 </Pie>
-                <Tooltip content={<AssetTooltip />} />
+                <Tooltip
+                  content={<AssetTooltip />}
+                  isAnimationActive={false}
+                  wrapperStyle={{ zIndex: 10 }}
+                />
               </PieChart>
             </ResponsiveContainer>
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

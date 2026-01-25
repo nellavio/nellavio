@@ -12,6 +12,7 @@ import {
 } from "../../common/shadcn/tooltip";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useAppStore } from "../../../store/appStore";
 
 export const ThreeSmallCards = ({
   threeSmallCardsData,
@@ -22,6 +23,13 @@ export const ThreeSmallCards = ({
   const is2XL = useMediaQuery("(min-width: 1750px)");
   const isMobile = useMediaQuery("(max-width: 479px)");
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const chartAnimationsEnabled = useAppStore(
+    (state) => state.chartAnimationsEnabled
+  );
+
+  const hoverScaleClass = chartAnimationsEnabled
+    ? "transition-transform duration-200 group-hover:scale-110"
+    : "";
 
   const translations = {
     Sales: t("sales"),
@@ -79,7 +87,7 @@ export const ThreeSmallCards = ({
     }
 
     return (
-      <div className="w-[112px] h-[112px] xsm:w-[75px] xsm:h-[75px] 2xl:w-[90px] 2xl:h-[90px] transition-transform duration-200 group-hover:scale-110">
+      <div className={`w-[112px] h-[112px] xsm:w-[75px] xsm:h-[75px] 2xl:w-[90px] 2xl:h-[90px] ${hoverScaleClass}`}>
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -144,7 +152,7 @@ export const ThreeSmallCards = ({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-transform duration-200 group-hover:scale-110">
+                    <div className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}>
                       <span className="text-primaryText text-sm font-bold">
                         {hardcodedPercentages[index]}%
                       </span>
@@ -198,7 +206,7 @@ export const ThreeSmallCards = ({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-transform duration-200 group-hover:scale-110">
+                    <div className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}>
                       <span className="text-primaryText text-sm 1xl:text-base font-bold">
                         {hardcodedPercentages[index]}%
                       </span>

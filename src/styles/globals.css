@@ -18,7 +18,7 @@ body {
 }
 
 body.font-alternative {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-open-sans), sans-serif;
 }
 
 /* Prevent Radix UI Select from hiding page scrollbar */

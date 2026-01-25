@@ -139,7 +139,7 @@ export const PieChartComponent = () => {
                 />
               ))}
             </Pie>
-            <Tooltip content={<PieTooltip />} />
+            <Tooltip content={<PieTooltip />} isAnimationActive={false} />
             <Legend
               verticalAlign="bottom"
               height={36}

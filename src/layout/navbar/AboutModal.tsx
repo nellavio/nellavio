@@ -56,7 +56,7 @@ export const AboutModal = ({ closeModal }: AboutModalProps) => {
               >
                 <Button
                   variant="outline"
-                  className="w-full h-full sm:!px-6"
+                  className="w-full h-full sm:!px-6 gap-2"
                 >
                   <GithubIcon />
                   Front-end
@@ -69,7 +69,7 @@ export const AboutModal = ({ closeModal }: AboutModalProps) => {
               >
                 <Button
                   variant="outline"
-                  className="w-full h-full sm:!px-6"
+                  className="w-full h-full sm:!px-6 gap-2"
                 >
                   <GithubIcon />
                   Back-end

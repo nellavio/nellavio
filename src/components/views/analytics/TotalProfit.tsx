@@ -26,6 +26,7 @@ import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useAppStore } from "../../../store/appStore";
 
 const TotalProfitTooltip = ({
   active,
@@ -72,6 +73,9 @@ export const TotalProfit = ({
   const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const shouldStartChartAnimations = useAppStore(
+    (state) => state.shouldStartChartAnimations
+  );
 
   return (
     <Card
@@ -98,7 +102,7 @@ export const TotalProfit = ({
           initialDimension={{ width: 320, height: 200 }}
         >
           <AreaChart
-            data={translatedData}
+            data={shouldStartChartAnimations ? translatedData : []}
             margin={{
               top: 10,
               right: windowWidth > 700 ? 30 : 10,
@@ -137,6 +141,7 @@ export const TotalProfit = ({
             <Tooltip
               content={<TotalProfitTooltip />}
               cursor={{ fill: "rgba(255,255,255,0.05)" }}
+              isAnimationActive={false}
             />
             <Area
               type="monotone"

@@ -3,6 +3,10 @@ import { useEffect, useRef } from "react";
 import { useAppStore, type ChartPageId } from "../store/appStore";
 import { CHART_ANIMATION_DELAY_MS } from "../layout/FullScreenLoader";
 
+interface ChartAnimationOptions {
+  earlyStartMs?: number;
+}
+
 interface ChartAnimationResult {
   shouldAnimate: boolean;
   animationBegin: number;
@@ -15,9 +19,14 @@ interface ChartAnimationResult {
  * On routing navigation, animations start immediately.
  *
  * @param pageId - Unique identifier for the chart page ('homepage' | 'analytics' | 'charts')
+ * @param options - Optional configuration for animation timing
+ * @param options.earlyStartMs - How many ms earlier this chart should start animating (subtracted from default delay)
  * @returns Object with shouldAnimate boolean and animationBegin delay in ms
  */
-export const useChartAnimation = (pageId: ChartPageId): ChartAnimationResult => {
+export const useChartAnimation = (
+  pageId: ChartPageId,
+  options?: ChartAnimationOptions
+): ChartAnimationResult => {
   const chartAnimationsEnabled = useAppStore(
     (state) => state.chartAnimationsEnabled
   );
@@ -38,7 +47,10 @@ export const useChartAnimation = (pageId: ChartPageId): ChartAnimationResult => 
   }, [pageId, markChartPageAsVisited]);
 
   const shouldAnimate = chartAnimationsEnabled && wasFirstVisit.current;
-  const animationBegin = isInitialLoad ? CHART_ANIMATION_DELAY_MS : 0;
+
+  const earlyStartMs = options?.earlyStartMs ?? 0;
+  const baseDelay = isInitialLoad ? CHART_ANIMATION_DELAY_MS : 0;
+  const animationBegin = Math.max(0, baseDelay - earlyStartMs);
 
   return { shouldAnimate, animationBegin };
 };

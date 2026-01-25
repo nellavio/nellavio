@@ -136,6 +136,7 @@ export const CustomerSatisfaction = ({
             <Tooltip
               content={<CustomerScatterTooltip />}
               cursor={{ strokeDasharray: "3 3" }}
+              isAnimationActive={false}
             />
             <Scatter
               data={translatedData}

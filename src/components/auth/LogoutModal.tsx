@@ -50,11 +50,14 @@ export const LogoutModal = ({ closeModal }: LogoutModalProps) => {
           >
             {t("logoutModalCancelButton")}
           </Button>
-          <ContainedButton handleClick={handleLogoutClick} disabled={loading} fullWidth={false}>
+          <ContainedButton
+            handleClick={handleLogoutClick}
+            disabled={loading}
+            fullWidth={false}
+            className="min-w-[4.5rem] h-[2.5rem]"
+          >
             {loading ? (
-              <div className="pt-[0.3rem]">
-                <SpinnerIcon width={45} height={45} />
-              </div>
+              <SpinnerIcon width={20} height={20} />
             ) : (
               t("logoutModalConfirmButton")
             )}
