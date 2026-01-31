@@ -14,8 +14,8 @@ export const FontManager = () => {
 
   // Preload both fonts on mount to prevent flash on Firefox
   useEffect(() => {
-    document.fonts.load("1rem var(--font-outfit)");
-    document.fonts.load("1rem var(--font-open-sans)");
+    document.fonts.load("1rem 'Outfit'");
+    document.fonts.load("1rem 'Open Sans'");
   }, []);
 
   // Switch font class based on fontType

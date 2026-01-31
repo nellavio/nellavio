@@ -17,7 +17,7 @@ import { cn } from "../../../lib/utils";
  * ```tsx
  * // Basic avatar with image and fallback
  * <Avatar>
- *   <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+ *   <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" alt="@shadcn" />
  *   <AvatarFallback>CN</AvatarFallback>
  * </Avatar>
  * ```

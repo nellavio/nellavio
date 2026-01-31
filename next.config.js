@@ -17,6 +17,11 @@ const nextConfig = {
                 hostname: 'res.cloudinary.com',
                 pathname: '**',
             },
+            {
+                protocol: 'https',
+                hostname: 'avatars.githubusercontent.com',
+                pathname: '**',
+            },
         ],
     },
     async headers() {
@@ -35,7 +40,7 @@ const securityHeaders = [
         // limiting potential vectors for cross-site scripting (XSS) attacks
         // by explicitly whitelisting trusted sources for various content types
         key: 'Content-Security-Policy',
-        value: "default-src 'self'; worker-src blob: 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://res.cloudinary.com; font-src 'self' data:; connect-src 'self' http://localhost:4000 https://* data:; frame-ancestors 'none'; frame-src 'none'"
+        value: "default-src 'self'; worker-src blob: 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://res.cloudinary.com https://avatars.githubusercontent.com; font-src 'self' data:; connect-src 'self' http://localhost:4000 https://* data:; frame-ancestors 'none'; frame-src 'none'"
     },
     {
         // X-Frame-Options prevents our application from being embedded within iframes

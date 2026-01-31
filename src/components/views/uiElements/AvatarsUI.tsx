@@ -3,11 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "../../common/shadcn/avatar";
+import { Avatar, AvatarFallback } from "../../common/shadcn/avatar";
 
 export const AvatarsUI = () => {
   const t = useTranslations("uiElements");
@@ -17,7 +13,6 @@ export const AvatarsUI = () => {
       <div className="flex flex-col gap-6">
         <div className="flex gap-4 items-center">
           <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <Avatar>
