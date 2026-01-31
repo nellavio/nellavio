@@ -132,7 +132,7 @@ export const AllNotificationsModal = ({
 
         {/* Notifications list */}
         <div className="overflow-y-auto -mx-6 md:-mx-8 px-6 md:px-8 mb-4 flex-1 md:flex-none md:h-[400px]">
-          <div className="space-y-2">
+          <div className="space-y-2 pt-0.5">
             {filteredNotifications.length === 0 ? (
               <div className="text-center py-12 text-secondaryText">
                 <div className="flex justify-center mb-4">

@@ -149,7 +149,7 @@ export const MenuItemWithSubmenu = ({
       tabIndex={0}
       role={!isCollapsed ? "button" : undefined}
       aria-expanded={!isCollapsed ? isExpanded : undefined}
-      className={sharedClassName}
+      className={`${sharedClassName} focus-visible:outline-offset-[-1px] focus-visible:transition-none`}
     >
       {iconContent}
       <div

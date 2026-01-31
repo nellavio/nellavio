@@ -53,11 +53,11 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
   return (
     <Tooltip delayDuration={200}>
       <TooltipTrigger asChild>
-        <Link href={path} className="block rounded-[6px]">
+        <Link href={path} className={`block rounded-[6px] transition-all duration-200 ${isCollapsed ? "ml-[0.75rem] mr-[0.85rem]" : "w-full"}`}>
           <div
             onClick={handleMenuItemClick}
             className={`flex relative rounded-[6px] items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-[1px] 1xl:mb-1 3xl:mb-2 transition-all duration-200 ${
-              isCollapsed ? "ml-[0.75rem] mr-[0.85rem] pl-[0.6rem]" : "w-full pl-4 pr-2"
+              isCollapsed ? "pl-[0.6rem]" : "pl-4 pr-2"
             } ${
               isActive
                 ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover border-l-2 border-transparent"
@@ -86,7 +86,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
         </Link>
       </TooltipTrigger>
       {isCollapsed && (
-        <TooltipContent side="right" alignOffset={3} sideOffset={-3} className="hidden xl:block">
+        <TooltipContent side="right" alignOffset={3} sideOffset={12} className="hidden xl:block">
           {title}
         </TooltipContent>
       )}

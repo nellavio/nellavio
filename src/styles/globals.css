@@ -85,7 +85,11 @@ button {
   @apply hidden;
 }
 .fc-button {
-  @apply !outline-0 border border-inputBorder text-primaryText placeholder-secondaryText placeholder-secondaryText text-primaryText hover:!border-inputBorderHover hover:!border-inputBorderHover transition hover:bg-inputBgHover hover:!bg-outlinedButtonBgHover !bg-inputBg !bg-inputBg !border-inputBorder !border-inputBorder;
+  @apply border border-inputBorder text-primaryText placeholder-secondaryText placeholder-secondaryText text-primaryText hover:!border-inputBorderHover hover:!border-inputBorderHover transition hover:bg-inputBgHover hover:!bg-outlinedButtonBgHover !bg-inputBg !bg-inputBg !border-inputBorder !border-inputBorder;
+}
+.fc-button:focus-visible {
+  outline: 2px solid var(--color-ringBorder);
+  outline-offset: 0;
 }
 .fc-button-primary {
   @apply !text-primaryText;
@@ -186,6 +190,10 @@ button {
 .fc .fc-event:focus {
   background-color: rgb(255, 255, 255, 0.1) !important;
 }
+.fc .fc-event:focus-visible {
+  outline: 2px solid var(--color-ringBorder);
+  outline-offset: 0;
+}
 .fc-daygrid-day-events .fc-event-main * {
   color: white;
 }
@@ -261,31 +269,28 @@ button {
 }
 
 /* Global accessible focus styles */
-*,
-:-moz-focusring {
-  outline-color: transparent;
+*:focus {
+  outline: none;
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-ringBorder);
-  outline-offset: 2px;
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-ringBorder);
+}
+
+/* Disable focus ring inside dropdowns/menus - use background highlight instead (higher specificity) */
+[role="menu"] :focus-visible,
+[role="listbox"] :focus-visible,
+[data-radix-collection-item]:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 /* Inputs - subtle border focus instead of green ring (consistent with Material, Chakra UI) */
-input:focus,
-textarea:focus {
-  border-color: var(--color-inputBorderFocus);
-}
-
 input:focus-visible,
 textarea:focus-visible {
   outline: none;
-}
-
-/* Disable focus ring inside dropdowns and menus (use background highlight instead) */
-[role="menu"] *:focus-visible,
-[role="listbox"] *:focus-visible {
-  outline: none;
+  border-color: var(--color-inputBorderFocus);
 }
 
 /* Overwrite autofill styles for inputs to ensure consistent appearance on multiple themes */
