@@ -88,7 +88,7 @@ export const BestSellingProducts = ({
 
   const translatedData = useTranslateData(
     bestSellingProductsData,
-    translations
+    translations,
   );
 
   const chartData = translatedData.map((product: TranslatedProduct) => ({
@@ -99,9 +99,7 @@ export const BestSellingProducts = ({
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
 
@@ -118,7 +116,11 @@ export const BestSellingProducts = ({
 
   return (
     <Card className="h-full" id="bestsellingProducts" title={t("title")}>
-      <div className="h-[18.5rem] 1xl:h-[20rem] 3xl:h-[21.8rem] relative mt-1 3xl:mt-0">
+      <div
+        role="img"
+        aria-label="Best selling products bar chart"
+        className="h-[18.5rem] 1xl:h-[20rem] 3xl:h-[21.8rem] relative mt-1 3xl:mt-0"
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -160,7 +162,10 @@ export const BestSellingProducts = ({
             <Tooltip
               content={<BestSellingTooltip />}
               isAnimationActive={false}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
             />
             <Bar
               dataKey={t("profitFromLastWeek")}

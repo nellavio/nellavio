@@ -57,7 +57,7 @@ export const DateRangeSelector = () => {
     (range: CustomDateRange) => {
       setCustomRange(range);
     },
-    [setCustomRange]
+    [setCustomRange],
   );
 
   const triggerLabel =
@@ -72,6 +72,7 @@ export const DateRangeSelector = () => {
           <button
             className="-mt-[0.1rem] text-sm cursor-pointer flex rounded-md justify-center items-center gap-2 h-[2.4rem] px-3 xsm:px-4 border border-mainBorder hover:border-mainBorderHover text-primaryText stroke-grayIcon fill-grayIcon"
             type="button"
+            aria-label="Select date range"
           >
             <CalendarIcon />
             <span className="hidden xsm:inline whitespace-nowrap">

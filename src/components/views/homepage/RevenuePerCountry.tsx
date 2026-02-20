@@ -79,6 +79,8 @@ export const RevenuePerCountry = ({
     >
       <div className="flex justify-between">
         <div
+          role="img"
+          aria-label="Revenue distribution by country map"
           className={`${isCompact ? "w-[70%]" : "w-[65%]"} worldMap flex items-center justify-center md:h-[19rem] lg:h-[23rem] xl:h-[23rem] 1xl:h-[24.5rem] 2xl:h-[27rem] 3xl:h-[33rem] -mb-6`}
         >
           <Suspense

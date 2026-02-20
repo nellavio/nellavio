@@ -50,6 +50,7 @@ export const OrdersView = ({ ordersData }: OrdersViewProps) => {
 
   return (
     <div className="flex flex-col w-full h-full">
+      <h1 className="sr-only">Orders</h1>
       <div className="w-full flex justify-between flex-wrap md:flex-nowrap">
         <div className="w-full md:w-1/4 mb-4 min-w-[15rem] h-[2.3rem] 3xl:h-[2.6rem]">
           <InputGroup className="h-full">
@@ -103,13 +104,12 @@ export const OrdersView = ({ ordersData }: OrdersViewProps) => {
                 variant="outline"
                 onClick={handleExportToCSV}
                 className="!px-[0.8rem] !h-full w-12"
+                aria-label="Export orders to CSV"
               >
                 <DownloadIcon />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="top">
-              {t("button.csv")}
-            </TooltipContent>
+            <TooltipContent side="top">{t("button.csv")}</TooltipContent>
           </Tooltip>
         </div>
         <OrdersPagination

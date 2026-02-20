@@ -120,7 +120,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   return (
     <span
       className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border ${getStatusColor(
-        status
+        status,
       )}`}
     >
       {status}
@@ -215,12 +215,21 @@ export const BasicTable = () => {
     <Card isHeaderDividerVisible addTitleMargin title={t("basicTable")}>
       <div className="overflow-x-auto px-[0.8rem] py-2">
         <table className="w-full">
+          <caption className="sr-only">Basic data table</caption>
           <thead>
             {basicTable.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header, index) => (
                   <th
                     key={header.id}
+                    scope="col"
+                    aria-sort={
+                      header.column.getIsSorted() === "asc"
+                        ? "ascending"
+                        : header.column.getIsSorted() === "desc"
+                          ? "descending"
+                          : undefined
+                    }
                     className={`text-secondaryText font-medium text-left text-sm px-4 py-3 border-t border-b border-inputBorder bg-tableHeaderBg ${
                       index === 0 ? "border-l" : ""
                     } ${
@@ -231,7 +240,7 @@ export const BasicTable = () => {
                     <div className="flex items-center">
                       {flexRender(
                         header.column.columnDef.header,
-                        header.getContext()
+                        header.getContext(),
                       )}
                       <SortingArrow isSorted={header.column.getIsSorted()} />
                     </div>

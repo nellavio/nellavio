@@ -15,6 +15,7 @@ export const HomepageView = ({ homepageData }: HomepageViewProps) => {
 
   return (
     <>
+      <h1 className="sr-only">Dashboard</h1>
       {/* Four Cards Layout Only */}
       {homepageLayout === "four-cards" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -266,7 +266,7 @@ export const InventoryTable = () => {
 
   // Inventory Table State (with Pagination)
   const [inventorySorting, setInventorySorting] = React.useState<SortingState>(
-    []
+    [],
   );
   const [inventoryPagination, setInventoryPagination] =
     React.useState<PaginationState>({
@@ -328,10 +328,20 @@ export const InventoryTable = () => {
       header: "Actions",
       cell: () => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            aria-label="Search product"
+          >
             <Search className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            aria-label="Edit product"
+          >
             <Edit className="h-4 w-4" />
           </Button>
         </div>
@@ -360,12 +370,21 @@ export const InventoryTable = () => {
       <div className="px-[0.8rem] py-2">
         <div className="overflow-x-auto">
           <table className="w-full" style={{ tableLayout: "fixed" }}>
+            <caption className="sr-only">Inventory stock table</caption>
             <thead>
               {inventoryTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
+                      scope="col"
+                      aria-sort={
+                        header.column.getIsSorted() === "asc"
+                          ? "ascending"
+                          : header.column.getIsSorted() === "desc"
+                            ? "descending"
+                            : undefined
+                      }
                       className={`text-secondaryText font-medium text-left text-sm px-4 py-3 border-t border-b border-inputBorder bg-tableHeaderBg ${
                         index === 0 ? "border-l" : ""
                       } ${
@@ -378,7 +397,7 @@ export const InventoryTable = () => {
                       <div className="flex items-center">
                         {flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                         <SortingArrow isSorted={header.column.getIsSorted()} />
                       </div>
@@ -397,7 +416,7 @@ export const InventoryTable = () => {
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   ))}
@@ -421,7 +440,7 @@ export const InventoryTable = () => {
             {Math.min(
               (inventoryTable.getState().pagination.pageIndex + 1) *
                 inventoryTable.getState().pagination.pageSize,
-              inventoryTableData.length
+              inventoryTableData.length,
             )}{" "}
             {t("of")} {inventoryTableData.length} {t("results")}
           </div>
@@ -436,7 +455,7 @@ export const InventoryTable = () => {
               </PaginationItem>
               {Array.from(
                 { length: inventoryTable.getPageCount() },
-                (_, i) => i
+                (_, i) => i,
               ).map((pageIndex) => {
                 const currentPage =
                   inventoryTable.getState().pagination.pageIndex;

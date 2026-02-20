@@ -86,12 +86,20 @@ export const RevenueDistribution = ({
   // RevenueDistribution has unique color scheme:
   // Dark mode: inStore=blue, online=gray
   // Light mode: inStore=blue, online=teal
-  const inStoreColor = theme === "dark" ? chartColors.secondary.stroke : chartColors.secondary.inverted; // blue on both modes
-  const onlineColor = theme === "dark" ? "rgb(86,92,101)" : chartColors.primary.inverted; // gray on dark, teal on light
+  const inStoreColor =
+    theme === "dark"
+      ? chartColors.secondary.stroke
+      : chartColors.secondary.inverted; // blue on both modes
+  const onlineColor =
+    theme === "dark" ? "rgb(86,92,101)" : chartColors.primary.inverted; // gray on dark, teal on light
 
   return (
     <Card className="h-full" id="revenueDistribution" title={t("title")}>
-      <div className="w-full h-[18rem] 3xl:h-[24rem] mt-4 1xl:mt-4 -ml-4">
+      <div
+        role="img"
+        aria-label="Revenue distribution bar chart"
+        className="w-full h-[18rem] 3xl:h-[24rem] mt-4 1xl:mt-4 -ml-4"
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -127,7 +135,10 @@ export const RevenueDistribution = ({
             />
             <Tooltip
               content={<RevenueDistributionTooltip />}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
               isAnimationActive={false}
             />
             <Bar

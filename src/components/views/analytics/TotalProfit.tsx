@@ -66,7 +66,7 @@ export const TotalProfit = ({
   const backendTranslations = useBackendTranslations("analytics.totalProfit");
   const translatedData = useTranslateData(
     totalProfitSales,
-    backendTranslations
+    backendTranslations,
   );
 
   const { theme } = useTheme();
@@ -74,7 +74,7 @@ export const TotalProfit = ({
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
   const shouldStartChartAnimations = useAppStore(
-    (state) => state.shouldStartChartAnimations
+    (state) => state.shouldStartChartAnimations,
   );
 
   return (
@@ -95,7 +95,11 @@ export const TotalProfit = ({
         </div>
         <p className="text-sm text-primaryText">{t("thisYear")}</p>
       </div>
-      <div className="mt-8 3xl:mt-10 h-48 1xl:h-44 3xl:h-48">
+      <div
+        role="img"
+        aria-label="Total profit area chart"
+        className="mt-8 3xl:mt-10 h-48 1xl:h-44 3xl:h-48"
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -141,7 +145,10 @@ export const TotalProfit = ({
             <YAxis hide />
             <Tooltip
               content={<TotalProfitTooltip />}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
               isAnimationActive={false}
             />
             <Area

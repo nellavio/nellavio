@@ -112,7 +112,11 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
       id="marketMetrics"
       title={t("title")}
     >
-      <div className="w-full h-[19rem] lg:h-[19rem] 3xl:h-[24rem] mt-6">
+      <div
+        role="img"
+        aria-label="Market metrics radar chart"
+        className="w-full h-[19rem] lg:h-[19rem] 3xl:h-[24rem] mt-6"
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"

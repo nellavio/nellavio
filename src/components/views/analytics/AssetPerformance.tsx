@@ -83,12 +83,12 @@ export const AssetPerformance = ({
     (item, index) => ({
       ...item,
       color: COLORS[index % COLORS.length],
-    })
+    }),
   );
 
   const totalSales = assetPerformanceData.reduce(
     (sum, asset) => sum + asset.sales,
-    0
+    0,
   );
 
   const getDeltaColor = (status: string) => {
@@ -115,6 +115,8 @@ export const AssetPerformance = ({
             onMouseMove={handleMouseMove}
             className="h-44 1xl:h-56 3xl:h-64 w-full relative"
             tabIndex={-1}
+            role="img"
+            aria-label="Asset performance pie chart"
           >
             <ResponsiveContainer
               width="100%"
@@ -148,7 +150,10 @@ export const AssetPerformance = ({
                 <Tooltip
                   content={<AssetTooltip />}
                   isAnimationActive={false}
-                  position={{ x: mousePosition.x + 15, y: mousePosition.y - 10 }}
+                  position={{
+                    x: mousePosition.x + 15,
+                    y: mousePosition.y - 10,
+                  }}
                   wrapperStyle={{ zIndex: 10 }}
                 />
               </PieChart>

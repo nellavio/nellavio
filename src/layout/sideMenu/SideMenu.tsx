@@ -23,7 +23,8 @@ export const SideMenu = () => {
   const t = useTranslations("sideMenu");
 
   return (
-    <div
+    <nav
+      aria-label="Side navigation"
       className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] white pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
         !isSideMenuOpen && "xl:!max-w-[3rem] !w-[3rem] xl:!min-w-[4.5rem] pr-0"
       }
@@ -43,7 +44,9 @@ export const SideMenu = () => {
         >
           <Logo />
         </div>
-        <div className={`flex-1 overflow-y-auto overflow-x-hidden ${isSideMenuOpen ? "pr-3" : ""}`}>
+        <div
+          className={`flex-1 overflow-y-auto overflow-x-hidden ${isSideMenuOpen ? "pr-3" : ""}`}
+        >
           <MenuCategory title={t("pages")} />
           <MenuItem title={t("dashboard")} icon={<DashboardIcon />} path="/" />
           <MenuItemWithSubmenu
@@ -90,7 +93,12 @@ export const SideMenu = () => {
         </div>
         <div
           onClick={toggleSideMenu}
-          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleSideMenu(); } }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleSideMenu();
+            }
+          }}
           tabIndex={0}
           role="button"
           aria-label={isSideMenuOpen ? "Collapse menu" : "Expand menu"}
@@ -99,6 +107,6 @@ export const SideMenu = () => {
           {isSideMenuOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
         </div>
       </div>
-    </div>
+    </nav>
   );
 };

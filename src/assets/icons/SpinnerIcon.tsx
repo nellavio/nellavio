@@ -12,6 +12,7 @@ export const SpinnerIcon = ({
   className,
 }: SpinnerIconProps) => (
   <svg
+    aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     style={{
       margin: "auto",

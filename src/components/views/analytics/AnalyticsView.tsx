@@ -12,6 +12,7 @@ import { RevenueDistribution } from "./RevenueDistribution";
 export const AnalyticsView = ({ analyticsData }: AnalyticsViewProps) => {
   return (
     <>
+      <h1 className="sr-only">Analytics</h1>
       {/* First row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 3xl:grid-cols-3 gap-x-4 1xl:gap-x-6 gap-y-6">
         <div className="lg:col-span-3 3xl:col-span-2">

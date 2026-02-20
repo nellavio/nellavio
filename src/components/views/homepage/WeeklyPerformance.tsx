@@ -132,7 +132,11 @@ const WeeklyPerformanceChart = ({
 
   return (
     <div className={`px-4 pt-8 pb-4 ${isFourCardsMode ? "lg:pt-10" : ""}`}>
-      <div className={`w-full ${isExpanded ? chartHeightWhenNoActivities : "h-[14rem] 3xl:h-[17rem]"}`}>
+      <div
+        role="img"
+        aria-label="Weekly performance bar chart"
+        className={`w-full ${isExpanded ? chartHeightWhenNoActivities : "h-[14rem] 3xl:h-[17rem]"}`}
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -161,7 +165,10 @@ const WeeklyPerformanceChart = ({
             <Tooltip
               content={<WeeklyPerformanceTooltip />}
               isAnimationActive={false}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
             />
             <Bar
               dataKey="revenue"
@@ -325,7 +332,10 @@ export const WeeklyPerformance = ({
   weeklyPerformanceData,
   weeklyActivities,
   isFourCardsMode = false,
-}: WeeklyPerformanceProps & { weeklyActivities: WeeklyActivity[]; isFourCardsMode?: boolean }) => {
+}: WeeklyPerformanceProps & {
+  weeklyActivities: WeeklyActivity[];
+  isFourCardsMode?: boolean;
+}) => {
   const t = useTranslations("homepage.weeklyPerformance");
   const { width: windowWidth } = useWindowDimensions();
 

@@ -46,6 +46,7 @@ export const CustomersTable = ({ table }: CustomersTableProps) => {
   return (
     <>
       <table className="w-full mt-8 min-w-[58rem] customersTable">
+        <caption className="sr-only">Customers list</caption>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -53,6 +54,14 @@ export const CustomersTable = ({ table }: CustomersTableProps) => {
                 <th
                   key={header.id}
                   colSpan={header.colSpan}
+                  scope="col"
+                  aria-sort={
+                    header.column.getIsSorted() === "asc"
+                      ? "ascending"
+                      : header.column.getIsSorted() === "desc"
+                        ? "descending"
+                        : undefined
+                  }
                   className={
                     header.column.getCanSort()
                       ? `text-secondaryText font-normal text-left text-sm 3xl:text-base pl-4 py-3 3xl:py-3 border-t border-b border-inputBorder cursor-pointer select-none bg-tableHeaderBg hover:bg-tableHeaderBgHover ${index === 0 ? "border-l" : ""} ${index === headerGroup.headers.length - 1 ? "border-r" : ""}`
@@ -72,7 +81,7 @@ export const CustomersTable = ({ table }: CustomersTableProps) => {
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                     {header.column.getIsSorted() ? (
                       <SortingArrow
@@ -89,9 +98,19 @@ export const CustomersTable = ({ table }: CustomersTableProps) => {
           {table.getRowModel().rows.map((row) => (
             <tr
               key={row.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`View customer ${(row.original as CustomerColumns).col1} ${(row.original as CustomerColumns).col2} details`}
               onClick={() => {
                 setSelectedCustomer(row.original as CustomerColumns);
                 setIsCustomerModalOpen(true);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedCustomer(row.original as CustomerColumns);
+                  setIsCustomerModalOpen(true);
+                }
               }}
               className="hover:bg-tableRowBgHover cursor-pointer"
             >

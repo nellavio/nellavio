@@ -49,6 +49,7 @@ export const CalendarView = ({ calendarEvents }: CalendarViewProps) => {
 
   return (
     <div className="w-full h-full alternativeScrollbar">
+      <h1 className="sr-only">Calendar</h1>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin, listPlugin, timeGridPlugin]}
         initialView="dayGridMonth"

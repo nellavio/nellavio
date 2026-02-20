@@ -30,7 +30,8 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
   const is3xl = useMediaQuery("(min-width: 1920px)");
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
-  const hoverScaleClass = "transition-transform duration-200 group-hover:scale-110";
+  const hoverScaleClass =
+    "transition-transform duration-200 group-hover:scale-110";
 
   const translations = {
     Sales: t("sales"),
@@ -85,7 +86,11 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
     }
 
     return (
-      <div className={`size-16 lg:size-14 xl:size-16 3xl:size-20 ${hoverScaleClass}`}>
+      <div
+        role="img"
+        aria-label="Metric chart"
+        className={`size-16 lg:size-14 xl:size-16 3xl:size-20 ${hoverScaleClass}`}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -114,10 +119,14 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
 
   const renderBarChart = (
     chartData: { date: string; metric: number }[],
-    color: string
+    color: string,
   ) => {
     return (
-      <div className={`w-28 h-16 lg:w-20 lg:h-14 1xl:w-24 1xl:h-16 3xl:w-28 3xl:h-20 ${hoverScaleClass}`}>
+      <div
+        role="img"
+        aria-label="Metric chart"
+        className={`w-28 h-16 lg:w-20 lg:h-14 1xl:w-24 1xl:h-16 3xl:w-28 3xl:h-20 ${hoverScaleClass}`}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData} barCategoryGap={1}>
             <Bar
@@ -172,18 +181,25 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer">
-                    <div className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}>
+                    <div
+                      className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}
+                    >
                       <span className="text-primaryText text-xs lg:text-[0.625rem] 1xl:text-xs 3xl:text-sm font-bold">
                         {hardcodedPercentages[index]}%
                       </span>
                     </div>
                     {renderCircularChart(
                       hardcodedPercentages[index],
-                      getChartColor(index)
+                      getChartColor(index),
                     )}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="right" align="start" alignOffset={-18} sideOffset={-4}>
+                <TooltipContent
+                  side="right"
+                  align="start"
+                  alignOffset={-18}
+                  sideOffset={-4}
+                >
                   <p>{t("monthlyTarget")}</p>
                 </TooltipContent>
               </Tooltip>

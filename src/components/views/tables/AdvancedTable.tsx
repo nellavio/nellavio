@@ -153,7 +153,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   return (
     <span
       className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border ${getStatusColor(
-        status
+        status,
       )}`}
     >
       {status}
@@ -192,10 +192,10 @@ export const AdvancedTable = () => {
 
   // Advanced Table State
   const [advancedSorting, setAdvancedSorting] = React.useState<SortingState>(
-    []
+    [],
   );
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
+    [],
   );
   const [rowSelection, setRowSelection] = React.useState({});
   const [globalFilter, setGlobalFilter] = React.useState("");
@@ -270,13 +270,19 @@ export const AdvancedTable = () => {
       header: "Actions",
       cell: () => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            aria-label="Edit row"
+          >
             <Edit className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             className="h-8 w-8 text-red-500 hover:text-red-600"
+            aria-label="Delete row"
           >
             <Trash2 className="h-4 w-4" />
           </Button>
@@ -307,11 +313,7 @@ export const AdvancedTable = () => {
   });
 
   return (
-    <Card
-      isHeaderDividerVisible
-      addTitleMargin
-      title={t("searchAndSelection")}
-    >
+    <Card isHeaderDividerVisible addTitleMargin title={t("searchAndSelection")}>
       <div className="px-[0.8rem] py-2">
         {/* Search and Info */}
         <div
@@ -338,12 +340,23 @@ export const AdvancedTable = () => {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full">
+            <caption className="sr-only">
+              Advanced data table with selection
+            </caption>
             <thead>
               {advancedTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
+                      scope="col"
+                      aria-sort={
+                        header.column.getIsSorted() === "asc"
+                          ? "ascending"
+                          : header.column.getIsSorted() === "desc"
+                            ? "descending"
+                            : undefined
+                      }
                       className={`text-secondaryText font-medium text-left text-sm px-4 py-3 bg-tableHeaderBg border-t border-b border-inputBorder ${
                         index === 0 ? "border-l" : ""
                       } ${
@@ -356,7 +369,7 @@ export const AdvancedTable = () => {
                       <div className="flex items-center">
                         {flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                         <SortingArrow isSorted={header.column.getIsSorted()} />
                       </div>
@@ -382,7 +395,7 @@ export const AdvancedTable = () => {
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   ))}

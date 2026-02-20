@@ -43,14 +43,14 @@ export const CustomDateRangeDialog = ({
   const fiveYearsAgo = new Date(
     today.getFullYear() - 5,
     today.getMonth(),
-    today.getDate()
+    today.getDate(),
   );
 
   const [fromDate, setFromDate] = useState<Date>(
-    parseDate(initialRange?.from ?? todayStr)
+    parseDate(initialRange?.from ?? todayStr),
   );
   const [toDate, setToDate] = useState<Date>(
-    parseDate(initialRange?.to ?? todayStr)
+    parseDate(initialRange?.to ?? todayStr),
   );
 
   const handleOpenChange = (nextOpen: boolean) => {
@@ -82,17 +82,22 @@ export const CustomDateRangeDialog = ({
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <DialogHeader>
-          <DialogTitle className="text-center text-xl">{t("dialogTitle")}</DialogTitle>
+          <DialogTitle className="text-center text-xl">
+            {t("dialogTitle")}
+          </DialogTitle>
           <DialogDescription className="sr-only">
             {t("dialogTitle")}
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-row gap-4 mt-2">
           <div className="flex flex-col gap-1.5 flex-1">
-            <label className="text-sm text-secondaryText">{t("from")}</label>
+            <label htmlFor="date-from" className="text-sm text-secondaryText">
+              {t("from")}
+            </label>
             <div className="datepicker-full-width relative h-[2.3rem] 3xl:h-[2.6rem]">
               <DatePicker
                 ref={startPickerRef}
+                id="date-from"
                 selected={fromDate}
                 onChange={(date: Date | null) => date && setFromDate(date)}
                 minDate={fiveYearsAgo}
@@ -109,10 +114,13 @@ export const CustomDateRangeDialog = ({
             </div>
           </div>
           <div className="flex flex-col gap-1.5 flex-1">
-            <label className="text-sm text-secondaryText">{t("to")}</label>
+            <label htmlFor="date-to" className="text-sm text-secondaryText">
+              {t("to")}
+            </label>
             <div className="datepicker-full-width relative h-[2.3rem] 3xl:h-[2.6rem]">
               <DatePicker
                 ref={endPickerRef}
+                id="date-to"
                 selected={toDate}
                 onChange={(date: Date | null) => date && setToDate(date)}
                 minDate={fiveYearsAgo}
@@ -129,7 +137,10 @@ export const CustomDateRangeDialog = ({
             </div>
           </div>
         </div>
-        <DialogFooter footerVariant="centered" className="mt-[2.7rem] !flex-row gap-3 sm:gap-0 justify-center">
+        <DialogFooter
+          footerVariant="centered"
+          className="mt-[2.7rem] !flex-row gap-3 sm:gap-0 justify-center"
+        >
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             {t("cancel")}
           </Button>

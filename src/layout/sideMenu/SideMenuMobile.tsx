@@ -34,7 +34,9 @@ export const SideMenuMobile = ({
   if (isFirstRender) return null;
 
   return (
-    <div
+    <nav
+      aria-label="Mobile navigation"
+      aria-hidden={!isMobileMenuOpen}
       className={`z-50 overflow-auto overflow-x-hidden flex fixed xl:hidden flex-col justify-between bg-primaryBg border-r-[1px] border-mainBorder bg-primaryBg white top-[4.5rem] xl:top-[4rem] 2xl:top-[4.5rem] mb-[2.5rem] left-0 items-center transform transition-transform ease-in-out ${
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       }`}
@@ -114,6 +116,6 @@ export const SideMenuMobile = ({
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 };

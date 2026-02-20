@@ -7,10 +7,7 @@ import { useTheme } from "next-themes";
 import { Navbar } from "./navbar/Navbar";
 import { SideMenu } from "./sideMenu/SideMenu";
 import { useAppStore } from "../store/appStore";
-import {
-  FullScreenLoader,
-  LOADER_DURATION_MS,
-} from "./FullScreenLoader";
+import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { SettingsIcon } from "../assets/icons/SettingsIcon";
 import { FontManager } from "../hooks/useFontManager";
@@ -36,7 +33,7 @@ export const Layout = ({ children }: LayoutProps) => {
   });
   const loaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const animationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null
+    null,
   );
   const loaderInitializedRef = useRef(false);
 
@@ -135,6 +132,7 @@ export const Layout = ({ children }: LayoutProps) => {
           <div
             className="block xl:hidden h-screen w-screen fixed top-0 left-0 bg-[rgb(0,0,0,0.4)] z-[1]"
             onClick={toggleMobileMenu}
+            aria-hidden="true"
           />
         )}
       </div>

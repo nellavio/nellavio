@@ -14,7 +14,7 @@ export const MenuCategory = ({ title }: MenuCategoryProps) => {
         isCollapsed ? "opacity-0" : "opacity-100"
       }`}
     >
-      {isCollapsed ? "\u00A0" : title}
+      {isCollapsed ? <span aria-hidden="true">{"\u00A0"}</span> : title}
     </div>
   );
 };

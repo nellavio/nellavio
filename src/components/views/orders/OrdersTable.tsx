@@ -41,6 +41,7 @@ export const OrdersTable = ({
   return (
     <>
       <table className="w-full mt-6 overflow-scroll min-w-[55rem]">
+        <caption className="sr-only">Orders list</caption>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -48,6 +49,14 @@ export const OrdersTable = ({
                 <th
                   key={header.id}
                   colSpan={header.colSpan}
+                  scope="col"
+                  aria-sort={
+                    header.column.getIsSorted() === "asc"
+                      ? "ascending"
+                      : header.column.getIsSorted() === "desc"
+                        ? "descending"
+                        : undefined
+                  }
                   className={
                     header.column.getCanSort()
                       ? `text-secondaryText font-normal text-left text-sm 3xl:text-base pl-4 py-2 3xl:py-3 border-t border-b border-inputBorder cursor-pointer select-none bg-tableHeaderBg hover:bg-tableHeaderBgHover ${index === 0 ? "border-l" : ""} ${index === headerGroup.headers.length - 1 ? "border-r" : ""}`
@@ -67,7 +76,7 @@ export const OrdersTable = ({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                     {header.column.getIsSorted() ? (
                       <SortingArrow
@@ -85,14 +94,24 @@ export const OrdersTable = ({
             .getRowModel()
             .rows.slice(
               currentPage * itemsPerPage,
-              (currentPage + 1) * itemsPerPage
+              (currentPage + 1) * itemsPerPage,
             )
             .map((row) => (
               <tr
                 key={row.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`View order ${(row.original as OrderType).orderId} details`}
                 onClick={() => {
                   setSelectedOrder(row.original as OrderType);
                   setIsOrderModalOpen(true);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedOrder(row.original as OrderType);
+                    setIsOrderModalOpen(true);
+                  }
                 }}
                 className="hover:bg-tableRowBgHover cursor-pointer"
               >

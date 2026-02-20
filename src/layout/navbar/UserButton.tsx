@@ -59,16 +59,19 @@ export const UserButton = ({
   const getMenuItems = useCallback((): HTMLElement[] => {
     if (!menuRef.current) return [];
     return Array.from(
-      menuRef.current.querySelectorAll<HTMLElement>('[role="menuitem"]')
+      menuRef.current.querySelectorAll<HTMLElement>('[role="menuitem"]'),
     ).filter((el) => el.offsetParent !== null);
   }, []);
 
-  const focusItem = useCallback((index: number) => {
-    const items = getMenuItems();
-    if (items.length === 0) return;
-    const newIndex = ((index % items.length) + items.length) % items.length;
-    items[newIndex]?.focus();
-  }, [getMenuItems]);
+  const focusItem = useCallback(
+    (index: number) => {
+      const items = getMenuItems();
+      if (items.length === 0) return;
+      const newIndex = ((index % items.length) + items.length) % items.length;
+      items[newIndex]?.focus();
+    },
+    [getMenuItems],
+  );
 
   const handleTriggerKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -77,7 +80,10 @@ export const UserButton = ({
         userDropdown.close();
         userIconBtnRef?.current?.focus();
       }
-      if ((e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") && !userDropdown.isOpen) {
+      if (
+        (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") &&
+        !userDropdown.isOpen
+      ) {
         e.preventDefault();
         userDropdown.toggle();
         themeDropdown.close();
@@ -87,14 +93,22 @@ export const UserButton = ({
         setTimeout(() => focusItem(0), 0);
       }
     },
-    [userDropdown, themeDropdown, languageDropdown, notificationsDropdown, searchClose, focusItem, userIconBtnRef]
+    [
+      userDropdown,
+      themeDropdown,
+      languageDropdown,
+      notificationsDropdown,
+      searchClose,
+      focusItem,
+      userIconBtnRef,
+    ],
   );
 
   const handleMenuKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       const items = getMenuItems();
       const currentIndex = items.findIndex(
-        (item) => item === document.activeElement
+        (item) => item === document.activeElement,
       );
       switch (e.key) {
         case "ArrowDown":
@@ -123,7 +137,7 @@ export const UserButton = ({
           break;
       }
     },
-    [focusItem, getMenuItems, userDropdown, userIconBtnRef]
+    [focusItem, getMenuItems, userDropdown, userIconBtnRef],
   );
 
   return (
@@ -195,7 +209,7 @@ export const UserButton = ({
           ref={menuRef}
           id="user-dropdown-menu"
           role="menu"
-          aria-label={t("openUserMenu")}
+          aria-label="User menu"
           onKeyDown={handleMenuKeyDown}
           className="absolute right-[0.5rem] text-sm 1xl:text-sm 3xl:text-base xl:right-0 top-10 xl:top-11 mt-2 w-[13.5rem] border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow"
         >
@@ -210,7 +224,9 @@ export const UserButton = ({
               tabIndex={-1}
               role="menuitem"
               className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm focus-visible:bg-dropdownBgHover"
-              onPointerDown={() => { suppressTooltipRef.current = true; }}
+              onPointerDown={() => {
+                suppressTooltipRef.current = true;
+              }}
               onClick={() => {
                 userDropdown.close();
                 handleLoginButton();
@@ -229,7 +245,9 @@ export const UserButton = ({
               tabIndex={-1}
               role="menuitem"
               className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm focus-visible:bg-dropdownBgHover"
-              onPointerDown={() => { suppressTooltipRef.current = true; }}
+              onPointerDown={() => {
+                suppressTooltipRef.current = true;
+              }}
               onClick={() => {
                 userDropdown.close();
                 showSignUpModal();
@@ -248,7 +266,9 @@ export const UserButton = ({
               tabIndex={-1}
               role="menuitem"
               className="py-2 pr-5 -ml-[3.2rem] pl-[3.2rem] flex hover:bg-dropdownBgHover cursor-pointer text-sm focus-visible:bg-dropdownBgHover"
-              onPointerDown={() => { suppressTooltipRef.current = true; }}
+              onPointerDown={() => {
+                suppressTooltipRef.current = true;
+              }}
               onClick={() => {
                 userDropdown.close();
                 showLogoutModal();
@@ -368,7 +388,9 @@ export const UserButton = ({
             tabIndex={-1}
             role="menuitem"
             className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
-            onPointerDown={() => { suppressTooltipRef.current = true; }}
+            onPointerDown={() => {
+              suppressTooltipRef.current = true;
+            }}
             onClick={() => {
               userDropdown.close();
               showChangelogModal();
@@ -392,7 +414,9 @@ export const UserButton = ({
             tabIndex={-1}
             role="menuitem"
             className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
-            onPointerDown={() => { suppressTooltipRef.current = true; }}
+            onPointerDown={() => {
+              suppressTooltipRef.current = true;
+            }}
             onClick={() => {
               userDropdown.close();
               showAboutModal();
@@ -454,7 +478,10 @@ export const UserButton = ({
           </Link>
         </div>
       )}
-      <SettingsDrawer open={isSettingsDrawerOpen} onOpenChange={setIsSettingsDrawerOpen} />
+      <SettingsDrawer
+        open={isSettingsDrawerOpen}
+        onOpenChange={setIsSettingsDrawerOpen}
+      />
     </div>
   );
 };

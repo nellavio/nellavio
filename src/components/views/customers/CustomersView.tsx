@@ -54,6 +54,7 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
 
   return (
     <div className="flex flex-col w-full h-full">
+      <h1 className="sr-only">Customers</h1>
       <div className="flex justify-between flex-wrap md:flex-wrap w-full">
         <div className="w-full md:w-1/3 lg:w-1/4 h-[2.3rem] 3xl:h-[2.6rem]">
           <InputGroup className="h-full">
@@ -130,13 +131,12 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
                 variant="outline"
                 onClick={() => handleExportToCSV(customers)}
                 className="!px-[0.8rem] !h-full w-12"
+                aria-label="Export customers to CSV"
               >
                 <DownloadIcon />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="top">
-              {t("button.csv")}
-            </TooltipContent>
+            <TooltipContent side="top">{t("button.csv")}</TooltipContent>
           </Tooltip>
         </div>
         <CustomersPagination

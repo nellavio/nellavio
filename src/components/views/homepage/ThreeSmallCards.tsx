@@ -74,6 +74,8 @@ export const ThreeSmallCards = ({
 
     return (
       <div
+        role="img"
+        aria-label="Metric chart"
         className={`w-[6.5rem] h-[6.5rem] sm:w-[6.25rem] sm:h-[6.25rem] md:w-[4.75rem] md:h-[4.75rem] lg:w-[4.5rem] lg:h-[4.5rem] xl:w-20 xl:h-20 3xl:w-24 3xl:h-24 ${hoverScaleClass}`}
       >
         <ResponsiveContainer

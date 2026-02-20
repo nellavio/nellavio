@@ -9,6 +9,7 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -35,6 +36,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
   if (type === "three-cards") {
     return (
       <svg
+        aria-hidden="true"
         width="100%"
         height="60"
         viewBox="0 0 120 80"
@@ -93,6 +95,7 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
 
   return (
     <svg
+      aria-hidden="true"
       width="100%"
       height="60"
       viewBox="0 0 120 80"
@@ -161,6 +164,7 @@ const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
   if (type === "expanded") {
     return (
       <svg
+        aria-hidden="true"
         width="100%"
         height="60"
         viewBox="0 0 120 80"
@@ -225,6 +229,7 @@ const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
 
   return (
     <svg
+      aria-hidden="true"
       width="100%"
       height="60"
       viewBox="0 0 120 80"
@@ -287,7 +292,11 @@ const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
   );
 };
 
-export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: externalOnOpenChange }: SettingsDrawerProps) => {
+export const SettingsDrawer = ({
+  children,
+  open: externalOpen,
+  onOpenChange: externalOnOpenChange,
+}: SettingsDrawerProps) => {
   const t = useTranslations("settings");
   const { theme, setTheme } = useTheme();
   const homepageLayout = useAppStore((state) => state.homepageLayout);
@@ -296,13 +305,13 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
   const setFontType = useAppStore((state) => state.setFontType);
   const sidebarDefaultState = useAppStore((state) => state.sidebarDefaultState);
   const setSidebarDefaultState = useAppStore(
-    (state) => state.setSidebarDefaultState
+    (state) => state.setSidebarDefaultState,
   );
   const chartAnimationsEnabled = useAppStore(
-    (state) => state.chartAnimationsEnabled
+    (state) => state.chartAnimationsEnabled,
   );
   const setChartAnimationsEnabled = useAppStore(
-    (state) => state.setChartAnimationsEnabled
+    (state) => state.setChartAnimationsEnabled,
   );
   const fixedNavbar = useAppStore((state) => state.fixedNavbar);
   const setFixedNavbar = useAppStore((state) => state.setFixedNavbar);
@@ -310,7 +319,9 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
 
   const isControlled = externalOpen !== undefined;
   const open = isControlled ? externalOpen : internalOpen;
-  const setOpen = isControlled ? (externalOnOpenChange ?? (() => {})) : setInternalOpen;
+  const setOpen = isControlled
+    ? (externalOnOpenChange ?? (() => {}))
+    : setInternalOpen;
 
   return (
     <Drawer direction="right" open={open} onOpenChange={setOpen}>
@@ -320,7 +331,13 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
           <DrawerTitle className="text-primaryText text-2xl font-semibold">
             {t("title")}
           </DrawerTitle>
-          <DrawerClose autoFocus className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none">
+          <DrawerDescription className="sr-only">
+            Customize dashboard appearance settings
+          </DrawerDescription>
+          <DrawerClose
+            autoFocus
+            className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none"
+          >
             <svg
               width="20"
               height="20"
@@ -372,6 +389,7 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
                 {/* Three Cards Option */}
                 <button
                   onClick={() => setHomepageLayout("three-cards")}
+                  aria-pressed={homepageLayout === "three-cards"}
                   className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
                     homepageLayout === "three-cards"
                       ? "border-mainColor bg-primaryBg"
@@ -408,6 +426,7 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
                 {/* Four Cards Option */}
                 <button
                   onClick={() => setHomepageLayout("four-cards")}
+                  aria-pressed={homepageLayout === "four-cards"}
                   className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
                     homepageLayout === "four-cards"
                       ? "border-mainColor bg-primaryBg"
@@ -454,6 +473,7 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
                 {/* Expanded Option */}
                 <button
                   onClick={() => setSidebarDefaultState("expanded")}
+                  aria-pressed={sidebarDefaultState === "expanded"}
                   className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
                     sidebarDefaultState === "expanded"
                       ? "border-mainColor bg-primaryBg"
@@ -490,6 +510,7 @@ export const SettingsDrawer = ({ children, open: externalOpen, onOpenChange: ext
                 {/* Collapsed Option */}
                 <button
                   onClick={() => setSidebarDefaultState("collapsed")}
+                  aria-pressed={sidebarDefaultState === "collapsed"}
                   className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
                     sidebarDefaultState === "collapsed"
                       ? "border-mainColor bg-primaryBg"

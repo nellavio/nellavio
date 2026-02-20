@@ -58,8 +58,14 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
               <InputGroup className="h-full">
                 <InputGroupInput
                   {...field}
+                  autoComplete="email"
                   type="text"
                   placeholder={t("yourEmail")}
+                  aria-label={t("yourEmail")}
+                  aria-invalid={!!errors.email}
+                  aria-describedby={
+                    errors.email ? "signup-email-error" : undefined
+                  }
                   onInput={() => setShowPasswordError(false)}
                   maxLength={20}
                   fixedHeight
@@ -71,7 +77,11 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
             )}
           />
           {errors.email && showEmailError && (
-            <div className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto">
+            <div
+              id="signup-email-error"
+              role="alert"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+            >
               <div className="relative">
                 <div className="bg-secondaryBg bg-inputBg text-primaryText inline text-xs rounded p-2 px-4 w-full right-0 bottom-full border border-inputBorder rounded-md">
                   {errors.email.message}
@@ -88,8 +98,14 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
               <InputGroup className="h-full group">
                 <InputGroupInput
                   {...field}
+                  autoComplete="new-password"
                   type={showPassword ? "text" : "password"}
                   placeholder={t("yourPassword")}
+                  aria-label={t("yourPassword")}
+                  aria-invalid={!!errors.password}
+                  aria-describedby={
+                    errors.password ? "signup-password-error" : undefined
+                  }
                   onInput={() => setShowEmailError(false)}
                   maxLength={20}
                   fixedHeight
@@ -97,10 +113,15 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
                 <InputGroupAddon>
                   <PasswordIcon />
                 </InputGroupAddon>
-                <InputGroupAddon align="inline-end" className={`pr-1 transition-opacity ${showPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}>
+                <InputGroupAddon
+                  align="inline-end"
+                  className={`pr-1 transition-opacity ${showPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
+                >
                   <InputGroupButton
                     onClick={() => setShowPassword(!showPassword)}
-                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     aria-pressed={showPassword}
                   >
                     {showPassword ? <EyeOffIcon /> : <EyeIcon />}
@@ -110,7 +131,11 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
             )}
           />
           {errors.password && showPasswordError && (
-            <div className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto">
+            <div
+              id="signup-password-error"
+              role="alert"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+            >
               <div className="relative">
                 <div className="bg-secondaryBg bg-inputBg text-primaryText text-xs rounded p-2 px-4 inline right-0 bottom-full border border-inputBorder rounded-md">
                   {errors.password.message}
@@ -121,17 +146,26 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
         </div>
         {/* On mobile I used for errors standard red text instead of tooltips to save space */}
         {errors.email && showEmailError && (
-          <p className="text-sm text-red-500 -mb-2 md:hidden text-left w-full">
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-2 md:hidden text-left w-full"
+          >
             {errors.email.message}
           </p>
         )}
         {errors.password && showPasswordError && (
-          <p className="text-sm text-red-500 -mb-3 md:hidden text-left w-full">
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-3 md:hidden text-left w-full"
+          >
             {errors.password.message}
           </p>
         )}
         {signUpError && (
-          <p className="text-sm text-red-500 -mb-3 text-left w-full">
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-3 text-left w-full"
+          >
             {signUpError}
           </p>
         )}

@@ -1,5 +1,6 @@
 export const DonutIcon = () => (
   <svg
+    aria-hidden="true"
     width="20px"
     height="20px"
     viewBox="0 0 24 24"

@@ -9,6 +9,8 @@ export const HamburgerButton = ({
   <button
     className="relative hidden sm:block xl:hidden"
     onClick={toggleMobileMenu}
+    aria-label="Toggle menu"
+    aria-expanded={isMobileMenuOpen}
   >
     <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all duration-200">
       <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">

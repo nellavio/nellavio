@@ -88,6 +88,7 @@ export const AddEventModal = ({
             <Input
               type="text"
               placeholder={t("addEventModalPlaceholder")}
+              aria-label="Event title"
               value={title}
               onChange={(e) => onTitleChange(e.target.value)}
               className="text-input"
@@ -95,7 +96,7 @@ export const AddEventModal = ({
             <div className="flex gap-4 w-full justify-between mt-1">
               <div className="w-1/2">
                 <Select value={startTime} onValueChange={onStartTimeChange}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full" aria-label="Start time">
                     <SelectValue placeholder="Start time" />
                   </SelectTrigger>
                   <SelectContent>
@@ -109,7 +110,7 @@ export const AddEventModal = ({
               </div>
               <div className="w-1/2">
                 <Select value={endTime} onValueChange={onEndTimeChange}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full" aria-label="End time">
                     <SelectValue placeholder="End time" />
                   </SelectTrigger>
                   <SelectContent>
@@ -122,7 +123,11 @@ export const AddEventModal = ({
                 </Select>
               </div>
             </div>
-            {error && <div className="text-red-500 text-base">{error}</div>}
+            {error && (
+              <div role="alert" className="text-red-500 text-base">
+                {error}
+              </div>
+            )}
             <DialogFooter
               footerVariant="centered"
               className="mt-5 !flex-row gap-3 sm:gap-0 justify-center"

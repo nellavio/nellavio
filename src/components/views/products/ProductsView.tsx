@@ -56,6 +56,7 @@ export const ProductsView = ({ products }: { products: Product[] }) => {
 
   return (
     <div className="flex flex-row px-0 w-full xl:pr-1 2xl:pr-4">
+      <h1 className="sr-only">Products</h1>
       {/* Left panel */}
       <ProductDetails
         isTooltipVisible={isTooltipVisible}
@@ -80,6 +81,7 @@ export const ProductsView = ({ products }: { products: Product[] }) => {
           <button
             onClick={toggle}
             className="absolute top-7 right-8 stroke-secondaryText fill-secondaryText"
+            aria-label="Close product details"
           >
             <CloseIcon />
           </button>

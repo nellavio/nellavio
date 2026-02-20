@@ -44,15 +44,15 @@ export const ProfileView = () => {
         </div>
 
         {/* Profile Info */}
-        <div
-          className="pt-16 max-3xl:pt-12 max-2xl:pt-10 px-6 pb-4 max-3xl:pb-2 max-2xl:pb-1 max-md:pb-3 relative min-h-[160px] max-3xl:min-h-[130px] max-2xl:min-h-[115px] max-md:min-h-0"
-        >
+        <div className="pt-16 max-3xl:pt-12 max-2xl:pt-10 px-6 pb-4 max-3xl:pb-2 max-2xl:pb-1 max-md:pb-3 relative min-h-[160px] max-3xl:min-h-[130px] max-2xl:min-h-[115px] max-md:min-h-0">
           {/* Text info centered below avatar */}
           <div className="text-center">
             <h1 className="text-3xl max-3xl:text-2xl max-2xl:text-xl font-bold text-primaryText mb-1">
               {userData.name}
             </h1>
-            <p className="text-secondaryText text-base max-2xl:text-sm mb-1">{userData.role}</p>
+            <p className="text-secondaryText text-base max-2xl:text-sm mb-1">
+              {userData.role}
+            </p>
             <p className="text-subtitleText text-sm max-2xl:text-xs">
               {t("memberSince")} {userData.joinDate}
             </p>
@@ -61,17 +61,26 @@ export const ProfileView = () => {
           {/* Social Links and Edit button */}
           <div className="md:absolute md:top-1/2 md:-translate-y-1/2 right-6 max-lg:left-6 max-lg:justify-between flex items-center gap-6 max-md:justify-center max-md:mt-8">
             <div className="flex gap-3">
-              <button className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group">
+              <button
+                className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
+                aria-label="GitHub profile"
+              >
                 <div className="w-5 h-5 flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <GithubIcon />
                 </div>
               </button>
-              <button className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group">
+              <button
+                className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
+                aria-label="LinkedIn profile"
+              >
                 <div className="w-[18px] h-[18px] flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <LinkedinIcon />
                 </div>
               </button>
-              <button className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group">
+              <button
+                className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
+                aria-label="Twitter profile"
+              >
                 <div className="w-[18px] h-[18px] flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <TwitterIcon />
                 </div>
@@ -117,7 +126,9 @@ export const ProfileView = () => {
                 </div>
                 <div className="flex-1">
                   <p className="text-xs text-subtitleText mb-1">{t("phone")}</p>
-                  <p className="text-base max-xl:text-sm text-primaryText">{userData.phone}</p>
+                  <p className="text-base max-xl:text-sm text-primaryText">
+                    {userData.phone}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4 max-2xl:gap-3">

@@ -23,6 +23,7 @@ import { GradientPieChartComponent } from "./GradientPieChartComponent";
 export const ChartsView = () => {
   return (
     <div className="flex flex-col gap-5 w-full">
+      <h1 className="sr-only">Charts</h1>
       {/* Row 1 */}
       <div className="flex flex-col lg:flex-row gap-5 w-full">
         <div className="w-full lg:w-1/2">

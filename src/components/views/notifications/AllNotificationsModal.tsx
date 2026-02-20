@@ -110,6 +110,7 @@ export const AllNotificationsModal = ({
           <div className="flex gap-3">
             <button
               onClick={() => setFilter("all")}
+              aria-current={filter === "all" ? "true" : undefined}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
                 filter === "all"
                   ? "bg-containedButtonBg text-white"
@@ -120,6 +121,7 @@ export const AllNotificationsModal = ({
             </button>
             <button
               onClick={() => setFilter("new")}
+              aria-current={filter === "new" ? "true" : undefined}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
                 filter === "new"
                   ? "bg-containedButtonBg text-white"

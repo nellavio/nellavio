@@ -25,7 +25,7 @@ export const Navbar = () => {
   const setIsLoggingOut = useAppStore((state) => state.setIsLoggingOut);
   const setIsLoggingIn = useAppStore((state) => state.setIsLoggingIn);
   const fixedNavbar = useAppStore((state) => state.fixedNavbar);
-  const navbarRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setIsLoggingOut(false);
@@ -91,7 +91,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <div
+      <header
         ref={navbarRef}
         className="w-screen flex items-center z-30 fixed h-[4.5rem] bg-primaryBg 3xl:h-20 border-b border-solid border-mainBorder"
         style={{ willChange: fixedNavbar ? "auto" : "transform" }}
@@ -123,59 +123,59 @@ export const Navbar = () => {
             />
           </div>
           <div className="flex items-center gap-[0.5rem] md:gap-2 xl:gap-3.5 z-[99]">
-              <div className="hidden xl:flex">
-                <ThemeButton
-                  theme={theme}
-                  selectTheme={selectTheme}
-                  userDropdown={userDropdown}
-                  languageDropdown={languageDropdown}
-                  notificationsDropdown={notificationsDropdown}
-                  t={t}
+            <div className="hidden xl:flex">
+              <ThemeButton
+                theme={theme}
+                selectTheme={selectTheme}
+                userDropdown={userDropdown}
+                languageDropdown={languageDropdown}
+                notificationsDropdown={notificationsDropdown}
+                t={t}
+              />
+            </div>
+            <div className="xl:ml-3.5">
+              <NotificationsButton
+                notificationsDropdown={notificationsDropdown}
+                themeDropdown={themeDropdown}
+                languageDropdown={languageDropdown}
+                userDropdown={userDropdown}
+                searchClose={searchDropdown.close}
+                t={t}
+              />
+            </div>
+            <div className="flex items-center ml-auto">
+              <UserButton
+                userIconBtnRef={userIconBtnRef}
+                closeMobileMenu={closeMobileMenu}
+                userDropdown={userDropdown}
+                themeDropdown={themeDropdown}
+                languageDropdown={languageDropdown}
+                notificationsDropdown={notificationsDropdown}
+                showLogoutModal={showLogoutModal}
+                showAboutModal={showAboutModal}
+                showChangelogModal={showChangelogModal}
+                handleLoginButton={handleLoginButton}
+                showSignUpModal={showSignUpModal}
+                session={session}
+                theme={theme}
+                searchClose={searchDropdown.close}
+                currentLanguage={currentLanguage}
+                selectTheme={selectTheme}
+                t={t}
+              />
+              <div className="hidden xl:block">
+                <HamburgerButton
+                  isMobileMenuOpen={isMobileMenuOpen}
+                  toggleMobileMenu={() => {
+                    searchDropdown.close();
+                    toggleMobileMenu();
+                  }}
                 />
-              </div>
-              <div className="xl:ml-3.5">
-                <NotificationsButton
-                  notificationsDropdown={notificationsDropdown}
-                  themeDropdown={themeDropdown}
-                  languageDropdown={languageDropdown}
-                  userDropdown={userDropdown}
-                  searchClose={searchDropdown.close}
-                  t={t}
-                />
-              </div>
-              <div className="flex items-center ml-auto">
-                <UserButton
-                  userIconBtnRef={userIconBtnRef}
-                  closeMobileMenu={closeMobileMenu}
-                  userDropdown={userDropdown}
-                  themeDropdown={themeDropdown}
-                  languageDropdown={languageDropdown}
-                  notificationsDropdown={notificationsDropdown}
-                  showLogoutModal={showLogoutModal}
-                  showAboutModal={showAboutModal}
-                  showChangelogModal={showChangelogModal}
-                  handleLoginButton={handleLoginButton}
-                  showSignUpModal={showSignUpModal}
-                  session={session}
-                  theme={theme}
-                  searchClose={searchDropdown.close}
-                  currentLanguage={currentLanguage}
-                  selectTheme={selectTheme}
-                  t={t}
-                />
-                <div className="hidden xl:block">
-                  <HamburgerButton
-                    isMobileMenuOpen={isMobileMenuOpen}
-                    toggleMobileMenu={() => {
-                      searchDropdown.close();
-                      toggleMobileMenu();
-                    }}
-                  />
-                </div>
               </div>
             </div>
+          </div>
         </div>
-      </div>
+      </header>
       <SideMenuMobile
         isMobileMenuOpen={isMobileMenuOpen}
         onLoginButtonClick={handleLoginButton}
@@ -191,12 +191,26 @@ export const Navbar = () => {
         <div
           className="fixed top-[4.5rem] w-full h-full bg-[rgb(0,0,0,0.35)] z-10"
           onClick={toggleMobileMenu}
+          aria-hidden="true"
         />
       )}
-      {isLogoutModalOpen && <LogoutModal closeModal={closeLogoutModal} returnFocusRef={userIconBtnRef} />}
-      {isAboutModalOpen && <AboutModal closeModal={closeAboutModal} returnFocusRef={userIconBtnRef} />}
+      {isLogoutModalOpen && (
+        <LogoutModal
+          closeModal={closeLogoutModal}
+          returnFocusRef={userIconBtnRef}
+        />
+      )}
+      {isAboutModalOpen && (
+        <AboutModal
+          closeModal={closeAboutModal}
+          returnFocusRef={userIconBtnRef}
+        />
+      )}
       {isChangelogModalOpen && (
-        <ChangelogModal closeModal={closeChangelogModal} returnFocusRef={userIconBtnRef} />
+        <ChangelogModal
+          closeModal={closeChangelogModal}
+          returnFocusRef={userIconBtnRef}
+        />
       )}
       {isLoginModalOpen && (
         <LoginModal

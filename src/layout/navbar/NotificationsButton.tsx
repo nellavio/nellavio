@@ -46,7 +46,7 @@ export const NotificationsButton = ({
     setNotifications(updatedNotifications);
     localStorage.setItem(
       "notificationsState",
-      JSON.stringify(updatedNotifications)
+      JSON.stringify(updatedNotifications),
     );
   };
 
@@ -81,7 +81,7 @@ export const NotificationsButton = ({
       if (e.key === "ArrowDown") {
         e.preventDefault();
         setHighlightedIndex((prev) =>
-          prev < notifications.length - 1 ? prev + 1 : prev
+          prev < notifications.length - 1 ? prev + 1 : prev,
         );
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -90,7 +90,7 @@ export const NotificationsButton = ({
         e.preventDefault();
         const notification = notifications[highlightedIndex];
         const updatedNotifications = notifications.map((n) =>
-          n.id === notification.id ? { ...n, isNew: false } : n
+          n.id === notification.id ? { ...n, isNew: false } : n,
         );
         handleNotificationsUpdate(updatedNotifications);
       } else if (e.key === "Escape") {
@@ -100,7 +100,7 @@ export const NotificationsButton = ({
         notificationsBtnRef.current?.focus();
       }
     },
-    [notificationsDropdown, notifications, highlightedIndex]
+    [notificationsDropdown, notifications, highlightedIndex],
   );
 
   const handleCloseModal = useCallback(() => {
@@ -144,6 +144,7 @@ export const NotificationsButton = ({
               className="relative text-base flex rounded-full justify-center items-center gap-2 w-full h-full border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon"
               type="button"
               aria-label={t("notifications") || "Notifications"}
+              aria-expanded={notificationsDropdown.isOpen}
             >
               <BellIcon />
               {newNotificationsCount > 0 && (
@@ -166,7 +167,11 @@ export const NotificationsButton = ({
         )}
       </Tooltip>
       {notificationsDropdown.isOpen && (
-        <div className="hidden xl:block absolute right-0 top-10 xl:top-11 mt-2 w-[22rem] border border-inputBorder bg-dropdownBg text-primaryText rounded-md shadow-lg overflow-hidden">
+        <div
+          role="region"
+          aria-label="Notifications"
+          className="hidden xl:block absolute right-0 top-10 xl:top-11 mt-2 w-[22rem] border border-inputBorder bg-dropdownBg text-primaryText rounded-md shadow-lg overflow-hidden"
+        >
           {/* Header */}
           <div className="px-5 py-3 border-b border-mainBorder flex justify-between items-center bg-notificationHeaderBg">
             <h3 className="font-semibold text-base">Notifications</h3>
@@ -182,6 +187,7 @@ export const NotificationsButton = ({
             {notifications.map((notification, index) => (
               <div
                 key={notification.id}
+                role="article"
                 className={`px-5 py-3 cursor-pointer border-b border-mainBorder transition-colors ${
                   index === highlightedIndex
                     ? "bg-notificationItemBgHover"
@@ -190,7 +196,7 @@ export const NotificationsButton = ({
                 onClick={() => {
                   // Mark as read
                   const updatedNotifications = notifications.map((n) =>
-                    n.id === notification.id ? { ...n, isNew: false } : n
+                    n.id === notification.id ? { ...n, isNew: false } : n,
                   );
                   handleNotificationsUpdate(updatedNotifications);
                 }}
@@ -228,7 +234,9 @@ export const NotificationsButton = ({
           {/* Footer button */}
           <div className="p-3 border-t border-mainBorder bg-notificationHeaderBg">
             <button
-              onPointerDown={() => { suppressTooltipRef.current = true; }}
+              onPointerDown={() => {
+                suppressTooltipRef.current = true;
+              }}
               onClick={() => {
                 setIsAllNotificationsModalOpen(true);
                 notificationsDropdown.close();

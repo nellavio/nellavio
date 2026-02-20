@@ -60,9 +60,14 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
               <InputGroup className="h-full">
                 <InputGroupInput
                   {...field}
-                  autoComplete="new-password"
+                  autoComplete="email"
                   type="text"
                   placeholder={t("yourEmail")}
+                  aria-label={t("yourEmail")}
+                  aria-invalid={!!errors.email}
+                  aria-describedby={
+                    errors.email ? "login-email-error" : undefined
+                  }
                   onInput={() => setShowPasswordError(false)}
                   maxLength={20}
                   fixedHeight
@@ -74,7 +79,11 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
             )}
           />
           {errors.email && showEmailError && (
-            <div className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto">
+            <div
+              id="login-email-error"
+              role="alert"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+            >
               <div className="relative">
                 <div className="bg-secondaryBg bg-inputBg text-primaryText inline text-xs rounded p-2 px-4 w-full right-0 bottom-full border border-inputBorder rounded-md">
                   {errors.email.message}
@@ -91,9 +100,14 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
               <InputGroup className="h-full group">
                 <InputGroupInput
                   {...field}
-                  autoComplete="new-password"
+                  autoComplete="current-password"
                   type={showPassword ? "text" : "password"}
                   placeholder={t("yourPassword")}
+                  aria-label={t("yourPassword")}
+                  aria-invalid={!!errors.password}
+                  aria-describedby={
+                    errors.password ? "login-password-error" : undefined
+                  }
                   onInput={() => setShowEmailError(false)}
                   maxLength={20}
                   fixedHeight
@@ -101,10 +115,15 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
                 <InputGroupAddon>
                   <PasswordIcon />
                 </InputGroupAddon>
-                <InputGroupAddon align="inline-end" className={`pr-1 transition-opacity ${showPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}>
+                <InputGroupAddon
+                  align="inline-end"
+                  className={`pr-1 transition-opacity ${showPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
+                >
                   <InputGroupButton
                     onClick={() => setShowPassword(!showPassword)}
-                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     aria-pressed={showPassword}
                   >
                     {showPassword ? <EyeOffIcon /> : <EyeIcon />}
@@ -114,7 +133,11 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
             )}
           />
           {errors.password && showPasswordError && (
-            <div className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto">
+            <div
+              id="login-password-error"
+              role="alert"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+            >
               <div className="relative">
                 <div className="bg-secondaryBg bg-inputBg text-primaryText text-xs rounded p-2 px-4 inline right-0 bottom-full border border-inputBorder rounded-md">
                   {errors.password.message}
@@ -125,17 +148,28 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
         </div>
         {/* On mobile I used standard red text for errors instead of tooltips to save space */}
         {!authErrorDisplayed && errors.email && showEmailError && (
-          <p className="text-sm text-red-500 -mb-2 md:hidden text-left w-full">
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-2 md:hidden text-left w-full"
+          >
             {errors.email.message}
           </p>
         )}
         {!authErrorDisplayed && errors.password && showPasswordError && (
-          <p className="text-sm text-red-500 -mb-3 md:hidden text-left w-full">
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-3 md:hidden text-left w-full"
+          >
             {errors.password.message}
           </p>
         )}
         {authErrorDisplayed && (
-          <p className="text-sm text-red-500 -mb-3 text-left w-full">{authErrorDisplayed}</p>
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-3 text-left w-full"
+          >
+            {authErrorDisplayed}
+          </p>
         )}
         <div className="flex flex-col items-center w-full mt-4 1xl:mt-6">
           <div className="w-4/5 h-[2.5rem]">

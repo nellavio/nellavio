@@ -84,15 +84,25 @@ const DataTable = ({ data }: { data: OverviewMonthData[] }) => {
   return (
     <div className="overflow-hidden h-[18rem] 1xl:h-[19rem] 3xl:h-[24rem] mr-8 mt-1">
       <table className="w-full">
+        <caption className="sr-only">Yearly revenue overview</caption>
         <thead>
           <tr>
-            <th className="text-secondaryText text-xs text-left text-base pl-4 py-2 3xl:py-3 border-b border-inputBorder">
+            <th
+              scope="col"
+              className="text-secondaryText text-xs text-left text-base pl-4 py-2 3xl:py-3 border-b border-inputBorder"
+            >
               {t("month")}
             </th>
-            <th className="text-secondaryText text-xs text-left text-base pl-4  py-2 3xl:py-3 border-b border-inputBorder">
+            <th
+              scope="col"
+              className="text-secondaryText text-xs text-left text-base pl-4  py-2 3xl:py-3 border-b border-inputBorder"
+            >
               {t("phones")}
             </th>
-            <th className="text-secondaryText text-xs text-left text-base pl-4  py-2 3xl:py-3 border-b border-inputBorder">
+            <th
+              scope="col"
+              className="text-secondaryText text-xs text-left text-base pl-4  py-2 3xl:py-3 border-b border-inputBorder"
+            >
               {t("laptops")}
             </th>
           </tr>
@@ -133,13 +143,17 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
 
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
   const shouldStartChartAnimations = useAppStore(
-    (state) => state.shouldStartChartAnimations
+    (state) => state.shouldStartChartAnimations,
   );
 
   return (
     <Card className="h-full" id="yearOverview" title={t("title")}>
       <div className="flex gap-8 3xl:pt-4">
-        <div className="w-full lg:w-3/4 h-[18rem] 1xl:h-[19rem] 3xl:h-[24rem]">
+        <div
+          role="img"
+          aria-label="Year overview area chart"
+          className="w-full lg:w-3/4 h-[18rem] 1xl:h-[19rem] 3xl:h-[24rem]"
+        >
           <ResponsiveContainer
             width="100%"
             height="100%"
@@ -203,7 +217,10 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
               />
               <Tooltip
                 content={<YearOverviewTooltip />}
-                cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+                cursor={{
+                  fill: "rgba(255,255,255,0.05)",
+                  stroke: "var(--color-chartVerticalLine)",
+                }}
                 isAnimationActive={false}
               />
               <Legend

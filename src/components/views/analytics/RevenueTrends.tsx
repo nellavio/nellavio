@@ -116,7 +116,9 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
   };
 
   const chartData =
-    windowWidth > 500 ? revenueTrendsData.slice(-9) : revenueTrendsData.slice(-4);
+    windowWidth > 500
+      ? revenueTrendsData.slice(-9)
+      : revenueTrendsData.slice(-4);
 
   return (
     <Card className="revenueTrendsCard" id="revenueTrends" title={t("title")}>
@@ -124,7 +126,11 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
           {t("subtitle")}
         </p> */}
 
-      <div className="h-[16rem] 1xl:h-[21rem] 3xl:h-[24rem]">
+      <div
+        role="img"
+        aria-label="Revenue trends bar chart"
+        className="h-[16rem] 1xl:h-[21rem] 3xl:h-[24rem]"
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -158,7 +164,10 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
             <Tooltip
               content={<RevenueTrendsTooltip />}
               isAnimationActive={false}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
             />
             <Legend
               verticalAlign="top"

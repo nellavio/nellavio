@@ -143,7 +143,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   return (
     <span
       className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border ${getStatusColor(
-        status
+        status,
       )}`}
     >
       {status}
@@ -254,10 +254,20 @@ export const UserTable = () => {
       header: "Actions",
       cell: () => (
         <div className="flex gap-2">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            aria-label="View user details"
+          >
             <Eye className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            aria-label="Edit user"
+          >
             <Edit className="h-4 w-4" />
           </Button>
         </div>
@@ -292,11 +302,7 @@ export const UserTable = () => {
   });
 
   return (
-    <Card
-      isHeaderDividerVisible
-      addTitleMargin
-      title={t("filters")}
-    >
+    <Card isHeaderDividerVisible addTitleMargin title={t("filters")}>
       <div className="px-[0.8rem] py-2">
         {/* Controls Row */}
         <div className="flex justify-between items-center mb-4">
@@ -399,7 +405,10 @@ export const UserTable = () => {
                     { value: "role", label: "Role" },
                     { value: "joinDate", label: "Join Date" },
                   ].map((option) => (
-                    <DropdownMenuRadioItem key={option.value} value={option.value}>
+                    <DropdownMenuRadioItem
+                      key={option.value}
+                      value={option.value}
+                    >
                       {option.label}
                     </DropdownMenuRadioItem>
                   ))}
@@ -499,12 +508,21 @@ export const UserTable = () => {
           }}
         >
           <table className="w-full">
+            <caption className="sr-only">Users table</caption>
             <thead>
               {userTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
+                      scope="col"
+                      aria-sort={
+                        header.column.getIsSorted() === "asc"
+                          ? "ascending"
+                          : header.column.getIsSorted() === "desc"
+                            ? "descending"
+                            : undefined
+                      }
                       className={`text-secondaryText font-medium text-left text-sm px-4 py-3 border-t border-b border-inputBorder bg-tableHeaderBg ${
                         index === 0 ? "border-l" : ""
                       } ${
@@ -517,7 +535,7 @@ export const UserTable = () => {
                       <div className="flex items-center">
                         {flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                         <SortingArrow isSorted={header.column.getIsSorted()} />
                       </div>
@@ -536,7 +554,7 @@ export const UserTable = () => {
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   ))}

@@ -73,12 +73,12 @@ export const RevenueOverTime = ({
 }: RevenueOverTimeProps) => {
   const t = useTranslations("homepage.revenueOverTime");
   const backendTranslations = useBackendTranslations(
-    "homepage.revenueOverTime"
+    "homepage.revenueOverTime",
   );
 
   const translatedData = useTranslateData(
     revenueOverTimeData,
-    backendTranslations
+    backendTranslations,
   );
 
   const { theme } = useTheme();
@@ -88,14 +88,14 @@ export const RevenueOverTime = ({
   const { width: windowWidth } = useWindowDimensions();
 
   const shouldStartChartAnimations = useAppStore(
-    (state) => state.shouldStartChartAnimations
+    (state) => state.shouldStartChartAnimations,
   );
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage", {
     earlyStartMs: 400,
   });
 
   const [timeRange, setTimeRange] = useState<"monthly" | "quarterly">(
-    "monthly"
+    "monthly",
   );
 
   const monthMap: { [key: string]: number } = {
@@ -176,6 +176,7 @@ export const RevenueOverTime = ({
         <button
           type="button"
           onClick={() => setTimeRange("monthly")}
+          aria-pressed={timeRange === "monthly"}
           className={`inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
             timeRange === "monthly"
               ? "bg-revenueTabActiveBg text-primaryText hover:bg-tabActiveBgHover"
@@ -187,6 +188,7 @@ export const RevenueOverTime = ({
         <button
           type="button"
           onClick={() => setTimeRange("quarterly")}
+          aria-pressed={timeRange === "quarterly"}
           className={`inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
             timeRange === "quarterly"
               ? "bg-revenueTabActiveBg text-primaryText hover:bg-tabActiveBgHover"
@@ -206,7 +208,11 @@ export const RevenueOverTime = ({
       customHeader={customHeader}
       hasSubtitle={true}
     >
-      <div className="w-full overflow-hidden h-[14.5rem] lg:h-[15.5rem] 1xl:h-[15rem] 2xl:h-[15.5rem] 3xl:h-[20rem]">
+      <div
+        role="img"
+        aria-label="Revenue over time area chart"
+        className="w-full overflow-hidden h-[14.5rem] lg:h-[15.5rem] 1xl:h-[15rem] 2xl:h-[15.5rem] 3xl:h-[20rem]"
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -269,7 +275,10 @@ export const RevenueOverTime = ({
             <Tooltip
               content={<RevenueOverTimeTooltip />}
               isAnimationActive={false}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
             />
             <Area
               type="linear"

@@ -31,7 +31,7 @@ import { ProductDetailsProps } from "./types";
 
 const DynamicPDFDownloadLink = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFDownloadLink),
-  { ssr: false }
+  { ssr: false },
 );
 
 export const ProductDetails = ({
@@ -51,7 +51,7 @@ export const ProductDetails = ({
 
   const pdfDocument = useMemo(
     () => <ProductPDF product={activeProduct} />,
-    [activeProduct]
+    [activeProduct],
   );
 
   return (
@@ -209,6 +209,7 @@ export const ProductDetails = ({
                       onClick={() =>
                         handleCopyToClipboard(activeProduct.productId)
                       }
+                      aria-label="Copy product ID"
                     >
                       <CopyIcon />
                     </InputGroupButton>
@@ -216,7 +217,12 @@ export const ProductDetails = ({
                 </InputGroup>
               </div>
             </TooltipTrigger>
-            <TooltipContent side="right" sideOffset={7} alignOffset={3} className="hidden sm:flex">
+            <TooltipContent
+              side="right"
+              sideOffset={7}
+              alignOffset={3}
+              className="hidden sm:flex"
+            >
               {t("clipboard.copiedToClipboard")}
             </TooltipContent>
           </Tooltip>
@@ -259,10 +265,7 @@ export const ProductDetails = ({
               loading ? (
                 "Loading document..."
               ) : (
-                <Button
-                  variant="outline"
-                  className="w-full h-full"
-                >
+                <Button variant="outline" className="w-full h-full">
                   {t("pdf.exportToPdf")}
                 </Button>
               )

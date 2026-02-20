@@ -14,6 +14,7 @@ import { InventoryTable } from "./InventoryTable";
 export const TablesView = () => {
   return (
     <div className="flex flex-col gap-6" style={{ rowGap: "1.8rem" }}>
+      <h1 className="sr-only">Tables</h1>
       <BasicTable />
       <AdvancedTable />
       <UserTable />
