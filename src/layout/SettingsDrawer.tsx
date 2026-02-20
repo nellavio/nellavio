@@ -390,7 +390,7 @@ export const SettingsDrawer = ({
                 <button
                   onClick={() => setHomepageLayout("three-cards")}
                   aria-pressed={homepageLayout === "three-cards"}
-                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition ${
                     homepageLayout === "three-cards"
                       ? "border-mainColor bg-primaryBg"
                       : "border-settingsButtonBorder bg-primaryBg hover:border-mainBorderHover"
@@ -427,7 +427,7 @@ export const SettingsDrawer = ({
                 <button
                   onClick={() => setHomepageLayout("four-cards")}
                   aria-pressed={homepageLayout === "four-cards"}
-                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition ${
                     homepageLayout === "four-cards"
                       ? "border-mainColor bg-primaryBg"
                       : "border-settingsButtonBorder bg-primaryBg hover:border-mainBorderHover"
@@ -474,7 +474,7 @@ export const SettingsDrawer = ({
                 <button
                   onClick={() => setSidebarDefaultState("expanded")}
                   aria-pressed={sidebarDefaultState === "expanded"}
-                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition ${
                     sidebarDefaultState === "expanded"
                       ? "border-mainColor bg-primaryBg"
                       : "border-settingsButtonBorder bg-primaryBg hover:border-mainBorderHover"
@@ -511,7 +511,7 @@ export const SettingsDrawer = ({
                 <button
                   onClick={() => setSidebarDefaultState("collapsed")}
                   aria-pressed={sidebarDefaultState === "collapsed"}
-                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                  className={`relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition ${
                     sidebarDefaultState === "collapsed"
                       ? "border-mainColor bg-primaryBg"
                       : "border-settingsButtonBorder bg-primaryBg hover:border-mainBorderHover"

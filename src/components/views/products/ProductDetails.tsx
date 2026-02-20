@@ -1,5 +1,4 @@
-import { useMemo, useRef } from "react";
-import dynamic from "next/dynamic";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import Lightbox, { ThumbnailsRef } from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
@@ -29,11 +28,6 @@ import { ProductParameter } from "./ProductParameter";
 import { ProductPDF } from "./ProductPDF";
 import { ProductDetailsProps } from "./types";
 
-const DynamicPDFDownloadLink = dynamic(
-  () => import("@react-pdf/renderer").then((mod) => mod.PDFDownloadLink),
-  { ssr: false },
-);
-
 export const ProductDetails = ({
   activeProduct,
   isPhotoOpen,
@@ -49,10 +43,20 @@ export const ProductDetails = ({
   const thumbnailsRef = useRef<ThumbnailsRef>(null);
   const profit = activeProduct.price * 0.12;
 
-  const pdfDocument = useMemo(
-    () => <ProductPDF product={activeProduct} />,
-    [activeProduct],
-  );
+  const handleExportPDF = async () => {
+    try {
+      const { pdf } = await import("@react-pdf/renderer");
+      const blob = await pdf(<ProductPDF product={activeProduct} />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${activeProduct.name}.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    }
+  };
 
   return (
     <div className="w-full lg:w-3/4 ">
@@ -228,23 +232,13 @@ export const ProductDetails = ({
           </Tooltip>
         </div>
         <div className="hidden sm:flex w-[15rem] h-12 items-center justify-end">
-          <DynamicPDFDownloadLink
-            document={pdfDocument}
-            fileName={`${activeProduct.name}.pdf`}
+          <Button
+            variant="outline"
+            className="w-[10rem] h-full"
+            onClick={handleExportPDF}
           >
-            {({ loading }) =>
-              loading ? (
-                "Loading document..."
-              ) : (
-                <Button
-                  variant="outline"
-                  className="min-w-[10rem] w-full h-full"
-                >
-                  {t("pdf.exportToPdf")}
-                </Button>
-              )
-            }
-          </DynamicPDFDownloadLink>
+            {t("pdf.exportToPdf")}
+          </Button>
         </div>
       </div>
       <div className="flex lg:hidden w-[100%] text-sm sm:text-md xsm:w-[90%] h-12 mx-auto mt-8 xsm:mt-14 items-center justify-center gap-4">
@@ -256,21 +250,13 @@ export const ProductDetails = ({
           {t("mobileList.showAllProducts")}
         </Button>
         <div className="flex sm:hidden w-1/2">
-          <DynamicPDFDownloadLink
-            document={pdfDocument}
-            fileName={`${activeProduct.name}.pdf`}
-            style={{ width: "100%" }}
+          <Button
+            variant="outline"
+            className="w-full h-full"
+            onClick={handleExportPDF}
           >
-            {({ loading }) =>
-              loading ? (
-                "Loading document..."
-              ) : (
-                <Button variant="outline" className="w-full h-full">
-                  {t("pdf.exportToPdf")}
-                </Button>
-              )
-            }
-          </DynamicPDFDownloadLink>
+            {t("pdf.exportToPdf")}
+          </Button>
         </div>
       </div>
     </div>
