@@ -136,7 +136,9 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
                 <DownloadIcon />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="top">{t("button.csv")}</TooltipContent>
+            <TooltipContent side="right" align="center">
+              {t("button.xlsx")}
+            </TooltipContent>
           </Tooltip>
         </div>
         <CustomersPagination

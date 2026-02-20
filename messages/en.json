@@ -116,7 +116,7 @@
     },
     "button": {
       "clearFilters": "Clear filters",
-      "csv": "Export to CSV"
+      "xlsx": "Export to XLSX"
     },
     "searchField": {
       "searchOrders": "Search orders..."
@@ -157,7 +157,7 @@
       "ascending": "Ascending",
       "descending": "Descending",
       "clearSorting": "Clear sorting",
-      "csv": "Export to CSV"
+      "xlsx": "Export to XLSX"
     },
     "country": {
       "usa": "USA",

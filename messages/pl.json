@@ -116,7 +116,7 @@
     },
     "button": {
       "clearFilters": "Wyczyść filtry",
-      "csv": "Eksport do CSV"
+      "xlsx": "Eksport do XLSX"
     },
     "searchField": {
       "searchOrders": "Szukaj zamówień..."
@@ -157,7 +157,7 @@
       "ascending": "Malejąco",
       "descending": "Rosnąco",
       "clearSorting": "Bez sortowania",
-      "csv": "Eksport do CSV"
+      "xlsx": "Eksport do XLSX"
     },
     "country": {
       "usa": "USA",

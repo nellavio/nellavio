@@ -20,7 +20,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "../../common/shadcn/tooltip";
-import { exportToCSV } from "../../../utils/exportToCSV";
+import { exportToXLSX } from "../../../utils/exportToXLSX";
 import { OrdersViewProps } from "./types";
 
 export const OrdersView = ({ ordersData }: OrdersViewProps) => {
@@ -45,7 +45,7 @@ export const OrdersView = ({ ordersData }: OrdersViewProps) => {
   } = useOrders({ orders: ordersData });
 
   const handleExportToCSV = () => {
-    exportToCSV(ordersData, "orders");
+    exportToXLSX(ordersData, "orders");
   };
 
   return (
@@ -109,7 +109,9 @@ export const OrdersView = ({ ordersData }: OrdersViewProps) => {
                 <DownloadIcon />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="top">{t("button.csv")}</TooltipContent>
+            <TooltipContent side="right" align="center">
+              {t("button.xlsx")}
+            </TooltipContent>
           </Tooltip>
         </div>
         <OrdersPagination

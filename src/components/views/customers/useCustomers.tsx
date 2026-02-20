@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 import { useTable } from "../../../hooks/useTable";
 import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
 import { Customer, CustomerColumns, CustomerFilters } from "./types";
-import { exportToCSV } from "../../../utils/exportToCSV";
+import { exportToXLSX } from "../../../utils/exportToXLSX";
 
 const columnHelper = createColumnHelper<CustomerColumns>();
 
@@ -108,8 +108,8 @@ export const useCustomers = (customers: Customer[]) => {
         Object.values(customer).some(
           (value) =>
             value &&
-            value.toString().toLowerCase().includes(searchQuery.toLowerCase())
-        )
+            value.toString().toLowerCase().includes(searchQuery.toLowerCase()),
+        ),
       );
     }
 
@@ -184,12 +184,16 @@ export const useCustomers = (customers: Customer[]) => {
 
   const countryOptions = useMemo(() => {
     return Array.from(
-      new Set(customersData?.map((customer) => customer.country))
+      new Set(customersData?.map((customer) => customer.country)),
     );
   }, [customersData]);
 
   const handleExportToCSV = useCallback((data: Customer[]) => {
-    exportToCSV(data, "customers");
+    const withShortPhoto = data.map((customer) => ({
+      ...customer,
+      photo: customer.photo.split("/").pop() ?? customer.photo,
+    }));
+    exportToXLSX(withShortPhoto, "customers");
   }, []);
 
   const handleMouseEnter = useCallback(() => {
