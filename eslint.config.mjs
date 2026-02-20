@@ -3,6 +3,7 @@ import storybook from "eslint-plugin-storybook";
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 const eslintConfig = defineConfig([...nextVitals, ...nextTs, globalIgnores([
   '.next/**',
@@ -35,6 +36,6 @@ const eslintConfig = defineConfig([...nextVitals, ...nextTs, globalIgnores([
     '@typescript-eslint/no-explicit-any': 'warn',
     'no-console': ['warn', { allow: ['warn', 'error'] }],
   },
-}, ...storybook.configs["flat/recommended"]]);
+}, ...storybook.configs["flat/recommended"], eslintConfigPrettier]);
 
 export default eslintConfig;

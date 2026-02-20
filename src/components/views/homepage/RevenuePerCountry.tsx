@@ -1,8 +1,10 @@
 import React, { Suspense, lazy } from "react";
 import { Geographies, Geography } from "react-simple-maps";
-import Tooltip from "rc-tooltip";
-import "rc-tooltip/assets/bootstrap.css";
-import "react-tooltip/dist/react-tooltip.css";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "../../common/shadcn/tooltip";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
@@ -23,7 +25,7 @@ import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 const ComposableMapLazy = lazy(() =>
   import("react-simple-maps").then((module) => ({
     default: module.ComposableMap,
-  }))
+  })),
 );
 
 export const RevenuePerCountry = ({
@@ -31,11 +33,11 @@ export const RevenuePerCountry = ({
 }: RevenuePerCountryProps) => {
   const t = useTranslations("homepage.revenuePerCountry");
   const backendTranslations = useBackendTranslations(
-    "homepage.revenuePerCountry"
+    "homepage.revenuePerCountry",
   );
   const translatedData = useTranslateData(
     revenuePerCountryData,
-    backendTranslations
+    backendTranslations,
   );
 
   const countryIconMap: {
@@ -59,16 +61,15 @@ export const RevenuePerCountry = ({
   const { theme } = useTheme();
   const { width: windowWidth } = useWindowDimensions();
 
-  const chartColors = useChartColors(
-    theme as "dark" | "light"
-  );
+  const chartColors = useChartColors(theme as "dark" | "light");
 
   const isCompact = windowWidth >= 768 && windowWidth < 1024;
   const mapScale = isCompact ? 165 : 200;
   const mapMarginLeft = isCompact ? "-2rem" : "-4rem";
 
   const HIGHLIGHT_COLOR = chartColors.primary.fill;
-  const BORDER_COLOR = theme === "light" ? "rgb(0,0,0,0.18)" : "rgb(255,255,255,0.1)";
+  const BORDER_COLOR =
+    theme === "light" ? "rgb(0,0,0,0.18)" : "rgb(255,255,255,0.1)";
 
   return (
     <Card
@@ -77,7 +78,9 @@ export const RevenuePerCountry = ({
       title={t("title")}
     >
       <div className="flex justify-between">
-        <div className={`${isCompact ? "w-[70%]" : "w-[65%]"} worldMap flex items-center justify-center md:h-[19rem] lg:h-[23rem] xl:h-[23rem] 1xl:h-[24.5rem] 2xl:h-[27rem] 3xl:h-[33rem] -mb-6`}>
+        <div
+          className={`${isCompact ? "w-[70%]" : "w-[65%]"} worldMap flex items-center justify-center md:h-[19rem] lg:h-[23rem] xl:h-[23rem] 1xl:h-[24.5rem] 2xl:h-[27rem] 3xl:h-[33rem] -mb-6`}
+        >
           <Suspense
             fallback={
               <div className="w-full flex items-center justify-center pb-10">
@@ -106,34 +109,35 @@ export const RevenuePerCountry = ({
                       return null;
                     }
                     const countryData = revenuePerCountryData.find(
-                      (s) => s.name === countryName
+                      (s) => s.name === countryName,
                     );
                     const tooltipContent = countryData
                       ? `${countryName} - ${countryData.price}$`
                       : `${countryName}`;
 
                     return (
-                      <Tooltip
-                        placement="top"
-                        overlay={<span>{tooltipContent}</span>}
-                        key={geo.rsmKey}
-                      >
-                        <Geography
-                          geography={geo}
-                          fill={
-                            countryData
-                              ? HIGHLIGHT_COLOR
-                              : theme === "light"
-                                ? "rgb(0,0,0,0.13)"
-                                : "rgba(255, 255, 255, 0.1)"
-                          }
-                          tabIndex={-1}
-                          style={{
-                            default: { outline: "none" },
-                            hover: { fill: HIGHLIGHT_COLOR, outline: "none" },
-                            pressed: { outline: "none" },
-                          }}
-                        />
+                      <Tooltip key={geo.rsmKey}>
+                        <TooltipTrigger asChild>
+                          <Geography
+                            geography={geo}
+                            fill={
+                              countryData
+                                ? HIGHLIGHT_COLOR
+                                : theme === "light"
+                                  ? "rgb(0,0,0,0.13)"
+                                  : "rgba(255, 255, 255, 0.1)"
+                            }
+                            tabIndex={-1}
+                            style={{
+                              default: { outline: "none" },
+                              hover: { fill: HIGHLIGHT_COLOR, outline: "none" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent side="top" align="center">
+                          {tooltipContent}
+                        </TooltipContent>
                       </Tooltip>
                     );
                   })
@@ -142,8 +146,12 @@ export const RevenuePerCountry = ({
             </ComposableMapLazy>
           </Suspense>
         </div>
-        <div className={`${isCompact ? "w-[30%]" : "w-[35%]"} flex overflow-auto md:pt-[0.75rem] lg:pt-[2rem] xl:pt-[2.5rem] 1xl:pt-[2.5rem] 2xl:pt-[3rem] 3xl:pt-[5rem] items-start justify-start`}>
-          <div className={`flex flex-col w-full ${isCompact ? "pl-[5%] pr-[5%]" : "pl-[10%] md:pr-[10%] lg:pr-[20%]"}`}>
+        <div
+          className={`${isCompact ? "w-[30%]" : "w-[35%]"} flex overflow-auto md:pt-[0.75rem] lg:pt-[2rem] xl:pt-[2.5rem] 1xl:pt-[2.5rem] 2xl:pt-[3rem] 3xl:pt-[5rem] items-start justify-start`}
+        >
+          <div
+            className={`flex flex-col w-full ${isCompact ? "pl-[5%] pr-[5%]" : "pl-[10%] md:pr-[10%] lg:pr-[20%]"}`}
+          >
             <div className="w-full flex justify-between mb-[0.5rem] text-[12px] lg:text-[14px] 3xl:text-[16px]">
               <h3 className="font-semibold text-primaryText">{t("country")}</h3>
               <h3 className="font-semibold text-primaryText">{t("sales")}</h3>
@@ -153,15 +161,21 @@ export const RevenuePerCountry = ({
                 key={index}
                 className={`flex justify-between items-center border-t border-mainBorder 2xl:pt-3 2xl:pb-3 ${isCompact ? "pt-1 pb-1" : "pt-2 pb-2"}`}
               >
-                <div className={`flex items-center ${isCompact ? "space-x-1.5" : "space-x-3"}`}>
+                <div
+                  className={`flex items-center ${isCompact ? "space-x-1.5" : "space-x-3"}`}
+                >
                   <div className={`flex ${isCompact ? "scale-75" : ""}`}>
                     {data.FlagIcon && <data.FlagIcon />}
                   </div>
-                  <span className={`text-primaryText ${isCompact ? "text-[10px]" : "text-xs"} 3xl:text-sm`}>
+                  <span
+                    className={`text-primaryText ${isCompact ? "text-[10px]" : "text-xs"} 3xl:text-sm`}
+                  >
                     {data.name}
                   </span>
                 </div>
-                <span className={`font-semibold text-primaryText ${isCompact ? "text-[10px]" : "text-sm"} 3xl:text-sm`}>
+                <span
+                  className={`font-semibold text-primaryText ${isCompact ? "text-[10px]" : "text-sm"} 3xl:text-sm`}
+                >
                   ${data.price}
                 </span>
               </div>

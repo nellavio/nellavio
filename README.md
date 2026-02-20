@@ -132,6 +132,8 @@ The app works with mock data from `public/backendBackup.json` on default and has
 | `npm run build`        | Builds your production site           |
 | `npm start`            | Starts server at `localhost:3000`     |
 | `npm run lint`         | Runs ESLint to check code quality     |
+| `npm run lint:fix`     | Runs ESLint and auto-fixes issues     |
+| `npm run type-check`   | Runs TypeScript type checking         |
 | `npm run test`         | Runs Jest tests                       |
 | `npm run test:watch`   | Runs Jest tests in watch mode         |
 | `npm run format`       | Formats code with Prettier            |
