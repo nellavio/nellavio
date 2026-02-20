@@ -47,11 +47,11 @@ const PieChartDemo = ({
   ];
 
   const renderLabel = ({
-    name,
-    percent,
+    name = "",
+    percent = 0,
   }: {
-    name: string;
-    percent: number;
+    name?: string;
+    percent?: number;
   }) => {
     return `${name} ${(percent * 100).toFixed(0)}%`;
   };
@@ -79,10 +79,7 @@ const PieChartDemo = ({
               />
             ))}
           </Pie>
-          <Tooltip
-            content={<PieChartTooltip />}
-            isAnimationActive={false}
-          />
+          <Tooltip content={<PieChartTooltip />} isAnimationActive={false} />
           {showLegend && (
             <Legend
               wrapperStyle={{ color: "var(--color-primaryText)" }}

@@ -4,6 +4,7 @@ import { LoginForm } from "./LoginForm";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
 } from "../common/shadcn/dialog";
 
@@ -13,7 +14,11 @@ interface LoginModalProps {
   returnFocusRef?: RefObject<HTMLButtonElement | null>;
 }
 
-export const LoginModal = ({ closeModal, switchToSignUp, returnFocusRef }: LoginModalProps) => {
+export const LoginModal = ({
+  closeModal,
+  switchToSignUp,
+  returnFocusRef,
+}: LoginModalProps) => {
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
@@ -26,6 +31,7 @@ export const LoginModal = ({ closeModal, switchToSignUp, returnFocusRef }: Login
         }}
       >
         <DialogTitle className="sr-only">Login</DialogTitle>
+        <DialogDescription className="sr-only">Login</DialogDescription>
         <LoginForm switchToSignUp={switchToSignUp} />
       </DialogContent>
     </Dialog>

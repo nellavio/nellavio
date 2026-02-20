@@ -54,7 +54,7 @@ export const useHandleSignUp = () => {
       }
       return t("authErrors.defaultError");
     },
-    [t]
+    [t],
   );
 
   const handleSignUp = useCallback(
@@ -62,7 +62,7 @@ export const useHandleSignUp = () => {
       // Check if running in presentation mode (no backend)
       if (isPresentationModeClient()) {
         alert(
-          "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work."
+          "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work.",
         );
         return;
       }
@@ -81,7 +81,7 @@ export const useHandleSignUp = () => {
           setLoading(false);
           // Map Better Auth errors to user-friendly messages
           const errorMessage = mapSignUpError(
-            error.message || error.code || "UNKNOWN_ERROR"
+            error.message || error.code || "UNKNOWN_ERROR",
           );
           setSignUpError(errorMessage);
           return;
@@ -96,7 +96,7 @@ export const useHandleSignUp = () => {
         setSignUpError(t("authErrors.networkError"));
       }
     },
-    [mapSignUpError, router, t]
+    [mapSignUpError, router, t],
   );
 
   const validationSchema = Yup.object().shape({
@@ -115,6 +115,10 @@ export const useHandleSignUp = () => {
   } = useForm<SignUpData>({
     resolver: yupResolver(validationSchema),
     mode: "onSubmit",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   const onSubmit = useCallback(
@@ -140,7 +144,7 @@ export const useHandleSignUp = () => {
         isSubmittingRef.current = false;
       }
     },
-    [handleSignUp]
+    [handleSignUp],
   );
 
   useEffect(() => {

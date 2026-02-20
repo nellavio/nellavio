@@ -150,7 +150,7 @@ export const ThreeSmallCards = ({
                 </div>
                 {renderCircularChart(
                   hardcodedPercentages[index],
-                  getChartColor(index)
+                  getChartColor(index),
                 )}
               </div>
             </div>
@@ -200,7 +200,7 @@ export const ThreeSmallCards = ({
                 </div>
                 {renderCircularChart(
                   hardcodedPercentages[index],
-                  getChartColor(index)
+                  getChartColor(index),
                 )}
               </div>
             </div>
@@ -237,7 +237,7 @@ export const ThreeSmallCards = ({
                   </span>
                 </p>
               </div>
-              <Tooltip {...(isBelow1280 ? { open: false } : {})}>
+              <Tooltip open={isBelow1280 ? false : undefined}>
                 <TooltipTrigger asChild>
                   <div
                     className={`relative flex items-center justify-center flex-shrink-0 group ${isBelow1280 ? "" : "cursor-pointer"}`}
@@ -252,7 +252,7 @@ export const ThreeSmallCards = ({
                     </div>
                     {renderCircularChart(
                       hardcodedPercentages[index],
-                      getChartColor(index)
+                      getChartColor(index),
                     )}
                   </div>
                 </TooltipTrigger>

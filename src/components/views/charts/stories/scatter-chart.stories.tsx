@@ -9,31 +9,24 @@ import {
   Legend,
   ResponsiveContainer,
   ZAxis,
-  TooltipProps,
 } from "recharts";
-
-interface TooltipPayloadItem {
-  name: string;
-  value: number;
-  dataKey: string;
-}
+import type { TooltipContentProps } from "recharts";
 
 const ScatterTooltipContent = ({
   active,
   payload,
-}: TooltipProps<number, string>) => {
+}: Partial<TooltipContentProps<number, string>>) => {
   if (!active || !payload || payload.length === 0) return null;
 
   return (
     <div className="bg-primaryBg border border-mainBorder rounded px-3 py-2 shadow-lg">
-      {payload.map((entry, index) => {
-        const item = entry as unknown as TooltipPayloadItem;
-        return (
+      {payload.map(
+        (entry: { name?: string; value?: number }, index: number) => (
           <p key={index} className="text-primaryText text-sm">
-            {item.name}: {item.value}
+            {entry.name}: {entry.value}
           </p>
-        );
-      })}
+        ),
+      )}
     </div>
   );
 };

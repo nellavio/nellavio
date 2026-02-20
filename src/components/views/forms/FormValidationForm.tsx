@@ -43,7 +43,7 @@ export const FormValidationForm = () => {
     },
   });
 
-  const onSubmit = (values: yup.InferType<typeof formSchema>) => {
+  const onSubmit = () => {
     setIsSubmitted(true);
   };
 
@@ -61,7 +61,11 @@ export const FormValidationForm = () => {
               <FormItem>
                 <FormLabel className="text-primaryText">Username</FormLabel>
                 <FormControl>
-                  <Input className="mt-[0.3rem]" placeholder="shadcn" {...field} />
+                  <Input
+                    className="mt-[0.3rem]"
+                    placeholder="shadcn"
+                    {...field}
+                  />
                 </FormControl>
                 <FormDescription>
                   This is your public display name.
@@ -76,7 +80,11 @@ export const FormValidationForm = () => {
               <FormItem>
                 <FormLabel className="text-primaryText">Email</FormLabel>
                 <FormControl>
-                  <Input className="mt-[0.3rem]" placeholder="m@example.com" {...field} />
+                  <Input
+                    className="mt-[0.3rem]"
+                    placeholder="m@example.com"
+                    {...field}
+                  />
                 </FormControl>
               </FormItem>
             )}
@@ -86,7 +94,9 @@ export const FormValidationForm = () => {
               Please fill in all required fields.
             </p>
           )}
-          <Button className="mt-4" type="submit">Submit</Button>
+          <Button className="mt-4" type="submit">
+            Submit
+          </Button>
           {isSubmitted && (
             <p className="flex items-center gap-2 text-sm text-greenBadgeText mt-3">
               <Check className="h-4 w-4" />

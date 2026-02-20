@@ -8,7 +8,9 @@ import { OrderModalProps } from "./types";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
+  DialogTitle,
 } from "../../common/shadcn/dialog";
 
 export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {
@@ -33,6 +35,10 @@ export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {
     <div className="flex">
       <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
         <DialogContent className="sm:w-[32rem] sm:h-auto md:w-[32rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl px-6 xsm:px-8 sm:px-12 pt-8 sm:pt-[3rem] overflow-y-auto sm:overflow-y-visible">
+          <DialogTitle className="sr-only">{t("title")}</DialogTitle>
+          <DialogDescription className="sr-only">
+            {t("title")}
+          </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2">
             <div className="rounded-full border border-mainBorder p-4 w-18 flex justify-center items-center mr-[0rem] text-secondaryText -mt-1">
               <OrderModalIcon width={30} height={30} />
@@ -42,20 +48,18 @@ export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {
             </h2>
             <div className="text-primaryText text-base w-full text-left mt-4 flex flex-wrap justify-between">
               {orderDetails.map((detail) => (
-                <p
+                <div
                   key={detail.label}
                   className="border-b border-mainBorder w-full xsm:w-[47%] my-2 pb-2 flex"
                 >
                   <div className="text-secondaryText mr-1">{detail.label}:</div>
                   {detail.value}
-                </p>
+                </div>
               ))}
             </div>
           </div>
           <DialogFooter className="mt-8 sm:mt-12 !flex-row gap-3 sm:space-x-0 [&>*]:flex-1 [&>*]:h-[2.9rem]">
-            <Button variant="outline">
-              {t("cancelButton")}
-            </Button>
+            <Button variant="outline">{t("cancelButton")}</Button>
             <Button icon={<PhoneIcon />}>{t("callButton")}</Button>
           </DialogFooter>
         </DialogContent>

@@ -48,7 +48,9 @@ const getNodeVersion = () => {
   return g.process?.version ?? "unknown";
 };
 
-const buildModeSection = (status: Awaited<ReturnType<typeof checkBackendHealth>>): string => {
+const buildModeSection = (
+  status: Awaited<ReturnType<typeof checkBackendHealth>>,
+): string => {
   const authConfigured = status.graphqlUrl && status.hasAuth;
 
   if (status.isOnline && authConfigured) {
@@ -97,6 +99,7 @@ const printStartupBanner = async () => {
     "",
   ].join("\n");
 
+  // eslint-disable-next-line no-console
   console.log(banner);
 };
 

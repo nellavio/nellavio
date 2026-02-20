@@ -16,7 +16,9 @@ import { AddEventModalProps } from "./types";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
+  DialogTitle,
 } from "../../common/shadcn/dialog";
 
 export const AddEventModal = ({
@@ -61,6 +63,12 @@ export const AddEventModal = ({
             }
           }}
         >
+          <DialogTitle className="sr-only">
+            {t("addEventModalTitle")}
+          </DialogTitle>
+          <DialogDescription className="sr-only">
+            {t("addEventModalSubtitle")}
+          </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2 -mt-2">
             <div className="text-grayIcon rounded-full border border-mainBorder p-4 pl-4 w-16 h-16 flex justify-center items-center mr-[0rem]">
               {type === "delete" ? (
@@ -115,7 +123,10 @@ export const AddEventModal = ({
               </div>
             </div>
             {error && <div className="text-red-500 text-base">{error}</div>}
-            <DialogFooter footerVariant="centered" className="mt-5 !flex-row gap-3 sm:gap-0 justify-center">
+            <DialogFooter
+              footerVariant="centered"
+              className="mt-5 !flex-row gap-3 sm:gap-0 justify-center"
+            >
               <Button
                 variant="outline"
                 onClick={closeModal}
@@ -123,10 +134,7 @@ export const AddEventModal = ({
               >
                 {t("cancel")}
               </Button>
-              <Button
-                onClick={handleConfirmClick}
-                loading={loading}
-              >
+              <Button onClick={handleConfirmClick} loading={loading}>
                 {t("addEventConfirmButton")}
               </Button>
             </DialogFooter>

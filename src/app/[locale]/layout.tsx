@@ -27,7 +27,11 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning={true}>
+    <html
+      lang={locale}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning={true}
+    >
       <body
         className={`${outfit.variable} ${openSans.variable}`}
         suppressHydrationWarning={true}

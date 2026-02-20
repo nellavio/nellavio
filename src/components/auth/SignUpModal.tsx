@@ -4,6 +4,7 @@ import { SignUpForm } from "./SignUpForm";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
 } from "../common/shadcn/dialog";
 
@@ -30,6 +31,7 @@ export const SignUpModal = ({
         }}
       >
         <DialogTitle className="sr-only">Sign Up</DialogTitle>
+        <DialogDescription className="sr-only">Sign Up</DialogDescription>
         <SignUpForm switchToSignIn={switchToSignIn} />
       </DialogContent>
     </Dialog>

@@ -11,6 +11,7 @@ import { Button } from "../../common/shadcn/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "../../common/shadcn/dialog";
@@ -59,7 +60,7 @@ export const AllNotificationsModal = ({
   const handleMarkAsRead = (id: string) => {
     setLocalNotifications((prev) => {
       const updated = prev.map((n) =>
-        n.id === id ? { ...n, isNew: false } : n
+        n.id === id ? { ...n, isNew: false } : n,
       );
       onNotificationsUpdate?.(updated);
       return updated;
@@ -89,6 +90,7 @@ export const AllNotificationsModal = ({
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Notifications</DialogTitle>
+          <DialogDescription>Notifications</DialogDescription>
         </DialogHeader>
 
         {/* Header */}

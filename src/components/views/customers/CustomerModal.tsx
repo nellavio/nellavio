@@ -5,7 +5,13 @@ import { Button } from "../../common/shadcn/button";
 import { PhoneIcon } from "../../../assets/icons/PhoneIcon";
 import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
 import { CustomerModalProps } from "./types";
-import { Dialog, DialogContent, DialogFooter } from "../../common/shadcn/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+} from "../../common/shadcn/dialog";
 
 export const CustomerModal = ({
   closeModal,
@@ -17,7 +23,7 @@ export const CustomerModal = ({
   const [mockTotalOrders] = useState(() => Math.floor(Math.random() * 10 + 10));
   const [mockReturns] = useState(() => Math.floor(Math.random() * 5 + 1));
   const [mockLoyaltyPoints] = useState(() =>
-    Math.floor(Math.random() * 300 + 150)
+    Math.floor(Math.random() * 300 + 150),
   );
 
   const customerDetails = [
@@ -34,6 +40,12 @@ export const CustomerModal = ({
     <div className="flex">
       <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
         <DialogContent className="sm:w-[38rem] sm:h-auto md:w-[38rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl px-6 xsm:px-8 sm:px-12 pt-8 sm:pt-[3rem] overflow-y-auto sm:overflow-y-visible">
+          <DialogTitle className="sr-only">
+            {customerData.col1} {customerData.col2}
+          </DialogTitle>
+          <DialogDescription className="sr-only">
+            {customerData.col1} {customerData.col2}
+          </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2">
             <div className="flex w-full gap-6">
               <div className="flex min-h-[6rem] min-w-[6rem]">
@@ -73,9 +85,7 @@ export const CustomerModal = ({
             </div>
           </div>
           <DialogFooter className="mt-8 sm:mt-12 !flex-row gap-3 sm:space-x-0 [&>*]:h-[2.9rem] [&>*]:flex-1 md:[&>*]:flex-initial md:justify-end md:[&>*]:w-[9.5rem] md:gap-3">
-            <Button variant="outline">
-              {t("orderHistory")}
-            </Button>
+            <Button variant="outline">{t("orderHistory")}</Button>
             <Button icon={<PhoneIcon />}>{t("callButton")}</Button>
           </DialogFooter>
         </DialogContent>

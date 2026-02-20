@@ -1,7 +1,7 @@
 import { capitalizeFirstLetter } from "./capitalizeFirstLetter";
 
 // Convert complex objects to simple string representation
-const stringifyComplexValue = (value: any): string => {
+const stringifyComplexValue = (value: unknown): string => {
   if (value === null || value === undefined) {
     return "";
   }
@@ -18,13 +18,13 @@ const stringifyComplexValue = (value: any): string => {
       .join(";");
   }
 
-  return value.toString();
+  return String(value);
 };
 
 // Convert a single data group to CSV format
 const convertSingleGroupToCSV = <T extends object>(
   arr: T[],
-  groupName?: string
+  _groupName?: string,
 ): string => {
   if (!arr.length) return "";
 
@@ -45,7 +45,7 @@ const convertSingleGroupToCSV = <T extends object>(
 
 // Group data by dataType
 const groupDataByType = <T extends { dataType?: string }>(
-  data: T[]
+  data: T[],
 ): Record<string, T[]> => {
   const groups: Record<string, T[]> = {};
 
@@ -55,7 +55,7 @@ const groupDataByType = <T extends { dataType?: string }>(
       groups[type] = [];
     }
     // Create a copy without the dataType field for export
-    const { dataType, ...rest } = item as any;
+    const { dataType: _dataType, ...rest } = item;
     groups[type].push(rest as T);
   });
 
@@ -64,7 +64,7 @@ const groupDataByType = <T extends { dataType?: string }>(
 
 // Convert multiple data groups to CSV with separators
 const convertMultiGroupToCSV = <T extends { dataType?: string }>(
-  data: T[]
+  data: T[],
 ): string => {
   const groups = groupDataByType(data);
 
@@ -87,7 +87,7 @@ const convertMultiGroupToCSV = <T extends { dataType?: string }>(
 // Add this function to prepare data for the CSV export
 export const prepareDataForExport = <T extends object>(
   data: T | T[],
-  pageName?: string
+  pageName?: string,
 ): object[] => {
   if (!data) return [];
 
@@ -100,17 +100,17 @@ export const prepareDataForExport = <T extends object>(
   switch (pageName?.toLowerCase()) {
     case "dashboard": {
       // Cast to expected structure to access properties
-      const homepageData = data as Record<string, any>;
+      const homepageData = data as Record<string, object[] | undefined>;
 
       // Combine relevant arrays from homepage data into a flattened structure
       return [
         ...mapWithDataType(
           homepageData.bestSellingProducts,
-          "bestSellingProducts"
+          "bestSellingProducts",
         ),
         ...mapWithDataType(
           homepageData.customerSatisfaction,
-          "customerSatisfaction"
+          "customerSatisfaction",
         ),
         ...mapWithDataType(homepageData.threeSmallCards, "threeSmallCards"),
         ...mapWithDataType(homepageData.fourSmallCards, "fourSmallCards"),
@@ -121,7 +121,7 @@ export const prepareDataForExport = <T extends object>(
 
     case "analytics": {
       // Cast to expected structure to access properties
-      const analyticsData = data as Record<string, any>;
+      const analyticsData = data as Record<string, object[] | undefined>;
 
       // Combine relevant arrays from analytics data
       return [
@@ -130,17 +130,17 @@ export const prepareDataForExport = <T extends object>(
         ...mapWithDataType(analyticsData.todaySales, "todaySales"),
         ...mapWithDataType(
           analyticsData.totalProfitProducts,
-          "totalProfitProducts"
+          "totalProfitProducts",
         ),
         ...mapWithDataType(
           analyticsData.totalProfitMonths,
-          "totalProfitMonths"
+          "totalProfitMonths",
         ),
         ...mapWithDataType(analyticsData.yearOverview, "yearOverview"),
         ...mapWithDataType(analyticsData.marketMetrics, "marketMetrics"),
         ...mapWithDataType(
           analyticsData.revenueDistribution,
-          "revenueDistribution"
+          "revenueDistribution",
         ),
       ];
     }
@@ -154,18 +154,22 @@ export const prepareDataForExport = <T extends object>(
 
     default: {
       // For unknown page names, try to determine if any arrays are in the data
-      const record = data as Record<string, any>;
-      const possibleArrays = Object.keys(record).filter(
-        (key) => Array.isArray(record[key]) && record[key].length > 0
-      );
+      const record = data as Record<string, unknown>;
+      const possibleArrays = Object.keys(record).filter((key) => {
+        const val = record[key];
+        return Array.isArray(val) && val.length > 0;
+      });
 
       if (possibleArrays.length === 1) {
         // If there's only one array, use that
-        return record[possibleArrays[0]];
+        return record[possibleArrays[0]] as object[];
       } else if (possibleArrays.length > 1) {
         // If there are multiple arrays, combine them with type indicators
         return possibleArrays.flatMap((key) =>
-          record[key].map((item: object) => ({ ...item, dataType: key }))
+          (record[key] as object[]).map((item: object) => ({
+            ...item,
+            dataType: key,
+          })),
         );
       }
 
@@ -182,7 +186,7 @@ export const prepareDataForExport = <T extends object>(
 export const exportToCSV = <T extends object>(
   data: T | T[],
   filename: string,
-  pageName?: string
+  pageName?: string,
 ): void => {
   // Prepare the data for export
   const preparedData = prepareDataForExport(data, pageName);
@@ -198,7 +202,7 @@ export const exportToCSV = <T extends object>(
   // Use the appropriate conversion method based on the page
   if (["dashboard", "analytics"].includes(pageName?.toLowerCase() || "")) {
     // For complex pages with multiple data types, use the group-based conversion
-    csvData = convertMultiGroupToCSV(preparedData as any[]);
+    csvData = convertMultiGroupToCSV(preparedData as { dataType?: string }[]);
   } else {
     // For simple pages with a single data type, use the standard conversion
     csvData = convertSingleGroupToCSV(preparedData);
@@ -218,7 +222,7 @@ export const exportToCSV = <T extends object>(
 // Generic function to map items and add dataType
 function mapWithDataType<T extends object>(
   items: T[] | undefined,
-  dataType: string
+  dataType: string,
 ): (T & { dataType: string })[] {
   return (items || []).map((item) => ({ ...item, dataType }));
 }

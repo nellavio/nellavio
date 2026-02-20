@@ -1,9 +1,17 @@
 "use client";
 
-import { PieChart, Pie, Sector, Tooltip, Legend, ResponsiveContainer, Cell } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Cell,
+} from "recharts";
+import type { PieSectorShapeProps } from "recharts";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
@@ -88,53 +96,69 @@ const GradientPieTooltip = ({ active, payload }: GradientPieTooltipProps) => {
   );
 };
 
-/** Props for active sector shape rendering. */
-interface ActiveShapeProps {
-  cx: number;
-  cy: number;
-  innerRadius: number;
-  outerRadius: number;
-  startAngle: number;
-  endAngle: number;
-  fill: string;
-  payload: DataPoint;
-  index: number;
-}
-
 /**
- * Creates renderer for expanded active pie sector with gradient.
+ * Creates renderer for pie sectors with expanded active state.
  */
-const createActiveShapeRenderer = (colors: string[]) => (props: ActiveShapeProps) => {
-  const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, index } = props;
-  const color = colors[index % colors.length];
+const createPieShapeRenderer =
+  (colors: string[]) => (props: PieSectorShapeProps) => {
+    const {
+      cx,
+      cy,
+      innerRadius,
+      outerRadius,
+      startAngle,
+      endAngle,
+      fill,
+      stroke,
+      strokeWidth,
+      isActive,
+      index,
+    } = props;
 
-  return (
-    <g>
-      <defs>
-        <radialGradient
-          id={`activeGradient${index}`}
-          cx="50%"
-          cy="50%"
-          r="50%"
-        >
-          <stop offset="0%" stopColor={color} stopOpacity={0.4} />
-          <stop offset="100%" stopColor={color} stopOpacity={1} />
-        </radialGradient>
-      </defs>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius - 5}
-        outerRadius={outerRadius + 10}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={`url(#activeGradient${index})`}
-        stroke={color}
-        strokeWidth={2}
-      />
-    </g>
-  );
-};
+    if (!isActive) {
+      return (
+        <Sector
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+        />
+      );
+    }
+
+    const color = colors[index % colors.length];
+    return (
+      <g>
+        <defs>
+          <radialGradient
+            id={`activeGradient${index}`}
+            cx="50%"
+            cy="50%"
+            r="50%"
+          >
+            <stop offset="0%" stopColor={color} stopOpacity={0.4} />
+            <stop offset="100%" stopColor={color} stopOpacity={1} />
+          </radialGradient>
+        </defs>
+        <Sector
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius - 5}
+          outerRadius={outerRadius + 10}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          fill={`url(#activeGradient${index})`}
+          stroke={color}
+          strokeWidth={2}
+        />
+      </g>
+    );
+  };
 
 /**
  * Donut chart with radial gradient fills and hover expansion.
@@ -147,7 +171,6 @@ export const GradientPieChartComponent = () => {
   const { theme } = useTheme();
   const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
-  const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   const COLORS = [
     chartColors.primary.fill,
@@ -162,14 +185,6 @@ export const GradientPieChartComponent = () => {
     { name: "Home & Garden", value: 2800, color: COLORS[2] },
     { name: "Sports", value: 1900, color: COLORS[3] },
   ];
-
-  const onPieEnter = (_: unknown, index: number) => {
-    setActiveIndex(index);
-  };
-
-  const onPieLeave = () => {
-    setActiveIndex(undefined);
-  };
 
   return (
     <Card
@@ -209,10 +224,7 @@ export const GradientPieChartComponent = () => {
               innerRadius="30%"
               outerRadius="70%"
               paddingAngle={3}
-              activeIndex={activeIndex}
-              activeShape={createActiveShapeRenderer(COLORS) as unknown as ((props: unknown) => JSX.Element)}
-              onMouseEnter={onPieEnter}
-              onMouseLeave={onPieLeave}
+              shape={createPieShapeRenderer(COLORS)}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}
               animationDuration={800}
@@ -227,7 +239,10 @@ export const GradientPieChartComponent = () => {
                 />
               ))}
             </Pie>
-            <Tooltip content={<GradientPieTooltip />} isAnimationActive={false} />
+            <Tooltip
+              content={<GradientPieTooltip />}
+              isAnimationActive={false}
+            />
             <Legend
               verticalAlign="bottom"
               height={36}

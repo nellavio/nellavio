@@ -63,7 +63,7 @@ export const useHandleLogin = () => {
 
       return t("authErrors.defaultError");
     },
-    [t]
+    [t],
   );
 
   const handleLogin = useCallback(
@@ -71,7 +71,7 @@ export const useHandleLogin = () => {
       // Check if running in presentation mode (no backend)
       if (isPresentationModeClient()) {
         alert(
-          "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work."
+          "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work.",
         );
         return;
       }
@@ -106,7 +106,7 @@ export const useHandleLogin = () => {
         setAuthError(t("authErrors.networkError"));
       }
     },
-    [currentPathname, mapBetterAuthError, router, setIsLoggingIn, t]
+    [currentPathname, mapBetterAuthError, router, setIsLoggingIn, t],
   );
 
   const validationSchema = Yup.object().shape({
@@ -147,6 +147,10 @@ export const useHandleLogin = () => {
   } = useForm<LoginData>({
     resolver: yupResolver(validationSchema),
     mode: "onSubmit",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   // Effects necessary to not show both error messages at the same time if not needed
@@ -197,7 +201,7 @@ export const useHandleLogin = () => {
         isSubmittingRef.current = false;
       }
     },
-    [handleLogin, setIsLoggingIn]
+    [handleLogin, setIsLoggingIn],
   );
 
   return {

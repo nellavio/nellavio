@@ -5,7 +5,6 @@ export interface Asset {
   delta: number;
   deltaType: string;
   status: string;
-  [key: string]: any;
 }
 
 export interface AssetPerformanceProps {

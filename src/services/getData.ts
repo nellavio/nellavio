@@ -12,7 +12,7 @@ import { HOMEPAGE_QUERY } from "../queries/HomepageQuery";
 import { hasValidBackendUrl } from "../utils/presentationMode";
 import type { OrderType } from "../components/views/orders/types";
 import type { Customer } from "../components/views/customers/types";
-import type { ProductCategory } from "../components/views/products/types";
+import type { Product } from "../components/views/products/types";
 import type { CalendarEvent } from "../components/views/calendar/types";
 import type { AnalyticsViewProps } from "../components/views/analytics/types";
 import type { HomepageViewProps } from "../components/views/homepage/types";
@@ -35,7 +35,7 @@ const QUERY_MAP: Record<string, DocumentNode> = {
 interface PageDataMap {
   orders: OrderType[];
   customers: Customer[];
-  products: ProductCategory[];
+  products: Product[];
   events: CalendarEvent[];
   analytics: AnalyticsViewProps["analyticsData"];
   homepage: HomepageViewProps["homepageData"];
@@ -55,7 +55,7 @@ const getBackupData = <T extends PageName>(pageName: T): PageDataMap[T] => {
   const backupFilePath = path.join(
     process.cwd(),
     "public",
-    "backendBackup.json"
+    "backendBackup.json",
   );
 
   const raw = fs.readFileSync(backupFilePath, "utf-8");
@@ -76,7 +76,7 @@ const getBackupData = <T extends PageName>(pageName: T): PageDataMap[T] => {
  * @see {@link https://github.com/matt765/spireflow-backend Backend setup}
  */
 export const getData = async <T extends PageName>(
-  pageName: T
+  pageName: T,
 ): Promise<PageDataMap[T]> => {
   if (!hasValidBackendUrl()) {
     return getBackupData(pageName);

@@ -48,7 +48,6 @@ const ScatterTooltip = ({ active, payload }: ScatterTooltipProps) => {
   if (!active || !payload || payload.length === 0) return null;
 
   const data = payload[0].payload;
-  const color = data.color;
 
   return (
     <BaseTooltip title={data.country}>
@@ -256,7 +255,10 @@ export const ScatterChartComponent = () => {
             />
             <Tooltip
               content={<ScatterTooltip />}
-              cursor={{ strokeDasharray: "3 3", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                strokeDasharray: "3 3",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
               isAnimationActive={false}
             />
             <Scatter

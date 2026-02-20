@@ -94,7 +94,7 @@ export const useSearchInput = ({
     let translatedSection;
     try {
       translatedSection = t(`search.sections.${item.id}`);
-    } catch (_error: unknown) {
+    } catch {
       translatedSection = item.section;
     }
 
@@ -102,7 +102,7 @@ export const useSearchInput = ({
     let translatedPage;
     try {
       translatedPage = t(`search.pages.${item.page}`);
-    } catch (_error: unknown) {
+    } catch {
       translatedPage = item.page;
     }
 
@@ -118,7 +118,7 @@ export const useSearchInput = ({
       item.translatedSection.toLowerCase().includes(searchText.toLowerCase()) ||
       item.translatedPage.toLowerCase().includes(searchText.toLowerCase()) ||
       item.section.toLowerCase().includes(searchText.toLowerCase()) ||
-      item.page.toLowerCase().includes(searchText.toLowerCase())
+      item.page.toLowerCase().includes(searchText.toLowerCase()),
   );
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,7 +160,7 @@ export const useSearchInput = ({
         return;
       }
       setHighlightedIndex((prev) =>
-        prev < filteredSections.length - 1 ? prev + 1 : prev
+        prev < filteredSections.length - 1 ? prev + 1 : prev,
       );
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
@@ -209,14 +209,14 @@ export const useSearchInput = ({
   let searchPlaceholder;
   try {
     searchPlaceholder = t("search.placeholder");
-  } catch (error) {
+  } catch {
     searchPlaceholder = "Search...";
   }
 
   let noResultsText;
   try {
     noResultsText = t("search.noResults");
-  } catch (error) {
+  } catch {
     noResultsText = "No results found";
   }
 

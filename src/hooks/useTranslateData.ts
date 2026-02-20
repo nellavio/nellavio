@@ -11,18 +11,18 @@ type Translations = { [key: string]: string };
  * @param {Translations} translations - Key-value map of English to translated text
  * @returns {T[]} Translated data array
  */
-export const useTranslateData = <T extends Record<string, any>>(
+export const useTranslateData = <T extends object>(
   data: T[],
-  translations: Translations
+  translations: Translations,
 ): T[] => {
-  const translate = (item: any): any => {
+  const translate = (item: unknown): unknown => {
     if (Array.isArray(item)) {
       return item.map((innerItem) => translate(innerItem));
     } else if (item !== null && typeof item === "object") {
-      const newItem: Record<string, any> = {};
+      const newItem: Record<string, unknown> = {};
       Object.keys(item).forEach((key) => {
         const newKey = translations[key] || key;
-        newItem[newKey] = translate((item as Record<string, any>)[key]);
+        newItem[newKey] = translate((item as Record<string, unknown>)[key]);
       });
       return newItem;
     } else if (typeof item === "string") {
@@ -36,6 +36,6 @@ export const useTranslateData = <T extends Record<string, any>>(
 
   return useMemo(
     () => data.map(translate as (item: T) => T),
-    [data, translations]
+    [data, translations],
   );
 };

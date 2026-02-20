@@ -27,7 +27,7 @@ interface CustomerScatterTooltipProps {
   payload?: Array<{
     payload: {
       brandName: string;
-      [key: string]: any;
+      [key: string]: string | number;
     };
   }>;
 }
@@ -48,7 +48,7 @@ const CustomerScatterTooltip = ({
       <p className="px-3 pb-1 text-primaryText flex items-center justify-between">
         <span>{t("totalSales")}: </span>
         <span className="pl-[0.7rem]">
-          ${(data[t("totalSales")] / 1000).toFixed(1)}K
+          ${(Number(data[t("totalSales")]) / 1000).toFixed(1)}K
         </span>
       </p>
       <p className="px-3 pb-1 text-primaryText flex items-center justify-between">
@@ -58,7 +58,9 @@ const CustomerScatterTooltip = ({
       <p className="px-3 pb-1 text-primaryText flex items-center justify-between">
         <span>{t("numberOfOrders")}: </span>
         <span className="pl-[0.7rem]">
-          {Math.round(data[t("numberOfOrders")] / numberOfOrdersScaleFactor)}
+          {Math.round(
+            Number(data[t("numberOfOrders")]) / numberOfOrdersScaleFactor,
+          )}
         </span>
       </p>
     </BaseTooltip>
@@ -78,7 +80,7 @@ export const CustomerSatisfaction = ({
 
   const translatedData = useTranslateData(
     customerSatisfactionData,
-    translations
+    translations,
   );
 
   const { theme } = useTheme();
@@ -151,15 +153,15 @@ export const CustomerSatisfaction = ({
               animationDuration={800}
               animationEasing="ease-out"
             >
-              {translatedData.map((entry: any, index: number) => (
+              {translatedData.map((_entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={
                     index % 3 === 0
                       ? chartColors.primary.fill
                       : index % 3 === 1
-                      ? chartColors.secondary.fill
-                      : "rgb(168, 162, 255)"
+                        ? chartColors.secondary.fill
+                        : "rgb(168, 162, 255)"
                   }
                 />
               ))}

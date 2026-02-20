@@ -5,6 +5,7 @@ import path from "path";
 import { client } from "../../../services/apolloClient";
 import { NOTIFICATIONS_QUERY } from "../../../queries/NotificationsQuery";
 import { hasValidBackendUrl } from "../../../utils/presentationMode";
+import type { Notification } from "../../../layout/navbar/hooks/useNotificationsData";
 
 export async function GET() {
   try {
@@ -24,17 +25,17 @@ export async function GET() {
 
     // Try to fetch from GraphQL backend
     try {
-      const { data } = await client.query({
+      const { data } = await client.query<{ notifications: Notification[] }>({
         query: NOTIFICATIONS_QUERY,
         fetchPolicy: "network-only",
       });
 
-      return NextResponse.json(data.notifications);
+      return NextResponse.json(data?.notifications ?? []);
     } catch (backendError: unknown) {
       // Fallback to backup if backend fails
       console.warn(
         "[Backend Failed] Using backup data for notifications:",
-        backendError
+        backendError,
       );
       const filePath = path.join(process.cwd(), "public", "backendBackup.json");
       const fileContent = fs.readFileSync(filePath, "utf-8");
@@ -50,7 +51,7 @@ export async function GET() {
     console.error("Error in notifications API route:", error);
     return NextResponse.json(
       { error: "Failed to fetch notifications" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

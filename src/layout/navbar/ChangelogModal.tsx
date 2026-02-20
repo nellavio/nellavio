@@ -4,10 +4,14 @@ import { ChangelogModalProps } from "./types";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
 } from "../../components/common/shadcn/dialog";
 
-export const ChangelogModal = ({ closeModal, returnFocusRef }: ChangelogModalProps) => {
+export const ChangelogModal = ({
+  closeModal,
+  returnFocusRef,
+}: ChangelogModalProps) => {
   const { changelogContent, isLoading, error, formatMarkdown } =
     useChangelogModal();
 
@@ -23,6 +27,7 @@ export const ChangelogModal = ({ closeModal, returnFocusRef }: ChangelogModalPro
         }}
       >
         <DialogTitle className="sr-only">Changelog</DialogTitle>
+        <DialogDescription className="sr-only">Changelog</DialogDescription>
         <div
           tabIndex={0}
           className="w-full min-w-0 md:min-w-[32rem] h-full max-h-none md:max-h-[65vh] overflow-y-auto pr-0 md:pr-4 [&>*]:pr-4 md:[&>*]:pr-0 pt-12 md:pt-0 focus:outline-none"

@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  LineChart,
-  Line,
   Area,
   XAxis,
   YAxis,
@@ -154,7 +152,11 @@ export const LineAreaChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
             />
-            <Tooltip content={<LineAreaTooltip />} cursor={{ stroke: "var(--color-chartVerticalLine)" }} isAnimationActive={false} />
+            <Tooltip
+              content={<LineAreaTooltip />}
+              cursor={{ stroke: "var(--color-chartVerticalLine)" }}
+              isAnimationActive={false}
+            />
             <Legend
               wrapperStyle={{
                 paddingTop: "10px",
