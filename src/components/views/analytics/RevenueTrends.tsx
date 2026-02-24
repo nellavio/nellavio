@@ -9,8 +9,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { useTheme } from "next-themes";
-
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import {
@@ -19,7 +17,6 @@ import {
   RevenueTrendsProps,
   RevenueTrendsTooltipProps,
 } from "./types";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -89,7 +86,7 @@ const CustomXAxisTick = ({
       y={y}
       dy={16}
       textAnchor="middle"
-      fill="white"
+      fill="var(--color-chartAxisText)"
       fontSize="0.8rem"
     >
       {translatedMonth}
@@ -99,10 +96,6 @@ const CustomXAxisTick = ({
 
 export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
   const t = useTranslations("analytics.revenueTrends");
-
-  const { theme } = useTheme();
-
-  const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
 
@@ -148,7 +141,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
           >
             <CartesianGrid
               strokeDasharray="0"
-              stroke={chartColors.primary.grid}
+              stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis dataKey="month" tick={<CustomXAxisTick />} />
             <YAxis
@@ -177,7 +170,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
             <Bar
               dataKey="sales"
               name={t("sales")}
-              fill={chartColors.secondary.inverted}
+              fill="var(--color-chartSecondaryInverted)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               minPointSize={5}
@@ -189,7 +182,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
             <Bar
               dataKey="profit"
               name={t("profit")}
-              fill={chartColors.primary.inverted}
+              fill="var(--color-chartPrimaryInverted)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               minPointSize={5}

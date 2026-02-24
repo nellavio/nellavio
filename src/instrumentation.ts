@@ -78,7 +78,6 @@ const buildModeSection = (
 
 const printStartupBanner = async () => {
   const status = await checkBackendHealth();
-  const port = process.env.PORT || 3000;
   const nodeEnv = process.env.NODE_ENV || "development";
   const separator = "-----";
 
@@ -93,8 +92,6 @@ const printStartupBanner = async () => {
     "",
     buildModeSection(status),
     "",
-    `🌐 Dashboard: http://localhost:${port}`,
-    "",
     separator,
     "",
   ].join("\n");
@@ -105,9 +102,6 @@ const printStartupBanner = async () => {
 
 export const register = async () => {
   if (process.env.NEXT_RUNTIME === "nodejs") {
-    const { acquireBannerLock } = await import("./instrumentation-node");
-    if (acquireBannerLock()) {
-      await printStartupBanner();
-    }
+    await printStartupBanner();
   }
 };

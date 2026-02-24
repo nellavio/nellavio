@@ -11,12 +11,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 /** Props for line chart tooltip component. */
@@ -98,8 +96,6 @@ export const LineChartComponent = () => {
   const tCharts = useTranslations("charts");
   const t = useTranslations("singleCharts.line");
   const { width: windowWidth } = useWindowDimensions();
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const dragonPopulationInWesteros = [
@@ -168,7 +164,7 @@ export const LineChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="year"
@@ -183,7 +179,10 @@ export const LineChartComponent = () => {
             />
             <Tooltip
               content={<LineChartTooltip />}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
               isAnimationActive={false}
             />
             <Legend
@@ -194,7 +193,7 @@ export const LineChartComponent = () => {
             <Line
               type="monotone"
               dataKey={t("houseTargaryen")}
-              stroke={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
               strokeWidth={2}
               dot={true}
               isAnimationActive={shouldAnimate}

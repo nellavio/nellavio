@@ -10,12 +10,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -50,7 +48,10 @@ interface CustomLegendProps {
  */
 const CustomLegend = ({ positiveColor, negativeColor }: CustomLegendProps) => {
   return (
-    <div className="flex flex-row justify-end text-white w-full mb-6" style={{ gap: "1rem" }}>
+    <div
+      className="flex flex-row justify-end text-white w-full mb-6"
+      style={{ gap: "1rem" }}
+    >
       <div className="flex items-center">
         <div
           className="w-3 h-3 mr-2"
@@ -92,7 +93,9 @@ const FillByValueTooltip = ({
         <span>
           <span
             className="w-2 h-2 mr-2 rounded inline-block"
-            style={{ backgroundColor: isPositive ? positiveColor : negativeColor }}
+            style={{
+              backgroundColor: isPositive ? positiveColor : negativeColor,
+            }}
           />
           P&L:
         </span>
@@ -113,13 +116,11 @@ const FillByValueTooltip = ({
  */
 export const AreaFillByValueChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
-  const positiveColor = chartColors.primary.fill;
-  const negativeColor = chartColors.secondary.fill;
+  const positiveColor = "var(--color-chartPrimaryFill)";
+  const negativeColor = "var(--color-chartSecondaryFill)";
 
   const chartdata: DataPoint[] = [
     { name: "Jan", value: 4200 },
@@ -168,7 +169,7 @@ export const AreaFillByValueChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="name"
@@ -188,18 +189,34 @@ export const AreaFillByValueChartComponent = () => {
                 />
               }
               isAnimationActive={false}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
             />
             <Legend
               verticalAlign="top"
               align="center"
-              content={<CustomLegend positiveColor={positiveColor} negativeColor={negativeColor} />}
+              content={
+                <CustomLegend
+                  positiveColor={positiveColor}
+                  negativeColor={negativeColor}
+                />
+              }
             />
             <defs>
               <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stopColor={positiveColor} stopOpacity={0.8} />
-                <stop offset={off} stopColor={positiveColor} stopOpacity={0.1} />
-                <stop offset={off} stopColor={negativeColor} stopOpacity={0.1} />
+                <stop
+                  offset={off}
+                  stopColor={positiveColor}
+                  stopOpacity={0.1}
+                />
+                <stop
+                  offset={off}
+                  stopColor={negativeColor}
+                  stopOpacity={0.1}
+                />
                 <stop offset="1" stopColor={negativeColor} stopOpacity={0.8} />
               </linearGradient>
             </defs>

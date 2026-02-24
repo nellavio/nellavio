@@ -75,6 +75,14 @@
   --color-calendarListDayHeaderBg: rgb(255, 255, 255, 0.02);
   --color-chartPrimaryBg: rgb(61, 185, 133);
   --color-chartSecondaryBg: rgb(83, 133, 198);
+  --color-chartPrimaryFill: rgb(61, 185, 133);
+  --color-chartPrimaryGrid: rgb(255, 255, 255, 0.1);
+  --color-chartPrimaryDisabled: rgb(255, 255, 255, 0.1);
+  --color-chartPrimaryInverted: rgb(61, 185, 133);
+  --color-chartSecondaryFill: rgb(83, 133, 198);
+  --color-chartSecondaryGrid: rgb(83, 133, 198);
+  --color-chartSecondaryDisabled: rgb(83, 133, 198);
+  --color-chartSecondaryInverted: rgb(83, 133, 198);
   --color-loaderBg: rgb(36, 40, 45);
   --color-loaderCircleBg: rgb(20, 80, 130);
   --color-selectBg: rgb(255, 255, 255, 0.05);
@@ -148,8 +156,10 @@
   --color-navbarSearchInputBorderHover: rgb(255, 255, 255, 0.2);
   --color-tabLineActiveBorder: rgb(83, 133, 198);
   --color-settingsButtonBorder: rgb(0, 0, 0, 0.1);
+  --color-chartAxisText: rgb(201, 203, 207);
   --color-chartVerticalLine: rgb(255, 255, 255, 0.15);
   --color-chartCursorBg: rgb(255, 255, 255, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
-  --authModalShadow: 0 18px 35px -10px rgb(0, 0, 0, 0.4), 0 6px 16px -5px rgb(0, 0, 0, 0.25);
+  --authModalShadow:
+    0 18px 35px -10px rgb(0, 0, 0, 0.4), 0 6px 16px -5px rgb(0, 0, 0, 0.25);
 }

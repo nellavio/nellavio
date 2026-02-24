@@ -2,13 +2,11 @@
 
 import { useState, useRef } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { AssetPerformanceProps } from "./types";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 interface AssetDataWithColor {
@@ -52,8 +50,6 @@ export const AssetPerformance = ({
   assetPerformanceData,
 }: AssetPerformanceProps) => {
   const t = useTranslations("analytics.assetPerformance");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const chartContainerRef = useRef<HTMLDivElement>(null);
@@ -69,8 +65,8 @@ export const AssetPerformance = ({
   };
 
   const COLORS = [
-    chartColors.primary.fill,
-    chartColors.secondary.fill,
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
     "rgb(100, 200, 180)",
     "rgb(255, 150, 150)",

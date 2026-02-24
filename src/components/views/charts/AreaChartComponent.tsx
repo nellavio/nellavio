@@ -10,11 +10,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -95,7 +93,10 @@ interface CustomLegendProps {
  */
 const CustomLegend = ({ payload }: CustomLegendProps) => {
   return (
-    <div className="flex flex-row justify-end text-white w-full mb-6" style={{ gap: "1rem" }}>
+    <div
+      className="flex flex-row justify-end text-white w-full mb-6"
+      style={{ gap: "1rem" }}
+    >
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -117,8 +118,6 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
  */
 export const AreaChartComponent = () => {
   const tCharts = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
@@ -184,12 +183,12 @@ export const AreaChartComponent = () => {
               <linearGradient id="colorViews" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.disabled}
+                  stopColor={"var(--color-chartPrimaryDisabled)"}
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.disabled}
+                  stopColor={"var(--color-chartPrimaryDisabled)"}
                   stopOpacity={0}
                 />
               </linearGradient>
@@ -202,19 +201,19 @@ export const AreaChartComponent = () => {
               >
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor={"var(--color-chartPrimaryFill)"}
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor={"var(--color-chartPrimaryFill)"}
                   stopOpacity={0}
                 />
               </linearGradient>
             </defs>
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="date"
@@ -229,7 +228,10 @@ export const AreaChartComponent = () => {
             <Tooltip
               content={<AreaTooltip />}
               isAnimationActive={false}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
             />
             <Legend
               verticalAlign="top"
@@ -240,7 +242,7 @@ export const AreaChartComponent = () => {
               type="linear"
               dataKey="views"
               name={t("views")}
-              stroke={chartColors.primary.disabled}
+              stroke={"var(--color-chartPrimaryDisabled)"}
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorViews)"
@@ -253,7 +255,7 @@ export const AreaChartComponent = () => {
               type="linear"
               dataKey="uniqueVisitors"
               name={t("uniqueVisitors")}
-              stroke={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorUniqueVisitors)"

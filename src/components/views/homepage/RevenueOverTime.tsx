@@ -8,7 +8,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
@@ -17,7 +16,6 @@ import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "./types";
 import { useBackendTranslations } from "../../../hooks/useBackendTranslations";
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 import { useAppStore } from "../../../store/appStore";
@@ -80,10 +78,6 @@ export const RevenueOverTime = ({
     revenueOverTimeData,
     backendTranslations,
   );
-
-  const { theme } = useTheme();
-
-  const chartColors = useChartColors(theme as "dark" | "light");
 
   const { width: windowWidth } = useWindowDimensions();
 
@@ -234,31 +228,31 @@ export const RevenueOverTime = ({
               <linearGradient id="colorWebsite" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.disabled}
+                  stopColor="var(--color-chartPrimaryDisabled)"
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.disabled}
+                  stopColor="var(--color-chartPrimaryDisabled)"
                   stopOpacity={0}
                 />
               </linearGradient>
               <linearGradient id="colorInStore" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor="var(--color-chartPrimaryFill)"
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor="var(--color-chartPrimaryFill)"
                   stopOpacity={0}
                 />
               </linearGradient>
             </defs>
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis
               dataKey="date"
@@ -284,7 +278,7 @@ export const RevenueOverTime = ({
               type="linear"
               dataKey="websiteSales"
               name={t("websiteSales")}
-              stroke={chartColors.primary.disabled}
+              stroke="var(--color-chartPrimaryDisabled)"
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorWebsite)"
@@ -297,7 +291,7 @@ export const RevenueOverTime = ({
               type="linear"
               dataKey="inStoreSales"
               name={t("inStoreSales")}
-              stroke={chartColors.primary.fill}
+              stroke="var(--color-chartPrimaryFill)"
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorInStore)"

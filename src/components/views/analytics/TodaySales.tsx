@@ -10,7 +10,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { useBackendTranslations } from "../../../hooks/useBackendTranslations";
@@ -24,7 +23,6 @@ import {
   TabsContent,
 } from "../../common/shadcn/tabs";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -91,8 +89,6 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
   const backendTranslations = useBackendTranslations("analytics.todaySales");
   const translatedData = useTranslateData(todaySalesData, backendTranslations);
 
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
@@ -149,7 +145,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
               >
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke={chartColors.primary.grid}
+                  stroke={"var(--color-chartPrimaryGrid)"}
                 />
                 <XAxis
                   dataKey="hour"
@@ -179,7 +175,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 <Line
                   type="monotone"
                   dataKey={t("today")}
-                  stroke={chartColors.primary.fill}
+                  stroke={"var(--color-chartPrimaryFill)"}
                   strokeWidth={2}
                   dot={false}
                   isAnimationActive={shouldAnimate}
@@ -190,7 +186,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 <Line
                   type="monotone"
                   dataKey={t("yesterday")}
-                  stroke={chartColors.secondary.fill}
+                  stroke={"var(--color-chartSecondaryFill)"}
                   strokeWidth={2}
                   dot={false}
                   isAnimationActive={shouldAnimate}
@@ -225,7 +221,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
               >
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  stroke={chartColors.primary.grid}
+                  stroke={"var(--color-chartPrimaryGrid)"}
                 />
                 <XAxis
                   dataKey="hour"
@@ -255,7 +251,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 <Line
                   type="monotone"
                   dataKey={t("today")}
-                  stroke={chartColors.primary.fill}
+                  stroke={"var(--color-chartPrimaryFill)"}
                   strokeWidth={2}
                   dot={false}
                   isAnimationActive={shouldAnimate}
@@ -266,7 +262,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 <Line
                   type="monotone"
                   dataKey={t("average")}
-                  stroke={chartColors.secondary.fill}
+                  stroke={"var(--color-chartSecondaryFill)"}
                   strokeWidth={2}
                   dot={false}
                   isAnimationActive={shouldAnimate}

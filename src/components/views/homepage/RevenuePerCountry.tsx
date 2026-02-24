@@ -19,7 +19,6 @@ import { useTranslateData } from "../../../hooks/useTranslateData";
 import { Card } from "../../common/Card";
 import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
 import { RevenuePerCountryProps } from "./types";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 
 const ComposableMapLazy = lazy(() =>
@@ -61,13 +60,11 @@ export const RevenuePerCountry = ({
   const { theme } = useTheme();
   const { width: windowWidth } = useWindowDimensions();
 
-  const chartColors = useChartColors(theme as "dark" | "light");
-
   const isCompact = windowWidth >= 768 && windowWidth < 1024;
   const mapScale = isCompact ? 165 : 200;
   const mapMarginLeft = isCompact ? "-2rem" : "-4rem";
 
-  const HIGHLIGHT_COLOR = chartColors.primary.fill;
+  const HIGHLIGHT_COLOR = "var(--color-chartPrimaryFill)";
   const BORDER_COLOR =
     theme === "light" ? "rgb(0,0,0,0.18)" : "rgb(255,255,255,0.1)";
 

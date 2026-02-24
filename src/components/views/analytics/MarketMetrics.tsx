@@ -1,5 +1,3 @@
-import React from "react";
-import { useTheme } from "next-themes";
 import {
   Radar,
   RadarChart,
@@ -14,7 +12,6 @@ import { useTranslations } from "next-intl";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { MarketMetricsProps, MarketMetricsTooltipProps } from "./types";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 const MarketMetricsTooltip = ({
@@ -100,10 +97,6 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
     return tMetrics(cleanKey);
   };
 
-  const { theme } = useTheme();
-
-  const chartColors = useChartColors(theme as "dark" | "light");
-
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   return (
@@ -130,7 +123,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             className="pt-4 mt-[1rem] lg:mt-0"
             tabIndex={-1}
           >
-            <PolarGrid stroke={chartColors.primary.grid} />
+            <PolarGrid stroke={"var(--color-chartPrimaryGrid)"} />
             <PolarAngleAxis
               dataKey="metric"
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
@@ -143,8 +136,8 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             <Radar
               name="profitMargin"
               dataKey="phones"
-              stroke={chartColors.secondary.inverted}
-              fill={chartColors.secondary.inverted}
+              stroke={"var(--color-chartSecondaryInverted)"}
+              fill={"var(--color-chartSecondaryInverted)"}
               fillOpacity={0.3}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}
@@ -154,8 +147,8 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             <Radar
               name="salesVolume"
               dataKey="laptops"
-              stroke={chartColors.primary.inverted}
-              fill={chartColors.primary.inverted}
+              stroke={"var(--color-chartPrimaryInverted)"}
+              fill={"var(--color-chartPrimaryInverted)"}
               fillOpacity={0.3}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}

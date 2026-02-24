@@ -14,6 +14,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "../../components/common/shadcn/dropdown-menu";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "../../components/common/shadcn/tooltip";
 
 interface SubmenuItem {
   title: string;
@@ -39,12 +44,14 @@ export const MenuItemWithSubmenu = ({
   const currentPathname = usePathname();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [activeSubmenuPath, setActiveSubmenuPath] = useState<string | null>(
-    null
+    null,
   );
   const submenuRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const triggerRef = useRef<HTMLDivElement>(null);
   const verticalLineRef = useRef<HTMLDivElement>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [hasEnteredSinceCollapse, setHasEnteredSinceCollapse] = useState(false);
+  const prevCollapsedRef = useRef(false);
 
   useEffect(() => {
     const normalizedPathname = currentPathname?.endsWith("/")
@@ -108,6 +115,11 @@ export const MenuItemWithSubmenu = ({
     if (!isCollapsed) setIsDropdownOpen(false);
   }, [isCollapsed]);
 
+  if (prevCollapsedRef.current !== isCollapsed) {
+    prevCollapsedRef.current = isCollapsed;
+    setHasEnteredSinceCollapse(false);
+  }
+
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (isCollapsed) return;
@@ -124,7 +136,10 @@ export const MenuItemWithSubmenu = ({
         }
       } else if (e.key === "ArrowDown" && isExpanded) {
         e.preventDefault();
-        const nextIndex = Math.min(focusedSubmenuIndex + 1, submenuItems.length - 1);
+        const nextIndex = Math.min(
+          focusedSubmenuIndex + 1,
+          submenuItems.length - 1,
+        );
         setFocusedSubmenuIndex(nextIndex);
         submenuRefs.current[nextIndex]?.focus();
       } else if (e.key === "ArrowUp" && isExpanded) {
@@ -138,7 +153,7 @@ export const MenuItemWithSubmenu = ({
         setFocusedSubmenuIndex(-1);
       }
     },
-    [isExpanded, focusedSubmenuIndex, submenuItems.length, isCollapsed]
+    [isExpanded, focusedSubmenuIndex, submenuItems.length, isCollapsed],
   );
 
   const isFirstRender = useIsFirstRender();
@@ -146,7 +161,8 @@ export const MenuItemWithSubmenu = ({
 
   const isAnySubmenuActive = activeSubmenuPath !== null;
 
-  
+  const showTooltip = isCollapsed && hasEnteredSinceCollapse && !isDropdownOpen;
+
   const sharedClassName = `flex relative rounded-[6px] items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-[1px] 1xl:mb-1 3xl:mb-2 cursor-pointer transition-[background-color,border-color,padding,margin,width] duration-200 ${
     isCollapsed ? "mx-3 pl-[0.65rem]" : "w-full pl-4 pr-2"
   } ${
@@ -200,95 +216,125 @@ export const MenuItemWithSubmenu = ({
   );
 
   return (
-    <div className={isCollapsed ? "" : "w-full"}>
-      <DropdownMenu open={isCollapsed && isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger asChild disabled={!isCollapsed}>
-          <div>{mainContent}</div>
-        </DropdownMenuTrigger>
-        {isCollapsed && (
-          <DropdownMenuContent
-            side="right"
-            align="start"
-            sideOffset={-4}
-            className="min-w-[140px]"
-            onPointerDownOutside={(e) => {
-              e.preventDefault();
-              setIsDropdownOpen(false);
-            }}
-            onFocusOutside={(e) => e.preventDefault()}
-            onCloseAutoFocus={(e) => e.preventDefault()}
-            onEscapeKeyDown={() => requestAnimationFrame(() => triggerRef.current?.focus())}
-          >
-            {submenuItems.map((item) => {
-              const isItemActive = activeSubmenuPath === item.path;
-              return (
-                <DropdownMenuItem key={item.path} asChild>
-                  <Link
-                    href={item.path}
-                    target={item.newTab ? "_blank" : undefined}
-                    onClick={handleMenuItemClick}
-                    className={`w-full ${isItemActive ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover focus:bg-navItemActiveBgHover text-navItemTextActive focus:text-navItemTextActive" : ""}`}
-                  >
-                    {item.title}
-                  </Link>
-                </DropdownMenuItem>
-              );
-            })}
-          </DropdownMenuContent>
-        )}
-      </DropdownMenu>
-      {!isCollapsed && isExpanded && (isSideMenuOpen || !isDesktop) && (
-            <div className="ml-[1.6rem] relative">
-              <div
-                ref={verticalLineRef}
-                className="absolute left-0 top-0 w-[2px] bg-submenuTreeLine"
-              ></div>
-              {submenuItems.map((item, index) => {
-                const normalizedPathname = currentPathname?.endsWith("/")
-                  ? currentPathname.slice(0, -1)
-                  : currentPathname;
-                const normalizedPath = item.path.endsWith("/")
-                  ? item.path.slice(0, -1)
-                  : item.path;
-                const plPath = `/pl${normalizedPath}`;
-                const isActive =
-                  normalizedPathname === normalizedPath ||
-                  normalizedPathname === plPath;
-
+    <div
+      className={isCollapsed ? "" : "w-full"}
+      onPointerEnter={() => {
+        if (isCollapsed) setHasEnteredSinceCollapse(true);
+      }}
+      onPointerLeave={() => setHasEnteredSinceCollapse(false)}
+      onFocus={() => {
+        if (isCollapsed) setHasEnteredSinceCollapse(true);
+      }}
+      onBlur={() => setHasEnteredSinceCollapse(false)}
+    >
+      <Tooltip delayDuration={200} open={isDropdownOpen ? false : undefined}>
+        <DropdownMenu
+          open={isCollapsed && isDropdownOpen}
+          onOpenChange={(open) => {
+            setIsDropdownOpen(open);
+            if (!open) setHasEnteredSinceCollapse(false);
+          }}
+        >
+          <TooltipTrigger asChild>
+            <DropdownMenuTrigger asChild disabled={!isCollapsed}>
+              <div>{mainContent}</div>
+            </DropdownMenuTrigger>
+          </TooltipTrigger>
+          {isCollapsed && (
+            <DropdownMenuContent
+              side="right"
+              align="start"
+              sideOffset={-4}
+              className="min-w-[140px]"
+              onPointerDownOutside={(e) => {
+                e.preventDefault();
+                setIsDropdownOpen(false);
+              }}
+              onFocusOutside={(e) => e.preventDefault()}
+              onCloseAutoFocus={(e) => e.preventDefault()}
+              onEscapeKeyDown={() =>
+                requestAnimationFrame(() => triggerRef.current?.focus())
+              }
+            >
+              {submenuItems.map((item) => {
+                const isItemActive = activeSubmenuPath === item.path;
                 return (
-                  <Link
-                    key={item.path}
-                    href={item.path}
-                    target={item.newTab ? "_blank" : undefined}
-                    ref={(el) => { submenuRefs.current[index] = el; }}
-                    className="block mb-[1px] 1xl:mb-1 3xl:mb-2 -ml-[1.6rem] w-[calc(100%+1.6rem)] rounded-md relative focus-visible:outline-offset-[-2px]"
-                  >
-                    <div
-                      className="absolute left-[calc(1.6rem+2px)] top-1/2 w-[0.75rem] h-[2px] bg-submenuTreeLine"
-                    ></div>
-                    <div
+                  <DropdownMenuItem key={item.path} asChild>
+                    <Link
+                      href={item.path}
+                      target={item.newTab ? "_blank" : undefined}
                       onClick={handleMenuItemClick}
-                      className={`flex rounded-md items-center py-[0.4rem] 1xl:py-[0.45rem] 3xl:py-[0.6rem] pl-[3.2rem] w-full pr-2 transition ${
-                        isActive
-                          ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover"
-                          : "bg-navItemBg hover:bg-navItemBgHover"
-                      }`}
+                      className={`w-full ${isItemActive ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover focus:bg-navItemActiveBgHover text-navItemTextActive focus:text-navItemTextActive" : ""}`}
                     >
-                      <div
-                        className={`text-xs xl:text-[11px] 3xl:text-[0.82rem] font-medium tracking-wide ${
-                          isActive
-                            ? "text-navItemTextActive"
-                            : "text-navItemText"
-                        }`}
-                      >
-                        {item.title}
-                      </div>
-                    </div>
-                  </Link>
+                      {item.title}
+                    </Link>
+                  </DropdownMenuItem>
                 );
               })}
-            </div>
+            </DropdownMenuContent>
           )}
+        </DropdownMenu>
+        {showTooltip && (
+          <TooltipContent
+            side="right"
+            alignOffset={3}
+            sideOffset={0}
+            className="hidden xl:block"
+          >
+            {title}
+          </TooltipContent>
+        )}
+      </Tooltip>
+      {!isCollapsed && isExpanded && (isSideMenuOpen || !isDesktop) && (
+        <div className="ml-[1.6rem] relative">
+          <div
+            ref={verticalLineRef}
+            className="absolute left-0 top-0 w-[2px] bg-submenuTreeLine"
+          ></div>
+          {submenuItems.map((item, index) => {
+            const normalizedPathname = currentPathname?.endsWith("/")
+              ? currentPathname.slice(0, -1)
+              : currentPathname;
+            const normalizedPath = item.path.endsWith("/")
+              ? item.path.slice(0, -1)
+              : item.path;
+            const plPath = `/pl${normalizedPath}`;
+            const isActive =
+              normalizedPathname === normalizedPath ||
+              normalizedPathname === plPath;
+
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                target={item.newTab ? "_blank" : undefined}
+                ref={(el) => {
+                  submenuRefs.current[index] = el;
+                }}
+                className="block mb-[1px] 1xl:mb-1 3xl:mb-2 -ml-[1.6rem] w-[calc(100%+1.6rem)] rounded-md relative focus-visible:outline-offset-[-2px]"
+              >
+                <div className="absolute left-[calc(1.6rem+2px)] top-1/2 w-[0.75rem] h-[2px] bg-submenuTreeLine"></div>
+                <div
+                  onClick={handleMenuItemClick}
+                  className={`flex rounded-md items-center py-[0.4rem] 1xl:py-[0.45rem] 3xl:py-[0.6rem] pl-[3.2rem] w-full pr-2 transition ${
+                    isActive
+                      ? "bg-navItemActiveBg hover:bg-navItemActiveBgHover"
+                      : "bg-navItemBg hover:bg-navItemBgHover"
+                  }`}
+                >
+                  <div
+                    className={`text-xs xl:text-[11px] 3xl:text-[0.82rem] font-medium tracking-wide ${
+                      isActive ? "text-navItemTextActive" : "text-navItemText"
+                    }`}
+                  >
+                    {item.title}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

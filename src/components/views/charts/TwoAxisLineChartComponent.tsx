@@ -10,11 +10,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -86,7 +84,10 @@ interface TwoAxisLegendProps {
  */
 const TwoAxisCustomLegend = ({ payload }: TwoAxisLegendProps) => {
   return (
-    <div className="flex flex-row justify-center gap-8 text-white w-full" style={{ gap: '2rem' }}>
+    <div
+      className="flex flex-row justify-center gap-8 text-white w-full"
+      style={{ gap: "2rem" }}
+    >
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -110,8 +111,6 @@ const TwoAxisCustomLegend = ({ payload }: TwoAxisLegendProps) => {
  */
 export const TwoAxisLineChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
@@ -132,7 +131,10 @@ export const TwoAxisLineChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full" style={{ marginTop: "2rem" }}>
+      <div
+        className="h-80 1xl:h-96 3xl:h-[28rem] w-full"
+        style={{ marginTop: "2rem" }}
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -149,7 +151,7 @@ export const TwoAxisLineChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="week"
@@ -169,13 +171,21 @@ export const TwoAxisLineChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => `$${value}`}
             />
-            <Tooltip content={<TwoAxisTooltip />} cursor={{ stroke: "var(--color-chartVerticalLine)" }} isAnimationActive={false} />
-            <Legend iconType="line" wrapperStyle={{ paddingTop: '2rem' }} content={<TwoAxisCustomLegend />} />
+            <Tooltip
+              content={<TwoAxisTooltip />}
+              cursor={{ stroke: "var(--color-chartVerticalLine)" }}
+              isAnimationActive={false}
+            />
+            <Legend
+              iconType="line"
+              wrapperStyle={{ paddingTop: "2rem" }}
+              content={<TwoAxisCustomLegend />}
+            />
             <Line
               yAxisId="left"
               type="monotone"
               dataKey="customers"
-              stroke={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
               strokeWidth={3}
               name="New Customers"
               dot={{ r: 5 }}
@@ -189,10 +199,10 @@ export const TwoAxisLineChartComponent = () => {
               yAxisId="right"
               type="monotone"
               dataKey="avgOrderValue"
-              stroke={chartColors.secondary.fill}
+              stroke={"var(--color-chartSecondaryFill)"}
               strokeWidth={3}
               name="Avg Order Value"
-              dot={{ r: 5, fill: chartColors.secondary.fill }}
+              dot={{ r: 5, fill: "var(--color-chartSecondaryFill)" }}
               activeDot={{ r: 7 }}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}

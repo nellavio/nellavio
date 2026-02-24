@@ -18,7 +18,7 @@
   </a>
 </div>
 
-<h4 align="center">A modern full-stack dashboard starter built with Next.js and TypeScript</h4>
+<h4 align="center">Open source dashboard starter built with Next.js and TypeScript</h4>
 <br />
 
 <div align="center">

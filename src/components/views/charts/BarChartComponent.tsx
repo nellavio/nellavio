@@ -10,11 +10,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -101,8 +99,6 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
  * @component
  */
 export const BarChartComponent = () => {
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const t = useTranslations("singleCharts.bars");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
@@ -180,7 +176,7 @@ export const BarChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="name"
@@ -197,7 +193,10 @@ export const BarChartComponent = () => {
             />
             <Tooltip
               content={<BarTooltip />}
-              cursor={{ fill: "rgba(255,255,255,0.05)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255,255,255,0.05)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
               isAnimationActive={false}
             />
             <Legend

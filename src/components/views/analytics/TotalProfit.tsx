@@ -9,7 +9,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { useBackendTranslations } from "../../../hooks/useBackendTranslations";
@@ -23,7 +22,6 @@ import { Card } from "../../common/Card";
 import { Badge } from "../../common/shadcn/badge";
 import { Progress } from "../../common/shadcn/progress";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 import { useAppStore } from "../../../store/appStore";
@@ -69,8 +67,6 @@ export const TotalProfit = ({
     backendTranslations,
   );
 
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
   const shouldStartChartAnimations = useAppStore(
@@ -119,19 +115,19 @@ export const TotalProfit = ({
               <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor={"var(--color-chartPrimaryFill)"}
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor={"var(--color-chartPrimaryFill)"}
                   stopOpacity={0}
                 />
               </linearGradient>
             </defs>
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="month"
@@ -154,7 +150,7 @@ export const TotalProfit = ({
             <Area
               type="monotone"
               dataKey={t("sales")}
-              stroke={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorSales)"
@@ -182,7 +178,7 @@ export const TotalProfit = ({
           <Progress
             value={item.value}
             className="h-2"
-            indicatorColor={chartColors.secondary.fill}
+            indicatorColor={"var(--color-chartSecondaryFill)"}
           />
         </div>
       ))}

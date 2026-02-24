@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslations } from "next-intl";
 import {
   AreaChart,
@@ -10,8 +9,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
-
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import {
@@ -20,7 +17,6 @@ import {
   YearOverviewCustomTooltipProps,
   YearOverviewProps,
 } from "./types";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 import { useAppStore } from "../../../store/appStore";
@@ -135,10 +131,6 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
     name: t(item.name.toLowerCase()),
   }));
 
-  const { theme } = useTheme();
-
-  const chartColors = useChartColors(theme as "dark" | "light");
-
   const { width: windowWidth } = useWindowDimensions();
 
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
@@ -173,31 +165,31 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 <linearGradient id="colorPhones" x1="0" y1="0" x2="0" y2="1">
                   <stop
                     offset="5%"
-                    stopColor={chartColors.secondary.inverted}
+                    stopColor={"var(--color-chartSecondaryInverted)"}
                     stopOpacity={0.3}
                   />
                   <stop
                     offset="95%"
-                    stopColor={chartColors.secondary.inverted}
+                    stopColor={"var(--color-chartSecondaryInverted)"}
                     stopOpacity={0}
                   />
                 </linearGradient>
                 <linearGradient id="colorLaptops" x1="0" y1="0" x2="0" y2="1">
                   <stop
                     offset="5%"
-                    stopColor={chartColors.primary.inverted}
+                    stopColor={"var(--color-chartPrimaryInverted)"}
                     stopOpacity={0.3}
                   />
                   <stop
                     offset="95%"
-                    stopColor={chartColors.primary.inverted}
+                    stopColor={"var(--color-chartPrimaryInverted)"}
                     stopOpacity={0}
                   />
                 </linearGradient>
               </defs>
               <CartesianGrid
                 strokeDasharray="3 3"
-                stroke={chartColors.primary.grid}
+                stroke={"var(--color-chartPrimaryGrid)"}
               />
               <XAxis
                 dataKey="name"
@@ -232,7 +224,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 name="phones"
                 type="monotone"
                 dataKey="phones"
-                stroke={chartColors.secondary.inverted}
+                stroke={"var(--color-chartSecondaryInverted)"}
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorPhones)"
@@ -245,7 +237,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
                 name="laptops"
                 type="monotone"
                 dataKey="laptops"
-                stroke={chartColors.primary.inverted}
+                stroke={"var(--color-chartPrimaryInverted)"}
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorLaptops)"

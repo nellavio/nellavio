@@ -10,11 +10,9 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -77,18 +75,36 @@ const VerticalBarTooltip = ({
  */
 export const VerticalBarChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
-    { category: "Fashion", sales: 45000, color: chartColors.primary.fill },
-    { category: "Tech", sales: 62000, color: chartColors.secondary.fill },
-    { category: "Home", sales: 38000, color: chartColors.primary.fill },
-    { category: "Beauty", sales: 29000, color: chartColors.secondary.fill },
-    { category: "Sports", sales: 41000, color: chartColors.primary.fill },
-    { category: "Books", sales: 22000, color: chartColors.secondary.fill },
+    {
+      category: "Fashion",
+      sales: 45000,
+      color: "var(--color-chartPrimaryFill)",
+    },
+    {
+      category: "Tech",
+      sales: 62000,
+      color: "var(--color-chartSecondaryFill)",
+    },
+    { category: "Home", sales: 38000, color: "var(--color-chartPrimaryFill)" },
+    {
+      category: "Beauty",
+      sales: 29000,
+      color: "var(--color-chartSecondaryFill)",
+    },
+    {
+      category: "Sports",
+      sales: 41000,
+      color: "var(--color-chartPrimaryFill)",
+    },
+    {
+      category: "Books",
+      sales: 22000,
+      color: "var(--color-chartSecondaryFill)",
+    },
   ];
 
   return (
@@ -116,7 +132,7 @@ export const VerticalBarChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="category"
@@ -128,12 +144,19 @@ export const VerticalBarChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
             />
-            <Tooltip content={<VerticalBarTooltip />} cursor={{ fill: "rgba(255, 255, 255, 0.02)", stroke: "var(--color-chartVerticalLine)" }} isAnimationActive={false} />
+            <Tooltip
+              content={<VerticalBarTooltip />}
+              cursor={{
+                fill: "rgba(255, 255, 255, 0.02)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
+              isAnimationActive={false}
+            />
             <Bar
               dataKey="sales"
               name="Sales"
               radius={[8, 8, 0, 0]}
-              fill={chartColors.primary.fill}
+              fill={"var(--color-chartPrimaryFill)"}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}
               animationDuration={800}

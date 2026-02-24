@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 
 import {
@@ -18,7 +18,7 @@ import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 import { Link as NavigationLink } from "../../i18n/navigation";
 import { ArrowDownSimpleIcon } from "../../assets/icons/ArrowDownSimpleIcon";
 import { DropdownMenuItem } from "./DropdownMenuItem";
-import { SettingsDrawer } from "../SettingsDrawer";
+import { SettingsDrawer } from "../settings/SettingsDrawer";
 
 export const UserButton = ({
   userIconBtnRef,
@@ -53,6 +53,18 @@ export const UserButton = ({
     themeDropdown.isOpen ||
     languageDropdown.isOpen ||
     notificationsDropdown.isOpen;
+
+  /** Prevents tooltip from showing when Firefox re-fires hover events on tab switch */
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        suppressTooltipRef.current = true;
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -146,16 +158,18 @@ export const UserButton = ({
         delayDuration={200}
         open={tooltipOpen}
         onOpenChange={(open) => {
-          if (open && suppressTooltipRef.current) {
-            suppressTooltipRef.current = false;
-            return;
-          }
+          if (open && suppressTooltipRef.current) return;
           if (open && isAnyDropdownOpen) return;
           setTooltipOpen(open);
         }}
       >
         <TooltipTrigger asChild>
-          <div className={isLoggedIn ? "h-10 w-auto sm:w-auto" : "h-10 w-10"}>
+          <div
+            className={isLoggedIn ? "h-10 w-auto sm:w-auto" : "h-10 w-10"}
+            onPointerMove={() => {
+              suppressTooltipRef.current = false;
+            }}
+          >
             <button
               ref={userIconBtnRef}
               onClick={() => {

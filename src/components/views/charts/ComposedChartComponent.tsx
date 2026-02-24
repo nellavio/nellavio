@@ -11,11 +11,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -112,8 +110,6 @@ const ComposedCustomLegend = ({ payload }: ComposedLegendProps) => {
  */
 export const ComposedChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
@@ -151,7 +147,7 @@ export const ComposedChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="month"
@@ -171,7 +167,11 @@ export const ComposedChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => `${value}%`}
             />
-            <Tooltip content={<ComposedTooltip />} cursor={{ stroke: "var(--color-chartVerticalLine)" }} isAnimationActive={false} />
+            <Tooltip
+              content={<ComposedTooltip />}
+              cursor={{ stroke: "var(--color-chartVerticalLine)" }}
+              isAnimationActive={false}
+            />
             <Legend
               verticalAlign="bottom"
               align="center"
@@ -180,7 +180,7 @@ export const ComposedChartComponent = () => {
             <Bar
               yAxisId="left"
               dataKey="revenue"
-              fill={chartColors.primary.fill}
+              fill={"var(--color-chartPrimaryFill)"}
               name="Revenue"
               radius={[8, 8, 0, 0]}
               isAnimationActive={shouldAnimate}
@@ -191,7 +191,7 @@ export const ComposedChartComponent = () => {
             <Bar
               yAxisId="left"
               dataKey="profit"
-              fill={chartColors.secondary.fill}
+              fill={"var(--color-chartSecondaryFill)"}
               name="Profit"
               radius={[8, 8, 0, 0]}
               isAnimationActive={shouldAnimate}

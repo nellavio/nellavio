@@ -11,11 +11,9 @@ import {
   ZAxis,
   Cell,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -79,8 +77,6 @@ const ScatterTooltip = ({ active, payload }: ScatterTooltipProps) => {
  */
 export const ScatterChartComponent = () => {
   const tCharts = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const t = useTranslations("singleCharts.scatter");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
@@ -198,9 +194,9 @@ export const ScatterChartComponent = () => {
     ...item,
     color:
       index % 3 === 0
-        ? chartColors.primary.fill
+        ? "var(--color-chartPrimaryFill)"
         : index % 3 === 1
-          ? chartColors.secondary.fill
+          ? "var(--color-chartSecondaryFill)"
           : "rgb(168, 162, 255)",
   }));
 
@@ -228,7 +224,7 @@ export const ScatterChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               type="number"
@@ -263,7 +259,7 @@ export const ScatterChartComponent = () => {
             />
             <Scatter
               data={chartdata}
-              fill={chartColors.primary.fill}
+              fill={"var(--color-chartPrimaryFill)"}
               fillOpacity={0.8}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}

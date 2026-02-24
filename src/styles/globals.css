@@ -178,7 +178,7 @@ button {
   @apply !border-calendarBorder;
 }
 .fc {
-  --fc-page-bg-color: calendarBorder !important;
+  --fc-page-bg-color: theme(colors.calendarBorder) !important;
   --fc-list-event-hover-bg-color: rgb(255, 255, 255, 0.02);
 }
 .fc-day-today {
@@ -312,7 +312,7 @@ button {
 .recharts-cartesian-axis-tick-value tspan,
 .recharts-polar-angle-axis-tick-value tspan,
 .recharts-cartesian-axis-tick text {
-  @apply fill-secondaryText;
+  fill: var(--color-chartAxisText);
 }
 
 /* Global accessible focus styles - in @layer base so Tailwind utilities

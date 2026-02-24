@@ -23,7 +23,7 @@ import { cn } from "../../../lib/utils";
  * ```
  */
 const DropdownMenu = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>
+  props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>,
 ) => <DropdownMenuPrimitive.Root modal={false} {...props} />;
 
 /**
@@ -91,7 +91,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     className={cn(
       "flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-dropdownBgHover data-[state=open]:bg-dropdownBgHover [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       inset && "pl-8",
-      className
+      className,
     )}
     {...props}
   >
@@ -118,7 +118,7 @@ const DropdownMenuSubContent = React.forwardRef<
     ref={ref}
     className={cn(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-lg data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out",
-      className
+      className,
     )}
     {...props}
   />
@@ -146,14 +146,15 @@ DropdownMenuSubContent.displayName =
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+>(({ className, sideOffset = 4, loop = true, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
       ref={ref}
       sideOffset={sideOffset}
+      loop={loop}
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-md data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out",
-        className
+        className,
       )}
       {...props}
     />
@@ -189,7 +190,7 @@ const DropdownMenuItem = React.forwardRef<
     className={cn(
       "relative flex cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-dropdownBgHover focus:text-primaryText data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       inset && "pl-8",
-      className
+      className,
     )}
     {...props}
   />
@@ -220,7 +221,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-pointer select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none transition-colors focus:bg-dropdownBgHover focus:text-primaryText data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      className,
     )}
     checked={checked}
     {...props}
@@ -260,7 +261,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-pointer select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none transition-colors focus:bg-dropdownBgHover focus:text-primaryText data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      className,
     )}
     {...props}
   >
@@ -301,7 +302,7 @@ const DropdownMenuLabel = React.forwardRef<
     className={cn(
       "px-2 py-1.5 text-sm font-semibold",
       inset && "pl-8",
-      className
+      className,
     )}
     {...props}
   />

@@ -1,5 +1,4 @@
 import React from "react";
-import { useTheme } from "next-themes";
 import {
   BarChart,
   Bar,
@@ -20,7 +19,6 @@ import {
   TranslatedProduct,
 } from "./types";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -97,10 +95,6 @@ export const BestSellingProducts = ({
     [t("revenueFromLastWeek")]: product.revenue,
   }));
 
-  const { theme } = useTheme();
-
-  const chartColors = useChartColors(theme as "dark" | "light");
-
   const { width: windowWidth } = useWindowDimensions();
 
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
@@ -143,7 +137,7 @@ export const BestSellingProducts = ({
             />
             <CartesianGrid
               strokeDasharray="0"
-              stroke={chartColors.primary.grid}
+              stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis
               dataKey="name"
@@ -169,7 +163,7 @@ export const BestSellingProducts = ({
             />
             <Bar
               dataKey={t("profitFromLastWeek")}
-              fill={chartColors.secondary.fill}
+              fill="var(--color-chartSecondaryFill)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               isAnimationActive={shouldAnimate}
@@ -179,7 +173,7 @@ export const BestSellingProducts = ({
             />
             <Bar
               dataKey={t("revenueFromLastWeek")}
-              fill={chartColors.primary.fill}
+              fill="var(--color-chartPrimaryFill)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               isAnimationActive={shouldAnimate}

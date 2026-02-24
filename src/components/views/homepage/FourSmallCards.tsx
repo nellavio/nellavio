@@ -12,7 +12,6 @@ import {
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { FourSmallCardsProps } from "./types";
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import {
   Tooltip,
   TooltipContent,
@@ -24,7 +23,6 @@ import { useChartAnimation } from "../../../hooks/useChartAnimation";
 export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
   const t = useTranslations("homepage.fourSmallCards");
   const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const isLg = useMediaQuery("(min-width: 1024px)");
   const is1xl = useMediaQuery("(min-width: 1280px)");
   const is3xl = useMediaQuery("(min-width: 1920px)");
@@ -51,10 +49,10 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
 
   const getChartColor = (index: number) => {
     const colors = [
-      chartColors.primary.fill,
-      chartColors.secondary.fill,
-      chartColors.primary.fill,
-      chartColors.secondary.fill,
+      "var(--color-chartPrimaryFill)",
+      "var(--color-chartSecondaryFill)",
+      "var(--color-chartPrimaryFill)",
+      "var(--color-chartSecondaryFill)",
     ];
     return colors[index];
   };

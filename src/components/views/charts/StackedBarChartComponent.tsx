@@ -10,11 +10,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -119,8 +117,6 @@ const StackedCustomLegend = ({ payload }: StackedLegendProps) => {
  */
 export const StackedBarChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
@@ -160,7 +156,7 @@ export const StackedBarChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="day"
@@ -174,7 +170,10 @@ export const StackedBarChartComponent = () => {
             />
             <Tooltip
               content={<StackedTooltip />}
-              cursor={{ fill: "rgba(255, 255, 255, 0.02)", stroke: "var(--color-chartVerticalLine)" }}
+              cursor={{
+                fill: "rgba(255, 255, 255, 0.02)",
+                stroke: "var(--color-chartVerticalLine)",
+              }}
               isAnimationActive={false}
             />
             <Legend
@@ -185,7 +184,7 @@ export const StackedBarChartComponent = () => {
             <Bar
               dataKey="desktop"
               stackId="a"
-              fill={chartColors.primary.fill}
+              fill={"var(--color-chartPrimaryFill)"}
               name="Desktop"
               radius={[0, 0, 0, 0]}
               isAnimationActive={shouldAnimate}
@@ -196,7 +195,7 @@ export const StackedBarChartComponent = () => {
             <Bar
               dataKey="mobile"
               stackId="a"
-              fill={chartColors.secondary.fill}
+              fill={"var(--color-chartSecondaryFill)"}
               name="Mobile"
               radius={[0, 0, 0, 0]}
               isAnimationActive={shouldAnimate}

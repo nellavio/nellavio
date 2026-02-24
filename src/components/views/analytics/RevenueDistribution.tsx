@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BarChart,
   Bar,
@@ -17,7 +16,6 @@ import {
   RevenueDistributionTooltipProps,
 } from "./types";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useTheme } from "next-themes";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -79,19 +77,14 @@ export const RevenueDistribution = ({
 
   const { theme } = useTheme();
 
-  const chartColors = useChartColors(theme as "dark" | "light");
-
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   // RevenueDistribution has unique color scheme:
   // Dark mode: inStore=blue, online=gray
   // Light mode: inStore=blue, online=teal
-  const inStoreColor =
-    theme === "dark"
-      ? chartColors.secondary.stroke
-      : chartColors.secondary.inverted; // blue on both modes
+  const inStoreColor = "var(--color-chartSecondaryInverted)";
   const onlineColor =
-    theme === "dark" ? "rgb(86,92,101)" : chartColors.primary.inverted; // gray on dark, teal on light
+    theme === "dark" ? "rgb(86,92,101)" : "var(--color-chartPrimaryInverted)";
 
   return (
     <Card className="h-full" id="revenueDistribution" title={t("title")}>
@@ -118,7 +111,7 @@ export const RevenueDistribution = ({
           >
             <CartesianGrid
               strokeDasharray="0"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
               horizontal={false}
             />
             <XAxis

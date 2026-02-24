@@ -11,14 +11,12 @@ import {
   ZAxis,
   Cell,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { CustomerSatisfactionProps } from "./types";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -83,8 +81,6 @@ export const CustomerSatisfaction = ({
     translations,
   );
 
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
@@ -118,7 +114,7 @@ export const CustomerSatisfaction = ({
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis
               type="number"
@@ -150,7 +146,7 @@ export const CustomerSatisfaction = ({
             />
             <Scatter
               data={translatedData}
-              fill={chartColors.primary.fill}
+              fill="var(--color-chartPrimaryFill)"
               fillOpacity={0.8}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}
@@ -162,9 +158,9 @@ export const CustomerSatisfaction = ({
                   key={`cell-${index}`}
                   fill={
                     index % 3 === 0
-                      ? chartColors.primary.fill
+                      ? "var(--color-chartPrimaryFill)"
                       : index % 3 === 1
-                        ? chartColors.secondary.fill
+                        ? "var(--color-chartSecondaryFill)"
                         : "rgb(168, 162, 255)"
                   }
                 />

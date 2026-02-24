@@ -5,7 +5,6 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 import { useTranslateData } from "../../../hooks/useTranslateData";
 import { ThreeSmallCardsProps } from "./types";
-import { useChartColors } from "../../../hooks/useChartColors";
 import {
   Tooltip,
   TooltipContent,
@@ -19,7 +18,6 @@ export const ThreeSmallCards = ({
 }: ThreeSmallCardsProps) => {
   const t = useTranslations("homepage.threeSmallCards");
   const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const [isBelow1280, setIsBelow1280] = useState(false);
@@ -55,9 +53,9 @@ export const ThreeSmallCards = ({
 
   const getChartColor = (index: number) => {
     const colors = [
-      chartColors.primary.fill, // Green
-      chartColors.secondary.fill, // Blue
-      chartColors.primary.fill, // Green
+      "var(--color-chartPrimaryFill)",
+      "var(--color-chartSecondaryFill)",
+      "var(--color-chartPrimaryFill)",
     ];
     return colors[index];
   };

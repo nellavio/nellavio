@@ -10,10 +10,7 @@ import {
   ResponsiveContainer,
   AreaChart,
 } from "recharts";
-import { useTheme } from "next-themes";
-
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -75,8 +72,6 @@ const LineAreaTooltip = ({ active, payload, label }: LineAreaTooltipProps) => {
  * @component
  */
 export const LineAreaChartComponent = () => {
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
@@ -116,31 +111,31 @@ export const LineAreaChartComponent = () => {
               <linearGradient id="colorOrders" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor={"var(--color-chartPrimaryFill)"}
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.fill}
+                  stopColor={"var(--color-chartPrimaryFill)"}
                   stopOpacity={0}
                 />
               </linearGradient>
               <linearGradient id="colorReturns" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={chartColors.primary.disabled}
+                  stopColor={"var(--color-chartPrimaryDisabled)"}
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={chartColors.primary.disabled}
+                  stopColor={"var(--color-chartPrimaryDisabled)"}
                   stopOpacity={0}
                 />
               </linearGradient>
             </defs>
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="month"
@@ -165,7 +160,7 @@ export const LineAreaChartComponent = () => {
             <Area
               type="monotone"
               dataKey="orders"
-              stroke={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
               strokeWidth={2}
               fill="url(#colorOrders)"
               name="Orders"
@@ -177,7 +172,7 @@ export const LineAreaChartComponent = () => {
             <Area
               type="monotone"
               dataKey="returns"
-              stroke={chartColors.primary.disabled}
+              stroke={"var(--color-chartPrimaryDisabled)"}
               strokeWidth={2}
               fill="url(#colorReturns)"
               name="Returns"

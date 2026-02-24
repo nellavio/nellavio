@@ -72,11 +72,12 @@ const securityHeaders = [
     value: "max-age=63072000; includeSubDomains; preload",
   },
   {
-    // X-XSS-Protection activates browser built-in XSS filtering capabilities,
-    // providing an additional layer of protection against cross-site scripting
-    // attacks in older browsers that might not fully support Content-Security-Policy
+    // X-XSS-Protection is set to 0 as recommended by OWASP since 2023.
+    // The browser XSS auditor was removed from Chrome (v78), never shipped
+    // in Firefox/Edge, and the "1; mode=block" value could itself introduce
+    // vulnerabilities via selective content injection in legacy browsers
     key: "X-XSS-Protection",
-    value: "1; mode=block",
+    value: "0",
   },
 ];
 

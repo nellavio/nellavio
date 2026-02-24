@@ -9,11 +9,9 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
@@ -75,8 +73,6 @@ const RadarTooltip = ({ active, payload, label }: RadarTooltipProps) => {
  */
 export const RadarChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
@@ -106,7 +102,7 @@ export const RadarChartComponent = () => {
             data={chartdata}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
-            <PolarGrid stroke={chartColors.primary.grid} />
+            <PolarGrid stroke={"var(--color-chartPrimaryGrid)"} />
             <PolarAngleAxis
               dataKey="subject"
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
@@ -120,8 +116,8 @@ export const RadarChartComponent = () => {
             <Radar
               name="Product A"
               dataKey="productA"
-              stroke={chartColors.primary.fill}
-              fill={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
+              fill={"var(--color-chartPrimaryFill)"}
               fillOpacity={0.5}
               strokeWidth={2}
               isAnimationActive={shouldAnimate}
@@ -132,8 +128,8 @@ export const RadarChartComponent = () => {
             <Radar
               name="Product B"
               dataKey="productB"
-              stroke={chartColors.secondary.fill}
-              fill={chartColors.secondary.fill}
+              stroke={"var(--color-chartSecondaryFill)"}
+              fill={"var(--color-chartSecondaryFill)"}
               fillOpacity={0.5}
               strokeWidth={2}
               isAnimationActive={shouldAnimate}
@@ -148,7 +144,7 @@ export const RadarChartComponent = () => {
           <div className="flex items-center">
             <div
               className="w-3 h-3 mr-2"
-              style={{ backgroundColor: chartColors.primary.fill }}
+              style={{ backgroundColor: "var(--color-chartPrimaryFill)" }}
             />
             <span className="text-xs 1xl:text-sm text-primaryText">
               Product A
@@ -157,7 +153,7 @@ export const RadarChartComponent = () => {
           <div className="flex items-center">
             <div
               className="w-3 h-3 mr-2"
-              style={{ backgroundColor: chartColors.secondary.fill }}
+              style={{ backgroundColor: "var(--color-chartSecondaryFill)" }}
             />
             <span className="text-xs 1xl:text-sm text-primaryText">
               Product B

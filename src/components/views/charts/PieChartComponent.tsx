@@ -8,12 +8,10 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
 
 /** Data point structure for pie chart segments. */
@@ -110,13 +108,11 @@ const PieCustomLegend = ({ payload }: PieLegendProps) => {
  */
 export const PieChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
   const COLORS = [
-    chartColors.primary.fill,
-    chartColors.secondary.fill,
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
     "rgb(100, 200, 180)",
     "rgb(255, 150, 150)",
@@ -164,11 +160,7 @@ export const PieChartComponent = () => {
               animationEasing="ease-out"
             >
               {chartdata.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={entry.color}
-                  stroke="none"
-                />
+                <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
               ))}
             </Pie>
             <Tooltip content={<PieTooltip />} isAnimationActive={false} />

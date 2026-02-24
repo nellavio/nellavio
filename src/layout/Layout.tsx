@@ -8,7 +8,7 @@ import { Navbar } from "./navbar/Navbar";
 import { SideMenu } from "./sideMenu/SideMenu";
 import { useAppStore } from "../store/appStore";
 import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
-import { SettingsDrawer } from "./SettingsDrawer";
+import { SettingsDrawer } from "./settings/SettingsDrawer";
 import { SettingsIcon } from "../assets/icons/SettingsIcon";
 import { FontManager } from "../hooks/useFontManager";
 

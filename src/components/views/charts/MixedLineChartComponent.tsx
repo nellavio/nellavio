@@ -10,11 +10,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
-import { useChartColors } from "../../../hooks/useChartColors";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
@@ -116,8 +114,6 @@ const MixedLineCustomLegend = ({ payload }: MixedLineLegendProps) => {
  */
 export const MixedLineChartComponent = () => {
   const t = useTranslations("charts");
-  const { theme } = useTheme();
-  const chartColors = useChartColors(theme as "dark" | "light");
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
 
@@ -155,7 +151,7 @@ export const MixedLineChartComponent = () => {
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke={chartColors.primary.grid}
+              stroke={"var(--color-chartPrimaryGrid)"}
             />
             <XAxis
               dataKey="month"
@@ -167,7 +163,11 @@ export const MixedLineChartComponent = () => {
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
               tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
             />
-            <Tooltip content={<MixedLineTooltip />} cursor={{ stroke: "var(--color-chartVerticalLine)" }} isAnimationActive={false} />
+            <Tooltip
+              content={<MixedLineTooltip />}
+              cursor={{ stroke: "var(--color-chartVerticalLine)" }}
+              isAnimationActive={false}
+            />
             <Legend
               iconType="line"
               wrapperStyle={{ paddingTop: "2rem" }}
@@ -176,7 +176,7 @@ export const MixedLineChartComponent = () => {
             <Line
               type="monotone"
               dataKey="organic"
-              stroke={chartColors.primary.fill}
+              stroke={"var(--color-chartPrimaryFill)"}
               strokeWidth={2}
               name="Organic"
               dot={{ r: 4 }}
@@ -189,10 +189,10 @@ export const MixedLineChartComponent = () => {
             <Line
               type="monotone"
               dataKey="paid"
-              stroke={chartColors.secondary.fill}
+              stroke={"var(--color-chartSecondaryFill)"}
               strokeWidth={2}
               name="Paid Ads"
-              dot={{ r: 4, fill: chartColors.secondary.fill }}
+              dot={{ r: 4, fill: "var(--color-chartSecondaryFill)" }}
               activeDot={{ r: 6 }}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}
