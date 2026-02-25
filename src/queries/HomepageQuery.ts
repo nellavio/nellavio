@@ -5,8 +5,8 @@ export const HOMEPAGE_QUERY = gql`
     homepage {
       bestSellingProducts {
         name
+        sales
         profit
-        revenue
       }
       customerSatisfaction {
         brandName

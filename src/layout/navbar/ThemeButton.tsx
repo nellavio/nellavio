@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { ThemeButtonProps } from "./types";
 import { MoonIcon } from "../../assets/icons/MoonIcon";
@@ -20,9 +20,25 @@ export const ThemeButton = ({
   const [isMounted, setIsMounted] = useState(false);
   const currentTheme = theme || "light";
   const [sliderDark, setSliderDark] = useState(currentTheme === "dark");
+  /** Blocks tooltip open until next pointer move or keyboard focus */
+  const suppressTooltipRef = useRef(false);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  /** Prevents tooltip from showing when Firefox re-fires hover events on tab switch */
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        suppressTooltipRef.current = true;
+        setTooltipOpen(false);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
   useEffect(() => {
@@ -46,11 +62,43 @@ export const ThemeButton = ({
     notificationsDropdown.isOpen;
 
   return (
-    <Tooltip delayDuration={200}>
+    <Tooltip
+      delayDuration={200}
+      open={tooltipOpen}
+      onOpenChange={(open) => {
+        if (open && suppressTooltipRef.current) return;
+        if (open && isAnyDropdownOpen) return;
+        setTooltipOpen(open);
+      }}
+    >
       <TooltipTrigger asChild>
         <div
           className="group relative flex items-center bg-themeToggleBg border border-mainBorder rounded-full py-0.5 pr-0.5 pl-0 cursor-pointer"
-          onClick={toggleTheme}
+          /** Real mouse movement clears the suppress flag */
+          onPointerMove={() => {
+            suppressTooltipRef.current = false;
+          }}
+          /** Keyboard focus (Tab/Escape return) bypasses suppress and opens tooltip after state settles */
+          onFocus={(e) => {
+            if (
+              e.target instanceof HTMLElement &&
+              e.target.matches(":focus-visible")
+            ) {
+              suppressTooltipRef.current = false;
+              const wrapper = e.currentTarget;
+              setTimeout(() => {
+                if (wrapper.contains(document.activeElement)) {
+                  setTooltipOpen(true);
+                }
+              }, 0);
+            }
+          }}
+          /** Suppress prevents tooltip reopen after re-render (pointer still over element) */
+          onClick={() => {
+            setTooltipOpen(false);
+            suppressTooltipRef.current = true;
+            toggleTheme();
+          }}
           role="button"
           aria-label={t("changeTheme")}
           tabIndex={0}
@@ -64,9 +112,7 @@ export const ThemeButton = ({
             <div
               className="absolute left-[2px] top-0.5 w-[38px] h-[2.1825rem] rounded-full shadow-sm border border-themeToggleActiveBorder bg-themeToggleActiveBg transition-transform-forced"
               style={{
-                transform: sliderDark
-                  ? "translateX(42px)"
-                  : "translateX(0px)",
+                transform: sliderDark ? "translateX(42px)" : "translateX(0px)",
               }}
             />
           )}

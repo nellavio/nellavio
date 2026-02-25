@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as Yup from "yup";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
@@ -29,9 +29,11 @@ export const useHandleSignUp = () => {
   const [loading, setLoading] = useState(false);
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPasswordError, setShowPasswordError] = useState(false);
+  const [showConfirmPasswordError, setShowConfirmPasswordError] =
+    useState(false);
   const [signUpError, setSignUpError] = useState<string>("");
   const router = useRouter();
-  const t = useTranslations("navbar");
+  const t = useTranslations("auth");
 
   // Refs for preventing rapid-fire form submissions (e.g., holding Enter key)
   const isSubmittingRef = useRef(false);
@@ -71,10 +73,11 @@ export const useHandleSignUp = () => {
       setSignUpError("");
 
       try {
+        const { email, password } = data;
         const { error } = await signUp.email({
-          email: data.email,
-          password: data.password,
-          name: data.email,
+          email,
+          password,
+          name: email,
         });
 
         if (error) {
@@ -99,14 +102,21 @@ export const useHandleSignUp = () => {
     [mapSignUpError, router, t],
   );
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .required(t("emailFieldIsRequired"))
-      .email(t("pleaseEnterAValidEmail")),
-    password: Yup.string()
-      .required(t("passwordFieldIsRequired"))
-      .min(6, t("passwordMinimumLength")),
-  });
+  const validationSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        email: Yup.string()
+          .required(t("emailFieldIsRequired"))
+          .email(t("pleaseEnterAValidEmail")),
+        password: Yup.string()
+          .required(t("passwordFieldIsRequired"))
+          .min(8, t("passwordMinimumLength")),
+        confirmPassword: Yup.string()
+          .required(t("confirmPasswordRequired"))
+          .oneOf([Yup.ref("password")], t("passwordsMustMatch")),
+      }),
+    [t],
+  );
 
   const {
     handleSubmit,
@@ -118,6 +128,7 @@ export const useHandleSignUp = () => {
     defaultValues: {
       email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
@@ -156,6 +167,7 @@ export const useHandleSignUp = () => {
       }
       setShowEmailError(false);
       setShowPasswordError(false);
+      setShowConfirmPasswordError(false);
     };
     document.addEventListener("mousedown", handleDocumentClick);
     return () => {
@@ -176,6 +188,12 @@ export const useHandleSignUp = () => {
     }
   }, [errors.password]);
 
+  useEffect(() => {
+    if (errors.confirmPassword) {
+      setShowConfirmPasswordError(true);
+    }
+  }, [errors.confirmPassword]);
+
   return {
     handleSignUp,
     loading,
@@ -184,6 +202,8 @@ export const useHandleSignUp = () => {
     setShowEmailError,
     showPasswordError,
     setShowPasswordError,
+    showConfirmPasswordError,
+    setShowConfirmPasswordError,
     signUpError,
     handleSubmit,
     onSubmit,

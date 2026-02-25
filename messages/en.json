@@ -45,7 +45,7 @@
     "bestSellingProducts": {
       "title": "Bestselling products",
       "profitFromLastWeek": "Profit from last week",
-      "revenueFromLastWeek": "Revenue from last week"
+      "salesFromLastWeek": "Sales from last week"
     },
     "customerSatisfaction": {
       "title": "Customer satisfaction",
@@ -565,6 +565,42 @@
         "Orders": "Orders",
         "Products": "Products"
       }
+    }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "yourEmail": "Your e-mail",
+    "yourPassword": "Your password",
+    "noAccount": "Don't have an account yet?",
+    "registerHere": "Register here...",
+    "createAccount": "Create account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInHere": "Sign in here...",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "emailFieldIsRequired": "Email field is required",
+    "pleaseEnterAValidEmail": "Please enter a valid email",
+    "passwordFieldIsRequired": "Password field is required",
+    "passwordMinimumLength": "Password must be at least 8 characters long",
+    "rememberMe": "Remember me",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordRequired": "Please confirm your password",
+    "passwordsMustMatch": "Passwords must match",
+    "logoutModalTitle": "Are you sure?",
+    "logoutModalDesc": "Click yes to sign out from application",
+    "logoutModalCancelButton": "Cancel",
+    "logoutModalConfirmButton": "Yes",
+    "authErrors": {
+      "session_exists": "Already signed in",
+      "form_identifier_not_found": "Email not found",
+      "form_password_incorrect": "Invalid email or password",
+      "user_locked": "Account locked, try again later",
+      "defaultError": "Sign in error",
+      "emailAlreadyExists": "User already exists. Use another email.",
+      "invalidEmail": "Invalid email format",
+      "passwordError": "Password error",
+      "networkError": "Cannot connect to server. Please try again."
     }
   },
   "breadcrumbs": {

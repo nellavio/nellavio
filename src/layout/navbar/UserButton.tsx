@@ -45,6 +45,7 @@ export const UserButton = ({
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
   const [isSettingsDrawerOpen, setIsSettingsDrawerOpen] = useState(false);
   const currentTheme = theme || "light";
+  /** Blocks tooltip open until next pointer move or keyboard focus */
   const suppressTooltipRef = useRef(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
@@ -166,8 +167,24 @@ export const UserButton = ({
         <TooltipTrigger asChild>
           <div
             className={isLoggedIn ? "h-10 w-auto sm:w-auto" : "h-10 w-10"}
+            /** Real mouse movement clears the suppress flag */
             onPointerMove={() => {
               suppressTooltipRef.current = false;
+            }}
+            /** Keyboard focus (Tab/Escape return) bypasses suppress and opens tooltip after state settles */
+            onFocus={(e) => {
+              if (
+                e.target instanceof HTMLElement &&
+                e.target.matches(":focus-visible")
+              ) {
+                suppressTooltipRef.current = false;
+                const wrapper = e.currentTarget;
+                setTimeout(() => {
+                  if (wrapper.contains(document.activeElement)) {
+                    setTooltipOpen(true);
+                  }
+                }, 0);
+              }
             }}
           >
             <button

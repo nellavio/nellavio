@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import * as Yup from "yup";
 import { useTranslations } from "next-intl";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { LoginData } from "../../components/auth/LoginForm";
@@ -32,7 +32,7 @@ export const useHandleLogin = () => {
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPasswordError, setShowPasswordError] = useState(false);
   const [authErrorDisplayed, setAuthErrorDisplayed] = useState("");
-  const t = useTranslations("navbar");
+  const t = useTranslations("auth");
 
   const setIsLoggingIn = useAppStore((state) => state.setIsLoggingIn);
   const clearAuthError = () => setAuthError("");
@@ -67,7 +67,7 @@ export const useHandleLogin = () => {
   );
 
   const handleLogin = useCallback(
-    async (data: LoginData) => {
+    async (data: LoginData, rememberMe: boolean) => {
       // Check if running in presentation mode (no backend)
       if (isPresentationModeClient()) {
         alert(
@@ -82,7 +82,7 @@ export const useHandleLogin = () => {
       const { email, password } = data;
 
       try {
-        const { error } = await signIn.email({ email, password });
+        const { error } = await signIn.email({ email, password, rememberMe });
 
         if (error) {
           setIsLoggingIn(false);
@@ -109,14 +109,18 @@ export const useHandleLogin = () => {
     [currentPathname, mapBetterAuthError, router, setIsLoggingIn, t],
   );
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .required(t("emailFieldIsRequired"))
-      .email(t("pleaseEnterAValidEmail")),
-    password: Yup.string()
-      .required(t("passwordFieldIsRequired"))
-      .min(6, t("passwordMinimumLength")),
-  });
+  const validationSchema = useMemo(
+    () =>
+      Yup.object().shape({
+        email: Yup.string()
+          .required(t("emailFieldIsRequired"))
+          .email(t("pleaseEnterAValidEmail")),
+        password: Yup.string()
+          .required(t("passwordFieldIsRequired"))
+          .min(8, t("passwordMinimumLength")),
+      }),
+    [t],
+  );
 
   // Hide error messages when user clicks anywhere on the screen
   useEffect(() => {
@@ -175,8 +179,8 @@ export const useHandleLogin = () => {
     }
   }, [authError]);
 
-  const onSubmit: SubmitHandler<LoginData> = useCallback(
-    async (data) => {
+  const onSubmit = useCallback(
+    async (data: LoginData, rememberMe: boolean) => {
       const now = Date.now();
 
       // Prevent rapid-fire submissions (e.g., user holding Enter key)
@@ -193,7 +197,7 @@ export const useHandleLogin = () => {
       lastSubmitTimeRef.current = now;
 
       try {
-        await handleLogin(data);
+        await handleLogin(data, rememberMe);
       } catch (error: unknown) {
         console.error("Login process error:", error);
         setIsLoggingIn(false);
@@ -205,16 +209,11 @@ export const useHandleLogin = () => {
   );
 
   return {
-    handleLogin,
-    authError,
-    clearAuthError,
-    validationSchema,
     showEmailError,
     setShowEmailError,
     showPasswordError,
     setShowPasswordError,
     authErrorDisplayed,
-    setAuthErrorDisplayed,
     onSubmit,
     handleSubmit,
     control,

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { Link } from "../../i18n/navigation";
 
 import { MailIcon } from "../../assets/icons/MailIcon";
 import { PasswordIcon } from "../../assets/icons/PasswordIcon";
@@ -18,10 +19,11 @@ import { useHandleSignUp } from "../../hooks/auth/useHandleSignUp";
 export interface SignUpData {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 interface SignUpFormProps {
-  switchToSignIn: () => void;
+  switchToSignIn?: () => void;
 }
 
 export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
@@ -31,6 +33,8 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
     setShowEmailError,
     showPasswordError,
     setShowPasswordError,
+    showConfirmPasswordError,
+    setShowConfirmPasswordError,
     signUpError,
     handleSubmit,
     onSubmit,
@@ -38,12 +42,13 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
     errors,
   } = useHandleSignUp();
 
-  const t = useTranslations("navbar");
+  const t = useTranslations("auth");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div className="w-full sm:max-w-[20rem] md:w-[18.5rem] 1xl:w-[20rem] flex flex-col items-center">
-      <h1 className="text-3xl 1xl:text-4xl font-bold mb-12 1xl:mb-16 mt-2 1xl:mt-4 text-primaryText">
+    <div className="w-full sm:max-w-[21rem] md:w-[19.5rem] 1xl:w-[21rem] flex flex-col items-center">
+      <h1 className="text-4xl sm:text-[1.95rem] 1xl:text-4xl font-bold mb-12 1xl:mb-16 mt-2 1xl:mt-4 text-primaryText">
         {t("signUp")}
       </h1>
       <form
@@ -67,7 +72,7 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
                     errors.email ? "signup-email-error" : undefined
                   }
                   onInput={() => setShowPasswordError(false)}
-                  maxLength={20}
+                  maxLength={40}
                   fixedHeight
                 />
                 <InputGroupAddon>
@@ -83,7 +88,7 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
               className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
             >
               <div className="relative">
-                <div className="bg-secondaryBg bg-inputBg text-primaryText inline text-xs rounded p-2 px-4 w-full right-0 bottom-full border border-inputBorder rounded-md">
+                <div className="bg-authErrorTooltipBg text-primaryText inline text-xs rounded p-2 px-4 w-full right-0 bottom-full border border-inputBorder rounded-md">
                   {errors.email.message}
                 </div>
               </div>
@@ -106,8 +111,11 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
                   aria-describedby={
                     errors.password ? "signup-password-error" : undefined
                   }
-                  onInput={() => setShowEmailError(false)}
-                  maxLength={20}
+                  onInput={() => {
+                    setShowEmailError(false);
+                    setShowConfirmPasswordError(false);
+                  }}
+                  maxLength={40}
                   fixedHeight
                 />
                 <InputGroupAddon>
@@ -120,7 +128,7 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
                   <InputGroupButton
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={
-                      showPassword ? "Hide password" : "Show password"
+                      showPassword ? t("hidePassword") : t("showPassword")
                     }
                     aria-pressed={showPassword}
                   >
@@ -137,8 +145,69 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
               className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
             >
               <div className="relative">
-                <div className="bg-secondaryBg bg-inputBg text-primaryText text-xs rounded p-2 px-4 inline right-0 bottom-full border border-inputBorder rounded-md">
+                <div className="bg-authErrorTooltipBg text-primaryText text-xs rounded p-2 px-4 inline right-0 bottom-full border border-inputBorder rounded-md">
                   {errors.password.message}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="mb-1 w-full relative h-[2.7rem]">
+          <Controller
+            name="confirmPassword"
+            control={control}
+            render={({ field }) => (
+              <InputGroup className="h-full group">
+                <InputGroupInput
+                  {...field}
+                  autoComplete="new-password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder={t("confirmPassword")}
+                  aria-label={t("confirmPassword")}
+                  aria-invalid={!!errors.confirmPassword}
+                  aria-describedby={
+                    errors.confirmPassword
+                      ? "signup-confirm-password-error"
+                      : undefined
+                  }
+                  onInput={() => {
+                    setShowEmailError(false);
+                    setShowPasswordError(false);
+                  }}
+                  maxLength={40}
+                  fixedHeight
+                />
+                <InputGroupAddon>
+                  <PasswordIcon />
+                </InputGroupAddon>
+                <InputGroupAddon
+                  align="inline-end"
+                  className={`pr-1 transition-opacity ${showConfirmPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
+                >
+                  <InputGroupButton
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    aria-label={
+                      showConfirmPassword
+                        ? t("hidePassword")
+                        : t("showPassword")
+                    }
+                    aria-pressed={showConfirmPassword}
+                  >
+                    {showConfirmPassword ? <EyeOffIcon /> : <EyeIcon />}
+                  </InputGroupButton>
+                </InputGroupAddon>
+              </InputGroup>
+            )}
+          />
+          {errors.confirmPassword && showConfirmPasswordError && (
+            <div
+              id="signup-confirm-password-error"
+              role="alert"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+            >
+              <div className="relative">
+                <div className="bg-authErrorTooltipBg text-primaryText text-xs rounded p-2 px-4 inline right-0 bottom-full border border-inputBorder rounded-md">
+                  {errors.confirmPassword.message}
                 </div>
               </div>
             </div>
@@ -161,6 +230,14 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
             {errors.password.message}
           </p>
         )}
+        {errors.confirmPassword && showConfirmPasswordError && (
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mb-3 md:hidden text-left w-full"
+          >
+            {errors.confirmPassword.message}
+          </p>
+        )}
         {signUpError && (
           <p
             role="alert"
@@ -181,13 +258,22 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
           </div>
           <div className="w-full text-xs 1xl:text-sm flex justify-center gap-2 mt-6 1xl:mt-8">
             <div className="text-primaryText">{t("alreadyHaveAccount")}</div>
-            <button
-              type="button"
-              onClick={switchToSignIn}
-              className="text-coloredText text-semibold cursor-pointer hover:text-coloredTextHover ignore-error-hide"
-            >
-              {t("signInHere")}
-            </button>
+            {switchToSignIn ? (
+              <button
+                type="button"
+                onClick={switchToSignIn}
+                className="text-coloredText text-semibold cursor-pointer hover:text-coloredTextHover ignore-error-hide"
+              >
+                {t("signInHere")}
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="text-coloredText text-semibold cursor-pointer hover:text-coloredTextHover ignore-error-hide"
+              >
+                {t("signInHere")}
+              </Link>
+            )}
           </div>
         </div>
       </form>

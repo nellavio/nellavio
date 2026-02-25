@@ -23,6 +23,7 @@ export const LoginModal = ({
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
         className="flex flex-col items-center"
+        onOpenAutoFocus={(e) => e.preventDefault()}
         onCloseAutoFocus={(e) => {
           if (returnFocusRef?.current) {
             e.preventDefault();

@@ -18,9 +18,12 @@ interface LogoutModalProps {
   returnFocusRef?: RefObject<HTMLButtonElement | null>;
 }
 
-export const LogoutModal = ({ closeModal, returnFocusRef }: LogoutModalProps) => {
+export const LogoutModal = ({
+  closeModal,
+  returnFocusRef,
+}: LogoutModalProps) => {
   const { handleLogout, loading } = useHandleLogout();
-  const t = useTranslations("navbar");
+  const t = useTranslations("auth");
 
   const handleLogoutClick = () => {
     handleLogout();
@@ -50,12 +53,11 @@ export const LogoutModal = ({ closeModal, returnFocusRef }: LogoutModalProps) =>
             {t("logoutModalDesc")}
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter footerVariant="centered" className="!flex-row gap-4 sm:gap-0">
-          <Button
-            variant="outline"
-            onClick={closeModal}
-            className="h-[2.5rem]"
-          >
+        <DialogFooter
+          footerVariant="centered"
+          className="!flex-row gap-4 sm:gap-0"
+        >
+          <Button variant="outline" onClick={closeModal} className="h-[2.5rem]">
             {t("logoutModalCancelButton")}
           </Button>
           <Button

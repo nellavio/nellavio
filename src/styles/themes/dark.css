@@ -44,7 +44,7 @@
   /* Backgrounds */
   --color-primaryBg: rgb(31, 34, 38);
   --color-secondaryBg: rgb(25, 28, 32);
-  --color-authPageBg: rgb(18, 20, 21);
+  --color-authPageBg: rgb(20, 23, 26);
   --color-assetPerformanceBarBg: rgb(25, 28, 32);
   --color-tabsBg: rgb(28, 31, 35);
   --color-tabListBg: rgb(25, 28, 32);
@@ -89,6 +89,7 @@
   --color-selectBgHover: rgb(255, 255, 255, 0.07);
   --color-userButtonBg: rgb(25, 32, 39);
   --color-loginModalBg: rgb(30, 33, 36);
+  --color-authErrorTooltipBg: rgb(36, 40, 45);
   --color-navbarButtonBg: rgb(255, 255, 255, 0);
   --color-navbarButtonBgHover: rgb(255, 255, 255, 0.05);
   --color-navbarIconButtonBgHover: rgb(255, 255, 255, 0.08);

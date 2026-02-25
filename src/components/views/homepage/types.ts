@@ -1,7 +1,7 @@
 export interface BestSellingProduct {
   name: string;
+  sales: number;
   profit: number;
-  revenue: number;
 }
 
 export interface BestSellingProductsProps {
@@ -131,6 +131,6 @@ export interface RevenueOverTimeCustomLegendProps {
 
 export type TranslatedProduct = {
   name: string;
+  sales: number;
   profit: number;
-  revenue: number;
 };

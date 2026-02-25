@@ -8,6 +8,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "next-themes";
@@ -82,6 +83,28 @@ const WeeklyPerformanceTooltip = ({
   );
 };
 
+const WeeklyPerformanceLegend = ({
+  payload,
+}: {
+  payload?: Array<{ value: string; color?: string }>;
+}) => {
+  return (
+    <div className="flex flex-row justify-end gap-8 w-full mb-6 mt-2">
+      {payload?.map((entry, index) => (
+        <div key={`legend-${index}`} className="flex items-center">
+          <div
+            className="w-3 h-3 mr-2"
+            style={{ backgroundColor: entry.color }}
+          />
+          <span className="text-xs 1xl:text-sm text-primaryText">
+            {entry.value}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const WeeklyPerformanceChart = ({
   data,
   isExpanded,
@@ -91,9 +114,10 @@ const WeeklyPerformanceChart = ({
   isExpanded?: boolean;
   isFourCardsMode?: boolean;
 }) => {
+  const t = useTranslations("homepage.weeklyPerformance");
   const chartHeightWhenNoActivities = isFourCardsMode
-    ? "h-[17rem] lg:h-[16rem] xl:h-[16rem] 2xl:h-[17rem] 3xl:h-[21rem]"
-    : "h-[17rem] 3xl:h-[21rem]";
+    ? "h-[15rem] lg:h-[18rem] xl:h-[18rem] 2xl:h-[19rem] 3xl:h-[23rem]"
+    : "h-[15rem] 3xl:h-[19rem]";
   const { width: windowWidth } = useWindowDimensions();
   const { theme, systemTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -110,6 +134,7 @@ const WeeklyPerformanceChart = ({
   const displayData = getDisplayData();
 
   const getBarSize = () => {
+    if (windowWidth < 480) return 20;
     if (windowWidth >= 1024 && windowWidth <= 1280) return 18;
     return 25;
   };
@@ -117,13 +142,13 @@ const WeeklyPerformanceChart = ({
   // Adjust margins based on screen size
   const getChartMargins = () => {
     if (windowWidth < 450) {
-      return { top: 20, right: 5, left: -10, bottom: 5 };
+      return { top: 10, right: 5, left: -10, bottom: 5 };
     }
     if (windowWidth >= 1024 && windowWidth < 1750) {
-      return { top: 20, right: 10, left: -5, bottom: 5 };
+      return { top: 10, right: 10, left: -5, bottom: 5 };
     }
     return {
-      top: 20,
+      top: 10,
       right: windowWidth > 400 ? 20 : 5,
       left: windowWidth > 400 ? 0 : -10,
       bottom: 5,
@@ -131,11 +156,13 @@ const WeeklyPerformanceChart = ({
   };
 
   return (
-    <div className={`px-4 pt-8 pb-4 ${isFourCardsMode ? "lg:pt-10" : ""}`}>
+    <div
+      className={`px-4 pt-3 xsm:pt-0 pb-1 ${isFourCardsMode ? "lg:pt-1" : ""}`}
+    >
       <div
         role="img"
         aria-label="Weekly performance bar chart"
-        className={`w-full ${isExpanded ? chartHeightWhenNoActivities : "h-[14rem] 3xl:h-[17rem]"}`}
+        className={`w-full ${isExpanded ? chartHeightWhenNoActivities : "h-[15rem] xsm:h-[18rem] 3xl:h-[21rem]"}`}
       >
         <ResponsiveContainer
           width="100%"
@@ -143,6 +170,11 @@ const WeeklyPerformanceChart = ({
           initialDimension={{ width: 320, height: 200 }}
         >
           <BarChart data={displayData} margin={getChartMargins()} tabIndex={-1}>
+            <Legend
+              verticalAlign="top"
+              align="center"
+              content={<WeeklyPerformanceLegend />}
+            />
             <CartesianGrid
               strokeDasharray="0"
               stroke={
@@ -172,6 +204,7 @@ const WeeklyPerformanceChart = ({
             />
             <Bar
               dataKey="revenue"
+              name={t("revenue")}
               stackId="a"
               fill={
                 currentTheme === "light"
@@ -187,6 +220,7 @@ const WeeklyPerformanceChart = ({
             />
             <Bar
               dataKey="profit"
+              name={t("profit")}
               stackId="a"
               fill="rgb(83, 133, 198)"
               radius={[4, 4, 0, 0]}
@@ -340,8 +374,8 @@ export const WeeklyPerformance = ({
   const { width: windowWidth } = useWindowDimensions();
 
   const hasActivities = weeklyActivities && weeklyActivities.length > 0;
-  const isMidRange = windowWidth >= 640 && windowWidth < 1024;
-  const showActivities = hasActivities && (!isFourCardsMode || isMidRange);
+  const showActivities =
+    hasActivities && (!isFourCardsMode || windowWidth < 1024);
 
   return (
     <Card
@@ -362,7 +396,7 @@ export const WeeklyPerformance = ({
         {/* Activity Section */}
         {showActivities && (
           <div className="sm:w-1/3 lg:w-full mt-1 sm:mt-0 lg:mt-1 2xl:mt-1 3xl:mt-3 sm:overflow-y-auto lg:overflow-y-visible">
-            <div className="px-4 mb-2 3xl:mb-1">
+            <div className="px-3 1xl:px-4 mb-2 3xl:mb-1">
               <h3 className="text-sm font-semibold text-primaryText">
                 {t("activity")}
               </h3>

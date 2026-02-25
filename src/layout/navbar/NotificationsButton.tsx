@@ -29,8 +29,21 @@ export const NotificationsButton = ({
     useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const notificationsBtnRef = useRef<HTMLButtonElement>(null);
+  /** Blocks tooltip open until next pointer move or keyboard focus */
   const suppressTooltipRef = useRef(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  /** Prevents tooltip from showing when Firefox re-fires hover events on tab switch */
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        suppressTooltipRef.current = true;
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
 
   // Load notifications - always use fresh data on page load, ignore localStorage
   useEffect(() => {
@@ -113,16 +126,34 @@ export const NotificationsButton = ({
         delayDuration={200}
         open={tooltipOpen}
         onOpenChange={(open) => {
-          if (open && suppressTooltipRef.current) {
-            suppressTooltipRef.current = false;
-            return;
-          }
+          if (open && suppressTooltipRef.current) return;
           if (open && isAnyDropdownOpen) return;
           setTooltipOpen(open);
         }}
       >
         <TooltipTrigger asChild>
-          <div className="h-10 w-10">
+          <div
+            className="h-10 w-10"
+            /** Real mouse movement clears the suppress flag */
+            onPointerMove={() => {
+              suppressTooltipRef.current = false;
+            }}
+            /** Keyboard focus (Tab/Escape return) bypasses suppress and opens tooltip after state settles */
+            onFocus={(e) => {
+              if (
+                e.target instanceof HTMLElement &&
+                e.target.matches(":focus-visible")
+              ) {
+                suppressTooltipRef.current = false;
+                const wrapper = e.currentTarget;
+                setTimeout(() => {
+                  if (wrapper.contains(document.activeElement)) {
+                    setTooltipOpen(true);
+                  }
+                }, 0);
+              }
+            }}
+          >
             <button
               ref={notificationsBtnRef}
               onClick={(e) => {

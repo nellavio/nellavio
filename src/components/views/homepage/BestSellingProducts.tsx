@@ -29,7 +29,7 @@ const BestSellingCustomLegend = ({
 }) => {
   return (
     <div className="flex flex-row justify-end gap-8 text-white w-full mb-6 mt-2">
-      {payload?.map((entry, index) => (
+      {[...(payload ?? [])].reverse().map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
             className="w-3 h-3 mr-2"
@@ -80,8 +80,8 @@ export const BestSellingProducts = ({
   const t = useTranslations("homepage.bestSellingProducts");
 
   const translations = {
+    "Sales from last week": t("salesFromLastWeek"),
     "Profit from last week": t("profitFromLastWeek"),
-    "Revenue from last week": t("revenueFromLastWeek"),
   };
 
   const translatedData = useTranslateData(
@@ -91,8 +91,8 @@ export const BestSellingProducts = ({
 
   const chartData = translatedData.map((product: TranslatedProduct) => ({
     name: product.name,
+    [t("salesFromLastWeek")]: product.sales,
     [t("profitFromLastWeek")]: product.profit,
-    [t("revenueFromLastWeek")]: product.revenue,
   }));
 
   const { width: windowWidth } = useWindowDimensions();
@@ -162,7 +162,7 @@ export const BestSellingProducts = ({
               }}
             />
             <Bar
-              dataKey={t("profitFromLastWeek")}
+              dataKey={t("salesFromLastWeek")}
               fill="var(--color-chartSecondaryFill)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
@@ -172,7 +172,7 @@ export const BestSellingProducts = ({
               animationEasing="ease-out"
             />
             <Bar
-              dataKey={t("revenueFromLastWeek")}
+              dataKey={t("profitFromLastWeek")}
               fill="var(--color-chartPrimaryFill)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
