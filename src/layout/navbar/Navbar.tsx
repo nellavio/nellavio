@@ -39,7 +39,7 @@ export const Navbar = () => {
 
     const handleScroll = () => {
       if (!navbarRef.current || !isDesktop()) return;
-      navbarRef.current.style.transform = `translateY(-${window.scrollY}px)`;
+      navbarRef.current.style.transform = `translateY(-${Math.max(0, window.scrollY)}px)`;
     };
 
     handleScroll();
@@ -93,7 +93,7 @@ export const Navbar = () => {
     <>
       <header
         ref={navbarRef}
-        className="w-screen flex items-center z-30 fixed h-[4.5rem] bg-primaryBg 3xl:h-20 border-b border-solid border-mainBorder"
+        className="w-full flex items-center z-30 fixed h-[4.5rem] bg-primaryBg 3xl:h-20 border-b border-solid border-mainBorder"
         style={{ willChange: fixedNavbar ? "auto" : "transform" }}
       >
         {/* Placeholder for maintaining consistent spacing with page wrapper */}
@@ -140,6 +140,7 @@ export const Navbar = () => {
                 languageDropdown={languageDropdown}
                 userDropdown={userDropdown}
                 searchClose={searchDropdown.close}
+                closeMobileMenu={closeMobileMenu}
                 t={t}
               />
             </div>
@@ -189,7 +190,7 @@ export const Navbar = () => {
       />
       {isMobileMenuOpen && (
         <div
-          className="fixed top-[4.5rem] w-full h-full bg-[rgb(0,0,0,0.35)] z-10"
+          className="fixed top-[4.5rem] bottom-0 w-full bg-[rgb(0,0,0,0.35)] z-10 cursor-pointer"
           onClick={toggleMobileMenu}
           aria-hidden="true"
         />

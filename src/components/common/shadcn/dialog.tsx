@@ -60,7 +60,7 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
+      className,
     )}
     {...props}
   />
@@ -95,8 +95,8 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-screen h-screen md:w-auto md:h-auto translate-x-[-50%] translate-y-[-50%] gap-2 md:border md:border-inputBorder bg-loginModalBg shadow-xl px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem] pb-12 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] md:rounded-2xl",
-        className
+        "fixed left-[50%] top-[50%] z-50 grid w-dvw h-dvh md:w-auto md:h-auto translate-x-[-50%] translate-y-[-50%] gap-2 md:border md:border-inputBorder bg-loginModalBg shadow-xl px-[6vw] xsm:px-[18vw] sm:px-12 pt-24 sm:pt-[3rem] pb-12 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] md:rounded-2xl",
+        className,
       )}
       {...props}
     >
@@ -123,7 +123,7 @@ const DialogHeader = ({
   <div
     className={cn(
       "flex flex-col space-y-1 text-center sm:text-left",
-      className
+      className,
     )}
     {...props}
   />
@@ -147,8 +147,10 @@ const DialogFooter = ({
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:space-x-4 mt-8 [&>button]:min-w-[7rem] [&>a]:min-w-[7rem]",
-      footerVariant === "centered" ? "sm:justify-center [&>*]:max-w-[10rem]" : "sm:justify-end [&>button]:px-6",
-      className
+      footerVariant === "centered"
+        ? "sm:justify-center [&>*]:max-w-[10rem]"
+        : "sm:justify-end [&>button]:px-6",
+      className,
     )}
     {...props}
   />
@@ -170,7 +172,7 @@ const DialogTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight text-primaryText mb-4",
-      className
+      className,
     )}
     {...props}
   />

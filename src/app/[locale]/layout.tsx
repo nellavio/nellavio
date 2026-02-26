@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { setRequestLocale, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
@@ -48,6 +48,10 @@ export const metadata: Metadata = {
   title: "Spireflow",
   description:
     "Open source and free dashboard template, written in NextJS and Tailwind",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export function generateStaticParams() {

@@ -17,7 +17,7 @@ export const CHART_ANIMATION_DELAY_MS = 600;
  */
 export const FullScreenLoader = memo(() => (
   <div
-    className="w-screen h-screen flex justify-center items-center fixed top-0 left-0 z-50 bg-loaderBg"
+    className="fixed inset-0 flex justify-center items-center z-50 bg-loaderBg"
     role="alert"
     aria-live="assertive"
     aria-busy="true"

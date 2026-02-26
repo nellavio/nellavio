@@ -31,7 +31,7 @@ export const SideMenu = () => {
       `}
     >
       <div
-        className={`pl-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] bg-navigationBg h-full border-r-[1px] border-cardBorder transition-all duration-200 ease-in-out flex flex-col ${
+        className={`pl-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] bg-navigationBg h-dvh border-r-[1px] border-cardBorder transition-all duration-200 ease-in-out flex flex-col ${
           !isSideMenuOpen &&
           "xl:!max-w-[3rem] xl:!w-[3rem] xl:!min-w-[4.5rem] !pl-0 pr-[0.1rem]"
         }

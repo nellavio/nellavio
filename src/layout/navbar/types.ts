@@ -80,5 +80,6 @@ export interface NotificationsButtonProps {
   languageDropdown: DropdownProps;
   userDropdown: DropdownProps;
   searchClose: () => void;
+  closeMobileMenu: () => void;
   t: (key: string) => string;
 }

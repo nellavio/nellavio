@@ -40,7 +40,7 @@ export const SideMenuMobile = ({
       className={`z-50 overflow-auto overflow-x-hidden flex fixed xl:hidden flex-col justify-between bg-primaryBg border-r-[1px] border-mainBorder bg-primaryBg white top-[4.5rem] xl:top-[4rem] 2xl:top-[4.5rem] mb-[2.5rem] left-0 items-center transform transition-transform ease-in-out ${
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       }`}
-      style={{ height: "calc(100% - 4.5rem)" }}
+      style={{ height: "calc(100dvh - 4.5rem)" }}
     >
       <div className="px-4 xl:px-6 pt-0 pr-6 transition w-[16rem] pb-2">
         <MenuCategory title={t("pages")} />

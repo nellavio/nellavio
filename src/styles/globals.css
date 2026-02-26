@@ -81,7 +81,7 @@ html {
 }
 
 #__next {
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 @layer base {
   a {
@@ -248,7 +248,7 @@ button {
 
 @media (max-width: 768px) {
   .fc-media-screen {
-    max-height: 100vh !important;
+    max-height: 100dvh !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
@@ -441,7 +441,7 @@ input:-webkit-autofill {
 }
 
 .menuItemLogo svg {
-  @apply w-[30px] h-[30px] lg:w-[33px] lg:h-[33px] 1xl:w-[33px] 1xl:h-[33px] 3xl:w-[35px] 3xl:h-[35px];
+  @apply w-[2.25rem] h-[2.25rem] lg:w-[2.25rem] lg:h-[2.25rem] 1xl:w-[2.25rem] 1xl:h-[2.25rem] 3xl:w-[2.45rem] 3xl:h-[2.45rem];
   transform: rotate(0deg);
 }
 

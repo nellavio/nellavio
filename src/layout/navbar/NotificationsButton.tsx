@@ -21,6 +21,7 @@ export const NotificationsButton = ({
   languageDropdown,
   userDropdown,
   searchClose,
+  closeMobileMenu,
   t,
 }: Omit<NotificationsButtonProps, "notificationsTooltip">) => {
   const { notifications: initialNotifications } = useNotificationsData();
@@ -161,6 +162,7 @@ export const NotificationsButton = ({
                 // On mobile (<xl), open modal directly
                 if (window.innerWidth < 1280) {
                   if (e.detail > 0) suppressTooltipRef.current = true;
+                  closeMobileMenu();
                   setIsAllNotificationsModalOpen(true);
                 } else {
                   notificationsDropdown.toggle();

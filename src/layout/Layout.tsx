@@ -130,13 +130,12 @@ export const Layout = ({ children }: LayoutProps) => {
         </div>
         {isMobileMenuOpen && (
           <div
-            className="block xl:hidden h-screen w-screen fixed top-0 left-0 bg-[rgb(0,0,0,0.4)] z-[1]"
+            className="block xl:hidden fixed inset-0 bg-[rgb(0,0,0,0.4)] z-[1] cursor-pointer"
             onClick={toggleMobileMenu}
             aria-hidden="true"
           />
         )}
       </div>
-      <div className="w-screen fixed top-0 left-0 h-screen z-[-1]"></div>
     </>
   );
 };
