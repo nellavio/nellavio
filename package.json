@@ -10,8 +10,10 @@
   },
   "private": false,
   "scripts": {
+    "predev": "tsx src/utils/banner.ts",
     "dev": "next dev",
     "build": "next build",
+    "prestart": "tsx src/utils/banner.ts",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -113,6 +115,7 @@
     "prettier": "^3.8.1",
     "storybook": "^10.2.10",
     "tailwindcss": "^4.2.0",
+    "tsx": "^4.21.0",
     "vite": "^7.3.1"
   }
 }
