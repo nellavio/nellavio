@@ -367,9 +367,12 @@ export const InventoryTable = () => {
 
   return (
     <Card isHeaderDividerVisible addTitleMargin title={tTables("pagination")}>
-      <div className="px-[0.8rem] py-2">
+      <div className="py-2">
         <div className="overflow-x-auto">
-          <table className="w-full" style={{ tableLayout: "fixed" }}>
+          <table
+            className="w-full min-w-[50rem]"
+            style={{ tableLayout: "fixed" }}
+          >
             <caption className="sr-only">Inventory stock table</caption>
             <thead>
               {inventoryTable.getHeaderGroups().map((headerGroup) => (
@@ -385,7 +388,7 @@ export const InventoryTable = () => {
                             ? "descending"
                             : undefined
                       }
-                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 border-t border-b border-inputBorder bg-tableHeaderBg ${
+                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 whitespace-nowrap border-t border-b border-inputBorder bg-tableHeaderBg ${
                         index === 0 ? "border-l" : ""
                       } ${
                         index === headerGroup.headers.length - 1
@@ -428,10 +431,10 @@ export const InventoryTable = () => {
 
         {/* Pagination Controls */}
         <div
-          className="flex items-center justify-between"
+          className="flex items-center justify-between max-sm:flex-col max-sm:items-center max-sm:gap-[1.5rem]"
           style={{ marginTop: "2rem" }}
         >
-          <div className="text-sm text-secondaryText whitespace-nowrap">
+          <div className="text-sm text-secondaryText whitespace-nowrap max-sm:text-center">
             {t("showing")}{" "}
             {inventoryTable.getState().pagination.pageIndex *
               inventoryTable.getState().pagination.pageSize +
@@ -444,7 +447,7 @@ export const InventoryTable = () => {
             )}{" "}
             {t("of")} {inventoryTableData.length} {t("results")}
           </div>
-          <Pagination className="m-0 justify-end">
+          <Pagination className="m-0 justify-end max-sm:justify-center">
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppStore } from "../../store/appStore";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Link, usePathname } from "../../i18n/navigation";
+import { BREAKPOINTS } from "../../styles/breakpoints";
 import {
   Tooltip,
   TooltipTrigger,
@@ -23,7 +24,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
   const prevCollapsedRef = useRef(false);
 
   const handleMenuItemClick = () => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < BREAKPOINTS.lg) {
       toggleMobileMenu();
     }
   };

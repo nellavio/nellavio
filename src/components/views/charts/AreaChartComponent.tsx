@@ -16,6 +16,7 @@ import { BaseTooltip } from "../../common/BaseTooltip";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Tooltip payload item structure. */
 interface TooltipPayload {
@@ -94,7 +95,7 @@ interface CustomLegendProps {
 const CustomLegend = ({ payload }: CustomLegendProps) => {
   return (
     <div
-      className="flex flex-row justify-end text-white w-full mb-6"
+      className="flex flex-row justify-end text-white w-full mb-6 whitespace-nowrap"
       style={{ gap: "1rem" }}
     >
       {payload?.map((entry, index) => (
@@ -138,7 +139,7 @@ export const AreaChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -148,8 +149,13 @@ export const AreaChartComponent = () => {
             data={chartdata}
             margin={{
               top: 10,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left:
+                windowWidth > BREAKPOINTS["1xl"]
+                  ? 20
+                  : windowWidth > BREAKPOINTS.xsm
+                    ? 5
+                    : -5,
               bottom: 5,
             }}
           >
@@ -197,6 +203,7 @@ export const AreaChartComponent = () => {
             <YAxis
               stroke="rgba(255,255,255,0.1)"
               tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              width={windowWidth > 0 && windowWidth < BREAKPOINTS.xsm ? 45 : 60}
               tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
             />
             <Tooltip

@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 import { ThreeSmallCardsProps } from "./types";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 import {
   Tooltip,
   TooltipContent,
@@ -22,7 +23,8 @@ export const ThreeSmallCards = ({
   const [isBelow1280, setIsBelow1280] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsBelow1280(window.innerWidth < 1280);
+    const handleResize = () =>
+      setIsBelow1280(window.innerWidth < BREAKPOINTS.xl);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

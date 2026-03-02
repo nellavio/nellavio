@@ -16,6 +16,7 @@ import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Props for line chart tooltip component. */
 interface LineChartTooltipProps {
@@ -64,13 +65,19 @@ const LineChartTooltip = ({
  *
  * @component
  */
-const CustomLegend = ({
-  payload,
-}: {
+/** Props for line chart legend component. */
+interface LineLegendProps {
   payload?: Array<{ value: string; color?: string }>;
-}) => {
+  isWideLayout?: boolean;
+}
+
+const CustomLegend = ({ payload, isWideLayout = true }: LineLegendProps) => {
   return (
-    <div className="flex flex-row justify-end gap-8 text-white w-full -mt-10 mb-6">
+    <div
+      className={`flex flex-row justify-end gap-8 text-white w-full whitespace-nowrap ${
+        isWideLayout ? "-mt-10 mb-6" : "mb-6"
+      }`}
+    >
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -99,54 +106,66 @@ export const LineChartComponent = () => {
 
   const dragonPopulationInWesteros = [
     {
-      year: windowWidth > 600 ? "0 AC" : "0 AC",
+      year: windowWidth > BREAKPOINTS.sm ? "0 AC" : "0 AC",
       title: "Aegon's Conquest",
       houseTargaryen: 3,
       houseVelaryon: 0,
     },
     {
-      year: windowWidth > 600 ? "60 AC" : "60",
+      year: windowWidth > BREAKPOINTS.sm ? "60 AC" : "60",
       title: "The long reign of Jaehaerys I",
       houseTargaryen: 19,
       houseVelaryon: 2,
     },
     {
-      year: windowWidth > 600 ? "120 AC" : "120",
+      year: windowWidth > BREAKPOINTS.sm ? "120 AC" : "120",
       title: "House of the Dragon series",
       houseTargaryen: 15,
       houseVelaryon: 3,
     },
     {
-      year: windowWidth > 600 ? "180 AC" : "180",
+      year: windowWidth > BREAKPOINTS.sm ? "180 AC" : "180",
       title: "The conquest of Dorne",
       houseTargaryen: 4,
       houseVelaryon: 0,
     },
     {
-      year: windowWidth > 600 ? "240 AC" : "240",
+      year: windowWidth > BREAKPOINTS.sm ? "240 AC" : "240",
       title: "The Blackfyre Rebellions",
       houseTargaryen: 0,
       houseVelaryon: 0,
     },
     {
-      year: windowWidth > 600 ? "300 AC" : "300",
+      year: windowWidth > BREAKPOINTS.sm ? "300 AC" : "300",
       title: "Time of the show/books start",
       houseTargaryen: 3,
       houseVelaryon: 0,
     },
   ];
 
+  const isWideLayout = windowWidth === 0 || windowWidth >= BREAKPOINTS.lg;
+
   return (
     <Card
-      className="w-full !pt-8 !pb-8"
+      className={isWideLayout ? "w-full !pt-8 !pb-8" : "w-full h-full"}
+      title={isWideLayout ? undefined : t("lineChart")}
       customHeader={
-        <div className="-mx-6 md:-mx-20 px-6 md:px-20 text-[0.9rem] 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
-          {t("lineChart")}
-        </div>
+        isWideLayout ? (
+          <div className="-mx-6 md:-mx-20 px-6 md:px-20 text-[0.9rem] 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
+            {t("lineChart")}
+          </div>
+        ) : undefined
       }
-      padding="px-6 md:px-20"
+      padding={isWideLayout ? "px-6 md:px-20" : "px-9"}
+      isHeaderDividerVisible={!isWideLayout}
     >
-      <div className="mt-2 1xl:mt-6 h-72 1xl:h-88 3xl:h-96">
+      <div
+        className={
+          isWideLayout
+            ? "mt-2 1xl:mt-6 h-[14.4rem] xsm:h-72 1xl:h-88 3xl:h-96"
+            : "mt-6 h-72 xsm:h-80 1xl:h-88 3xl:h-96"
+        }
+      >
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -155,9 +174,9 @@ export const LineChartComponent = () => {
           <LineChart
             data={dragonPopulationInWesteros}
             margin={{
-              top: 20,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              top: isWideLayout ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: windowWidth > BREAKPOINTS.md ? 20 : 5,
               bottom: 5,
             }}
           >
@@ -187,7 +206,7 @@ export const LineChartComponent = () => {
             <Legend
               verticalAlign="top"
               align="center"
-              content={<CustomLegend />}
+              content={<CustomLegend isWideLayout={isWideLayout} />}
             />
             <Line
               type="monotone"

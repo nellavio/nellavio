@@ -15,6 +15,8 @@ import { useTranslations } from "next-intl";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for gradient pie chart. */
 interface DataPoint {
@@ -40,6 +42,7 @@ interface PieLegendProps {
     color?: string;
   }>;
   colors: string[];
+  windowWidth?: number;
 }
 
 /**
@@ -47,20 +50,46 @@ interface PieLegendProps {
  *
  * @component
  */
-const PieCustomLegend = ({ payload, colors }: PieLegendProps) => {
-  return (
-    <div className="flex flex-row justify-center gap-4 text-white w-full mt-2 flex-wrap">
-      {payload?.map((entry, index) => (
-        <div key={`legend-${index}`} className="flex items-center">
-          <div
-            className="w-3 h-3 mr-2 rounded-full"
-            style={{ backgroundColor: colors[index % colors.length] }}
-          />
-          <span className="text-xs 1xl:text-sm text-primaryText">
-            {entry.value}
-          </span>
+const PieCustomLegend = ({
+  payload,
+  colors,
+  windowWidth = 0,
+}: PieLegendProps) => {
+  if (!payload) return null;
+
+  const renderItem = (
+    entry: { value: string; color?: string },
+    index: number,
+  ) => (
+    <div key={`legend-${index}`} className="flex items-center">
+      <div
+        className="w-3 h-3 mr-2 rounded-full"
+        style={{ backgroundColor: colors[index % colors.length] }}
+      />
+      <span className="text-xs 1xl:text-sm text-primaryText">
+        {entry.value}
+      </span>
+    </div>
+  );
+
+  if (windowWidth > 0 && windowWidth < BREAKPOINTS.xsm) {
+    return (
+      <div className="flex flex-col items-center gap-2 text-white w-full mt-2">
+        <div className="flex flex-row justify-center gap-4">
+          {payload.slice(0, 2).map((entry, index) => renderItem(entry, index))}
         </div>
-      ))}
+        <div className="flex flex-row justify-center gap-4">
+          {payload
+            .slice(2, 4)
+            .map((entry, index) => renderItem(entry, index + 2))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-row justify-center gap-4 text-white w-full mt-2 whitespace-nowrap">
+      {payload.map((entry, index) => renderItem(entry, index))}
     </div>
   );
 };
@@ -167,6 +196,7 @@ const createPieShapeRenderer =
 export const GradientPieChartComponent = () => {
   const t = useTranslations("charts");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { width: windowWidth } = useWindowDimensions();
 
   const COLORS = [
     "var(--color-chartPrimaryFill)",
@@ -190,7 +220,7 @@ export const GradientPieChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full flex items-center justify-center">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full flex items-center justify-center">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -241,8 +271,12 @@ export const GradientPieChartComponent = () => {
             />
             <Legend
               verticalAlign="bottom"
-              height={36}
-              content={<PieCustomLegend colors={COLORS} />}
+              height={
+                windowWidth > 0 && windowWidth < BREAKPOINTS.xsm ? 56 : 36
+              }
+              content={
+                <PieCustomLegend colors={COLORS} windowWidth={windowWidth} />
+              }
             />
           </PieChart>
         </ResponsiveContainer>

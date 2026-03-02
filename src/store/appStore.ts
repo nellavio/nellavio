@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import type { FontType } from "../styles/fonts";
+import { BREAKPOINTS } from "../styles/breakpoints";
 
 export type SidebarDefaultState = "expanded" | "collapsed";
 
@@ -38,8 +39,8 @@ interface AppStore {
 const determineInitialState = () => {
   if (typeof window !== "undefined") {
     return {
-      isMobileMenuOpen: window.innerWidth < 1280,
-      isSideMenuOpen: window.innerWidth >= 1280,
+      isMobileMenuOpen: window.innerWidth < BREAKPOINTS.xl,
+      isSideMenuOpen: window.innerWidth >= BREAKPOINTS.xl,
     };
   }
   return {
@@ -115,11 +116,12 @@ export const useAppStore = create<AppStore>()(
       }),
       onRehydrateStorage: () => (state) => {
         if (!state) return;
-        const isDesktop = typeof window !== "undefined" && window.innerWidth >= 1280;
+        const isDesktop =
+          typeof window !== "undefined" && window.innerWidth >= BREAKPOINTS.xl;
         state.setIsSideMenuOpen(
-          isDesktop && state.sidebarDefaultState === "expanded"
+          isDesktop && state.sidebarDefaultState === "expanded",
         );
       },
-    }
-  )
+    },
+  ),
 );

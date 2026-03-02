@@ -17,6 +17,7 @@ import { BaseTooltip } from "../../common/BaseTooltip";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Card } from "../../common/Card";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for scatter chart. */
 interface DataPoint {
@@ -203,7 +204,7 @@ export const ScatterChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full mt-2">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full mt-2">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -212,8 +213,8 @@ export const ScatterChartComponent = () => {
           <ScatterChart
             margin={{
               top: 40,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: windowWidth > BREAKPOINTS["1xl"] ? 20 : 5,
               bottom: 5,
             }}
           >

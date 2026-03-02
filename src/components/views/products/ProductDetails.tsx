@@ -249,7 +249,7 @@ export const ProductDetails = ({
         >
           {t("mobileList.showAllProducts")}
         </Button>
-        <div className="flex sm:hidden w-1/2">
+        <div className="flex sm:hidden w-1/2 h-full">
           <Button
             variant="outline"
             className="w-full h-full"

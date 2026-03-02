@@ -7,6 +7,7 @@ import {
   TooltipContent,
 } from "../../components/common/shadcn/tooltip";
 import { NotificationsButtonProps } from "./types";
+import { BREAKPOINTS } from "../../styles/breakpoints";
 import { BellIcon } from "../../assets/icons/BellIcon";
 import { UpdateIcon } from "../../assets/icons/UpdateIcon";
 import { UsersIcon } from "../../assets/icons/UsersIcon";
@@ -162,7 +163,7 @@ export const NotificationsButton = ({
               onClick={(e) => {
                 setTooltipOpen(false);
                 // On mobile (<xl), open modal directly
-                if (window.innerWidth < 1280) {
+                if (window.innerWidth < BREAKPOINTS.xl) {
                   if (e.detail > 0) suppressTooltipRef.current = true;
                   closeMobileMenu();
                   setIsAllNotificationsModalOpen(true);

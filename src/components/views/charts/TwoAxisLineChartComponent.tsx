@@ -16,6 +16,7 @@ import { Card } from "../../common/Card";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for two-axis line chart. */
 interface DataPoint {
@@ -85,7 +86,7 @@ interface TwoAxisLegendProps {
 const TwoAxisCustomLegend = ({ payload }: TwoAxisLegendProps) => {
   return (
     <div
-      className="flex flex-row justify-center gap-8 text-white w-full"
+      className="flex flex-row justify-center gap-8 text-white w-full whitespace-nowrap"
       style={{ gap: "2rem" }}
     >
       {payload?.map((entry, index) => (
@@ -132,7 +133,7 @@ export const TwoAxisLineChartComponent = () => {
       addTitleMargin
     >
       <div
-        className="h-80 1xl:h-96 3xl:h-[28rem] w-full"
+        className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full"
         style={{ marginTop: "2rem" }}
       >
         <ResponsiveContainer
@@ -144,8 +145,8 @@ export const TwoAxisLineChartComponent = () => {
             data={chartdata}
             margin={{
               top: 20,
-              right: windowWidth > 700 ? 50 : 30,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 50 : 30,
+              left: windowWidth > BREAKPOINTS.md ? 20 : 5,
               bottom: 20,
             }}
           >

@@ -13,6 +13,8 @@ import { useTranslations } from "next-intl";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for pie chart segments. */
 interface DataPoint {
@@ -36,6 +38,7 @@ interface PieLegendProps {
     value: string;
     color?: string;
   }>;
+  windowWidth?: number;
 }
 
 /**
@@ -82,20 +85,40 @@ const PieTooltip = ({ active, payload }: PieTooltipProps) => {
  *
  * @component
  */
-const PieCustomLegend = ({ payload }: PieLegendProps) => {
-  return (
-    <div className="flex flex-row justify-center gap-8 text-white w-full mt-4">
-      {payload?.map((entry, index) => (
-        <div key={`legend-${index}`} className="flex items-center">
-          <div
-            className="w-3 h-3 mr-2 rounded-full"
-            style={{ backgroundColor: entry.color }}
-          />
-          <span className="text-xs 1xl:text-sm text-primaryText">
-            {entry.value}
-          </span>
+const PieCustomLegend = ({ payload, windowWidth = 0 }: PieLegendProps) => {
+  if (!payload) return null;
+
+  const renderItem = (
+    entry: { value: string; color?: string },
+    index: number,
+  ) => (
+    <div key={`legend-${index}`} className="flex items-center">
+      <div
+        className="w-3 h-3 mr-2 rounded-full"
+        style={{ backgroundColor: entry.color }}
+      />
+      <span className="text-xs 1xl:text-sm text-primaryText">
+        {entry.value}
+      </span>
+    </div>
+  );
+
+  if (windowWidth > 0 && windowWidth < BREAKPOINTS["2xl"]) {
+    return (
+      <div className="flex flex-col items-center gap-2 text-white w-full mt-4 whitespace-nowrap">
+        <div className="flex flex-row justify-center gap-8">
+          {[4, 1, 0].map((i) => payload[i] && renderItem(payload[i], i))}
         </div>
-      ))}
+        <div className="flex flex-row justify-center gap-8">
+          {[2, 3].map((i) => payload[i] && renderItem(payload[i], i))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-row justify-center gap-8 text-white w-full mt-4 whitespace-nowrap">
+      {payload.map((entry, index) => renderItem(entry, index))}
     </div>
   );
 };
@@ -109,6 +132,7 @@ const PieCustomLegend = ({ payload }: PieLegendProps) => {
 export const PieChartComponent = () => {
   const t = useTranslations("charts");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { width: windowWidth } = useWindowDimensions();
 
   const COLORS = [
     "var(--color-chartPrimaryFill)",
@@ -134,7 +158,7 @@ export const PieChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full flex items-center justify-center">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full flex items-center justify-center">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -146,10 +170,39 @@ export const PieChartComponent = () => {
               cx="50%"
               cy="45%"
               labelLine={false}
-              label={(props) =>
-                `${props.name} ${(props as unknown as DataPoint).percentage}%`
+              label={
+                windowWidth > 0 && windowWidth < BREAKPOINTS.sm
+                  ? false
+                  : (props) => {
+                      const p = props as unknown as DataPoint & {
+                        cx: number;
+                        cy: number;
+                        midAngle: number;
+                        outerRadius: number;
+                      };
+                      const RADIAN = Math.PI / 180;
+                      const r = p.outerRadius + 15;
+                      const x = p.cx + r * Math.cos(-p.midAngle * RADIAN);
+                      const y = p.cy + r * Math.sin(-p.midAngle * RADIAN);
+                      return (
+                        <text
+                          x={x}
+                          y={y}
+                          fill="rgba(255,255,255,0.85)"
+                          textAnchor={x > p.cx ? "start" : "end"}
+                          dominantBaseline="central"
+                          fontSize={windowWidth < BREAKPOINTS["2xl"] ? 10 : 12}
+                        >
+                          {`${p.name} ${p.percentage}%`}
+                        </text>
+                      );
+                    }
               }
-              outerRadius={120}
+              outerRadius={
+                windowWidth === 0 || windowWidth >= BREAKPOINTS["2xl"]
+                  ? 120
+                  : 84
+              }
               fill="#8884d8"
               dataKey="value"
               stroke="none"
@@ -166,8 +219,10 @@ export const PieChartComponent = () => {
             <Tooltip content={<PieTooltip />} isAnimationActive={false} />
             <Legend
               verticalAlign="bottom"
-              height={36}
-              content={<PieCustomLegend />}
+              height={
+                windowWidth > 0 && windowWidth < BREAKPOINTS["2xl"] ? 56 : 36
+              }
+              content={<PieCustomLegend windowWidth={windowWidth} />}
             />
           </PieChart>
         </ResponsiveContainer>

@@ -29,7 +29,7 @@ export const ChartsView = () => {
         <div className="w-full lg:w-1/2">
           <AreaChartComponent />
         </div>
-        <div className="w-full lg:w-1/2">
+        <div className="hidden sm:block w-full lg:w-1/2">
           <ScatterChartComponent />
         </div>
       </div>
@@ -59,7 +59,7 @@ export const ChartsView = () => {
         <div className="w-full lg:w-1/2">
           <RadialBarChartComponent />
         </div>
-        <div className="w-full lg:w-1/2">
+        <div className="hidden sm:block w-full lg:w-1/2">
           <TwoAxisLineChartComponent />
         </div>
       </div>
@@ -69,7 +69,7 @@ export const ChartsView = () => {
         <div className="w-full lg:w-1/2">
           <MixedLineChartComponent />
         </div>
-        <div className="w-full lg:w-1/2">
+        <div className="hidden xsm:block w-full lg:w-1/2">
           <VerticalBarChartComponent />
         </div>
       </div>

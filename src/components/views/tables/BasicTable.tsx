@@ -213,57 +213,64 @@ export const BasicTable = () => {
 
   return (
     <Card isHeaderDividerVisible addTitleMargin title={t("basicTable")}>
-      <div className="overflow-x-auto px-[0.8rem] py-2">
-        <table className="w-full">
-          <caption className="sr-only">Basic data table</caption>
-          <thead>
-            {basicTable.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header, index) => (
-                  <th
-                    key={header.id}
-                    scope="col"
-                    aria-sort={
-                      header.column.getIsSorted() === "asc"
-                        ? "ascending"
-                        : header.column.getIsSorted() === "desc"
-                          ? "descending"
-                          : undefined
-                    }
-                    className={`text-secondaryText font-medium text-left text-sm px-4 py-3 border-t border-b border-inputBorder bg-tableHeaderBg ${
-                      index === 0 ? "border-l" : ""
-                    } ${
-                      index === headerGroup.headers.length - 1 ? "border-r" : ""
-                    } ${header.column.getCanSort() ? "cursor-pointer select-none hover:bg-tableHeaderBgHover" : ""}`}
-                    onClick={header.column.getToggleSortingHandler()}
-                  >
-                    <div className="flex items-center">
+      <div className="py-2">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[50rem]">
+            <caption className="sr-only">Basic data table</caption>
+            <thead>
+              {basicTable.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header, index) => (
+                    <th
+                      key={header.id}
+                      scope="col"
+                      aria-sort={
+                        header.column.getIsSorted() === "asc"
+                          ? "ascending"
+                          : header.column.getIsSorted() === "desc"
+                            ? "descending"
+                            : undefined
+                      }
+                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 whitespace-nowrap border-t border-b border-inputBorder bg-tableHeaderBg ${
+                        index === 0 ? "border-l" : ""
+                      } ${
+                        index === headerGroup.headers.length - 1
+                          ? "border-r"
+                          : ""
+                      } ${header.column.getCanSort() ? "cursor-pointer select-none hover:bg-tableHeaderBgHover" : ""}`}
+                      onClick={header.column.getToggleSortingHandler()}
+                    >
+                      <div className="flex items-center">
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                        <SortingArrow isSorted={header.column.getIsSorted()} />
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {basicTable.getRowModel().rows.map((row) => (
+                <tr key={row.id} className="hover:bg-tableRowBgHover">
+                  {row.getVisibleCells().map((cell, cellIndex) => (
+                    <td
+                      key={cell.id}
+                      className={`px-4 py-3 text-primaryText text-sm border-b border-mainBorder ${cellIndex === 0 ? "border-l" : ""} ${cellIndex === row.getVisibleCells().length - 1 ? "border-r" : ""}`}
+                    >
                       {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
                       )}
-                      <SortingArrow isSorted={header.column.getIsSorted()} />
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {basicTable.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-tableRowBgHover">
-                {row.getVisibleCells().map((cell, cellIndex) => (
-                  <td
-                    key={cell.id}
-                    className={`px-4 py-3 text-primaryText text-sm border-b border-mainBorder ${cellIndex === 0 ? "border-l" : ""} ${cellIndex === row.getVisibleCells().length - 1 ? "border-r" : ""}`}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Card>
   );

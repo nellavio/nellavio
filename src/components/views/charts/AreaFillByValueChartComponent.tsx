@@ -16,6 +16,7 @@ import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for profit/loss chart. */
 interface DataPoint {
@@ -49,7 +50,7 @@ interface CustomLegendProps {
 const CustomLegend = ({ positiveColor, negativeColor }: CustomLegendProps) => {
   return (
     <div
-      className="flex flex-row justify-end text-white w-full mb-6"
+      className="flex flex-row justify-end text-white w-full mb-6 whitespace-nowrap"
       style={{ gap: "1rem" }}
     >
       <div className="flex items-center">
@@ -150,9 +151,9 @@ export const AreaFillByValueChartComponent = () => {
       title={t("areaFillByValueChart")}
       padding="px-9"
       isHeaderDividerVisible
-      addTitleMargin
+      addTitleMargin={windowWidth === 0 || windowWidth >= BREAKPOINTS.xsm}
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full">
+      <div className="h-72 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -162,8 +163,8 @@ export const AreaFillByValueChartComponent = () => {
             data={chartdata}
             margin={{
               top: 20,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: windowWidth > BREAKPOINTS.md ? 20 : 5,
               bottom: 5,
             }}
           >

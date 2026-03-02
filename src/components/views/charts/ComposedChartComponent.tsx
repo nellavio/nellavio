@@ -17,6 +17,7 @@ import { Card } from "../../common/Card";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for composed chart. */
 interface DataPoint {
@@ -86,7 +87,7 @@ const ComposedTooltip = ({ active, payload, label }: ComposedTooltipProps) => {
  */
 const ComposedCustomLegend = ({ payload }: ComposedLegendProps) => {
   return (
-    <div className="flex flex-row justify-center gap-8 text-white w-full mt-4">
+    <div className="flex flex-row justify-center gap-8 text-white w-full mt-4 whitespace-nowrap">
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -130,7 +131,7 @@ export const ComposedChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full mt-4">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full mt-4">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -140,8 +141,18 @@ export const ComposedChartComponent = () => {
             data={chartdata}
             margin={{
               top: 20,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right:
+                windowWidth > BREAKPOINTS.md
+                  ? 30
+                  : windowWidth > BREAKPOINTS.xsm
+                    ? 10
+                    : 2,
+              left:
+                windowWidth > BREAKPOINTS.md
+                  ? 20
+                  : windowWidth > BREAKPOINTS.xsm
+                    ? 5
+                    : 0,
               bottom: 5,
             }}
           >

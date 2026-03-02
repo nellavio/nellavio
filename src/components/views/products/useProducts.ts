@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { useModal } from "../../../hooks/useModal";
 import { useTooltip } from "../../../hooks/useTooltip";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 import { Product, ProductCategory } from "./types";
 
 export const useProducts = (products: Product[]) => {
@@ -60,7 +61,7 @@ export const useProducts = (products: Product[]) => {
     }
     setActiveProduct(product);
     if (typeof window !== "undefined") {
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth < BREAKPOINTS.lg) {
         toggle();
       }
     }

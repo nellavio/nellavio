@@ -19,6 +19,7 @@ import { useNavbarModals } from "./hooks/useNavbarModals";
 import { SearchInput } from "./SearchInput";
 import { Logo } from "../sideMenu/Logo";
 import { useAppStore } from "../../store/appStore";
+import { BREAKPOINTS } from "../../styles/breakpoints";
 
 export const Navbar = () => {
   const t = useTranslations("navbar");
@@ -35,7 +36,7 @@ export const Navbar = () => {
   useEffect(() => {
     if (fixedNavbar || typeof window === "undefined") return;
 
-    const isDesktop = () => window.innerWidth >= 1280;
+    const isDesktop = () => window.innerWidth >= BREAKPOINTS.xl;
 
     const handleScroll = () => {
       if (!navbarRef.current || !isDesktop()) return;

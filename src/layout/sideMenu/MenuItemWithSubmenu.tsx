@@ -5,6 +5,7 @@ import { useState, useEffect, ReactElement, useRef, useCallback } from "react";
 import { useAppStore } from "../../store/appStore";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Link, usePathname } from "../../i18n/navigation";
+import { BREAKPOINTS } from "../../styles/breakpoints";
 import { useIsFirstRender } from "../../hooks/useIsFirstRender";
 import { ChevronDownIcon } from "../../assets/icons/ChevronDownIcon";
 import {
@@ -94,7 +95,7 @@ export const MenuItemWithSubmenu = ({
   }, [isExpanded, submenuItems.length, isSideMenuOpen]);
 
   const handleMenuItemClick = () => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < BREAKPOINTS.lg) {
       toggleMobileMenu();
     }
   };

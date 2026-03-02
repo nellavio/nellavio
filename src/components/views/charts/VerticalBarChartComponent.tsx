@@ -16,6 +16,7 @@ import { Card } from "../../common/Card";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for vertical bar chart. */
 interface DataPoint {
@@ -115,7 +116,7 @@ export const VerticalBarChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full mt-4">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full mt-4">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -125,10 +126,19 @@ export const VerticalBarChartComponent = () => {
             data={chartdata}
             margin={{
               top: 20,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: windowWidth > BREAKPOINTS.md ? 20 : 5,
               bottom: 20,
             }}
+            barSize={
+              windowWidth > BREAKPOINTS["1xl"]
+                ? 40
+                : windowWidth > BREAKPOINTS.sm
+                  ? 32
+                  : windowWidth > BREAKPOINTS.xsm
+                    ? 26
+                    : 16
+            }
           >
             <CartesianGrid
               strokeDasharray="3 3"

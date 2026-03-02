@@ -14,6 +14,8 @@ import { useTranslations } from "next-intl";
 import { Card } from "../../common/Card";
 import { BaseTooltip } from "../../common/BaseTooltip";
 import { useChartAnimation } from "../../../hooks/useChartAnimation";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 
 /** Data point structure for radar chart. */
 interface DataPoint {
@@ -74,6 +76,7 @@ const RadarTooltip = ({ active, payload, label }: RadarTooltipProps) => {
 export const RadarChartComponent = () => {
   const t = useTranslations("charts");
   const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { width: windowWidth } = useWindowDimensions();
 
   const chartdata: DataPoint[] = [
     { subject: "Quality", productA: 70, productB: 95, fullMark: 100 },
@@ -92,10 +95,12 @@ export const RadarChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-80 1xl:h-96 3xl:h-[28rem] w-full flex flex-col">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full flex flex-col">
         <ResponsiveContainer
           width="100%"
-          height="85%"
+          height={
+            windowWidth > 0 && windowWidth < BREAKPOINTS.xsm ? "76%" : "85%"
+          }
           initialDimension={{ width: 320, height: 200 }}
         >
           <RadarChart
@@ -140,7 +145,15 @@ export const RadarChartComponent = () => {
             <Tooltip content={<RadarTooltip />} isAnimationActive={false} />
           </RadarChart>
         </ResponsiveContainer>
-        <div className="flex flex-row justify-center gap-8 text-white w-full mt-4">
+        <div
+          className="flex flex-row justify-center gap-8 text-white w-full whitespace-nowrap"
+          style={{
+            marginTop:
+              windowWidth > 0 && windowWidth < BREAKPOINTS.xsm
+                ? "1.5rem"
+                : "1rem",
+          }}
+        >
           <div className="flex items-center">
             <div
               className="w-3 h-3 mr-2"

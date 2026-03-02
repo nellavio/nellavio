@@ -303,14 +303,17 @@ export const UserTable = () => {
 
   return (
     <Card isHeaderDividerVisible addTitleMargin title={t("filters")}>
-      <div className="px-[0.8rem] py-2">
+      <div className="py-2">
         {/* Controls Row */}
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-4 max-xsm:gap-4">
           {/* Column Visibility Button - Left */}
-          <div>
+          <div className="max-xsm:flex-1">
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline" className="h-full py-2 px-4 text-sm">
+                <Button
+                  variant="outline"
+                  className="h-full py-2 px-4 text-sm max-xsm:w-full"
+                >
                   <Columns className="h-4 w-4 mr-2" />
                   Columns
                 </Button>
@@ -349,13 +352,13 @@ export const UserTable = () => {
           </div>
 
           {/* Sort and Filter Controls - Right */}
-          <div className="flex gap-4">
+          <div className="flex gap-4 max-xsm:flex-1">
             {/* Role Filter */}
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
-                  className="h-[38px] py-2 px-4 text-sm gap-2"
+                  className="h-[38px] py-2 px-4 text-sm gap-2 max-xsm:w-full"
                 >
                   <FilterIcon />
                   Filter by role
@@ -380,63 +383,65 @@ export const UserTable = () => {
             </DropdownMenu>
 
             {/* Sort Dropdown */}
-            <DropdownMenu modal={false}>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="h-[38px] py-2 px-4 text-sm gap-2"
-                >
-                  <SortIcon />
-                  Sort by
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-44" align="end">
-                <DropdownMenuRadioGroup
-                  value={userSorting[0]?.id || ""}
-                  onValueChange={(value) => {
-                    setUserSorting([
-                      { id: value, desc: userSorting[0]?.desc || false },
-                    ]);
-                  }}
-                >
-                  {[
-                    { value: "name", label: "Name" },
-                    { value: "email", label: "Email" },
-                    { value: "role", label: "Role" },
-                    { value: "joinDate", label: "Join Date" },
-                  ].map((option) => (
-                    <DropdownMenuRadioItem
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.label}
-                    </DropdownMenuRadioItem>
-                  ))}
-                </DropdownMenuRadioGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup
-                  value={userSorting[0]?.desc ? "desc" : "asc"}
-                  onValueChange={(value) => {
-                    if (userSorting[0]) {
+            <div className="max-sm:hidden">
+              <DropdownMenu modal={false}>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="h-[38px] py-2 px-4 text-sm gap-2"
+                  >
+                    <SortIcon />
+                    Sort by
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-44" align="end">
+                  <DropdownMenuRadioGroup
+                    value={userSorting[0]?.id || ""}
+                    onValueChange={(value) => {
                       setUserSorting([
-                        { ...userSorting[0], desc: value === "desc" },
+                        { id: value, desc: userSorting[0]?.desc || false },
                       ]);
-                    }
-                  }}
-                >
-                  <DropdownMenuRadioItem value="asc">
-                    Ascending
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="desc">
-                    Descending
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setUserSorting([])}>
-                  Clear Sorting
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                    }}
+                  >
+                    {[
+                      { value: "name", label: "Name" },
+                      { value: "email", label: "Email" },
+                      { value: "role", label: "Role" },
+                      { value: "joinDate", label: "Join Date" },
+                    ].map((option) => (
+                      <DropdownMenuRadioItem
+                        key={option.value}
+                        value={option.value}
+                      >
+                        {option.label}
+                      </DropdownMenuRadioItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup
+                    value={userSorting[0]?.desc ? "desc" : "asc"}
+                    onValueChange={(value) => {
+                      if (userSorting[0]) {
+                        setUserSorting([
+                          { ...userSorting[0], desc: value === "desc" },
+                        ]);
+                      }
+                    }}
+                  >
+                    <DropdownMenuRadioItem value="asc">
+                      Ascending
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="desc">
+                      Descending
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => setUserSorting([])}>
+                    Clear Sorting
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
 
@@ -507,7 +512,7 @@ export const UserTable = () => {
             marginTop: userRoleFilter || userSorting[0] ? "0" : "1.3rem",
           }}
         >
-          <table className="w-full">
+          <table className="w-full min-w-[50rem]">
             <caption className="sr-only">Users table</caption>
             <thead>
               {userTable.getHeaderGroups().map((headerGroup) => (
@@ -523,7 +528,7 @@ export const UserTable = () => {
                             ? "descending"
                             : undefined
                       }
-                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 border-t border-b border-inputBorder bg-tableHeaderBg ${
+                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 whitespace-nowrap border-t border-b border-inputBorder bg-tableHeaderBg ${
                         index === 0 ? "border-l" : ""
                       } ${
                         index === headerGroup.headers.length - 1

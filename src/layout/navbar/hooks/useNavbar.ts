@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { useAppStore } from "../../../store/appStore";
 import { useDropdown } from "../../../hooks/useDropdown";
+import { BREAKPOINTS } from "../../../styles/breakpoints";
 import { useSession } from "../../../lib/auth-client";
 
 export const useNavbar = () => {
@@ -31,7 +32,7 @@ export const useNavbar = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (window.innerWidth < 1280 && isMobileMenuOpen) {
+      if (window.innerWidth < BREAKPOINTS.xl && isMobileMenuOpen) {
         toggleMobileMenu();
       }
     }

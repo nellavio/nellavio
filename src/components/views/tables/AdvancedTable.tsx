@@ -314,18 +314,18 @@ export const AdvancedTable = () => {
 
   return (
     <Card isHeaderDividerVisible addTitleMargin title={t("searchAndSelection")}>
-      <div className="px-[0.8rem] py-2">
+      <div className="py-2">
         {/* Search and Info */}
         <div
           className="flex items-center justify-between"
           style={{ marginBottom: "1.3rem" }}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 max-xsm:w-full">
             <Input
               placeholder="Search..."
               value={globalFilter ?? ""}
               onChange={(event) => setGlobalFilter(event.target.value)}
-              className="w-64 flex-shrink-0"
+              className="w-64 max-xsm:w-[80%] flex-shrink-0"
             />
             {Object.keys(rowSelection).length > 0 && (
               <span className="text-sm text-secondaryText whitespace-nowrap">
@@ -339,7 +339,7 @@ export const AdvancedTable = () => {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[50rem]">
             <caption className="sr-only">
               Advanced data table with selection
             </caption>
@@ -357,7 +357,7 @@ export const AdvancedTable = () => {
                             ? "descending"
                             : undefined
                       }
-                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 bg-tableHeaderBg border-t border-b border-inputBorder ${
+                      className={`text-secondaryText font-medium text-left text-sm px-4 py-3 whitespace-nowrap bg-tableHeaderBg border-t border-b border-inputBorder ${
                         index === 0 ? "border-l" : ""
                       } ${
                         index === headerGroup.headers.length - 1
