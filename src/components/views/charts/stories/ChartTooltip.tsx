@@ -27,7 +27,10 @@ export const ChartTooltip = ({
 }: ChartTooltipProps) => {
   if (!active || !payload || payload.length === 0) return null;
 
-  const title = label || (payload[0]?.payload as Record<string, unknown>)?.name as string || "";
+  const title =
+    label ||
+    ((payload[0]?.payload as Record<string, unknown>)?.name as string) ||
+    "";
 
   return (
     <BaseTooltip title={title}>
@@ -43,9 +46,7 @@ export const ChartTooltip = ({
             />
             {entry.name || entry.dataKey}:
           </span>
-          <span className="pl-3">
-            {valueFormatter(entry.value ?? 0)}
-          </span>
+          <span className="pl-3">{valueFormatter(entry.value ?? 0)}</span>
         </p>
       ))}
     </BaseTooltip>
@@ -91,9 +92,7 @@ export const PieChartTooltip = ({
           />
           Value:
         </span>
-        <span className="pl-3">
-          {valueFormatter(data.value)}
-        </span>
+        <span className="pl-3">{valueFormatter(data.value)}</span>
       </p>
     </BaseTooltip>
   );

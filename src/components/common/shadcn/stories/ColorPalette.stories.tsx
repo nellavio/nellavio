@@ -1,12 +1,6 @@
 import React from "react";
 
-const ColorSwatch = ({
-  name,
-  cssVar,
-}: {
-  name: string;
-  cssVar: string;
-}) => (
+const ColorSwatch = ({ name, cssVar }: { name: string; cssVar: string }) => (
   <div className="flex items-center gap-3 mb-2">
     <div
       className="w-12 h-12 rounded-md border border-mainBorder"
@@ -59,15 +53,27 @@ const colorGroups = {
     { name: "Orange Badge Text", cssVar: "orangeBadgeText" },
     { name: "Percentage Badge Green Text", cssVar: "percentageBadgeGreenText" },
     { name: "Percentage Badge Red Text", cssVar: "percentageBadgeRedText" },
-    { name: "Percentage Badge Green Text Accented", cssVar: "percentageBadgeGreenTextAccented" },
-    { name: "Percentage Badge Red Text Accented", cssVar: "percentageBadgeRedTextAccented" },
+    {
+      name: "Percentage Badge Green Text Accented",
+      cssVar: "percentageBadgeGreenTextAccented",
+    },
+    {
+      name: "Percentage Badge Red Text Accented",
+      cssVar: "percentageBadgeRedTextAccented",
+    },
     { name: "Logo Basic Text", cssVar: "logoBasicText" },
     { name: "Tab Line Active Text", cssVar: "tabLineActiveText" },
     { name: "Tab Line Active Text Hover", cssVar: "tabLineActiveTextHover" },
     { name: "Tab Line Inactive Text", cssVar: "tabLineInactiveText" },
-    { name: "Tab Line Inactive Text Hover", cssVar: "tabLineInactiveTextHover" },
+    {
+      name: "Tab Line Inactive Text Hover",
+      cssVar: "tabLineInactiveTextHover",
+    },
     { name: "Settings Drawer Label Text", cssVar: "settingsDrawerLabelText" },
-    { name: "Settings Drawer Section Title", cssVar: "settingsDrawerSectionTitle" },
+    {
+      name: "Settings Drawer Section Title",
+      cssVar: "settingsDrawerSectionTitle",
+    },
   ],
   icons: [
     { name: "Gray Icon", cssVar: "grayIcon" },
@@ -131,10 +137,16 @@ const colorGroups = {
     { name: "Dropzone Bg Hover", cssVar: "dropzoneBgHover" },
     { name: "Theme Toggle Active Bg", cssVar: "themeToggleActiveBg" },
     { name: "Floating Menu Button Bg", cssVar: "floatingMenuButtonBg" },
-    { name: "Floating Menu Button Bg Hover", cssVar: "floatingMenuButtonBgHover" },
+    {
+      name: "Floating Menu Button Bg Hover",
+      cssVar: "floatingMenuButtonBgHover",
+    },
     { name: "Percentage Badge Green Bg", cssVar: "percentageBadgeGreenBg" },
     { name: "Percentage Badge Red Bg", cssVar: "percentageBadgeRedBg" },
-    { name: "Percentage Badge Green Border", cssVar: "percentageBadgeGreenBorder" },
+    {
+      name: "Percentage Badge Green Border",
+      cssVar: "percentageBadgeGreenBorder",
+    },
     { name: "Percentage Badge Red Border", cssVar: "percentageBadgeRedBorder" },
     { name: "Modal Bg", cssVar: "modalBg" },
     { name: "Logo Bg", cssVar: "logoBg" },
@@ -144,7 +156,10 @@ const colorGroups = {
     { name: "Error Bg", cssVar: "errorBg" },
     { name: "Skeleton Bg", cssVar: "skeletonBg" },
     { name: "Navbar Search Input Bg", cssVar: "navbarSearchInputBg" },
-    { name: "Navbar Search Input Bg Hover", cssVar: "navbarSearchInputBgHover" },
+    {
+      name: "Navbar Search Input Bg Hover",
+      cssVar: "navbarSearchInputBgHover",
+    },
     { name: "Profile Header Bg", cssVar: "profileHeaderBg" },
     { name: "Settings Drawer Header Bg", cssVar: "settingsDrawerHeaderBg" },
     { name: "Settings Button Bg Hover", cssVar: "settingsButtonBgHover" },
@@ -165,13 +180,19 @@ const colorGroups = {
     { name: "Card Border", cssVar: "cardBorder" },
     { name: "Theme Toggle Active Border", cssVar: "themeToggleActiveBorder" },
     { name: "Theme Toggle Border Hover", cssVar: "themeToggleBorderHover" },
-    { name: "Theme Toggle Active Bg Hover", cssVar: "themeToggleActiveBgHover" },
+    {
+      name: "Theme Toggle Active Bg Hover",
+      cssVar: "themeToggleActiveBgHover",
+    },
     { name: "Map Country Border", cssVar: "mapCountryBorder" },
     { name: "Focus Visible Border", cssVar: "focusVisibleBorder" },
     { name: "Checkbox Border", cssVar: "checkboxBorder" },
     { name: "Checkbox Border Disabled", cssVar: "checkboxBorderDisabled" },
     { name: "Navbar Search Input Border", cssVar: "navbarSearchInputBorder" },
-    { name: "Navbar Search Input Border Hover", cssVar: "navbarSearchInputBorderHover" },
+    {
+      name: "Navbar Search Input Border Hover",
+      cssVar: "navbarSearchInputBorderHover",
+    },
     { name: "Tab Line Active Border", cssVar: "tabLineActiveBorder" },
     { name: "Settings Button Border", cssVar: "settingsButtonBorder" },
   ],

@@ -29,7 +29,8 @@ Built on Radix UI Avatar primitive with automatic fallback handling when images 
   argTypes: {
     className: {
       control: "text",
-      description: "Additional CSS classes for sizing (e.g. h-8 w-8, h-16 w-16)",
+      description:
+        "Additional CSS classes for sizing (e.g. h-8 w-8, h-16 w-16)",
     },
   },
   decorators: [
@@ -47,7 +48,10 @@ type Story = StoryObj<typeof Avatar>;
 export const WithImage: Story = {
   render: (args) => (
     <Avatar {...args}>
-      <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" alt="@shadcn" />
+      <AvatarImage
+        src="https://avatars.githubusercontent.com/u/124599?v=4"
+        alt="@shadcn"
+      />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   ),

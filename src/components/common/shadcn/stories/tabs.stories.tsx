@@ -61,9 +61,7 @@ export const Default: Story = {
         </p>
       </TabsContent>
       <TabsContent value="password" className="mt-4">
-        <p className="text-sm text-primaryText">
-          Change your password here.
-        </p>
+        <p className="text-sm text-primaryText">Change your password here.</p>
       </TabsContent>
     </Tabs>
   ),

@@ -42,7 +42,10 @@ export const isAuthAvailable = (): boolean => {
  */
 export const isPresentationModeClient = (): boolean => {
   if (typeof window === "undefined") return false;
-  
+
   const authUrl = process.env.NEXT_PUBLIC_AUTH_URL;
-  return !authUrl || !(authUrl.startsWith("http://") || authUrl.startsWith("https://"));
+  return (
+    !authUrl ||
+    !(authUrl.startsWith("http://") || authUrl.startsWith("https://"))
+  );
 };

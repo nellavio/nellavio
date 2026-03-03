@@ -23,7 +23,8 @@ Uses pulse animation to indicate loading state.
   argTypes: {
     className: {
       control: "text",
-      description: "CSS classes for dimensions and shape (e.g. h-4 w-full, rounded-full)",
+      description:
+        "CSS classes for dimensions and shape (e.g. h-4 w-full, rounded-full)",
     },
   },
   decorators: [
