@@ -152,7 +152,7 @@ export const RevenueOverTime = ({
         <h3 className="text-sm 1xl:text-base 3xl:text-lg font-semibold text-primaryText">
           {t("title")}
         </h3>
-        <span style={{ fontSize: "0.85rem", color: "rgb(140, 145, 150)" }}>
+        <span className="text-[0.85rem] text-subtitleText">
           Historical performance
         </span>
       </div>
@@ -246,12 +246,14 @@ export const RevenueOverTime = ({
             />
             <XAxis
               dataKey="date"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             />
             <YAxis
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) =>
                 `$${Intl.NumberFormat("us").format(value)}`
               }

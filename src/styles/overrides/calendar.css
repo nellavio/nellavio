@@ -1,0 +1,206 @@
+/* Calendar  */
+
+.fc-scrollgrid-sync-table tbody tr:nth-child(6) {
+  @apply hidden;
+}
+
+.fc-button {
+  @apply border border-inputBorder placeholder-secondaryText text-primaryText hover:!border-inputBorderHover transition hover:bg-inputBgHover hover:!bg-outlinedButtonBgHover !bg-inputBg !border-inputBorder;
+}
+
+.fc-button:focus-visible {
+  outline: 2px solid var(--color-focusVisibleBorder);
+  outline-offset: 0;
+}
+
+.fc-button-primary {
+  @apply !text-primaryText;
+}
+
+.fc th,
+.fc td,
+.fc table {
+  @apply border-calendarBorder;
+}
+
+.fc td {
+  @apply max-h-12;
+}
+
+.fc-daygrid-day {
+  @apply hover:!bg-[rgb(255,255,255,0.02)] transition;
+}
+
+.fc-day-disabled {
+  @apply !bg-[rgb(255,255,255,0.03)];
+}
+
+.fc-daygrid-block-event {
+  @apply bg-calendarMainColor border-none;
+}
+
+.fc-daygrid-event-dot {
+  @apply border-calendarMainColor;
+}
+
+.fc-list-event-dot {
+  @apply !border-calendarMainColor;
+}
+
+.fc-v-event {
+  @apply bg-calendarMainColor  border-none;
+}
+
+.fc-list-day-cushion,
+.fc-list-day {
+  @apply !border-calendarBorder !bg-calendarListDayHeaderBg;
+}
+
+.fc-list {
+  @apply !border-calendarBorder;
+}
+
+.fc {
+  --fc-page-bg-color: theme(colors.calendarBorder) !important;
+  --fc-list-event-hover-bg-color: rgb(255, 255, 255, 0.02);
+}
+
+.fc-day-today {
+  @apply hover:!bg-inputBg !bg-calendarTodayBg;
+}
+
+.fc-view-harness,
+.fc-scrollgrid-sync-table {
+  @apply max-h-140 md:max-h-220;
+}
+
+.fc-toolbar-title {
+  @apply text-primaryText;
+}
+
+.fc-col-header-cell-cushion {
+  @apply text-primaryText;
+}
+
+.fc-event-time,
+.fc-event-title {
+  @apply text-primaryText;
+}
+
+.fc-daygrid-day-number {
+  @apply text-primaryText;
+  font-size: 1.5rem;
+}
+
+.fc-cell-shaded {
+  @apply !bg-calendarListDayHeaderBg;
+}
+
+.fc-list-day-text,
+.fc-list-day-side-text,
+.fc-list-event-time,
+.fc-list-event-title,
+.fc-timegrid-axis-cushion,
+.fc-timegrid-slot-label-cushion {
+  @apply text-primaryText;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  @apply border-mainBorder;
+}
+
+.fc-listMonth-view {
+  @apply !border-mainBorder;
+}
+
+.fc-list-empty-cushion {
+  @apply text-primaryText;
+}
+
+.fc-list-empty {
+  @apply !bg-calendarListDayHeaderBg;
+}
+
+.fc-toolbar-chunk .fc-toolbar-title {
+  @apply capitalize;
+}
+
+.fc-daygrid-day-events a.fc-event {
+  height: 1.7rem;
+  padding-top: 0.1rem;
+  padding-left: 0.2rem;
+}
+
+.fc .fc-event:focus-visible {
+  outline: 2px solid var(--color-focusVisibleBorder);
+  outline-offset: 0;
+}
+
+.fc-daygrid-day-events .fc-event-main * {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .fc-media-screen {
+    height: 90rem;
+    max-height: 100dvh !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .fc-toolbar-chunk {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .fc-header-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0rem;
+    padding-top: 1rem;
+    width: 100%;
+  }
+
+  .fc-today-button {
+    display: none !important;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.1rem !important;
+  }
+
+  .fc-list-event-title,
+  .fc-list-event-graphic {
+    border-width: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .fc-toolbar-chunk {
+    width: 49%;
+  }
+
+  .fc-header-toolbar {
+    max-width: 19.5rem;
+    margin-left: 0rem;
+  }
+
+  .fc-list-event .fc-list-event-time {
+    min-width: 100%;
+  }
+
+  .fc-list-event {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.fc .fc-list-sticky .fc-list-day > * {
+  position: relative;
+}
+
+.fc-daygrid-dot-event:hover {
+  background-color: var(--color-calendarEventBgHover);
+}

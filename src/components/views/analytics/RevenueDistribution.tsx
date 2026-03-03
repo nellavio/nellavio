@@ -105,13 +105,14 @@ export const RevenueDistribution = ({
             tabIndex={-1}
           >
             <CartesianGrid
-              strokeDasharray="0"
+              strokeDasharray="3 3"
               stroke={"var(--color-chartPrimaryGrid)"}
-              horizontal={false}
             />
             <XAxis
               type="number"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) =>
                 `$${Intl.NumberFormat("us").format(value)}`
               }
@@ -119,7 +120,9 @@ export const RevenueDistribution = ({
             <YAxis
               type="category"
               dataKey="category"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             />
             <Tooltip
               content={<RevenueDistributionTooltip />}

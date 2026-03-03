@@ -131,12 +131,19 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
             tabIndex={-1}
           >
             <CartesianGrid
-              strokeDasharray="0"
+              strokeDasharray="3 3"
               stroke="var(--color-chartPrimaryGrid)"
             />
-            <XAxis dataKey="month" tick={<CustomXAxisTick />} />
+            <XAxis
+              dataKey="month"
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={<CustomXAxisTick />}
+            />
             <YAxis
-              tick={{ fill: "white", fontSize: "0.8rem" }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value: number) =>
                 `$${Intl.NumberFormat("us").format(value)}`
               }

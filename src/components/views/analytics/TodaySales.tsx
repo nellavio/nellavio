@@ -145,12 +145,14 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 />
                 <XAxis
                   dataKey="hour"
-                  stroke="rgba(255,255,255,0.1)"
-                  tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
                 />
                 <YAxis
-                  stroke="rgba(255,255,255,0.1)"
-                  tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
                   tickFormatter={(value) =>
                     `$${Intl.NumberFormat("us").format(value)}`
                   }
@@ -223,12 +225,14 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 />
                 <XAxis
                   dataKey="hour"
-                  stroke="rgba(255,255,255,0.1)"
-                  tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
                 />
                 <YAxis
-                  stroke="rgba(255,255,255,0.1)"
-                  tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
                   tickFormatter={(value) =>
                     `$${Intl.NumberFormat("us").format(value)}`
                   }

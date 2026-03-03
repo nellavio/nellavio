@@ -133,7 +133,7 @@ export const Layout = ({ children }: LayoutProps) => {
         </div>
         {isMobileMenuOpen && (
           <div
-            className="block xl:hidden fixed inset-0 bg-[rgb(0,0,0,0.4)] z-[1] cursor-pointer"
+            className="block xl:hidden fixed inset-0 bg-mobileOverlayBg z-[1] cursor-pointer"
             onClick={toggleMobileMenu}
             aria-hidden="true"
           />

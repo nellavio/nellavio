@@ -197,12 +197,14 @@ export const AreaChartComponent = () => {
             />
             <XAxis
               dataKey="date"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             />
             <YAxis
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               width={windowWidth > 0 && windowWidth < BREAKPOINTS.xsm ? 45 : 60}
               tickFormatter={(value) => Intl.NumberFormat("us").format(value)}
             />

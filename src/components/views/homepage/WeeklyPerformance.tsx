@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -11,7 +10,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 
 import { Card } from "../../common/Card";
@@ -116,8 +114,6 @@ const WeeklyPerformanceChart = ({
     ? "h-60 lg:h-72 xl:h-72 2xl:h-76 3xl:h-92"
     : "h-60 3xl:h-76";
   const { width: windowWidth } = useWindowDimensions();
-  const { theme, systemTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   // Limit data to 5 bars in specific ranges
@@ -173,20 +169,19 @@ const WeeklyPerformanceChart = ({
               content={<WeeklyPerformanceLegend />}
             />
             <CartesianGrid
-              strokeDasharray="0"
-              stroke={
-                currentTheme === "light"
-                  ? "rgb(240, 240, 240)"
-                  : "rgb(45, 50, 55)"
-              }
-              vertical={false}
+              strokeDasharray="3 3"
+              stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis
               dataKey="name"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             />
             <YAxis
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) =>
                 `$${Intl.NumberFormat("us").format(value)}`
               }
@@ -195,7 +190,7 @@ const WeeklyPerformanceChart = ({
               content={<WeeklyPerformanceTooltip />}
               isAnimationActive={false}
               cursor={{
-                fill: "rgba(255,255,255,0.05)",
+                fill: "var(--color-chartCursorBg)",
                 stroke: "var(--color-chartVerticalLine)",
               }}
             />
@@ -203,11 +198,7 @@ const WeeklyPerformanceChart = ({
               dataKey="revenue"
               name="Revenue"
               stackId="a"
-              fill={
-                currentTheme === "light"
-                  ? "rgb(125, 214, 230)"
-                  : "rgb(61, 185, 133)"
-              }
+              fill="var(--color-chartPrimaryInverted)"
               radius={[0, 0, 0, 0]}
               barSize={getBarSize()}
               isAnimationActive={shouldAnimate}
@@ -219,7 +210,7 @@ const WeeklyPerformanceChart = ({
               dataKey="profit"
               name="Profit"
               stackId="a"
-              fill="rgb(83, 133, 198)"
+              fill="var(--color-chartSecondaryAccent)"
               radius={[4, 4, 0, 0]}
               barSize={getBarSize()}
               isAnimationActive={shouldAnimate}
@@ -235,33 +226,11 @@ const WeeklyPerformanceChart = ({
 };
 
 const ActivityItem = ({ activity }: { activity: WeeklyActivity }) => {
-  const { theme, systemTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const currentTheme = theme === "system" ? systemTheme : theme;
-
   const getAvatarBgColor = (color: "green" | "blue") => {
-    // If not mounted yet, return transparent to avoid flash
-    if (!mounted) {
-      return "transparent";
-    }
-
-    if (color === "green") {
-      // Light mode = teal, dark mode = green
-      return currentTheme === "light"
-        ? "rgb(125, 214, 230)"
-        : "rgb(61, 185, 133)";
-    }
     if (color === "blue") {
-      return "rgb(83, 133, 198)";
+      return "var(--color-chartSecondaryAccent)";
     }
-    return currentTheme === "light"
-      ? "rgb(125, 214, 230)"
-      : "rgb(61, 185, 133)";
+    return "var(--color-chartPrimaryInverted)";
   };
 
   const getIcon = (iconType: string) => {

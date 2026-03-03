@@ -71,8 +71,9 @@
   --color-containedButtonBgHover: rgb(61, 185, 133);
   --color-dropdownBg: rgb(36, 39, 43);
   --color-dropdownBgHover: rgb(42, 46, 51);
-  --color-calendarTodayBg: rgb(255, 255, 255, 0.08);
+  --color-calendarTodayBg: rgb(255, 255, 255, 0.04);
   --color-calendarListDayHeaderBg: rgb(255, 255, 255, 0.02);
+  --color-calendarEventBgHover: rgb(255, 255, 255, 0.02);
   --color-chartPrimaryBg: rgb(61, 185, 133);
   --color-chartSecondaryBg: rgb(83, 133, 198);
   --color-chartPrimaryFill: rgb(61, 185, 133);
@@ -83,6 +84,7 @@
   --color-chartSecondaryGrid: rgb(83, 133, 198);
   --color-chartSecondaryDisabled: rgb(83, 133, 198);
   --color-chartSecondaryInverted: rgb(83, 133, 198);
+  --color-chartSecondaryAccent: rgb(83, 133, 198);
   --color-loaderBg: rgb(36, 40, 45);
   --color-loaderCircleBg: rgb(20, 80, 130);
   --color-selectBg: rgb(255, 255, 255, 0.05);
@@ -93,6 +95,7 @@
   --color-navbarButtonBg: rgb(255, 255, 255, 0);
   --color-navbarButtonBgHover: rgb(255, 255, 255, 0.05);
   --color-navbarIconButtonBgHover: rgb(255, 255, 255, 0.08);
+  --color-mobileOverlayBg: rgb(0, 0, 0, 0.4);
   --color-galleryBg: rgb(0, 0, 0, 0.5);
   --color-galleryThumbnailBg: rgb(255, 255, 255, 0.01);
   --color-datepickerHeaderBg: rgb(41, 43, 48);
@@ -134,6 +137,8 @@
   --color-notificationHeaderBg: rgb(31, 34, 38);
   --color-fourCardIconBg: rgb(255, 255, 255, 0.04);
   --color-fourCardIconBgHover: rgb(255, 255, 255, 0.02);
+  --color-sideMenuButtonBg: rgb(255, 255, 255, 0.02);
+  --color-sideMenuButtonBgHover: rgb(255, 255, 255, 0.06);
 
   /* Borders */
   --color-mainBorder: rgb(255, 255, 255, 0.05);
@@ -157,6 +162,8 @@
   --color-navbarSearchInputBorderHover: rgb(255, 255, 255, 0.2);
   --color-tabLineActiveBorder: rgb(83, 133, 198);
   --color-settingsButtonBorder: rgb(0, 0, 0, 0.1);
+  --color-chartBarGridLine: rgb(45, 50, 55);
+  --color-chartAxisLine: rgb(255, 255, 255, 0.2);
   --color-chartAxisText: rgb(201, 203, 207);
   --color-chartVerticalLine: rgb(255, 255, 255, 0.15);
   --color-chartCursorBg: rgb(255, 255, 255, 0.05);

@@ -104,16 +104,18 @@ export const CustomerSatisfaction = ({
               type="number"
               dataKey="totalSales"
               name="Total sales"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`}
             />
             <YAxis
               type="number"
               dataKey="customerSatisfaction"
               name="Customer satisfaction"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               domain={[60, 100]}
               width={50}
             />

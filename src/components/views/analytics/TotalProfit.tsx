@@ -124,8 +124,9 @@ export const TotalProfit = ({
             />
             <XAxis
               dataKey="month"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               ticks={[
                 totalProfitSales[0]?.month,
                 totalProfitSales[totalProfitSales.length - 1]?.month,

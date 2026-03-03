@@ -87,7 +87,7 @@ export const SideMenuMobile = ({
                 onLoginButtonClick();
                 toggleMobileMenu();
               }}
-              className="block hover:bg-navbarButtonBgHover xl:hidden mt-auto mb-8 rounded-xl w-full h-10 flex justify-center items-center font-medium border border-mainColor text-primaryText bg-[rgb(255,255,255,0.02)] hover:bg-[rgb(255,255,255,0.06)] mt-12"
+              className="block xl:hidden mt-auto mb-8 rounded-xl w-full h-10 flex justify-center items-center font-medium border border-mainColor text-primaryText bg-sideMenuButtonBg hover:bg-sideMenuButtonBgHover mt-12"
             >
               {t("signIn")}
             </button>

@@ -127,15 +127,19 @@ export const BestSellingProducts = ({
               content={<BestSellingCustomLegend />}
             />
             <CartesianGrid
-              strokeDasharray="0"
+              strokeDasharray="3 3"
               stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis
               dataKey="name"
-              tick={{ fill: "white", fontSize: "0.8rem" }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             />
             <YAxis
-              tick={{ fill: "white", fontSize: "0.8rem" }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) =>
                 `$${Intl.NumberFormat("us").format(value)}`
               }

@@ -162,20 +162,23 @@ export const ComposedChartComponent = () => {
             />
             <XAxis
               dataKey="month"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             />
             <YAxis
               yAxisId="left"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
             />
             <YAxis
               yAxisId="right"
               orientation="right"
-              stroke="rgba(255,255,255,0.1)"
-              tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
               tickFormatter={(value) => `${value}%`}
             />
             <Tooltip

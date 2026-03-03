@@ -52,35 +52,38 @@ export const useCustomers = (customers: Customer[]) => {
   const t = useTranslations("customers");
   const tooltipRef = useRef<HTMLDivElement | null>(null);
 
-  const customerColumns = [
-    columnHelper.accessor("col0", {
-      header: () => t("tableHeader.photo"),
-      enableSorting: false,
-      cell: ({ row }: { row: { original: CustomerColumns } }) => (
-        <ImageCell src={row.original.col0} />
-      ),
-    }),
-    columnHelper.accessor("col1", {
-      header: () => t("tableHeader.firstName"),
-    }),
-    columnHelper.accessor("col2", {
-      header: () => t("tableHeader.lastName"),
-    }),
-    columnHelper.accessor("col3", {
-      header: () => t("tableHeader.city"),
-    }),
-    columnHelper.accessor("col4", {
-      header: () => t("tableHeader.country"),
-    }),
-    columnHelper.accessor("col5", {
-      header: () => t("tableHeader.phone"),
-    }),
-    columnHelper.accessor("col6", {
-      header: () => t("tableHeader.totalBuys"),
-      cell: ({ row }: { row: { original: CustomerColumns } }) =>
-        `$${row.original.col6.toString()}`,
-    }),
-  ];
+  const customerColumns = useMemo(
+    () => [
+      columnHelper.accessor("col0", {
+        header: () => t("tableHeader.photo"),
+        enableSorting: false,
+        cell: ({ row }: { row: { original: CustomerColumns } }) => (
+          <ImageCell src={row.original.col0} />
+        ),
+      }),
+      columnHelper.accessor("col1", {
+        header: () => t("tableHeader.firstName"),
+      }),
+      columnHelper.accessor("col2", {
+        header: () => t("tableHeader.lastName"),
+      }),
+      columnHelper.accessor("col3", {
+        header: () => t("tableHeader.city"),
+      }),
+      columnHelper.accessor("col4", {
+        header: () => t("tableHeader.country"),
+      }),
+      columnHelper.accessor("col5", {
+        header: () => t("tableHeader.phone"),
+      }),
+      columnHelper.accessor("col6", {
+        header: () => t("tableHeader.totalBuys"),
+        cell: ({ row }: { row: { original: CustomerColumns } }) =>
+          `$${row.original.col6.toString()}`,
+      }),
+    ],
+    [t],
+  );
 
   useEffect(() => {
     if (customers) {
