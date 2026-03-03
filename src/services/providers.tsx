@@ -4,7 +4,7 @@ import { ApolloProvider } from "@apollo/client/react";
 import { ThemeProvider } from "next-themes";
 
 import { TooltipProvider } from "../components/common/shadcn/tooltip";
-import { Layout } from "../layout/Layout";
+import { Layout } from "../components/layout/Layout";
 import { client } from "./apolloClient";
 
 export const THEMES_ARRAY = ["light", "dark"];

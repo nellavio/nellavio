@@ -16,10 +16,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "../../common/shadcn/tooltip";
-import { CustomersCountryDropdown } from "./CustomersCountryDropdown";
-import { CustomersPagination } from "./CustomersPagination";
-import { CustomersSortDropdown } from "./CustomersSortDropdown";
-import { CustomersTable } from "./CustomersTable";
+import { CustomersCountryDropdown } from "./parts/CustomersCountryDropdown";
+import { CustomersPagination } from "./parts/CustomersPagination";
+import { CustomersSortDropdown } from "./parts/CustomersSortDropdown";
+import { CustomersTable } from "./parts/CustomersTable";
 import { Customer } from "./types";
 import { useCustomers } from "./useCustomers";
 

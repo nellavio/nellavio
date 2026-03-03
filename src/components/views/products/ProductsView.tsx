@@ -4,7 +4,7 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import { CloseIcon } from "../../../assets/icons/CloseIcon";
-import { ProductDetails } from "./ProductDetails";
+import { ProductDetails } from "./parts/ProductDetails";
 import { Product } from "./types";
 import { useProducts } from "./useProducts";
 

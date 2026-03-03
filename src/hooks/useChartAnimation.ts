@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { CHART_ANIMATION_DELAY_MS } from "../layout/FullScreenLoader";
+import { CHART_ANIMATION_DELAY_MS } from "../components/layout/FullScreenLoader";
 import { type ChartPageId, useAppStore } from "../store/appStore";
 
 interface ChartAnimationOptions {

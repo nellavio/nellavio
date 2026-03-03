@@ -7,10 +7,9 @@ import listPlugin from "@fullcalendar/list";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useLocale, useTranslations } from "next-intl";
-import React from "react";
 
-import { AddEventModal } from "./AddEventModal";
-import { RemoveEventModal } from "./RemoveEventModal";
+import { AddEventModal } from "./parts/AddEventModal";
+import { RemoveEventModal } from "./parts/RemoveEventModal";
 import { CalendarViewProps } from "./types";
 import { useCalendar } from "./useCalendar";
 

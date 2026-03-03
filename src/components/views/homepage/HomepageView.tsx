@@ -1,14 +1,14 @@
 "use client";
 
 import { useAppStore } from "../../../store/appStore";
-import { BestSellingProducts } from "./BestSellingProducts";
-import { CustomerSatisfaction } from "./CustomerSatisfaction";
-import { FourSmallCards } from "./FourSmallCards";
-import { RevenueOverTime } from "./RevenueOverTime";
-import { RevenuePerCountry } from "./RevenuePerCountry";
-import { ThreeSmallCards } from "./ThreeSmallCards";
+import { BestSellingProducts } from "./parts/BestSellingProducts";
+import { CustomerSatisfaction } from "./parts/CustomerSatisfaction";
+import { FourSmallCards } from "./parts/FourSmallCards";
+import { RevenueOverTime } from "./parts/RevenueOverTime";
+import { RevenuePerCountry } from "./parts/RevenuePerCountry";
+import { ThreeSmallCards } from "./parts/ThreeSmallCards";
+import { WeeklyPerformance } from "./parts/WeeklyPerformance";
 import { HomepageViewProps } from "./types";
-import { WeeklyPerformance } from "./WeeklyPerformance";
 
 export const HomepageView = ({ homepageData }: HomepageViewProps) => {
   const homepageLayout = useAppStore((state) => state.homepageLayout);

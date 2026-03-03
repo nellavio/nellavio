@@ -1,13 +1,13 @@
 "use client";
 
-import { AssetPerformance } from "./AssetPerformance";
-import { MarketMetrics } from "./MarketMetrics";
-import { RevenueDistribution } from "./RevenueDistribution";
-import { RevenueTrends } from "./RevenueTrends";
-import { TodaySales } from "./TodaySales";
-import { TotalProfit } from "./TotalProfit";
+import { AssetPerformance } from "./parts/AssetPerformance";
+import { MarketMetrics } from "./parts/MarketMetrics";
+import { RevenueDistribution } from "./parts/RevenueDistribution";
+import { RevenueTrends } from "./parts/RevenueTrends";
+import { TodaySales } from "./parts/TodaySales";
+import { TotalProfit } from "./parts/TotalProfit";
+import { YearOverview } from "./parts/YearOverview";
 import { AnalyticsViewProps } from "./types";
-import { YearOverview } from "./YearOverview";
 
 export const AnalyticsView = ({ analyticsData }: AnalyticsViewProps) => {
   return (

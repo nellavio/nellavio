@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
-import { DateRangeSelector } from "../../layout/dateRangeSelect/DateRangeSelector";
+import { DateRangeSelector } from "../layout/dateRangeSelect/DateRangeSelector";
 import {
   Breadcrumb,
   BreadcrumbItem,

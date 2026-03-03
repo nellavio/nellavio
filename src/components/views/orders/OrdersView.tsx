@@ -16,10 +16,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "../../common/shadcn/tooltip";
-import { OrdersDateRange } from "./OrdersDateRange";
-import { OrdersPagination } from "./OrdersPagination";
-import { OrderSelects } from "./OrdersSelects";
-import { OrdersTable } from "./OrdersTable";
+import { OrdersDateRange } from "./parts/OrdersDateRange";
+import { OrdersPagination } from "./parts/OrdersPagination";
+import { OrderSelects } from "./parts/OrdersSelects";
+import { OrdersTable } from "./parts/OrdersTable";
 import { OrdersViewProps } from "./types";
 import { useOrders } from "./useOrders";
 
