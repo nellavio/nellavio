@@ -58,7 +58,7 @@ Built on Radix UI DropdownMenu primitive with keyboard navigation.
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg min-h-[300px]">
+      <div className="p-6 bg-primaryBg rounded-lg min-h-75">
         <Story />
       </div>
     ),

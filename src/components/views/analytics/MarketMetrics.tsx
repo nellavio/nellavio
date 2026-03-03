@@ -71,7 +71,7 @@ const CustomLegend = (props: LegendProps) => {
   const { payload } = props;
 
   return (
-    <div className="flex flex-row justify-end gap-8 text-white w-full mt-[0rem] lg:mt-0 mb-12 3xl:mb-6">
+    <div className="flex flex-row justify-end gap-8 text-white w-full mt-0 lg:mt-0 mb-12 3xl:mb-6">
       {payload?.map((entry, index: number) => (
         <div key={index} className="flex items-center">
           <div
@@ -101,7 +101,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
       <div
         role="img"
         aria-label="Market metrics radar chart"
-        className="w-full h-[19rem] lg:h-[19rem] 3xl:h-[24rem] mt-6"
+        className="w-full h-76 lg:h-76 3xl:h-96 mt-6"
       >
         <ResponsiveContainer
           width="100%"
@@ -113,7 +113,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
             cy="50%"
             outerRadius="80%"
             data={marketMetricsData}
-            className="pt-4 mt-[1rem] lg:mt-0"
+            className="pt-4 mt-4 lg:mt-0"
             tabIndex={-1}
           >
             <PolarGrid stroke={"var(--color-chartPrimaryGrid)"} />

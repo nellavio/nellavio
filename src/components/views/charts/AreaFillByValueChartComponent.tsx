@@ -153,7 +153,7 @@ export const AreaFillByValueChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin={windowWidth === 0 || windowWidth >= BREAKPOINTS.xsm}
     >
-      <div className="h-72 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full">
+      <div className="h-72 xsm:h-80 1xl:h-96 3xl:h-112 w-full">
         <ResponsiveContainer
           width="100%"
           height="100%"

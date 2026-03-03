@@ -339,7 +339,7 @@ export const AdvancedTable = () => {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[50rem]">
+          <table className="w-full min-w-200">
             <caption className="sr-only">
               Advanced data table with selection
             </caption>

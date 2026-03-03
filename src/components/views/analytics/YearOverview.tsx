@@ -71,7 +71,7 @@ const DataTable = ({ data }: { data: OverviewMonthData[] }) => {
   const lastSixMonths = data.slice(-8);
 
   return (
-    <div className="overflow-hidden h-[18rem] 1xl:h-[19rem] 3xl:h-[24rem] mr-8 mt-1">
+    <div className="overflow-hidden h-72 1xl:h-76 3xl:h-96 mr-8 mt-1">
       <table className="w-full">
         <caption className="sr-only">Yearly revenue overview</caption>
         <thead>
@@ -132,7 +132,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
         <div
           role="img"
           aria-label="Year overview area chart"
-          className="w-full lg:w-3/4 h-[18rem] 1xl:h-[19rem] 3xl:h-[24rem]"
+          className="w-full lg:w-3/4 h-72 1xl:h-76 3xl:h-96"
         >
           <ResponsiveContainer
             width="100%"

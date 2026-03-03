@@ -79,13 +79,13 @@ export const SelectInputsForm = () => {
               >
                 {comboboxValue
                   ? frameworks.find(
-                      (framework) => framework.value === comboboxValue
+                      (framework) => framework.value === comboboxValue,
                     )?.label
                   : "Select framework..."}
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[200px] p-0" align="start">
+            <PopoverContent className="w-50 p-0" align="start">
               <Command>
                 <CommandInput placeholder="Search framework..." />
                 <CommandList>
@@ -97,7 +97,9 @@ export const SelectInputsForm = () => {
                         value={framework.value}
                         onSelect={() => {
                           setComboboxValue(
-                            framework.value === comboboxValue ? "" : framework.value
+                            framework.value === comboboxValue
+                              ? ""
+                              : framework.value,
                           );
                           setOpenCombobox(false);
                         }}
@@ -107,7 +109,7 @@ export const SelectInputsForm = () => {
                             "mr-2 h-4 w-4",
                             comboboxValue === framework.value
                               ? "opacity-100"
-                              : "opacity-0"
+                              : "opacity-0",
                           )}
                         />
                         {framework.label}

@@ -52,7 +52,7 @@ export const CustomersTable = ({ table }: CustomersTableProps) => {
 
   return (
     <>
-      <table className="w-full mt-8 min-w-[58rem] customersTable">
+      <table className="w-full mt-8 min-w-232 customersTable">
         <caption className="sr-only">Customers list</caption>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (

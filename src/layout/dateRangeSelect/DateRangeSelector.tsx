@@ -82,7 +82,7 @@ export const DateRangeSelector = () => {
             <ChevronDownIcon />
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" sideOffset={6} className="w-[13rem]">
+        <DropdownMenuContent align="end" sideOffset={6} className="w-52">
           {DATE_RANGE_PRESETS.map((preset) => {
             const isActive = preset === selectedPreset;
             return (

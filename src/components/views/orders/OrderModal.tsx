@@ -33,13 +33,13 @@ export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {
   return (
     <div className="flex">
       <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:w-[32rem] sm:h-auto md:w-[32rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl px-6 xsm:px-8 sm:px-12 pt-8 sm:pt-[3rem] overflow-y-auto sm:overflow-y-visible">
+        <DialogContent className="sm:w-128 sm:h-auto md:w-128 border-0 sm:border sm:border-inputBorder sm:rounded-2xl px-6 xsm:px-8 sm:px-12 pt-8 sm:pt-12 overflow-y-auto sm:overflow-y-visible">
           <DialogTitle className="sr-only">{t("title")}</DialogTitle>
           <DialogDescription className="sr-only">
             {t("title")}
           </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2">
-            <div className="rounded-full border border-mainBorder p-4 w-18 flex justify-center items-center mr-[0rem] text-secondaryText -mt-1">
+            <div className="rounded-full border border-mainBorder p-4 w-18 flex justify-center items-center mr-0 text-secondaryText -mt-1">
               <OrderModalIcon width={30} height={30} />
             </div>
             <h2 className="text-primaryText text-3xl w-full text-center mt-3 mb-2">

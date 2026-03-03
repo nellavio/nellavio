@@ -1,3 +1,4 @@
+import { ComponentType } from "react";
 import { useTranslations } from "next-intl";
 
 import { AnalyticsIcon } from "../../assets/icons/AnalyticsIcon";
@@ -18,6 +19,63 @@ import { Logo } from "./Logo";
 import { ArrowLeftIcon } from "../../assets/icons/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../assets/icons/ArrowRightIcon";
 
+type MenuConfigEntry =
+  | { type: "category"; titleKey: string }
+  | { type: "item"; titleKey: string; Icon: ComponentType; path: string }
+  | {
+      type: "submenu";
+      titleKey: string;
+      Icon: ComponentType;
+      submenuItems: { titleKey: string; path: string; newTab?: boolean }[];
+    };
+
+export const menuConfig: MenuConfigEntry[] = [
+  { type: "category", titleKey: "pages" },
+  { type: "item", titleKey: "dashboard", Icon: DashboardIcon, path: "/" },
+  {
+    type: "submenu",
+    titleKey: "eCommerce",
+    Icon: EcommerceIcon,
+    submenuItems: [
+      { titleKey: "orders", path: "/orders" },
+      { titleKey: "customers", path: "/customers" },
+      { titleKey: "products", path: "/products" },
+    ],
+  },
+  {
+    type: "item",
+    titleKey: "analytics",
+    Icon: AnalyticsIcon,
+    path: "/analytics",
+  },
+  {
+    type: "item",
+    titleKey: "userProfile",
+    Icon: UserProfileIcon,
+    path: "/profile",
+  },
+  { type: "item", titleKey: "calendar", Icon: CalendarIcon, path: "/calendar" },
+  {
+    type: "submenu",
+    titleKey: "authentication",
+    Icon: PasswordIcon,
+    submenuItems: [
+      { titleKey: "login", path: "/login", newTab: true },
+      { titleKey: "register", path: "/register", newTab: true },
+    ],
+  },
+  { type: "category", titleKey: "components" },
+  {
+    type: "item",
+    titleKey: "uiElements",
+    Icon: UIElementsIcon,
+    path: "/ui-elements",
+  },
+  { type: "item", titleKey: "forms", Icon: FormsIcon, path: "/forms" },
+  { type: "item", titleKey: "tables", Icon: TablesIcon, path: "/tables" },
+  { type: "item", titleKey: "charts", Icon: DonutIcon, path: "/charts" },
+];
+
 export const SideMenu = () => {
   const { isSideMenuOpen, toggleSideMenu } = useAppStore();
   const t = useTranslations("sideMenu");
@@ -25,21 +83,21 @@ export const SideMenu = () => {
   return (
     <nav
       aria-label="Side navigation"
-      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] white pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
-        !isSideMenuOpen && "xl:!max-w-[3rem] !w-[3rem] xl:!min-w-[4.5rem] pr-0"
+      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 white pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
+        !isSideMenuOpen && "xl:!max-w-12 !w-12 xl:!min-w-18 pr-0"
       }
       `}
     >
       <div
-        className={`pl-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] bg-navigationBg h-dvh border-r-[1px] border-cardBorder transition-all duration-200 ease-in-out flex flex-col ${
+        className={`pl-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 bg-navigationBg h-dvh border-r-[1px] border-cardBorder transition-all duration-200 ease-in-out flex flex-col ${
           !isSideMenuOpen &&
-          "xl:!max-w-[3rem] xl:!w-[3rem] xl:!min-w-[4.5rem] !pl-0 pr-[0.1rem]"
+          "xl:!max-w-12 xl:!w-12 xl:!min-w-18 !pl-0 pr-[0.1rem]"
         }
           `}
       >
         <div
-          className={`flex shrink-0 h-[4.5rem] 3xl:h-20 items-center pr-2 pl-[1.4rem] 3xl:pl-[2.4rem] xl:translate-y-[0.7rem] transition-all duration-200 ${
-            !isSideMenuOpen && "xl:!w-[4.5rem] 3xl:pr-2 !pl-[1.2rem]"
+          className={`flex shrink-0 h-18 3xl:h-20 items-center pr-2 pl-[1.4rem] 3xl:pl-[2.4rem] xl:translate-y-[0.7rem] transition-all duration-200 ${
+            !isSideMenuOpen && "xl:!w-18 3xl:pr-2 !pl-[1.2rem]"
           }`}
         >
           <Logo />
@@ -47,49 +105,39 @@ export const SideMenu = () => {
         <div
           className={`flex-1 overflow-y-auto overflow-x-hidden ${isSideMenuOpen ? "pr-3" : ""}`}
         >
-          <MenuCategory title={t("pages")} />
-          <MenuItem title={t("dashboard")} icon={<DashboardIcon />} path="/" />
-          <MenuItemWithSubmenu
-            title={t("eCommerce")}
-            icon={<EcommerceIcon />}
-            submenuItems={[
-              { title: t("orders"), path: "/orders" },
-              { title: t("customers"), path: "/customers" },
-              { title: t("products"), path: "/products" },
-            ]}
-          />
-          <MenuItem
-            title={t("analytics")}
-            icon={<AnalyticsIcon />}
-            path="/analytics"
-          />
-          <MenuItem
-            title={t("userProfile")}
-            icon={<UserProfileIcon />}
-            path="/profile"
-          />
-          <MenuItem
-            title={t("calendar")}
-            icon={<CalendarIcon />}
-            path="/calendar"
-          />
-          <MenuItemWithSubmenu
-            title={t("authentication")}
-            icon={<PasswordIcon />}
-            submenuItems={[
-              { title: t("login"), path: "/login", newTab: true },
-              { title: t("register"), path: "/register", newTab: true },
-            ]}
-          />
-          <MenuCategory title={t("components")} />
-          <MenuItem
-            title={t("uiElements")}
-            icon={<UIElementsIcon />}
-            path="/ui-elements"
-          />
-          <MenuItem title={t("forms")} icon={<FormsIcon />} path="/forms" />
-          <MenuItem title={t("tables")} icon={<TablesIcon />} path="/tables" />
-          <MenuItem title={t("charts")} icon={<DonutIcon />} path="/charts" />
+          {menuConfig.map((entry) => {
+            switch (entry.type) {
+              case "category":
+                return (
+                  <MenuCategory
+                    key={entry.titleKey}
+                    title={t(entry.titleKey)}
+                  />
+                );
+              case "item":
+                return (
+                  <MenuItem
+                    key={entry.path}
+                    title={t(entry.titleKey)}
+                    icon={<entry.Icon />}
+                    path={entry.path}
+                  />
+                );
+              case "submenu":
+                return (
+                  <MenuItemWithSubmenu
+                    key={entry.titleKey}
+                    title={t(entry.titleKey)}
+                    icon={<entry.Icon />}
+                    submenuItems={entry.submenuItems.map((si) => ({
+                      title: t(si.titleKey),
+                      path: si.path,
+                      newTab: si.newTab,
+                    }))}
+                  />
+                );
+            }
+          })}
         </div>
         <div
           onClick={toggleSideMenu}

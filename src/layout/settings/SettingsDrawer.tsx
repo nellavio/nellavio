@@ -120,7 +120,7 @@ export const SettingsDrawer = ({
             {/* Alternative Font Section */}
             <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="flex items-center justify-between">
-                <Label className="text-[0.9rem] font-medium tracking-wide text-primaryText">
+                <Label className="text-sm font-medium tracking-wide text-primaryText">
                   {t("alternativeFont")}
                 </Label>
                 <Switch
@@ -135,7 +135,7 @@ export const SettingsDrawer = ({
             {/* Chart Animations Section */}
             <div className="px-6 py-5 border-b border-settingsDrawerDivider">
               <div className="flex items-center justify-between">
-                <Label className="text-[0.9rem] font-medium tracking-wide text-primaryText">
+                <Label className="text-sm font-medium tracking-wide text-primaryText">
                   {t("chartAnimations")}
                 </Label>
                 <Switch
@@ -148,7 +148,7 @@ export const SettingsDrawer = ({
             {/* Fixed Navbar Section - desktop only */}
             <div className="hidden xl:block px-6 py-5">
               <div className="flex items-center justify-between">
-                <Label className="text-[0.9rem] font-medium tracking-wide text-primaryText">
+                <Label className="text-sm font-medium tracking-wide text-primaryText">
                   {t("fixedNavbar")}
                 </Label>
                 <Switch

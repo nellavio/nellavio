@@ -10,7 +10,7 @@ import { headers } from "next/headers";
  * @async
  * @returns {Promise<{user: object, session: object} | null>}
  */
-export async function getSession() {
+export const getSession = async () => {
   try {
     // Check if auth URL is configured
     if (!process.env.NEXT_PUBLIC_AUTH_URL) {
@@ -28,7 +28,7 @@ export async function getSession() {
           cookie: headersList.get("cookie") || "",
         },
         cache: "no-store",
-      }
+      },
     );
 
     if (!response.ok) {
@@ -43,4 +43,4 @@ export async function getSession() {
     console.error("Failed to get session:", error);
     return null;
   }
-}
+};

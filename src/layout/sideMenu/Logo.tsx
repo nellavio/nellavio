@@ -13,7 +13,7 @@ export const Logo = () => {
     <Link
       href="/"
       aria-label="Spireflow - home"
-      className="flex items-center text-[1.3rem] xl:text-[1.1rem] 1xl:text-[1.25rem] 3xl:text-[1.4rem] font-medium"
+      className="flex items-center text-xl xl:text-lg 1xl:text-xl 3xl:text-2xl font-medium"
     >
       <div className="menuItemLogo text-logoBg flex-shrink-0 transition-all duration-200">
         <LogoIcon />
@@ -25,7 +25,7 @@ export const Logo = () => {
         }`}
         style={{ fontFamily: "var(--font-outfit)" }}
       >
-        <div className="ml-[0.7rem] text-logoBasicText mr-[1px] tracking-wider">
+        <div className="ml-[0.7rem] text-logoBasicText mr-px tracking-wider">
           Spire
         </div>
         <div className="text-mainColor tracking-wider">flow</div>

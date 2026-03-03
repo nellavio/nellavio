@@ -28,7 +28,7 @@ export const CustomersCountryDropdown = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="text-sm max-[450px]:w-full h-full w-auto justify-start gap-2"
+          className="text-sm max-xsm:w-full h-full w-auto justify-start gap-2"
         >
           <FilterIcon />
           {t("button.filterByCountry")}

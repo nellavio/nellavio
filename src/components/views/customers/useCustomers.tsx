@@ -25,7 +25,7 @@ const ImageCell = ({ src }: { src: string }) => {
         alt="User Profile"
         onLoad={() => setImageLoaded(true)}
         style={{ display: imageLoaded ? "block" : "none" }}
-        className="h-[2.5rem] 3xl:h-[3.1rem] w-[2.5rem] 3xl:w-[3.1rem]"
+        className="h-10 3xl:h-[3.1rem] w-10 3xl:w-[3.1rem]"
       />
     </>
   );

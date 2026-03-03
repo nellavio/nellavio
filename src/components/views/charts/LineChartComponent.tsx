@@ -151,7 +151,7 @@ export const LineChartComponent = () => {
       title={isWideLayout ? undefined : t("lineChart")}
       customHeader={
         isWideLayout ? (
-          <div className="-mx-6 md:-mx-20 px-6 md:px-20 text-[0.9rem] 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
+          <div className="-mx-6 md:-mx-20 px-6 md:px-20 text-sm 1xl:text-base 3xl:text-xl font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
             {t("lineChart")}
           </div>
         ) : undefined
@@ -237,10 +237,7 @@ export const LineChartComponent = () => {
       </div>
       <div className="w-full hidden sm:flex justify-between mx-auto mt-6 1xl:mt-8 ml-8">
         {dragonPopulationInWesteros.map((item, index) => (
-          <div
-            key={index}
-            className="text-xs lg:text-[13px] text-primaryText px-2"
-          >
+          <div key={index} className="text-xs lg:text-xs text-primaryText px-2">
             {item.title}
           </div>
         ))}

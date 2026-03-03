@@ -55,7 +55,7 @@ export const AddEventModal = ({
     <div>
       <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
         <DialogContent
-          className="flex flex-col sm:w-[28rem] sm:h-auto md:w-[28rem] sm:max-w-[28rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl"
+          className="flex flex-col sm:w-112 sm:h-auto md:w-112 sm:max-w-112 border-0 sm:border sm:border-inputBorder sm:rounded-2xl"
           onCloseAutoFocus={(e) => {
             if (returnFocusRef?.current) {
               e.preventDefault();
@@ -70,7 +70,7 @@ export const AddEventModal = ({
             {t("addEventModalSubtitle")}
           </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2 -mt-2">
-            <div className="text-grayIcon rounded-full border border-mainBorder p-4 pl-4 w-16 h-16 flex justify-center items-center mr-[0rem]">
+            <div className="text-grayIcon rounded-full border border-mainBorder p-4 pl-4 w-16 h-16 flex justify-center items-center mr-0">
               {type === "delete" ? (
                 <DeleteIcon />
               ) : (
@@ -132,11 +132,7 @@ export const AddEventModal = ({
               footerVariant="centered"
               className="mt-5 !flex-row gap-3 sm:gap-0 justify-center"
             >
-              <Button
-                variant="outline"
-                onClick={closeModal}
-                className="h-[2.5rem]"
-              >
+              <Button variant="outline" onClick={closeModal} className="h-10">
                 {t("cancel")}
               </Button>
               <Button onClick={handleConfirmClick} loading={loading}>

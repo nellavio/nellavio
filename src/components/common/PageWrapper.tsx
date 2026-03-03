@@ -52,14 +52,13 @@ const LAYOUT_STYLES = {
     showTopBar: true,
     showPaper: false,
     mainClasses:
-      "pt-[4rem] md:!pt-[5.5rem] xl:!pt-[5.5rem] 3xl:!pt-[6rem] md:px-8 xl:px-0 pb-0 md:!pb-8 xl:pb-8",
+      "pt-16 md:!pt-22 xl:!pt-22 3xl:!pt-24 md:px-8 xl:px-0 pb-0 md:!pb-8 xl:pb-8",
     contentGapClass: "pt-3",
   },
   table: {
     showTopBar: true,
     showPaper: true,
-    mainClasses:
-      "pt-[5.5rem] md:pt-[5.5rem] xl:pt-[5.5rem] 1xl:pt-[5.5rem] 3xl:pt-[6rem]",
+    mainClasses: "pt-22 md:pt-22 xl:pt-22 1xl:pt-22 3xl:pt-24",
     contentGapClass: "",
   },
 } as const;
@@ -134,7 +133,7 @@ export const PageWrapper = ({
           <div className="px-6 xsm:px-8 xl:px-0">{topBar}</div>
         )}
         {styles.showPaper ? (
-          <div className="mt-3 flex w-full max-w-full py-8 bg-primaryBg xl:rounded-[10px] shadow-lg border-t xl:border border-mainBorder xl:rounded-[12px] px-6 xsm:p-8 1xl:p-10">
+          <div className="mt-3 flex w-full max-w-full py-8 bg-primaryBg shadow-lg border-t xl:border border-mainBorder xl:rounded-xl px-6 xsm:p-8 1xl:p-10">
             {children}
           </div>
         ) : (

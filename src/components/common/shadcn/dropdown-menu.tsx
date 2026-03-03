@@ -117,7 +117,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-lg data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out",
+      "z-50 min-w-32 overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-lg data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out",
       className,
     )}
     {...props}
@@ -153,7 +153,7 @@ const DropdownMenuContent = React.forwardRef<
       sideOffset={sideOffset}
       loop={loop}
       className={cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-md data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out",
+        "z-50 min-w-32 overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-md data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out",
         className,
       )}
       {...props}

@@ -89,6 +89,10 @@ export const UserButton = ({
     [getMenuItems],
   );
 
+  /**
+   * Keyboard handler for the user button trigger. Escape closes & restores focus,
+   * Enter/Space/ArrowDown opens & focuses first item (setTimeout defers until mount).
+   */
   const handleTriggerKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === "Escape" && userDropdown.isOpen) {
@@ -120,6 +124,10 @@ export const UserButton = ({
     ],
   );
 
+  /**
+   * Roving keyboard navigation within the open dropdown. Arrows cycle items,
+   * Home/End jump to edges, Escape/Tab close and restore trigger focus.
+   */
   const handleMenuKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       const items = getMenuItems();
@@ -245,7 +253,7 @@ export const UserButton = ({
           role="menu"
           aria-label="User menu"
           onKeyDown={handleMenuKeyDown}
-          className="absolute right-[0.5rem] text-sm 1xl:text-sm 3xl:text-base xl:right-0 top-10 xl:top-11 mt-2 w-[13.5rem] border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow"
+          className="absolute right-2 text-sm 1xl:text-sm 3xl:text-base xl:right-0 top-10 xl:top-11 mt-2 w-54 border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow"
         >
           {/* Auth Section - Expandable */}
           <DropdownMenuItem
@@ -421,7 +429,7 @@ export const UserButton = ({
           <div
             tabIndex={-1}
             role="menuitem"
-            className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
+            className="px-4 py-2 pr-5 pl-4 flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
             onPointerDown={() => {
               suppressTooltipRef.current = true;
             }}
@@ -447,7 +455,7 @@ export const UserButton = ({
           <div
             tabIndex={-1}
             role="menuitem"
-            className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
+            className="px-4 py-2 pr-5 pl-4 flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
             onPointerDown={() => {
               suppressTooltipRef.current = true;
             }}
@@ -474,7 +482,7 @@ export const UserButton = ({
             <div
               tabIndex={-1}
               role="menuitem"
-              className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
+              className="px-4 py-2 pr-5 pl-4 flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
               onClick={() => {
                 userDropdown.close();
                 setIsSettingsDrawerOpen(true);
@@ -501,7 +509,7 @@ export const UserButton = ({
           <Link
             href="https://github.com/matt765/spireflow"
             target="_blank"
-            className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
+            className="px-4 py-2 pr-5 pl-4 flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
             role="menuitem"
             tabIndex={-1}
           >

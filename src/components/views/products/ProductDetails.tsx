@@ -72,7 +72,7 @@ export const ProductDetails = ({
                 setIsPhotoOpen(true);
               }
             }}
-            className="group relative min-w-[9rem] hover:bg-[rgb(255,255,255,0.02)] cursor-pointer min-h-[9rem] w-[9rem] h-[9rem] xsm:min-h-[10rem] xsm:min-w-[10rem] sm:h-[10.5rem] sm:w-[10.5rem] 1xl:h-[12.5rem] 1xl:w-[12.5rem] 3xl:h-[15rem] 3xl:w-[15rem] p-0 rounded-xl flex justify-center items-center border border-mainBorder"
+            className="group relative min-w-36 hover:bg-[rgb(255,255,255,0.02)] cursor-pointer min-h-36 w-36 h-36 xsm:min-h-40 xsm:min-w-40 sm:h-42 sm:w-42 1xl:h-50 1xl:w-50 3xl:h-60 3xl:w-60 p-0 rounded-xl flex justify-center items-center border border-mainBorder"
           >
             <div className="rounded-xl relative w-full h-full bg-[rgb(0,0,0,0.01)] flex justify-center items-center">
               {!imageLoaded && (
@@ -198,7 +198,7 @@ export const ProductDetails = ({
         <div className="flex items-center gap-2">
           <Tooltip open={isTooltipVisible}>
             <TooltipTrigger asChild>
-              <div className="flex justify-center items-center max-w-[14rem]">
+              <div className="flex justify-center items-center max-w-56">
                 <div className="w-10 text-xl text-secondaryText">ID:</div>
                 <InputGroup>
                   <InputGroupInput
@@ -231,10 +231,10 @@ export const ProductDetails = ({
             </TooltipContent>
           </Tooltip>
         </div>
-        <div className="hidden sm:flex w-[15rem] h-12 items-center justify-end">
+        <div className="hidden sm:flex w-60 h-12 items-center justify-end">
           <Button
             variant="outline"
-            className="w-[10rem] h-full"
+            className="w-40 h-full"
             onClick={handleExportPDF}
           >
             {t("pdf.exportToPdf")}

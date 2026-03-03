@@ -113,7 +113,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
       <div
         role="img"
         aria-label="Revenue trends bar chart"
-        className="h-[16rem] 1xl:h-[21rem] 3xl:h-[24rem]"
+        className="h-64 1xl:h-84 3xl:h-96"
       >
         <ResponsiveContainer
           width="100%"

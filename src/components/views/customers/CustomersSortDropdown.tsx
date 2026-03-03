@@ -41,7 +41,7 @@ export const CustomersSortDropdown = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="text-sm pr-4 whitespace-nowrap max-[450px]:w-full h-full gap-2"
+          className="text-sm pr-4 whitespace-nowrap max-xsm:w-full h-full gap-2"
         >
           <SortIcon />
           {t("button.sortBy")}

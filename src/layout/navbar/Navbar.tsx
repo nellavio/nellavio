@@ -94,17 +94,17 @@ export const Navbar = () => {
     <>
       <header
         ref={navbarRef}
-        className="w-full flex items-center z-30 fixed h-[4.5rem] bg-primaryBg 3xl:h-20 border-b border-solid border-mainBorder"
+        className="w-full flex items-center z-30 fixed h-18 bg-primaryBg 3xl:h-20 border-b border-solid border-mainBorder"
         style={{ willChange: fixedNavbar ? "auto" : "transform" }}
       >
         {/* Placeholder for maintaining consistent spacing with page wrapper */}
         <div
-          className={`hidden xl:block xl:w-[210px] 1xl:min-w-[220px] 3xl:min-w-[270px] h-[3rem] transition-all duration-200 ease-in-out ${
-            !isSideMenuOpen && "xl:!max-w-[3rem] !w-[3rem] xl:!min-w-[4.5rem]"
+          className={`hidden xl:block xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 h-12 transition-all duration-200 ease-in-out ${
+            !isSideMenuOpen && "xl:!max-w-12 !w-12 xl:!min-w-18"
           }`}
         ></div>
         <div
-          className={`px-6 xsm:pr-8 md:px-6 md:pr-8 xl:pl-3 xl:pr-2 2xl:px-4 z-40 w-full flex justify-between xl:mx-auto items-center gap-4 xl:gap-7 xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-[102rem]`}
+          className={`px-6 xsm:pr-8 md:px-6 md:pr-8 xl:pl-3 xl:pr-2 2xl:px-4 z-40 w-full flex justify-between xl:mx-auto items-center gap-4 xl:gap-7 xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-408`}
         >
           <div className="flex items-center gap-10">
             <div className="flex xsm:pl-2  xl:hidden">
@@ -123,7 +123,7 @@ export const Navbar = () => {
               }}
             />
           </div>
-          <div className="flex items-center gap-[0.5rem] md:gap-2 xl:gap-3.5 z-[99]">
+          <div className="flex items-center gap-2 md:gap-2 xl:gap-3.5 z-[99]">
             <div className="hidden xl:flex">
               <ThemeButton
                 theme={theme}
@@ -191,7 +191,7 @@ export const Navbar = () => {
       />
       {isMobileMenuOpen && (
         <div
-          className="fixed top-[4.5rem] bottom-0 w-full bg-[rgb(0,0,0,0.35)] z-10 cursor-pointer"
+          className="fixed top-18 bottom-0 w-full bg-[rgb(0,0,0,0.35)] z-10 cursor-pointer"
           onClick={toggleMobileMenu}
           aria-hidden="true"
         />

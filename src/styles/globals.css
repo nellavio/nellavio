@@ -187,7 +187,7 @@ button {
 }
 .fc-view-harness,
 .fc-scrollgrid-sync-table {
-  @apply max-h-[35rem] md:max-h-[55rem];
+  @apply max-h-140 md:max-h-220;
 }
 .fc-toolbar-title {
   @apply text-primaryText;
@@ -442,11 +442,11 @@ input:-webkit-autofill {
 }
 
 .menuItemIcon svg {
-  @apply w-[20px] h-[20px] 3xl:w-[22px] 3xl:h-[22px];
+  @apply w-5 h-5 3xl:w-5.5 3xl:h-5.5;
 }
 
 .menuItemLogo svg {
-  @apply w-[2.25rem] h-[2.25rem] lg:w-[2.25rem] lg:h-[2.25rem] 1xl:w-[2.25rem] 1xl:h-[2.25rem] 3xl:w-[2.45rem] 3xl:h-[2.45rem];
+  @apply w-9 h-9 lg:w-9 lg:h-9 1xl:w-9 1xl:h-9 3xl:w-[2.45rem] 3xl:h-[2.45rem];
   transform: rotate(0deg);
 }
 

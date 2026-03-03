@@ -23,6 +23,7 @@ export const Layout = ({ children }: LayoutProps) => {
     setIsInitialLoad,
     setShouldStartChartAnimations,
   } = useAppStore();
+
   const [showLoader, setShowLoader] = useState(() => {
     // Check pathname synchronously to avoid flash on auth pages
     if (typeof window !== "undefined") {
@@ -31,6 +32,7 @@ export const Layout = ({ children }: LayoutProps) => {
     }
     return true;
   });
+
   const loaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const animationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -50,7 +52,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
   const { setTheme, themes } = useTheme();
 
-  // Set Obsidian as theme if theme is not recognized
+  // Set dark as theme if theme is not recognized
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
 
@@ -59,8 +61,9 @@ export const Layout = ({ children }: LayoutProps) => {
     }
   }, [setTheme, themes]);
 
-  // Show loader screen for 1 second on first render (only on non-auth pages)
+  // Show loader screen for 1 second on first render
   // Start chart animations at 80% of loader duration
+  // Chart animations are difficult to time properly, that's why they're disabled on default
   useEffect(() => {
     // Skip loader entirely on auth pages
     if (isAuthPage) {
@@ -123,7 +126,7 @@ export const Layout = ({ children }: LayoutProps) => {
             <Navbar />
           </>
         )}
-        <div className="flex flex-col w-full xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-[102rem] mx-auto relative">
+        <div className="flex flex-col w-full xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-408 mx-auto relative">
           <div className="w-full flex justify-center max-w-full px-0 md:px-0 xl:pl-3 xl:pr-2 2xl:px-4">
             {children}
           </div>

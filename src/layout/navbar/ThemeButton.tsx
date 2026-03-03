@@ -20,6 +20,7 @@ export const ThemeButton = ({
   const [isMounted, setIsMounted] = useState(false);
   const currentTheme = theme || "light";
   const [sliderDark, setSliderDark] = useState(currentTheme === "dark");
+
   /** Blocks tooltip open until next pointer move or keyboard focus */
   const suppressTooltipRef = useRef(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -110,14 +111,14 @@ export const ThemeButton = ({
         >
           {isMounted && (
             <div
-              className="absolute left-[2px] top-0.5 w-[38px] h-[2.1825rem] rounded-full shadow-sm border border-themeToggleActiveBorder bg-themeToggleActiveBg transition-transform-forced"
+              className="absolute left-0.5 top-0.5 w-9.5 h-[2.1825rem] rounded-full shadow-sm border border-themeToggleActiveBorder bg-themeToggleActiveBg transition-transform-forced"
               style={{
                 transform: sliderDark ? "translateX(42px)" : "translateX(0px)",
               }}
             />
           )}
           <div
-            className={`relative z-10 w-[42px] h-[2.1825rem] rounded-full flex items-center justify-center ${
+            className={`relative z-10 w-10.5 h-[2.1825rem] rounded-full flex items-center justify-center ${
               isMounted && currentTheme === "light"
                 ? "text-primaryText"
                 : "text-grayIcon"
@@ -126,7 +127,7 @@ export const ThemeButton = ({
             <SunIcon />
           </div>
           <div
-            className={`relative z-10 w-[42px] h-[2.1825rem] rounded-full flex items-center justify-center ${
+            className={`relative z-10 w-10.5 h-[2.1825rem] rounded-full flex items-center justify-center ${
               isMounted && currentTheme === "dark"
                 ? "text-primaryText"
                 : "text-grayIcon"

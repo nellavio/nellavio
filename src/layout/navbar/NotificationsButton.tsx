@@ -184,7 +184,7 @@ export const NotificationsButton = ({
             >
               <BellIcon />
               {newNotificationsCount > 0 && (
-                <span className="absolute -top-[0.2rem] -right-[0.2rem] flex h-4 w-4 items-center justify-center rounded-full bg-notificationBadgeBg text-[10px] font-semibold text-white">
+                <span className="absolute -top-[0.2rem] -right-[0.2rem] flex h-4 w-4 items-center justify-center rounded-full bg-notificationBadgeBg text-[0.625rem] font-semibold text-white">
                   {newNotificationsCount}
                 </span>
               )}
@@ -206,7 +206,7 @@ export const NotificationsButton = ({
         <div
           role="region"
           aria-label="Notifications"
-          className="hidden xl:block absolute right-0 top-10 xl:top-11 mt-2 w-[22rem] border border-inputBorder bg-dropdownBg text-primaryText rounded-md shadow-lg overflow-hidden"
+          className="hidden xl:block absolute right-0 top-10 xl:top-11 mt-2 w-88 border border-inputBorder bg-dropdownBg text-primaryText rounded-md shadow-lg overflow-hidden"
         >
           {/* Header */}
           <div className="px-5 py-3 border-b border-mainBorder flex justify-between items-center bg-notificationHeaderBg">
@@ -221,7 +221,7 @@ export const NotificationsButton = ({
           </div>
 
           {/* Notifications list */}
-          <div className="max-h-[400px] overflow-y-auto">
+          <div className="max-h-100 overflow-y-auto">
             {notifications.map((notification, index) => (
               <div
                 key={notification.id}

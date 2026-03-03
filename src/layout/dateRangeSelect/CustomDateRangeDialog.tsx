@@ -78,7 +78,7 @@ export const CustomDateRangeDialog = ({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent
-        className="flex flex-col sm:w-[26rem] sm:h-auto md:w-[26rem] sm:max-w-[26rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl"
+        className="flex flex-col sm:w-104 sm:h-auto md:w-104 sm:max-w-104 border-0 sm:border sm:border-inputBorder sm:rounded-2xl"
         onOpenAutoFocus={(e) => {
           e.preventDefault();
           (e.target as HTMLElement).focus();
@@ -110,7 +110,7 @@ export const CustomDateRangeDialog = ({
               />
               <div
                 onClick={() => startPickerRef.current?.setOpen(true)}
-                className="absolute right-2 top-[0.5rem] 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
+                className="absolute right-2 top-2 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
               >
                 <CalendarIcon />
               </div>
@@ -133,7 +133,7 @@ export const CustomDateRangeDialog = ({
               />
               <div
                 onClick={() => endPickerRef.current?.setOpen(true)}
-                className="absolute right-2 top-[0.5rem] 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
+                className="absolute right-2 top-2 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
               >
                 <CalendarIcon />
               </div>

@@ -95,7 +95,7 @@ export const LineAreaChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-96 1xl:h-[28rem] 3xl:h-[32rem] w-full">
+      <div className="h-96 1xl:h-112 3xl:h-128 w-full">
         <ResponsiveContainer
           width="100%"
           height="100%"

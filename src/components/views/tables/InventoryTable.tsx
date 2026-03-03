@@ -369,10 +369,7 @@ export const InventoryTable = () => {
     <Card isHeaderDividerVisible addTitleMargin title={tTables("pagination")}>
       <div className="py-2">
         <div className="overflow-x-auto">
-          <table
-            className="w-full min-w-[50rem]"
-            style={{ tableLayout: "fixed" }}
-          >
+          <table className="w-full min-w-200" style={{ tableLayout: "fixed" }}>
             <caption className="sr-only">Inventory stock table</caption>
             <thead>
               {inventoryTable.getHeaderGroups().map((headerGroup) => (
@@ -431,7 +428,7 @@ export const InventoryTable = () => {
 
         {/* Pagination Controls */}
         <div
-          className="flex items-center justify-between max-sm:flex-col max-sm:items-center max-sm:gap-[1.5rem]"
+          className="flex items-center justify-between max-sm:flex-col max-sm:items-center max-sm:gap-6"
           style={{ marginTop: "2rem" }}
         >
           <div className="text-sm text-secondaryText whitespace-nowrap max-sm:text-center">

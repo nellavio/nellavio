@@ -49,8 +49,8 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="w-full sm:max-w-[21rem] md:w-[19.5rem] 1xl:w-[21rem] flex flex-col items-center">
-      <h1 className="text-4xl sm:text-[1.95rem] 1xl:text-4xl font-bold mb-12 1xl:mb-16 mt-2 1xl:mt-4 text-primaryText">
+    <div className="w-full sm:max-w-84 md:w-78 1xl:w-84 flex flex-col items-center">
+      <h1 className="text-4xl sm:text-3xl 1xl:text-4xl font-bold mb-12 1xl:mb-16 mt-2 1xl:mt-4 text-primaryText">
         {t("signIn")}
       </h1>
       <form
@@ -87,7 +87,7 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
             <div
               id="login-email-error"
               role="alert"
-              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-80 w-auto"
             >
               <div className="relative">
                 <div className="bg-authErrorTooltipBg text-primaryText inline text-xs rounded p-2 px-4 w-full right-0 bottom-full border border-inputBorder rounded-md">
@@ -141,7 +141,7 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
             <div
               id="login-password-error"
               role="alert"
-              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-[20rem] w-auto"
+              className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 min-w-80 w-auto"
             >
               <div className="relative">
                 <div className="bg-authErrorTooltipBg text-primaryText text-xs rounded p-2 px-4 inline right-0 bottom-full border border-inputBorder rounded-md">
@@ -190,7 +190,7 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
           </p>
         )}
         <div className="flex flex-col items-center w-full mt-4 1xl:mt-6">
-          <div className="w-4/5 h-[2.5rem]">
+          <div className="w-4/5 h-10">
             <Button
               loading={isLoggingIn}
               type="submit"

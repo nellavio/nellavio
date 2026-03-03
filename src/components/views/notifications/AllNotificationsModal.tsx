@@ -82,7 +82,7 @@ export const AllNotificationsModal = ({
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
-        className="w-full max-w-full h-full md:h-auto md:w-[37.5rem] md:max-w-[37.5rem] bg-modalBg shadow-xl px-6 md:px-8 pt-16 md:pt-12 pb-6 flex flex-col md:rounded-2xl border-none"
+        className="w-full max-w-full h-full md:h-auto md:w-150 md:max-w-150 bg-modalBg shadow-xl px-6 md:px-8 pt-16 md:pt-12 pb-6 flex flex-col md:rounded-2xl border-none"
         onCloseAutoFocus={(e) => {
           if (returnFocusRef?.current) {
             e.preventDefault();
@@ -136,7 +136,7 @@ export const AllNotificationsModal = ({
         </div>
 
         {/* Notifications list */}
-        <div className="overflow-y-auto -mx-6 md:-mx-8 px-6 md:px-8 mb-4 flex-1 md:flex-none md:h-[400px]">
+        <div className="overflow-y-auto -mx-6 md:-mx-8 px-6 md:px-8 mb-4 flex-1 md:flex-none md:h-100">
           <div className="space-y-2 pt-0.5">
             {filteredNotifications.length === 0 ? (
               <div className="text-center py-12 text-secondaryText">

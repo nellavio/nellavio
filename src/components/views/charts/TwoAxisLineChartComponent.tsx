@@ -133,7 +133,7 @@ export const TwoAxisLineChartComponent = () => {
       addTitleMargin
     >
       <div
-        className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full"
+        className="h-64 xsm:h-80 1xl:h-96 3xl:h-112 w-full"
         style={{ marginTop: "2rem" }}
       >
         <ResponsiveContainer

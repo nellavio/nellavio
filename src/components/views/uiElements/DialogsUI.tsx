@@ -27,7 +27,7 @@ export const DialogsUI = () => {
           <DialogTrigger asChild>
             <Button>Open Dialog</Button>
           </DialogTrigger>
-          <DialogContent className="flex flex-col sm:w-[25rem] sm:h-auto md:w-[25rem] sm:max-w-[25rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl sm:p-8">
+          <DialogContent className="flex flex-col sm:w-100 sm:h-auto md:w-100 sm:max-w-100 border-0 sm:border sm:border-inputBorder sm:rounded-2xl sm:p-8">
             <DialogHeader>
               <DialogTitle>Dialog Title</DialogTitle>
               <DialogDescription>
@@ -54,7 +54,7 @@ export const DialogsUI = () => {
           <DialogTrigger asChild>
             <Button variant="destructive">Delete Dialog</Button>
           </DialogTrigger>
-          <DialogContent className="flex flex-col sm:w-[25rem] sm:h-auto md:w-[25rem] sm:max-w-[25rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl sm:p-8">
+          <DialogContent className="flex flex-col sm:w-100 sm:h-auto md:w-100 sm:max-w-100 border-0 sm:border sm:border-inputBorder sm:rounded-2xl sm:p-8">
             <DialogHeader>
               <DialogTitle>Are you absolutely sure?</DialogTitle>
               <DialogDescription>

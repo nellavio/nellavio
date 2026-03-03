@@ -44,18 +44,18 @@ export const OrdersDateRange = ({
   const { width: windowWidth } = useWindowDimensions();
 
   return (
-    <div className="mb-4 flex space-x-4 w-full md:w-[21rem] ">
+    <div className="mb-4 flex space-x-4 w-full md:w-84 ">
       <div className="flex relative  h-[2.3rem] 3xl:h-[2.6rem]">
         <DatePicker
           ref={startDatePickerRef}
           selected={startDateObj}
           onChange={handleStartDateChange}
           popperPlacement={windowWidth < 640 ? "bottom-start" : undefined}
-          className="pl-3 md:max-w-[10rem] md:min-w-[10rem] p-2 text-sm 3xl:text-base bg-inputBg hover:bg-inputBgHover hover:bg-InputBgHover w-full  h-[2.3rem] 3xl:h-[2.6rem]  border rounded-md border-inputBorder text-primaryText placeholder-secondaryText hover:border-inputBorderHover transition"
+          className="pl-3 md:max-w-40 md:min-w-40 p-2 text-sm 3xl:text-base bg-inputBg hover:bg-inputBgHover hover:bg-InputBgHover w-full  h-[2.3rem] 3xl:h-[2.6rem]  border rounded-md border-inputBorder text-primaryText placeholder-secondaryText hover:border-inputBorderHover transition"
         />
         <div
           onClick={() => startDatePickerRef.current?.setOpen(true)}
-          className="absolute right-2 top-[0.5rem] 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
+          className="absolute right-2 top-2 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
         >
           <CalendarIcon />
         </div>
@@ -66,11 +66,11 @@ export const OrdersDateRange = ({
           selected={endDateObj}
           onChange={handleEndDateChange}
           popperPlacement={windowWidth < 640 ? "bottom-start" : undefined}
-          className="pl-3 md:max-w-[10rem] md:min-w-[10rem] p-2 text-sm 3xl:text-base bg-inputBg hover:bg-inputBgHover w-full  h-[2.3rem] 3xl:h-[2.6rem] border rounded-md border-inputBorder text-primaryText placeholder-secondaryText hover:border-inputBorderHover transition"
+          className="pl-3 md:max-w-40 md:min-w-40 p-2 text-sm 3xl:text-base bg-inputBg hover:bg-inputBgHover w-full  h-[2.3rem] 3xl:h-[2.6rem] border rounded-md border-inputBorder text-primaryText placeholder-secondaryText hover:border-inputBorderHover transition"
         />
         <div
           onClick={() => endDatePickerRef.current?.setOpen(true)}
-          className="absolute right-2 top-[0.5rem] 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
+          className="absolute right-2 top-2 3xl:top-[0.6rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
         >
           <CalendarIcon />
         </div>

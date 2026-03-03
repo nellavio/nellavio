@@ -69,7 +69,7 @@ export const RevenuePerCountry = ({
         <div
           role="img"
           aria-label="Revenue distribution by country map"
-          className={`${isCompact ? "w-[70%]" : "w-[65%]"} worldMap flex items-center justify-center md:h-[19rem] lg:h-[23rem] xl:h-[23rem] 1xl:h-[24.5rem] 2xl:h-[27rem] 3xl:h-[33rem] -mb-6`}
+          className={`${isCompact ? "w-[70%]" : "w-[65%]"} worldMap flex items-center justify-center md:h-76 lg:h-92 xl:h-92 1xl:h-98 2xl:h-108 3xl:h-132 -mb-6`}
         >
           <Suspense
             fallback={
@@ -137,12 +137,12 @@ export const RevenuePerCountry = ({
           </Suspense>
         </div>
         <div
-          className={`${isCompact ? "w-[30%]" : "w-[35%]"} flex overflow-auto md:pt-[0.75rem] lg:pt-[2rem] xl:pt-[2.5rem] 1xl:pt-[2.5rem] 2xl:pt-[3rem] 3xl:pt-[5rem] items-start justify-start`}
+          className={`${isCompact ? "w-[30%]" : "w-[35%]"} flex overflow-auto md:pt-3 lg:pt-8 xl:pt-10 1xl:pt-10 2xl:pt-12 3xl:pt-20 items-start justify-start`}
         >
           <div
             className={`flex flex-col w-full ${isCompact ? "pl-[5%] pr-[5%]" : "pl-[10%] md:pr-[10%] lg:pr-[20%]"}`}
           >
-            <div className="w-full flex justify-between mb-[0.5rem] text-[12px] lg:text-[14px] 3xl:text-[16px]">
+            <div className="w-full flex justify-between mb-2 text-xs lg:text-sm 3xl:text-base">
               <h3 className="font-semibold text-primaryText">Country</h3>
               <h3 className="font-semibold text-primaryText">Sales</h3>
             </div>
@@ -158,13 +158,13 @@ export const RevenuePerCountry = ({
                     {data.FlagIcon && <data.FlagIcon />}
                   </div>
                   <span
-                    className={`text-primaryText ${isCompact ? "text-[10px]" : "text-xs"} 3xl:text-sm`}
+                    className={`text-primaryText ${isCompact ? "text-[0.625rem]" : "text-xs"} 3xl:text-sm`}
                   >
                     {data.name}
                   </span>
                 </div>
                 <span
-                  className={`font-semibold text-primaryText ${isCompact ? "text-[10px]" : "text-sm"} 3xl:text-sm`}
+                  className={`font-semibold text-primaryText ${isCompact ? "text-[0.625rem]" : "text-sm"} 3xl:text-sm`}
                 >
                   ${data.price}
                 </span>

@@ -32,7 +32,7 @@ export const CustomersPagination = ({
 
   return (
     <div className="flex items-center mt-8 gap-4 w-full sm:w-auto justify-between sm:justify-end self-start sm:self-unset">
-      <div className="min-w-[4.5rem] sm:mr-8">
+      <div className="min-w-18 sm:mr-8">
         <Select
           value={String(itemsPerPage)}
           onValueChange={(value) => {

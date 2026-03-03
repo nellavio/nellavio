@@ -215,7 +215,7 @@ export const BasicTable = () => {
     <Card isHeaderDividerVisible addTitleMargin title={t("basicTable")}>
       <div className="py-2">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[50rem]">
+          <table className="w-full min-w-200">
             <caption className="sr-only">Basic data table</caption>
             <thead>
               {basicTable.getHeaderGroups().map((headerGroup) => (

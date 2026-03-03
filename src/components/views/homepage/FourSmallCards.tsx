@@ -143,7 +143,7 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
               <div className="text-secondaryText text-sm lg:text-xs 1xl:text-sm tracking-tight">
                 {item.title}
               </div>
-              <div className="text-[1.75rem] lg:text-[1.4rem] 1xl:text-[1.6rem] 3xl:text-[1.85rem] font-semibold text-primaryText">
+              <div className="text-3xl lg:text-2xl 1xl:text-2xl 3xl:text-3xl font-semibold text-primaryText">
                 {item.metric}
               </div>
               <div className="flex items-center gap-1.5 text-xs text-secondaryText mt-0.5">

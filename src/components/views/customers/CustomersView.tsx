@@ -70,8 +70,8 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
           </InputGroup>
         </div>
         <div className="flex gap-6 flex-wrap w-full md:w-auto mt-6 md:mt-0">
-          <div className="flex w-full md:w-auto justify-between gap-4 md:gap-4 h-9 3xl:h-10 max-[450px]:gap-2">
-            <div className="max-[450px]:w-[calc(50%-0.25rem)]">
+          <div className="flex w-full md:w-auto justify-between gap-4 md:gap-4 h-9 3xl:h-10 max-xsm:gap-2">
+            <div className="max-xsm:w-[calc(50%-0.25rem)]">
               <CustomersCountryDropdown
                 options={countryOptions}
                 filterKey="country"
@@ -79,7 +79,7 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
                 filters={filters}
               />
             </div>
-            <div className="max-[450px]:w-[calc(50%-0.25rem)]">
+            <div className="max-xsm:w-[calc(50%-0.25rem)]">
               <CustomersSortDropdown
                 options={sortOptions}
                 setSorting={setSorting}
@@ -117,7 +117,7 @@ export const CustomersView = ({ customers }: CustomersViewProps) => {
         <CustomersTable table={table} />
       </div>
       <div className="flex flex-col sm:flex-row justify-between items-center flex-wrap pb-4">
-        <div className="w-[14rem] mt-8 sm:mb-0 flex gap-4 h-10 3xl:h-11">
+        <div className="w-56 mt-8 sm:mb-0 flex gap-4 h-10 3xl:h-11">
           <Button
             variant="outline"
             onClick={clearFilters}

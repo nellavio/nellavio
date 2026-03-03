@@ -48,11 +48,11 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
     return (
       <>
         <div
-          className="2xl:-ml-1 w-[17rem] alternativeScrollbar hidden lg:block"
+          className="2xl:-ml-1 w-68 alternativeScrollbar hidden lg:block"
           ref={ref}
         >
           <div className="relative w-full">
-            <InputGroup className="h-[2.2rem] 1xl:h-[2.5rem] 1xl:translate-y-[0.2rem] 3xl:translate-y-0">
+            <InputGroup className="h-[2.2rem] 1xl:h-10 1xl:translate-y-[0.2rem] 3xl:translate-y-0">
               <InputGroupInput
                 variant="navbarSearch"
                 type="text"
@@ -66,7 +66,11 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
                 aria-expanded={isOpen}
                 aria-haspopup="listbox"
                 aria-controls="search-listbox"
-                aria-activedescendant={highlightedIndex >= 0 ? `search-option-${highlightedIndex}` : undefined}
+                aria-activedescendant={
+                  highlightedIndex >= 0
+                    ? `search-option-${highlightedIndex}`
+                    : undefined
+                }
                 autoComplete="off"
                 className="z-30 text-primaryText text-xs 1xl:text-sm placeholder:text-xs placeholder:1xl:text-sm"
               />
@@ -88,7 +92,9 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
                       id={`search-option-${index}`}
                       role="option"
                       aria-selected={index === highlightedIndex}
-                      ref={(el) => { itemRefs.current[index] = el; }}
+                      ref={(el) => {
+                        itemRefs.current[index] = el;
+                      }}
                       onClick={() => handleSectionClick(item)}
                       className={`flex justify-between items-center px-5 py-4 cursor-pointer border-b border-mainBorder last:border-b-0 ${
                         index === highlightedIndex
@@ -115,7 +121,7 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
         </div>
       </>
     );
-  }
+  },
 );
 
 SearchInput.displayName = "SearchInput";

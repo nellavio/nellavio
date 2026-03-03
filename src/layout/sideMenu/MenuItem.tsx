@@ -65,11 +65,11 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
             if (isCollapsed) setHasEnteredSinceCollapse(true);
           }}
           onBlur={() => setHasEnteredSinceCollapse(false)}
-          className={`block rounded-[6px] focus-visible:outline-offset-[-2px] transition-[width,margin] duration-200 ${isCollapsed ? "mx-3" : "w-full"}`}
+          className={`block rounded-md focus-visible:outline-offset-[-2px] transition-[width,margin] duration-200 ${isCollapsed ? "mx-3" : "w-full"}`}
         >
           <div
             onClick={handleMenuItemClick}
-            className={`flex relative rounded-[6px] items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-[1px] 1xl:mb-1 3xl:mb-2 transition-[background-color,border-color,padding] duration-200 ${
+            className={`flex relative rounded-md items-center py-2 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-px 1xl:mb-1 3xl:mb-2 transition-[background-color,border-color,padding] duration-200 ${
               isCollapsed ? "pl-[0.65rem]" : "pl-4 pr-2"
             } ${
               isActive
@@ -87,7 +87,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
               {icon}
             </div>
             <div
-              className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide whitespace-nowrap overflow-hidden transition-[width,opacity] duration-200 ${
+              className={`text-xs xl:text-xs 3xl:text-sm font-medium tracking-wide whitespace-nowrap overflow-hidden transition-[width,opacity] duration-200 ${
                 isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"
               } ${isActive ? "text-navItemTextActive" : "text-navItemText"}`}
             >

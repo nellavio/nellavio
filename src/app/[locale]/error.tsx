@@ -28,7 +28,7 @@ const Error = ({
         <Button
           variant="outline"
           onClick={() => reset()}
-          className="w-[8rem] h-[3rem] border border-mainColor rounded-lg py-3 px-5 text-primaryText"
+          className="w-32 h-12 border border-mainColor rounded-lg py-3 px-5 text-primaryText"
         >
           {t("tryAgain")}
         </Button>

@@ -113,8 +113,8 @@ const WeeklyPerformanceChart = ({
   isFourCardsMode?: boolean;
 }) => {
   const chartHeightWhenNoActivities = isFourCardsMode
-    ? "h-[15rem] lg:h-[18rem] xl:h-[18rem] 2xl:h-[19rem] 3xl:h-[23rem]"
-    : "h-[15rem] 3xl:h-[19rem]";
+    ? "h-60 lg:h-72 xl:h-72 2xl:h-76 3xl:h-92"
+    : "h-60 3xl:h-76";
   const { width: windowWidth } = useWindowDimensions();
   const { theme, systemTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -159,7 +159,7 @@ const WeeklyPerformanceChart = ({
       <div
         role="img"
         aria-label="Weekly performance bar chart"
-        className={`w-full ${isExpanded ? chartHeightWhenNoActivities : "h-[15rem] xsm:h-[18rem] 3xl:h-[21rem]"}`}
+        className={`w-full ${isExpanded ? chartHeightWhenNoActivities : "h-60 xsm:h-72 3xl:h-84"}`}
       >
         <ResponsiveContainer
           width="100%"

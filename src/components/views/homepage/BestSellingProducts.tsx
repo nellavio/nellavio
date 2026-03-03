@@ -104,7 +104,7 @@ export const BestSellingProducts = ({
       <div
         role="img"
         aria-label="Best selling products bar chart"
-        className="h-[18.5rem] 1xl:h-[20rem] 3xl:h-[21.8rem] relative mt-1 3xl:mt-0"
+        className="h-74 1xl:h-80 3xl:h-[21.8rem] relative mt-1 3xl:mt-0"
       >
         <ResponsiveContainer
           width="100%"

@@ -15,7 +15,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
-        className="max-w-[90vw] sm:max-w-[38rem] pt-0 sm:pt-0 md:pt-12 pb-0 md:pb-12"
+        className="max-w-[90vw] sm:max-w-152 pt-0 sm:pt-0 md:pt-12 pb-0 md:pb-12"
         onOpenAutoFocus={handleOpenAutoFocus}
         onKeyDown={handleKeyDown}
       >

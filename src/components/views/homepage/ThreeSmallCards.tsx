@@ -62,7 +62,7 @@ export const ThreeSmallCards = ({
       <div
         role="img"
         aria-label="Metric chart"
-        className={`w-[6.5rem] h-[6.5rem] sm:w-[6.25rem] sm:h-[6.25rem] md:w-[4.75rem] md:h-[4.75rem] lg:w-[4.5rem] lg:h-[4.5rem] xl:w-20 xl:h-20 3xl:w-24 3xl:h-24 ${hoverScaleClass}`}
+        className={`w-26 h-26 sm:w-25 sm:h-25 md:w-19 md:h-19 lg:w-18 lg:h-18 xl:w-20 xl:h-20 3xl:w-24 3xl:h-24 ${hoverScaleClass}`}
       >
         <ResponsiveContainer
           width="100%"
@@ -101,7 +101,7 @@ export const ThreeSmallCards = ({
         {metricsData.map((metric, index) => (
           <div
             key={metric.title}
-            className="border light:shadow-lg border-cardBorder rounded-[12px] bg-primaryBg relative w-full text-left py-6 pl-8 pr-5 min-[25rem]:pr-8"
+            className="border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-6 pl-8 pr-5 min-[25rem]:pr-8"
           >
             <div className="flex items-center justify-between gap-5 w-full">
               <div className="flex flex-col justify-center gap-1.5">
@@ -151,7 +151,7 @@ export const ThreeSmallCards = ({
         {metricsData.slice(0, 2).map((metric, index) => (
           <div
             key={metric.title}
-            className="border light:shadow-lg border-cardBorder rounded-[12px] bg-primaryBg relative w-full text-left py-5 px-5"
+            className="border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-5 px-5"
           >
             <div className="flex items-center justify-between gap-3 w-full">
               <div className="flex flex-col justify-center gap-1">
@@ -197,7 +197,7 @@ export const ThreeSmallCards = ({
       </div>
 
       {/* Tablet+: single card with all metrics */}
-      <div className="hidden md:flex border light:shadow-lg border-cardBorder rounded-[12px] bg-primaryBg relative w-full text-left py-4 1xl:py-[1.3rem] 3xl:py-[1.5rem]">
+      <div className="hidden md:flex border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-4 1xl:py-[1.3rem] 3xl:py-6">
         <div className="flex flex-row justify-between gap-3 1xl:gap-4 2xl:gap-6 3xl:gap-8 px-5 3xl:px-4 w-full">
           {metricsData.map((metric, index) => (
             <div

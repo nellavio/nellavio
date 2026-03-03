@@ -49,13 +49,13 @@ export const Card = ({
   return (
     <div
       id={id}
-      className={`border light:shadow-lg border-cardBorder rounded-[12px] !border-cardBorder bg-primaryBg
+      className={`border light:shadow-lg border-cardBorder rounded-xl !border-cardBorder bg-primaryBg
                 relative w-full text-left h-full pt-[1.35rem]  
                 ${className} `}
     >
       {title && !customHeader && (
         <div
-          className={`text-[0.9rem] w-full ${padding} 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText 
+          className={`text-sm w-full ${padding} 1xl:text-base 3xl:text-xl font-semibold text-primaryText 
             ${addTitleMargin ? "mb-6" : ""}
             ${isHeaderDividerVisible ? "border-b border-cardBorder pb-4" : ""}
             `}

@@ -318,7 +318,7 @@ export const UserTable = () => {
                   Columns
                 </Button>
               </PopoverTrigger>
-              <PopoverContent align="start" className="w-[200px] p-3">
+              <PopoverContent align="start" className="w-50 p-3">
                 <div className="space-y-2">
                   <div className="text-sm font-medium mb-3">Toggle columns</div>
                   {userTable
@@ -358,7 +358,7 @@ export const UserTable = () => {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
-                  className="h-[38px] py-2 px-4 text-sm gap-2 max-xsm:w-full"
+                  className="h-9.5 py-2 px-4 text-sm gap-2 max-xsm:w-full"
                 >
                   <FilterIcon />
                   Filter by role
@@ -388,7 +388,7 @@ export const UserTable = () => {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="outline"
-                    className="h-[38px] py-2 px-4 text-sm gap-2"
+                    className="h-9.5 py-2 px-4 text-sm gap-2"
                   >
                     <SortIcon />
                     Sort by
@@ -512,7 +512,7 @@ export const UserTable = () => {
             marginTop: userRoleFilter || userSorting[0] ? "0" : "1.3rem",
           }}
         >
-          <table className="w-full min-w-[50rem]">
+          <table className="w-full min-w-200">
             <caption className="sr-only">Users table</caption>
             <thead>
               {userTable.getHeaderGroups().map((headerGroup) => (

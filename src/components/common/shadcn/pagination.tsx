@@ -23,7 +23,7 @@ import { buttonVariants, type ButtonProps } from "./button";
  * </Pagination>
  * ```
  */
-function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => {
   return (
     <nav
       role="navigation"
@@ -33,7 +33,7 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
       {...props}
     />
   );
-}
+};
 
 /**
  * Container for pagination items.
@@ -43,10 +43,10 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ComponentProps<'ul'>} props - Standard ul element props
  */
-function PaginationContent({
+const PaginationContent = ({
   className,
   ...props
-}: React.ComponentProps<"ul">) {
+}: React.ComponentProps<"ul">) => {
   return (
     <ul
       data-slot="pagination-content"
@@ -54,7 +54,7 @@ function PaginationContent({
       {...props}
     />
   );
-}
+};
 
 /**
  * Individual pagination item wrapper.
@@ -63,9 +63,9 @@ function PaginationContent({
  * @component
  * @param {React.ComponentProps<'li'>} props - Standard li element props
  */
-function PaginationItem({ ...props }: React.ComponentProps<"li">) {
+const PaginationItem = ({ ...props }: React.ComponentProps<"li">) => {
   return <li data-slot="pagination-item" {...props} />;
-}
+};
 
 /**
  * Props for the PaginationLink component.
@@ -94,12 +94,12 @@ type PaginationLinkProps = {
  * <PaginationLink isActive={true}>1</PaginationLink>
  * ```
  */
-function PaginationLink({
+const PaginationLink = ({
   className,
   isActive,
   size = "icon",
   ...props
-}: PaginationLinkProps) {
+}: PaginationLinkProps) => {
   return (
     <button
       aria-current={isActive ? "page" : undefined}
@@ -111,12 +111,12 @@ function PaginationLink({
           size,
         }),
         "transition-none",
-        className
+        className,
       )}
       {...props}
     />
   );
-}
+};
 
 /**
  * Previous page navigation button.
@@ -135,11 +135,11 @@ type PaginationPreviousProps = React.ComponentProps<typeof PaginationLink> & {
   label?: string;
 };
 
-function PaginationPrevious({
+const PaginationPrevious = ({
   className,
   label = "Previous",
   ...props
-}: PaginationPreviousProps) {
+}: PaginationPreviousProps) => {
   return (
     <PaginationLink
       aria-label="Go to previous page"
@@ -151,7 +151,7 @@ function PaginationPrevious({
       <span className="hidden sm:block">{label}</span>
     </PaginationLink>
   );
-}
+};
 
 /**
  * Next page navigation button.
@@ -170,11 +170,11 @@ type PaginationNextProps = React.ComponentProps<typeof PaginationLink> & {
   label?: string;
 };
 
-function PaginationNext({
+const PaginationNext = ({
   className,
   label = "Next",
   ...props
-}: PaginationNextProps) {
+}: PaginationNextProps) => {
   return (
     <PaginationLink
       aria-label="Go to next page"
@@ -186,7 +186,7 @@ function PaginationNext({
       <ChevronRight className="h-4 w-4" />
     </PaginationLink>
   );
-}
+};
 
 /**
  * Ellipsis indicator for truncated page numbers.
@@ -202,10 +202,10 @@ function PaginationNext({
  * <PaginationEllipsis />
  * ```
  */
-function PaginationEllipsis({
+const PaginationEllipsis = ({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<"span">) => {
   return (
     <span
       aria-hidden
@@ -217,7 +217,7 @@ function PaginationEllipsis({
       <span className="sr-only">More pages</span>
     </span>
   );
-}
+};
 
 export {
   Pagination,

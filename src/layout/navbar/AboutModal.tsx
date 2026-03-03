@@ -21,7 +21,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
-        className="md:w-[38rem] px-5 xsm:px-5 sm:px-6 md:px-12 pr-0 xsm:pr-0 sm:pr-0 pt-0 sm:pt-0 md:pt-12 pb-0 md:pb-12"
+        className="md:w-152 px-5 xsm:px-5 sm:px-6 md:px-12 pr-0 xsm:pr-0 sm:pr-0 pt-0 sm:pt-0 md:pt-12 pb-0 md:pb-12"
         onOpenAutoFocus={handleOpenAutoFocus}
         onCloseAutoFocus={(e) => {
           if (returnFocusRef?.current) {

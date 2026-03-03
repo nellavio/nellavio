@@ -18,7 +18,7 @@ export const DatePickerForm = () => {
     <Card isHeaderDividerVisible addTitleMargin title={t("datePicker")}>
       <div className="flex flex-col gap-[0.8rem]">
         <Label>Select Date</Label>
-        <div className="flex relative h-[2.3rem] w-[10rem]">
+        <div className="flex relative h-[2.3rem] w-40">
           <DatePicker
             ref={datePickerRef}
             selected={date}
@@ -28,7 +28,7 @@ export const DatePickerForm = () => {
           />
           <div
             onClick={() => datePickerRef.current?.setOpen(true)}
-            className="absolute right-2 top-[0.5rem] stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
+            className="absolute right-2 top-2 stroke-gray-400 fill-gray-400 text-gray-400 hover:stroke-calendarIconHover hover:fill-calendarIconHover cursor-pointer transition"
           >
             <CalendarIcon />
           </div>

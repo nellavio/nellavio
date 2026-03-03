@@ -44,7 +44,7 @@ export const ProfileView = () => {
         </div>
 
         {/* Profile Info */}
-        <div className="pt-16 max-3xl:pt-12 max-2xl:pt-10 px-6 pb-4 max-3xl:pb-2 max-2xl:pb-1 max-md:pb-3 relative min-h-[160px] max-3xl:min-h-[130px] max-2xl:min-h-[115px] max-md:min-h-0">
+        <div className="pt-16 max-3xl:pt-12 max-2xl:pt-10 px-6 pb-4 max-3xl:pb-2 max-2xl:pb-1 max-md:pb-3 relative min-h-40 max-3xl:min-h-32.5 max-2xl:min-h-[7.1875rem] max-md:min-h-0">
           {/* Text info centered below avatar */}
           <div className="text-center">
             <h1 className="text-3xl max-3xl:text-2xl max-2xl:text-xl font-bold text-primaryText mb-1">
@@ -73,7 +73,7 @@ export const ProfileView = () => {
                 className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
                 aria-label="LinkedIn profile"
               >
-                <div className="w-[18px] h-[18px] flex items-center justify-center text-grayIcon group-hover:text-primaryText">
+                <div className="w-4.5 h-4.5 flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <LinkedinIcon />
                 </div>
               </button>
@@ -81,7 +81,7 @@ export const ProfileView = () => {
                 className="w-10 h-10 rounded-full bg-secondaryBg hover:bg-hoverBg flex items-center justify-center group"
                 aria-label="Twitter profile"
               >
-                <div className="w-[18px] h-[18px] flex items-center justify-center text-grayIcon group-hover:text-primaryText">
+                <div className="w-4.5 h-4.5 flex items-center justify-center text-grayIcon group-hover:text-primaryText">
                   <TwitterIcon />
                 </div>
               </button>

@@ -12,20 +12,20 @@ export const HamburgerButton = ({
     aria-label="Toggle menu"
     aria-expanded={isMobileMenuOpen}
   >
-    <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all duration-200">
-      <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+    <div className="relative flex overflow-hidden items-center justify-center rounded-full w-12.5 h-12.5 transform transition-all duration-200">
+      <div className="flex flex-col justify-between w-5 h-5 transform transition-all duration-300 origin-center overflow-hidden">
         <div
-          className={`bg-secondaryText h-[2px] w-7 transform transition-all duration-300 origin-left ${
+          className={`bg-secondaryText h-0.5 w-7 transform transition-all duration-300 origin-left ${
             isMobileMenuOpen ? "translate-x-10" : ""
           }`}
         ></div>
         <div
-          className={`bg-secondaryText e h-[2px] w-7 rounded transform transition-all duration-300 ${
+          className={`bg-secondaryText e h-0.5 w-7 rounded transform transition-all duration-300 ${
             isMobileMenuOpen ? "translate-x-10 delay-75" : ""
           }`}
         ></div>
         <div
-          className={`bg-secondaryText h-[2px] w-7 transform transition-all duration-300 origin-left ${
+          className={`bg-secondaryText h-0.5 w-7 transform transition-all duration-300 origin-left ${
             isMobileMenuOpen ? "translate-x-10 delay-150" : ""
           }`}
         ></div>
@@ -35,12 +35,12 @@ export const HamburgerButton = ({
           } flex w-0 ${isMobileMenuOpen ? "w-12" : ""}`}
         >
           <div
-            className={`absolute bg-secondaryText h-[2px] w-5 transform transition-all duration-500 ${
+            className={`absolute bg-secondaryText h-0.5 w-5 transform transition-all duration-500 ${
               isMobileMenuOpen ? "rotate-45 delay-300" : "rotate-0"
             }`}
           ></div>
           <div
-            className={`absolute bg-secondaryText h-[2px] w-5 transform transition-all duration-500 ${
+            className={`absolute bg-secondaryText h-0.5 w-5 transform transition-all duration-500 ${
               isMobileMenuOpen ? "-rotate-45 delay-300" : "-rotate-0"
             }`}
           ></div>

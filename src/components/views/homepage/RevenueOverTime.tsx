@@ -149,7 +149,7 @@ export const RevenueOverTime = ({
   const customHeader = (
     <div className="flex items-center justify-between">
       <div className="flex flex-col gap-0.5">
-        <span className="text-[0.9rem] 1xl:text-[1rem] 3xl:text-[1.2rem] font-semibold text-primaryText">
+        <span className="text-sm 1xl:text-base 3xl:text-xl font-semibold text-primaryText">
           {t("title")}
         </span>
         <span style={{ fontSize: "0.85rem", color: "rgb(140, 145, 150)" }}>
@@ -195,7 +195,7 @@ export const RevenueOverTime = ({
       <div
         role="img"
         aria-label="Revenue over time area chart"
-        className="w-full overflow-hidden h-[14.5rem] lg:h-[15.5rem] 1xl:h-[15rem] 2xl:h-[15.5rem] 3xl:h-[20rem]"
+        className="w-full overflow-hidden h-58 lg:h-62 1xl:h-60 2xl:h-62 3xl:h-80"
       >
         <ResponsiveContainer
           width="100%"

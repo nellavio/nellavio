@@ -122,7 +122,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
           <div
             role="img"
             aria-label="Today's sales line chart"
-            className="mt-7 lg:mt-6 1xl:mt-4 2xl:mt-8 3xl:mt-6 -ml-3 1xl:ml-0 h-60 lg:h-44 1xl:h-[12.5rem] 3xl:h-[16rem]"
+            className="mt-7 lg:mt-6 1xl:mt-4 2xl:mt-8 3xl:mt-6 -ml-3 1xl:ml-0 h-60 lg:h-44 1xl:h-50 3xl:h-64"
           >
             <ResponsiveContainer
               width="100%"
@@ -200,7 +200,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
           <div
             role="img"
             aria-label="Today's sales vs average line chart"
-            className="mt-7 lg:mt-6 1xl:mt-4 2xl:mt-8 3xl:mt-6 -ml-3 1xl:ml-0 h-60 lg:h-44 1xl:h-[12.5rem] 3xl:h-[16rem]"
+            className="mt-7 lg:mt-6 1xl:mt-4 2xl:mt-8 3xl:mt-6 -ml-3 1xl:ml-0 h-60 lg:h-44 1xl:h-50 3xl:h-64"
           >
             <ResponsiveContainer
               width="100%"

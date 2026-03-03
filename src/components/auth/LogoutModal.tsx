@@ -42,7 +42,7 @@ export const LogoutModal = ({
       >
         <DialogHeader>
           <div className="flex items-center justify-center w-full flex-col gap-2 -mt-2">
-            <div className="rounded-full border border-mainBorder p-3 pl-4 w-16 h-16 flex justify-center items-center mr-[0rem] stroke-grayIcon fill-grayIcon">
+            <div className="rounded-full border border-mainBorder p-3 pl-4 w-16 h-16 flex justify-center items-center mr-0 stroke-grayIcon fill-grayIcon">
               <LogoutIcon width="45" height="45" />
             </div>
             <DialogTitle className="text-primaryText text-3xl w-full text-center mt-2">
@@ -57,13 +57,13 @@ export const LogoutModal = ({
           footerVariant="centered"
           className="!flex-row gap-4 sm:gap-0"
         >
-          <Button variant="outline" onClick={closeModal} className="h-[2.5rem]">
+          <Button variant="outline" onClick={closeModal} className="h-10">
             {t("logoutModalCancelButton")}
           </Button>
           <Button
             onClick={handleLogoutClick}
             loading={loading}
-            className="min-w-[4.5rem] h-[2.5rem]"
+            className="min-w-18 h-10"
           >
             {t("logoutModalConfirmButton")}
           </Button>

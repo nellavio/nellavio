@@ -5,6 +5,10 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const packageJson = require("../../package.json");
 
+/**
+ * Manually parses .env without dotenv — only sets vars not already
+ * present in process.env to avoid overriding system-level config.
+ */
 const loadEnvFile = () => {
   try {
     const content = readFileSync(resolve(process.cwd(), ".env"), "utf-8");
@@ -24,6 +28,10 @@ const loadEnvFile = () => {
   }
 };
 
+/**
+ * Pings the backend /health endpoint with a 2s abort timeout
+ * to determine connection mode shown in the startup banner.
+ */
 const checkBackendHealth = async (): Promise<{
   isOnline: boolean;
   graphqlUrl: string | null;
@@ -67,6 +75,10 @@ const checkBackendHealth = async (): Promise<{
   }
 };
 
+/**
+ * Renders the "Mode" block of the banner — connected, offline,
+ * or standalone — based on backend reachability and auth config.
+ */
 const buildModeSection = (
   status: Awaited<ReturnType<typeof checkBackendHealth>>,
 ): string => {

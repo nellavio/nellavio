@@ -32,7 +32,7 @@ export const RemoveEventModal = ({
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
-        className="flex flex-col items-center justify-start md:max-w-[28rem]"
+        className="flex flex-col items-center justify-start md:max-w-112"
         onCloseAutoFocus={(e) => {
           if (returnFocusRef?.current) {
             e.preventDefault();
@@ -53,19 +53,14 @@ export const RemoveEventModal = ({
             {subtitle}
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter footerVariant="centered" className="!flex-row gap-4 sm:gap-0">
-          <Button
-            variant="outline"
-            onClick={closeModal}
-            className="h-[2.5rem]"
-          >
+        <DialogFooter
+          footerVariant="centered"
+          className="!flex-row gap-4 sm:gap-0"
+        >
+          <Button variant="outline" onClick={closeModal} className="h-10">
             {t("cancel")}
           </Button>
-          <Button
-            onClick={onConfirm}
-            loading={loading}
-            className="h-[2.5rem]"
-          >
+          <Button onClick={onConfirm} loading={loading} className="h-10">
             {t("yes")}
           </Button>
         </DialogFooter>

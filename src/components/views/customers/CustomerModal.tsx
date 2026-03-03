@@ -39,7 +39,7 @@ export const CustomerModal = ({
   return (
     <div className="flex">
       <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:w-[38rem] sm:h-auto md:w-[38rem] border-0 sm:border sm:border-inputBorder sm:rounded-2xl px-6 xsm:px-8 sm:px-12 pt-8 sm:pt-[3rem] overflow-y-auto sm:overflow-y-visible">
+        <DialogContent className="sm:w-152 sm:h-auto md:w-152 border-0 sm:border sm:border-inputBorder sm:rounded-2xl px-6 xsm:px-8 sm:px-12 pt-8 sm:pt-12 overflow-y-auto sm:overflow-y-visible">
           <DialogTitle className="sr-only">
             {customerData.col1} {customerData.col2}
           </DialogTitle>
@@ -48,7 +48,7 @@ export const CustomerModal = ({
           </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2">
             <div className="flex w-full gap-6">
-              <div className="flex min-h-[6rem] min-w-[6rem]">
+              <div className="flex min-h-24 min-w-24">
                 {!imageLoaded && <SpinnerIcon className="contentSpinner" />}
                 <img
                   src={customerData.col0}
@@ -84,7 +84,7 @@ export const CustomerModal = ({
               ))}
             </div>
           </div>
-          <DialogFooter className="mt-8 sm:mt-12 !flex-row gap-3 sm:space-x-0 [&>*]:h-[2.9rem] [&>*]:flex-1 md:[&>*]:flex-initial md:justify-end md:[&>*]:w-[9.5rem] md:gap-3">
+          <DialogFooter className="mt-8 sm:mt-12 !flex-row gap-3 sm:space-x-0 [&>*]:h-[2.9rem] [&>*]:flex-1 md:[&>*]:flex-initial md:justify-end md:[&>*]:w-38 md:gap-3">
             <Button variant="outline">Order history</Button>
             <Button icon={<PhoneIcon />}>Call customer</Button>
           </DialogFooter>

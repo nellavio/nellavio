@@ -220,7 +220,7 @@ export const GradientPieChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full flex items-center justify-center">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-112 w-full flex items-center justify-center">
         <ResponsiveContainer
           width="100%"
           height="100%"

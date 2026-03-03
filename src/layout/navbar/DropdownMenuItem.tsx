@@ -19,11 +19,11 @@ const ExpandableDropdownSection = ({
           return (
             <div key={index} className="relative">
               {isLast ? (
-                <div className="absolute left-[-1.6rem] top-0 h-1/2 w-[calc(0.75rem+2px)] border-l-2 border-b-2 border-mainBorder rounded-bl-[5px] z-10 pointer-events-none" />
+                <div className="absolute left-[-1.6rem] top-0 h-1/2 w-[calc(0.75rem+2px)] border-l-2 border-b-2 border-mainBorder rounded-bl-sm z-10 pointer-events-none" />
               ) : (
                 <>
-                  <div className="absolute left-[-1.6rem] top-0 bottom-0 w-[2px] bg-mainBorder z-10 pointer-events-none" />
-                  <div className="absolute left-[calc(-1.6rem+2px)] top-1/2 w-[0.75rem] h-[2px] bg-mainBorder z-10 pointer-events-none" />
+                  <div className="absolute left-[-1.6rem] top-0 bottom-0 w-0.5 bg-mainBorder z-10 pointer-events-none" />
+                  <div className="absolute left-[calc(-1.6rem+2px)] top-1/2 w-3 h-0.5 bg-mainBorder z-10 pointer-events-none" />
                 </>
               )}
               {child}
@@ -68,7 +68,7 @@ export const DropdownMenuItem = ({
   return (
     <div role="none">
       <div
-        className="px-4 py-2 pr-5 pl-[1rem] flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center focus-visible:bg-dropdownBgHover"
+        className="px-4 py-2 pr-5 pl-4 flex hover:bg-dropdownBgHover cursor-pointer justify-between items-center focus-visible:bg-dropdownBgHover"
         onClick={onToggle}
         onKeyDown={handleKeyDown}
         tabIndex={-1}

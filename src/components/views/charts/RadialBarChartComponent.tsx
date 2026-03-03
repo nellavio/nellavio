@@ -97,7 +97,7 @@ export const RadialBarChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full flex flex-col">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-112 w-full flex flex-col">
         <div className="flex-1 min-h-0">
           <ResponsiveContainer
             width="100%"

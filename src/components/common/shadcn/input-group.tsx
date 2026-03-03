@@ -39,7 +39,10 @@ const InputGroup = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   const childrenArray = React.Children.toArray(children);
 
-  const checkAddonAlignment = (alignValue: string | undefined, targetAlign: string) => {
+  const checkAddonAlignment = (
+    alignValue: string | undefined,
+    targetAlign: string,
+  ) => {
     if (targetAlign === "inline-start") {
       return !alignValue || alignValue === "inline-start";
     }
@@ -74,7 +77,7 @@ const InputGroup = React.forwardRef<
         ref={ref}
         className={cn(
           "relative flex min-w-0 items-stretch rounded-md has-[:disabled]:opacity-50",
-          className
+          className,
         )}
         {...props}
       >
@@ -103,11 +106,12 @@ const inputGroupAddonVariants = cva(
     defaultVariants: {
       align: "inline-start",
     },
-  }
+  },
 );
 
 interface InputGroupAddonProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof inputGroupAddonVariants> {}
 
 /**
@@ -135,7 +139,7 @@ const InputGroupAddon = React.forwardRef<HTMLDivElement, InputGroupAddonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 InputGroupAddon.displayName = "InputGroupAddon";
 
@@ -157,9 +161,14 @@ const inputGroupButtonVariants = cva("", {
   },
 });
 
-interface InputGroupButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
   size?: "xs" | "icon-xs" | "sm" | "icon-sm";
 }
 
@@ -187,14 +196,8 @@ const InputGroupButton = React.forwardRef<
   InputGroupButtonProps
 >(
   (
-    {
-      className,
-      variant = "ghost",
-      size = "xs",
-      type = "button",
-      ...props
-    },
-    ref
+    { className, variant = "ghost", size = "xs", type = "button", ...props },
+    ref,
   ) => {
     return (
       <button
@@ -204,12 +207,12 @@ const InputGroupButton = React.forwardRef<
           buttonVariants({ variant, size: "default" }),
           inputGroupButtonVariants({ size }),
           "pointer-events-auto text-grayIcon stroke-grayIcon",
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 InputGroupButton.displayName = "InputGroupButton";
 
@@ -237,7 +240,7 @@ const InputGroupText = React.forwardRef<
       ref={ref}
       className={cn(
         "pointer-events-auto flex h-6 items-center text-xs text-secondaryText",
-        className
+        className,
       )}
       {...props}
     />
@@ -254,18 +257,21 @@ const inputGroupInputVariants = cva(
   {
     variants: {
       variant: {
-        default: "h-[2.3rem] 3xl:h-[2.6rem] py-2 bg-inputBg hover:bg-inputBgHover border-inputBorder hover:border-inputBorderHover focus:border-inputBorderFocus",
-        navbarSearch: "h-[2.2rem] 3xl:h-[2.5rem] py-0 items-center bg-navbarSearchInputBg hover:bg-navbarSearchInputBgHover border-navbarSearchInputBorder hover:border-navbarSearchInputBorderHover focus:border-inputBorderFocus",
+        default:
+          "h-[2.3rem] 3xl:h-[2.6rem] py-2 bg-inputBg hover:bg-inputBgHover border-inputBorder hover:border-inputBorderHover focus:border-inputBorderFocus",
+        navbarSearch:
+          "h-[2.2rem] 3xl:h-10 py-0 items-center bg-navbarSearchInputBg hover:bg-navbarSearchInputBgHover border-navbarSearchInputBorder hover:border-navbarSearchInputBorderHover focus:border-inputBorderFocus",
       },
     },
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 interface InputGroupInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends
+    React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputGroupInputVariants> {
   fixedHeight?: boolean;
 }
@@ -299,10 +305,10 @@ const InputGroupInput = React.forwardRef<
       type={type}
       className={cn(
         inputGroupInputVariants({ variant }),
-        fixedHeight && (variant === "navbarSearch" ? "h-[2.5rem]" : "h-[2.6rem]"),
+        fixedHeight && (variant === "navbarSearch" ? "h-10" : "h-[2.6rem]"),
         hasLeftAddon && "pl-11",
         hasRightAddon && "pr-11",
-        className
+        className,
       )}
       ref={ref}
       data-slot="input-group-control"
@@ -312,8 +318,7 @@ const InputGroupInput = React.forwardRef<
 });
 InputGroupInput.displayName = "InputGroupInput";
 
-interface InputGroupTextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+interface InputGroupTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
 /**
  * Textarea element designed for use within InputGroup.
@@ -340,8 +345,8 @@ const InputGroupTextarea = React.forwardRef<
   return (
     <textarea
       className={cn(
-        "flex min-h-[80px] w-full rounded-md border border-inputBorder bg-inputBg px-3 py-2 text-sm transition placeholder:text-placeholderText hover:bg-inputBgHover hover:border-inputBorderHover focus:border-inputBorderFocus focus-visible:!outline-none disabled:cursor-not-allowed disabled:opacity-50",
-        className
+        "flex min-h-20 w-full rounded-md border border-inputBorder bg-inputBg px-3 py-2 text-sm transition placeholder:text-placeholderText hover:bg-inputBgHover hover:border-inputBorderHover focus:border-inputBorderFocus focus-visible:!outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        className,
       )}
       ref={ref}
       data-slot="input-group-control"

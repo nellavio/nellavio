@@ -53,6 +53,10 @@ export const MenuItemWithSubmenu = ({
   const [hasEnteredSinceCollapse, setHasEnteredSinceCollapse] = useState(false);
   const prevCollapsedRef = useRef(false);
 
+  /**
+   * Syncs active submenu highlight and auto-expands the group
+   * when the current route matches a submenu item (trailing-slash agnostic).
+   */
   useEffect(() => {
     const normalizedPathname = currentPathname?.endsWith("/")
       ? currentPathname.slice(0, -1)
@@ -74,6 +78,10 @@ export const MenuItemWithSubmenu = ({
     }
   }, [currentPathname, submenuItems]);
 
+  /**
+   * Dynamically sizes the vertical connector line to end at the center
+   * of the last submenu item. Recalculates on resize.
+   */
   useEffect(() => {
     const updateLineHeight = () => {
       if (!verticalLineRef.current) return;
@@ -117,6 +125,10 @@ export const MenuItemWithSubmenu = ({
     setHasEnteredSinceCollapse(false);
   }
 
+  /**
+   * Keyboard navigation for submenu toggle and traversal. Enter/Space toggles,
+   * arrows move focus, Escape closes. setTimeout defers focus until React commits.
+   */
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (isCollapsed) return;
@@ -160,7 +172,7 @@ export const MenuItemWithSubmenu = ({
 
   const showTooltip = isCollapsed && hasEnteredSinceCollapse && !isDropdownOpen;
 
-  const sharedClassName = `flex relative rounded-[6px] items-center py-[0.5rem] 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-[1px] 1xl:mb-1 3xl:mb-2 cursor-pointer transition-[background-color,border-color,padding,margin,width] duration-200 ${
+  const sharedClassName = `flex relative rounded-md items-center py-2 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-px 1xl:mb-1 3xl:mb-2 cursor-pointer transition-[background-color,border-color,padding,margin,width] duration-200 ${
     isCollapsed ? "mx-3 pl-[0.65rem]" : "w-full pl-4 pr-2"
   } ${
     isAnySubmenuActive
@@ -192,7 +204,7 @@ export const MenuItemWithSubmenu = ({
     >
       {iconContent}
       <div
-        className={`text-xs xl:text-[12px] 3xl:text-[0.88rem] font-medium tracking-wide whitespace-nowrap overflow-hidden transition-[width,opacity] duration-200 ${
+        className={`text-xs xl:text-xs 3xl:text-sm font-medium tracking-wide whitespace-nowrap overflow-hidden transition-[width,opacity] duration-200 ${
           isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"
         } ${
           isAnySubmenuActive ? "text-navItemTextActive" : "text-navItemText"
@@ -242,7 +254,7 @@ export const MenuItemWithSubmenu = ({
               side="right"
               align="start"
               sideOffset={-4}
-              className="min-w-[140px]"
+              className="min-w-35"
               onPointerDownOutside={(e) => {
                 e.preventDefault();
                 setIsDropdownOpen(false);
@@ -286,7 +298,7 @@ export const MenuItemWithSubmenu = ({
         <div className="ml-[1.6rem] relative -mt-[0.1rem] 1xl:-mt-[0.2rem] 3xl:-mt-[0.3rem]">
           <div
             ref={verticalLineRef}
-            className="absolute left-0 top-0 w-[2px] bg-submenuTreeLine"
+            className="absolute left-0 top-0 w-0.5 bg-submenuTreeLine"
           ></div>
           {submenuItems.map((item, index) => {
             const normalizedPathname = currentPathname?.endsWith("/")
@@ -305,9 +317,9 @@ export const MenuItemWithSubmenu = ({
                 ref={(el) => {
                   submenuRefs.current[index] = el;
                 }}
-                className="block mb-[1px] 1xl:mb-1 3xl:mb-2 -ml-[1.6rem] w-[calc(100%+1.6rem)] rounded-md relative focus-visible:outline-offset-[-2px]"
+                className="block mb-px 1xl:mb-1 3xl:mb-2 -ml-[1.6rem] w-[calc(100%+1.6rem)] rounded-md relative focus-visible:outline-offset-[-2px]"
               >
-                <div className="absolute left-[calc(1.6rem+2px)] top-1/2 w-[0.75rem] h-[2px] bg-submenuTreeLine"></div>
+                <div className="absolute left-[calc(1.6rem+2px)] top-1/2 w-3 h-0.5 bg-submenuTreeLine"></div>
                 <div
                   onClick={handleMenuItemClick}
                   className={`flex rounded-md items-center py-[0.4rem] 1xl:py-[0.45rem] 3xl:py-[0.6rem] pl-[3.2rem] w-full pr-2 transition ${
@@ -317,7 +329,7 @@ export const MenuItemWithSubmenu = ({
                   }`}
                 >
                   <div
-                    className={`text-xs xl:text-[11px] 3xl:text-[0.82rem] font-medium tracking-wide ${
+                    className={`text-xs xl:text-xs 3xl:text-sm font-medium tracking-wide ${
                       isActive ? "text-navItemTextActive" : "text-navItemText"
                     }`}
                   >

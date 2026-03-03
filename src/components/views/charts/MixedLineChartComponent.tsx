@@ -135,7 +135,7 @@ export const MixedLineChartComponent = () => {
       isHeaderDividerVisible
       addTitleMargin
     >
-      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-[28rem] w-full mt-4">
+      <div className="h-64 xsm:h-80 1xl:h-96 3xl:h-112 w-full mt-4">
         <ResponsiveContainer
           width="100%"
           height="100%"

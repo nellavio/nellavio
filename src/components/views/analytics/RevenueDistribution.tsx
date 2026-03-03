@@ -86,7 +86,7 @@ export const RevenueDistribution = ({
       <div
         role="img"
         aria-label="Revenue distribution bar chart"
-        className="w-full h-[18rem] 3xl:h-[24rem] mt-4 1xl:mt-4 -ml-4"
+        className="w-full h-72 3xl:h-96 mt-4 1xl:mt-4 -ml-4"
       >
         <ResponsiveContainer
           width="100%"
