@@ -6,7 +6,8 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 import { useFontManager } from "../../hooks/useFontManager";
-import { useAppStore } from "../../store/appStore";
+import { useChartAnimationStore } from "../../store/chartAnimationStore";
+import { useLayoutStore } from "../../store/layoutStore";
 import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
 import { Navbar } from "./navbar/Navbar";
 import { SettingsDrawer } from "./settings/SettingsDrawer";
@@ -19,12 +20,9 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   useFontManager();
 
-  const {
-    isMobileMenuOpen,
-    toggleMobileMenu,
-    setIsInitialLoad,
-    setShouldStartChartAnimations,
-  } = useAppStore();
+  const { isMobileMenuOpen, toggleMobileMenu } = useLayoutStore();
+  const { setIsInitialLoad, setShouldStartChartAnimations } =
+    useChartAnimationStore();
 
   const [showLoader, setShowLoader] = useState(() => {
     /** Check pathname synchronously to avoid flash on auth pages */

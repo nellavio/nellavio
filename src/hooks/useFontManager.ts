@@ -2,14 +2,14 @@
 
 import { useEffect } from "react";
 
-import { useAppStore } from "../store/appStore";
+import { useLayoutStore } from "../store/layoutStore";
 
 /**
  * Handles font switching via class toggle on document.body.
  * Preloads both fonts on mount to prevent flash when switching.
  */
 export const useFontManager = () => {
-  const fontType = useAppStore((state) => state.fontType);
+  const fontType = useLayoutStore((state) => state.fontType);
 
   /** Preloads both fonts on mount to prevent flash on Firefox. */
   useEffect(() => {

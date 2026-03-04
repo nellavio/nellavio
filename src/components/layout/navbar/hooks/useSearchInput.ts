@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { useNavbar } from "./useNavbar";
 
 interface Section {
@@ -35,7 +35,7 @@ export const useSearchInput = ({
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const { currentLanguage } = useNavbar();
   const router = useRouter();
-  const homepageLayout = useAppStore((state) => state.homepageLayout);
+  const homepageLayout = useLayoutStore((state) => state.homepageLayout);
 
   const allSections = [
     /** Analytics */

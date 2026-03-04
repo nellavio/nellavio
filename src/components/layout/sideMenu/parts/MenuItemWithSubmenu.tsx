@@ -6,7 +6,7 @@ import { ChevronDownIcon } from "../../../../assets/icons/ChevronDownIcon";
 import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { Link, usePathname } from "../../../../i18n/navigation";
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import {
   DropdownMenu,
@@ -39,8 +39,8 @@ export const MenuItemWithSubmenu = ({
 }: MenuItemWithSubmenuProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [focusedSubmenuIndex, setFocusedSubmenuIndex] = useState(-1);
-  const toggleMobileMenu = useAppStore((state) => state.toggleMobileMenu);
-  const isSideMenuOpen = useAppStore((state) => state.isSideMenuOpen);
+  const toggleMobileMenu = useLayoutStore((state) => state.toggleMobileMenu);
+  const isSideMenuOpen = useLayoutStore((state) => state.isSideMenuOpen);
   const currentPathname = usePathname();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [activeSubmenuPath, setActiveSubmenuPath] = useState<string | null>(

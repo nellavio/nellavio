@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { signOut } from "../../services/auth/auth-client";
-import { useAppStore } from "../../store/appStore";
+import { useLayoutStore } from "../../store/layoutStore";
 import { isPresentationModeClient } from "../../utils/presentationMode";
 
 /**
@@ -16,7 +16,7 @@ import { isPresentationModeClient } from "../../utils/presentationMode";
 export const useHandleLogout = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const setIsLoggingOut = useAppStore((state) => state.setIsLoggingOut);
+  const setIsLoggingOut = useLayoutStore((state) => state.setIsLoggingOut);
 
   const handleLogout = async () => {
     /** Check if running in presentation mode (no backend) */

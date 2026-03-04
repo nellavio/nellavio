@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 
-import { useAppStore } from "../../../store/appStore";
+import { useLayoutStore } from "../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../styles/breakpoints";
 import { LoginModal } from "../../auth/LoginModal";
 import { LogoutModal } from "../../auth/LogoutModal";
@@ -23,9 +23,9 @@ import { UserMenuButton } from "./parts/UserMenuButton";
 
 export const Navbar = () => {
   const t = useTranslations("navbar");
-  const setIsLoggingOut = useAppStore((state) => state.setIsLoggingOut);
-  const setIsLoggingIn = useAppStore((state) => state.setIsLoggingIn);
-  const fixedNavbar = useAppStore((state) => state.fixedNavbar);
+  const setIsLoggingOut = useLayoutStore((state) => state.setIsLoggingOut);
+  const setIsLoggingIn = useLayoutStore((state) => state.setIsLoggingIn);
+  const fixedNavbar = useLayoutStore((state) => state.fixedNavbar);
   const navbarRef = useRef<HTMLElement>(null);
 
   useEffect(() => {

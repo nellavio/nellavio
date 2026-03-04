@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppStore } from "../../../store/appStore";
+import { useLayoutStore } from "../../../store/layoutStore";
 import { BestSellingProducts } from "./parts/BestSellingProducts";
 import { CustomerSatisfaction } from "./parts/CustomerSatisfaction";
 import { FourSmallCards } from "./parts/FourSmallCards";
@@ -11,7 +11,7 @@ import { WeeklyPerformance } from "./parts/WeeklyPerformance";
 import { HomepageViewProps } from "./types";
 
 export const HomepageView = ({ homepageData }: HomepageViewProps) => {
-  const homepageLayout = useAppStore((state) => state.homepageLayout);
+  const homepageLayout = useLayoutStore((state) => state.homepageLayout);
 
   return (
     <>

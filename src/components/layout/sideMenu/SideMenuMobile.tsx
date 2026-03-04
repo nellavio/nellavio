@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { UserIcon } from "../../../assets/icons/UserIcon";
 import { useIsFirstRender } from "../../../hooks/useIsFirstRender";
 import { useSession } from "../../../services/auth/auth-client";
-import { useAppStore } from "../../../store/appStore";
+import { useLayoutStore } from "../../../store/layoutStore";
 import { MenuCategory } from "./parts/MenuCategory";
 import { MenuItem } from "./parts/MenuItem";
 import { MenuItemWithSubmenu } from "./parts/MenuItemWithSubmenu";
@@ -14,7 +14,7 @@ export const SideMenuMobile = ({
   isMobileMenuOpen,
   onLoginButtonClick,
 }: SideMenuMobileProps) => {
-  const toggleMobileMenu = useAppStore((state) => state.toggleMobileMenu);
+  const toggleMobileMenu = useLayoutStore((state) => state.toggleMobileMenu);
   const { data: sessionData, isPending } = useSession();
   const isSignedIn = !!sessionData;
   const isLoaded = !isPending;

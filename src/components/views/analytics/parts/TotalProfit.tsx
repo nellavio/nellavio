@@ -13,7 +13,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { useAppStore } from "../../../../store/appStore";
+import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import { Badge } from "../../../common/shadcn/badge";
@@ -62,7 +62,7 @@ export const TotalProfit = ({
 
   const { width: windowWidth } = useWindowDimensions();
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
-  const shouldStartChartAnimations = useAppStore(
+  const shouldStartChartAnimations = useChartAnimationStore(
     (state) => state.shouldStartChartAnimations,
   );
 

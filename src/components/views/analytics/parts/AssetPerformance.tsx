@@ -179,9 +179,9 @@ export const AssetPerformance = ({
                   ${index === 6 ? "hidden 1xl:flex 3xl:border-b 3xl:border-inputBorder" : ""}
                   ${index === 5 ? "1xl:border-b 1xl:border-inputBorder" : ""}
                   ${index <= 4 ? "border-b border-inputBorder" : ""}
-                  pb-2 pt-2 1xl:py-2`}
+                  pb-2 pt-2 1xl:py-2 3xl:py-2.5`}
                 >
-                  <div className="text-xs 2xl:text-sm 3xl:text-base text-secondaryText whitespace-nowrap">
+                  <div className="text-xs 2xl:text-sm text-secondaryText whitespace-nowrap">
                     {asset.name}
                   </div>
                   <div>

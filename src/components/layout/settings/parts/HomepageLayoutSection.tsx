@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { Label } from "../../../common/shadcn/label";
 
 const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
@@ -135,8 +135,8 @@ const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
 
 export const HomepageLayoutSection = () => {
   const t = useTranslations("settings");
-  const homepageLayout = useAppStore((state) => state.homepageLayout);
-  const setHomepageLayout = useAppStore((state) => state.setHomepageLayout);
+  const homepageLayout = useLayoutStore((state) => state.homepageLayout);
+  const setHomepageLayout = useLayoutStore((state) => state.setHomepageLayout);
 
   return (
     <div className="px-6 py-5 border-b border-settingsDrawerDivider">

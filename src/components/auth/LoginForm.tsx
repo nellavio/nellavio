@@ -10,7 +10,7 @@ import { MailIcon } from "../../assets/icons/MailIcon";
 import { PasswordIcon } from "../../assets/icons/PasswordIcon";
 import { useHandleLogin } from "../../hooks/auth/useHandleLogin";
 import { Link } from "../../i18n/navigation";
-import { useAppStore } from "../../store/appStore";
+import { useLayoutStore } from "../../store/layoutStore";
 import { Button } from "../common/shadcn/button";
 import { Checkbox } from "../common/shadcn/checkbox";
 import {
@@ -44,7 +44,7 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
 
   const t = useTranslations("auth");
 
-  const isLoggingIn = useAppStore((state) => state.isLoggingIn);
+  const isLoggingIn = useLayoutStore((state) => state.isLoggingIn);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 

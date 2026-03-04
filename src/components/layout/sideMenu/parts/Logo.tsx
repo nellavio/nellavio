@@ -1,10 +1,10 @@
 import { LogoIcon } from "../../../../assets/icons/LogoIcon";
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { Link } from "../../../../i18n/navigation";
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 
 export const Logo = () => {
-  const { isSideMenuOpen } = useAppStore();
+  const { isSideMenuOpen } = useLayoutStore();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const isCollapsed = !isSideMenuOpen && isDesktop;

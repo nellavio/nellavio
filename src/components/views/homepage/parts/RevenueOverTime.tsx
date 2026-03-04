@@ -12,7 +12,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { useAppStore } from "../../../../store/appStore";
+import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "../types";
@@ -70,7 +70,7 @@ export const RevenueOverTime = ({
 
   const { width: windowWidth } = useWindowDimensions();
 
-  const shouldStartChartAnimations = useAppStore(
+  const shouldStartChartAnimations = useChartAnimationStore(
     (state) => state.shouldStartChartAnimations,
   );
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage", {

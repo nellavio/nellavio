@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useDropdown } from "../../../../hooks/useDropdown";
 import { useSession } from "../../../../services/auth/auth-client";
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 
 /**
@@ -14,7 +14,8 @@ import { BREAKPOINTS } from "../../../../styles/breakpoints";
 export const useNavbar = () => {
   const { theme, setTheme } = useTheme();
   const [currentLanguage, setCurrentLanguage] = useState("en");
-  const { isMobileMenuOpen, toggleMobileMenu, isSideMenuOpen } = useAppStore();
+  const { isMobileMenuOpen, toggleMobileMenu, isSideMenuOpen } =
+    useLayoutStore();
   const t = useTranslations("navbar");
   const { data: sessionData, isPending } = useSession();
 

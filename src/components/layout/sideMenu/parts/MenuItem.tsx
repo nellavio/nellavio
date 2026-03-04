@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { Link, usePathname } from "../../../../i18n/navigation";
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import {
   Tooltip,
@@ -15,8 +15,8 @@ import {
 import { MenuItemProps } from "../types";
 
 export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
-  const toggleMobileMenu = useAppStore((state) => state.toggleMobileMenu);
-  const isSideMenuOpen = useAppStore((state) => state.isSideMenuOpen);
+  const toggleMobileMenu = useLayoutStore((state) => state.toggleMobileMenu);
+  const isSideMenuOpen = useLayoutStore((state) => state.isSideMenuOpen);
   const currentPathname = usePathname();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
   const [isActive, setIsActive] = useState(false);

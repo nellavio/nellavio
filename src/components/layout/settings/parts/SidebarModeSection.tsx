@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { Label } from "../../../common/shadcn/label";
 
 const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
@@ -139,8 +139,10 @@ const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
 
 export const SidebarModeSection = () => {
   const t = useTranslations("settings");
-  const sidebarDefaultState = useAppStore((state) => state.sidebarDefaultState);
-  const setSidebarDefaultState = useAppStore(
+  const sidebarDefaultState = useLayoutStore(
+    (state) => state.sidebarDefaultState,
+  );
+  const setSidebarDefaultState = useLayoutStore(
     (state) => state.setSidebarDefaultState,
   );
 

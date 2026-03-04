@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { LoginData } from "../../components/auth/LoginForm";
 import { useRouter } from "../../i18n/navigation";
 import { signIn } from "../../services/auth/auth-client";
-import { useAppStore } from "../../store/appStore";
+import { useLayoutStore } from "../../store/layoutStore";
 import { isPresentationModeClient } from "../../utils/presentationMode";
 
 const SUBMIT_COOLDOWN_MS = 2000;
@@ -34,7 +34,7 @@ export const useHandleLogin = () => {
   const [authErrorDisplayed, setAuthErrorDisplayed] = useState("");
   const t = useTranslations("auth");
 
-  const setIsLoggingIn = useAppStore((state) => state.setIsLoggingIn);
+  const setIsLoggingIn = useLayoutStore((state) => state.setIsLoggingIn);
   const clearAuthError = () => setAuthError("");
 
   /** Refs for preventing rapid-fire form submissions (e.g., holding Enter key) */

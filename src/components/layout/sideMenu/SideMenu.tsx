@@ -13,7 +13,7 @@ import { PasswordIcon } from "../../../assets/icons/PasswordIcon";
 import { TablesIcon } from "../../../assets/icons/TablesIcon";
 import { UIElementsIcon } from "../../../assets/icons/UIElementsIcon";
 import { UserProfileIcon } from "../../../assets/icons/UserProfileIcon";
-import { useAppStore } from "../../../store/appStore";
+import { useLayoutStore } from "../../../store/layoutStore";
 import { Logo } from "./parts/Logo";
 import { MenuCategory } from "./parts/MenuCategory";
 import { MenuItem } from "./parts/MenuItem";
@@ -77,7 +77,7 @@ export const menuConfig: MenuConfigEntry[] = [
 ];
 
 export const SideMenu = () => {
-  const { isSideMenuOpen, toggleSideMenu } = useAppStore();
+  const { isSideMenuOpen, toggleSideMenu } = useLayoutStore();
   const t = useTranslations("sideMenu");
 
   return (

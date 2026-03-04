@@ -1,9 +1,9 @@
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { useAppStore } from "../../../../store/appStore";
+import { useLayoutStore } from "../../../../store/layoutStore";
 import { MenuCategoryProps } from "../types";
 
 export const MenuCategory = ({ title }: MenuCategoryProps) => {
-  const { isSideMenuOpen } = useAppStore();
+  const { isSideMenuOpen } = useLayoutStore();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const isCollapsed = !isSideMenuOpen && isDesktop;

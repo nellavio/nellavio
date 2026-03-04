@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
 
 import { CHART_ANIMATION_DELAY_MS } from "../components/layout/FullScreenLoader";
-import { type ChartPageId, useAppStore } from "../store/appStore";
+import {
+  type ChartPageId,
+  useChartAnimationStore,
+} from "../store/chartAnimationStore";
+import { useLayoutStore } from "../store/layoutStore";
 
 interface ChartAnimationOptions {
   earlyStartMs?: number;
@@ -27,14 +31,16 @@ export const useChartAnimation = (
   pageId: ChartPageId,
   options?: ChartAnimationOptions,
 ): ChartAnimationResult => {
-  const chartAnimationsEnabled = useAppStore(
+  const chartAnimationsEnabled = useLayoutStore(
     (state) => state.chartAnimationsEnabled,
   );
-  const visitedChartPages = useAppStore((state) => state.visitedChartPages);
-  const markChartPageAsVisited = useAppStore(
+  const visitedChartPages = useChartAnimationStore(
+    (state) => state.visitedChartPages,
+  );
+  const markChartPageAsVisited = useChartAnimationStore(
     (state) => state.markChartPageAsVisited,
   );
-  const isInitialLoad = useAppStore((state) => state.isInitialLoad);
+  const isInitialLoad = useChartAnimationStore((state) => state.isInitialLoad);
 
   const hasMarkedRef = useRef(false);
   const wasFirstVisit = useRef(!visitedChartPages.has(pageId));

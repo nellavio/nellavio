@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 
-import { useAppStore } from "../../../store/appStore";
+import { useLayoutStore } from "../../../store/layoutStore";
 
 interface UseSettingsProps {
   open?: boolean;
@@ -20,16 +20,16 @@ export const useSettings = ({
 }: UseSettingsProps) => {
   const t = useTranslations("settings");
   const { theme, setTheme } = useTheme();
-  const fontType = useAppStore((state) => state.fontType);
-  const setFontType = useAppStore((state) => state.setFontType);
-  const chartAnimationsEnabled = useAppStore(
+  const fontType = useLayoutStore((state) => state.fontType);
+  const setFontType = useLayoutStore((state) => state.setFontType);
+  const chartAnimationsEnabled = useLayoutStore(
     (state) => state.chartAnimationsEnabled,
   );
-  const setChartAnimationsEnabled = useAppStore(
+  const setChartAnimationsEnabled = useLayoutStore(
     (state) => state.setChartAnimationsEnabled,
   );
-  const fixedNavbar = useAppStore((state) => state.fixedNavbar);
-  const setFixedNavbar = useAppStore((state) => state.setFixedNavbar);
+  const fixedNavbar = useLayoutStore((state) => state.fixedNavbar);
+  const setFixedNavbar = useLayoutStore((state) => state.setFixedNavbar);
   const [internalOpen, setInternalOpen] = useState(false);
 
   /**
