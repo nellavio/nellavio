@@ -27,9 +27,9 @@ Provides semantic HTML structure with proper ARIA labels for accessibility.
 **Subcomponents:**
 - \`PaginationContent\` - Container for pagination items
 - \`PaginationItem\` - Individual pagination item wrapper
-- \`PaginationLink\` - Clickable page number button
-- \`PaginationPrevious\` - Previous page navigation button
-- \`PaginationNext\` - Next page navigation button
+- \`PaginationLink\` - Clickable page number button (\`isActive\` highlights current page, \`size\` controls button size)
+- \`PaginationPrevious\` - Previous page navigation button (\`label\` customizes text, \`disabled\` disables interaction)
+- \`PaginationNext\` - Next page navigation button (\`label\` customizes text, \`disabled\` disables interaction)
 - \`PaginationEllipsis\` - Ellipsis indicator for truncated pages
         `,
       },
@@ -171,6 +171,30 @@ export const Simple: Story = {
         </PaginationItem>
         <PaginationItem>
           <PaginationNext />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  ),
+};
+
+export const CustomLabels: Story = {
+  render: () => (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious label="Prev" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink>1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink isActive>2</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink>3</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext label="Next page" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

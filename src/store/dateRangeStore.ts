@@ -35,5 +35,5 @@ export const useDateRangeStore = create<DateRangeStore>()((set) => ({
   customRange: null,
   setSelectedPreset: (selectedPreset) => set(() => ({ selectedPreset })),
   setCustomRange: (customRange) =>
-    set(() => ({ customRange, selectedPreset: "custom" as const })),
+    set(() => ({ customRange, selectedPreset: "custom" })),
 }));

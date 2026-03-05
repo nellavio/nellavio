@@ -10,6 +10,7 @@ import { cn } from "../../../utils/classNames";
  * @property {Object} variants.variant - Available alert variants
  * @property {string} variants.variant.default - Standard informational alert
  * @property {string} variants.variant.destructive - Error or critical warning alert
+ * @property {string} variants.variant.success - Success confirmation alert
  */
 const alertVariants = cva(
   "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
@@ -19,6 +20,8 @@ const alertVariants = cva(
         default: "bg-background text-primaryText border-inputBorder",
         destructive:
           "border-destructiveAlertBorder text-destructiveAlertText [&>svg]:text-destructiveAlertIcon bg-destructiveAlertBg",
+        success:
+          "border-successAlertBorder text-successAlertText [&>svg]:text-successAlertIcon bg-successAlertBg",
       },
     },
     defaultVariants: {
@@ -34,7 +37,7 @@ const alertVariants = cva(
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {('default'|'destructive')} [variant='default'] - Visual style variant
+ * @param {('default'|'destructive'|'success')} [variant='default'] - Visual style variant
  * @param {React.ReactNode} children - Alert content including title and description
  * @param {React.Ref} ref - Forwarded ref to the alert container
  *

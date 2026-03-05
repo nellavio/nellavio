@@ -25,7 +25,6 @@ Provides semantic navigation structure with proper ARIA labels for accessibility
 **Props:**
 - \`className\` - Additional CSS classes to apply
 - \`children\` - Breadcrumb content (typically BreadcrumbList)
-- \`separator\` - Custom separator element between items
 - \`ref\` - Forwarded ref to the nav element
 
 **Subcomponents:**
@@ -40,6 +39,9 @@ Provides semantic navigation structure with proper ARIA labels for accessibility
     },
   },
   tags: ["autodocs"],
+  argTypes: {
+    separator: { table: { disable: true } },
+  },
   decorators: [
     (Story) => (
       <div className="p-6 bg-primaryBg rounded-lg">

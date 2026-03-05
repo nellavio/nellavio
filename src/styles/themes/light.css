@@ -8,7 +8,7 @@
   --color-coloredText: rgb(0, 96, 255);
   --color-coloredTextHover: rgb(76, 144, 255);
   --color-navItemText: rgba(0, 0, 0, 0.85);
-  --color-navItemTextActive: hsl(208.21deg 100% 50%);
+  --color-navItemTextActive: #316fee;
   --color-navSectionTitle: black;
   --color-tableCellText: rgb(68, 68, 68);
   --color-tableRowBgHover: rgb(61, 160, 208, 0.1);
@@ -23,6 +23,8 @@
   --color-percentageBadgeRedTextAccented: rgb(180, 40, 60);
   --color-destructiveAlertText: rgb(0, 0, 0, 0.9);
   --color-destructiveAlertIcon: rgb(220, 38, 38);
+  --color-successAlertText: rgb(0, 0, 0, 0.9);
+  --color-successAlertIcon: rgb(22, 163, 74);
   --color-logoBasicText: black;
   --color-settingsDrawerLabelText: rgb(0, 0, 0, 0.7);
   --color-settingsDrawerSectionTitle: rgb(0, 0, 0, 0.5);
@@ -30,6 +32,7 @@
   --color-tabLineActiveTextHover: rgb(29, 78, 216);
   --color-tabLineInactiveText: rgb(107, 114, 128);
   --color-tabLineInactiveTextHover: rgb(75, 85, 99);
+  --color-tabDefaultInactiveTextHover: rgb(0, 0, 0, 0.7);
 
   /* Icons */
   --color-grayIcon: rgb(0, 0, 0, 0.7);
@@ -67,8 +70,10 @@
   --color-outlinedButtonBgHover: rgb(249, 250, 251);
   --color-secondaryButtonBg: rgb(235, 235, 235);
   --color-secondaryButtonBgHover: rgb(223, 223, 223);
-  --color-containedButtonBg: rgb(79, 142, 247);
-  --color-containedButtonBgHover: rgb(118, 167, 247);
+  --color-containedButtonBg: #3870e3;
+  --color-containedButtonBgHover: rgb(37, 95, 220);
+  --color-badgeDefaultBg: #3870e3;
+  --color-badgeDefaultBgHover: rgb(37, 95, 220);
   --color-dropdownBg: rgb(255, 255, 255);
   --color-dropdownBgHover: rgb(244, 245, 247);
   --color-calendarTodayBg: rgb(222, 194, 242, 0.15);
@@ -76,7 +81,7 @@
   --color-calendarEventBgHover: rgb(0, 0, 0, 0.03);
   --color-chartPrimaryBg: rgb(118, 167, 247);
   --color-chartSecondaryBg: rgb(125, 214, 230);
-  --color-chartPrimaryFill: rgb(118, 167, 247);
+  --color-chartPrimaryFill: #6699ec;
   --color-chartPrimaryGrid: rgb(0, 0, 0, 0.2);
   --color-chartPrimaryDisabled: rgb(125, 214, 230);
   --color-chartPrimaryInverted: rgb(125, 214, 230);
@@ -103,7 +108,7 @@
   --color-scrollbarBg: rgb(249, 249, 251);
   --color-scrollbarPlaceholderBg: rgb(247, 247, 247);
   --color-activeProductBg: rgb(61, 160, 208, 0.1);
-  --color-calendarMainColor: rgb(118, 167, 247);
+  --color-calendarMainColor: #6699ec;
   --color-scrollbarThumb: rgba(94, 98, 105, 0.5);
   --color-themeToggleBg: rgb(245, 245, 250);
   --color-themeToggleBgHover: rgb(241, 241, 246);
@@ -123,7 +128,9 @@
   --color-chipBgHover: rgb(61, 160, 208, 0.1);
   --color-mutedBg: rgb(247, 247, 247);
   --color-errorBg: rgb(195, 70, 70);
+  --color-errorBgHover: rgb(175, 55, 55);
   --color-destructiveAlertBg: rgb(239, 68, 68, 0.3);
+  --color-successAlertBg: rgb(22, 163, 74, 0.15);
   --color-skeletonBg: rgb(225, 225, 230);
   --color-navbarSearchInputBg: rgb(240, 240, 245, 0.2);
   --color-navbarSearchInputBgHover: rgb(240, 240, 245, 0.4);
@@ -169,6 +176,7 @@
   --color-chartVerticalLine: rgb(0, 0, 0, 0.25);
   --color-chartCursorBg: rgb(0, 0, 0, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
+  --color-successAlertBorder: rgb(22, 163, 74, 0.5);
   --authModalShadow:
     0 18px 35px -10px rgb(0, 0, 0, 0.3), 0 6px 16px -5px rgb(0, 0, 0, 0.15);
 }

@@ -67,7 +67,7 @@ export const useRangeSelect = () => {
   );
 
   /**
-   * Label displayed on the trigger button — shows a formatted date range
+   * Label displayed on the trigger button - shows a formatted date range
    * for custom selections, or a translated preset name for standard presets.
    */
   const triggerLabel =

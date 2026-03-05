@@ -3,7 +3,7 @@ import { useLayoutStore } from "../../../../store/layoutStore";
 import { MenuCategoryProps } from "../types";
 
 export const MenuCategory = ({ title }: MenuCategoryProps) => {
-  const { isSideMenuOpen } = useLayoutStore();
+  const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const isCollapsed = !isSideMenuOpen && isDesktop;

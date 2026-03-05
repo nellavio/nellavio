@@ -4,7 +4,7 @@ import { Link } from "../../../../i18n/navigation";
 import { useLayoutStore } from "../../../../store/layoutStore";
 
 export const Logo = () => {
-  const { isSideMenuOpen } = useLayoutStore();
+  const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
   const isDesktop = useMediaQuery("(min-width: 1280px)");
 
   const isCollapsed = !isSideMenuOpen && isDesktop;

@@ -72,8 +72,8 @@ const ScatterChartDemo = ({
   showBubbles = false,
 }: ScatterChartDemoProps) => {
   const chartColors = colors ?? [
-    "var(--color-chartPrimaryBg)",
-    "var(--color-chartSecondaryBg)",
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
     "rgb(255, 150, 150)",
   ];
@@ -85,27 +85,24 @@ const ScatterChartDemo = ({
           {showGrid && (
             <CartesianGrid
               strokeDasharray="3 3"
-              className="stroke-mainBorder"
-              opacity={0.5}
+              stroke="var(--color-chartPrimaryGrid)"
             />
           )}
           <XAxis
             type="number"
             dataKey="x"
             name={xAxisLabel}
-            className="text-secondaryText"
-            tick={{ fill: "currentColor", fontSize: 12 }}
-            stroke="currentColor"
-            opacity={0.5}
+            axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+            tickLine={false}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
           />
           <YAxis
             type="number"
             dataKey="y"
             name={yAxisLabel}
-            className="text-secondaryText"
-            tick={{ fill: "currentColor", fontSize: 12 }}
-            stroke="currentColor"
-            opacity={0.5}
+            axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+            tickLine={false}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
           />
           {showBubbles && <ZAxis type="number" dataKey="z" range={[60, 400]} />}
           <Tooltip
@@ -114,7 +111,49 @@ const ScatterChartDemo = ({
             isAnimationActive={false}
           />
           {showLegend && (
-            <Legend wrapperStyle={{ color: "var(--color-primaryText)" }} />
+            <Legend
+              content={({ payload }) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "1.3rem",
+                    paddingTop: "0.5rem",
+                  }}
+                >
+                  {payload?.map((entry, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 10,
+                          height: 10,
+                          backgroundColor: entry.color,
+                          borderRadius: 2,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-primaryText)",
+                          fontSize: 14,
+                        }}
+                      >
+                        {entry.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
           )}
           {data.map((series, index) => (
             <Scatter
@@ -134,7 +173,7 @@ const meta: Meta<typeof ScatterChartDemo> = {
   title: "Charts/ScatterChart",
   component: ScatterChartDemo,
   parameters: {
-    layout: "padded",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -154,7 +193,7 @@ import { ScatterChart, Scatter, XAxis, YAxis, ResponsiveContainer } from "rechar
   <ScatterChart>
     <XAxis type="number" dataKey="x" />
     <YAxis type="number" dataKey="y" />
-    <Scatter data={data} fill="var(--color-chartPrimaryBg)" />
+    <Scatter data={data} fill="var(--color-chartPrimaryFill)" />
   </ScatterChart>
 </ResponsiveContainer>
 \`\`\`
@@ -168,10 +207,7 @@ import { ScatterChart, Scatter, XAxis, YAxis, ResponsiveContainer } from "rechar
       control: "object",
       description: "Names for each data series",
     },
-    colors: {
-      control: "object",
-      description: "Custom colors for each series",
-    },
+    colors: { table: { disable: true } },
     showGrid: {
       control: "boolean",
       description: "Show background grid",
@@ -180,22 +216,13 @@ import { ScatterChart, Scatter, XAxis, YAxis, ResponsiveContainer } from "rechar
       control: "boolean",
       description: "Show legend",
     },
-    xAxisLabel: {
-      control: "text",
-      description: "Label for X axis",
-    },
-    yAxisLabel: {
-      control: "text",
-      description: "Label for Y axis",
-    },
-    showBubbles: {
-      control: "boolean",
-      description: "Enable bubble size based on Z value",
-    },
+    xAxisLabel: { table: { disable: true } },
+    yAxisLabel: { table: { disable: true } },
+    showBubbles: { table: { disable: true } },
   },
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg max-w-md mx-auto aspect-[4/3]">
+      <div className="p-6 bg-primaryBg rounded-lg w-md aspect-[4/3]">
         <Story />
       </div>
     ),

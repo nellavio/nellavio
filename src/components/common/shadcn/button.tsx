@@ -16,7 +16,7 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-containedButtonBg text-white hover:bg-containedButtonBgHover",
-        destructive: "bg-errorBg text-white hover:bg-errorBg/85",
+        destructive: "bg-errorBg text-white hover:bg-errorBgHover",
         outline:
           "border border-outlinedButtonBorder bg-outlinedButtonBg text-primaryText hover:bg-outlinedButtonBgHover hover:border-outlinedButtonBorderHover",
         secondary:
@@ -96,9 +96,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {asChild ? (
           children
         ) : loading ? (
-          <div className="flex items-center justify-center">
-            <SpinnerIcon width={36} height={36} />
-          </div>
+          <>
+            <div className="flex items-center justify-center">
+              <SpinnerIcon width={36} height={36} />
+            </div>
+            <span className="sr-only">{children}</span>
+          </>
         ) : (
           <>
             {icon && <div className="mr-2">{icon}</div>}

@@ -32,7 +32,7 @@ const ImageCell = ({ src }: { src: string }) => {
 };
 
 /**
- * Customers table logic — column definitions, client-side search/filter/sort,
+ * Customers table logic - column definitions, client-side search/filter/sort,
  * pagination, and XLSX export. Wraps TanStack Table.
  */
 export const useCustomers = (customers: Customer[]) => {

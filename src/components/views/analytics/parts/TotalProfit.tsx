@@ -174,6 +174,7 @@ export const TotalProfit = ({
             value={item.value}
             className="h-2"
             indicatorColor={"var(--color-chartSecondaryFill)"}
+            label={item.title}
           />
         </div>
       ))}

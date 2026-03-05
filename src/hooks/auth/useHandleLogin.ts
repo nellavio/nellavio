@@ -91,7 +91,7 @@ export const useHandleLogin = () => {
           return;
         }
 
-        /** Success — redirect to homepage (i18n router preserves locale automatically) */
+        /** Success - redirect to homepage (i18n router preserves locale automatically) */
         router.push("/");
       } catch (error: unknown) {
         setIsLoggingIn(false);

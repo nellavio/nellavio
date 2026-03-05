@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { DollarSign, Eye, EyeOff, Mail, Search } from "lucide-react";
-import React from "react";
+import { DollarSign, Mail, Search } from "lucide-react";
 
 import {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton,
   InputGroupInput,
   InputGroupText,
 } from "../input-group";
@@ -26,15 +24,30 @@ Automatically detects addon positions and adjusts input padding accordingly.
 - \`children\` - InputGroupInput and InputGroupAddon components
 
 **Subcomponents:**
-- \`InputGroupInput\` - Input element with automatic padding adjustment
-- \`InputGroupAddon\` - Container for icons/buttons (supports \`inline-start\`, \`inline-end\`)
-- \`InputGroupButton\` - Interactive button within addon
+- \`InputGroupInput\` - Input element with automatic padding adjustment (\`variant\`: \`default\`, \`navbarSearch\`; \`fixedHeight\` for fixed height mode)
+- \`InputGroupAddon\` - Container for icons/buttons (\`align\`: \`inline-start\`, \`inline-end\`, \`block-start\`, \`block-end\`)
+- \`InputGroupButton\` - Interactive button within addon (\`variant\`: \`default\`, \`destructive\`, \`outline\`, \`secondary\`, \`ghost\`, \`link\`; \`size\`: \`xs\`, \`icon-xs\`, \`sm\`, \`icon-sm\`)
 - \`InputGroupText\` - Non-interactive text display
+- \`InputGroupTextarea\` - Textarea element with automatic padding adjustment
         `,
       },
     },
   },
   tags: ["autodocs"],
+  argTypes: {
+    placeholder: {
+      control: "text",
+      description: "Input placeholder text",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disabled state",
+    },
+  } as Meta["argTypes"],
+  args: {
+    placeholder: "Search...",
+    disabled: false,
+  } as Record<string, unknown>,
   decorators: [
     (Story) => (
       <div className="p-6 bg-primaryBg rounded-lg w-80">
@@ -48,59 +61,60 @@ export default meta;
 type Story = StoryObj<typeof InputGroup>;
 
 export const WithLeftIcon: Story = {
-  render: () => (
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <Search className="h-4 w-4" />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="Search..." />
-    </InputGroup>
-  ),
+  render: (args) => {
+    const { placeholder, disabled } = args as Record<string, unknown>;
+    return (
+      <InputGroup>
+        <InputGroupAddon align="inline-start">
+          <Search className="h-4 w-4" />
+        </InputGroupAddon>
+        <InputGroupInput
+          placeholder={placeholder as string}
+          disabled={disabled as boolean}
+        />
+      </InputGroup>
+    );
+  },
 };
 
 export const WithRightIcon: Story = {
-  render: () => (
-    <InputGroup>
-      <InputGroupInput type="email" placeholder="Enter email" />
-      <InputGroupAddon align="inline-end">
-        <Mail className="h-4 w-4" />
-      </InputGroupAddon>
-    </InputGroup>
-  ),
-};
-
-export const WithBothIcons: Story = {
-  render: () => (
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <Search className="h-4 w-4" />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="Search products..." />
-      <InputGroupAddon align="inline-end">
-        <Mail className="h-4 w-4" />
-      </InputGroupAddon>
-    </InputGroup>
-  ),
-};
-
-export const WithButton: Story = {
-  render: function PasswordInput() {
-    const [showPassword, setShowPassword] = React.useState(false);
-
+  args: {
+    placeholder: "Enter email",
+  } as Record<string, unknown>,
+  render: (args) => {
+    const { placeholder, disabled } = args as Record<string, unknown>;
     return (
       <InputGroup>
         <InputGroupInput
-          type={showPassword ? "text" : "password"}
-          placeholder="Enter password"
+          type="email"
+          placeholder={placeholder as string}
+          disabled={disabled as boolean}
         />
         <InputGroupAddon align="inline-end">
-          <InputGroupButton onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? (
-              <EyeOff className="h-4 w-4" />
-            ) : (
-              <Eye className="h-4 w-4" />
-            )}
-          </InputGroupButton>
+          <Mail className="h-4 w-4" />
+        </InputGroupAddon>
+      </InputGroup>
+    );
+  },
+};
+
+export const WithBothIcons: Story = {
+  args: {
+    placeholder: "Search products...",
+  } as Record<string, unknown>,
+  render: (args) => {
+    const { placeholder, disabled } = args as Record<string, unknown>;
+    return (
+      <InputGroup>
+        <InputGroupAddon align="inline-start">
+          <Search className="h-4 w-4" />
+        </InputGroupAddon>
+        <InputGroupInput
+          placeholder={placeholder as string}
+          disabled={disabled as boolean}
+        />
+        <InputGroupAddon align="inline-end">
+          <Mail className="h-4 w-4" />
         </InputGroupAddon>
       </InputGroup>
     );
@@ -108,26 +122,46 @@ export const WithButton: Story = {
 };
 
 export const WithText: Story = {
-  render: () => (
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <DollarSign className="h-4 w-4" />
-      </InputGroupAddon>
-      <InputGroupInput type="number" placeholder="0.00" />
-      <InputGroupAddon align="inline-end">
-        <InputGroupText>USD</InputGroupText>
-      </InputGroupAddon>
-    </InputGroup>
-  ),
+  args: {
+    placeholder: "0.00",
+  } as Record<string, unknown>,
+  render: (args) => {
+    const { placeholder, disabled } = args as Record<string, unknown>;
+    return (
+      <InputGroup>
+        <InputGroupAddon align="inline-start">
+          <DollarSign className="h-4 w-4" />
+        </InputGroupAddon>
+        <InputGroupInput
+          type="number"
+          placeholder={placeholder as string}
+          disabled={disabled as boolean}
+        />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>USD</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+    );
+  },
 };
 
-export const NavbarSearchVariant: Story = {
-  render: () => (
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <Search className="h-4 w-4" />
-      </InputGroupAddon>
-      <InputGroupInput variant="navbarSearch" placeholder="Search..." />
-    </InputGroup>
-  ),
+export const Disabled: Story = {
+  args: {
+    placeholder: "Disabled input",
+    disabled: true,
+  } as Record<string, unknown>,
+  render: (args) => {
+    const { placeholder, disabled } = args as Record<string, unknown>;
+    return (
+      <InputGroup>
+        <InputGroupAddon align="inline-start">
+          <Search className="h-4 w-4" />
+        </InputGroupAddon>
+        <InputGroupInput
+          placeholder={placeholder as string}
+          disabled={disabled as boolean}
+        />
+      </InputGroup>
+    );
+  },
 };

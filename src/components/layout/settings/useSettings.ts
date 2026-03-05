@@ -11,7 +11,7 @@ interface UseSettingsProps {
 
 /**
  * Aggregates all settings panel state (theme, font, chart animations, fixed navbar).
- * Supports both controlled and uncontrolled open/close — when `open` / `onOpenChange`
+ * Supports both controlled and uncontrolled open/close - when `open` / `onOpenChange`
  * props are provided the component is controlled; otherwise an internal state is used.
  */
 export const useSettings = ({

@@ -90,7 +90,7 @@ export const useHandleSignUp = () => {
           return;
         }
 
-        /** Success — DON'T remove spinner, let it stay until page reloads */
+        /** Success - DON'T remove spinner, let it stay until page reloads */
         router.push("/");
         location.reload();
       } catch (error: unknown) {

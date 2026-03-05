@@ -69,7 +69,7 @@ export const UserMenuDropdown = ({
       role="menu"
       aria-label="User menu"
       onKeyDown={handleMenuKeyDown}
-      className="absolute right-2 text-sm 1xl:text-sm 3xl:text-base xl:right-0 top-10 xl:top-11 mt-2 w-54 border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow"
+      className="absolute right-2 text-sm xl:right-0 top-10 xl:top-11 mt-2 w-54 border border-inputBorder bg-dropdownBg text-primaryText placeholder-secondaryText rounded-md shadow"
     >
       {/* Auth Section - Expandable */}
       <DropdownMenuItem

@@ -7,6 +7,8 @@ import { createElement } from "react";
 const preview: Preview = {
   parameters: {
     controls: {
+      sort: "requiredFirst",
+      exclude: ["ref", "key", "style", "asChild"],
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
@@ -27,9 +29,10 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme || "light";
+      const forceTheme = context.parameters.forceTheme as string | undefined;
+      const theme = forceTheme || context.globals.theme || "light";
       document.documentElement.classList.remove("dark", "light");
-      document.documentElement.classList.add("light");
+      document.documentElement.classList.add(theme);
       return createElement("div", { className: theme }, createElement(Story));
     },
   ],

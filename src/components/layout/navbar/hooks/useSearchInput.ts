@@ -20,7 +20,7 @@ interface UseSearchInputOptions {
 }
 
 /**
- * Powers the navbar search input — maintains a registry of all navigable sections,
+ * Powers the navbar search input - maintains a registry of all navigable sections,
  * translates them for i18n, filters by query, and handles keyboard navigation
  * (arrows, Enter, Escape) plus client-side routing with hash-based scrolling.
  */
@@ -97,7 +97,7 @@ export const useSearchInput = ({
 
   /**
    * Enriches each section with translated names. Uses try/catch because
-   * next-intl throws when a translation key is missing — in that case
+   * next-intl throws when a translation key is missing - in that case
    * the original English name is kept as fallback.
    */
   const translatedSections = sections.map((item) => {

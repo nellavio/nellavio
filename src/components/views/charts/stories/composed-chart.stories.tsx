@@ -53,8 +53,8 @@ const ComposedChartDemo = ({
   areaOpacity = 0.3,
 }: ComposedChartDemoProps) => {
   const chartColors = {
-    bar: colors?.bar ?? "var(--color-chartPrimaryBg)",
-    line: colors?.line ?? "var(--color-chartSecondaryBg)",
+    bar: colors?.bar ?? "var(--color-chartPrimaryFill)",
+    line: colors?.line ?? "var(--color-chartSecondaryFill)",
     area: colors?.area ?? "rgb(168, 162, 255)",
   };
 
@@ -68,22 +68,19 @@ const ComposedChartDemo = ({
           {showGrid && (
             <CartesianGrid
               strokeDasharray="3 3"
-              className="stroke-mainBorder"
-              opacity={0.5}
+              stroke="var(--color-chartPrimaryGrid)"
             />
           )}
           <XAxis
             dataKey={xAxisKey}
-            className="text-secondaryText"
-            tick={{ fill: "currentColor", fontSize: 12 }}
-            stroke="currentColor"
-            opacity={0.5}
+            axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+            tickLine={false}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
           />
           <YAxis
-            className="text-secondaryText"
-            tick={{ fill: "currentColor", fontSize: 12 }}
-            stroke="currentColor"
-            opacity={0.5}
+            axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+            tickLine={false}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             tickFormatter={(value: number) =>
               Intl.NumberFormat("en").format(value)
             }
@@ -97,7 +94,49 @@ const ComposedChartDemo = ({
             isAnimationActive={false}
           />
           {showLegend && (
-            <Legend wrapperStyle={{ color: "var(--color-primaryText)" }} />
+            <Legend
+              content={({ payload }) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "1.3rem",
+                    paddingTop: "0.5rem",
+                  }}
+                >
+                  {payload?.map((entry, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 10,
+                          height: 10,
+                          backgroundColor: entry.color,
+                          borderRadius: 2,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-primaryText)",
+                          fontSize: 14,
+                        }}
+                      >
+                        {entry.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
           )}
           {areaKey && (
             <Area
@@ -134,7 +173,7 @@ const meta: Meta<typeof ComposedChartDemo> = {
   title: "Charts/ComposedChart",
   component: ComposedChartDemo,
   parameters: {
-    layout: "padded",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -154,8 +193,8 @@ import { ComposedChart, Bar, Line, Area, XAxis, YAxis, ResponsiveContainer } fro
   <ComposedChart data={data}>
     <XAxis dataKey="month" />
     <YAxis />
-    <Bar dataKey="revenue" fill="var(--color-chartPrimaryBg)" />
-    <Line type="monotone" dataKey="profit" stroke="var(--color-chartSecondaryBg)" />
+    <Bar dataKey="revenue" fill="var(--color-chartPrimaryFill)" />
+    <Line type="monotone" dataKey="profit" stroke="var(--color-chartSecondaryFill)" />
     <Area type="monotone" dataKey="growth" fill="rgb(168, 162, 255)" fillOpacity={0.3} />
   </ComposedChart>
 </ResponsiveContainer>
@@ -166,26 +205,11 @@ import { ComposedChart, Bar, Line, Area, XAxis, YAxis, ResponsiveContainer } fro
   },
   tags: ["autodocs"],
   argTypes: {
-    xAxisKey: {
-      control: "text",
-      description: "Data key for X axis",
-    },
-    barKey: {
-      control: "text",
-      description: "Data key for bar series (empty to hide)",
-    },
-    lineKey: {
-      control: "text",
-      description: "Data key for line series (empty to hide)",
-    },
-    areaKey: {
-      control: "text",
-      description: "Data key for area series (empty to hide)",
-    },
-    colors: {
-      control: "object",
-      description: "Custom colors { bar, line, area }",
-    },
+    xAxisKey: { table: { disable: true } },
+    barKey: { table: { disable: true } },
+    lineKey: { table: { disable: true } },
+    areaKey: { table: { disable: true } },
+    colors: { table: { disable: true } },
     showGrid: {
       control: "boolean",
       description: "Show background grid",
@@ -205,7 +229,7 @@ import { ComposedChart, Bar, Line, Area, XAxis, YAxis, ResponsiveContainer } fro
   },
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg max-w-md mx-auto aspect-[4/3]">
+      <div className="p-6 bg-primaryBg rounded-lg w-md aspect-[4/3]">
         <Story />
       </div>
     ),

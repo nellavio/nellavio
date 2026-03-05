@@ -284,6 +284,7 @@ interface InputGroupInputProps
  * @param {string} [className] - Additional CSS classes to apply
  * @param {string} [type] - HTML input type attribute
  * @param {('default'|'navbarSearch')} [variant='default'] - Visual style variant
+ * @param {boolean} [fixedHeight] - Forces fixed height regardless of responsive breakpoints
  * @param {React.Ref} ref - Forwarded ref to the input element
  *
  * @example

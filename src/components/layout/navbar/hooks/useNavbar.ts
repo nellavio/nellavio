@@ -8,14 +8,15 @@ import { useLayoutStore } from "../../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 
 /**
- * Core navbar hook — aggregates theme, language, session, mobile menu state,
+ * Core navbar hook - aggregates theme, language, session, mobile menu state,
  * and all dropdown instances used by navbar sub-components.
  */
 export const useNavbar = () => {
   const { theme, setTheme } = useTheme();
   const [currentLanguage, setCurrentLanguage] = useState("en");
-  const { isMobileMenuOpen, toggleMobileMenu, isSideMenuOpen } =
-    useLayoutStore();
+  const isMobileMenuOpen = useLayoutStore((s) => s.isMobileMenuOpen);
+  const toggleMobileMenu = useLayoutStore((s) => s.toggleMobileMenu);
+  const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
   const t = useTranslations("navbar");
   const { data: sessionData, isPending } = useSession();
 
@@ -39,7 +40,7 @@ export const useNavbar = () => {
   const themes = ["light", "dark"];
   const themesDisplayNames = ["light", "dark"];
 
-  /** Intentionally runs only on mount — closes mobile menu if viewport is desktop-sized on initial load */
+  /** Intentionally runs only on mount - closes mobile menu if viewport is desktop-sized on initial load */
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (window.innerWidth < BREAKPOINTS.xl && isMobileMenuOpen) {

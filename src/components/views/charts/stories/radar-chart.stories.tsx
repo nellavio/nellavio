@@ -20,6 +20,7 @@ interface RadarChartDemoProps {
   showLegend?: boolean;
   fillOpacity?: number;
   showGrid?: boolean;
+  showAxisLabels?: boolean;
 }
 
 const defaultData = [
@@ -39,10 +40,11 @@ const RadarChartDemo = ({
   showLegend = true,
   fillOpacity = 0.3,
   showGrid = true,
+  showAxisLabels = false,
 }: RadarChartDemoProps) => {
   const chartColors = colors ?? [
-    "var(--color-chartPrimaryBg)",
-    "var(--color-chartSecondaryBg)",
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
   ];
 
@@ -50,21 +52,66 @@ const RadarChartDemo = ({
     <div className="w-full h-full text-primaryText">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-          {showGrid && (
-            <PolarGrid className="stroke-mainBorder" opacity={0.5} />
-          )}
+          {showGrid && <PolarGrid stroke="var(--color-chartPrimaryGrid)" />}
           <PolarAngleAxis
             dataKey={nameKey}
-            tick={{ fill: "var(--color-secondaryText)", fontSize: 11 }}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 11 }}
           />
           <PolarRadiusAxis
             angle={90}
-            tick={{ fill: "var(--color-secondaryText)", fontSize: 10 }}
+            tick={
+              showAxisLabels
+                ? { fill: "var(--color-chartAxisText)", fontSize: 10, dy: 8 }
+                : false
+            }
             axisLine={false}
           />
           <Tooltip content={<ChartTooltip />} isAnimationActive={false} />
           {showLegend && (
-            <Legend wrapperStyle={{ color: "var(--color-primaryText)" }} />
+            <Legend
+              content={({ payload }) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "1.3rem",
+                    marginBottom: 8,
+                    paddingTop: "0.6rem",
+                  }}
+                >
+                  {payload?.map((entry, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 10,
+                          height: 10,
+                          backgroundColor: entry.color,
+                          borderRadius: 2,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-primaryText)",
+                          fontSize: 14,
+                        }}
+                      >
+                        {entry.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
           )}
           {dataKeys.map((key, index) => (
             <Radar
@@ -86,7 +133,7 @@ const meta: Meta<typeof RadarChartDemo> = {
   title: "Charts/RadarChart",
   component: RadarChartDemo,
   parameters: {
-    layout: "padded",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -108,8 +155,8 @@ import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
     <PolarAngleAxis dataKey="skill" />
     <Radar
       dataKey="value"
-      stroke="var(--color-chartPrimaryBg)"
-      fill="var(--color-chartPrimaryBg)"
+      stroke="var(--color-chartPrimaryFill)"
+      fill="var(--color-chartPrimaryFill)"
       fillOpacity={0.3}
     />
   </RadarChart>
@@ -121,18 +168,9 @@ import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
   },
   tags: ["autodocs"],
   argTypes: {
-    dataKeys: {
-      control: "object",
-      description: "Array of data keys to plot",
-    },
-    nameKey: {
-      control: "text",
-      description: "Data key for axis labels",
-    },
-    colors: {
-      control: "object",
-      description: "Custom colors for each radar",
-    },
+    dataKeys: { table: { disable: true } },
+    nameKey: { table: { disable: true } },
+    colors: { table: { disable: true } },
     showLegend: {
       control: "boolean",
       description: "Show legend",
@@ -145,10 +183,14 @@ import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
       control: "boolean",
       description: "Show polar grid",
     },
+    showAxisLabels: {
+      control: "boolean",
+      description: "Show radius axis labels",
+    },
   },
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg max-w-md mx-auto aspect-[4/3]">
+      <div className="p-6 bg-primaryBg rounded-lg w-md aspect-[4/3]">
         <Story />
       </div>
     ),
@@ -189,6 +231,13 @@ export const NoGrid: Story = {
   args: {
     ...Default.args,
     showGrid: false,
+  },
+};
+
+export const WithAxisLabels: Story = {
+  args: {
+    ...Default.args,
+    showAxisLabels: true,
   },
 };
 

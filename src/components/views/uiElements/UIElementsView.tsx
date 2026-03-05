@@ -7,6 +7,8 @@ import { BreadcrumbsUI } from "./BreadcrumbsUI";
 import { ButtonsUI } from "./ButtonsUI";
 import { CommandUI } from "./CommandUI";
 import { DialogsUI } from "./DialogsUI";
+import { DropdownMenuUI } from "./DropdownMenuUI";
+import { PaginationUI } from "./PaginationUI";
 import { PopoverUI } from "./PopoverUI";
 import { ProgressUI } from "./ProgressUI";
 import { SeparatorsUI } from "./SeparatorsUI";
@@ -27,22 +29,24 @@ export const UIElementsView = () => {
       {/* Left Column */}
       <div className="flex flex-col gap-6">
         <ButtonsUI />
-        <AlertsUI />
         <CommandUI />
         <AvatarsUI />
         <TabsUI />
+        <AlertsUI />
         <SkeletonsUI />
       </div>
 
       {/* Right Column */}
       <div className="flex flex-col gap-6">
         <DialogsUI />
+        <DropdownMenuUI />
         <BadgesUI />
         <PopoverUI />
         <ProgressUI />
         <TooltipsUI />
         <BreadcrumbsUI />
         <SeparatorsUI />
+        <PaginationUI />
       </div>
     </div>
   );

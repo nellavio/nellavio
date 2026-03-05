@@ -369,7 +369,9 @@
     "progress": "Progress",
     "tooltips": "Tooltips",
     "breadcrumbs": "Breadcrumbs",
-    "separators": "Separators"
+    "separators": "Separators",
+    "dropdownMenu": "Dropdown Menu",
+    "pagination": "Pagination"
   },
   "forms": {
     "inputFields": "Input Fields",

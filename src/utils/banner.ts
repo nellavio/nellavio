@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 const packageJson = require("../../package.json");
 
 /**
- * Manually parses .env without dotenv — only sets vars not already
+ * Manually parses .env without dotenv - only sets vars not already
  * present in process.env to avoid overriding system-level config.
  */
 const loadEnvFile = () => {
@@ -24,7 +24,7 @@ const loadEnvFile = () => {
       }
     }
   } catch {
-    /** .env file not found — skip silently */
+    /** .env file not found - skip silently */
   }
 };
 
@@ -76,8 +76,8 @@ const checkBackendHealth = async (): Promise<{
 };
 
 /**
- * Renders the "Mode" block of the banner — connected, offline,
- * or standalone — based on backend reachability and auth config.
+ * Renders the "Mode" block of the banner - connected, offline,
+ * or standalone - based on backend reachability and auth config.
  */
 const buildModeSection = (
   status: Awaited<ReturnType<typeof checkBackendHealth>>,

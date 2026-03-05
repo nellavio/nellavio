@@ -25,13 +25,19 @@ Built on Radix UI Separator primitive with proper semantic HTML and ARIA attribu
   tags: ["autodocs"],
   argTypes: {
     orientation: {
-      control: "select",
-      options: ["horizontal", "vertical"],
-      description: "Separator orientation",
+      table: { disable: true },
+    },
+    decorative: {
+      control: "boolean",
+      description: "Whether the separator is purely decorative (affects ARIA)",
+    },
+    color: {
+      control: "color",
+      description: "Custom CSS color for the separator",
     },
   },
   args: {
-    orientation: "horizontal",
+    decorative: true,
   },
   decorators: [
     (Story) => (

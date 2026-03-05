@@ -23,11 +23,14 @@
   --color-percentageBadgeRedTextAccented: rgb(253, 164, 175);
   --color-destructiveAlertText: rgb(255, 255, 255);
   --color-destructiveAlertIcon: rgb(248, 113, 113);
+  --color-successAlertText: rgb(255, 255, 255);
+  --color-successAlertIcon: rgb(74, 222, 128);
   --color-logoBasicText: rgb(255, 255, 255);
-  --color-tabLineActiveText: rgb(83, 133, 198);
-  --color-tabLineActiveTextHover: rgb(96, 165, 250);
+  --color-tabLineActiveText: rgb(90, 149, 224);
+  --color-tabLineActiveTextHover: rgb(108, 175, 253);
   --color-tabLineInactiveText: rgb(140, 145, 150);
   --color-tabLineInactiveTextHover: rgb(170, 175, 180);
+  --color-tabDefaultInactiveTextHover: rgb(255, 255, 255);
   --color-settingsDrawerLabelText: rgb(201, 203, 207);
   --color-settingsDrawerSectionTitle: rgb(140, 145, 150);
 
@@ -67,8 +70,10 @@
   --color-outlinedButtonBgHover: rgb(255, 255, 255, 0.07);
   --color-secondaryButtonBg: rgb(255, 255, 255, 0.05);
   --color-secondaryButtonBgHover: rgb(255, 255, 255, 0.07);
-  --color-containedButtonBg: rgb(61, 142, 108);
-  --color-containedButtonBgHover: rgb(61, 185, 133);
+  --color-containedButtonBg: rgb(54, 128, 96);
+  --color-containedButtonBgHover: #4a9373;
+  --color-badgeDefaultBg: rgb(54, 128, 96);
+  --color-badgeDefaultBgHover: #4a9373;
   --color-dropdownBg: rgb(36, 39, 43);
   --color-dropdownBgHover: rgb(42, 46, 51);
   --color-calendarTodayBg: rgb(255, 255, 255, 0.04);
@@ -103,7 +108,7 @@
   --color-scrollbarBg: #22252a;
   --color-scrollbarPlaceholderBg: rgb(26, 29, 32);
   --color-activeProductBg: rgb(255, 255, 255, 0.07);
-  --color-calendarMainColor: rgb(61, 142, 108);
+  --color-calendarMainColor: rgb(54, 128, 96);
   --color-scrollbarThumb: rgba(94, 98, 105, 0.7);
   --color-themeToggleBg: rgb(32, 35, 38);
   --color-themeToggleBgHover: rgb(37, 40, 44);
@@ -122,7 +127,9 @@
   --color-chipBgHover: rgb(255, 255, 255, 0.1);
   --color-mutedBg: rgb(36, 39, 43);
   --color-errorBg: rgb(195, 70, 70);
+  --color-errorBgHover: rgb(207, 89, 89);
   --color-destructiveAlertBg: rgb(239, 68, 68, 0.05);
+  --color-successAlertBg: rgb(22, 163, 74, 0.05);
   --color-skeletonBg: rgb(40, 43, 47);
   --color-navbarSearchInputBg: rgb(255, 255, 255, 0.01);
   --color-navbarSearchInputBgHover: rgb(255, 255, 255, 0.03);
@@ -130,8 +137,8 @@
   --color-settingsDrawerHeaderBg: rgb(25, 28, 32);
   --color-settingsButtonBgHover: rgb(45, 48, 53);
   --color-settingsLayoutPreviewBg: rgb(255, 255, 255, 0.08);
-  --color-notificationBadgeBg: rgb(34, 154, 90);
-  --color-notificationBadgeBgHover: rgb(27, 130, 75);
+  --color-notificationBadgeBg: rgb(54, 128, 96);
+  --color-notificationBadgeBgHover: #4a9373;
   --color-notificationItemBg: rgb(36, 39, 43);
   --color-notificationItemBgHover: rgb(42, 46, 51);
   --color-notificationHeaderBg: rgb(31, 34, 38);
@@ -160,7 +167,7 @@
   --color-checkboxBorderDisabled: rgb(255, 255, 255, 0.11);
   --color-navbarSearchInputBorder: rgb(255, 255, 255, 0.05);
   --color-navbarSearchInputBorderHover: rgb(255, 255, 255, 0.2);
-  --color-tabLineActiveBorder: rgb(83, 133, 198);
+  --color-tabLineActiveBorder: rgb(90, 149, 224);
   --color-settingsButtonBorder: rgb(0, 0, 0, 0.1);
   --color-chartBarGridLine: rgb(45, 50, 55);
   --color-chartAxisLine: rgb(255, 255, 255, 0.2);
@@ -168,6 +175,7 @@
   --color-chartVerticalLine: rgb(255, 255, 255, 0.15);
   --color-chartCursorBg: rgb(255, 255, 255, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
+  --color-successAlertBorder: rgb(22, 163, 74, 0.5);
   --authModalShadow:
     0 18px 35px -10px rgb(0, 0, 0, 0.4), 0 6px 16px -5px rgb(0, 0, 0, 0.25);
 }

@@ -58,7 +58,7 @@ export const mockDatesForEvents = [
 ];
 
 /**
- * Core calendar logic — event CRUD, modal state, date selection,
+ * Core calendar logic - event CRUD, modal state, date selection,
  * and drag/resize handlers wired to FullCalendar callbacks.
  */
 export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
@@ -117,7 +117,7 @@ export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
 
   /**
    * Validates title + time range, then appends a new event
-   * to local state. Skips API — events are client-only for demo.
+   * to local state. Skips API - events are client-only for demo.
    */
   const handleAddEventModalConfirm = useCallback(() => {
     let validationError = "";

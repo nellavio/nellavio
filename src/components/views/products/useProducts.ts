@@ -7,7 +7,7 @@ import { BREAKPOINTS } from "../../../styles/breakpoints";
 import { Product, ProductCategory } from "./types";
 
 /**
- * Products page logic — groups products by type into categories,
+ * Products page logic - groups products by type into categories,
  * tracks the active product selection, and handles responsive modal toggle.
  */
 export const useProducts = (products: Product[]) => {

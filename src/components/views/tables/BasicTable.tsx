@@ -155,7 +155,7 @@ const SortingArrow = ({ isSorted }: { isSorted: false | "asc" | "desc" }) => {
 export const BasicTable = () => {
   const t = useTranslations("tables.cardTitles");
 
-  /** @see {@link SortingState} — tracks current sort column and direction. */
+  /** @see {@link SortingState} - tracks current sort column and direction. */
   const [basicSorting, setBasicSorting] = React.useState<SortingState>([]);
 
   /** Column definitions for the basic product table. */

@@ -7,6 +7,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "../select";
@@ -31,16 +32,22 @@ Built on Radix UI Select primitive with keyboard navigation.
 **Subcomponents:**
 - \`SelectTrigger\` - Button that opens the dropdown
 - \`SelectValue\` - Displays the selected value
-- \`SelectContent\` - Dropdown content container
+- \`SelectContent\` - Dropdown content container (\`position\`: \`popper\`, \`item-aligned\`)
 - \`SelectItem\` - Individual selectable option
 - \`SelectGroup\` - Groups related options
 - \`SelectLabel\` - Label for option groups
+- \`SelectSeparator\` - Visual divider between groups
         `,
       },
     },
   },
   tags: ["autodocs"],
   argTypes: {
+    defaultValue: {
+      control: "select",
+      options: ["apple", "banana", "orange", "grape"],
+      description: "Default selected value",
+    },
     disabled: {
       control: "boolean",
       description: "Disabled state",
@@ -62,7 +69,7 @@ type Story = StoryObj<typeof Select>;
 export const Default: Story = {
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger>
+      <SelectTrigger aria-label="Select option">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -83,7 +90,7 @@ export const WithLabel: Story = {
     <div className="grid gap-2">
       <Label>Fruit</Label>
       <Select {...args}>
-        <SelectTrigger>
+        <SelectTrigger aria-label="Select option">
           <SelectValue placeholder="Select..." />
         </SelectTrigger>
         <SelectContent>
@@ -97,13 +104,62 @@ export const WithLabel: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Select disabled>
-      <SelectTrigger>
+  args: { disabled: true },
+  render: (args) => (
+    <Select {...args}>
+      <SelectTrigger aria-label="Select option">
         <SelectValue placeholder="Disabled" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="apple">Apple</SelectItem>
+      </SelectContent>
+    </Select>
+  ),
+};
+
+export const WithGroups: Story = {
+  render: (args) => (
+    <Select {...args}>
+      <SelectTrigger aria-label="Select option">
+        <SelectValue placeholder="Select food" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="orange">Orange</SelectItem>
+        </SelectGroup>
+        <SelectSeparator />
+        <SelectGroup>
+          <SelectLabel>Vegetables</SelectLabel>
+          <SelectItem value="carrot">Carrot</SelectItem>
+          <SelectItem value="potato">Potato</SelectItem>
+          <SelectItem value="broccoli">Broccoli</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  ),
+};
+
+export const WithDisabledItem: Story = {
+  render: (args) => (
+    <Select {...args}>
+      <SelectTrigger aria-label="Select option">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana" disabled>
+            Banana (sold out)
+          </SelectItem>
+          <SelectItem value="orange">Orange</SelectItem>
+          <SelectItem value="grape" disabled>
+            Grape (sold out)
+          </SelectItem>
+        </SelectGroup>
       </SelectContent>
     </Select>
   ),

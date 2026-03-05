@@ -368,7 +368,9 @@
     "progress": "Postęp",
     "tooltips": "Podpowiedzi",
     "breadcrumbs": "Ścieżka nawigacji",
-    "separators": "Separatory"
+    "separators": "Separatory",
+    "dropdownMenu": "Menu rozwijane",
+    "pagination": "Paginacja"
   },
   "forms": {
     "inputFields": "Pola tekstowe",

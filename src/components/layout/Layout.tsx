@@ -20,9 +20,12 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   useFontManager();
 
-  const { isMobileMenuOpen, toggleMobileMenu } = useLayoutStore();
-  const { setIsInitialLoad, setShouldStartChartAnimations } =
-    useChartAnimationStore();
+  const isMobileMenuOpen = useLayoutStore((s) => s.isMobileMenuOpen);
+  const toggleMobileMenu = useLayoutStore((s) => s.toggleMobileMenu);
+  const setIsInitialLoad = useChartAnimationStore((s) => s.setIsInitialLoad);
+  const setShouldStartChartAnimations = useChartAnimationStore(
+    (s) => s.setShouldStartChartAnimations,
+  );
 
   const [showLoader, setShowLoader] = useState(() => {
     /** Check pathname synchronously to avoid flash on auth pages */

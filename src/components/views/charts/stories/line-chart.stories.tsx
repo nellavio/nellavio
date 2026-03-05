@@ -47,8 +47,8 @@ const LineChartDemo = ({
   height = 300,
 }: LineChartDemoProps) => {
   const chartColors = colors ?? [
-    "var(--color-chartPrimaryBg)",
-    "var(--color-chartSecondaryBg)",
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
     "rgb(255, 150, 150)",
   ];
@@ -63,29 +63,68 @@ const LineChartDemo = ({
           {showGrid && (
             <CartesianGrid
               strokeDasharray="3 3"
-              className="stroke-mainBorder"
-              opacity={0.5}
+              stroke="var(--color-chartPrimaryGrid)"
             />
           )}
           <XAxis
             dataKey={xAxisKey}
-            className="text-secondaryText"
-            tick={{ fill: "currentColor", fontSize: 12 }}
-            stroke="currentColor"
-            opacity={0.5}
+            axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+            tickLine={false}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
           />
           <YAxis
-            className="text-secondaryText"
-            tick={{ fill: "currentColor", fontSize: 12 }}
-            stroke="currentColor"
-            opacity={0.5}
+            axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+            tickLine={false}
+            tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
             tickFormatter={(value: number) =>
               Intl.NumberFormat("en").format(value)
             }
           />
           <Tooltip content={<ChartTooltip />} isAnimationActive={false} />
           {showLegend && (
-            <Legend wrapperStyle={{ color: "var(--color-primaryText)" }} />
+            <Legend
+              content={({ payload }) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "1.3rem",
+                    paddingTop: "0.5rem",
+                  }}
+                >
+                  {payload?.map((entry, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 10,
+                          height: 10,
+                          backgroundColor: entry.color,
+                          borderRadius: 2,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-primaryText)",
+                          fontSize: 14,
+                        }}
+                      >
+                        {entry.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
           )}
           {dataKeys.map((key, index) => (
             <Line
@@ -108,7 +147,7 @@ const meta: Meta<typeof LineChartDemo> = {
   title: "Charts/LineChart",
   component: LineChartDemo,
   parameters: {
-    layout: "padded",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -129,7 +168,7 @@ import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
   <LineChart data={data}>
     <XAxis dataKey="month" />
     <YAxis />
-    <Line type="monotone" dataKey="value" stroke="var(--color-chartPrimaryBg)" />
+    <Line type="monotone" dataKey="value" stroke="var(--color-chartPrimaryFill)" />
   </LineChart>
 </ResponsiveContainer>
 \`\`\`
@@ -139,18 +178,9 @@ import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
   },
   tags: ["autodocs"],
   argTypes: {
-    dataKeys: {
-      control: "object",
-      description: "Array of data keys to plot as lines",
-    },
-    colors: {
-      control: "object",
-      description: "Custom colors for each line (uses theme colors by default)",
-    },
-    xAxisKey: {
-      control: "text",
-      description: "Data key for X axis labels",
-    },
+    dataKeys: { table: { disable: true } },
+    colors: { table: { disable: true } },
+    xAxisKey: { table: { disable: true } },
     showGrid: {
       control: "boolean",
       description: "Show background grid",
@@ -179,7 +209,7 @@ import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
   },
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg max-w-md mx-auto aspect-[4/3]">
+      <div className="p-6 bg-primaryBg rounded-lg w-md aspect-[4/3]">
         <Story />
       </div>
     ),

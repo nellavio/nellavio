@@ -42,12 +42,19 @@ const Slider = React.forwardRef<
       {...props}
     >
       <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondaryBg">
-        <SliderPrimitive.Range className="absolute h-full bg-containedButtonBg" />
+        <SliderPrimitive.Range className="absolute h-full bg-containedButtonBg data-[disabled]:opacity-30" />
       </SliderPrimitive.Track>
       {initialValue.map((_, i) => (
         <SliderPrimitive.Thumb
           key={i}
-          className="block h-5 w-5 rounded-full border-2 border-containedButtonBg bg-white transition-colors disabled:pointer-events-none disabled:opacity-50"
+          aria-label={
+            initialValue.length > 1
+              ? i === 0
+                ? "Minimum"
+                : "Maximum"
+              : "Value"
+          }
+          className="block h-5 w-5 rounded-full border-2 border-containedButtonBg bg-white transition-colors data-[disabled]:pointer-events-none data-[disabled]:border-containedButtonBg/50"
         />
       ))}
     </SliderPrimitive.Root>

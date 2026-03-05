@@ -18,8 +18,8 @@ Uses Radix UI for accessibility and keyboard navigation.
 - \`className\` - Additional CSS classes to apply
 
 **Subcomponents:**
-- \`TabsList\` - Container for tab triggers (supports \`default\` and \`line\` variants)
-- \`TabsTrigger\` - Individual tab button that activates its content panel
+- \`TabsList\` - Container for tab triggers (\`variant\`: \`default\`, \`line\`)
+- \`TabsTrigger\` - Individual tab button that activates its content panel (\`variant\`: \`default\`, \`line\`)
 - \`TabsContent\` - Content panel displayed when tab is active
         `,
       },
@@ -27,15 +27,15 @@ Uses Radix UI for accessibility and keyboard navigation.
   },
   tags: ["autodocs"],
   argTypes: {
-    defaultValue: {
-      control: "text",
-      description: "Default active tab value",
+    variant: {
+      control: "select",
+      options: ["default", "line"],
+      description: "Visual style variant for TabsList and TabsTrigger",
     },
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-    },
-  },
+  } as Meta["argTypes"],
+  args: {
+    variant: "default",
+  } as Record<string, unknown>,
   decorators: [
     (Story) => (
       <div className="p-6 bg-primaryBg rounded-lg">
@@ -49,41 +49,90 @@ export default meta;
 type Story = StoryObj<typeof Tabs>;
 
 export const Default: Story = {
+  render: (args) => {
+    const { variant } = args as Record<string, string>;
+    return (
+      <Tabs defaultValue="account" className="w-80">
+        <TabsList
+          variant={variant as "default" | "line"}
+          className="grid w-full grid-cols-2"
+        >
+          <TabsTrigger variant={variant as "default" | "line"} value="account">
+            Account
+          </TabsTrigger>
+          <TabsTrigger variant={variant as "default" | "line"} value="password">
+            Password
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="mt-4">
+          <p className="text-sm text-primaryText">
+            Manage your account settings here.
+          </p>
+        </TabsContent>
+        <TabsContent value="password" className="mt-4">
+          <p className="text-sm text-primaryText">Change your password here.</p>
+        </TabsContent>
+      </Tabs>
+    );
+  },
+};
+
+export const LineVariant: Story = {
   render: () => (
-    <Tabs defaultValue="account" className="w-80">
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+    <Tabs defaultValue="overview" className="w-96">
+      <TabsList variant="line" className="grid w-full grid-cols-3">
+        <TabsTrigger variant="line" value="overview">
+          Overview
+        </TabsTrigger>
+        <TabsTrigger variant="line" value="analytics">
+          Analytics
+        </TabsTrigger>
+        <TabsTrigger variant="line" value="reports">
+          Reports
+        </TabsTrigger>
       </TabsList>
-      <TabsContent value="account" className="mt-4">
-        <p className="text-sm text-primaryText">
-          Manage your account settings here.
-        </p>
+      <TabsContent value="overview" className="mt-4">
+        <p className="text-sm text-primaryText">Overview content</p>
       </TabsContent>
-      <TabsContent value="password" className="mt-4">
-        <p className="text-sm text-primaryText">Change your password here.</p>
+      <TabsContent value="analytics" className="mt-4">
+        <p className="text-sm text-primaryText">Analytics content</p>
+      </TabsContent>
+      <TabsContent value="reports" className="mt-4">
+        <p className="text-sm text-primaryText">Reports content</p>
       </TabsContent>
     </Tabs>
   ),
 };
 
 export const ThreeTabs: Story = {
-  render: () => (
-    <Tabs defaultValue="tab1" className="w-96">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="tab1">Overview</TabsTrigger>
-        <TabsTrigger value="tab2">Analytics</TabsTrigger>
-        <TabsTrigger value="tab3">Reports</TabsTrigger>
-      </TabsList>
-      <TabsContent value="tab1" className="mt-4">
-        <p className="text-sm text-primaryText">Overview content</p>
-      </TabsContent>
-      <TabsContent value="tab2" className="mt-4">
-        <p className="text-sm text-primaryText">Analytics content</p>
-      </TabsContent>
-      <TabsContent value="tab3" className="mt-4">
-        <p className="text-sm text-primaryText">Reports content</p>
-      </TabsContent>
-    </Tabs>
-  ),
+  render: (args) => {
+    const { variant } = args as Record<string, string>;
+    return (
+      <Tabs defaultValue="tab1" className="w-96">
+        <TabsList
+          variant={variant as "default" | "line"}
+          className="grid w-full grid-cols-3"
+        >
+          <TabsTrigger variant={variant as "default" | "line"} value="tab1">
+            Overview
+          </TabsTrigger>
+          <TabsTrigger variant={variant as "default" | "line"} value="tab2">
+            Analytics
+          </TabsTrigger>
+          <TabsTrigger variant={variant as "default" | "line"} value="tab3">
+            Reports
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="tab1" className="mt-4">
+          <p className="text-sm text-primaryText">Overview content</p>
+        </TabsContent>
+        <TabsContent value="tab2" className="mt-4">
+          <p className="text-sm text-primaryText">Analytics content</p>
+        </TabsContent>
+        <TabsContent value="tab3" className="mt-4">
+          <p className="text-sm text-primaryText">Reports content</p>
+        </TabsContent>
+      </Tabs>
+    );
+  },
 };

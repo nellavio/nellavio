@@ -1,5 +1,5 @@
 /**
- * Breakpoint values in pixels — must stay in sync with globals.css @theme.
+ * Breakpoint values in pixels - must stay in sync with globals.css @theme.
  *
  * Tailwind v4 defaults (built-in):
  *   sm=640  md=768  lg=1024  xl=1280  2xl=1536

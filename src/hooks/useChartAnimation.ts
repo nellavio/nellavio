@@ -43,7 +43,7 @@ export const useChartAnimation = (
   const isInitialLoad = useChartAnimationStore((state) => state.isInitialLoad);
 
   const hasMarkedRef = useRef(false);
-  const wasFirstVisit = useRef(!visitedChartPages.has(pageId));
+  const wasFirstVisit = useRef(!visitedChartPages.includes(pageId));
 
   useEffect(() => {
     if (!hasMarkedRef.current) {

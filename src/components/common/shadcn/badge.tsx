@@ -12,11 +12,11 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-mainColor text-white hover:bg-mainColor/80",
+          "border-transparent bg-badgeDefaultBg text-white hover:bg-badgeDefaultBgHover",
         secondary:
           "border-transparent bg-secondaryBg text-primaryText hover:bg-secondaryBg/80",
         destructive:
-          "border-transparent bg-errorBg text-white hover:bg-errorBg/80",
+          "border-transparent bg-errorBg text-white hover:bg-errorBgHover",
         outline:
           "text-primaryText border-inputBorder bg-chipBg hover:bg-chipBgHover",
       },

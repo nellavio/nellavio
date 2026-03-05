@@ -19,7 +19,7 @@ const Home = async ({ params }: { params: Promise<{ locale: string }> }) => {
 };
 
 /**
- * Static by default — all API calls resolve at build time for demo purposes.
+ * Static by default - all API calls resolve at build time for demo purposes.
  * Uncomment below to enable dynamic rendering on this page:
  * export const dynamic = 'force-dynamic'
  * export const revalidate = 0

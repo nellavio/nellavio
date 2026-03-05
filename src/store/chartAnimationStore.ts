@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 export type ChartPageId = "homepage" | "analytics" | "charts";
 
@@ -7,19 +8,26 @@ interface ChartAnimationStore {
   setIsInitialLoad: (isInitialLoad: boolean) => void;
   shouldStartChartAnimations: boolean;
   setShouldStartChartAnimations: (shouldStart: boolean) => void;
-  visitedChartPages: Set<ChartPageId>;
+  visitedChartPages: ChartPageId[];
   markChartPageAsVisited: (pageId: ChartPageId) => void;
 }
 
-export const useChartAnimationStore = create<ChartAnimationStore>()((set) => ({
-  isInitialLoad: true,
-  setIsInitialLoad: (isInitialLoad) => set(() => ({ isInitialLoad })),
-  shouldStartChartAnimations: false,
-  setShouldStartChartAnimations: (shouldStartChartAnimations) =>
-    set(() => ({ shouldStartChartAnimations })),
-  visitedChartPages: new Set<ChartPageId>(),
-  markChartPageAsVisited: (pageId: ChartPageId) =>
-    set((state) => ({
-      visitedChartPages: new Set(state.visitedChartPages).add(pageId),
-    })),
-}));
+export const useChartAnimationStore = create<ChartAnimationStore>()(
+  devtools(
+    (set) => ({
+      isInitialLoad: true,
+      setIsInitialLoad: (isInitialLoad) => set(() => ({ isInitialLoad })),
+      shouldStartChartAnimations: false,
+      setShouldStartChartAnimations: (shouldStartChartAnimations) =>
+        set(() => ({ shouldStartChartAnimations })),
+      visitedChartPages: [] as ChartPageId[],
+      markChartPageAsVisited: (pageId: ChartPageId) =>
+        set((state) => ({
+          visitedChartPages: state.visitedChartPages.includes(pageId)
+            ? state.visitedChartPages
+            : [...state.visitedChartPages, pageId],
+        })),
+    }),
+    { name: "ChartAnimationStore" },
+  ),
+);

@@ -1,12 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import {
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import { PieChartTooltip } from "./ChartTooltip";
 
@@ -38,59 +31,117 @@ const DonutChartDemo = ({
   centerValue,
 }: DonutChartDemoProps) => {
   const chartColors = colors ?? [
-    "var(--color-chartPrimaryBg)",
-    "var(--color-chartSecondaryBg)",
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
     "rgb(100, 200, 180)",
     "rgb(255, 150, 150)",
   ];
 
+  const legendItems = data.map((entry, index) => ({
+    name: entry.name,
+    color: chartColors[index % chartColors.length],
+  }));
+  const legendMidpoint = Math.ceil(legendItems.length / 2);
+  const legendRows =
+    legendItems.length > 3
+      ? [
+          legendItems.slice(0, legendMidpoint),
+          legendItems.slice(legendMidpoint),
+        ]
+      : [legendItems];
+
   return (
-    <div className="w-full h-full text-primaryText relative">
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={innerRadius}
-            outerRadius={outerRadius}
-            paddingAngle={paddingAngle}
-            dataKey="value"
-          >
-            {data.map((_, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={chartColors[index % chartColors.length]}
-                stroke="none"
-              />
-            ))}
-          </Pie>
-          <Tooltip
-            content={
-              <PieChartTooltip valueFormatter={(value) => `${value}%`} />
-            }
-            isAnimationActive={false}
-          />
-          {showLegend && (
-            <Legend
-              wrapperStyle={{ color: "var(--color-primaryText)" }}
-              layout="horizontal"
-              verticalAlign="bottom"
+    <div className="w-full h-full text-primaryText flex flex-col">
+      <div className="flex-1 relative min-h-0">
+        {(centerLabel || centerValue) && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+            {centerValue && (
+              <span className="text-2xl font-bold text-primaryText">
+                {centerValue}
+              </span>
+            )}
+            {centerLabel && (
+              <span className="text-sm text-secondaryText">{centerLabel}</span>
+            )}
+          </div>
+        )}
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={innerRadius}
+              outerRadius={outerRadius}
+              paddingAngle={paddingAngle}
+              dataKey="value"
+            >
+              {data.map((_, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={chartColors[index % chartColors.length]}
+                  stroke="none"
+                />
+              ))}
+            </Pie>
+            <Tooltip
+              content={
+                <PieChartTooltip valueFormatter={(value) => `${value}%`} />
+              }
+              isAnimationActive={false}
             />
-          )}
-        </PieChart>
-      </ResponsiveContainer>
-      {(centerLabel || centerValue) && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          {centerValue && (
-            <span className="text-2xl font-bold text-primaryText">
-              {centerValue}
-            </span>
-          )}
-          {centerLabel && (
-            <span className="text-sm text-secondaryText">{centerLabel}</span>
-          )}
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+      {showLegend && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.5rem",
+            paddingTop: 8,
+          }}
+        >
+          {legendRows.map((row, rowIndex) => (
+            <div
+              key={rowIndex}
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "1.3rem",
+              }}
+            >
+              {row.map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 10,
+                      height: 10,
+                      backgroundColor: item.color,
+                      borderRadius: 2,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{ color: "var(--color-primaryText)", fontSize: 14 }}
+                  >
+                    {item.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       )}
     </div>
@@ -101,7 +152,7 @@ const meta: Meta<typeof DonutChartDemo> = {
   title: "Charts/DonutChart",
   component: DonutChartDemo,
   parameters: {
-    layout: "padded",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -144,10 +195,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
       control: "object",
       description: "Array of { name, value } objects",
     },
-    colors: {
-      control: "object",
-      description: "Custom colors for each segment",
-    },
+    colors: { table: { disable: true } },
     showLegend: {
       control: "boolean",
       description: "Show legend below chart",
@@ -175,7 +223,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
   },
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg max-w-md mx-auto aspect-[4/3]">
+      <div className="p-6 bg-primaryBg rounded-lg w-md aspect-[4/3]">
         <Story />
       </div>
     ),
@@ -245,7 +293,7 @@ const storageData = [
 export const StorageUsage: Story = {
   args: {
     data: storageData,
-    colors: ["var(--color-chartPrimaryBg)", "rgb(100, 100, 100)"],
+    colors: ["var(--color-chartPrimaryFill)", "rgb(100, 100, 100)"],
     innerRadius: 65,
     outerRadius: 85,
     paddingAngle: 0,

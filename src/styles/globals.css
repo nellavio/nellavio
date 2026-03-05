@@ -23,22 +23,6 @@ body {
   background-color: var(--color-secondaryBg);
 }
 
-/* Font switching via class toggle */
-body {
-  font-family: var(--font-outfit), sans-serif;
-  color: var(--color-primaryText);
-}
-
-body.font-alternative {
-  font-family: var(--font-open-sans), sans-serif;
-}
-
-/* Prevent Radix UI Select from hiding page scrollbar */
-[data-scroll-locked][data-scroll-locked] {
-  overflow-y: auto !important;
-  margin-right: 0 !important;
-}
-
 html {
   scroll-padding-top: 100px;
 }
@@ -56,6 +40,22 @@ html {
 
 button {
   cursor: pointer;
+}
+
+/* Font switching via class toggle */
+body {
+  font-family: var(--font-outfit), sans-serif;
+  color: var(--color-primaryText);
+}
+
+body.font-alternative {
+  font-family: var(--font-open-sans), sans-serif;
+}
+
+/* Prevent Radix UI Select from hiding page scrollbar */
+[data-scroll-locked][data-scroll-locked] {
+  overflow-y: auto !important;
+  margin-right: 0 !important;
 }
 
 /* Main loader animation */
@@ -218,6 +218,8 @@ input:-webkit-autofill {
   min-height: 40px;
 }
 
+/* Override Tailwind v4 transition/transition-colors to exclude outline-color,
+   preventing brief flash of white border on elements during keyboard navigation */
 @layer utilities {
   .transition {
     transition-property:

@@ -1,4 +1,6 @@
-import React from "react";
+import type { Meta } from "@storybook/nextjs-vite";
+
+import { ColorPaletteDocs } from "./ColorPaletteDocs";
 
 const ColorSwatch = ({ name, cssVar }: { name: string; cssVar: string }) => (
   <div className="flex items-center gap-3 mb-2">
@@ -21,9 +23,9 @@ const ColorSection = ({
   colors: { name: string; cssVar: string }[];
 }) => (
   <div className="mb-8">
-    <h3 className="text-lg font-semibold text-primaryText mb-4 border-b border-mainBorder pb-2">
+    <h2 className="text-lg font-semibold text-primaryText mb-4 border-b border-mainBorder pb-2">
       {title}
-    </h3>
+    </h2>
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {colors.map((color) => (
         <ColorSwatch key={color.cssVar} {...color} />
@@ -73,6 +75,15 @@ const colorGroups = {
       name: "Settings Drawer Section Title",
       cssVar: "settingsDrawerSectionTitle",
     },
+    { name: "Placeholder Text", cssVar: "placeholderText" },
+    { name: "Destructive Alert Text", cssVar: "destructiveAlertText" },
+    { name: "Destructive Alert Icon", cssVar: "destructiveAlertIcon" },
+    { name: "Success Alert Text", cssVar: "successAlertText" },
+    { name: "Success Alert Icon", cssVar: "successAlertIcon" },
+    {
+      name: "Tab Default Inactive Text Hover",
+      cssVar: "tabDefaultInactiveTextHover",
+    },
   ],
   icons: [
     { name: "Gray Icon", cssVar: "grayIcon" },
@@ -81,6 +92,8 @@ const colorGroups = {
     { name: "Settings Icon", cssVar: "settingsIcon" },
     { name: "Calendar Icon Hover", cssVar: "calendarIconHover" },
     { name: "Settings Drawer Divider", cssVar: "settingsDrawerDivider" },
+    { name: "Four Card Icon Green", cssVar: "fourCardIconGreen" },
+    { name: "Four Card Icon Blue", cssVar: "fourCardIconBlue" },
   ],
   backgrounds: [
     { name: "Primary Bg", cssVar: "primaryBg" },
@@ -168,6 +181,32 @@ const colorGroups = {
     { name: "Notification Item Bg", cssVar: "notificationItemBg" },
     { name: "Notification Item Bg Hover", cssVar: "notificationItemBgHover" },
     { name: "Notification Header Bg", cssVar: "notificationHeaderBg" },
+    { name: "Auth Page Bg", cssVar: "authPageBg" },
+    { name: "Tab Active Bg Hover", cssVar: "tabActiveBgHover" },
+    { name: "Secondary Button Bg", cssVar: "secondaryButtonBg" },
+    { name: "Secondary Button Bg Hover", cssVar: "secondaryButtonBgHover" },
+    { name: "Calendar Event Bg Hover", cssVar: "calendarEventBgHover" },
+    { name: "Chart Primary Fill", cssVar: "chartPrimaryFill" },
+    { name: "Chart Primary Grid", cssVar: "chartPrimaryGrid" },
+    { name: "Chart Primary Disabled", cssVar: "chartPrimaryDisabled" },
+    { name: "Chart Primary Inverted", cssVar: "chartPrimaryInverted" },
+    { name: "Chart Secondary Fill", cssVar: "chartSecondaryFill" },
+    { name: "Chart Secondary Grid", cssVar: "chartSecondaryGrid" },
+    { name: "Chart Secondary Disabled", cssVar: "chartSecondaryDisabled" },
+    { name: "Chart Secondary Inverted", cssVar: "chartSecondaryInverted" },
+    { name: "Chart Secondary Accent", cssVar: "chartSecondaryAccent" },
+    { name: "Auth Error Tooltip Bg", cssVar: "authErrorTooltipBg" },
+    { name: "Mobile Overlay Bg", cssVar: "mobileOverlayBg" },
+    {
+      name: "Theme Toggle Active Bg Hover Light",
+      cssVar: "themeToggleActiveBgHoverLight",
+    },
+    { name: "Destructive Alert Bg", cssVar: "destructiveAlertBg" },
+    { name: "Success Alert Bg", cssVar: "successAlertBg" },
+    { name: "Four Card Icon Bg", cssVar: "fourCardIconBg" },
+    { name: "Four Card Icon Bg Hover", cssVar: "fourCardIconBgHover" },
+    { name: "Side Menu Button Bg", cssVar: "sideMenuButtonBg" },
+    { name: "Side Menu Button Bg Hover", cssVar: "sideMenuButtonBgHover" },
   ],
   borders: [
     { name: "Main Border", cssVar: "mainBorder" },
@@ -194,6 +233,19 @@ const colorGroups = {
     },
     { name: "Tab Line Active Border", cssVar: "tabLineActiveBorder" },
     { name: "Settings Button Border", cssVar: "settingsButtonBorder" },
+    {
+      name: "Outlined Button Border Hover",
+      cssVar: "outlinedButtonBorderHover",
+    },
+    { name: "Input Border Focus", cssVar: "inputBorderFocus" },
+    { name: "Submenu Tree Line", cssVar: "submenuTreeLine" },
+    { name: "Chart Bar Grid Line", cssVar: "chartBarGridLine" },
+    { name: "Chart Axis Line", cssVar: "chartAxisLine" },
+    { name: "Chart Axis Text", cssVar: "chartAxisText" },
+    { name: "Chart Vertical Line", cssVar: "chartVerticalLine" },
+    { name: "Chart Cursor Bg", cssVar: "chartCursorBg" },
+    { name: "Destructive Alert Border", cssVar: "destructiveAlertBorder" },
+    { name: "Success Alert Border", cssVar: "successAlertBorder" },
   ],
 };
 
@@ -212,10 +264,14 @@ const ColorPalette = ({ theme }: { theme: "light" | "dark" }) => (
   </div>
 );
 
-const meta = {
+const meta: Meta = {
   title: "Theme/Color Palette",
+  tags: ["autodocs"],
   parameters: {
     layout: "padded",
+    docs: {
+      page: ColorPaletteDocs,
+    },
   },
 };
 
@@ -225,19 +281,14 @@ export const LightMode = {
   render: () => <ColorPalette theme="light" />,
   parameters: {
     backgrounds: { default: "light" },
+    forceTheme: "light",
   },
-  decorators: [
-    (Story: React.ComponentType) => {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-      return <Story />;
-    },
-  ],
 };
 
 export const DarkMode = {
   render: () => <ColorPalette theme="dark" />,
   parameters: {
     backgrounds: { default: "dark" },
+    forceTheme: "dark",
   },
 };

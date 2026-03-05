@@ -27,9 +27,7 @@ Supports all standard HTML input types and attributes.
   tags: ["autodocs"],
   argTypes: {
     type: {
-      control: "select",
-      options: ["text", "email", "password", "number", "search", "tel", "url"],
-      description: "Input type",
+      table: { disable: true },
     },
     placeholder: {
       control: "text",

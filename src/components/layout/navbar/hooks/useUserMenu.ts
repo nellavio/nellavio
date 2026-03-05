@@ -25,7 +25,7 @@ interface UseUserMenuParams {
 }
 
 /**
- * Manages the user menu dropdown — sub-menu visibility (language, auth, theme, settings),
+ * Manages the user menu dropdown - sub-menu visibility (language, auth, theme, settings),
  * tooltip suppression on tab-switch, and full roving-focus keyboard navigation
  * following WAI-ARIA `role="menu"` patterns.
  */

@@ -77,7 +77,8 @@ export const menuConfig: MenuConfigEntry[] = [
 ];
 
 export const SideMenu = () => {
-  const { isSideMenuOpen, toggleSideMenu } = useLayoutStore();
+  const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
+  const toggleSideMenu = useLayoutStore((s) => s.toggleSideMenu);
   const t = useTranslations("sideMenu");
 
   return (

@@ -39,7 +39,7 @@ export const AddEventModal = ({
   const hours = Array.from({ length: 9 }, (_, i) => `${i + 8}:00`);
 
   /**
-   * Global Enter key listener — lets users confirm the modal
+   * Global Enter key listener - lets users confirm the modal
    * without reaching for the button. Cleaned up on unmount.
    */
   useEffect(() => {

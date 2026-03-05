@@ -10,18 +10,14 @@ import {
   Settings,
   User,
 } from "lucide-react";
-import React from "react";
 
 import { Button } from "../button";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
@@ -45,12 +41,13 @@ Built on Radix UI DropdownMenu primitive with keyboard navigation.
 - \`DropdownMenuTrigger\` - Button that opens the menu
 - \`DropdownMenuContent\` - Menu content container
 - \`DropdownMenuItem\` - Interactive menu item
-- \`DropdownMenuCheckboxItem\` - Item with checkbox toggle
-- \`DropdownMenuRadioItem\` - Item for single selection in radio group
 - \`DropdownMenuLabel\` - Non-interactive label
 - \`DropdownMenuSeparator\` - Visual divider
 - \`DropdownMenuShortcut\` - Keyboard shortcut hint
+- \`DropdownMenuGroup\` - Groups related menu items
 - \`DropdownMenuSub\` - Nested submenu container
+- \`DropdownMenuSubTrigger\` - Button that opens a submenu
+- \`DropdownMenuSubContent\` - Content container for submenu
         `,
       },
     },
@@ -58,7 +55,7 @@ Built on Radix UI DropdownMenu primitive with keyboard navigation.
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg min-h-75">
+      <div className="p-10 bg-primaryBg rounded-lg min-h-75">
         <Story />
       </div>
     ),
@@ -74,7 +71,7 @@ export const Default: Story = {
       <DropdownMenuTrigger asChild>
         <Button>Open Menu</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align="start">
         <DropdownMenuItem>
           <User className="mr-2 h-4 w-4" />
           Profile
@@ -99,7 +96,7 @@ export const WithLabelsAndGroups: Story = {
       <DropdownMenuTrigger asChild>
         <Button>Account</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -141,7 +138,7 @@ export const WithSubmenu: Story = {
       <DropdownMenuTrigger asChild>
         <Button>Options</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuItem>
           <Mail className="mr-2 h-4 w-4" />
           Email
@@ -175,58 +172,4 @@ export const WithSubmenu: Story = {
       </DropdownMenuContent>
     </DropdownMenu>
   ),
-};
-
-export const WithCheckboxItems: Story = {
-  render: function CheckboxExample() {
-    const [showStatus, setShowStatus] = React.useState(true);
-    const [showActivity, setShowActivity] = React.useState(false);
-
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button>View Options</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem
-            checked={showStatus}
-            onCheckedChange={setShowStatus}
-          >
-            Show Status Bar
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem
-            checked={showActivity}
-            onCheckedChange={setShowActivity}
-          >
-            Show Activity
-          </DropdownMenuCheckboxItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  },
-};
-
-export const WithRadioItems: Story = {
-  render: function RadioExample() {
-    const [position, setPosition] = React.useState("bottom");
-
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button>Panel Position</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>Position</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-            <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
-          </DropdownMenuRadioGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  },
 };

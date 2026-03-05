@@ -38,8 +38,8 @@ const PieChartDemo = ({
   paddingAngle = 0,
 }: PieChartDemoProps) => {
   const chartColors = colors ?? [
-    "var(--color-chartPrimaryBg)",
-    "var(--color-chartSecondaryBg)",
+    "var(--color-chartPrimaryFill)",
+    "var(--color-chartSecondaryFill)",
     "rgb(168, 162, 255)",
     "rgb(100, 200, 180)",
     "rgb(255, 150, 150)",
@@ -49,11 +49,34 @@ const PieChartDemo = ({
   const renderLabel = ({
     name = "",
     percent = 0,
+    x = 0,
+    y = 0,
+    midAngle = 0,
+    textAnchor = "middle",
+    fill = "",
   }: {
     name?: string;
     percent?: number;
+    x?: number;
+    y?: number;
+    midAngle?: number;
+    textAnchor?: "start" | "middle" | "end" | "inherit";
+    fill?: string;
   }) => {
-    return `${name} ${(percent * 100).toFixed(0)}%`;
+    const RADIAN = Math.PI / 180;
+    const offsetX = Math.cos(-midAngle * RADIAN) * 5;
+    const offsetY = Math.sin(-midAngle * RADIAN) * 5;
+    return (
+      <text
+        x={x + offsetX}
+        y={y + offsetY}
+        textAnchor={textAnchor}
+        fill={fill}
+        fontSize={12}
+      >
+        {`${name} ${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
   };
 
   return (
@@ -82,8 +105,67 @@ const PieChartDemo = ({
           <Tooltip content={<PieChartTooltip />} isAnimationActive={false} />
           {showLegend && (
             <Legend
-              wrapperStyle={{ color: "var(--color-primaryText)" }}
-              layout="horizontal"
+              content={({ payload }) => {
+                const items = payload ?? [];
+                const midpoint = Math.ceil(items.length / 2);
+                const rows =
+                  items.length > 3
+                    ? [items.slice(0, midpoint), items.slice(midpoint)]
+                    : [items];
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      marginTop: 8,
+                    }}
+                  >
+                    {rows.map((row, rowIndex) => (
+                      <div
+                        key={rowIndex}
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          justifyContent: "center",
+                          gap: "1.3rem",
+                        }}
+                      >
+                        {row.map((entry, index) => (
+                          <div
+                            key={index}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "0.4rem",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: 10,
+                                height: 10,
+                                backgroundColor: entry.color,
+                                borderRadius: 2,
+                                flexShrink: 0,
+                              }}
+                            />
+                            <span
+                              style={{
+                                color: "var(--color-primaryText)",
+                                fontSize: 14,
+                              }}
+                            >
+                              {entry.value}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                );
+              }}
               verticalAlign="bottom"
             />
           )}
@@ -97,7 +179,7 @@ const meta: Meta<typeof PieChartDemo> = {
   title: "Charts/PieChart",
   component: PieChartDemo,
   parameters: {
-    layout: "padded",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -135,10 +217,7 @@ const COLORS = ["#3db985", "#5385c6", "#a8a2ff"];
       control: "object",
       description: "Array of { name, value } objects",
     },
-    colors: {
-      control: "object",
-      description: "Custom colors for each segment",
-    },
+    colors: { table: { disable: true } },
     showLegend: {
       control: "boolean",
       description: "Show legend below chart",
@@ -162,7 +241,7 @@ const COLORS = ["#3db985", "#5385c6", "#a8a2ff"];
   },
   decorators: [
     (Story) => (
-      <div className="p-6 bg-primaryBg rounded-lg max-w-md mx-auto aspect-[4/3]">
+      <div className="p-6 bg-primaryBg rounded-lg w-md aspect-[4/3]">
         <Story />
       </div>
     ),

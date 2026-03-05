@@ -1,5 +1,3 @@
-/* Calendar  */
-
 .fc-scrollgrid-sync-table tbody tr:nth-child(6) {
   @apply hidden;
 }

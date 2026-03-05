@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Loader2, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 import { Button } from "../button";
 
@@ -18,8 +18,9 @@ Supports composition pattern via asChild prop for custom elements.
 - \`className\` - Additional CSS classes to apply
 - \`variant\` - Style variant: \`default\`, \`destructive\`, \`outline\`, \`secondary\`, \`ghost\`, \`link\`
 - \`size\` - Size variant: \`default\`, \`sm\`, \`lg\`, \`icon\`
+- \`loading\` - Loading state with spinner, auto-disables button
+- \`icon\` - Optional icon rendered before children
 - \`asChild\` - Render as Radix Slot for composition
-- \`ref\` - Forwarded ref to the button element
         `,
       },
     },
@@ -43,6 +44,10 @@ Supports composition pattern via asChild prop for custom elements.
       options: ["default", "sm", "lg", "icon"],
       description: "Size variant",
     },
+    loading: {
+      control: "boolean",
+      description: "Loading state with spinner",
+    },
     disabled: {
       control: "boolean",
       description: "Disabled state",
@@ -50,6 +55,10 @@ Supports composition pattern via asChild prop for custom elements.
     children: {
       control: "text",
       description: "Button content",
+    },
+    icon: {
+      control: false,
+      description: "Optional icon rendered before children (ReactNode)",
     },
   },
   args: {
@@ -69,7 +78,11 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  args: { variant: "default", children: "Default" },
+  args: {
+    variant: "default",
+    children: "Default",
+    size: "lg",
+  },
 };
 
 export const Destructive: Story = {
@@ -100,20 +113,16 @@ export const Large: Story = {
   args: { size: "lg", children: "Large" },
 };
 
-export const Icon: Story = {
-  args: { size: "icon", children: <Plus className="h-4 w-4" /> },
+export const WithIcon: Story = {
+  args: { icon: <Plus className="h-4 w-4" />, children: "Add Item" },
 };
 
 export const Loading: Story = {
-  args: {
-    disabled: true,
-    children: (
-      <>
-        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-        Loading
-      </>
-    ),
-  },
+  args: { loading: true, children: "Submit" },
+};
+
+export const Disabled: Story = {
+  args: { disabled: true, children: "Disabled" },
 };
 
 export const AllVariants: Story = {

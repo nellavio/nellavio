@@ -17,6 +17,7 @@ Built on Radix UI Switch primitive with smooth transitions and accessibility sup
 **Props:**
 - \`className\` - Additional CSS classes to apply
 - \`checked\` - Controlled checked state
+- \`defaultChecked\` - Default checked state (uncontrolled)
 - \`onCheckedChange\` - Callback when checked state changes
 - \`disabled\` - Disabled state
 - \`ref\` - Forwarded ref to the switch element
@@ -67,9 +68,10 @@ export const Checked: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => (
+  args: { disabled: true },
+  render: (args) => (
     <div className="flex items-center space-x-2">
-      <Switch id="disabled" disabled />
+      <Switch {...args} id="disabled" />
       <Label htmlFor="disabled">Disabled</Label>
     </div>
   ),

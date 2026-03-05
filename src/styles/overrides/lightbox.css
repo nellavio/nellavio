@@ -1,4 +1,3 @@
-/* Colors for lightbox gallery on products page */
 .yarl__container {
   @apply !bg-galleryBg  backdrop-blur-md;
 }
@@ -15,7 +14,6 @@
   @apply !border-mainBorder !bg-galleryThumbnailBg backdrop-blur-md;
 }
 
-/* Lightbox navigation arrows */
 .yarl__button.yarl__navigation_prev svg,
 .yarl__button.yarl__navigation_next svg {
   width: 48px;

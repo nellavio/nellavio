@@ -20,7 +20,7 @@ import {
 } from "./types";
 
 /**
- * Orders table logic — column definitions, multi-criteria filtering
+ * Orders table logic - column definitions, multi-criteria filtering
  * (search, date range, selects, price range), sorting, and pagination.
  */
 export const useOrders = ({ orders }: useOrdersProps) => {

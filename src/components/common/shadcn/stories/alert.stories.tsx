@@ -16,8 +16,9 @@ Supports optional icons and multiple visual variants for different message types
 
 **Props:**
 - \`className\` - Additional CSS classes to apply
-- \`variant\` - Visual style variant: \`default\`, \`destructive\`
+- \`variant\` - Visual style variant: \`default\`, \`destructive\`, \`success\`
 - \`children\` - Alert content including title and description
+- \`ref\` - Forwarded ref to the alert container element
 
 **Subcomponents:**
 - \`AlertTitle\` - Title heading for the alert notification
@@ -30,13 +31,15 @@ Supports optional icons and multiple visual variants for different message types
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "destructive"],
+      options: ["default", "destructive", "success"],
       description: "Visual style variant",
     },
   },
   args: {
     variant: "default",
-  },
+    title: "Information",
+    description: "This is an informational alert.",
+  } as Record<string, unknown>,
   decorators: [
     (Story) => (
       <div className="p-6 bg-primaryBg rounded-lg w-96">
@@ -50,34 +53,51 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
-  render: (args) => (
-    <Alert {...args}>
-      <Info className="h-4 w-4" />
-      <AlertTitle>Information</AlertTitle>
-      <AlertDescription>This is an informational alert.</AlertDescription>
-    </Alert>
-  ),
+  render: (args) => {
+    const { title, description, ...rest } = args as Record<string, unknown>;
+    return (
+      <Alert {...rest}>
+        <Info className="h-4 w-4" />
+        <AlertTitle>{title as string}</AlertTitle>
+        <AlertDescription>{description as string}</AlertDescription>
+      </Alert>
+    );
+  },
   args: { variant: "default" },
 };
 
 export const Destructive: Story = {
-  render: (args) => (
-    <Alert {...args}>
-      <AlertCircle className="h-4 w-4" />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>Something went wrong.</AlertDescription>
-    </Alert>
-  ),
-  args: { variant: "destructive" },
+  render: (args) => {
+    const { title, description, ...rest } = args as Record<string, unknown>;
+    return (
+      <Alert {...rest}>
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>{title as string}</AlertTitle>
+        <AlertDescription>{description as string}</AlertDescription>
+      </Alert>
+    );
+  },
+  args: {
+    variant: "destructive",
+    title: "Error",
+    description: "Something went wrong.",
+  } as Record<string, unknown>,
 };
 
 export const Success: Story = {
-  render: (args) => (
-    <Alert {...args}>
-      <CheckCircle className="h-4 w-4 text-green-500" />
-      <AlertTitle>Success</AlertTitle>
-      <AlertDescription>Your changes have been saved.</AlertDescription>
-    </Alert>
-  ),
-  args: { variant: "default" },
+  render: (args) => {
+    const { title, description, ...rest } = args as Record<string, unknown>;
+    return (
+      <Alert {...rest}>
+        <CheckCircle className="h-4 w-4" />
+        <AlertTitle>{title as string}</AlertTitle>
+        <AlertDescription>{description as string}</AlertDescription>
+      </Alert>
+    );
+  },
+  args: {
+    variant: "success",
+    title: "Success",
+    description: "Your changes have been saved.",
+  } as Record<string, unknown>,
 };

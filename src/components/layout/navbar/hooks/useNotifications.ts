@@ -8,7 +8,7 @@ import { useNotificationsData } from "./useNotificationsData";
 type FilterType = "all" | "new" | "read";
 
 /**
- * Manages the notifications dropdown — fetches initial data, tracks read/unread state,
+ * Manages the notifications dropdown - fetches initial data, tracks read/unread state,
  * persists changes to localStorage, and provides keyboard navigation within the list.
  */
 export const useNotifications = ({
@@ -46,7 +46,7 @@ export const useNotifications = ({
   }, []);
 
   /**
-   * Always uses fresh server data on page load — clears any stale
+   * Always uses fresh server data on page load - clears any stale
    * localStorage so notifications reset between sessions.
    */
   useEffect(() => {

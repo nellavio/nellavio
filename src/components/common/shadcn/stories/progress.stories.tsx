@@ -28,6 +28,13 @@ Built on Radix UI Progress primitive with smooth transitions and customizable co
       control: { type: "range", min: 0, max: 100 },
       description: "Progress value (0-100)",
     },
+    indicatorColor: {
+      control: "color",
+      description: "Custom CSS color for the progress indicator",
+    },
+    label: {
+      table: { disable: true },
+    },
   },
   args: { value: 50 },
   decorators: [

@@ -27,12 +27,24 @@ import { cn } from "../../../utils/classNames";
  * </div>
  * ```
  */
+interface SeparatorProps extends React.ComponentPropsWithoutRef<
+  typeof SeparatorPrimitive.Root
+> {
+  color?: string;
+}
+
 const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+  SeparatorProps
 >(
   (
-    { className, orientation = "horizontal", decorative = true, ...props },
+    {
+      className,
+      orientation = "horizontal",
+      decorative = true,
+      color,
+      ...props
+    },
     ref,
   ) => (
     <SeparatorPrimitive.Root
@@ -40,10 +52,12 @@ const Separator = React.forwardRef<
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        "shrink-0 bg-inputBorder",
+        "shrink-0",
+        !color && "bg-inputBorder",
         orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
         className,
       )}
+      style={color ? { backgroundColor: color } : undefined}
       {...props}
     />
   ),

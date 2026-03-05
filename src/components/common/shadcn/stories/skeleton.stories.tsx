@@ -20,13 +20,6 @@ Uses pulse animation to indicate loading state.
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    className: {
-      control: "text",
-      description:
-        "CSS classes for dimensions and shape (e.g. h-4 w-full, rounded-full)",
-    },
-  },
   decorators: [
     (Story) => (
       <div className="p-6 bg-primaryBg rounded-lg">

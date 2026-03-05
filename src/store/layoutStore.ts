@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
 import { BREAKPOINTS } from "../styles/breakpoints";
 import type { FontType } from "../styles/fonts";
@@ -42,68 +42,70 @@ const determineInitialState = () => {
 };
 
 export const useLayoutStore = create<LayoutStore>()(
-  persist(
-    (set) => ({
-      isMobileMenuOpen: false,
-      isSideMenuOpen: true,
-      setIsSideMenuOpen: (isOpen) => set(() => ({ isSideMenuOpen: isOpen })),
-      toggleMobileMenu: () => {
-        set((state: LayoutStore) => ({
-          ...state,
-          isMobileMenuOpen: state.isMobileMenuOpen
-            ? false
-            : determineInitialState().isMobileMenuOpen,
-        }));
-      },
-      toggleSideMenu: () => {
-        set((state: LayoutStore) => {
-          const newIsOpen = state.isSideMenuOpen
-            ? false
-            : determineInitialState().isSideMenuOpen;
-          return {
-            ...state,
-            isSideMenuOpen: newIsOpen,
-            sidebarDefaultState: newIsOpen ? "expanded" : "collapsed",
-          };
-        });
-      },
-      isLoggingOut: false,
-      setIsLoggingOut: (isLoggingOut) => set(() => ({ isLoggingOut })),
-      isLoggingIn: false,
-      setIsLoggingIn: (isLoggingIn) => set(() => ({ isLoggingIn })),
-      homepageLayout: "three-cards",
-      setHomepageLayout: (layout) => set(() => ({ homepageLayout: layout })),
-      fontType: "default",
-      setFontType: (fontType) => set(() => ({ fontType })),
-      sidebarDefaultState: "expanded",
-      setSidebarDefaultState: (sidebarDefaultState) =>
-        set(() => ({
-          sidebarDefaultState,
-          isSideMenuOpen: sidebarDefaultState === "expanded",
-        })),
-      chartAnimationsEnabled: false,
-      setChartAnimationsEnabled: (chartAnimationsEnabled) =>
-        set(() => ({ chartAnimationsEnabled })),
-      fixedNavbar: true,
-      setFixedNavbar: (fixedNavbar) => set(() => ({ fixedNavbar })),
-    }),
-    {
-      name: "app-settings",
-      partialize: (state) => ({
-        homepageLayout: state.homepageLayout,
-        fontType: state.fontType,
-        sidebarDefaultState: state.sidebarDefaultState,
-        chartAnimationsEnabled: state.chartAnimationsEnabled,
-        fixedNavbar: state.fixedNavbar,
+  devtools(
+    persist(
+      (set) => ({
+        isMobileMenuOpen: false,
+        isSideMenuOpen: true,
+        setIsSideMenuOpen: (isOpen) => set(() => ({ isSideMenuOpen: isOpen })),
+        toggleMobileMenu: () => {
+          set((state) => ({
+            isMobileMenuOpen: state.isMobileMenuOpen
+              ? false
+              : determineInitialState().isMobileMenuOpen,
+          }));
+        },
+        toggleSideMenu: () => {
+          set((state) => {
+            const newIsOpen = state.isSideMenuOpen
+              ? false
+              : determineInitialState().isSideMenuOpen;
+            return {
+              isSideMenuOpen: newIsOpen,
+              sidebarDefaultState: newIsOpen ? "expanded" : "collapsed",
+            };
+          });
+        },
+        isLoggingOut: false,
+        setIsLoggingOut: (isLoggingOut) => set(() => ({ isLoggingOut })),
+        isLoggingIn: false,
+        setIsLoggingIn: (isLoggingIn) => set(() => ({ isLoggingIn })),
+        homepageLayout: "three-cards",
+        setHomepageLayout: (layout) => set(() => ({ homepageLayout: layout })),
+        fontType: "default",
+        setFontType: (fontType) => set(() => ({ fontType })),
+        sidebarDefaultState: "expanded",
+        setSidebarDefaultState: (sidebarDefaultState) =>
+          set(() => ({
+            sidebarDefaultState,
+            isSideMenuOpen: sidebarDefaultState === "expanded",
+          })),
+        chartAnimationsEnabled: false,
+        setChartAnimationsEnabled: (chartAnimationsEnabled) =>
+          set(() => ({ chartAnimationsEnabled })),
+        fixedNavbar: true,
+        setFixedNavbar: (fixedNavbar) => set(() => ({ fixedNavbar })),
       }),
-      onRehydrateStorage: () => (state) => {
-        if (!state) return;
-        const isDesktop =
-          typeof window !== "undefined" && window.innerWidth >= BREAKPOINTS.xl;
-        state.setIsSideMenuOpen(
-          isDesktop && state.sidebarDefaultState === "expanded",
-        );
+      {
+        name: "app-settings",
+        partialize: (state) => ({
+          homepageLayout: state.homepageLayout,
+          fontType: state.fontType,
+          sidebarDefaultState: state.sidebarDefaultState,
+          chartAnimationsEnabled: state.chartAnimationsEnabled,
+          fixedNavbar: state.fixedNavbar,
+        }),
+        onRehydrateStorage: () => (state) => {
+          if (!state) return;
+          const isDesktop =
+            typeof window !== "undefined" &&
+            window.innerWidth >= BREAKPOINTS.xl;
+          state.setIsSideMenuOpen(
+            isDesktop && state.sidebarDefaultState === "expanded",
+          );
+        },
       },
-    },
+    ),
+    { name: "LayoutStore" },
   ),
 );

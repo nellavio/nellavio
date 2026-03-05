@@ -23,7 +23,7 @@ Built on Radix UI Popover primitive with smooth animations.
 
 **Subcomponents:**
 - \`PopoverTrigger\` - Element that opens the popover when clicked
-- \`PopoverContent\` - Content container with positioning and animations
+- \`PopoverContent\` - Content container with positioning and animations (\`side\`: \`top\`, \`right\`, \`bottom\`, \`left\`; \`align\`: \`start\`, \`center\`, \`end\`; \`sideOffset\` for spacing)
         `,
       },
     },
@@ -31,12 +31,10 @@ Built on Radix UI Popover primitive with smooth animations.
   tags: ["autodocs"],
   argTypes: {
     open: {
-      control: "boolean",
-      description: "Controlled open state",
+      table: { disable: true },
     },
     modal: {
-      control: "boolean",
-      description: "Whether popover is modal",
+      table: { disable: true },
     },
   },
   decorators: [
@@ -57,7 +55,7 @@ export const Default: Story = {
       <PopoverTrigger asChild>
         <Button variant="outline">Open Popover</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80">
+      <PopoverContent align="start" className="w-80">
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium text-primaryText">Dimensions</h4>
@@ -78,5 +76,52 @@ export const Default: Story = {
         </div>
       </PopoverContent>
     </Popover>
+  ),
+};
+
+export const Positions: Story = {
+  render: () => (
+    <div className="flex gap-4">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" size="sm">
+            Top
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent side="top" className="w-48">
+          <p className="text-sm text-primaryText">Top popover</p>
+        </PopoverContent>
+      </Popover>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" size="sm">
+            Right
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent side="right" className="w-48">
+          <p className="text-sm text-primaryText">Right popover</p>
+        </PopoverContent>
+      </Popover>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" size="sm">
+            Bottom
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent side="bottom" className="w-48">
+          <p className="text-sm text-primaryText">Bottom popover</p>
+        </PopoverContent>
+      </Popover>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" size="sm">
+            Left
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent side="left" className="w-48">
+          <p className="text-sm text-primaryText">Left popover</p>
+        </PopoverContent>
+      </Popover>
+    </div>
   ),
 };
