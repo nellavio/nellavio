@@ -12,6 +12,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import {
@@ -94,14 +95,14 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   const getBarSize = () => {
-    if (windowWidth > 1400) return 24;
-    if (windowWidth > 720) return 18;
-    if (windowWidth > 600) return 15;
+    if (windowWidth > BREAKPOINTS["1xl"]) return 24;
+    if (windowWidth > BREAKPOINTS.md) return 18;
+    if (windowWidth > BREAKPOINTS.sm) return 15;
     return 10;
   };
 
   const chartData =
-    windowWidth > 500
+    windowWidth > BREAKPOINTS.xsm
       ? revenueTrendsData.slice(-9)
       : revenueTrendsData.slice(-4);
 
@@ -121,8 +122,8 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
             data={chartData}
             margin={{
               top: 20,
-              right: windowWidth > 500 ? 30 : 15,
-              left: windowWidth > 500 ? 20 : 7,
+              right: windowWidth > BREAKPOINTS.xsm ? 30 : 15,
+              left: windowWidth > BREAKPOINTS.xsm ? 20 : 7,
               bottom: 5,
             }}
             tabIndex={-1}

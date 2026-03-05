@@ -12,6 +12,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import {
@@ -95,8 +96,8 @@ export const RevenueDistribution = ({
             layout="vertical"
             margin={{
               top: 20,
-              right: windowWidth > 400 ? 30 : 5,
-              left: windowWidth > 400 ? 40 : 30,
+              right: windowWidth > BREAKPOINTS.xsm ? 30 : 5,
+              left: windowWidth > BREAKPOINTS.xsm ? 40 : 30,
               bottom: 5,
             }}
             tabIndex={-1}

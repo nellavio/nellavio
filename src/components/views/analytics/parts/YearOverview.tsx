@@ -13,6 +13,7 @@ import {
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
 import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import {
@@ -144,8 +145,8 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
               data={shouldStartChartAnimations ? yearOverviewData : []}
               margin={{
                 top: 20,
-                right: windowWidth > 500 ? 30 : 15,
-                left: windowWidth > 500 ? 20 : 7,
+                right: windowWidth > BREAKPOINTS.xsm ? 30 : 15,
+                left: windowWidth > BREAKPOINTS.xsm ? 20 : 7,
                 bottom: 5,
               }}
               tabIndex={-1}

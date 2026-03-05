@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { ProgressCirclesProps } from "../types";
 
 interface CircularProgressProps {
@@ -65,11 +66,11 @@ export const ProgressCircles = ({ metrics }: ProgressCirclesProps) => {
   const { width: windowWidth } = useWindowDimensions();
 
   const getCircleSize = () => {
-    if (windowWidth < 490) {
+    if (windowWidth < BREAKPOINTS.xsm) {
       return { size: 80, strokeWidth: 8 };
-    } else if (windowWidth < 640) {
+    } else if (windowWidth < BREAKPOINTS.sm) {
       return { size: 120, strokeWidth: 10 };
-    } else if (windowWidth < 1400) {
+    } else if (windowWidth < BREAKPOINTS["1xl"]) {
       return { size: 96, strokeWidth: 9 };
     } else {
       return { size: 120, strokeWidth: 10 };

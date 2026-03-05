@@ -14,6 +14,7 @@ import {
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
 import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import { Badge } from "../../../common/shadcn/badge";
@@ -98,8 +99,8 @@ export const TotalProfit = ({
             data={shouldStartChartAnimations ? totalProfitSales : []}
             margin={{
               top: 10,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: windowWidth > BREAKPOINTS.md ? 20 : 5,
               bottom: 5,
             }}
             tabIndex={-1}

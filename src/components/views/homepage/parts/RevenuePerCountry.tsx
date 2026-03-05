@@ -11,6 +11,7 @@ import { PolishIcon } from "../../../../assets/icons/PolishIcon";
 import { SpinnerIcon } from "../../../../assets/icons/SpinnerIcon";
 import { UnitedStatesIcon } from "../../../../assets/icons/UnitedStatesIcon";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { Card } from "../../../common/Card";
 import {
   Tooltip,
@@ -51,7 +52,8 @@ export const RevenuePerCountry = ({
   const { theme } = useTheme();
   const { width: windowWidth } = useWindowDimensions();
 
-  const isCompact = windowWidth >= 768 && windowWidth < 1024;
+  const isCompact =
+    windowWidth >= BREAKPOINTS.md && windowWidth < BREAKPOINTS.lg;
   const mapScale = isCompact ? 165 : 200;
   const mapMarginLeft = isCompact ? "-2rem" : "-4rem";
 

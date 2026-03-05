@@ -18,6 +18,7 @@ import { UpdateIcon } from "../../../../assets/icons/UpdateIcon";
 import { UsersIcon } from "../../../../assets/icons/UsersIcon";
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import { WeeklyActivity, WeeklyPerformanceProps } from "../types";
@@ -117,7 +118,10 @@ const WeeklyPerformanceChart = ({
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const getDisplayData = () => {
-    if (windowWidth < 500 || (windowWidth >= 1024 && windowWidth <= 1500)) {
+    if (
+      windowWidth < BREAKPOINTS.xsm ||
+      (windowWidth >= BREAKPOINTS.lg && windowWidth <= BREAKPOINTS["2xl"])
+    ) {
       return data.slice(0, 5);
     }
     return data;
@@ -126,22 +130,23 @@ const WeeklyPerformanceChart = ({
   const displayData = getDisplayData();
 
   const getBarSize = () => {
-    if (windowWidth < 480) return 20;
-    if (windowWidth >= 1024 && windowWidth <= 1280) return 18;
+    if (windowWidth < BREAKPOINTS.xsm) return 20;
+    if (windowWidth >= BREAKPOINTS.lg && windowWidth <= BREAKPOINTS.xl)
+      return 18;
     return 25;
   };
 
   const getChartMargins = () => {
-    if (windowWidth < 450) {
+    if (windowWidth < BREAKPOINTS.xsm) {
       return { top: 10, right: 5, left: -10, bottom: 5 };
     }
-    if (windowWidth >= 1024 && windowWidth < 1750) {
+    if (windowWidth >= BREAKPOINTS.lg && windowWidth < BREAKPOINTS["3xl"]) {
       return { top: 10, right: 10, left: -5, bottom: 5 };
     }
     return {
       top: 10,
-      right: windowWidth > 400 ? 20 : 5,
-      left: windowWidth > 400 ? 0 : -10,
+      right: windowWidth > BREAKPOINTS.xsm ? 20 : 5,
+      left: windowWidth > BREAKPOINTS.xsm ? 0 : -10,
       bottom: 5,
     };
   };
@@ -315,7 +320,7 @@ export const WeeklyPerformance = ({
 
   const hasActivities = weeklyActivities && weeklyActivities.length > 0;
   const showActivities =
-    hasActivities && (!isFourCardsMode || windowWidth < 1024);
+    hasActivities && (!isFourCardsMode || windowWidth < BREAKPOINTS.lg);
 
   return (
     <Card

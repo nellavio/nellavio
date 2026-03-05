@@ -13,6 +13,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import {
@@ -91,11 +92,11 @@ export const BestSellingProducts = ({
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const getBarSize = () => {
-    if (windowWidth > 1400) return 25;
-    if (windowWidth > 1280) return 20;
-    if (windowWidth >= 1024) return 15;
-    if (windowWidth > 720) return 20;
-    if (windowWidth > 640) return 15;
+    if (windowWidth > BREAKPOINTS["1xl"]) return 25;
+    if (windowWidth > BREAKPOINTS.xl) return 20;
+    if (windowWidth >= BREAKPOINTS.lg) return 15;
+    if (windowWidth > BREAKPOINTS.md) return 20;
+    if (windowWidth > BREAKPOINTS.sm) return 15;
     return 25;
   };
 
@@ -112,11 +113,12 @@ export const BestSellingProducts = ({
           initialDimension={{ width: 320, height: 200 }}
         >
           <BarChart
+            layout="vertical"
             data={chartData}
             margin={{
               top: 20,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: 0,
               bottom: 5,
             }}
             tabIndex={-1}
@@ -131,12 +133,7 @@ export const BestSellingProducts = ({
               stroke="var(--color-chartPrimaryGrid)"
             />
             <XAxis
-              dataKey="name"
-              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
-              tickLine={false}
-              tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
-            />
-            <YAxis
+              type="number"
               axisLine={{ stroke: "var(--color-chartAxisLine)" }}
               tickLine={false}
               tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
@@ -147,6 +144,33 @@ export const BestSellingProducts = ({
                 0,
                 (dataMax: number) => Math.ceil(dataMax / 1000) * 1000,
               ]}
+            />
+            <YAxis
+              type="category"
+              dataKey="name"
+              axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+              tickLine={false}
+              tick={({
+                x,
+                y,
+                payload,
+              }: {
+                x: string | number;
+                y: string | number;
+                payload: { value: string };
+              }) => (
+                <text
+                  x={x}
+                  y={y}
+                  dy={4}
+                  textAnchor="end"
+                  fill="var(--color-chartAxisText)"
+                  fontSize={12}
+                >
+                  {payload.value}
+                </text>
+              )}
+              width={windowWidth > BREAKPOINTS.md ? 90 : 70}
             />
             <Tooltip
               content={<BestSellingTooltip />}
@@ -159,7 +183,7 @@ export const BestSellingProducts = ({
             <Bar
               dataKey="Sales"
               fill="var(--color-chartSecondaryFill)"
-              radius={[4, 4, 0, 0]}
+              radius={[0, 4, 4, 0]}
               barSize={getBarSize()}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}
@@ -169,7 +193,7 @@ export const BestSellingProducts = ({
             <Bar
               dataKey="Profit"
               fill="var(--color-chartPrimaryFill)"
-              radius={[4, 4, 0, 0]}
+              radius={[0, 4, 4, 0]}
               barSize={getBarSize()}
               isAnimationActive={shouldAnimate}
               animationBegin={animationBegin}

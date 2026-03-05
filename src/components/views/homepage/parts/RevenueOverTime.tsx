@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Area,
   AreaChart,
@@ -13,6 +13,7 @@ import {
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
 import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "../types";
@@ -69,6 +70,12 @@ export const RevenueOverTime = ({
   const t = useTranslations("homepage.revenueOverTime");
 
   const { width: windowWidth } = useWindowDimensions();
+
+  const getChartMargins = () => {
+    if (windowWidth > BREAKPOINTS.md) return { right: 30, left: 20 };
+    if (windowWidth > BREAKPOINTS.xsm) return { right: 10, left: 5 };
+    return { right: 5, left: -10 };
+  };
 
   const shouldStartChartAnimations = useChartAnimationStore(
     (state) => state.shouldStartChartAnimations,
@@ -207,8 +214,7 @@ export const RevenueOverTime = ({
             data={shouldStartChartAnimations ? displayData : []}
             margin={{
               top: 10,
-              right: windowWidth > 700 ? 30 : windowWidth > 400 ? 10 : 5,
-              left: windowWidth > 700 ? 20 : windowWidth > 400 ? 5 : -10,
+              ...getChartMargins(),
               bottom: 5,
             }}
             tabIndex={-1}

@@ -15,6 +15,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
 import { CustomerSatisfactionProps } from "../types";
@@ -69,7 +70,7 @@ export const CustomerSatisfaction = ({
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const bubbleRange: [number, number] =
-    windowWidth < 1024 ? [56, 1250] : [111, 2500];
+    windowWidth < BREAKPOINTS.lg ? [56, 1250] : [111, 2500];
 
   return (
     <Card
@@ -90,8 +91,8 @@ export const CustomerSatisfaction = ({
           <ScatterChart
             margin={{
               top: 20,
-              right: windowWidth > 700 ? 30 : 10,
-              left: windowWidth > 700 ? 20 : 5,
+              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+              left: windowWidth > BREAKPOINTS.md ? 20 : 5,
               bottom: 5,
             }}
             tabIndex={-1}
