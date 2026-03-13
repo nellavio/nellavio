@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { useLayoutStore } from "../../../../store/layoutStore";
 import { Label } from "../../../common/shadcn/label";
+import { SelectedCheckBadge } from "./SelectedCheckBadge";
 
 const LayoutPreview = ({ type }: { type: "three-cards" | "four-cards" }) => {
   if (type === "three-cards") {
@@ -162,25 +163,7 @@ export const HomepageLayoutSection = () => {
           <span className="text-sm font-medium text-settingsDrawerLabelText">
             {t("threeCards")}
           </span>
-          {homepageLayout === "three-cards" && (
-            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
-              <svg
-                width="12"
-                height="9"
-                viewBox="0 0 12 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 4.5L4.5 8L11 1"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          )}
+          {homepageLayout === "three-cards" && <SelectedCheckBadge />}
         </button>
 
         {/* Four Cards Option */}
@@ -199,25 +182,7 @@ export const HomepageLayoutSection = () => {
           <span className="text-sm font-medium text-settingsDrawerLabelText">
             {t("fourCards")}
           </span>
-          {homepageLayout === "four-cards" && (
-            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
-              <svg
-                width="12"
-                height="9"
-                viewBox="0 0 12 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 4.5L4.5 8L11 1"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          )}
+          {homepageLayout === "four-cards" && <SelectedCheckBadge />}
         </button>
       </div>
     </div>

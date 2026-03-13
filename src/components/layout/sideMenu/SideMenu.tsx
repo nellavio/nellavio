@@ -85,7 +85,7 @@ export const SideMenu = () => {
   return (
     <nav
       aria-label="Side navigation"
-      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 white pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
+      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
         !isSideMenuOpen && "xl:!max-w-12 !w-12 xl:!min-w-18 pr-0"
       }
       `}

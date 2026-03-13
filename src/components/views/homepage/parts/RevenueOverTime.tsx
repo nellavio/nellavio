@@ -16,6 +16,7 @@ import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
+import { Tabs, TabsList, TabsTrigger } from "../../../common/shadcn/tabs";
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "../types";
 
 const RevenueOverTimeTooltip = ({
@@ -162,32 +163,26 @@ export const RevenueOverTime = ({
           Historical performance
         </span>
       </div>
-      <div className="hidden xsm:flex h-10 items-center rounded-md bg-tabsBg px-1">
-        <button
-          type="button"
-          onClick={() => setTimeRange("monthly")}
-          aria-pressed={timeRange === "monthly"}
-          className={`inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
-            timeRange === "monthly"
-              ? "bg-revenueTabActiveBg text-primaryText hover:bg-tabActiveBgHover"
-              : "text-secondaryText"
-          }`}
-        >
-          Monthly
-        </button>
-        <button
-          type="button"
-          onClick={() => setTimeRange("quarterly")}
-          aria-pressed={timeRange === "quarterly"}
-          className={`inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
-            timeRange === "quarterly"
-              ? "bg-revenueTabActiveBg text-primaryText hover:bg-tabActiveBgHover"
-              : "text-secondaryText"
-          }`}
-        >
-          Quarterly
-        </button>
-      </div>
+      <Tabs
+        value={timeRange}
+        onValueChange={(v) => setTimeRange(v as "monthly" | "quarterly")}
+        className="hidden xsm:block"
+      >
+        <TabsList className="bg-tabsBg">
+          <TabsTrigger
+            value="monthly"
+            className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+          >
+            Monthly
+          </TabsTrigger>
+          <TabsTrigger
+            value="quarterly"
+            className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+          >
+            Quarterly
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
     </div>
   );
 

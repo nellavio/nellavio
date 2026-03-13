@@ -16,7 +16,6 @@ import { useNavbarModals } from "./hooks/useNavbarModals";
 import { AboutModal } from "./parts/AboutModal";
 import { ChangelogModal } from "./parts/ChangelogModal";
 import { FloatingMenuButton } from "./parts/FloatingMenuButton";
-import { HamburgerButton } from "./parts/HamburgerButton";
 import { NotificationsButton } from "./parts/NotificationsButton";
 import { SearchInput } from "./parts/SearchInput";
 import { ThemeButton } from "./parts/ThemeButton";
@@ -175,15 +174,6 @@ export const Navbar = () => {
                 selectTheme={selectTheme}
                 t={t}
               />
-              <div className="hidden xl:block">
-                <HamburgerButton
-                  isMobileMenuOpen={isMobileMenuOpen}
-                  toggleMobileMenu={() => {
-                    searchDropdown.close();
-                    toggleMobileMenu();
-                  }}
-                />
-              </div>
             </div>
           </div>
         </div>

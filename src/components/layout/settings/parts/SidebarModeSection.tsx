@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { useLayoutStore } from "../../../../store/layoutStore";
 import { Label } from "../../../common/shadcn/label";
+import { SelectedCheckBadge } from "./SelectedCheckBadge";
 
 const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {
   if (type === "expanded") {
@@ -170,25 +171,7 @@ export const SidebarModeSection = () => {
           <span className="text-sm font-medium text-settingsDrawerLabelText">
             {t("expanded")}
           </span>
-          {sidebarDefaultState === "expanded" && (
-            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
-              <svg
-                width="12"
-                height="9"
-                viewBox="0 0 12 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 4.5L4.5 8L11 1"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          )}
+          {sidebarDefaultState === "expanded" && <SelectedCheckBadge />}
         </button>
 
         {/* Collapsed Option */}
@@ -207,25 +190,7 @@ export const SidebarModeSection = () => {
           <span className="text-sm font-medium text-settingsDrawerLabelText">
             {t("collapsed")}
           </span>
-          {sidebarDefaultState === "collapsed" && (
-            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-mainColor flex items-center justify-center">
-              <svg
-                width="12"
-                height="9"
-                viewBox="0 0 12 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 4.5L4.5 8L11 1"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          )}
+          {sidebarDefaultState === "collapsed" && <SelectedCheckBadge />}
         </button>
       </div>
     </div>

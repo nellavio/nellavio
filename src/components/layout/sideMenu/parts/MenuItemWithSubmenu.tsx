@@ -103,7 +103,7 @@ export const MenuItemWithSubmenu = ({
   }, [isExpanded, submenuItems.length, isSideMenuOpen]);
 
   const handleMenuItemClick = () => {
-    if (window.innerWidth < BREAKPOINTS.lg) {
+    if (window.innerWidth < BREAKPOINTS.xl) {
       toggleMobileMenu();
     }
   };

@@ -115,7 +115,7 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       {/* Fixed Settings Button - Desktop Only */}
-      {!pathsWithNoLayout.includes(currentPathname) && (
+      {!isAuthPage && (
         <div className="hidden xl:block fixed bottom-6 right-4 z-50">
           <SettingsDrawer>
             <button
@@ -131,10 +131,10 @@ export const Layout = ({ children }: LayoutProps) => {
       )}
 
       <div className="flex min-h-screen w-full bg-secondaryBg overflow-x-hidden">
-        {showLoader && !pathsWithNoLayout.includes(currentPathname) && (
+        {showLoader && !isAuthPage && (
           <FullScreenLoader key="static-loader-key" />
         )}
-        {!pathsWithNoLayout.includes(currentPathname) && (
+        {!isAuthPage && (
           <>
             <SideMenu />
             <Navbar />

@@ -28,7 +28,7 @@ export const SideMenuMobile = ({
     <nav
       aria-label="Mobile navigation"
       aria-hidden={!isMobileMenuOpen}
-      className={`z-50 overflow-auto overflow-x-hidden flex fixed xl:hidden flex-col justify-between bg-primaryBg border-r-[1px] border-mainBorder bg-primaryBg white top-18 xl:top-16 2xl:top-18 mb-10 left-0 items-center transform transition-transform ease-in-out ${
+      className={`z-50 overflow-auto overflow-x-hidden flex fixed xl:hidden flex-col justify-between bg-primaryBg border-r-[1px] border-mainBorder top-18 xl:top-16 2xl:top-18 mb-10 left-0 items-center transform transition-transform ease-in-out ${
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       }`}
       style={{ height: "calc(100dvh - 4.5rem)" }}

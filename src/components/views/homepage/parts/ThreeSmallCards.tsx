@@ -94,7 +94,7 @@ export const ThreeSmallCards = ({
         {metricsData.map((metric, index) => (
           <div
             key={metric.title}
-            className="border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-6 pl-8 pr-5 min-[25rem]:pr-8"
+            className="border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-4 pl-8 pr-5 min-[25rem]:pr-8"
           >
             <div className="flex items-center justify-between gap-5 w-full">
               <div className="flex flex-col justify-center gap-1.5">
@@ -144,7 +144,7 @@ export const ThreeSmallCards = ({
         {metricsData.slice(0, 2).map((metric, index) => (
           <div
             key={metric.title}
-            className="border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-5 px-5"
+            className="border light:shadow-lg border-cardBorder rounded-xl bg-primaryBg relative w-full text-left py-4 px-5"
           >
             <div className="flex items-center justify-between gap-3 w-full">
               <div className="flex flex-col justify-center gap-1">

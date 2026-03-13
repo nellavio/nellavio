@@ -26,7 +26,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
   const isCollapsed = !isSideMenuOpen && isDesktop;
 
   const handleMenuItemClick = () => {
-    if (window.innerWidth < BREAKPOINTS.lg) {
+    if (window.innerWidth < BREAKPOINTS.xl) {
       toggleMobileMenu();
     }
   };
