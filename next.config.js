@@ -97,6 +97,13 @@ const securityHeaders = [
     key: "X-XSS-Protection",
     value: "0",
   },
+  {
+    // Referrer-Policy controls how much referrer information is sent with requests.
+    // "strict-origin-when-cross-origin" sends full URL for same-origin, only origin
+    // for cross-origin, and nothing for downgrade (HTTPS->HTTP)
+    key: "Referrer-Policy",
+    value: "strict-origin-when-cross-origin",
+  },
 ];
 
 module.exports = withNextIntl(nextConfig);

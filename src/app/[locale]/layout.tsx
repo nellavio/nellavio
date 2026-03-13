@@ -29,12 +29,14 @@ export default async function RootLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
+      /**
+       * Required by next-themes — theme attributes are injected before
+       * hydration to prevent flash.
+       * @see https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
+       */
       suppressHydrationWarning={true}
     >
-      <body
-        className={`${outfit.variable} ${openSans.variable}`}
-        suppressHydrationWarning={true}
-      >
+      <body className={`${outfit.variable} ${openSans.variable}`}>
         <NextIntlClientProvider>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>

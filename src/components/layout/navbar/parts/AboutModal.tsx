@@ -57,7 +57,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
                       e.stopPropagation();
                       setIsContributingModalOpen(true);
                     }}
-                    className="text-mainColor hover:underline font-medium"
+                    className="text-coloredLinkText hover:underline font-medium"
                   >
                     Contributing guide
                   </button>
@@ -96,7 +96,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
             <div className="text-primaryText text-base w-full text-left">
               <p className="text-left w-full mt-4 text-xl">Tech stack:</p>
               <div className="mt-4">
-                <p className="text-secondaryText mb-2">Front-End:</p>
+                <p className="text-primaryText mb-2">Front-End:</p>
               </div>
               <ul className="list-disc list-inside mb-4 pl-3 text-primaryText">
                 <li>ReactJS</li>
@@ -111,7 +111,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
                 <li>Jest</li>
               </ul>
               <div>
-                <p className="text-secondaryText mb-2">Back-End:</p>
+                <p className="text-primaryText mb-2">Back-End:</p>
               </div>
               <ul className="list-disc list-inside pl-3 mb-4">
                 <li>NodeJS</li>
@@ -153,7 +153,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
                       href="https://github.com/matt765/spireflow/discussions/1"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-mainColor hover:underline"
+                      className="text-coloredLinkText hover:underline"
                     >
                       Discussions
                     </a>{" "}
@@ -166,7 +166,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
                       href="https://github.com/matt765/spireflow/issues"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-mainColor hover:underline"
+                      className="text-coloredLinkText hover:underline"
                     >
                       Issue
                     </a>{" "}
@@ -185,7 +185,7 @@ export const AboutModal = ({ closeModal, returnFocusRef }: AboutModalProps) => {
                     href="https://github.com/sponsors/matt765"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-mainColor hover:underline"
+                    className="text-coloredLinkText hover:underline"
                   >
                     GitHub Sponsors
                   </a>

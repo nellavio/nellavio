@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
@@ -16,7 +15,6 @@ export const ThreeSmallCards = ({
   threeSmallCardsData,
 }: ThreeSmallCardsProps) => {
   const t = useTranslations("homepage.threeSmallCards");
-  const { theme } = useTheme();
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
   const [isBelow1280, setIsBelow1280] = useState(false);
@@ -51,8 +49,7 @@ export const ThreeSmallCards = ({
       { name: "remaining", value: 100 - percentage },
     ];
 
-    const remainingColor =
-      theme === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)";
+    const remainingColor = "var(--color-chartSecondaryDisabled)";
 
     return (
       <div

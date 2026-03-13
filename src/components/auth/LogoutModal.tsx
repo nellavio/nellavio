@@ -22,7 +22,7 @@ export const LogoutModal = ({
   closeModal,
   returnFocusRef,
 }: LogoutModalProps) => {
-  const { handleLogout, loading } = useHandleLogout();
+  const { handleLogout, loading, error } = useHandleLogout();
   const t = useTranslations("auth");
 
   const handleLogoutClick = () => {
@@ -53,6 +53,11 @@ export const LogoutModal = ({
             {t("logoutModalDesc")}
           </DialogDescription>
         </DialogHeader>
+        {error && (
+          <p role="alert" className="text-sm text-red-500 text-center w-full">
+            {t("logoutModalError")}
+          </p>
+        )}
         <DialogFooter
           footerVariant="centered"
           className="!flex-row gap-4 sm:gap-0"

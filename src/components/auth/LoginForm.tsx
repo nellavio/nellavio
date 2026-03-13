@@ -27,9 +27,13 @@ export interface LoginData {
 
 interface LoginFormProps {
   switchToSignUp?: () => void;
+  onLoginSuccess?: () => void;
 }
 
-export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
+export const LoginForm = ({
+  switchToSignUp,
+  onLoginSuccess,
+}: LoginFormProps) => {
   const {
     showEmailError,
     setShowEmailError,
@@ -40,7 +44,7 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
     onSubmit,
     control,
     errors,
-  } = useHandleLogin();
+  } = useHandleLogin(onLoginSuccess);
 
   const t = useTranslations("auth");
 
@@ -125,6 +129,7 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
                   className={`pr-1 transition-opacity ${showPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
                 >
                   <InputGroupButton
+                    className="h-7 px-1"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={
                       showPassword ? t("hidePassword") : t("showPassword")
@@ -151,6 +156,31 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
             </div>
           )}
         </div>
+        {/* On mobile I used standard red text for errors instead of tooltips to save space */}
+        {!authErrorDisplayed && errors.email && showEmailError && (
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mt-1 md:hidden text-left w-full"
+          >
+            {errors.email.message}
+          </p>
+        )}
+        {!authErrorDisplayed && errors.password && showPasswordError && (
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mt-1 md:hidden text-left w-full"
+          >
+            {errors.password.message}
+          </p>
+        )}
+        {authErrorDisplayed && (
+          <p
+            role="alert"
+            className="text-sm text-red-500 -mt-1 text-left w-full"
+          >
+            {authErrorDisplayed}
+          </p>
+        )}
         <div className="flex items-center gap-2 w-full mt-1">
           <Checkbox
             id="rememberMe"
@@ -164,31 +194,6 @@ export const LoginForm = ({ switchToSignUp }: LoginFormProps) => {
             {t("rememberMe")}
           </label>
         </div>
-        {/* On mobile I used standard red text for errors instead of tooltips to save space */}
-        {!authErrorDisplayed && errors.email && showEmailError && (
-          <p
-            role="alert"
-            className="text-sm text-red-500 -mb-2 md:hidden text-left w-full"
-          >
-            {errors.email.message}
-          </p>
-        )}
-        {!authErrorDisplayed && errors.password && showPasswordError && (
-          <p
-            role="alert"
-            className="text-sm text-red-500 -mb-3 md:hidden text-left w-full"
-          >
-            {errors.password.message}
-          </p>
-        )}
-        {authErrorDisplayed && (
-          <p
-            role="alert"
-            className="text-sm text-red-500 -mb-3 text-left w-full"
-          >
-            {authErrorDisplayed}
-          </p>
-        )}
         <div className="flex flex-col items-center w-full mt-4 1xl:mt-6">
           <div className="w-4/5 h-10">
             <Button

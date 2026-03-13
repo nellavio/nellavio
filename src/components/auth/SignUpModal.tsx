@@ -33,7 +33,10 @@ export const SignUpModal = ({
       >
         <DialogTitle className="sr-only">Sign Up</DialogTitle>
         <DialogDescription className="sr-only">Sign Up</DialogDescription>
-        <SignUpForm switchToSignIn={switchToSignIn} />
+        <SignUpForm
+          switchToSignIn={switchToSignIn}
+          onSignUpSuccess={closeModal}
+        />
       </DialogContent>
     </Dialog>
   );

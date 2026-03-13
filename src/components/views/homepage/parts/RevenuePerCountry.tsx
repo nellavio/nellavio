@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import React, { lazy, Suspense } from "react";
 import { Geographies, Geography } from "react-simple-maps";
 
@@ -49,7 +48,6 @@ export const RevenuePerCountry = ({
       FlagIcon: countryIconMap[country.name],
     }));
 
-  const { theme } = useTheme();
   const { width: windowWidth } = useWindowDimensions();
 
   const isCompact =
@@ -58,8 +56,7 @@ export const RevenuePerCountry = ({
   const mapMarginLeft = isCompact ? "-2rem" : "-4rem";
 
   const HIGHLIGHT_COLOR = "var(--color-chartPrimaryFill)";
-  const BORDER_COLOR =
-    theme === "light" ? "rgb(0,0,0,0.18)" : "rgb(255,255,255,0.1)";
+  const BORDER_COLOR = "var(--color-mapCountryBorder)";
 
   return (
     <Card
@@ -115,9 +112,7 @@ export const RevenuePerCountry = ({
                             fill={
                               countryData
                                 ? HIGHLIGHT_COLOR
-                                : theme === "light"
-                                  ? "rgb(0,0,0,0.13)"
-                                  : "rgba(255, 255, 255, 0.1)"
+                                : "var(--color-mapCountryFill)"
                             }
                             tabIndex={-1}
                             style={{

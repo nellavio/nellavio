@@ -30,6 +30,13 @@ export const getSession = async () => {
 
     return data?.user ? data : null;
   } catch (error: unknown) {
+    // Re-throw Next.js internal errors (e.g. DYNAMIC_SERVER_USAGE from
+    // calling headers() at build time) so the framework can handle them
+    // silently instead of flooding the build output with false errors.
+    if (error instanceof Error && "digest" in error) {
+      throw error;
+    }
+
     console.error("Failed to get session:", error);
     return null;
   }

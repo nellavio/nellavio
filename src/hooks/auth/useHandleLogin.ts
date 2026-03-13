@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -9,6 +8,7 @@ import { useRouter } from "../../i18n/navigation";
 import { signIn } from "../../services/auth/auth-client";
 import { useLayoutStore } from "../../store/layoutStore";
 import { isPresentationModeClient } from "../../utils/presentationMode";
+import { useAuthErrorMessage } from "./useAuthErrorMessage";
 
 const SUBMIT_COOLDOWN_MS = 2000;
 
@@ -25,14 +25,14 @@ const SUBMIT_COOLDOWN_MS = 2000;
  * @returns {Object} errors - Form validation errors
  * @returns {string} authError - Authentication error message
  */
-export const useHandleLogin = () => {
+export const useHandleLogin = (onLoginSuccess?: () => void) => {
   const [authError, setAuthError] = useState<string>("");
 
   const router = useRouter();
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPasswordError, setShowPasswordError] = useState(false);
   const [authErrorDisplayed, setAuthErrorDisplayed] = useState("");
-  const t = useTranslations("auth");
+  const { getErrorMessage, t } = useAuthErrorMessage("signInDefaultError");
 
   const setIsLoggingIn = useLayoutStore((state) => state.setIsLoggingIn);
   const clearAuthError = () => setAuthError("");
@@ -41,36 +41,12 @@ export const useHandleLogin = () => {
   const isSubmittingRef = useRef(false);
   const lastSubmitTimeRef = useRef(0);
 
-  /** Map Better Auth error messages to translation keys */
-  const mapBetterAuthError = useCallback(
-    (errorMessage: string): string => {
-      const lowerError = errorMessage.toLowerCase();
-
-      /** Better Auth returns INVALID_EMAIL_OR_PASSWORD for both wrong email and wrong password */
-      if (
-        lowerError.includes("invalid email or password") ||
-        lowerError.includes("invalid_email_or_password")
-      ) {
-        return t("authErrors.form_password_incorrect");
-      }
-      if (lowerError.includes("locked") || lowerError.includes("blocked")) {
-        return t("authErrors.user_locked");
-      }
-      if (lowerError.includes("session")) {
-        return t("authErrors.session_exists");
-      }
-
-      return t("authErrors.defaultError");
-    },
-    [t],
-  );
-
   const handleLogin = useCallback(
     async (data: LoginData, rememberMe: boolean) => {
       /** Check if running in presentation mode (no backend) */
       if (isPresentationModeClient()) {
         alert(
-          "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work.",
+          "Authentication is disabled in the presentation mode. Check README.md to find information on how to connect the backend to make it work.\n\nIf you already configured .env, please remember that npm run build must be run before npm start for changes to take effect. This is not needed when using npm run dev.",
         );
         return;
       }
@@ -80,18 +56,24 @@ export const useHandleLogin = () => {
 
       const { email, password } = data;
 
+      if (!signIn) return;
+
       try {
         const { error } = await signIn.email({ email, password, rememberMe });
 
         if (error) {
           setIsLoggingIn(false);
-          const errorMessage = error.message || error.code || "UNKNOWN_ERROR";
-          const translatedError = mapBetterAuthError(errorMessage);
+          const translatedError = getErrorMessage(
+            error.code || "UNKNOWN_ERROR",
+          );
           setAuthError(translatedError);
           return;
         }
 
         /** Success - redirect to homepage (i18n router preserves locale automatically) */
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
         router.push("/");
       } catch (error: unknown) {
         setIsLoggingIn(false);
@@ -99,7 +81,7 @@ export const useHandleLogin = () => {
         setAuthError(t("authErrors.networkError"));
       }
     },
-    [mapBetterAuthError, router, setIsLoggingIn, t],
+    [getErrorMessage, onLoginSuccess, router, setIsLoggingIn, t],
   );
 
   const validationSchema = useMemo(
@@ -110,7 +92,7 @@ export const useHandleLogin = () => {
           .email(t("pleaseEnterAValidEmail")),
         password: Yup.string()
           .required(t("passwordFieldIsRequired"))
-          .min(8, t("passwordMinimumLength")),
+          .min(10, t("passwordMinimumLength")),
       }),
     [t],
   );

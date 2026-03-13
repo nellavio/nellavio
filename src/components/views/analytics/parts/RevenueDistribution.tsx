@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import {
   Bar,
   BarChart,
@@ -71,13 +70,10 @@ export const RevenueDistribution = ({
 
   const { width: windowWidth } = useWindowDimensions();
 
-  const { theme } = useTheme();
-
   const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
 
   const inStoreColor = "var(--color-chartSecondaryInverted)";
-  const onlineColor =
-    theme === "dark" ? "rgb(86,92,101)" : "var(--color-chartPrimaryInverted)";
+  const onlineColor = "var(--color-chartMutedFill)";
 
   return (
     <Card className="h-full" id="revenueDistribution" title={t("title")}>

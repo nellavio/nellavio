@@ -84,22 +84,26 @@ const buildModeSection = (
 ): string => {
   const authConfigured = status.graphqlUrl && status.hasAuth;
 
+  /** When .env is configured and backend is online */
   if (status.isOnline && authConfigured) {
     return [
-      "🔌 Mode: Connected to backend",
-      "   ├─ Backend: online",
+      "🔌 Mode: Backend online",
+      "   ├─ Using data from backend",
       "   └─ Route protection: enabled",
     ].join("\n");
   }
 
+  /** When .env is configured but backend is offline */
   if (authConfigured) {
     return [
-      "🔌 Mode: Backend offline",
-      "   ├─ Using mock data",
-      "   └─ Route protection: enabled",
+      `⚠️  Backend unreachable at ${status.graphqlUrl}`,
+      "   ├─ Pages will fail to load data",
+      "   ├─ Route protection: enabled (login not possible)",
+      "   └─ Start the backend or remove env vars to use standalone mode",
     ].join("\n");
   }
 
+  /** When .env is not configured */
   return [
     "🔌 Mode: Standalone",
     "   ├─ Using mock data",

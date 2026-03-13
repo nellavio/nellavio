@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import {
   Bar,
   BarChart,
@@ -21,7 +20,6 @@ import { FourSmallCardsProps } from "../types";
 
 export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
   const t = useTranslations("homepage.fourSmallCards");
-  const { theme } = useTheme();
   const isLg = useMediaQuery("(min-width: 1024px)");
   const is1xl = useMediaQuery("(min-width: 1280px)");
   const is3xl = useMediaQuery("(min-width: 1920px)");
@@ -50,8 +48,7 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
       { name: "remaining", value: 100 - percentage },
     ];
 
-    const remainingColor =
-      theme === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)";
+    const remainingColor = "var(--color-chartSecondaryDisabled)";
 
     let innerRadius: number;
     let outerRadius: number;

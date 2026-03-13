@@ -48,7 +48,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                     href="https://github.com/matt765/spireflow/discussions/1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-mainColor hover:underline"
+                    className="text-coloredLinkText hover:underline"
                   >
                     Discussions
                   </a>{" "}
@@ -61,7 +61,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                     href="https://github.com/matt765/spireflow/issues"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-mainColor hover:underline"
+                    className="text-coloredLinkText hover:underline"
                   >
                     Issue
                   </a>{" "}
@@ -80,7 +80,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                   href="https://github.com/sponsors/matt765"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-mainColor hover:underline"
+                  className="text-coloredLinkText hover:underline"
                 >
                   GitHub Sponsors
                 </a>

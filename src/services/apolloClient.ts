@@ -8,7 +8,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
  * Falls back to mock data if GRAPHQL_URL is not configured (standalone mode).
  */
 export const client = new ApolloClient({
-  link: new HttpLink({ uri: process.env.GRAPHQL_URL }),
+  link: new HttpLink({ uri: process.env.GRAPHQL_URL, credentials: "include" }),
   cache: new InMemoryCache(),
 });
 

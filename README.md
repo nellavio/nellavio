@@ -27,7 +27,7 @@
 
 ## :gear: Tech stack
 
-React 19, Next.js 15, TypeScript, Tailwind, Shadcn, Zustand, Apollo Client, Recharts, Better Auth, Jest
+React 19, Next.js 15, TypeScript, Tailwind 4, Shadcn, Zustand, Apollo Client, Recharts, Better Auth, Jest
 
 ## :sparkles: Features
 
@@ -55,17 +55,36 @@ React 19, Next.js 15, TypeScript, Tailwind, Shadcn, Zustand, Apollo Client, Rech
 - 🧪 **Testing** - Jest + React Testing Library
 - 🔒 **Auth** - Better Auth integration
 
+## :rocket: Quickstart
+
+You can get started with Spireflow by cloning the repository:
+
+```bash
+git clone https://github.com/matt765/spireflow.git
+cd spireflow
+npm install
+npm run dev
+```
+
+🎉 **That's it!** Navigate to [http://localhost:3000](http://localhost:3000) to explore the dashboard.
+
+Spireflow starter is designed to work as a standalone front-end application by default. It loads mock data from `public/backendBackup.json` and has routes protection disabled.
+
+Optionally, it can be connected to an associated Node.js backend, which enables authentication and fetching real data on each request. See `Configuration` section below for more details.
+
 ## :link: Links
 
-Live (dashboard) [https://spireflow.vercel.app/](https://spireflow.vercel.app/)
+Live demo [https://spireflow.app/](https://spireflow.app/)
 
-## :cloud: Backend
+- Storybook [https://storybook.spireflow.app/](https://storybook.spireflow.app/)
 
-The app can be connected to an associated Node.js backend, which is also open source and available on my GitHub. You can deploy it locally or remotely on platforms like Heroku or Render.
+- Auth docs [https://auth.spireflow.app/](https://auth.spireflow.app/)
 
-The dashboard is designed to work as a standalone front-end application by default, so setting up the backend is entirely optional.
+#### Associated repositories
 
-[https://github.com/matt765/spireflow-backend](https://github.com/matt765/spireflow-backend)
+- Backend [https://github.com/matt765/spireflow-backend](https://github.com/matt765/spireflow-backend)
+
+- Lightweight starter [https://github.com/matt765/spireflow-layout](https://github.com/matt765/spireflow-layout)
 
 ## :file_folder: Project structure
 
@@ -106,21 +125,6 @@ The dashboard is designed to work as a standalone front-end application by defau
 │   └── middleware.ts             # NextJS middleware
 └── package.json                  # Project dependencies and scripts
 ```
-
-## :rocket: Quickstart
-
-You can get started with Spireflow by cloning the repository:
-
-```bash
-git clone https://github.com/matt765/spireflow.git
-cd spireflow
-npm install
-npm run dev
-```
-
-🎉 **That's it!** Navigate to [http://localhost:3000](http://localhost:3000) to explore the dashboard.
-
-The app works with mock data from `public/backendBackup.json` on default and has routes protection disabled. You can connect backend by adding `.env` variables similar to those in `.env.example` file.
 
 ## 📋 Available commands
 
@@ -205,8 +209,24 @@ That's it! The dashboard will automatically:
 
 The application automatically detects your configuration:
 
-- **No env vars**: Standalone demo mode with mock data, all routes accessible
-- **Env vars configured**: Fetching data from backend if it's online, with route protection enabled (redirects to /login if not authenticated)
+**Standalone mode** (no env vars)
+
+- Uses mock data from `backendBackup.json`, all routes accessible without login
+- `npm run build` pre-renders pages as static HTML, `npm start` serves them instantly
+
+**Backend online** (env vars set, backend running)
+
+- Fetches real data from GraphQL backend, route protection is enabled
+- `npm run build` and `npm start` treat pages as dynamic, fetching fresh data on each request
+
+**Backend offline** (env vars set, backend unreachable)
+
+- Route protection enabled, but login is not possible while the backend is down
+- Same build and runtime behavior as `Backend online` mode, but pages will fail to load data
+
+> Note: `npm run dev` always tries to render pages dynamically regardless of the configuration
+
+If you use `npm start` (production mode), please remember that `npm run build` must be run after configuring environment variables for changes to take effect. This is not needed when using `npm run dev`.
 
 ### Remote deployment
 
@@ -218,7 +238,7 @@ For remote services (e.g., Vercel):
 
 ### One-click deploy
 
-You can deploy your own instance of Spireflow on Vercel using the link below. The app will work in standalone mode with mock data out of the box.
+You can easily deploy your own instance of Spireflow dashboard on Vercel using the link below.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/spireflow/Spireflow)
 

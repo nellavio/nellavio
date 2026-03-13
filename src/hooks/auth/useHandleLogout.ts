@@ -22,10 +22,12 @@ export const useHandleLogout = () => {
     /** Check if running in presentation mode (no backend) */
     if (isPresentationModeClient()) {
       alert(
-        "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work.",
+        "Authentication is disabled in the presentation mode. Check README.md to find information on how to connect the backend to make it work.\n\nIf you already configured .env, please remember that npm run build must be run before npm start for changes to take effect. This is not needed when using npm run dev.",
       );
       return;
     }
+
+    if (!signOut) return;
 
     setLoading(true);
     setIsLoggingOut(true);

@@ -7,6 +7,7 @@
   --color-secondaryTextHover: rgb(255, 255, 255, 0.8);
   --color-coloredText: rgb(61, 185, 133);
   --color-coloredTextHover: rgb(105, 217, 170);
+  --color-coloredLinkText: rgb(61, 185, 133);
   --color-navItemText: rgb(224, 227, 230, 0.8);
   --color-navItemTextActive: rgb(255, 255, 255);
   --color-navSectionTitle: rgb(225, 227, 230);
@@ -86,8 +87,8 @@
   --color-chartPrimaryDisabled: rgb(255, 255, 255, 0.1);
   --color-chartPrimaryInverted: rgb(61, 185, 133);
   --color-chartSecondaryFill: rgb(83, 133, 198);
-  --color-chartSecondaryGrid: rgb(83, 133, 198);
-  --color-chartSecondaryDisabled: rgb(83, 133, 198);
+  --color-chartSecondaryDisabled: rgb(255, 255, 255, 0.1);
+  --color-chartMutedFill: rgb(86, 92, 101);
   --color-chartSecondaryInverted: rgb(83, 133, 198);
   --color-chartSecondaryAccent: rgb(83, 133, 198);
   --color-loaderBg: rgb(36, 40, 45);
@@ -162,6 +163,7 @@
   --color-themeToggleBorderHover: rgb(255, 255, 255, 0.15);
   --color-themeToggleActiveBgHover: rgb(48, 51, 56);
   --color-mapCountryBorder: rgb(255, 255, 255, 0.1);
+  --color-mapCountryFill: rgb(255, 255, 255, 0.1);
   --color-focusVisibleBorder: rgb(61, 185, 133);
   --color-checkboxBorder: rgb(255, 255, 255, 0.2);
   --color-checkboxBorderDisabled: rgb(255, 255, 255, 0.11);
@@ -169,7 +171,6 @@
   --color-navbarSearchInputBorderHover: rgb(255, 255, 255, 0.2);
   --color-tabLineActiveBorder: rgb(90, 149, 224);
   --color-settingsButtonBorder: rgb(0, 0, 0, 0.1);
-  --color-chartBarGridLine: rgb(45, 50, 55);
   --color-chartAxisLine: rgb(255, 255, 255, 0.2);
   --color-chartAxisText: rgb(201, 203, 207);
   --color-chartVerticalLine: rgb(255, 255, 255, 0.15);

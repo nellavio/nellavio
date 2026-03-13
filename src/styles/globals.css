@@ -137,7 +137,7 @@ textarea:focus {
   border-color: var(--color-inputBorderFocus);
 }
 
-/* Overwrite autofill styles for inputs to ensure consistent appearance on multiple themes */
+/* Overwrite autofill styles for inputs to ensure consistent appearance */
 :root {
   --primary-text-color: var(--color-primaryText);
 }
@@ -153,11 +153,7 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-input:-webkit-autofill {
-  -webkit-text-fill-color: white !important;
-}
-
-/* Class needed to display different colors for the content spinner on multiple themes and backgrounds (button/pageContainer) */
+/* Class needed to display different colors for the content spinner */
 .contentSpinner {
   @apply fill-primaryText;
 }

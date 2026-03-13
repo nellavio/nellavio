@@ -1,5 +1,6 @@
 import fs from "fs";
 import { DocumentNode } from "graphql";
+import { headers } from "next/headers";
 import path from "path";
 
 import type { AnalyticsViewProps } from "../components/views/analytics/types";
@@ -81,7 +82,16 @@ export const getData = async <T extends PageName>(
     throw new Error(`Query not found for page: ${pageName}`);
   }
 
-  const { data } = await client.query<PageDataMap>({ query });
+  const headersList = await headers();
+  const cookie = headersList.get("cookie") || "";
+
+  const { data } = await client.query<PageDataMap>({
+    query,
+    context: {
+      headers: { cookie },
+    },
+    fetchPolicy: "no-cache",
+  });
 
   if (!data) {
     throw new Error(`No data returned for page: ${pageName}`);

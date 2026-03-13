@@ -26,9 +26,13 @@ export interface SignUpData {
 
 interface SignUpFormProps {
   switchToSignIn?: () => void;
+  onSignUpSuccess?: () => void;
 }
 
-export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
+export const SignUpForm = ({
+  switchToSignIn,
+  onSignUpSuccess,
+}: SignUpFormProps) => {
   const {
     loading,
     showEmailError,
@@ -42,7 +46,7 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
     onSubmit,
     control,
     errors,
-  } = useHandleSignUp();
+  } = useHandleSignUp(onSignUpSuccess);
 
   const t = useTranslations("auth");
   const [showPassword, setShowPassword] = useState(false);
@@ -128,6 +132,7 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
                   className={`pr-1 transition-opacity ${showPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
                 >
                   <InputGroupButton
+                    className="h-7 px-1"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={
                       showPassword ? t("hidePassword") : t("showPassword")
@@ -187,6 +192,7 @@ export const SignUpForm = ({ switchToSignIn }: SignUpFormProps) => {
                   className={`pr-1 transition-opacity ${showConfirmPassword ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
                 >
                   <InputGroupButton
+                    className="h-7 px-1"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     aria-label={
                       showConfirmPassword

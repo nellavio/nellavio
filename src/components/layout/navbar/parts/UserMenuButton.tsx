@@ -1,5 +1,6 @@
 import { ArrowDownSimpleIcon } from "../../../../assets/icons/ArrowDownSimpleIcon";
 import { UserIcon } from "../../../../assets/icons/UserIcon";
+import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
 import {
   Tooltip,
   TooltipContent,
@@ -29,9 +30,11 @@ export const UserMenuButton = ({
   theme,
   selectTheme,
 }: Omit<UserButtonProps, "userTooltip">) => {
+  const isFirstRender = useIsFirstRender();
+
   const {
     tAuth,
-    isLoggedIn,
+    isLoggedIn: rawIsLoggedIn,
     pathname,
     isLanguageMenuOpen,
     setIsLanguageMenuOpen,
@@ -59,6 +62,9 @@ export const UserMenuButton = ({
     session,
     theme,
   });
+
+  const isLoggedIn = isFirstRender ? false : rawIsLoggedIn;
+  const safeSession = isFirstRender ? null : session;
 
   return (
     <div className="relative ml-3 xl:ml-0" ref={userDropdown.ref}>
@@ -107,7 +113,7 @@ export const UserMenuButton = ({
               }}
               onKeyDown={handleTriggerKeyDown}
               className={`text-base flex justify-center items-center h-full border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon ${
-                isLoggedIn && session?.username
+                isLoggedIn && safeSession?.username
                   ? "w-10 sm:w-auto sm:px-3 rounded-full sm:rounded-xl"
                   : "w-full rounded-full"
               }`}
@@ -118,10 +124,10 @@ export const UserMenuButton = ({
               aria-controls="user-dropdown-menu"
             >
               <UserIcon />
-              {isLoggedIn && session?.username && (
+              {isLoggedIn && safeSession?.username && (
                 <>
                   <span className="hidden sm:inline text-sm font-medium text-primaryText whitespace-nowrap ml-2 mr-2">
-                    {session.username}
+                    {safeSession.username}
                   </span>
                   <div className="hidden sm:block text-secondaryText w-5 h-5 ml-2">
                     <ArrowDownSimpleIcon />

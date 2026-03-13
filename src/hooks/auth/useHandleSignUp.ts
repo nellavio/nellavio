@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -8,6 +7,7 @@ import { SignUpData } from "../../components/auth/SignUpForm";
 import { useRouter } from "../../i18n/navigation";
 import { signUp } from "../../services/auth/auth-client";
 import { isPresentationModeClient } from "../../utils/presentationMode";
+import { useAuthErrorMessage } from "./useAuthErrorMessage";
 
 const SUBMIT_COOLDOWN_MS = 2000;
 
@@ -25,7 +25,7 @@ const SUBMIT_COOLDOWN_MS = 2000;
  * @returns {boolean} loading - Loading state
  * @returns {string} signUpError - Authentication error message
  */
-export const useHandleSignUp = () => {
+export const useHandleSignUp = (onSignUpSuccess?: () => void) => {
   const [loading, setLoading] = useState(false);
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPasswordError, setShowPasswordError] = useState(false);
@@ -33,73 +33,58 @@ export const useHandleSignUp = () => {
     useState(false);
   const [signUpError, setSignUpError] = useState<string>("");
   const router = useRouter();
-  const t = useTranslations("auth");
+  const { getErrorMessage, t } = useAuthErrorMessage("signUpDefaultError");
 
   /** Refs for preventing rapid-fire form submissions (e.g., holding Enter key) */
   const isSubmittingRef = useRef(false);
   const lastSubmitTimeRef = useRef(0);
-
-  /** Map Better Auth error messages to translation keys */
-  const mapSignUpError = useCallback(
-    (errorMessage: string): string => {
-      if (
-        errorMessage.includes("already exists") ||
-        errorMessage.includes("User already exists")
-      ) {
-        return t("authErrors.emailAlreadyExists");
-      }
-      if (errorMessage.includes("Invalid email")) {
-        return t("authErrors.invalidEmail");
-      }
-      if (errorMessage.includes("Password")) {
-        return t("authErrors.passwordError");
-      }
-      return t("authErrors.defaultError");
-    },
-    [t],
-  );
 
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
       /** Check if running in presentation mode (no backend) */
       if (isPresentationModeClient()) {
         alert(
-          "Authentication is disabled in the demo version. Check README.md to find information on how to connect the backend to make it work.",
+          "Authentication is disabled in the presentation mode. Check README.md to find information on how to connect the backend to make it work.\n\nIf you already configured .env, please remember that npm run build must be run before npm start for changes to take effect. This is not needed when using npm run dev.",
         );
         return;
       }
+
+      if (!signUp) return;
 
       setLoading(true);
       setSignUpError("");
 
       try {
         const { email, password } = data;
-        const { error } = await signUp.email({
-          email,
-          password,
-          name: email,
-        });
-
-        if (error) {
-          setLoading(false);
-          /** Map Better Auth errors to user-friendly messages */
-          const errorMessage = mapSignUpError(
-            error.message || error.code || "UNKNOWN_ERROR",
-          );
-          setSignUpError(errorMessage);
-          return;
-        }
-
-        /** Success - DON'T remove spinner, let it stay until page reloads */
-        router.push("/");
-        location.reload();
+        await signUp.email(
+          {
+            email,
+            password,
+            name: email,
+          },
+          {
+            onSuccess: () => {
+              if (onSignUpSuccess) {
+                onSignUpSuccess();
+              }
+              router.push("/");
+            },
+            onError: (ctx) => {
+              setLoading(false);
+              const translatedError = getErrorMessage(
+                ctx.error.code || "UNKNOWN_ERROR",
+              );
+              setSignUpError(translatedError);
+            },
+          },
+        );
       } catch (error: unknown) {
         setLoading(false);
         console.error("Sign up error:", error);
         setSignUpError(t("authErrors.networkError"));
       }
     },
-    [mapSignUpError, router, t],
+    [getErrorMessage, onSignUpSuccess, router, t],
   );
 
   const validationSchema = useMemo(
@@ -110,7 +95,7 @@ export const useHandleSignUp = () => {
           .email(t("pleaseEnterAValidEmail")),
         password: Yup.string()
           .required(t("passwordFieldIsRequired"))
-          .min(8, t("passwordMinimumLength")),
+          .min(10, t("passwordMinimumLength")),
         confirmPassword: Yup.string()
           .required(t("confirmPasswordRequired"))
           .oneOf([Yup.ref("password")], t("passwordsMustMatch")),

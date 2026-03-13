@@ -1,4 +1,5 @@
 import fs from "fs";
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import path from "path";
 
@@ -26,8 +27,14 @@ export async function GET() {
     }
 
     try {
+      const headersList = await headers();
+      const cookie = headersList.get("cookie") || "";
+
       const { data } = await client.query<{ notifications: Notification[] }>({
         query: NOTIFICATIONS_QUERY,
+        context: {
+          headers: { cookie },
+        },
         fetchPolicy: "network-only",
       });
 
@@ -55,9 +62,3 @@ export async function GET() {
     );
   }
 }
-
-/**
- * Dynamic by default. Uncomment below for static builds with hourly revalidation:
- * export const dynamic = 'force-static';
- * export const revalidate = 3600;
- */
