@@ -18,7 +18,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
   const toggleMobileMenu = useLayoutStore((state) => state.toggleMobileMenu);
   const isSideMenuOpen = useLayoutStore((state) => state.isSideMenuOpen);
   const currentPathname = usePathname();
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isDesktop = useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
   const [isActive, setIsActive] = useState(false);
   const [hasEnteredSinceCollapse, setHasEnteredSinceCollapse] = useState(false);
   const prevCollapsedRef = useRef(false);

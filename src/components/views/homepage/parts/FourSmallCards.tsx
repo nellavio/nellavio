@@ -10,6 +10,7 @@ import {
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { Card } from "../../../common/Card";
 import {
   Tooltip,
@@ -20,8 +21,8 @@ import { FourSmallCardsProps } from "../types";
 
 export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
   const t = useTranslations("homepage.fourSmallCards");
-  const isLg = useMediaQuery("(min-width: 1024px)");
-  const is1xl = useMediaQuery("(min-width: 1280px)");
+  const isLg = useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`);
+  const is1xl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
   const is3xl = useMediaQuery("(min-width: 1920px)");
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
@@ -73,7 +74,11 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
         aria-label="Metric chart"
         className={`size-16 lg:size-14 xl:size-16 3xl:size-20 ${hoverScaleClass}`}
       >
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 64, height: 64 }}
+        >
           <PieChart>
             <Pie
               data={data}
@@ -109,7 +114,11 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
         aria-label="Metric chart"
         className={`w-28 h-16 lg:w-20 lg:h-14 1xl:w-24 1xl:h-16 3xl:w-28 3xl:h-20 ${hoverScaleClass}`}
       >
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 112, height: 64 }}
+        >
           <BarChart data={chartData} barCategoryGap={1}>
             <Bar
               dataKey="metric"

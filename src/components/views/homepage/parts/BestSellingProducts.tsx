@@ -12,6 +12,8 @@ import {
 } from "recharts";
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
+import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
+import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
@@ -89,6 +91,9 @@ export const BestSellingProducts = ({
   );
 
   const { width: windowWidth } = useWindowDimensions();
+  const isFirstRender = useIsFirstRender();
+  const isLg = useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`);
+  const shouldRenderChart = !isFirstRender && isLg;
 
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
@@ -108,127 +113,129 @@ export const BestSellingProducts = ({
         aria-label="Best selling products bar chart"
         className="h-74 1xl:h-80 3xl:h-[21.8rem] relative mt-1 3xl:mt-0"
       >
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
-          initialDimension={{ width: 320, height: 200 }}
-        >
-          <BarChart
-            layout={isFourCardsMode ? "vertical" : "horizontal"}
-            data={chartData}
-            margin={{
-              top: 20,
-              right: windowWidth > BREAKPOINTS.md ? 30 : 10,
-              left: 0,
-              bottom: 5,
-            }}
-            tabIndex={-1}
+        {shouldRenderChart && (
+          <ResponsiveContainer
+            width="100%"
+            height="100%"
+            initialDimension={{ width: 320, height: 200 }}
           >
-            <Legend
-              verticalAlign="top"
-              align="center"
-              content={<BestSellingCustomLegend />}
-            />
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="var(--color-chartPrimaryGrid)"
-            />
-            {isFourCardsMode ? (
-              <XAxis
-                type="number"
-                axisLine={{ stroke: "var(--color-chartAxisLine)" }}
-                tickLine={false}
-                tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
-                tickFormatter={(value) =>
-                  `$${Intl.NumberFormat("us").format(value)}`
-                }
-                domain={[
-                  0,
-                  (dataMax: number) => Math.ceil(dataMax / 1000) * 1000,
-                ]}
-              />
-            ) : (
-              <XAxis
-                type="category"
-                dataKey="name"
-                axisLine={{ stroke: "var(--color-chartAxisLine)" }}
-                tickLine={false}
-                tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
-              />
-            )}
-            {isFourCardsMode ? (
-              <YAxis
-                type="category"
-                dataKey="name"
-                axisLine={{ stroke: "var(--color-chartAxisLine)" }}
-                tickLine={false}
-                tick={({
-                  x,
-                  y,
-                  payload,
-                }: {
-                  x: string | number;
-                  y: string | number;
-                  payload: { value: string };
-                }) => (
-                  <text
-                    x={x}
-                    y={y}
-                    dy={4}
-                    textAnchor="end"
-                    fill="var(--color-chartAxisText)"
-                    fontSize={12}
-                  >
-                    {payload.value}
-                  </text>
-                )}
-                width={windowWidth > BREAKPOINTS.md ? 90 : 70}
-              />
-            ) : (
-              <YAxis
-                type="number"
-                axisLine={{ stroke: "var(--color-chartAxisLine)" }}
-                tickLine={false}
-                tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
-                tickFormatter={(value) =>
-                  `$${Intl.NumberFormat("us").format(value)}`
-                }
-                domain={[
-                  0,
-                  (dataMax: number) => Math.ceil(dataMax / 1000) * 1000,
-                ]}
-              />
-            )}
-            <Tooltip
-              content={<BestSellingTooltip />}
-              isAnimationActive={false}
-              cursor={{
-                fill: "rgba(255,255,255,0.05)",
-                stroke: "var(--color-chartVerticalLine)",
+            <BarChart
+              layout={isFourCardsMode ? "vertical" : "horizontal"}
+              data={chartData}
+              margin={{
+                top: 20,
+                right: windowWidth > BREAKPOINTS.md ? 30 : 10,
+                left: 0,
+                bottom: 5,
               }}
-            />
-            <Bar
-              dataKey="Sales"
-              fill="var(--color-chartSecondaryFill)"
-              radius={isFourCardsMode ? [0, 4, 4, 0] : [4, 4, 0, 0]}
-              barSize={getBarSize()}
-              isAnimationActive={shouldAnimate}
-              animationBegin={animationBegin}
-              animationDuration={800}
-              animationEasing="ease-out"
-            />
-            <Bar
-              dataKey="Profit"
-              fill="var(--color-chartPrimaryFill)"
-              radius={isFourCardsMode ? [0, 4, 4, 0] : [4, 4, 0, 0]}
-              barSize={getBarSize()}
-              isAnimationActive={shouldAnimate}
-              animationBegin={animationBegin}
-              animationDuration={800}
-              animationEasing="ease-out"
-            />
-          </BarChart>
-        </ResponsiveContainer>
+              tabIndex={-1}
+            >
+              <Legend
+                verticalAlign="top"
+                align="center"
+                content={<BestSellingCustomLegend />}
+              />
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="var(--color-chartPrimaryGrid)"
+              />
+              {isFourCardsMode ? (
+                <XAxis
+                  type="number"
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
+                  tickFormatter={(value) =>
+                    `$${Intl.NumberFormat("us").format(value)}`
+                  }
+                  domain={[
+                    0,
+                    (dataMax: number) => Math.ceil(dataMax / 1000) * 1000,
+                  ]}
+                />
+              ) : (
+                <XAxis
+                  type="category"
+                  dataKey="name"
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
+                />
+              )}
+              {isFourCardsMode ? (
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={({
+                    x,
+                    y,
+                    payload,
+                  }: {
+                    x: string | number;
+                    y: string | number;
+                    payload: { value: string };
+                  }) => (
+                    <text
+                      x={x}
+                      y={y}
+                      dy={4}
+                      textAnchor="end"
+                      fill="var(--color-chartAxisText)"
+                      fontSize={12}
+                    >
+                      {payload.value}
+                    </text>
+                  )}
+                  width={windowWidth > BREAKPOINTS.md ? 90 : 70}
+                />
+              ) : (
+                <YAxis
+                  type="number"
+                  axisLine={{ stroke: "var(--color-chartAxisLine)" }}
+                  tickLine={false}
+                  tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
+                  tickFormatter={(value) =>
+                    `$${Intl.NumberFormat("us").format(value)}`
+                  }
+                  domain={[
+                    0,
+                    (dataMax: number) => Math.ceil(dataMax / 1000) * 1000,
+                  ]}
+                />
+              )}
+              <Tooltip
+                content={<BestSellingTooltip />}
+                isAnimationActive={false}
+                cursor={{
+                  fill: "rgba(255,255,255,0.05)",
+                  stroke: "var(--color-chartVerticalLine)",
+                }}
+              />
+              <Bar
+                dataKey="Sales"
+                fill="var(--color-chartSecondaryFill)"
+                radius={isFourCardsMode ? [0, 4, 4, 0] : [4, 4, 0, 0]}
+                barSize={getBarSize()}
+                isAnimationActive={shouldAnimate}
+                animationBegin={animationBegin}
+                animationDuration={800}
+                animationEasing="ease-out"
+              />
+              <Bar
+                dataKey="Profit"
+                fill="var(--color-chartPrimaryFill)"
+                radius={isFourCardsMode ? [0, 4, 4, 0] : [4, 4, 0, 0]}
+                barSize={getBarSize()}
+                isAnimationActive={shouldAnimate}
+                animationBegin={animationBegin}
+                animationDuration={800}
+                animationEasing="ease-out"
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </Card>
   );

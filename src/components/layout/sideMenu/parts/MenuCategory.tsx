@@ -1,10 +1,11 @@
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { useLayoutStore } from "../../../../store/layoutStore";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { MenuCategoryProps } from "../types";
 
 export const MenuCategory = ({ title }: MenuCategoryProps) => {
   const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isDesktop = useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
 
   const isCollapsed = !isSideMenuOpen && isDesktop;
 

@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
+import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
+import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import {
   Tooltip,
@@ -17,15 +18,14 @@ export const ThreeSmallCards = ({
   const t = useTranslations("homepage.threeSmallCards");
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
 
-  const [isBelow1280, setIsBelow1280] = useState(false);
+  const isFirstRender = useIsFirstRender();
+  const isSm = useMediaQuery(`(min-width: ${BREAKPOINTS.sm}px)`);
+  const isMd = useMediaQuery(`(min-width: ${BREAKPOINTS.md}px)`);
+  const isBelow1280 = !useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
 
-  useEffect(() => {
-    const handleResize = () =>
-      setIsBelow1280(window.innerWidth < BREAKPOINTS.xl);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const shouldRenderMobileCharts = !isFirstRender && !isSm;
+  const shouldRenderTabletCharts = !isFirstRender && isSm && !isMd;
+  const shouldRenderDesktopCharts = !isFirstRender && isMd;
 
   const hoverScaleClass =
     "transition-transform duration-200 group-hover:scale-110";
@@ -129,10 +129,11 @@ export const ThreeSmallCards = ({
                     {hardcodedPercentages[index]}%
                   </span>
                 </div>
-                {renderCircularChart(
-                  hardcodedPercentages[index],
-                  getChartColor(index),
-                )}
+                {shouldRenderMobileCharts &&
+                  renderCircularChart(
+                    hardcodedPercentages[index],
+                    getChartColor(index),
+                  )}
               </div>
             </div>
           </div>
@@ -179,10 +180,11 @@ export const ThreeSmallCards = ({
                     {hardcodedPercentages[index]}%
                   </span>
                 </div>
-                {renderCircularChart(
-                  hardcodedPercentages[index],
-                  getChartColor(index),
-                )}
+                {shouldRenderTabletCharts &&
+                  renderCircularChart(
+                    hardcodedPercentages[index],
+                    getChartColor(index),
+                  )}
               </div>
             </div>
           </div>
@@ -218,34 +220,55 @@ export const ThreeSmallCards = ({
                   </span>
                 </p>
               </div>
-              <Tooltip open={isBelow1280 ? false : undefined}>
-                <TooltipTrigger asChild>
-                  <div
-                    className={`relative flex items-center justify-center flex-shrink-0 group ${isBelow1280 ? "" : "cursor-pointer"}`}
-                    tabIndex={-1}
-                  >
+              {!isFirstRender && !isBelow1280 ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
                     <div
-                      className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}
+                      className="relative flex items-center justify-center flex-shrink-0 group cursor-pointer"
+                      tabIndex={-1}
                     >
-                      <span className="text-primaryText text-xs 3xl:text-base font-bold">
-                        {hardcodedPercentages[index]}%
-                      </span>
+                      <div
+                        className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}
+                      >
+                        <span className="text-primaryText text-xs 3xl:text-base font-bold">
+                          {hardcodedPercentages[index]}%
+                        </span>
+                      </div>
+                      {shouldRenderDesktopCharts &&
+                        renderCircularChart(
+                          hardcodedPercentages[index],
+                          getChartColor(index),
+                        )}
                     </div>
-                    {renderCircularChart(
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="right"
+                    align="start"
+                    alignOffset={-14}
+                    sideOffset={-4}
+                  >
+                    <p>{t("monthlyTarget")}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ) : (
+                <div
+                  className="relative flex items-center justify-center flex-shrink-0 group"
+                  tabIndex={-1}
+                >
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${hoverScaleClass}`}
+                  >
+                    <span className="text-primaryText text-xs 3xl:text-base font-bold">
+                      {hardcodedPercentages[index]}%
+                    </span>
+                  </div>
+                  {shouldRenderDesktopCharts &&
+                    renderCircularChart(
                       hardcodedPercentages[index],
                       getChartColor(index),
                     )}
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="right"
-                  align="start"
-                  alignOffset={-14}
-                  sideOffset={-4}
-                >
-                  <p>{t("monthlyTarget")}</p>
-                </TooltipContent>
-              </Tooltip>
+                </div>
+              )}
             </div>
           ))}
         </div>

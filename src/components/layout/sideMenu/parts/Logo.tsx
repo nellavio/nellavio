@@ -2,10 +2,11 @@ import { LogoIcon } from "../../../../assets/icons/LogoIcon";
 import { useMediaQuery } from "../../../../hooks/useMediaQuery";
 import { Link } from "../../../../i18n/navigation";
 import { useLayoutStore } from "../../../../store/layoutStore";
+import { BREAKPOINTS } from "../../../../styles/breakpoints";
 
 export const Logo = () => {
   const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isDesktop = useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
 
   const isCollapsed = !isSideMenuOpen && isDesktop;
 

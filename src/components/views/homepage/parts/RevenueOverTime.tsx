@@ -11,6 +11,7 @@ import {
 } from "recharts";
 
 import { useChartAnimation } from "../../../../hooks/useChartAnimation";
+import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
 import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
@@ -84,6 +85,8 @@ export const RevenueOverTime = ({
   const { shouldAnimate, animationBegin } = useChartAnimation("homepage", {
     earlyStartMs: 400,
   });
+
+  const isFirstRender = useIsFirstRender();
 
   const [timeRange, setTimeRange] = useState<"monthly" | "quarterly">(
     "monthly",
@@ -163,26 +166,28 @@ export const RevenueOverTime = ({
           Historical performance
         </span>
       </div>
-      <Tabs
-        value={timeRange}
-        onValueChange={(v) => setTimeRange(v as "monthly" | "quarterly")}
-        className="hidden xsm:block"
-      >
-        <TabsList className="bg-tabsBg">
-          <TabsTrigger
-            value="monthly"
-            className="text-xs data-[state=active]:bg-revenueTabActiveBg"
-          >
-            Monthly
-          </TabsTrigger>
-          <TabsTrigger
-            value="quarterly"
-            className="text-xs data-[state=active]:bg-revenueTabActiveBg"
-          >
-            Quarterly
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
+      {!isFirstRender && (
+        <Tabs
+          value={timeRange}
+          onValueChange={(v) => setTimeRange(v as "monthly" | "quarterly")}
+          className="hidden xsm:block"
+        >
+          <TabsList className="bg-tabsBg">
+            <TabsTrigger
+              value="monthly"
+              className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+            >
+              Monthly
+            </TabsTrigger>
+            <TabsTrigger
+              value="quarterly"
+              className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+            >
+              Quarterly
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      )}
     </div>
   );
 

@@ -9,6 +9,7 @@ import { NorwayIcon } from "../../../../assets/icons/NorwayIcon";
 import { PolishIcon } from "../../../../assets/icons/PolishIcon";
 import { SpinnerIcon } from "../../../../assets/icons/SpinnerIcon";
 import { UnitedStatesIcon } from "../../../../assets/icons/UnitedStatesIcon";
+import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
 import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { Card } from "../../../common/Card";
@@ -48,10 +49,13 @@ export const RevenuePerCountry = ({
       FlagIcon: countryIconMap[country.name],
     }));
 
+  const isFirstRender = useIsFirstRender();
   const { width: windowWidth } = useWindowDimensions();
 
   const isCompact =
-    windowWidth >= BREAKPOINTS.md && windowWidth < BREAKPOINTS.lg;
+    !isFirstRender &&
+    windowWidth >= BREAKPOINTS.md &&
+    windowWidth < BREAKPOINTS.lg;
   const mapScale = isCompact ? 165 : 200;
   const mapMarginLeft = isCompact ? "-2rem" : "-4rem";
 
