@@ -1,4 +1,4 @@
-import { RefObject } from "react";
+import { RefObject, useRef } from "react";
 
 import {
   Dialog,
@@ -19,11 +19,16 @@ export const SignUpModal = ({
   switchToSignIn,
   returnFocusRef,
 }: SignUpModalProps) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
         className="flex flex-col items-center"
-        onOpenAutoFocus={(e) => e.preventDefault()}
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+          contentRef.current?.focus();
+        }}
         onCloseAutoFocus={(e) => {
           if (returnFocusRef?.current) {
             e.preventDefault();
@@ -33,10 +38,16 @@ export const SignUpModal = ({
       >
         <DialogTitle className="sr-only">Sign Up</DialogTitle>
         <DialogDescription className="sr-only">Sign Up</DialogDescription>
-        <SignUpForm
-          switchToSignIn={switchToSignIn}
-          onSignUpSuccess={closeModal}
-        />
+        <div
+          ref={contentRef}
+          tabIndex={-1}
+          className="flex flex-col items-center w-full focus:outline-none"
+        >
+          <SignUpForm
+            switchToSignIn={switchToSignIn}
+            onSignUpSuccess={closeModal}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );
