@@ -1,13 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { useLayoutStore } from "../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../styles/breakpoints";
 import { LoginModal } from "../../auth/LoginModal";
 import { LogoutModal } from "../../auth/LogoutModal";
 import { SignUpModal } from "../../auth/SignUpModal";
+import { CONTENT_MAX_WIDTH } from "../Layout";
 import { Logo } from "../sideMenu/parts/Logo";
 import { SideMenuMobile } from "../sideMenu/SideMenuMobile";
 import { useNavbar } from "./hooks/useNavbar";
@@ -69,6 +70,7 @@ export const Navbar = () => {
     selectTheme,
     searchDropdown,
     notificationsDropdown,
+    navbarDropdowns,
   } = useNavbar();
 
   const {
@@ -91,6 +93,23 @@ export const Navbar = () => {
     handleLoginButton,
   } = useNavbarModals();
 
+  const modalActions = useMemo(
+    () => ({
+      showLogout: showLogoutModal,
+      showAbout: showAboutModal,
+      showChangelog: showChangelogModal,
+      handleLogin: handleLoginButton,
+      showSignUp: showSignUpModal,
+    }),
+    [
+      showLogoutModal,
+      showAboutModal,
+      showChangelogModal,
+      handleLoginButton,
+      showSignUpModal,
+    ],
+  );
+
   return (
     <>
       <header
@@ -105,7 +124,7 @@ export const Navbar = () => {
           }`}
         ></div>
         <div
-          className={`px-6 xsm:pr-8 md:px-6 md:pr-8 xl:pl-3 xl:pr-2 2xl:px-4 z-40 w-full flex justify-between xl:mx-auto items-center gap-4 xl:gap-7 xl:max-w-[82%] 1xl:max-w-[82%] 2xl:max-w-[83vw] 3xl:max-w-[82vw] 5xl:max-w-408`}
+          className={`px-6 xsm:pr-8 md:px-6 md:pr-8 xl:pl-3 xl:pr-2 2xl:px-4 z-40 w-full flex justify-between xl:mx-auto items-center gap-4 xl:gap-7 ${CONTENT_MAX_WIDTH}`}
         >
           <div className="flex items-center gap-10">
             <div className="flex xsm:pl-2  xl:hidden">
@@ -138,10 +157,7 @@ export const Navbar = () => {
             <div className="xl:ml-3.5">
               <NotificationsButton
                 notificationsDropdown={notificationsDropdown}
-                themeDropdown={themeDropdown}
-                languageDropdown={languageDropdown}
-                userDropdown={userDropdown}
-                searchClose={searchDropdown.close}
+                navbarDropdowns={navbarDropdowns}
                 closeMobileMenu={closeMobileMenu}
                 t={t}
               />
@@ -151,17 +167,10 @@ export const Navbar = () => {
                 userIconBtnRef={userIconBtnRef}
                 closeMobileMenu={closeMobileMenu}
                 userDropdown={userDropdown}
-                themeDropdown={themeDropdown}
-                languageDropdown={languageDropdown}
-                notificationsDropdown={notificationsDropdown}
-                showLogoutModal={showLogoutModal}
-                showAboutModal={showAboutModal}
-                showChangelogModal={showChangelogModal}
-                handleLoginButton={handleLoginButton}
-                showSignUpModal={showSignUpModal}
+                navbarDropdowns={navbarDropdowns}
+                modalActions={modalActions}
                 session={session}
                 theme={theme}
-                searchClose={searchDropdown.close}
                 currentLanguage={currentLanguage}
                 selectTheme={selectTheme}
                 t={t}

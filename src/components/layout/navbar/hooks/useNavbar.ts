@@ -1,11 +1,12 @@
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useDropdown } from "../../../../hooks/useDropdown";
 import { useSession } from "../../../../services/auth/auth-client";
 import { useLayoutStore } from "../../../../store/layoutStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { NavbarDropdowns } from "../types";
 
 /**
  * Core navbar hook - aggregates theme, language, session, mobile menu state,
@@ -98,6 +99,42 @@ export const useNavbar = () => {
     }
   };
 
+  const isAnyDropdownOpen =
+    userDropdown.isOpen ||
+    themeDropdown.isOpen ||
+    languageDropdown.isOpen ||
+    notificationsDropdown.isOpen;
+
+  const closeAllExcept = useCallback(
+    (keep?: string) => {
+      const dropdowns: Record<string, ReturnType<typeof useDropdown>> = {
+        user: userDropdown,
+        theme: themeDropdown,
+        language: languageDropdown,
+        notifications: notificationsDropdown,
+        search: searchDropdown,
+      };
+      Object.entries(dropdowns).forEach(([key, dropdown]) => {
+        if (key !== keep) dropdown.close();
+      });
+    },
+    [
+      userDropdown,
+      themeDropdown,
+      languageDropdown,
+      notificationsDropdown,
+      searchDropdown,
+    ],
+  );
+
+  const navbarDropdowns: NavbarDropdowns = useMemo(
+    () => ({
+      closeAllExcept,
+      isAnyDropdownOpen,
+    }),
+    [closeAllExcept, isAnyDropdownOpen],
+  );
+
   return {
     theme,
     setTheme,
@@ -120,5 +157,6 @@ export const useNavbar = () => {
     cycleThemeDown,
     searchDropdown,
     notificationsDropdown,
+    navbarDropdowns,
   };
 };

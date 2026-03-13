@@ -8,15 +8,12 @@ import React, {
 } from "react";
 
 import { usePathname } from "../../../../i18n/navigation";
-import { DropdownProps } from "../types";
+import { DropdownProps, NavbarDropdowns } from "../types";
 
 interface UseUserMenuParams {
   userIconBtnRef: RefObject<HTMLButtonElement | null>;
   userDropdown: DropdownProps;
-  themeDropdown: DropdownProps;
-  languageDropdown: DropdownProps;
-  notificationsDropdown: DropdownProps;
-  searchClose: () => void;
+  navbarDropdowns: NavbarDropdowns;
   session: {
     username?: string | null;
     isLoggedIn?: boolean;
@@ -32,10 +29,7 @@ interface UseUserMenuParams {
 export const useUserMenu = ({
   userIconBtnRef,
   userDropdown,
-  themeDropdown,
-  languageDropdown,
-  notificationsDropdown,
-  searchClose,
+  navbarDropdowns,
   session,
   theme,
 }: UseUserMenuParams) => {
@@ -51,11 +45,7 @@ export const useUserMenu = ({
   const suppressTooltipRef = useRef(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  const isAnyDropdownOpen =
-    userDropdown.isOpen ||
-    themeDropdown.isOpen ||
-    languageDropdown.isOpen ||
-    notificationsDropdown.isOpen;
+  const isAnyDropdownOpen = navbarDropdowns.isAnyDropdownOpen;
 
   /** Prevents tooltip from showing when Firefox re-fires hover events on tab switch */
   useEffect(() => {
@@ -114,22 +104,11 @@ export const useUserMenu = ({
       ) {
         e.preventDefault();
         userDropdown.toggle();
-        themeDropdown.close();
-        languageDropdown.close();
-        notificationsDropdown.close();
-        searchClose();
+        navbarDropdowns.closeAllExcept("user");
         setTimeout(() => focusItem(0), 0);
       }
     },
-    [
-      userDropdown,
-      themeDropdown,
-      languageDropdown,
-      notificationsDropdown,
-      searchClose,
-      focusItem,
-      userIconBtnRef,
-    ],
+    [userDropdown, navbarDropdowns, focusItem, userIconBtnRef],
   );
 
   /**
@@ -172,10 +151,7 @@ export const useUserMenu = ({
     [focusItem, getMenuItems, userDropdown, userIconBtnRef],
   );
 
-  return {
-    tAuth,
-    isLoggedIn,
-    pathname,
+  const subMenuState = {
     isLanguageMenuOpen,
     setIsLanguageMenuOpen,
     isAuthMenuOpen,
@@ -184,6 +160,13 @@ export const useUserMenu = ({
     setIsThemeMenuOpen,
     isSettingsDrawerOpen,
     setIsSettingsDrawerOpen,
+  };
+
+  return {
+    tAuth,
+    isLoggedIn,
+    pathname,
+    subMenuState,
     currentTheme,
     suppressTooltipRef,
     tooltipOpen,

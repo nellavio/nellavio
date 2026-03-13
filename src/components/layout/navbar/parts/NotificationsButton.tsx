@@ -17,10 +17,7 @@ import { AllNotificationsModal } from "./AllNotificationsModal";
 
 export const NotificationsButton = ({
   notificationsDropdown,
-  themeDropdown,
-  languageDropdown,
-  userDropdown,
-  searchClose,
+  navbarDropdowns,
   closeMobileMenu,
   t,
 }: Omit<NotificationsButtonProps, "notificationsTooltip">) => {
@@ -42,9 +39,7 @@ export const NotificationsButton = ({
     handleNotificationsUpdate,
   } = useNotifications({
     notificationsDropdown,
-    themeDropdown,
-    languageDropdown,
-    userDropdown,
+    isAnyOtherDropdownOpen: navbarDropdowns.isAnyDropdownOpen,
   });
 
   const getIcon = (iconType: string) => {
@@ -109,10 +104,7 @@ export const NotificationsButton = ({
                   notificationsDropdown.toggle();
                   setHighlightedIndex(-1);
                 }
-                themeDropdown.close();
-                languageDropdown.close();
-                userDropdown.close();
-                searchClose();
+                navbarDropdowns.closeAllExcept("notifications");
               }}
               onKeyDown={handleKeyDown}
               className="relative text-base flex rounded-full justify-center items-center gap-2 w-full h-full border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon"

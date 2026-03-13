@@ -15,17 +15,10 @@ export const UserMenuButton = ({
   userIconBtnRef,
   closeMobileMenu,
   userDropdown,
-  themeDropdown,
-  languageDropdown,
-  notificationsDropdown,
-  showLogoutModal,
-  showAboutModal,
-  showChangelogModal,
-  handleLoginButton,
-  showSignUpModal,
+  navbarDropdowns,
+  modalActions,
   session,
   t,
-  searchClose,
   currentLanguage,
   theme,
   selectTheme,
@@ -36,14 +29,7 @@ export const UserMenuButton = ({
     tAuth,
     isLoggedIn: rawIsLoggedIn,
     pathname,
-    isLanguageMenuOpen,
-    setIsLanguageMenuOpen,
-    isAuthMenuOpen,
-    setIsAuthMenuOpen,
-    isThemeMenuOpen,
-    setIsThemeMenuOpen,
-    isSettingsDrawerOpen,
-    setIsSettingsDrawerOpen,
+    subMenuState,
     currentTheme,
     suppressTooltipRef,
     tooltipOpen,
@@ -55,10 +41,7 @@ export const UserMenuButton = ({
   } = useUserMenu({
     userIconBtnRef,
     userDropdown,
-    themeDropdown,
-    languageDropdown,
-    notificationsDropdown,
-    searchClose,
+    navbarDropdowns,
     session,
     theme,
   });
@@ -106,10 +89,7 @@ export const UserMenuButton = ({
                 setTooltipOpen(false);
                 closeMobileMenu();
                 userDropdown.toggle();
-                themeDropdown.close();
-                languageDropdown.close();
-                notificationsDropdown.close();
-                searchClose();
+                navbarDropdowns.closeAllExcept("user");
               }}
               onKeyDown={handleTriggerKeyDown}
               className={`text-base flex justify-center items-center h-full border border-mainBorder bg-outlinedButtonBg hover:bg-navbarIconButtonBgHover text-primaryText stroke-grayIcon fill-grayIcon ${
@@ -158,25 +138,15 @@ export const UserMenuButton = ({
           pathname={pathname}
           currentLanguage={currentLanguage}
           currentTheme={currentTheme}
-          isAuthMenuOpen={isAuthMenuOpen}
-          setIsAuthMenuOpen={setIsAuthMenuOpen}
-          isLanguageMenuOpen={isLanguageMenuOpen}
-          setIsLanguageMenuOpen={setIsLanguageMenuOpen}
-          isThemeMenuOpen={isThemeMenuOpen}
-          setIsThemeMenuOpen={setIsThemeMenuOpen}
+          subMenuState={subMenuState}
           userDropdown={userDropdown}
-          handleLoginButton={handleLoginButton}
-          showSignUpModal={showSignUpModal}
-          showLogoutModal={showLogoutModal}
-          showChangelogModal={showChangelogModal}
-          showAboutModal={showAboutModal}
+          modalActions={modalActions}
           selectTheme={selectTheme}
-          setIsSettingsDrawerOpen={setIsSettingsDrawerOpen}
         />
       )}
       <SettingsDrawer
-        open={isSettingsDrawerOpen}
-        onOpenChange={setIsSettingsDrawerOpen}
+        open={subMenuState.isSettingsDrawerOpen}
+        onOpenChange={subMenuState.setIsSettingsDrawerOpen}
       />
     </div>
   );

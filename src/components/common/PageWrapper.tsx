@@ -95,9 +95,10 @@ export const PageWrapper = ({
     : DEFAULT_PAGE_CONFIG;
   const styles = LAYOUT_STYLES[pageConfig.layoutType];
 
+  const isEcommerce = pageConfig.breadcrumbCategory === "ecommerce";
+
   const getBreadcrumbFirstPart = (): string => {
     const { breadcrumbCategory } = pageConfig;
-    if (breadcrumbCategory === "ecommerce") return t("ecommerce");
     if (breadcrumbCategory === "components") return t("components");
     return t("firstPart");
   };
@@ -112,6 +113,14 @@ export const PageWrapper = ({
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
+          {isEcommerce && (
+            <>
+              <BreadcrumbItem>
+                <BreadcrumbLink disabledLink>{t("ecommerce")}</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+            </>
+          )}
           <BreadcrumbItem>
             <BreadcrumbPage>
               {t(pageName?.toLowerCase() ?? "dashboard")}

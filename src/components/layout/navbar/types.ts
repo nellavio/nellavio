@@ -14,6 +14,19 @@ export interface DropdownProps {
   ref: React.RefObject<HTMLDivElement | null>;
 }
 
+export interface ModalActions {
+  showLogout: () => void;
+  showAbout: () => void;
+  showChangelog: () => void;
+  handleLogin: () => void;
+  showSignUp: () => void;
+}
+
+export interface NavbarDropdowns {
+  closeAllExcept: (keep?: string) => void;
+  isAnyDropdownOpen: boolean;
+}
+
 export interface AboutModalProps {
   closeModal: () => void;
   returnFocusRef?: RefObject<HTMLButtonElement | null>;
@@ -48,15 +61,9 @@ export interface UserButtonProps {
   userIconBtnRef: RefObject<HTMLButtonElement | null>;
   closeMobileMenu: () => void;
   userDropdown: DropdownProps;
-  themeDropdown: DropdownProps;
-  languageDropdown: DropdownProps;
-  notificationsDropdown: DropdownProps;
+  navbarDropdowns: NavbarDropdowns;
   userTooltip: TooltipProps;
-  showLogoutModal: () => void;
-  showAboutModal: () => void;
-  showChangelogModal: () => void;
-  handleLoginButton: () => void;
-  showSignUpModal: () => void;
+  modalActions: ModalActions;
   session: {
     username?: string | null;
     isLoggedIn?: boolean;
@@ -64,7 +71,6 @@ export interface UserButtonProps {
   theme: string | undefined;
   selectTheme: (theme: string) => void;
   t: (key: string) => string;
-  searchClose: () => void;
   currentLanguage: string;
 }
 
@@ -76,10 +82,33 @@ export interface ChangelogModalProps {
 export interface NotificationsButtonProps {
   notificationsDropdown: DropdownProps;
   notificationsTooltip: TooltipProps;
-  themeDropdown: DropdownProps;
-  languageDropdown: DropdownProps;
-  userDropdown: DropdownProps;
-  searchClose: () => void;
+  navbarDropdowns: NavbarDropdowns;
   closeMobileMenu: () => void;
   t: (key: string) => string;
+}
+
+export interface SubMenuState {
+  isLanguageMenuOpen: boolean;
+  setIsLanguageMenuOpen: (value: boolean) => void;
+  isAuthMenuOpen: boolean;
+  setIsAuthMenuOpen: (value: boolean) => void;
+  isThemeMenuOpen: boolean;
+  setIsThemeMenuOpen: (value: boolean) => void;
+  isSettingsDrawerOpen: boolean;
+  setIsSettingsDrawerOpen: (value: boolean) => void;
+}
+
+export interface UserMenuDropdownProps {
+  menuRef: React.RefObject<HTMLDivElement | null>;
+  handleMenuKeyDown: (e: React.KeyboardEvent) => void;
+  suppressTooltipRef: React.MutableRefObject<boolean>;
+  tAuth: (key: string) => string;
+  t: (key: string) => string;
+  pathname: string;
+  currentLanguage: string;
+  currentTheme: string;
+  subMenuState: SubMenuState;
+  userDropdown: DropdownProps;
+  modalActions: ModalActions;
+  selectTheme: (theme: string) => void;
 }

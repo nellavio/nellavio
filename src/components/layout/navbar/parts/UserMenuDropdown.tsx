@@ -10,33 +10,8 @@ import { PaletteIcon } from "../../../../assets/icons/PaletteIcon";
 import { SettingsIcon } from "../../../../assets/icons/SettingsIcon";
 import { UserIcon } from "../../../../assets/icons/UserIcon";
 import { Link as NavigationLink } from "../../../../i18n/navigation";
-import { DropdownProps } from "../types";
+import { UserMenuDropdownProps } from "../types";
 import { DropdownMenuItem } from "./DropdownMenuItem";
-
-interface UserMenuDropdownProps {
-  menuRef: React.RefObject<HTMLDivElement | null>;
-  handleMenuKeyDown: (e: React.KeyboardEvent) => void;
-  suppressTooltipRef: React.MutableRefObject<boolean>;
-  tAuth: (key: string) => string;
-  t: (key: string) => string;
-  pathname: string;
-  currentLanguage: string;
-  currentTheme: string;
-  isAuthMenuOpen: boolean;
-  setIsAuthMenuOpen: (value: boolean) => void;
-  isLanguageMenuOpen: boolean;
-  setIsLanguageMenuOpen: (value: boolean) => void;
-  isThemeMenuOpen: boolean;
-  setIsThemeMenuOpen: (value: boolean) => void;
-  userDropdown: DropdownProps;
-  handleLoginButton: () => void;
-  showSignUpModal: () => void;
-  showLogoutModal: () => void;
-  showChangelogModal: () => void;
-  showAboutModal: () => void;
-  selectTheme: (theme: string) => void;
-  setIsSettingsDrawerOpen: (value: boolean) => void;
-}
 
 export const UserMenuDropdown = ({
   menuRef,
@@ -47,20 +22,10 @@ export const UserMenuDropdown = ({
   pathname,
   currentLanguage,
   currentTheme,
-  isAuthMenuOpen,
-  setIsAuthMenuOpen,
-  isLanguageMenuOpen,
-  setIsLanguageMenuOpen,
-  isThemeMenuOpen,
-  setIsThemeMenuOpen,
+  subMenuState,
   userDropdown,
-  handleLoginButton,
-  showSignUpModal,
-  showLogoutModal,
-  showChangelogModal,
-  showAboutModal,
+  modalActions,
   selectTheme,
-  setIsSettingsDrawerOpen,
 }: UserMenuDropdownProps) => {
   return (
     <div
@@ -75,8 +40,10 @@ export const UserMenuDropdown = ({
       <DropdownMenuItem
         icon={<UserIcon />}
         label={t("auth")}
-        isOpen={isAuthMenuOpen}
-        onToggle={() => setIsAuthMenuOpen(!isAuthMenuOpen)}
+        isOpen={subMenuState.isAuthMenuOpen}
+        onToggle={() =>
+          subMenuState.setIsAuthMenuOpen(!subMenuState.isAuthMenuOpen)
+        }
       >
         <div
           tabIndex={-1}
@@ -87,13 +54,13 @@ export const UserMenuDropdown = ({
           }}
           onClick={() => {
             userDropdown.close();
-            handleLoginButton();
+            modalActions.handleLogin();
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
               userDropdown.close();
-              handleLoginButton();
+              modalActions.handleLogin();
             }
           }}
         >
@@ -108,13 +75,13 @@ export const UserMenuDropdown = ({
           }}
           onClick={() => {
             userDropdown.close();
-            showSignUpModal();
+            modalActions.showSignUp();
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
               userDropdown.close();
-              showSignUpModal();
+              modalActions.showSignUp();
             }
           }}
         >
@@ -129,13 +96,13 @@ export const UserMenuDropdown = ({
           }}
           onClick={() => {
             userDropdown.close();
-            showLogoutModal();
+            modalActions.showLogout();
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
               userDropdown.close();
-              showLogoutModal();
+              modalActions.showLogout();
             }
           }}
         >
@@ -156,8 +123,10 @@ export const UserMenuDropdown = ({
       <DropdownMenuItem
         icon={<LanguageIcon />}
         label={t("language")}
-        isOpen={isLanguageMenuOpen}
-        onToggle={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+        isOpen={subMenuState.isLanguageMenuOpen}
+        onToggle={() =>
+          subMenuState.setIsLanguageMenuOpen(!subMenuState.isLanguageMenuOpen)
+        }
       >
         <NavigationLink
           href={pathname}
@@ -194,8 +163,10 @@ export const UserMenuDropdown = ({
         <DropdownMenuItem
           icon={<PaletteIcon />}
           label={t("theme")}
-          isOpen={isThemeMenuOpen}
-          onToggle={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
+          isOpen={subMenuState.isThemeMenuOpen}
+          onToggle={() =>
+            subMenuState.setIsThemeMenuOpen(!subMenuState.isThemeMenuOpen)
+          }
         >
           <div
             tabIndex={-1}
@@ -251,13 +222,13 @@ export const UserMenuDropdown = ({
         }}
         onClick={() => {
           userDropdown.close();
-          showChangelogModal();
+          modalActions.showChangelog();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             userDropdown.close();
-            showChangelogModal();
+            modalActions.showChangelog();
           }
         }}
       >
@@ -277,13 +248,13 @@ export const UserMenuDropdown = ({
         }}
         onClick={() => {
           userDropdown.close();
-          showAboutModal();
+          modalActions.showAbout();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             userDropdown.close();
-            showAboutModal();
+            modalActions.showAbout();
           }
         }}
       >
@@ -301,13 +272,13 @@ export const UserMenuDropdown = ({
           className="px-4 py-2 pr-5 pl-4 flex hover:bg-dropdownBgHover cursor-pointer focus-visible:bg-dropdownBgHover"
           onClick={() => {
             userDropdown.close();
-            setIsSettingsDrawerOpen(true);
+            subMenuState.setIsSettingsDrawerOpen(true);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
               userDropdown.close();
-              setIsSettingsDrawerOpen(true);
+              subMenuState.setIsSettingsDrawerOpen(true);
             }
           }}
         >

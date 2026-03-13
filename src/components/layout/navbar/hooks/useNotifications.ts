@@ -13,14 +13,10 @@ type FilterType = "all" | "new" | "read";
  */
 export const useNotifications = ({
   notificationsDropdown,
-  themeDropdown,
-  languageDropdown,
-  userDropdown,
+  isAnyOtherDropdownOpen,
 }: {
   notificationsDropdown: DropdownProps;
-  themeDropdown: DropdownProps;
-  languageDropdown: DropdownProps;
-  userDropdown: DropdownProps;
+  isAnyOtherDropdownOpen: boolean;
 }) => {
   const tNotifications = useTranslations("notificationsUI");
   const { notifications: initialNotifications } = useNotificationsData();
@@ -68,11 +64,7 @@ export const useNotifications = ({
   const newNotificationsCount = notifications.filter((n) => n.isNew).length;
 
   const isAnyDropdownOpen =
-    notificationsDropdown.isOpen ||
-    themeDropdown.isOpen ||
-    languageDropdown.isOpen ||
-    userDropdown.isOpen ||
-    isAllNotificationsModalOpen;
+    isAnyOtherDropdownOpen || isAllNotificationsModalOpen;
 
   /**
    * Arrow keys move the highlight through the notification list,
