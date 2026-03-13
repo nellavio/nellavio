@@ -31,7 +31,11 @@ export const Layout = ({ children }: LayoutProps) => {
     /** Check pathname synchronously to avoid flash on auth pages */
     if (typeof window !== "undefined") {
       const pathname = window.location.pathname;
-      return !pathname.includes("/login") && !pathname.includes("/register");
+      return (
+        !pathname.includes("/login") &&
+        !pathname.includes("/register") &&
+        !pathname.includes("/forgot-password")
+      );
     }
     return true;
   });
@@ -49,6 +53,8 @@ export const Layout = ({ children }: LayoutProps) => {
     "/pl/login",
     "/register",
     "/pl/register",
+    "/forgot-password",
+    "/pl/forgot-password",
   ];
 
   const isAuthPage = pathsWithNoLayout.includes(currentPathname);

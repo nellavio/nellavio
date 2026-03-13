@@ -181,18 +181,26 @@ export const LoginForm = ({
             {authErrorDisplayed}
           </p>
         )}
-        <div className="flex items-center gap-2 w-full mt-1">
-          <Checkbox
-            id="rememberMe"
-            checked={rememberMe}
-            onCheckedChange={(checked) => setRememberMe(checked === true)}
-          />
-          <label
-            htmlFor="rememberMe"
-            className="text-sm text-primaryText cursor-pointer select-none"
+        <div className="flex items-center justify-between w-full mt-1">
+          <div className="flex items-center gap-2">
+            <Checkbox
+              id="rememberMe"
+              checked={rememberMe}
+              onCheckedChange={(checked) => setRememberMe(checked === true)}
+            />
+            <label
+              htmlFor="rememberMe"
+              className="text-sm text-primaryText cursor-pointer select-none"
+            >
+              {t("rememberMe")}
+            </label>
+          </div>
+          <Link
+            href="/forgot-password"
+            className="text-xs 1xl:text-sm text-coloredText cursor-pointer hover:text-coloredTextHover"
           >
-            {t("rememberMe")}
-          </label>
+            {t("forgotPassword")}
+          </Link>
         </div>
         <div className="flex flex-col items-center w-full mt-4 1xl:mt-6">
           <div className="w-4/5 h-10">
