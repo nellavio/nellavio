@@ -396,7 +396,14 @@
     "breadcrumbs": "Ścieżka nawigacji",
     "separators": "Separatory",
     "dropdownMenu": "Menu rozwijane",
-    "pagination": "Paginacja"
+    "pagination": "Paginacja",
+    "toasts": "Powiadomienia",
+    "toastInfoTitle": "Informacja",
+    "toastInfoDesc": "To jest informacyjne powiadomienie toast.",
+    "toastErrorTitle": "Błąd",
+    "toastErrorDesc": "Coś poszło nie tak. Spróbuj ponownie.",
+    "toastSuccessTitle": "Sukces",
+    "toastSuccessDesc": "Twoje zmiany zostały zapisane pomyślnie."
   },
   "forms": {
     "inputFields": "Pola tekstowe",

@@ -14,6 +14,7 @@ import { ProgressUI } from "./ProgressUI";
 import { SeparatorsUI } from "./SeparatorsUI";
 import { SkeletonsUI } from "./SkeletonsUI";
 import { TabsUI } from "./TabsUI";
+import { ToastsUI } from "./ToastsUI";
 import { TooltipsUI } from "./TooltipsUI";
 
 /**
@@ -31,8 +32,9 @@ export const UIElementsView = () => {
         <ButtonsUI />
         <CommandUI />
         <AvatarsUI />
-        <TabsUI />
+        <TooltipsUI />
         <AlertsUI />
+        <ToastsUI />
         <SkeletonsUI />
       </div>
 
@@ -43,8 +45,8 @@ export const UIElementsView = () => {
         <BadgesUI />
         <PopoverUI />
         <ProgressUI />
-        <TooltipsUI />
         <BreadcrumbsUI />
+        <TabsUI />
         <SeparatorsUI />
         <PaginationUI />
       </div>

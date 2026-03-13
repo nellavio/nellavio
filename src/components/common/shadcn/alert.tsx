@@ -17,7 +17,7 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-background text-primaryText border-inputBorder",
+        default: "bg-infoAlertBg text-primaryText border-inputBorder",
         destructive:
           "border-destructiveAlertBorder text-destructiveAlertText [&>svg]:text-destructiveAlertIcon bg-destructiveAlertBg",
         success:

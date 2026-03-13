@@ -12,6 +12,7 @@ import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
 import { Navbar } from "./navbar/Navbar";
 import { SettingsDrawer } from "./settings/SettingsDrawer";
 import { SideMenu } from "./sideMenu/SideMenu";
+import { ToastContainer } from "./ToastContainer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -151,6 +152,7 @@ export const Layout = ({ children }: LayoutProps) => {
           />
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

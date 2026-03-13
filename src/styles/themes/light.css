@@ -130,8 +130,9 @@
   --color-mutedBg: rgb(247, 247, 247);
   --color-errorBg: rgb(195, 70, 70);
   --color-errorBgHover: rgb(175, 55, 55);
-  --color-destructiveAlertBg: rgb(239, 68, 68, 0.3);
-  --color-successAlertBg: rgb(22, 163, 74, 0.15);
+  --color-infoAlertBg: white;
+  --color-destructiveAlertBg: rgb(252, 220, 220);
+  --color-successAlertBg: rgb(220, 241, 228);
   --color-skeletonBg: rgb(225, 225, 230);
   --color-navbarSearchInputBg: rgb(240, 240, 245, 0.2);
   --color-navbarSearchInputBgHover: rgb(240, 240, 245, 0.4);

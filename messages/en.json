@@ -397,7 +397,14 @@
     "breadcrumbs": "Breadcrumbs",
     "separators": "Separators",
     "dropdownMenu": "Dropdown Menu",
-    "pagination": "Pagination"
+    "pagination": "Pagination",
+    "toasts": "Toasts",
+    "toastInfoTitle": "Information",
+    "toastInfoDesc": "This is an informational toast notification.",
+    "toastErrorTitle": "Error",
+    "toastErrorDesc": "Something went wrong. Please try again.",
+    "toastSuccessTitle": "Success",
+    "toastSuccessDesc": "Your changes have been saved successfully."
   },
   "forms": {
     "inputFields": "Input Fields",
