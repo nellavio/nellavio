@@ -35,7 +35,23 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
       isOpen,
     });
 
+    const inputRef = useRef<HTMLInputElement>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    useEffect(() => {
+      const handleGlobalFocusSearch = () => {
+        if (closeOthers) closeOthers();
+        open();
+        inputRef.current?.focus();
+      };
+
+      document.addEventListener("global-focus-search", handleGlobalFocusSearch);
+      return () =>
+        document.removeEventListener(
+          "global-focus-search",
+          handleGlobalFocusSearch,
+        );
+    }, [closeOthers, open]);
 
     useEffect(() => {
       if (highlightedIndex >= 0 && itemRefs.current[highlightedIndex]) {
@@ -54,6 +70,7 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
           <div className="relative w-full">
             <InputGroup className="h-[2.2rem] 1xl:h-10 1xl:translate-y-[0.2rem] 3xl:translate-y-0">
               <InputGroupInput
+                ref={inputRef}
                 variant="navbarSearch"
                 type="text"
                 placeholder={searchPlaceholder}

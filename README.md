@@ -260,6 +260,28 @@ You can easily deploy your own instance of Spireflow dashboard on Vercel using t
 | `/tables`      | 4 tanstack tables                                  |
 | `/charts`      | 10 charts                                          |
 
+## ⌨️ Keyboard & Accessibility
+
+### Accessibility
+
+- Full keyboard navigation with Tab across all interactive elements
+- Visible focus indicators (focus-visible) on buttons, inputs, links, and menu items
+- ARIA attributes on interactive components (combobox, listbox, dialog, menu)
+- Screen reader support with semantic HTML, aria-labels, and roles
+- Radix UI primitives for accessible modals, tooltips, dropdowns, and popovers
+
+### Keyboard shortcuts
+
+Desktop-only shortcuts (active above 1280px). Disabled when focus is inside a text input (except `Ctrl+K`).
+
+| Shortcut   | Action         |
+| ---------- | -------------- |
+| `Ctrl + K` | Focus search   |
+| `Ctrl + \` | Toggle sidebar |
+| `Ctrl + /` | Toggle theme   |
+
+On macOS use `Cmd` instead of `Ctrl`.
+
 ## 🤝 Community and contributions
 
 Check out [CONTRIBUTING.md](https://github.com/matt765/spireflow/blob/main/CONTRIBUTING.md) to learn how to get started with contributions.

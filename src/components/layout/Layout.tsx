@@ -6,6 +6,7 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 import { useFontManager } from "../../hooks/useFontManager";
+import { useGlobalHotkeys } from "../../hooks/useGlobalHotkeys";
 import { useChartAnimationStore } from "../../store/chartAnimationStore";
 import { useLayoutStore } from "../../store/layoutStore";
 import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
@@ -59,6 +60,8 @@ export const Layout = ({ children }: LayoutProps) => {
   ];
 
   const isAuthPage = pathsWithNoLayout.includes(currentPathname);
+
+  useGlobalHotkeys({ isAuthPage });
 
   const { setTheme, themes } = useTheme();
 

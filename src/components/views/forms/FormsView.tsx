@@ -33,11 +33,11 @@ export const FormsView = () => {
 
       {/* Right Column */}
       <div className="flex flex-col gap-6">
-        <FileUploadForm />
         <CheckboxesForm />
         <RadioButtonsForm />
         <ToggleSwitchForm />
         <DatePickerForm />
+        <FileUploadForm />
         <SlidersForm />
       </div>
     </div>
