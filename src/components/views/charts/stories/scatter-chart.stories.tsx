@@ -20,13 +20,11 @@ const ScatterTooltipContent = ({
 
   return (
     <div className="bg-primaryBg border border-mainBorder rounded px-3 py-2 shadow-lg">
-      {payload.map(
-        (entry: { name?: string; value?: number }, index: number) => (
-          <p key={index} className="text-primaryText text-sm">
-            {entry.name}: {entry.value}
-          </p>
-        ),
-      )}
+      {payload.map((entry, index) => (
+        <p key={index} className="text-primaryText text-sm">
+          {entry.name}: {entry.value}
+        </p>
+      ))}
     </div>
   );
 };

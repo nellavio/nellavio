@@ -54,14 +54,14 @@ export const Card = ({
                 ${className} `}
     >
       {title && !customHeader && (
-        <h3
+        <p
           className={`text-sm w-full ${padding} 1xl:text-base 3xl:text-lg font-semibold text-primaryText
             ${addTitleMargin ? "mb-6" : ""}
             ${isHeaderDividerVisible ? "border-b border-cardBorder pb-4" : ""}
             `}
         >
           {title}
-        </h3>
+        </p>
       )}
       {customHeader && typeof customHeader !== "boolean" && (
         <div className={`w-full ${padding} ${hasSubtitle ? "mb-8" : ""}`}>

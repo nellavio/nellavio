@@ -151,9 +151,9 @@ export const LineChartComponent = () => {
       title={isWideLayout ? undefined : t("lineChart")}
       customHeader={
         isWideLayout ? (
-          <h3 className="-mx-6 md:-mx-20 px-6 md:px-20 text-sm 1xl:text-base 3xl:text-lg font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
+          <p className="-mx-6 md:-mx-20 px-6 md:px-20 text-sm 1xl:text-base 3xl:text-lg font-semibold text-primaryText pb-6 mb-14 border-b border-cardBorder">
             {t("lineChart")}
-          </h3>
+          </p>
         ) : undefined
       }
       padding={isWideLayout ? "px-6 md:px-20" : "px-9"}

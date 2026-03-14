@@ -17,7 +17,12 @@ import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
-import { Tabs, TabsList, TabsTrigger } from "../../../common/shadcn/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../../common/shadcn/tabs";
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "../types";
 
 const RevenueOverTimeTooltip = ({
@@ -159,9 +164,9 @@ export const RevenueOverTime = ({
   const customHeader = (
     <div className="flex items-center justify-between">
       <div className="flex flex-col gap-0.5">
-        <h3 className="text-sm 1xl:text-base 3xl:text-lg font-semibold text-primaryText">
+        <p className="text-sm 1xl:text-base 3xl:text-lg font-semibold text-primaryText">
           {t("title")}
-        </h3>
+        </p>
         <span className="text-[0.85rem] text-subtitleText">
           Historical performance
         </span>
@@ -175,17 +180,19 @@ export const RevenueOverTime = ({
           <TabsList className="bg-tabsBg">
             <TabsTrigger
               value="monthly"
-              className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+              className="text-xs data-[state=active]:bg-revenueTabActiveBg data-[state=active]:hover:bg-revenueTabActiveBgHover"
             >
               Monthly
             </TabsTrigger>
             <TabsTrigger
               value="quarterly"
-              className="text-xs data-[state=active]:bg-revenueTabActiveBg"
+              className="text-xs data-[state=active]:bg-revenueTabActiveBg data-[state=active]:hover:bg-revenueTabActiveBgHover"
             >
               Quarterly
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="monthly" />
+          <TabsContent value="quarterly" />
         </Tabs>
       )}
     </div>

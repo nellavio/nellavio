@@ -342,9 +342,7 @@ export const WeeklyPerformance = ({
         {showActivities && (
           <div className="sm:w-1/3 lg:w-full mt-1 sm:mt-0 lg:mt-1 2xl:mt-1 3xl:mt-3 sm:overflow-y-auto lg:overflow-y-visible">
             <div className="px-3 1xl:px-4 mb-2 3xl:mb-1">
-              <h3 className="text-sm font-semibold text-primaryText">
-                Activity
-              </h3>
+              <p className="text-sm font-semibold text-primaryText">Activity</p>
             </div>
             <div className="flex flex-col">
               {weeklyActivities.map((activity) => (

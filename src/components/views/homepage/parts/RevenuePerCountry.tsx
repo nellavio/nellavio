@@ -144,8 +144,8 @@ export const RevenuePerCountry = ({
             className={`flex flex-col w-full ${isCompact ? "pl-[5%] pr-[5%]" : "pl-[10%] md:pr-[10%] lg:pr-[20%]"}`}
           >
             <div className="w-full flex justify-between mb-2 text-xs lg:text-sm 3xl:text-base">
-              <h3 className="font-semibold text-primaryText">Country</h3>
-              <h3 className="font-semibold text-primaryText">Sales</h3>
+              <p className="font-semibold text-primaryText">Country</p>
+              <p className="font-semibold text-primaryText">Sales</p>
             </div>
             {dataWithIcons.map((data, index) => (
               <div

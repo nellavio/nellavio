@@ -246,7 +246,13 @@ export const MenuItemWithSubmenu = ({
         >
           <TooltipTrigger asChild>
             <DropdownMenuTrigger asChild disabled={!isCollapsed}>
-              <div>{mainContent}</div>
+              <div
+                {...(!isCollapsed
+                  ? { "aria-haspopup": undefined, "aria-expanded": undefined }
+                  : { role: "button" })}
+              >
+                {mainContent}
+              </div>
             </DropdownMenuTrigger>
           </TooltipTrigger>
           {isCollapsed && (

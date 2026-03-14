@@ -98,9 +98,9 @@ export const ThreeSmallCards = ({
           >
             <div className="flex items-center justify-between gap-5 w-full">
               <div className="flex flex-col justify-center gap-1.5">
-                <h3 className="text-secondaryText text-sm font-medium">
+                <p className="text-secondaryText text-sm font-medium">
                   {metric.title}
-                </h3>
+                </p>
                 <p className="text-primaryText text-3xl font-bold mb-1">
                   {metric.metric}
                 </p>
@@ -149,9 +149,9 @@ export const ThreeSmallCards = ({
           >
             <div className="flex items-center justify-between gap-3 w-full">
               <div className="flex flex-col justify-center gap-1">
-                <h3 className="text-secondaryText text-sm font-medium">
+                <p className="text-secondaryText text-sm font-medium">
                   {metric.title}
-                </h3>
+                </p>
                 <p className="text-primaryText text-2xl font-bold mb-0.5">
                   {metric.metric}
                 </p>
@@ -200,9 +200,9 @@ export const ThreeSmallCards = ({
               className="flex flex-1 items-center justify-center gap-3 md:gap-5 lg:gap-3 1xl:gap-4 2xl:gap-6 3xl:gap-10"
             >
               <div className="flex flex-col justify-center gap-0.5 3xl:gap-1.5">
-                <h3 className="text-secondaryText text-sm font-medium">
+                <p className="text-secondaryText text-sm font-medium">
                   {metric.title}
-                </h3>
+                </p>
                 <p className="text-primaryText text-3xl xsm:text-base 1xl:text-xl 2xl:text-2xl 3xl:text-3xl font-bold mb-0 3xl:mb-1">
                   {metric.metric}
                 </p>

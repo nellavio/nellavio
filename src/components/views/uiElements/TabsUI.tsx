@@ -32,7 +32,7 @@ export const TabsUI = () => {
         </TabsList>
         <TabsContent value="account" className="space-y-4 mt-6">
           <div className="space-y-3">
-            <h3 className="text-lg font-medium">Account Information</h3>
+            <p className="text-lg font-medium">Account Information</p>
             <p className="text-sm text-secondaryText leading-relaxed">
               Manage your account settings and preferences here.
             </p>
@@ -44,7 +44,7 @@ export const TabsUI = () => {
         </TabsContent>
         <TabsContent value="password" className="space-y-4 mt-6">
           <div className="space-y-3">
-            <h3 className="text-lg font-medium">Password Settings</h3>
+            <p className="text-lg font-medium">Password Settings</p>
             <p className="text-sm text-secondaryText leading-relaxed">
               Change your password and security settings.
             </p>
@@ -53,7 +53,7 @@ export const TabsUI = () => {
         </TabsContent>
         <TabsContent value="settings" className="space-y-4 mt-6">
           <div className="space-y-3">
-            <h3 className="text-lg font-medium">General Settings</h3>
+            <p className="text-lg font-medium">General Settings</p>
             <p className="text-sm text-secondaryText leading-relaxed">
               Configure general application settings.
             </p>
