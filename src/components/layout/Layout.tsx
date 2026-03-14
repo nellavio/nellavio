@@ -1,12 +1,12 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 import { SettingsIcon } from "../../assets/icons/SettingsIcon";
 import { useFontManager } from "../../hooks/useFontManager";
 import { useGlobalHotkeys } from "../../hooks/useGlobalHotkeys";
+import { usePathname } from "../../i18n/navigation";
 import { useChartAnimationStore } from "../../store/chartAnimationStore";
 import { useLayoutStore } from "../../store/layoutStore";
 import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
@@ -29,18 +29,7 @@ export const Layout = ({ children }: LayoutProps) => {
     (s) => s.setShouldStartChartAnimations,
   );
 
-  const [showLoader, setShowLoader] = useState(() => {
-    /** Check pathname synchronously to avoid flash on auth pages */
-    if (typeof window !== "undefined") {
-      const pathname = window.location.pathname;
-      return (
-        !pathname.includes("/login") &&
-        !pathname.includes("/register") &&
-        !pathname.includes("/forgot-password")
-      );
-    }
-    return true;
-  });
+  const [showLoader, setShowLoader] = useState(true);
 
   const loaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const animationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
@@ -50,16 +39,9 @@ export const Layout = ({ children }: LayoutProps) => {
 
   const currentPathname = usePathname();
 
-  const pathsWithNoLayout = [
-    "/login",
-    "/pl/login",
-    "/register",
-    "/pl/register",
-    "/forgot-password",
-    "/pl/forgot-password",
-  ];
+  const authPaths = ["/login", "/register", "/forgot-password"];
 
-  const isAuthPage = pathsWithNoLayout.includes(currentPathname);
+  const isAuthPage = authPaths.includes(currentPathname);
 
   useGlobalHotkeys({ isAuthPage });
 

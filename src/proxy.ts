@@ -13,7 +13,7 @@ import { routing } from "./i18n/routing";
 
 const handleI18nRouting = createMiddleware(routing);
 
-const publicPaths = ["/login", "/register"];
+const publicPaths = ["/login", "/register", "/forgot-password"];
 
 const isPublicPath = (pathname: string): boolean => {
   const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
