@@ -28,7 +28,8 @@
     "showing": "Pokazano",
     "to": "do",
     "of": "z",
-    "results": "wyników"
+    "results": "wyników",
+    "itemsPerPage": "Wyników na stronę"
   },
   "orders": {
     "selectPlaceholder": {
@@ -131,7 +132,8 @@
       "type": "Typ",
       "price": "Cena",
       "markup": "Marża",
-      "profit": "Zysk"
+      "profit": "Zysk",
+      "viewPhoto": "Zobacz zdjęcie"
     },
     "metrics": {
       "inventoryStatus": "Stan magazynu",

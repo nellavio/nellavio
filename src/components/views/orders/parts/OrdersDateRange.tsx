@@ -55,6 +55,7 @@ export const OrdersDateRange = ({
           popperPlacement={
             windowWidth < BREAKPOINTS.sm ? "bottom-start" : undefined
           }
+          aria-label="Start date"
           className="pl-3 md:max-w-40 md:min-w-40 p-2 text-sm 3xl:text-base bg-inputBg hover:bg-inputBgHover hover:bg-InputBgHover w-full  h-[2.3rem] 3xl:h-[2.6rem]  border rounded-md border-inputBorder text-primaryText placeholder-secondaryText hover:border-inputBorderHover transition"
         />
         <div
@@ -72,6 +73,7 @@ export const OrdersDateRange = ({
           popperPlacement={
             windowWidth < BREAKPOINTS.sm ? "bottom-start" : undefined
           }
+          aria-label="End date"
           className="pl-3 md:max-w-40 md:min-w-40 p-2 text-sm 3xl:text-base bg-inputBg hover:bg-inputBgHover w-full  h-[2.3rem] 3xl:h-[2.6rem] border rounded-md border-inputBorder text-primaryText placeholder-secondaryText hover:border-inputBorderHover transition"
         />
         <div

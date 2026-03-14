@@ -104,7 +104,7 @@ export const OrderSelects = ({
                 }
               }}
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full" aria-label={placeholder}>
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
               <SelectContent>

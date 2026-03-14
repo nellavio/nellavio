@@ -1,8 +1,11 @@
 import "@testing-library/jest-dom/vitest";
-import "vitest-axe/extend-expect";
 
 import { cleanup } from "@testing-library/react";
-import { afterEach, vi } from "vitest";
+import React from "react";
+import { afterEach, expect, vi } from "vitest";
+import * as matchers from "vitest-axe/matchers";
+
+expect.extend(matchers);
 
 afterEach(() => {
   cleanup();
@@ -78,3 +81,64 @@ vi.stubGlobal(
     dispatchEvent: vi.fn(),
   })),
 );
+
+// Mock next/image
+vi.mock("next/image", () => ({
+  default: ({
+    src,
+    alt,
+    ...props
+  }: {
+    src: string;
+    alt: string;
+    [key: string]: unknown;
+  }) => {
+    const imgProps: Record<string, unknown> = { src, alt };
+    for (const [key, value] of Object.entries(props)) {
+      if (typeof value === "string" || typeof value === "number") {
+        imgProps[key] = value;
+      }
+    }
+    return React.createElement("img", imgProps);
+  },
+}));
+
+// Mock next/link
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => React.createElement("a", { href, ...props }, children),
+}));
+
+// Mock i18n navigation (used by auth forms)
+vi.mock("../../i18n/navigation", () => ({
+  Link: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => React.createElement("a", { href, ...props }, children),
+  useRouter: () => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+    back: vi.fn(),
+  }),
+  usePathname: () => "/",
+}));
+
+// Mock auth services
+vi.mock("../../services/auth/auth-client", () => ({
+  signIn: { email: vi.fn() },
+  signUp: { email: vi.fn() },
+  signOut: vi.fn(),
+  useSession: () => ({ data: null, isPending: false, error: null }),
+}));

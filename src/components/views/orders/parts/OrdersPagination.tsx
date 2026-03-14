@@ -40,7 +40,7 @@ export const OrdersPagination = ({
             goToPage(0);
           }}
         >
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full" aria-label={t("itemsPerPage")}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent side="top">

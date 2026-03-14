@@ -66,6 +66,7 @@ export const ProductDetails = ({
           <div
             role="button"
             tabIndex={0}
+            aria-label={`${t("header.viewPhoto")} ${activeProduct.name}`}
             onClick={() => setIsPhotoOpen(true)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -206,6 +207,7 @@ export const ProductDetails = ({
                     value={activeProduct.productId}
                     type="text"
                     readOnly
+                    aria-label="Product ID"
                   />
                   <InputGroupAddon align="inline-end" className="pr-1">
                     <InputGroupButton

@@ -28,7 +28,8 @@
     "showing": "Showing",
     "to": "to",
     "of": "of",
-    "results": "results"
+    "results": "results",
+    "itemsPerPage": "Items per page"
   },
   "orders": {
     "selectPlaceholder": {
@@ -131,7 +132,8 @@
       "type": "Type",
       "price": "Price",
       "markup": "Markup",
-      "profit": "Profit"
+      "profit": "Profit",
+      "viewPhoto": "View photo"
     },
     "metrics": {
       "inventoryStatus": "Inventory status",
