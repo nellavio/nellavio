@@ -85,13 +85,13 @@ export const SideMenu = () => {
   return (
     <nav
       aria-label="Side navigation"
-      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
+      className={`mt-0 3xl:mt-0 hidden xl:flex flex-col h-screen xl:w-52.5 xl:min-w-52.5 1xl:min-w-55 3xl:min-w-67.5 pt-0 2xl:pt-0 transition-all duration-200 ease-in-out ${
         !isSideMenuOpen && "xl:!max-w-12 !w-12 xl:!min-w-18 pr-0"
       }
       `}
     >
       <div
-        className={`pl-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-52.5 1xl:min-w-55 3xl:min-w-67.5 bg-navigationBg h-dvh border-r-[1px] border-cardBorder transition-all duration-200 ease-in-out flex flex-col ${
+        className={`pl-3 pt-0 1xl:pt-0 z-[40] 2xl:pt-0 3xl:pt-0 fixed xl:w-52.5 xl:min-w-52.5 1xl:min-w-55 3xl:min-w-67.5 bg-navigationBg h-dvh border-r-[1px] border-mainBorder transition-all duration-200 ease-in-out flex flex-col ${
           !isSideMenuOpen &&
           "xl:!max-w-12 xl:!w-12 xl:!min-w-18 !pl-0 pr-[0.1rem]"
         }
@@ -106,7 +106,7 @@ export const SideMenu = () => {
           <Logo />
         </div>
         <div
-          className={`flex-1 overflow-y-auto overflow-x-hidden transition-[padding] duration-200 ease-in-out ${isSideMenuOpen ? "pr-3" : "pr-0"}`}
+          className={`flex-1 overflow-y-auto overflow-x-hidden pb-4 transition-[padding] duration-200 ease-in-out ${isSideMenuOpen ? "pr-3" : "pr-0"}`}
         >
           {menuConfig.map((entry) => {
             switch (entry.type) {

@@ -93,7 +93,7 @@
   --color-chartSecondaryInverted: rgb(118, 167, 247);
   --color-chartSecondaryAccent: rgb(83, 133, 198);
   --color-loaderBg: white;
-  --color-loaderCircleBg: #7376f2;
+  --color-loaderCircleBg: rgb(60, 120, 220);
   --color-selectBg: rgb(255, 255, 255);
   --color-selectBgHover: rgb(240, 240, 245, 0.2);
   --color-userButtonBg: rgb(240, 240, 245, 0.4);
@@ -121,10 +121,6 @@
   --color-themeToggleActiveBgHoverLight: white;
   --color-floatingMenuButtonBg: white;
   --color-floatingMenuButtonBgHover: rgb(245, 245, 250);
-  --color-percentageBadgeGreenBg: rgba(35, 140, 99, 0.08);
-  --color-percentageBadgeRedBg: rgba(213, 61, 79, 0.08);
-  --color-percentageBadgeGreenBorder: rgba(35, 140, 99, 0.3);
-  --color-percentageBadgeRedBorder: rgba(213, 61, 79, 0.3);
   --color-modalBg: white;
   --color-logoBg: rgb(118, 167, 247);
   --color-chipBg: white;
@@ -151,6 +147,8 @@
   --color-fourCardIconBgHover: rgb(0, 0, 0, 0.03);
   --color-sideMenuButtonBg: rgb(255, 255, 255, 0.02);
   --color-sideMenuButtonBgHover: rgb(255, 255, 255, 0.06);
+  --color-authThemeButtonBg: rgb(255, 255, 255, 0.85);
+  --color-authThemeButtonBgHover: rgb(255, 255, 255, 1);
 
   /* Borders */
   --color-mainBorder: rgb(0, 0, 0, 0.12);
@@ -181,6 +179,8 @@
   --color-chartCursorBg: rgb(0, 0, 0, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
   --color-successAlertBorder: rgb(22, 163, 74, 0.5);
+  --color-authThemeButtonBorder: rgb(0, 0, 0, 0.12);
+  --color-authThemeButtonBorderHover: rgb(0, 0, 0, 0.25);
 
   /* Shadows */
   --authModalShadow:

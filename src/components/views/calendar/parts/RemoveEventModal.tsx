@@ -33,6 +33,10 @@ export const RemoveEventModal = ({
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
         className="flex flex-col items-center justify-start md:max-w-112"
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+          (e.target as HTMLElement).focus();
+        }}
         onCloseAutoFocus={(e) => {
           if (returnFocusRef?.current) {
             e.preventDefault();

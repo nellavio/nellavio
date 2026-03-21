@@ -57,11 +57,11 @@ export const useChangelogModal = () => {
       const line = lines[i];
 
       if (line.startsWith("# ")) {
-        formattedContent += `<h2 class="text-primaryText text-primaryText text-3xl w-full text-left mb-4">${escapeHtml(
+        formattedContent += `<h2 class="text-primaryText text-primaryText text-3xl md:text-2xl 1xl:text-3xl w-full text-left mb-4">${escapeHtml(
           line.substring(2),
         )}</h2>`;
       } else if (line.startsWith("## ")) {
-        formattedContent += `<p class="text-left w-full mt-4 text-xl text-secondaryText text-secondaryText">${escapeHtml(
+        formattedContent += `<p class="text-left w-full mt-4 text-xl md:text-lg 1xl:text-xl text-secondaryText text-secondaryText">${escapeHtml(
           line.substring(3),
         )}</p>`;
       } else if (line.startsWith("### ")) {
@@ -83,7 +83,7 @@ export const useChangelogModal = () => {
       } else if (line.trim() === "") {
         formattedContent += `<div class="my-2"></div>`;
       } else {
-        formattedContent += `<p class="mb-4 text-base text-primaryText text-primaryText">${escapeHtml(line)}</p>`;
+        formattedContent += `<p class="mb-4 text-base md:text-sm 1xl:text-base text-primaryText text-primaryText">${escapeHtml(line)}</p>`;
       }
     }
 

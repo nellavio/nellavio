@@ -2,7 +2,7 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
 
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import Lightbox, { ThumbnailsRef } from "yet-another-react-lightbox";
 import Counter from "yet-another-react-lightbox/plugins/counter";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
@@ -42,20 +42,49 @@ export const ProductDetails = ({
   const t = useTranslations("products");
 
   const thumbnailsRef = useRef<ThumbnailsRef>(null);
+  const pdfModuleRef = useRef<typeof import("@react-pdf/renderer") | null>(
+    null,
+  );
   const profit = activeProduct.price * 0.12;
+
+  useEffect(() => {
+    import("@react-pdf/renderer").then((mod) => {
+      pdfModuleRef.current = mod;
+    });
+  }, []);
+
+  const downloadViaLink = useCallback((blob: Blob, fileName: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, []);
 
   const handleExportPDF = async () => {
     try {
-      const { pdf } = await import("@react-pdf/renderer");
-      const blob = await pdf(<ProductPDF product={activeProduct} />).toBlob();
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${activeProduct.name}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      const mod = pdfModuleRef.current ?? (await import("@react-pdf/renderer"));
+      const blob = await mod
+        .pdf(<ProductPDF product={activeProduct} />)
+        .toBlob();
+      const fileName = `${activeProduct.name}.pdf`;
+      const file = new File([blob], fileName, { type: "application/pdf" });
+
+      if (navigator.canShare?.({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: fileName });
+        } catch (shareError) {
+          if (shareError instanceof Error && shareError.name === "AbortError") {
+            return;
+          }
+          downloadViaLink(blob, fileName);
+        }
+      } else {
+        downloadViaLink(blob, fileName);
+      }
     } catch (error) {
       console.error("Failed to generate PDF:", error);
     }

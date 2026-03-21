@@ -18,10 +18,6 @@
   --color-greenBadgeText: rgb(110, 231, 183);
   --color-redBadgeText: rgb(253, 164, 175);
   --color-orangeBadgeText: rgb(253, 186, 116);
-  --color-percentageBadgeGreenText: rgb(35, 140, 99);
-  --color-percentageBadgeRedText: rgb(213, 61, 79);
-  --color-percentageBadgeGreenTextAccented: rgb(110, 231, 183);
-  --color-percentageBadgeRedTextAccented: rgb(253, 164, 175);
   --color-destructiveAlertText: rgb(255, 255, 255);
   --color-destructiveAlertIcon: rgb(248, 113, 113);
   --color-successAlertText: rgb(255, 255, 255);
@@ -93,7 +89,7 @@
   --color-chartSecondaryInverted: rgb(83, 133, 198);
   --color-chartSecondaryAccent: rgb(83, 133, 198);
   --color-loaderBg: rgb(36, 40, 45);
-  --color-loaderCircleBg: rgb(20, 80, 130);
+  --color-loaderCircleBg: rgb(61, 185, 133);
   --color-selectBg: rgb(255, 255, 255, 0.05);
   --color-selectBgHover: rgb(255, 255, 255, 0.07);
   --color-userButtonBg: rgb(25, 32, 39);
@@ -150,6 +146,8 @@
   --color-fourCardIconBgHover: rgb(255, 255, 255, 0.02);
   --color-sideMenuButtonBg: rgb(255, 255, 255, 0.02);
   --color-sideMenuButtonBgHover: rgb(255, 255, 255, 0.06);
+  --color-authThemeButtonBg: rgb(36, 39, 43);
+  --color-authThemeButtonBgHover: rgb(44, 48, 53);
 
   /* Borders */
   --color-mainBorder: rgb(255, 255, 255, 0.05);
@@ -180,6 +178,8 @@
   --color-chartCursorBg: rgb(255, 255, 255, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
   --color-successAlertBorder: rgb(22, 163, 74, 0.5);
+  --color-authThemeButtonBorder: rgb(255, 255, 255, 0.08);
+  --color-authThemeButtonBorderHover: rgb(255, 255, 255, 0.18);
 
   /* Shadows */
   --authModalShadow:

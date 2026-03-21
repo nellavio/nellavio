@@ -15,7 +15,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
   return (
     <Dialog open={true} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
-        className="max-w-[90vw] sm:max-w-152 md:max-w-130 md:w-130 1xl:w-152 1xl:max-w-152 px-5 xsm:px-5 sm:px-6 md:px-10 1xl:px-12 pr-0 xsm:pr-0 sm:pr-0 pt-0 sm:pt-0 md:pt-10 1xl:pt-12 pb-0 md:pb-10 1xl:pb-12"
+        className="md:max-w-130 md:w-130 1xl:w-152 1xl:max-w-152 px-5 xsm:px-5 sm:px-6 md:px-10 1xl:px-12 pr-0 xsm:pr-0 sm:pr-0 pt-0 sm:pt-0 md:pt-10 1xl:pt-12 pb-0 md:pb-10 1xl:pb-12"
         onOpenAutoFocus={handleOpenAutoFocus}
         onKeyDown={handleKeyDown}
       >
@@ -25,12 +25,12 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
           className="w-full h-full max-h-none md:max-h-[65vh] overflow-y-auto pl-1 pr-0 md:pr-4 [&>*]:pr-4 md:[&>*]:pr-0 pt-12 md:pt-0 focus:outline-none focus-visible:outline-none"
         >
           <DialogHeader>
-            <DialogTitle className="text-primaryText text-3xl w-full text-left mb-4">
+            <DialogTitle className="text-primaryText text-3xl md:text-2xl 1xl:text-3xl w-full text-left mb-4">
               Contributing guide
             </DialogTitle>
           </DialogHeader>
           <DialogDescription asChild>
-            <div className="text-primaryText text-base w-full text-left">
+            <div className="text-primaryText text-base md:text-sm 1xl:text-base w-full text-left">
               <p className="mb-4">
                 Hi there! 👋 Thanks for checking out this project.
                 <br />
@@ -38,7 +38,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 to get involved:
               </p>
 
-              <h3 className="text-xl font-semibold mt-6 mb-3">
+              <h3 className="text-xl md:text-lg 1xl:text-xl font-semibold mt-6 mb-3">
                 1. Share Feedback and Ideas 💡
               </h3>
               <ul className="list-disc list-inside mb-4 pl-3 text-primaryText">
@@ -70,7 +70,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 </li>
               </ul>
 
-              <h3 className="text-xl font-semibold mt-6 mb-3">
+              <h3 className="text-xl md:text-lg 1xl:text-xl font-semibold mt-6 mb-3">
                 2. Support Development 🔥
               </h3>
               <p className="mb-4">
@@ -87,7 +87,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 .
               </p>
 
-              <h3 className="text-xl font-semibold mt-6 mb-3">
+              <h3 className="text-xl md:text-lg 1xl:text-xl font-semibold mt-6 mb-3">
                 3. Contribute code
               </h3>
               <p className="mb-4">
@@ -110,7 +110,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 on GitHub.
               </p>
 
-              <h3 className="text-xl font-semibold mt-6 mb-3">
+              <h3 className="text-xl md:text-lg 1xl:text-xl font-semibold mt-6 mb-3">
                 License Information for Contributors
               </h3>
               <p className="mb-4">

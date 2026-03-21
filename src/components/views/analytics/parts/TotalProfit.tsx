@@ -17,7 +17,6 @@ import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
 import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import { BaseTooltip } from "../../../common/BaseTooltip";
 import { Card } from "../../../common/Card";
-import { Badge } from "../../../common/shadcn/badge";
 import { Progress } from "../../../common/shadcn/progress";
 import {
   ProductProfit,
@@ -73,12 +72,7 @@ export const TotalProfit = ({
       id="totalProfit"
       customHeader
     >
-      <div className="flex items-start justify-between">
-        <p className="text-sm text-primaryText">{t("title")}</p>
-        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30">
-          23.1%
-        </Badge>
-      </div>
+      <p className="text-sm text-primaryText">{t("title")}</p>
       <div className="flex items-baseline justify-start space-x-3 truncate">
         <div className="text-2xl 3xl:text-3xl font-bold text-primaryText">
           $ 442,276

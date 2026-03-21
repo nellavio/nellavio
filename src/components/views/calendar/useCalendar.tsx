@@ -1,9 +1,10 @@
-import { DateSelectArg, EventClickArg } from "@fullcalendar/core";
+import { DateSelectArg, EventClickArg, EventDropArg } from "@fullcalendar/core";
 import { EventImpl } from "@fullcalendar/core/internal";
 import { EventResizeDoneArg } from "@fullcalendar/interaction";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { useToastStore } from "../../../store/toastStore";
 import { CalendarAction, CalendarEvent, CalendarViewProps } from "./types";
 
 let eventGuid = 0;
@@ -11,6 +12,19 @@ const createEventId = () => String(eventGuid++);
 
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth();
+
+const formatEventDateTime = (date: Date): string => {
+  const datePart = new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+  }).format(date);
+  const timePart = new Intl.DateTimeFormat("en", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: false,
+  }).format(date);
+  return `${datePart}, ${timePart}`;
+};
 
 export const mockDatesForEvents = [
   {
@@ -63,6 +77,7 @@ export const mockDatesForEvents = [
  */
 export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
   const t = useTranslations("calendar");
+  const showToast = useToastStore((s) => s.showToast);
   const [currentEvents, setCurrentEvents] = useState<CalendarEvent[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<EventImpl | null>(null);
@@ -90,9 +105,11 @@ export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
 
   const handleConfirmDelete = () => {
     if (selectedEvent) {
+      const title = selectedEvent.title;
       selectedEvent.remove();
       setSelectedEvent(null);
       setModalOpen(false);
+      showToast("success", "Event deleted", `"${title}" has been removed`);
     }
   };
 
@@ -155,6 +172,11 @@ export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
         },
       ]);
       handleAddEventModalClose();
+      showToast(
+        "success",
+        "Event created",
+        `"${eventTitle}" on ${formatEventDateTime(startDate)} – ${formatEventDateTime(endDate)}`,
+      );
       setEventTitle("");
       setSelectedDate("");
     }
@@ -166,6 +188,7 @@ export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
     currentEvents,
     t,
     handleAddEventModalClose,
+    showToast,
   ]);
 
   const handleDateSelect = (selectInfo: DateSelectArg) => {
@@ -176,12 +199,19 @@ export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
 
   const handleConfirmAction = () => {
     if (!selectedEvent) return;
+    const title = selectedEvent.title;
     switch (currentAction) {
       case "delete":
         selectedEvent.remove();
+        showToast("success", "Event deleted", `"${title}" has been removed`);
         break;
-      case "move":
+      case "move": {
+        const dateLabel = selectedEvent.start
+          ? formatEventDateTime(selectedEvent.start)
+          : "";
+        showToast("success", "Event moved", `"${title}" moved to ${dateLabel}`);
         break;
+      }
     }
     resetModalState();
   };
@@ -199,7 +229,10 @@ export const useCalendar = ({ calendarEvents }: CalendarViewProps) => {
     setCurrentAction("delete");
   };
 
-  const handleEventDrop = () => {
+  const handleEventDrop = (dropInfo: EventDropArg) => {
+    const { title, start } = dropInfo.event;
+    const dateLabel = start ? formatEventDateTime(start) : "";
+    showToast("success", "Event moved", `"${title}" moved to ${dateLabel}`);
     return true;
   };
 

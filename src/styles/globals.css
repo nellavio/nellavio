@@ -84,7 +84,7 @@ body.font-alternative {
 }
 
 .circle {
-  @apply w-4 h-4 my-12 mx-1 bg-mainColor rounded-full;
+  @apply w-4 h-4 my-12 mx-1 bg-loaderCircleBg rounded-full;
 }
 
 /* Font color for axis ticks in Recharts charts */

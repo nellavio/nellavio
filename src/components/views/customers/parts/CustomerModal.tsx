@@ -47,19 +47,20 @@ export const CustomerModal = ({
             {customerData.col1} {customerData.col2}
           </DialogDescription>
           <div className="flex items-center justify-center w-full flex-col gap-2">
-            <div className="flex w-full gap-6">
-              <div className="flex min-h-24 min-w-24">
+            <div className="flex items-center xsm:items-start w-full gap-4 xsm:gap-6">
+              <div className="flex shrink-0 w-20 h-20 xsm:w-24 xsm:h-24">
                 {!imageLoaded && <SpinnerIcon className="contentSpinner" />}
                 <img
                   src={customerData.col0}
                   alt="User Profile"
+                  className="w-20 h-20 xsm:w-24 xsm:h-24 rounded-full object-cover"
                   onLoad={() => setImageLoaded(true)}
                   style={{ display: imageLoaded ? "block" : "none" }}
                 />
               </div>
               <div className="flex flex-col">
                 <div className="flex justify-start text-left">
-                  <h1 className="text-primaryText text-4xl w-full text-left mt-3 mb-2">
+                  <h1 className="text-primaryText text-3xl xsm:text-4xl w-full text-left mt-3 mb-2">
                     {customerData.col1} {customerData.col2}
                   </h1>
                 </div>

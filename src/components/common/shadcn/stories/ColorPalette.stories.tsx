@@ -52,16 +52,6 @@ const colorGroups = {
     { name: "Green Badge Text", cssVar: "greenBadgeText" },
     { name: "Red Badge Text", cssVar: "redBadgeText" },
     { name: "Orange Badge Text", cssVar: "orangeBadgeText" },
-    { name: "Percentage Badge Green Text", cssVar: "percentageBadgeGreenText" },
-    { name: "Percentage Badge Red Text", cssVar: "percentageBadgeRedText" },
-    {
-      name: "Percentage Badge Green Text Accented",
-      cssVar: "percentageBadgeGreenTextAccented",
-    },
-    {
-      name: "Percentage Badge Red Text Accented",
-      cssVar: "percentageBadgeRedTextAccented",
-    },
     { name: "Logo Basic Text", cssVar: "logoBasicText" },
     { name: "Tab Line Active Text", cssVar: "tabLineActiveText" },
     { name: "Tab Line Active Text Hover", cssVar: "tabLineActiveTextHover" },

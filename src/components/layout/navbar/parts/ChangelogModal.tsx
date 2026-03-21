@@ -38,7 +38,7 @@ export const ChangelogModal = ({
           tabIndex={0}
           className="w-full min-w-0 h-full max-h-none md:max-h-[65vh] overflow-y-auto pl-1 pr-0 md:pr-4 [&>*]:pr-4 md:[&>*]:pr-0 pt-12 md:pt-0 focus:outline-none focus-visible:outline-none"
         >
-          <div className="text-primaryText text-base w-full h-full text-left">
+          <div className="text-primaryText text-base md:text-sm 1xl:text-base w-full h-full text-left">
             {isLoading ? (
               <div className="flex justify-center items-center py-10 w-full h-full">
                 <SpinnerIcon className="contentSpinner" />

@@ -40,20 +40,20 @@ export const AboutModal = ({
           className="w-full h-full max-h-none md:max-h-[65vh] overflow-y-auto pl-1 pr-0 md:pr-4 [&>*]:pr-4 md:[&>*]:pr-0 pt-12 md:pt-0 focus:outline-none focus-visible:outline-none"
         >
           <DialogHeader>
-            <DialogTitle className="text-primaryText text-3xl w-full text-left mb-4">
+            <DialogTitle className="text-primaryText text-3xl md:text-2xl 1xl:text-3xl w-full text-left mb-4">
               About
             </DialogTitle>
           </DialogHeader>
           <DialogDescription asChild>
-            <div className="text-primaryText text-base w-full text-left">
-              <p className="mb-4 text-base">
+            <div className="text-primaryText text-base md:text-sm 1xl:text-base w-full text-left">
+              <p className="mb-4 text-base md:text-sm 1xl:text-base">
                 Spireflow is a free, open-source dashboard starter designed for
                 building modern SaaS products, internal tools and data-rich
                 admin panels. It provides the UI components, pages and patterns
                 that will give you a solid head start for building your own
                 application
               </p>
-              <p className="mb-4 text-base">
+              <p className="mb-4 text-base md:text-sm 1xl:text-base">
                 If you&apos;d like to contribute, check out the{" "}
                 <button
                   onClick={(e) => {
@@ -68,7 +68,7 @@ export const AboutModal = ({
               </p>
             </div>
           </DialogDescription>
-          <div className="flex flex-row justify-start w-full mt-3 text-base gap-3 sm:gap-4 sm:h-12 mb-4">
+          <div className="flex flex-row justify-start w-full mt-3 text-base gap-3 sm:gap-4 sm:h-12 md:h-10 1xl:h-12 mb-4">
             <Button
               asChild
               variant="outline"
@@ -103,8 +103,10 @@ export const AboutModal = ({
             </span>
             Subscribe to newsletter
           </Link>
-          <div className="text-primaryText text-base w-full text-left">
-            <p className="text-left w-full mt-4 text-xl">Tech stack:</p>
+          <div className="text-primaryText text-base md:text-sm 1xl:text-base w-full text-left">
+            <p className="text-left w-full mt-4 text-xl md:text-lg 1xl:text-xl">
+              Tech stack:
+            </p>
             <div className="mt-4">
               <p className="text-primaryText mb-2">Front-End:</p>
             </div>
@@ -132,8 +134,8 @@ export const AboutModal = ({
               <li>GraphQL</li>
             </ul>
           </div>
-          <div className="text-primaryText text-base w-full text-left mt-2">
-            <p className="text-left w-full text-xl mb-4">
+          <div className="text-primaryText text-base md:text-sm 1xl:text-base w-full text-left mt-2">
+            <p className="text-left w-full text-xl md:text-lg 1xl:text-xl mb-4">
               Additional resources:
             </p>
             <ul className="list-disc list-inside pl-3 mb-4">
