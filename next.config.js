@@ -25,6 +25,9 @@ const connectSrcDomains = [
 
 const nextConfig = {
   reactStrictMode: true,
+  turbopack: {
+    root: __dirname,
+  },
   transpilePackages: ["@react-pdf/renderer"],
   typescript: {
     ignoreBuildErrors: false,

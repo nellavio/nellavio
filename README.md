@@ -27,7 +27,7 @@
 
 ## 💎 Overview
 
-Spireflow is a free, open-source dashboard starter designed for building business applications, internal tools and data-rich admin panels. It provides all the UI components, pages and patterns you need to create a complete dashboard - available out of the box.
+Spireflow is a free, open-source dashboard starter designed for building modern SaaS products, internal tools and data-rich admin panels. It provides the UI components, pages and patterns you need to create a complete dashboard application - available out of the box.
 
 It will give you a solid head start and save weeks of development time by serving as a practical foundation that you can easily extend and adapt to your specific needs. The project runs as a standalone frontend by default, ready to be integrated with your own API or an optional Spireflow backend that enables a production-ready authentication flow.
 
@@ -56,7 +56,7 @@ React 19, Next.js 16, TypeScript, Tailwind 4, Shadcn UI, Zustand, Apollo Client,
 You can get started with Spireflow by cloning the repository:
 
 ```bash
-git clone https://github.com/matt765/spireflow.git
+git clone https://github.com/spireflow/spireflow.git
 cd spireflow
 npm install
 npm run dev
@@ -185,29 +185,29 @@ For remote hosting, you can easily deploy your own instance of Spireflow dashboa
 
 ## 🧾 Pages
 
-| Path               | Description                                                                                                                                                                                                                                                  |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `/`                | Homepage with key metrics cards (switchable 3/4 card layout via Zustand), multiple Recharts visualizations and an interactive world map with country-level revenue tooltips powered by react-simple-maps.                                                    |
-| `/orders`          | Orders management table built with TanStack Table v8, featuring text search, date range picker, multi-select filters (status, payment, shipping), column sorting, pagination with configurable page size, and XLSX export.                                   |
-| `/customers`       | Customer list table featuring text search, country filter dropdown, sort dropdown (name, orders, spend - ascending/descending), active filter chips with inline removal, pagination, and XLSX export.                                                        |
-| `/products`        | Product catalog with a categorized sidebar navigation, detailed product view showing image with lightbox gallery, parameters grid, circular progress metrics, copy-to-clipboard product ID, and PDF export via @react-pdf/renderer.                          |
-| `/analytics`       | Sales and performance page with multiple Recharts visualizations across different chart types, covering revenue, profit, and market data.                                                                                                                    |
-| `/profile`         | User profile page with header card, contact info sidebar, bio section with inline editing, account settings with toggle switches and recent activity feed.                                                                                                   |
-| `/calendar`        | Interactive event calendar powered by FullCalendar with month, week, day, and list views. Supports drag-and-drop event moving, date range selection for creating new events, and event deletion with confirmation modals.                                    |
-| `/login`           | Sign-in page with Better-Auth authentication, email/password form validated by react-hook-form and Yup, show/hide password toggle, "Remember me" checkbox and error tooltips. Styled with themed auth background pattern and centered modal.                 |
-| `/register`        | Registration page with Better-Auth authentication and sign-up form using the same validation and styling approach as login - Yup schema validation, accessible error handling, and themed auth modal layout with background pattern.                         |
-| `/forgot-password` | Password reset page (UI only, no backend integration) with email input form, Yup validation, and consistent auth page design matching login and registration - centered modal with background pattern.                                                       |
-| `/ui-elements`     | Showcase of Shadcn UI components displayed in a responsive two-column grid: buttons, command palette, avatars, tooltips, alerts, toasts, skeletons, dialogs, dropdown menus, badges, popovers, progress bars, breadcrumbs, tabs, separators, and pagination. |
-| `/forms`           | Collection of form components in a responsive two-column grid: input fields, select inputs, textareas, color picker, form validation, checkboxes, radio buttons, toggle switches, date picker, file upload, and sliders.                                     |
-| `/tables`          | Four TanStack Table variants demonstrating different table configurations and use cases: basic table, advanced table with enhanced filtering and sorting, user management table, and inventory tracking table.                                               |
-| `/charts`          | Gallery of Recharts chart types displayed in a responsive grid: area, scatter, pie, radar, composed, stacked bar, radial bar, two-axis line, mixed line, vertical bar, area fill by value, gradient pie, and a full-width line chart.                        |
+| Path               | Description                                                                                                                                                                                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                | Homepage with key metrics cards (switchable 3/4 card layout via Settings drawer), multiple Recharts visualizations and an interactive world map with country-level revenue tooltips powered by react-simple-maps.                                                   |
+| `/orders`          | Orders management table built with TanStack Table v8, featuring text search, date range picker, multi-select filters (status, payment, shipping), column sorting, pagination with configurable page size, and XLSX export.                                          |
+| `/customers`       | Customer list table featuring text search, country filter dropdown, sort dropdown (name, orders, spend - ascending/descending), active filter chips with inline removal, pagination, and XLSX export.                                                               |
+| `/products`        | Product catalog with a categorized sidebar navigation, detailed product view showing image with lightbox gallery, parameters grid, circular progress metrics, copy-to-clipboard product ID, and PDF export via @react-pdf/renderer.                                 |
+| `/analytics`       | Sales and performance page with multiple Recharts visualizations across different chart types, covering revenue, profit, and market data.                                                                                                                           |
+| `/profile`         | User profile page with header card, contact info sidebar, bio section with inline editing, account settings with toggle switches and recent activity feed.                                                                                                          |
+| `/calendar`        | Interactive event calendar powered by FullCalendar with month, week, day, and list views. Supports drag-and-drop event moving, date range selection for creating new events, and event deletion with confirmation modals.                                           |
+| `/login`           | Sign-in page with Better-Auth authentication, email/password form validated by react-hook-form and Yup, show/hide password toggle, "Remember me" checkbox and error tooltips. Styled with themed auth background pattern and centered modal.                        |
+| `/register`        | Registration page with Better-Auth authentication and sign-up form using the same validation and styling approach as login - Yup schema validation, accessible error handling, and themed auth modal layout with background pattern.                                |
+| `/forgot-password` | Password reset page (UI only, no backend integration) with email input form, Yup validation, and consistent auth page design matching login and registration - centered modal with background pattern.                                                              |
+| `/ui-elements`     | Showcase of styled Shadcn UI components displayed in a responsive two-column grid: buttons, command palette, avatars, tooltips, alerts, toasts, skeletons, dialogs, dropdown menus, badges, popovers, progress bars, breadcrumbs, tabs, separators, and pagination. |
+| `/forms`           | Collection of form components in a responsive two-column grid: input fields, select inputs, textareas, color picker, form validation, checkboxes, radio buttons, toggle switches, date picker, file upload, and sliders.                                            |
+| `/tables`          | Four TanStack Table variants demonstrating different table configurations and use cases: basic table, advanced table with enhanced filtering and sorting, user management table, and inventory tracking table.                                                      |
+| `/charts`          | Gallery of Recharts chart types displayed in a responsive grid: area, scatter, pie, radar, composed, stacked bar, radial bar, two-axis line, mixed line, vertical bar, area fill by value, gradient pie, and a full-width line chart.                               |
 
 ## ⌨️ Accessibility
 
-- Full keyboard navigation with Tab and arrow buttons across all interactive elements
-- Visible focus indicators (focus-visible) with common CSS variable
-- ARIA attributes on interactive components (combobox, listbox, dialog, menu)
-- Radix UI primitives for accessible modals, tooltips, dropdowns, and popovers
+- Seamless keyboard navigation with Tab and arrow buttons across all interactive elements
+- Visible focus indicators (focus-visible) with single CSS variable for consistent outline color
+- ARIA attributes wherever needed across components
+- UI components are built on top of Radix UI primitives which provide core accessibility support
 - Tested with Storybook a11y addon and Chrome Lighthouse (95+)
 
 ### Keyboard shortcuts
@@ -234,8 +234,8 @@ On macOS use `Cmd` instead of `Ctrl`.
 | `npm run lint`         | Runs ESLint to check code quality     |
 | `npm run lint:fix`     | Runs ESLint and auto-fixes issues     |
 | `npm run type-check`   | Runs TypeScript type checking         |
-| `npm run test`         | Runs Jest tests                       |
-| `npm run test:watch`   | Runs Jest tests in watch mode         |
+| `npm run test`         | Runs Vitest tests                     |
+| `npm run test:watch`   | Runs Vitest tests in watch mode       |
 | `npm run format`       | Formats code with Prettier            |
 | `npm run format:check` | Checks if code is properly formatted  |
 
@@ -247,7 +247,7 @@ All forms of project support are valued and appreciated, including code contribu
 
 ## 📝 License
 
-This project is open source and available under the MIT License. Feel free to use it to build any personal or commercial applications (SaaS, internal tools etc.). Although the license allows redistribution, I would greatly appreciate it if you did not repackage or resell this project as a standalone UI kit or template.
+This project is open source and available under the MIT License. Feel free to use it to build any personal or commercial applications (SaaS, internal tools etc.). Although the license allows redistribution, I would greatly appreciate it if you did not repackage or resell this project as a standalone UI kit or a template.
 
 ## 💌 Stay updated
 

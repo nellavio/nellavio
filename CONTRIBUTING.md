@@ -19,7 +19,7 @@ Feel free to fork the repository and submit a merge requests. If you've spotted 
 ### Development setup
 
 ```bash
-git clone https://github.com/matt765/spireflow.git
+git clone https://github.com/spireflow/spireflow.git
 cd spireflow
 npm install
 npm run dev
