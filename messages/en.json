@@ -226,7 +226,11 @@
     "line": "Line",
     "signIn": "Sign In",
     "language": "Language",
-    "githubRepository": "GitHub Repository"
+    "githubRepository": "GitHub Repository",
+    "errorPages": "Error Pages",
+    "error401": "401 Unauthorized",
+    "error404": "404 Not Found",
+    "error500": "500 Server Error"
   },
   "navbar": {
     "auth": "Auth",
@@ -489,5 +493,20 @@
     "areaFillByValueChart": "Area Fill By Value",
     "gradientPieChart": "Gradient Pie Chart",
     "lineAreaChart": "Orders & Returns Trend"
+  },
+  "errorPages": {
+    "backToHomepage": "Back to Homepage",
+    "error401": {
+      "title": "Unauthorized",
+      "description": "You don't have permission to access this page. Please sign in with valid credentials to continue."
+    },
+    "error404": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for might have been moved, deleted, or never existed in the first place."
+    },
+    "error500": {
+      "title": "Server Error",
+      "description": "Something went wrong on our end. Our servers encountered an unexpected error while processing your request."
+    }
   }
 }

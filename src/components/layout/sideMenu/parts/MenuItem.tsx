@@ -69,7 +69,7 @@ export const MenuItem = ({ title, icon, path }: MenuItemProps) => {
         >
           <div
             onClick={handleMenuItemClick}
-            className={`flex relative rounded-md items-center py-2 1xl:py-[0.55rem] 3xl:py-[0.7rem] mb-px 1xl:mb-1 3xl:mb-2 transition-[background-color,border-color,padding] duration-200 ease-in-out ${
+            className={`flex relative rounded-md items-center py-2 1xl:py-[0.55rem] 3xl:py-[0.65rem] mb-px 1xl:mb-1 3xl:mb-[0.3125rem] transition-[background-color,border-color,padding] duration-200 ease-in-out ${
               isCollapsed ? "pl-[0.65rem]" : "pl-4 pr-2"
             } ${
               isActive

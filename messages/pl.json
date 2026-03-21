@@ -225,7 +225,11 @@
     "line": "Linia",
     "signIn": "Zaloguj się",
     "language": "Język",
-    "githubRepository": "GitHub"
+    "githubRepository": "GitHub",
+    "errorPages": "Strony błędów",
+    "error401": "401 Unauthorized",
+    "error404": "404 Not Found",
+    "error500": "500 Server Error"
   },
   "navbar": {
     "auth": "Autoryzacja",
@@ -488,5 +492,20 @@
     "areaFillByValueChart": "Wykres obszarowy wg wartości",
     "gradientPieChart": "Wykres kołowy z gradientem",
     "lineAreaChart": "Trend zamówień i zwrotów"
+  },
+  "errorPages": {
+    "backToHomepage": "Powrót do strony głównej",
+    "error401": {
+      "title": "Brak dostępu",
+      "description": "Nie masz uprawnień do wyświetlenia tej strony. Zaloguj się przy użyciu prawidłowych danych, aby kontynuować."
+    },
+    "error404": {
+      "title": "Strona nie znaleziona",
+      "description": "Strona, której szukasz, mogła zostać przeniesiona, usunięta lub nigdy nie istniała."
+    },
+    "error500": {
+      "title": "Błąd serwera",
+      "description": "Coś poszło nie tak po naszej stronie. Serwer napotkał nieoczekiwany błąd podczas przetwarzania żądania."
+    }
   }
 }

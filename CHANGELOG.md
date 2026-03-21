@@ -9,12 +9,14 @@
 - migrated common components to Shadcn UI + Radix
 - added settings drawer
 - added notifications
-- added new pages: /profile, /forgot-password, /ui-elements, /forms, /tables, /charts
+- added new user pages: /profile, /forgot-password
+- added collection pages: /ui-elements, /forms, /tables, /charts
 - added tests for business logic, migrated from Jest to Vitest
 - added all new components & charts to Storybook
 - added global date range selection
 - improved accessibility
 - improved Husky, CI and Eslint settings
+- added error pages: /error-401, /error-404, /error-500
 - updated all packages
 
 ## 1.0.15 (12-05-2025)

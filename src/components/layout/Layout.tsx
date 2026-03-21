@@ -39,7 +39,14 @@ export const Layout = ({ children }: LayoutProps) => {
 
   const currentPathname = usePathname();
 
-  const authPaths = ["/login", "/register", "/forgot-password"];
+  const authPaths = [
+    "/login",
+    "/register",
+    "/forgot-password",
+    "/error-401",
+    "/error-404",
+    "/error-500",
+  ];
 
   const isAuthPage = authPaths.includes(currentPathname);
 

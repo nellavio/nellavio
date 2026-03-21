@@ -89,7 +89,7 @@ Optionally, it can be connected to an associated Node.js backend, which enables 
 ├── src
 │   ├── app                       # Next.js pages (App Router)
 │   │   ├── [locale]              # Dynamic locale folder for i18n
-│   │   │   ├── (auth)            # Auth pages (login, register)
+│   │   │   ├── (auth)            # Auth & error pages
 │   │   │   └── (protected)       # Protected pages (require auth)
 │   │   └── api                   # API routes
 │   ├── assets                    # Static assets
@@ -197,6 +197,9 @@ For remote hosting, you can easily deploy your own instance of Spireflow dashboa
 | `/login`           | Sign-in page with Better-Auth authentication, email/password form validated by react-hook-form and Yup, show/hide password toggle, "Remember me" checkbox and error tooltips. Styled with themed auth background pattern and centered modal.                        |
 | `/register`        | Registration page with Better-Auth authentication and sign-up form using the same validation and styling approach as login - Yup schema validation, accessible error handling, and themed auth modal layout with background pattern.                                |
 | `/forgot-password` | Password reset page (UI only, no backend integration) with email input form, Yup validation, and consistent auth page design matching login and registration - centered modal with background pattern.                                                              |
+| `/error-401`       | Showcase error page for 401 Unauthorized with full-page layout, themed background pattern on dark mode, and a back-to-homepage button.                                                                                                                              |
+| `/error-404`       | Showcase error page for 404 Not Found with full-page layout, themed background pattern on dark mode, and a back-to-homepage button.                                                                                                                                 |
+| `/error-500`       | Showcase error page for 500 Server Error with full-page layout, themed background pattern on dark mode, and a back-to-homepage button.                                                                                                                              |
 | `/ui-elements`     | Showcase of styled Shadcn UI components displayed in a responsive two-column grid: buttons, command palette, avatars, tooltips, alerts, toasts, skeletons, dialogs, dropdown menus, badges, popovers, progress bars, breadcrumbs, tabs, separators, and pagination. |
 | `/forms`           | Collection of form components in a responsive two-column grid: input fields, select inputs, textareas, color picker, form validation, checkboxes, radio buttons, toggle switches, date picker, file upload, and sliders.                                            |
 | `/tables`          | Four TanStack Table variants demonstrating different table configurations and use cases: basic table, advanced table with enhanced filtering and sorting, user management table, and inventory tracking table.                                                      |

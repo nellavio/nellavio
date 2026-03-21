@@ -4,6 +4,7 @@ import { ComponentType } from "react";
 import { AnalyticsIcon } from "../../../assets/icons/AnalyticsIcon";
 import { ArrowLeftIcon } from "../../../assets/icons/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../../assets/icons/ArrowRightIcon";
+import { BugIcon } from "../../../assets/icons/BugIcon";
 import { CalendarIcon } from "../../../assets/icons/CalendarIcon";
 import { DashboardIcon } from "../../../assets/icons/DashboardIcon";
 import { DonutIcon } from "../../../assets/icons/DonutIcon";
@@ -63,6 +64,16 @@ export const menuConfig: MenuConfigEntry[] = [
       { titleKey: "login", path: "/login", newTab: true },
       { titleKey: "register", path: "/register", newTab: true },
       { titleKey: "forgotPassword", path: "/forgot-password", newTab: true },
+    ],
+  },
+  {
+    type: "submenu",
+    titleKey: "errorPages",
+    Icon: BugIcon,
+    submenuItems: [
+      { titleKey: "error401", path: "/error-401", newTab: true },
+      { titleKey: "error404", path: "/error-404", newTab: true },
+      { titleKey: "error500", path: "/error-500", newTab: true },
     ],
   },
   { type: "category", titleKey: "components" },
