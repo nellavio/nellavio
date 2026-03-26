@@ -46,10 +46,10 @@ export default async function RootLayout({
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://spireflow.app"),
+  metadataBase: new URL("https://nellavio.com"),
   title: {
-    default: "Spireflow",
-    template: "%s | Spireflow",
+    default: "Nellavio",
+    template: "%s | Nellavio",
   },
   description:
     "Open source dashboard starter with auth, i18n, dark/light mode, 26 charts and 80+ reusable UI components",
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://spireflow.app",
-    siteName: "Spireflow",
-    title: "Spireflow | Open Source Next.js Dashboard Starter",
+    url: "https://nellavio.com",
+    siteName: "Nellavio",
+    title: "Nellavio | Open Source Next.js Dashboard Starter",
     description:
       "Open source dashboard starter with auth, i18n, dark/light mode, 26 charts and 80+ reusable UI components",
     images: [
@@ -81,13 +81,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Spireflow Dashboard Preview",
+        alt: "Nellavio Dashboard Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Spireflow | Open Source Next.js Dashboard Starter",
+    title: "Nellavio | Open Source Next.js Dashboard Starter",
     description:
       "Open source dashboard starter with auth, i18n, dark/light mode, 26 charts and 80+ reusable UI components",
     images: ["/og-image.png"],

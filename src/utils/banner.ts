@@ -121,7 +121,7 @@ const printStartupBanner = async () => {
   const banner = [
     separator,
     "",
-    `SPIREFLOW v${packageJson.version}`,
+    `Nellavio v${packageJson.version}`,
     "",
     `📊 Environment: ${nodeEnv}`,
     `📦 Node: ${process.version}`,

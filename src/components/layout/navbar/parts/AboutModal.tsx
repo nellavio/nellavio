@@ -47,7 +47,7 @@ export const AboutModal = ({
           <DialogDescription asChild>
             <div className="text-primaryText text-base md:text-sm 1xl:text-base w-full text-left">
               <p className="mb-4 text-base md:text-sm 1xl:text-base">
-                Spireflow is a free, open-source dashboard starter designed for
+                Nellavio is a free, open-source dashboard starter designed for
                 building modern SaaS products, internal tools and data-rich
                 admin panels. It provides the UI components, pages and patterns
                 that will give you a solid head start for building your own
@@ -74,7 +74,7 @@ export const AboutModal = ({
               variant="outline"
               className="flex-1 xsm:flex-initial xsm:w-auto h-full sm:!px-6 gap-2"
             >
-              <Link href="https://github.com/matt765/spireflow" target="_blank">
+              <Link href="https://github.com/matt765/nellavio" target="_blank">
                 <GithubIcon />
                 Front-end
               </Link>
@@ -85,7 +85,7 @@ export const AboutModal = ({
               className="flex-1 xsm:flex-initial xsm:w-auto h-full sm:!px-6 gap-2"
             >
               <Link
-                href="https://github.com/matt765/spireflow-backend"
+                href="https://github.com/matt765/nellavio-backend"
                 target="_blank"
               >
                 <GithubIcon />
@@ -94,7 +94,7 @@ export const AboutModal = ({
             </Button>
           </div>
           <Link
-            href="https://spireflow.kit.com/"
+            href="https://nellavio.kit.com/"
             target="_blank"
             className="inline-flex items-center gap-2 mt-1 text-coloredLinkText hover:underline font-medium"
           >
@@ -141,7 +141,7 @@ export const AboutModal = ({
             <ul className="list-disc list-inside pl-3 mb-4">
               <li>
                 <Link
-                  href="https://storybook.spireflow.app/"
+                  href="https://storybook.nellavio.com/"
                   target="_blank"
                   className="text-coloredLinkText hover:underline font-medium"
                 >
@@ -150,7 +150,7 @@ export const AboutModal = ({
               </li>
               <li>
                 <Link
-                  href="https://auth.spireflow.app/"
+                  href="https://auth.nellavio.com/"
                   target="_blank"
                   className="text-coloredLinkText hover:underline font-medium"
                 >
@@ -159,7 +159,7 @@ export const AboutModal = ({
               </li>
               <li>
                 <Link
-                  href="https://github.com/matt765/spireflow-layout"
+                  href="https://github.com/matt765/nellavio-layout"
                   target="_blank"
                   className="text-coloredLinkText hover:underline font-medium"
                 >

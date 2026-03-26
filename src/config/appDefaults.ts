@@ -3,7 +3,7 @@ import type { SidebarDefaultState } from "../store/layoutStore";
 import type { FontType } from "../styles/fonts";
 
 /**
- * Central defaults for the Spireflow dashboard starter.
+ * Central defaults for the Nellavio dashboard starter.
  *
  * Change these values to customize the out-of-the-box experience.
  * They are consumed by Zustand stores, providers and UI components.

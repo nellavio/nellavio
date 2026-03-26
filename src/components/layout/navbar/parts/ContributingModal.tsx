@@ -45,7 +45,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 <li className="mb-2">
                   Use the{" "}
                   <a
-                    href="https://github.com/matt765/spireflow/discussions/1"
+                    href="https://github.com/matt765/nellavio/discussions/1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-coloredLinkText hover:underline"
@@ -58,7 +58,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 <li>
                   Open an{" "}
                   <a
-                    href="https://github.com/matt765/spireflow/issues"
+                    href="https://github.com/matt765/nellavio/issues"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-coloredLinkText hover:underline"
@@ -100,7 +100,7 @@ export const ContributingModal = ({ closeModal }: AboutModalProps) => {
                 For more details on development setup, code conventions, and the
                 pull request process, check out the{" "}
                 <a
-                  href="https://github.com/spireflow/spireflow/blob/main/CONTRIBUTING.md"
+                  href="https://github.com/nellavio/nellavio/blob/main/CONTRIBUTING.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-coloredLinkText hover:underline"

@@ -31,7 +31,7 @@ body:
     id: mode
     attributes:
       label: Mode
-      description: Are you running Spireflow in standalone mode or with backend?
+      description: Are you running Nellavio in standalone mode or with backend?
       options:
         - Standalone (no backend)
         - With backend

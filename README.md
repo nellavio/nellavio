@@ -1,20 +1,20 @@
 <div id="user-content-toc" align="center">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>- Spireflow -</h1>
+      <h1>- Nellavio -</h1>
     </summary>
   </ul>
 </div>
 
 <div align="center">
-  <a href="https://github.com/matt765/spireflow/blob/main/CHANGELOG.md" style="text-decoration: none;">
+  <a href="https://github.com/matt765/nellavio/blob/main/CHANGELOG.md" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/%20-changelog-blue?logo=readme&logoColor=white&labelColor=grey" alt="Changelog" />
   </a>
-  <a href="https://github.com/matt765/spireflow/blob/main/license" style="text-decoration: none;">
+  <a href="https://github.com/matt765/nellavio/blob/main/license" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
   </a>
-  <a href="https://github.com/matt765/spireflow/releases" style="text-decoration: none;">
-    <img src="https://img.shields.io/github/package-json/v/matt765/spireflow?color=green" alt="Version" />
+  <a href="https://github.com/matt765/nellavio/releases" style="text-decoration: none;">
+    <img src="https://img.shields.io/github/package-json/v/matt765/nellavio?color=green" alt="Version" />
   </a>
 </div>
 
@@ -22,14 +22,14 @@
 <br />
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/87699c7e-15d5-4a7e-98c0-0ed94cfa6755" alt="Spireflow Dashboard" width="800" />
+  <img src="https://github.com/user-attachments/assets/87699c7e-15d5-4a7e-98c0-0ed94cfa6755" alt="Nellavio Dashboard" width="800" />
 </div>
 
 ## 💎 Overview
 
-Spireflow is a free, open-source dashboard starter designed for building modern SaaS products, internal tools and data-rich admin panels. It provides the UI components, pages and patterns you need to create a complete dashboard application - available out of the box.
+Nellavio is a free, open-source dashboard starter designed for building modern SaaS products, internal tools and data-rich admin panels. It provides the UI components, pages and patterns you need to create a complete dashboard application - available out of the box.
 
-It will give you a solid head start and save weeks of development time by serving as a practical foundation that you can easily extend and adapt to your specific needs. The project runs as a standalone frontend by default, ready to be integrated with your own API or an optional Spireflow backend that enables a production-ready authentication flow.
+It will give you a solid head start and save weeks of development time by serving as a practical foundation that you can easily extend and adapt to your specific needs. The project runs as a standalone frontend by default, ready to be integrated with your own API or an optional Nellavio backend that enables a production-ready authentication flow.
 
 ## :gear: Tech stack
 
@@ -53,35 +53,35 @@ React 19, Next.js 16, TypeScript, Tailwind 4, Shadcn UI, Zustand, Apollo Client,
 
 ## :rocket: Quickstart
 
-You can get started with Spireflow by cloning the repository:
+You can get started with Nellavio by cloning the repository:
 
 ```bash
-git clone https://github.com/spireflow/spireflow.git
-cd spireflow
+git clone https://github.com/nellavio/nellavio.git
+cd nellavio
 npm install
 npm run dev
 ```
 
 🎉 **That's it!** Navigate to [http://localhost:3000](http://localhost:3000) to explore the dashboard.
 
-Spireflow starter is designed to work as a standalone front-end application by default. It loads mock data from `public/backendBackup.json` and has routes protection disabled.
+Nellavio starter is designed to work as a standalone front-end application by default. It loads mock data from `public/backendBackup.json` and has routes protection disabled.
 
 Optionally, it can be connected to an associated Node.js backend, which enables authentication and fetching real data on each request. See `Configuration` section below for more details.
 
 ## :link: Links
 
-#### Live demo [https://demo.spireflow.app/](https://demo.spireflow.app/)
+#### Live demo [https://demo.nellavio.com/](https://demo.nellavio.com/)
 
 #### Additional resources
 
-- [Storybook](https://storybook.spireflow.app/)
-- [Authentication docs](https://auth.spireflow.app/)
-- [Node.js backend](https://github.com/matt765/spireflow-backend)
+- [Storybook](https://storybook.nellavio.com/)
+- [Authentication docs](https://auth.nellavio.com/)
+- [Node.js backend](https://github.com/matt765/nellavio-backend)
 
 #### Lightweight version
 
-- [Live demo](https://layout.spireflow.app/)
-- [Repository](https://github.com/matt765/spireflow-layout)
+- [Live demo](https://layout.nellavio.com/)
+- [Repository](https://github.com/matt765/nellavio-layout)
 
 ## :file_folder: Project structure
 
@@ -126,7 +126,7 @@ Want to use real backend and authentication? Follow these steps:
 
 #### 1. Set up the backend
 
-Clone and run the [Spireflow Backend](https://github.com/matt765/spireflow-backend)
+Clone and run the [Nellavio Backend](https://github.com/matt765/nellavio-backend)
 
 Follow the instructions in the backend README to initialize and seed the database. The backend will run on `http://localhost:4000` by default.
 
@@ -179,9 +179,9 @@ If you use `npm start` (production mode), please remember that `npm run build` m
 
 ### One-click deploy
 
-For remote hosting, you can easily deploy your own instance of Spireflow dashboard on Vercel using the link below.
+For remote hosting, you can easily deploy your own instance of Nellavio dashboard on Vercel using the link below.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/spireflow/Spireflow)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/nellavio/nellavio)
 
 ## 🧾 Pages
 
@@ -244,7 +244,7 @@ On macOS use `Cmd` instead of `Ctrl`.
 
 ## 🤝 Community and support
 
-Check out [CONTRIBUTING.md](https://github.com/matt765/spireflow/blob/main/CONTRIBUTING.md) to learn how to get started with contributions.
+Check out [CONTRIBUTING.md](https://github.com/matt765/nellavio/blob/main/CONTRIBUTING.md) to learn how to get started with contributions.
 
 All forms of project support are valued and appreciated, including code contributions, issue reporting, and sponsorship through GitHub Sponsors or [Buy Me A Coffee](https://buymeacoffee.com/matt765) service.
 
@@ -254,7 +254,7 @@ This project is open source and available under the MIT License. Feel free to us
 
 ## 💌 Stay updated
 
-Subscribe to the [Spireflow newsletter](https://spireflow.kit.com/) to get notified about major updates and new features.
+Subscribe to the [Nellavio newsletter](https://nellavio.kit.com/) to get notified about major updates and new features.
 
 ## Author
 

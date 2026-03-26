@@ -19,7 +19,7 @@ const Home = async ({ params }: { params: Promise<{ locale: string }> }) => {
 };
 
 export const metadata: Metadata = {
-  title: { absolute: "Spireflow" },
+  title: { absolute: "Nellavio" },
 };
 
 export default Home;

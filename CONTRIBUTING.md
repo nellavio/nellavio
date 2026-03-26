@@ -5,8 +5,8 @@ Every form of contribution is valuable. Below are the main ways to get involved:
 
 ## 1. Share Feedback and Ideas 💡
 
-- Use the **[Discussions](https://github.com/matt765/spireflow/discussions/1)** on GitHub to share feedback, suggestions, or ideas for improvement.
-- Open an **[Issue](https://github.com/matt765/spireflow/issues)** if you've found a bug or something doesn't work as expected.
+- Use the **[Discussions](https://github.com/matt765/nellavio/discussions/1)** on GitHub to share feedback, suggestions, or ideas for improvement.
+- Open an **[Issue](https://github.com/matt765/nellavio/issues)** if you've found a bug or something doesn't work as expected.
 
 ## 2. Support Development 🔥
 
@@ -19,8 +19,8 @@ Feel free to fork the repository and submit a merge requests. If you've spotted 
 ### Development setup
 
 ```bash
-git clone https://github.com/spireflow/spireflow.git
-cd spireflow
+git clone https://github.com/nellavio/nellavio.git
+cd nellavio
 npm install
 npm run dev
 ```
