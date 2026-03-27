@@ -117,7 +117,8 @@ const ComposedCustomLegend = ({ payload }: ComposedLegendProps) => {
 export const ComposedChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { month: "Jan", revenue: 45000, profit: 13500, margin: 30 },
@@ -141,7 +142,7 @@ export const ComposedChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <ComposedChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right:

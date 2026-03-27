@@ -56,7 +56,8 @@ export const AssetPerformance = ({
   assetPerformanceData,
 }: AssetPerformanceProps) => {
   const t = useTranslations("analytics.assetPerformance");
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const chartContainerRef = useRef<HTMLDivElement>(null);
 
@@ -127,7 +128,7 @@ export const AssetPerformance = ({
               >
                 <PieChart tabIndex={-1}>
                   <Pie
-                    data={dataWithColors}
+                    data={isReady ? dataWithColors : []}
                     cx="50%"
                     cy="50%"
                     innerRadius="60%"

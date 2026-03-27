@@ -107,7 +107,8 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
 export const BarChartComponent = () => {
   const { width: windowWidth } = useWindowDimensions();
   const t = useTranslations("singleCharts.bars");
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const barChartData = [
     {
@@ -170,7 +171,7 @@ export const BarChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <BarChart
-              data={barChartData}
+              data={isReady ? barChartData : []}
               margin={{
                 top: 10,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

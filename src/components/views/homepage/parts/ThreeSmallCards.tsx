@@ -17,7 +17,8 @@ export const ThreeSmallCards = ({
   threeSmallCardsData,
 }: ThreeSmallCardsProps) => {
   const t = useTranslations("homepage.threeSmallCards");
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("homepage");
 
   const isFirstRender = useIsFirstRender();
   const isSm = useMediaQuery(`(min-width: ${BREAKPOINTS.sm}px)`);
@@ -65,7 +66,7 @@ export const ThreeSmallCards = ({
         >
           <PieChart tabIndex={-1}>
             <Pie
-              data={data}
+              data={isReady ? data : []}
               cx="50%"
               cy="50%"
               innerRadius="66%"

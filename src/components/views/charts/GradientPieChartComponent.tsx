@@ -200,7 +200,8 @@ const createPieShapeRenderer =
  */
 export const GradientPieChartComponent = () => {
   const t = useTranslations("charts");
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
   const { width: windowWidth } = useWindowDimensions();
 
   const COLORS = [
@@ -245,7 +246,7 @@ export const GradientPieChartComponent = () => {
                 ))}
               </defs>
               <Pie
-                data={chartdata}
+                data={isReady ? chartdata : []}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"

@@ -73,7 +73,8 @@ export const CustomerSatisfaction = ({
   const t = useTranslations("homepage.customerSatisfaction");
 
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("homepage");
 
   const bubbleRange: [number, number] =
     windowWidth < BREAKPOINTS.lg ? [56, 1250] : [111, 2500];
@@ -141,7 +142,7 @@ export const CustomerSatisfaction = ({
                 isAnimationActive={false}
               />
               <Scatter
-                data={customerSatisfactionData}
+                data={isReady ? customerSatisfactionData : []}
                 fill="var(--color-chartPrimaryFill)"
                 fillOpacity={0.8}
                 isAnimationActive={shouldAnimate}

@@ -25,7 +25,8 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
   const isLg = useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`);
   const is1xl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
   const is3xl = useMediaQuery("(min-width: 1920px)");
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("homepage");
 
   const hoverScaleClass =
     "transition-transform duration-200 group-hover:scale-110";
@@ -82,7 +83,7 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
         >
           <PieChart>
             <Pie
-              data={data}
+              data={isReady ? data : []}
               cx="50%"
               cy="50%"
               innerRadius={innerRadius}
@@ -120,7 +121,7 @@ export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {
           height="100%"
           initialDimension={{ width: 112, height: 64 }}
         >
-          <BarChart data={chartData} barCategoryGap={1}>
+          <BarChart data={isReady ? chartData : []} barCategoryGap={1}>
             <Bar
               dataKey="metric"
               fill={color}

@@ -76,7 +76,8 @@ export const RevenueDistribution = ({
 
   const { width: windowWidth } = useWindowDimensions();
 
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
 
   const inStoreColor = "var(--color-chartSecondaryInverted)";
   const onlineColor = "var(--color-chartMutedFill)";
@@ -98,7 +99,7 @@ export const RevenueDistribution = ({
             initialDimension={{ width: 320, height: 200 }}
           >
             <BarChart
-              data={revenueDistributionData}
+              data={isReady ? revenueDistributionData : []}
               layout="vertical"
               margin={{
                 top: 20,

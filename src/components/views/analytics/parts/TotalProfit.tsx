@@ -16,7 +16,6 @@ import { Card, CardContent } from "@/components/common/shadcn/card";
 import { Progress } from "@/components/common/shadcn/progress";
 import { useChartAnimation } from "@/hooks/useChartAnimation";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
-import { useChartAnimationStore } from "@/store/chartAnimationStore";
 import { BREAKPOINTS } from "@/styles/breakpoints";
 
 import {
@@ -62,10 +61,8 @@ export const TotalProfit = ({
   const t = useTranslations("analytics.totalProfit");
 
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
-  const shouldStartChartAnimations = useChartAnimationStore(
-    (state) => state.shouldStartChartAnimations,
-  );
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
 
   return (
     <Card className="w-full mx-auto recharts-tooltip-stable" id="totalProfit">
@@ -88,7 +85,7 @@ export const TotalProfit = ({
             initialDimension={{ width: 320, height: 200 }}
           >
             <AreaChart
-              data={shouldStartChartAnimations ? totalProfitSales : []}
+              data={isReady ? totalProfitSales : []}
               margin={{
                 top: 10,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

@@ -82,7 +82,8 @@ const VerticalBarTooltip = ({
 export const VerticalBarChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     {
@@ -126,7 +127,7 @@ export const VerticalBarChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <BarChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

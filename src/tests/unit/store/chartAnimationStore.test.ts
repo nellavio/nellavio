@@ -4,7 +4,6 @@ import {
 } from "@/store/chartAnimationStore";
 
 const initialState = {
-  isInitialLoad: true,
   shouldStartChartAnimations: false,
   visitedChartPages: [] as ChartPageId[],
 };
@@ -16,7 +15,6 @@ describe("chartAnimationStore", () => {
 
   it("has correct default values", () => {
     const state = useChartAnimationStore.getState();
-    expect(state.isInitialLoad).toBe(true);
     expect(state.shouldStartChartAnimations).toBe(false);
     expect(state.visitedChartPages).toEqual([]);
   });
@@ -44,11 +42,6 @@ describe("chartAnimationStore", () => {
       "homepage",
       "analytics",
     ]);
-  });
-
-  it("setIsInitialLoad updates value", () => {
-    useChartAnimationStore.getState().setIsInitialLoad(false);
-    expect(useChartAnimationStore.getState().isInitialLoad).toBe(false);
   });
 
   it("setShouldStartChartAnimations updates value", () => {

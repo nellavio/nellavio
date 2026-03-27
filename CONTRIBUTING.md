@@ -27,6 +27,14 @@ npm run dev
 
 The app runs at `http://localhost:3000` in standalone mode with mock data — no backend needed.
 
+To browse and develop UI components in isolation, run Storybook:
+
+```bash
+npm run storybook
+```
+
+It opens at `http://localhost:6006`. Stories live alongside components in `stories/` directories.
+
 ### Submitting a pull request
 
 1. Fork the repository
@@ -51,6 +59,7 @@ Husky pre-commit hooks will automatically run ESLint and Prettier on staged file
 - Use `async/await` with `try/catch` instead of `.then()/.catch()`
 - Always log errors in `catch` blocks
 - Test in both dark and light mode when touching UI
+- If you add or change a UI component, check that existing stories still render correctly in Storybook
 
 ### What makes a good PR
 

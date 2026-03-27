@@ -126,7 +126,8 @@ const PieCustomLegend = ({ payload, windowWidth = 0 }: PieLegendProps) => {
  */
 export const PieChartComponent = () => {
   const t = useTranslations("charts");
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
   const { width: windowWidth } = useWindowDimensions();
 
   const COLORS = [
@@ -159,7 +160,7 @@ export const PieChartComponent = () => {
           >
             <PieChart>
               <Pie
-                data={chartdata}
+                data={isReady ? chartdata : []}
                 cx="50%"
                 cy="45%"
                 labelLine={false}

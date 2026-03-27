@@ -4,8 +4,6 @@ import { devtools } from "zustand/middleware";
 export type ChartPageId = "homepage" | "analytics" | "charts";
 
 interface ChartAnimationStore {
-  isInitialLoad: boolean;
-  setIsInitialLoad: (isInitialLoad: boolean) => void;
   shouldStartChartAnimations: boolean;
   setShouldStartChartAnimations: (shouldStart: boolean) => void;
   visitedChartPages: ChartPageId[];
@@ -15,8 +13,6 @@ interface ChartAnimationStore {
 export const useChartAnimationStore = create<ChartAnimationStore>()(
   devtools(
     (set) => ({
-      isInitialLoad: true,
-      setIsInitialLoad: (isInitialLoad) => set(() => ({ isInitialLoad })),
       shouldStartChartAnimations: false,
       setShouldStartChartAnimations: (shouldStartChartAnimations) =>
         set(() => ({ shouldStartChartAnimations })),

@@ -121,7 +121,8 @@ const MixedLineCustomLegend = ({ payload }: MixedLineLegendProps) => {
 export const MixedLineChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { month: "Jan", organic: 3400, paid: 1200, referral: 800 },
@@ -145,7 +146,7 @@ export const MixedLineChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <LineChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

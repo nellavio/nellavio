@@ -27,7 +27,6 @@ import { useChartAnimation } from "@/hooks/useChartAnimation";
 import { useIsFirstRender } from "@/hooks/useIsFirstRender";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
-import { useChartAnimationStore } from "@/store/chartAnimationStore";
 import { BREAKPOINTS } from "@/styles/breakpoints";
 
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "../types";
@@ -91,12 +90,8 @@ export const RevenueOverTime = ({
     return { right: 5, left: -10 };
   };
 
-  const shouldStartChartAnimations = useChartAnimationStore(
-    (state) => state.shouldStartChartAnimations,
-  );
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage", {
-    earlyStartMs: 400,
-  });
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("homepage");
 
   const isFirstRender = useIsFirstRender();
 
@@ -250,7 +245,7 @@ export const RevenueOverTime = ({
             initialDimension={{ width: 320, height: 200 }}
           >
             <AreaChart
-              data={shouldStartChartAnimations ? displayData : []}
+              data={isReady ? displayData : []}
               margin={{
                 top: 10,
                 ...getChartMargins(),

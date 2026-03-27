@@ -80,7 +80,8 @@ const ScatterTooltip = ({ active, payload }: ScatterTooltipProps) => {
 export const ScatterChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata = [
     {
@@ -259,7 +260,7 @@ export const ScatterChartComponent = () => {
                 isAnimationActive={false}
               />
               <Scatter
-                data={chartdata}
+                data={isReady ? chartdata : []}
                 fill={"var(--color-chartPrimaryFill)"}
                 fillOpacity={0.8}
                 isAnimationActive={shouldAnimate}

@@ -98,7 +98,8 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
 
   const { width: windowWidth } = useWindowDimensions();
 
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
 
   const getBarSize = () => {
     if (windowWidth > BREAKPOINTS["1xl"]) return 24;
@@ -129,7 +130,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <BarChart
-              data={chartData}
+              data={isReady ? chartData : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.xsm ? 30 : 15,

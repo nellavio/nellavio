@@ -82,7 +82,8 @@ const LineAreaTooltip = ({ active, payload, label }: LineAreaTooltipProps) => {
 export const LineAreaChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { month: "Jan", orders: 3200, returns: 180 },
@@ -106,7 +107,7 @@ export const LineAreaChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <AreaChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

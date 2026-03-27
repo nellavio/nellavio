@@ -88,7 +88,8 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
   const t = useTranslations("analytics.todaySales");
 
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
 
   return (
     <Card
@@ -132,7 +133,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 initialDimension={{ width: 320, height: 200 }}
               >
                 <LineChart
-                  data={todaySalesData}
+                  data={isReady ? todaySalesData : []}
                   margin={{
                     top: 5,
                     right: windowWidth > BREAKPOINTS.md ? 30 : 10,
@@ -212,7 +213,7 @@ export const TodaySales = ({ todaySalesData }: TodaySalesProps) => {
                 initialDimension={{ width: 320, height: 200 }}
               >
                 <LineChart
-                  data={todaySalesData}
+                  data={isReady ? todaySalesData : []}
                   margin={{
                     top: 5,
                     right: windowWidth > BREAKPOINTS.md ? 30 : 10,

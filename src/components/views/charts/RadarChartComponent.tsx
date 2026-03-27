@@ -80,7 +80,8 @@ const RadarTooltip = ({ active, payload, label }: RadarTooltipProps) => {
  */
 export const RadarChartComponent = () => {
   const t = useTranslations("charts");
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
   const { width: windowWidth } = useWindowDimensions();
 
   const chartdata: DataPoint[] = [
@@ -107,7 +108,7 @@ export const RadarChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <RadarChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
             >
               <PolarGrid stroke={"var(--color-chartPrimaryGrid)"} />

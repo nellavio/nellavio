@@ -101,7 +101,8 @@ export const BestSellingProducts = ({
   const isLg = useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`);
   const shouldRenderChart = !isFirstRender && isLg;
 
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("homepage");
 
   const getBarSize = () => {
     if (windowWidth > BREAKPOINTS["1xl"]) return 25;
@@ -131,7 +132,7 @@ export const BestSellingProducts = ({
             >
               <BarChart
                 layout={isFourCardsMode ? "vertical" : "horizontal"}
-                data={chartData}
+                data={isReady ? chartData : []}
                 margin={{
                   top: 20,
                   right: windowWidth > BREAKPOINTS.md ? 30 : 10,

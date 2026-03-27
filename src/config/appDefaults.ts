@@ -19,7 +19,7 @@ export const APP_DEFAULTS = {
   sidebarDefaultState: "expanded" as SidebarDefaultState,
 
   /** Whether chart animations are enabled on first visit */
-  chartAnimationsEnabled: false,
+  chartAnimationsEnabled: true,
 
   /** Whether the navbar stays fixed on scroll */
   fixedNavbar: true,

@@ -96,7 +96,8 @@ const CustomLegend = (props: LegendProps) => {
 export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
   const t = useTranslations("analytics.marketMetrics");
 
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
 
   return (
     <Card className="hidden lg:block h-full" id="marketMetrics">
@@ -118,7 +119,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
               cx="50%"
               cy="50%"
               outerRadius="80%"
-              data={marketMetricsData}
+              data={isReady ? marketMetricsData : []}
               className="pt-4 mt-4 lg:mt-0"
               tabIndex={-1}
             >

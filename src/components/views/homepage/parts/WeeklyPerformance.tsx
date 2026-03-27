@@ -121,7 +121,8 @@ const WeeklyPerformanceChart = ({
     ? "h-60 lg:h-72 xl:h-72 2xl:h-76 3xl:h-92"
     : "h-60 3xl:h-76";
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("homepage");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("homepage");
 
   const getDisplayData = () => {
     if (
@@ -171,7 +172,11 @@ const WeeklyPerformanceChart = ({
           height="100%"
           initialDimension={{ width: 320, height: 200 }}
         >
-          <BarChart data={displayData} margin={getChartMargins()} tabIndex={-1}>
+          <BarChart
+            data={isReady ? displayData : []}
+            margin={getChartMargins()}
+            tabIndex={-1}
+          >
             <Legend
               verticalAlign="top"
               align="center"

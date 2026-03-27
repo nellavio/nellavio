@@ -7,8 +7,7 @@ import { useLayoutStore } from "@/store/layoutStore";
 describe("useChartAnimation", () => {
   beforeEach(() => {
     useChartAnimationStore.setState({
-      isInitialLoad: false,
-      shouldStartChartAnimations: false,
+      shouldStartChartAnimations: true,
       visitedChartPages: [],
     });
     useLayoutStore.setState({ chartAnimationsEnabled: true });
@@ -31,49 +30,35 @@ describe("useChartAnimation", () => {
     expect(result.current.shouldAnimate).toBe(false);
   });
 
-  it("marks page as visited after mount", () => {
+  it("marks page as visited after mount when shouldStartChartAnimations is true", () => {
     renderHook(() => useChartAnimation("analytics"));
     expect(useChartAnimationStore.getState().visitedChartPages).toContain(
       "analytics",
     );
   });
 
-  it("returns animationBegin >= 100ms (minimum)", () => {
-    const { result } = renderHook(() => useChartAnimation("homepage"));
-    expect(result.current.animationBegin).toBeGreaterThanOrEqual(100);
+  it("does not mark page as visited when shouldStartChartAnimations is false", () => {
+    useChartAnimationStore.setState({ shouldStartChartAnimations: false });
+    renderHook(() => useChartAnimation("analytics"));
+    expect(useChartAnimationStore.getState().visitedChartPages).not.toContain(
+      "analytics",
+    );
   });
 
-  it("uses CHART_ANIMATION_DELAY_MS as base delay on initial load", () => {
-    useChartAnimationStore.setState({ isInitialLoad: true });
-    const { result } = renderHook(() => useChartAnimation("homepage"));
-    // On initial load, delay should be based on CHART_ANIMATION_DELAY_MS (600)
-    expect(result.current.animationBegin).toBe(600);
-  });
-
-  it("uses 100ms (minimum) delay on navigation (non-initial load)", () => {
-    useChartAnimationStore.setState({ isInitialLoad: false });
+  it("returns animationBegin of 100ms", () => {
     const { result } = renderHook(() => useChartAnimation("homepage"));
     expect(result.current.animationBegin).toBe(100);
   });
 
-  it("reduces delay with earlyStartMs option", () => {
-    useChartAnimationStore.setState({ isInitialLoad: true });
-    const { result } = renderHook(() =>
-      useChartAnimation("homepage", { earlyStartMs: 200 }),
-    );
-    // baseDelay=600, earlyStart=200, maxEarlyStart=480, clamped=200
-    // animationBegin = max(100, 600 - 200) = 400
-    expect(result.current.animationBegin).toBe(400);
+  it("returns isReady=true when shouldStartChartAnimations is true", () => {
+    const { result } = renderHook(() => useChartAnimation("homepage"));
+    expect(result.current.isReady).toBe(true);
   });
 
-  it("clamps earlyStartMs to 80% of base delay", () => {
-    useChartAnimationStore.setState({ isInitialLoad: true });
-    const { result } = renderHook(() =>
-      useChartAnimation("homepage", { earlyStartMs: 10000 }),
-    );
-    // baseDelay=600, maxEarlyStart=480, clamped=480
-    // animationBegin = max(100, 600 - 480) = 120
-    expect(result.current.animationBegin).toBe(120);
+  it("returns isReady=false when shouldStartChartAnimations is false", () => {
+    useChartAnimationStore.setState({ shouldStartChartAnimations: false });
+    const { result } = renderHook(() => useChartAnimation("homepage"));
+    expect(result.current.isReady).toBe(false);
   });
 
   it("different pages are tracked independently", () => {

@@ -124,7 +124,8 @@ const FillByValueTooltip = ({
 export const AreaFillByValueChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const positiveColor = "var(--color-chartPrimaryFill)";
   const negativeColor = "var(--color-chartSecondaryFill)";
@@ -170,7 +171,7 @@ export const AreaFillByValueChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <AreaChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

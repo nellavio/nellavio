@@ -124,7 +124,8 @@ const StackedCustomLegend = ({ payload }: StackedLegendProps) => {
 export const StackedBarChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { day: "Mon", desktop: 4200, mobile: 2800, tablet: 1200 },
@@ -149,7 +150,7 @@ export const StackedBarChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <BarChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

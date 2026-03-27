@@ -25,7 +25,6 @@ export const Layout = ({ children }: LayoutProps) => {
 
   const isMobileMenuOpen = useLayoutStore((s) => s.isMobileMenuOpen);
   const toggleMobileMenu = useLayoutStore((s) => s.toggleMobileMenu);
-  const setIsInitialLoad = useChartAnimationStore((s) => s.setIsInitialLoad);
   const setShouldStartChartAnimations = useChartAnimationStore(
     (s) => s.setShouldStartChartAnimations,
   );
@@ -65,26 +64,25 @@ export const Layout = ({ children }: LayoutProps) => {
 
   /**
    * Show loader screen for 1 second on first render.
-   * Start chart animations at 80% of loader duration.
-   * Chart animations are disabled by default since timing them precisely is difficult.
+   * Start chart animations at 85% of loader duration so they begin
+   * just before the loader disappears (with animationBegin=100ms in the hook,
+   * the visual animation starts right as the loader fades out).
    */
   useEffect(() => {
     /** Skip loader entirely on auth pages */
     if (isAuthPage) {
       setShowLoader(false);
-      setIsInitialLoad(false);
       setShouldStartChartAnimations(true);
       return;
     }
 
-    /** Start chart animations at 80% of loader duration */
+    /** Start chart animations at 85% of loader duration */
     animationTimeoutRef.current = setTimeout(() => {
       setShouldStartChartAnimations(true);
-    }, LOADER_DURATION_MS * 0.8);
+    }, LOADER_DURATION_MS * 0.85);
 
     loaderTimeoutRef.current = setTimeout(() => {
       setShowLoader(false);
-      setIsInitialLoad(false);
     }, LOADER_DURATION_MS);
 
     return () => {
@@ -95,7 +93,7 @@ export const Layout = ({ children }: LayoutProps) => {
         clearTimeout(animationTimeoutRef.current);
       }
     };
-  }, [isAuthPage, setIsInitialLoad, setShouldStartChartAnimations]);
+  }, [isAuthPage, setShouldStartChartAnimations]);
 
   return (
     <>

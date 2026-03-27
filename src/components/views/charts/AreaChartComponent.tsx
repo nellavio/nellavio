@@ -125,7 +125,8 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
 export const AreaChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata = [
     { date: "Jan", views: 1983, uniqueVisitors: 1654 },
@@ -149,7 +150,7 @@ export const AreaChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <AreaChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 10,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

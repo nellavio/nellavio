@@ -68,7 +68,8 @@ const RadialTooltip = ({ active, payload }: RadialTooltipProps) => {
  */
 export const RadialBarChartComponent = () => {
   const t = useTranslations("charts");
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
   const { width: windowWidth } = useWindowDimensions();
 
   const chartdata: DataPoint[] = [
@@ -113,7 +114,7 @@ export const RadialBarChartComponent = () => {
                 innerRadius="10%"
                 outerRadius="80%"
                 barSize={20}
-                data={chartdata}
+                data={isReady ? chartdata : []}
               >
                 <RadialBar
                   label={{ position: "insideStart", fill: "#fff" }}

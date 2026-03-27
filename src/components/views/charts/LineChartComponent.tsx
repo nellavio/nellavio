@@ -107,7 +107,8 @@ const CustomLegend = ({ payload, isWideLayout = true }: LineLegendProps) => {
 export const LineChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const dragonPopulationInWesteros = [
     {
@@ -181,7 +182,7 @@ export const LineChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <LineChart
-              data={dragonPopulationInWesteros}
+              data={isReady ? dragonPopulationInWesteros : []}
               margin={{
                 top: isWideLayout ? 20 : 5,
                 right: windowWidth > BREAKPOINTS.md ? 30 : 10,

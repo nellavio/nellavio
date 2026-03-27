@@ -118,7 +118,8 @@ const TwoAxisCustomLegend = ({ payload }: TwoAxisLegendProps) => {
 export const TwoAxisLineChartComponent = () => {
   const t = useTranslations("charts");
   const { width: windowWidth } = useWindowDimensions();
-  const { shouldAnimate, animationBegin } = useChartAnimation("charts");
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("charts");
 
   const chartdata: DataPoint[] = [
     { week: "Week 1", customers: 1240, avgOrderValue: 85 },
@@ -145,7 +146,7 @@ export const TwoAxisLineChartComponent = () => {
             initialDimension={{ width: 320, height: 200 }}
           >
             <LineChart
-              data={chartdata}
+              data={isReady ? chartdata : []}
               margin={{
                 top: 20,
                 right: windowWidth > BREAKPOINTS.md ? 50 : 30,

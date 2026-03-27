@@ -1,7 +1,7 @@
 <div id="user-content-toc" align="center">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>- Nellavio -</h1>
+      <h1>Nellavio</h1>
     </summary>
   </ul>
 </div>
@@ -258,4 +258,4 @@ Subscribe to the [Nellavio newsletter](https://nellavio.kit.com/) to get notifie
 
 ## Author
 
-Made with ♥ by [matt765](https://github.com/matt765/)
+Made by [matt765](https://github.com/matt765/)

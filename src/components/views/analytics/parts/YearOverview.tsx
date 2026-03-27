@@ -19,7 +19,6 @@ import {
 } from "@/components/common/shadcn/card";
 import { useChartAnimation } from "@/hooks/useChartAnimation";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
-import { useChartAnimationStore } from "@/store/chartAnimationStore";
 import { BREAKPOINTS } from "@/styles/breakpoints";
 
 import {
@@ -129,10 +128,8 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
 
   const { width: windowWidth } = useWindowDimensions();
 
-  const { shouldAnimate, animationBegin } = useChartAnimation("analytics");
-  const shouldStartChartAnimations = useChartAnimationStore(
-    (state) => state.shouldStartChartAnimations,
-  );
+  const { shouldAnimate, animationBegin, isReady } =
+    useChartAnimation("analytics");
 
   return (
     <Card className="h-full" id="yearOverview">
@@ -152,7 +149,7 @@ export const YearOverview = ({ yearOverviewData }: YearOverviewProps) => {
               initialDimension={{ width: 320, height: 200 }}
             >
               <AreaChart
-                data={shouldStartChartAnimations ? yearOverviewData : []}
+                data={isReady ? yearOverviewData : []}
                 margin={{
                   top: 20,
                   right: windowWidth > BREAKPOINTS.xsm ? 30 : 15,
