@@ -134,6 +134,7 @@ export const MenuItemWithSubmenu = ({
 
   const isCollapsed = !isSideMenuOpen && isDesktop;
 
+  /** Closes the hover dropdown when sidebar exits collapsed mode. */
   useEffect(() => {
     if (!isCollapsed) setIsDropdownOpen(false);
   }, [isCollapsed]);

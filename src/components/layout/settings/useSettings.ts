@@ -52,6 +52,7 @@ export const useSettings = ({
     [isControlled, externalOnOpenChange],
   );
 
+  /** Locks body scroll while the settings panel is open, restores on close or unmount. */
   useEffect(() => {
     if (open) {
       document.body.style.setProperty("overflow", "hidden", "important");

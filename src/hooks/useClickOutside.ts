@@ -12,7 +12,7 @@ export const useClickOutside = <T extends HTMLElement = HTMLElement>(
   onClickOutside: () => void,
 ) => {
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: PointerEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         const target = event.target as HTMLElement;
         if (target.closest?.('[role="dialog"], [data-slot="drawer-overlay"]')) {
@@ -22,10 +22,10 @@ export const useClickOutside = <T extends HTMLElement = HTMLElement>(
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("pointerdown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handleClickOutside);
     };
   }, [ref, onClickOutside]);
 };

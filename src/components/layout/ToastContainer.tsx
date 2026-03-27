@@ -25,6 +25,7 @@ const ToastItem = ({
 }) => {
   const [mounted, setMounted] = useState(false);
 
+  /** Double requestAnimationFrame delays mounted flag by two frames so the CSS enter transition actually fires. */
   useEffect(() => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {

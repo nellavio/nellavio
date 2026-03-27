@@ -38,6 +38,7 @@ export const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+    /** Listens for the "global-focus-search" custom event dispatched by the global hotkey handler. */
     useEffect(() => {
       const handleGlobalFocusSearch = () => {
         if (closeOthers) closeOthers();

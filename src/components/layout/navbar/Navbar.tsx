@@ -29,11 +29,13 @@ export const Navbar = () => {
   const fixedNavbar = useLayoutStore((state) => state.fixedNavbar);
   const navbarRef = useRef<HTMLElement>(null);
 
+  /** Clears login/logout transition flags on mount so stale state from a previous page doesn't persist. */
   useEffect(() => {
     setIsLoggingOut(false);
     setIsLoggingIn(false);
   }, [setIsLoggingOut, setIsLoggingIn]);
 
+  /** Slides the navbar off-screen on scroll when not in fixed mode. Uses manual translateY because CSS sticky doesn't support hiding the navbar above the viewport. */
   useEffect(() => {
     if (fixedNavbar || typeof window === "undefined") return;
 

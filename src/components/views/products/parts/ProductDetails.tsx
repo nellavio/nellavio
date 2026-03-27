@@ -47,6 +47,7 @@ export const ProductDetails = ({
   );
   const profit = activeProduct.price * 0.12;
 
+  /** Lazy-loads @react-pdf/renderer on mount to keep it out of the main bundle. */
   useEffect(() => {
     import("@react-pdf/renderer").then((mod) => {
       pdfModuleRef.current = mod;
@@ -140,6 +141,7 @@ export const ProductDetails = ({
           <Lightbox
             plugins={[Thumbnails, Fullscreen, Zoom, Counter]}
             thumbnails={{ ref: thumbnailsRef }}
+            noScroll={{ disabled: true }}
             open={isPhotoOpen}
             close={() => setIsPhotoOpen(false)}
             slides={[
