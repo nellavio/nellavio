@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 
-import { CenteredPageWrapper } from "../../components/common/CenteredPageWrapper";
-import { Link } from "../../i18n/navigation";
+import { CenteredPageWrapper } from "@/components/common/CenteredPageWrapper";
+import { Link } from "@/i18n/navigation";
 
 const NotFound = () => {
   const t = useTranslations("navbar");

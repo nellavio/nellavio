@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 import { RefObject } from "react";
 
-import { DeleteIcon } from "../../../../assets/icons/DeleteIcon";
-import { Button } from "../../../common/shadcn/button";
+import { DeleteIcon } from "@/assets/icons/DeleteIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
 
 interface RemoveEventModalProps {
   closeModal: () => void;

@@ -3,11 +3,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import React, { useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
 
-import { CalendarIcon } from "../../../../assets/icons/CalendarIcon";
-import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { CalendarIcon } from "@/assets/icons/CalendarIcon";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { OrdersDateRangeProps } from "../types";
 
 export const OrdersDateRange = ({

@@ -1,24 +1,25 @@
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
-import { DeleteIcon } from "../../../../assets/icons/DeleteIcon";
-import { OrderModalIcon } from "../../../../assets/icons/OrderModalIcon";
-import { Button } from "../../../common/shadcn/button";
+import { DeleteIcon } from "@/assets/icons/DeleteIcon";
+import { OrderModalIcon } from "@/assets/icons/OrderModalIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
-import { Input } from "../../../common/shadcn/input";
+} from "@/components/common/shadcn/dialog";
+import { Input } from "@/components/common/shadcn/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../common/shadcn/select";
+} from "@/components/common/shadcn/select";
+
 import { AddEventModalProps } from "../types";
 
 export const AddEventModal = ({

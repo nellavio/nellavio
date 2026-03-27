@@ -13,16 +13,16 @@ import {
   ZAxis,
 } from "recharts";
 
-import { useChartAnimation } from "../../../hooks/useChartAnimation";
-import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../../styles/breakpoints";
-import { BaseTooltip } from "../../common/BaseTooltip";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
 
 /** Data point structure for scatter chart. */
 interface DataPoint {

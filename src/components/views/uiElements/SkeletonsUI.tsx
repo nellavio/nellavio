@@ -7,8 +7,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Skeleton } from "../../common/shadcn/skeleton";
+} from "@/components/common/shadcn/card";
+import { Skeleton } from "@/components/common/shadcn/skeleton";
 
 /**
  * Showcase of skeleton loading placeholders: avatar with text lines,

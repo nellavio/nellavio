@@ -1,4 +1,4 @@
-import { useLayoutStore } from "../../../store/layoutStore";
+import { useLayoutStore } from "@/store/layoutStore";
 
 const initialState = {
   isMobileMenuOpen: false,

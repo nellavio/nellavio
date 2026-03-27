@@ -6,7 +6,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../common/shadcn/select";
+} from "@/components/common/shadcn/select";
+
 import { OrdersSelectsProps, OrderType } from "../types";
 
 export const OrderSelects = ({

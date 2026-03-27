@@ -3,7 +3,7 @@ import {
   hasValidBackendUrl,
   isPresentationMode,
   isPresentationModeClient,
-} from "../../../utils/presentationMode";
+} from "@/utils/presentationMode";
 
 describe("presentationMode utilities", () => {
   afterEach(() => {

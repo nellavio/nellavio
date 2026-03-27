@@ -1,16 +1,17 @@
-import { BellIcon } from "../../../../assets/icons/BellIcon";
-import { CheckIcon } from "../../../../assets/icons/CheckIcon";
-import { DocumentIcon } from "../../../../assets/icons/DocumentIcon";
-import { UpdateIcon } from "../../../../assets/icons/UpdateIcon";
-import { UsersIcon } from "../../../../assets/icons/UsersIcon";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
-import { Badge } from "../../../common/shadcn/badge";
-import { Button } from "../../../common/shadcn/button";
+import { BellIcon } from "@/assets/icons/BellIcon";
+import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { DocumentIcon } from "@/assets/icons/DocumentIcon";
+import { UpdateIcon } from "@/assets/icons/UpdateIcon";
+import { UsersIcon } from "@/assets/icons/UsersIcon";
+import { Badge } from "@/components/common/shadcn/badge";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { useNotifications } from "../hooks/useNotifications";
 import { NAVBAR_TOOLTIPS_ENABLED, NotificationsButtonProps } from "../types";
 import { AllNotificationsModal } from "./AllNotificationsModal";

@@ -6,17 +6,17 @@ import { useTranslations } from "next-intl";
 import * as React from "react";
 import DatePicker from "react-datepicker";
 
-import { CalendarIcon } from "../../../assets/icons/CalendarIcon";
-import { useIsFirstRender } from "../../../hooks/useIsFirstRender";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
-import { BREAKPOINTS } from "../../../styles/breakpoints";
+import { CalendarIcon } from "@/assets/icons/CalendarIcon";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/card";
+import { Label } from "@/components/common/shadcn/label";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { BREAKPOINTS } from "@/styles/breakpoints";
 
 /**
  * Showcase of a date picker using react-datepicker

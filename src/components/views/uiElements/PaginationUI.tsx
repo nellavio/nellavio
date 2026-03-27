@@ -7,7 +7,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Pagination,
   PaginationContent,
@@ -16,7 +16,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../../common/shadcn/pagination";
+} from "@/components/common/shadcn/pagination";
 
 /**
  * Showcase of pagination variants: standard multi-page pagination

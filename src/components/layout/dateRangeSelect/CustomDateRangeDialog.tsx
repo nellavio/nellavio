@@ -4,8 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import DatePicker from "react-datepicker";
 
-import { CalendarIcon } from "../../../assets/icons/CalendarIcon";
-import { Button } from "../../common/shadcn/button";
+import { CalendarIcon } from "@/assets/icons/CalendarIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +13,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import type { CustomDateRangeDialogProps } from "./types";
 import { useCustomDateRangeDialog } from "./useRangeSelect";
 

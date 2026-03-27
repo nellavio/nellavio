@@ -1,7 +1,4 @@
-import {
-  DATE_RANGE_PRESETS,
-  useDateRangeStore,
-} from "../../../store/dateRangeStore";
+import { DATE_RANGE_PRESETS, useDateRangeStore } from "@/store/dateRangeStore";
 
 const initialState = {
   selectedPreset: "last7days" as const,

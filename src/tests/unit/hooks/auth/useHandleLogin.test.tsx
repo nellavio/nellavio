@@ -1,13 +1,13 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 
-import { useHandleLogin } from "../../../../hooks/auth/useHandleLogin";
-import { signIn as _signIn } from "../../../../services/auth/auth-client";
-import { useLayoutStore } from "../../../../store/layoutStore";
+import { useHandleLogin } from "@/hooks/auth/useHandleLogin";
+import { signIn as _signIn } from "@/services/auth/auth-client";
+import { useLayoutStore } from "@/store/layoutStore";
 
 // signIn is always defined in test env (mocked in vitest.setup.ts)
 const signIn = _signIn as NonNullable<typeof _signIn>;
 
-vi.mock("../../../../utils/presentationMode", () => ({
+vi.mock("@/utils/presentationMode", () => ({
   isPresentationModeClient: vi.fn(() => false),
 }));
 
@@ -127,7 +127,7 @@ describe("useHandleLogin", () => {
 
   it("shows alert in presentation mode", async () => {
     const { isPresentationModeClient } =
-      await import("../../../../utils/presentationMode");
+      await import("@/utils/presentationMode");
     vi.mocked(isPresentationModeClient).mockReturnValue(true);
 
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});

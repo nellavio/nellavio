@@ -1,10 +1,11 @@
-import { MoonIcon } from "../../../../assets/icons/MoonIcon";
-import { SunIcon } from "../../../../assets/icons/SunIcon";
+import { MoonIcon } from "@/assets/icons/MoonIcon";
+import { SunIcon } from "@/assets/icons/SunIcon";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+
 import { useThemeChange } from "../hooks/useThemeChange";
 import { NAVBAR_TOOLTIPS_ENABLED, ThemeButtonProps } from "../types";
 

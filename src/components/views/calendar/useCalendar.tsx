@@ -4,7 +4,8 @@ import { EventResizeDoneArg } from "@fullcalendar/interaction";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useToastStore } from "../../../store/toastStore";
+import { useToastStore } from "@/store/toastStore";
+
 import { CalendarAction, CalendarEvent, CalendarViewProps } from "./types";
 
 let eventGuid = 0;

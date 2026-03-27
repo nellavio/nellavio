@@ -2,20 +2,21 @@
 
 import { RefObject } from "react";
 
-import { BellIcon } from "../../../../assets/icons/BellIcon";
-import { CheckIcon } from "../../../../assets/icons/CheckIcon";
-import { DocumentIcon } from "../../../../assets/icons/DocumentIcon";
-import { UpdateIcon } from "../../../../assets/icons/UpdateIcon";
-import { UsersIcon } from "../../../../assets/icons/UsersIcon";
-import { Badge } from "../../../common/shadcn/badge";
-import { Button } from "../../../common/shadcn/button";
+import { BellIcon } from "@/assets/icons/BellIcon";
+import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { DocumentIcon } from "@/assets/icons/DocumentIcon";
+import { UpdateIcon } from "@/assets/icons/UpdateIcon";
+import { UsersIcon } from "@/assets/icons/UsersIcon";
+import { Badge } from "@/components/common/shadcn/badge";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import { useNotificationsModal } from "../hooks/useNotifications";
 import type { Notification } from "../hooks/useNotificationsData";
 

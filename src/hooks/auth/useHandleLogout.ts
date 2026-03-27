@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { signOut } from "../../services/auth/auth-client";
-import { useLayoutStore } from "../../store/layoutStore";
-import { isPresentationModeClient } from "../../utils/presentationMode";
+import { signOut } from "@/services/auth/auth-client";
+import { useLayoutStore } from "@/store/layoutStore";
+import { isPresentationModeClient } from "@/utils/presentationMode";
 
 /**
  * Handles user logout via Better Auth. Shows alert in presentation mode.

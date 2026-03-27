@@ -17,10 +17,10 @@ vi.mock("xlsx", () => ({
     writeFileMock(...(args as Parameters<typeof writeFileMock>)),
 }));
 
-let exportToXLSX: (typeof import("../../../utils/exportToXLSX"))["exportToXLSX"];
+let exportToXLSX: (typeof import("@/utils/exportToXLSX"))["exportToXLSX"];
 
 beforeAll(async () => {
-  const mod = await import("../../../utils/exportToXLSX");
+  const mod = await import("@/utils/exportToXLSX");
   exportToXLSX = mod.exportToXLSX;
 });
 

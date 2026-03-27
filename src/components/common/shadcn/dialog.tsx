@@ -1,8 +1,8 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
 
-import { CloseIcon } from "../../../assets/icons/CloseIcon";
-import { cn } from "../../../utils/classNames";
+import { CloseIcon } from "@/assets/icons/CloseIcon";
+import { cn } from "@/utils/classNames";
 
 /**
  * Root dialog component that manages modal state.

@@ -1,13 +1,13 @@
 import { act, renderHook } from "@testing-library/react";
 
-import { useHandleLogout } from "../../../../hooks/auth/useHandleLogout";
-import { signOut as _signOut } from "../../../../services/auth/auth-client";
-import { useLayoutStore } from "../../../../store/layoutStore";
+import { useHandleLogout } from "@/hooks/auth/useHandleLogout";
+import { signOut as _signOut } from "@/services/auth/auth-client";
+import { useLayoutStore } from "@/store/layoutStore";
 
 // signOut is always defined in test env (mocked in vitest.setup.ts)
 const signOut = _signOut as NonNullable<typeof _signOut>;
 
-vi.mock("../../../../utils/presentationMode", () => ({
+vi.mock("@/utils/presentationMode", () => ({
   isPresentationModeClient: vi.fn(() => false),
 }));
 
@@ -66,7 +66,7 @@ describe("useHandleLogout", () => {
 
   it("shows alert in presentation mode", async () => {
     const { isPresentationModeClient } =
-      await import("../../../../utils/presentationMode");
+      await import("@/utils/presentationMode");
     vi.mocked(isPresentationModeClient).mockReturnValue(true);
 
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});

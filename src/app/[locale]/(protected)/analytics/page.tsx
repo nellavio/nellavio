@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { PageWrapper } from "../../../../components/common/PageWrapper";
-import { AnalyticsView } from "../../../../components/views/analytics/AnalyticsView";
-import { getData } from "../../../../services/getData";
+import { PageWrapper } from "@/components/common/PageWrapper";
+import { AnalyticsView } from "@/components/views/analytics/AnalyticsView";
+import { getData } from "@/services/getData";
 
 const Analytics = async ({
   params,

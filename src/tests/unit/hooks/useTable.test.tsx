@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 
-import { useTable } from "../../../hooks/useTable";
+import { useTable } from "@/hooks/useTable";
 
 const initialFilters = { status: "all", category: "all" };
 

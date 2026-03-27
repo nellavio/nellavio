@@ -4,22 +4,22 @@ import { Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { EyeIcon } from "../../../assets/icons/EyeIcon";
-import { EyeOffIcon } from "../../../assets/icons/EyeOffIcon";
+import { EyeIcon } from "@/assets/icons/EyeIcon";
+import { EyeOffIcon } from "@/assets/icons/EyeOffIcon";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Input } from "../../common/shadcn/input";
+} from "@/components/common/shadcn/card";
+import { Input } from "@/components/common/shadcn/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "../../common/shadcn/input-group";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/input-group";
+import { Label } from "@/components/common/shadcn/label";
 
 /**
  * Showcase of input variants: default, active, password

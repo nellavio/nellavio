@@ -2,8 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
-import { useLayoutStore } from "../../../../store/layoutStore";
-import { Label } from "../../../common/shadcn/label";
+import { Label } from "@/components/common/shadcn/label";
+import { useLayoutStore } from "@/store/layoutStore";
+
 import { SelectedCheckBadge } from "./SelectedCheckBadge";
 
 const SidebarPreview = ({ type }: { type: "expanded" | "collapsed" }) => {

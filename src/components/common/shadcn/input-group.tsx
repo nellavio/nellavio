@@ -1,7 +1,8 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
-import { cn } from "../../../utils/classNames";
+import { cn } from "@/utils/classNames";
+
 import { buttonVariants } from "./button";
 
 interface InputGroupContextValue {

@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
-import { Link } from "../../../i18n/navigation";
-import { Button } from "../../common/shadcn/button";
-import { ThemeButtonAuth } from "../../layout/ThemeButtonAuth";
+import { Button } from "@/components/common/shadcn/button";
+import { ThemeButtonAuth } from "@/components/layout/ThemeButtonAuth";
+import { Link } from "@/i18n/navigation";
 
 interface ErrorPageLayoutProps {
   code: string;

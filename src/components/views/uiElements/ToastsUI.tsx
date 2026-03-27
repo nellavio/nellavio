@@ -2,14 +2,14 @@
 
 import { useTranslations } from "next-intl";
 
-import { useToastStore } from "../../../store/toastStore";
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
+import { useToastStore } from "@/store/toastStore";
 
 /**
  * Showcase of toast notifications triggered by buttons.

@@ -7,9 +7,9 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Label } from "../../common/shadcn/label";
-import { Switch } from "../../common/shadcn/switch";
+} from "@/components/common/shadcn/card";
+import { Label } from "@/components/common/shadcn/label";
+import { Switch } from "@/components/common/shadcn/switch";
 
 /**
  * Showcase of toggle switch states: default, checked,

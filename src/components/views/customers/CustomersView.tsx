@@ -2,20 +2,21 @@
 
 import { useTranslations } from "next-intl";
 
-import { DownloadIcon } from "../../../assets/icons/DownloadIcon";
-import { SearchIcon } from "../../../assets/icons/SearchIcon";
-import { Chip } from "../../common/Chip";
-import { Button } from "../../common/shadcn/button";
+import { DownloadIcon } from "@/assets/icons/DownloadIcon";
+import { SearchIcon } from "@/assets/icons/SearchIcon";
+import { Chip } from "@/components/common/Chip";
+import { Button } from "@/components/common/shadcn/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "../../common/shadcn/input-group";
+} from "@/components/common/shadcn/input-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+
 import { CustomersCountryDropdown } from "./parts/CustomersCountryDropdown";
 import { CustomersPagination } from "./parts/CustomersPagination";
 import { CustomersSortDropdown } from "./parts/CustomersSortDropdown";

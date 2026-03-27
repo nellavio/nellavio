@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 
-import { useTooltip } from "../../../hooks/useTooltip";
+import { useTooltip } from "@/hooks/useTooltip";
 
 describe("useTooltip", () => {
   it("defaults to not visible", () => {

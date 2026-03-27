@@ -4,12 +4,13 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 
-import { EyeIcon } from "../../assets/icons/EyeIcon";
-import { EyeOffIcon } from "../../assets/icons/EyeOffIcon";
-import { MailIcon } from "../../assets/icons/MailIcon";
-import { PasswordIcon } from "../../assets/icons/PasswordIcon";
-import { useHandleSignUp } from "../../hooks/auth/useHandleSignUp";
-import { Link } from "../../i18n/navigation";
+import { EyeIcon } from "@/assets/icons/EyeIcon";
+import { EyeOffIcon } from "@/assets/icons/EyeOffIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { PasswordIcon } from "@/assets/icons/PasswordIcon";
+import { useHandleSignUp } from "@/hooks/auth/useHandleSignUp";
+import { Link } from "@/i18n/navigation";
+
 import { Button } from "../common/shadcn/button";
 import {
   InputGroup,

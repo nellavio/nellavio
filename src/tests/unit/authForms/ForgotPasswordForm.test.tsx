@@ -2,8 +2,8 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe } from "vitest-axe";
 
-import { ForgotPasswordForm } from "../../../components/auth/ForgotPasswordForm";
-import { renderWithProviders } from "../../utils/renderWithProviders";
+import { ForgotPasswordForm } from "@/components/auth/ForgotPasswordForm";
+import { renderWithProviders } from "@/tests/utils/renderWithProviders";
 
 describe("ForgotPasswordForm", () => {
   it("renders the email field", () => {

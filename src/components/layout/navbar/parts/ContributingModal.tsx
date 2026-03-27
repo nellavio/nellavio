@@ -4,7 +4,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import { useModalKeyboardScroll } from "../hooks/useModalKeyboardScroll";
 import { AboutModalProps } from "../types";
 

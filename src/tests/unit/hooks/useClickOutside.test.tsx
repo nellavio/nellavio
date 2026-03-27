@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { useRef } from "react";
 
-import { useClickOutside } from "../../../hooks/useClickOutside";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 const TestComponent = ({ onClickOutside }: { onClickOutside: () => void }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ describe("useClickOutside", () => {
     const callback = vi.fn();
     const { getByTestId } = render(<TestComponent onClickOutside={callback} />);
     getByTestId("inside").dispatchEvent(
-      new MouseEvent("mousedown", { bubbles: true }),
+      new PointerEvent("pointerdown", { bubbles: true }),
     );
     expect(callback).not.toHaveBeenCalled();
   });
@@ -30,7 +30,7 @@ describe("useClickOutside", () => {
     const callback = vi.fn();
     const { getByTestId } = render(<TestComponent onClickOutside={callback} />);
     getByTestId("outside").dispatchEvent(
-      new MouseEvent("mousedown", { bubbles: true }),
+      new PointerEvent("pointerdown", { bubbles: true }),
     );
     expect(callback).toHaveBeenCalledTimes(1);
   });
@@ -41,7 +41,7 @@ describe("useClickOutside", () => {
     const dialog = document.createElement("div");
     dialog.setAttribute("role", "dialog");
     document.body.appendChild(dialog);
-    dialog.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+    dialog.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
     expect(callback).not.toHaveBeenCalled();
     document.body.removeChild(dialog);
   });
@@ -52,7 +52,7 @@ describe("useClickOutside", () => {
     const overlay = document.createElement("div");
     overlay.setAttribute("data-slot", "drawer-overlay");
     document.body.appendChild(overlay);
-    overlay.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+    overlay.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
     expect(callback).not.toHaveBeenCalled();
     document.body.removeChild(overlay);
   });
@@ -65,7 +65,7 @@ describe("useClickOutside", () => {
     const child = document.createElement("button");
     dialog.appendChild(child);
     document.body.appendChild(dialog);
-    child.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+    child.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
     expect(callback).not.toHaveBeenCalled();
     document.body.removeChild(dialog);
   });

@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
-import { CenteredPageWrapper } from "../../components/common/CenteredPageWrapper";
-import { Button } from "../../components/common/shadcn/button";
+import { CenteredPageWrapper } from "@/components/common/CenteredPageWrapper";
+import { Button } from "@/components/common/shadcn/button";
 
 const Error = ({
   error,

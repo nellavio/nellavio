@@ -10,25 +10,26 @@ import {
   YAxis,
 } from "recharts";
 
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
-import { BaseTooltip } from "../../../common/BaseTooltip";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../common/shadcn/tabs";
+} from "@/components/common/shadcn/tabs";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { useChartAnimationStore } from "@/store/chartAnimationStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { RevenueOverTimeProps, RevenueOverTimeTooltipProps } from "../types";
 
 const RevenueOverTimeTooltip = ({

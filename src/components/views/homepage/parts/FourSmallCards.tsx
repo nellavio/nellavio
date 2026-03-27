@@ -8,15 +8,16 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
-import { Card } from "../../../common/shadcn/card";
+import { Card } from "@/components/common/shadcn/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { FourSmallCardsProps } from "../types";
 
 export const FourSmallCards = ({ fourSmallCardsData }: FourSmallCardsProps) => {

@@ -3,12 +3,13 @@
 import { useTheme } from "next-themes";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
-import { SettingsIcon } from "../../assets/icons/SettingsIcon";
-import { useFontManager } from "../../hooks/useFontManager";
-import { useGlobalHotkeys } from "../../hooks/useGlobalHotkeys";
-import { usePathname } from "../../i18n/navigation";
-import { useChartAnimationStore } from "../../store/chartAnimationStore";
-import { useLayoutStore } from "../../store/layoutStore";
+import { SettingsIcon } from "@/assets/icons/SettingsIcon";
+import { useFontManager } from "@/hooks/useFontManager";
+import { useGlobalHotkeys } from "@/hooks/useGlobalHotkeys";
+import { usePathname } from "@/i18n/navigation";
+import { useChartAnimationStore } from "@/store/chartAnimationStore";
+import { useLayoutStore } from "@/store/layoutStore";
+
 import { FullScreenLoader, LOADER_DURATION_MS } from "./FullScreenLoader";
 import { Navbar } from "./navbar/Navbar";
 import { SettingsDrawer } from "./settings/SettingsDrawer";

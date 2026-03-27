@@ -2,11 +2,11 @@ import { act, renderHook } from "@testing-library/react";
 import React from "react";
 
 // Mock useNavbar to avoid its heavy dependency chain (useSession, useDropdown, etc.)
-vi.mock("../../../../components/layout/navbar/hooks/useNavbar", () => ({
+vi.mock("@/components/layout/navbar/hooks/useNavbar", () => ({
   useNavbar: () => ({ currentLanguage: "en" }),
 }));
 
-import { useSearchInput } from "../../../../components/layout/navbar/hooks/useSearchInput";
+import { useSearchInput } from "@/components/layout/navbar/hooks/useSearchInput";
 
 const createControls = (initialOpen = false) => {
   let isOpen = initialOpen;

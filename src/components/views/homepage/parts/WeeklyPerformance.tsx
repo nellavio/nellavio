@@ -12,20 +12,21 @@ import {
   YAxis,
 } from "recharts";
 
-import { CheckIcon } from "../../../../assets/icons/CheckIcon";
-import { DocumentIcon } from "../../../../assets/icons/DocumentIcon";
-import { UpdateIcon } from "../../../../assets/icons/UpdateIcon";
-import { UsersIcon } from "../../../../assets/icons/UsersIcon";
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
-import { BaseTooltip } from "../../../common/BaseTooltip";
+import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { DocumentIcon } from "@/assets/icons/DocumentIcon";
+import { UpdateIcon } from "@/assets/icons/UpdateIcon";
+import { UsersIcon } from "@/assets/icons/UsersIcon";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { WeeklyActivity, WeeklyPerformanceProps } from "../types";
 
 interface TooltipPayload {

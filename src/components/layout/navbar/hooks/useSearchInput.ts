@@ -2,8 +2,9 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { menuConfig } from "../../../../config/navigationConfig";
-import type { MenuConfigEntry } from "../../sideMenu/types";
+import type { MenuConfigEntry } from "@/components/layout/sideMenu/types";
+import { menuConfig } from "@/config/navigationConfig";
+
 import { useNavbar } from "./useNavbar";
 
 interface SearchItem {

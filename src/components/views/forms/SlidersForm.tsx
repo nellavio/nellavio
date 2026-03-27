@@ -7,9 +7,9 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Label } from "../../common/shadcn/label";
-import { Slider } from "../../common/shadcn/slider";
+} from "@/components/common/shadcn/card";
+import { Label } from "@/components/common/shadcn/label";
+import { Slider } from "@/components/common/shadcn/slider";
 
 /**
  * Showcase of slider variants: single-thumb default

@@ -3,13 +3,17 @@
 import { AlertCircle, CheckCircle, Info } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Alert, AlertDescription, AlertTitle } from "../../common/shadcn/alert";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/common/shadcn/alert";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 
 /**
  * Showcase of alert variants: informational (default),

@@ -7,8 +7,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Separator } from "../../common/shadcn/separator";
+} from "@/components/common/shadcn/card";
+import { Separator } from "@/components/common/shadcn/separator";
 
 /**
  * Showcase of separator orientations:

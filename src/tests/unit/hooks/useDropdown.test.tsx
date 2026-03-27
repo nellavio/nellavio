@@ -1,6 +1,6 @@
 import { act, render, renderHook, screen } from "@testing-library/react";
 
-import { useDropdown } from "../../../hooks/useDropdown";
+import { useDropdown } from "@/hooks/useDropdown";
 
 const DropdownTestComponent = () => {
   const { isOpen, toggle, close, open, ref } = useDropdown();
@@ -56,7 +56,7 @@ describe("useDropdown", () => {
     expect(result.current.ref).toBeDefined();
   });
 
-  it("closes on click outside (mousedown on document)", async () => {
+  it("closes on click outside (pointerdown on document)", async () => {
     render(<DropdownTestComponent />);
     act(() => {
       screen.getByTestId("open").click();
@@ -65,7 +65,7 @@ describe("useDropdown", () => {
     act(() => {
       screen
         .getByTestId("outside")
-        .dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+        .dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
     });
     expect(screen.queryByTestId("open-indicator")).not.toBeInTheDocument();
   });

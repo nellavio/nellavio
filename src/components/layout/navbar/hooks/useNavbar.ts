@@ -2,10 +2,11 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { useDropdown } from "../../../../hooks/useDropdown";
-import { useSession } from "../../../../services/auth/auth-client";
-import { useLayoutStore } from "../../../../store/layoutStore";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { useDropdown } from "@/hooks/useDropdown";
+import { useSession } from "@/services/auth/auth-client";
+import { useLayoutStore } from "@/store/layoutStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { NavbarDropdowns } from "../types";
 
 /**

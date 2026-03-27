@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 
-import { useAuthErrorMessage } from "../../../../hooks/auth/useAuthErrorMessage";
+import { useAuthErrorMessage } from "@/hooks/auth/useAuthErrorMessage";
 
 describe("useAuthErrorMessage", () => {
   it("maps INVALID_EMAIL_OR_PASSWORD to correct i18n key", () => {

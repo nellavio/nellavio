@@ -10,13 +10,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../common/shadcn/breadcrumb";
+} from "@/components/common/shadcn/breadcrumb";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 
 /**
  * Showcase of breadcrumb navigation: icon-based with chevron separators

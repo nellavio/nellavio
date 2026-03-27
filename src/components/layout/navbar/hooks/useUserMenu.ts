@@ -7,7 +7,8 @@ import React, {
   useState,
 } from "react";
 
-import { usePathname } from "../../../../i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
+
 import { DropdownProps, NavbarDropdowns } from "../types";
 
 interface UseUserMenuParams {

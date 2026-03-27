@@ -11,14 +11,14 @@ import {
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
-import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
+import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
+import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 
 type Product = {
   id: number;

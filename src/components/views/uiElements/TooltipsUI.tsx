@@ -3,19 +3,19 @@
 import { Bell, HelpCircle, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
 
 /**
  * Showcase of tooltips on buttons and icon buttons

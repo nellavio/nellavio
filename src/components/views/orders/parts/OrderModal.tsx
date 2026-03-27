@@ -1,15 +1,16 @@
 import { useTranslations } from "next-intl";
 
-import { OrderModalIcon } from "../../../../assets/icons/OrderModalIcon";
-import { PhoneIcon } from "../../../../assets/icons/PhoneIcon";
-import { Button } from "../../../common/shadcn/button";
+import { OrderModalIcon } from "@/assets/icons/OrderModalIcon";
+import { PhoneIcon } from "@/assets/icons/PhoneIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import { OrderModalProps } from "../types";
 
 export const OrderModal = ({ closeModal, orderData }: OrderModalProps) => {

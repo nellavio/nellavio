@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
-import { AuthLogo } from "../../../../components/auth/AuthLogo";
-import { AuthLogoMobile } from "../../../../components/auth/AuthLogoMobile";
-import { LoginForm } from "../../../../components/auth/LoginForm";
-import { ThemeButtonAuth } from "../../../../components/layout/ThemeButtonAuth";
+import { AuthLogo } from "@/components/auth/AuthLogo";
+import { AuthLogoMobile } from "@/components/auth/AuthLogoMobile";
+import { LoginForm } from "@/components/auth/LoginForm";
+import { ThemeButtonAuth } from "@/components/layout/ThemeButtonAuth";
 
 const Login = () => {
   return (

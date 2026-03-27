@@ -1,4 +1,4 @@
-import { LogoIcon } from "../../assets/icons/LogoIcon";
+import { LogoIcon } from "@/assets/icons/LogoIcon";
 
 export const AuthLogoMobile = () => {
   return (

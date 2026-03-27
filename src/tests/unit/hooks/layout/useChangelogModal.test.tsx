@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 
-import { useChangelogModal } from "../../../../components/layout/navbar/hooks/useChangelogModal";
+import { useChangelogModal } from "@/components/layout/navbar/hooks/useChangelogModal";
 
 describe("useChangelogModal", () => {
   beforeEach(() => {

@@ -3,11 +3,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 
-import { LoginData } from "../../components/auth/LoginForm";
-import { useRouter } from "../../i18n/navigation";
-import { signIn } from "../../services/auth/auth-client";
-import { useLayoutStore } from "../../store/layoutStore";
-import { isPresentationModeClient } from "../../utils/presentationMode";
+import { LoginData } from "@/components/auth/LoginForm";
+import { useRouter } from "@/i18n/navigation";
+import { signIn } from "@/services/auth/auth-client";
+import { useLayoutStore } from "@/store/layoutStore";
+import { isPresentationModeClient } from "@/utils/presentationMode";
+
 import { useAuthErrorMessage } from "./useAuthErrorMessage";
 
 const SUBMIT_COOLDOWN_MS = 2000;

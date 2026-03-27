@@ -1,9 +1,9 @@
-import type { AnalyticsViewProps } from "../../components/views/analytics/types";
-import type { CalendarEvent } from "../../components/views/calendar/types";
-import type { Customer } from "../../components/views/customers/types";
-import type { HomepageViewProps } from "../../components/views/homepage/types";
-import type { OrderType } from "../../components/views/orders/types";
-import type { Product } from "../../components/views/products/types";
+import type { AnalyticsViewProps } from "@/components/views/analytics/types";
+import type { CalendarEvent } from "@/components/views/calendar/types";
+import type { Customer } from "@/components/views/customers/types";
+import type { HomepageViewProps } from "@/components/views/homepage/types";
+import type { OrderType } from "@/components/views/orders/types";
+import type { Product } from "@/components/views/products/types";
 
 export const mockOrders: OrderType[] = [
   {

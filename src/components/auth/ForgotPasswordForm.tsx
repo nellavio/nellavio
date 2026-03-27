@@ -6,8 +6,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as Yup from "yup";
 
-import { MailIcon } from "../../assets/icons/MailIcon";
-import { Link } from "../../i18n/navigation";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { Link } from "@/i18n/navigation";
+
 import { Button } from "../common/shadcn/button";
 import {
   InputGroup,

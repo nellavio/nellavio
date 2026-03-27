@@ -9,21 +9,22 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
-import { CameraIcon } from "../../../../assets/icons/CameraIcon";
-import { CopyIcon } from "../../../../assets/icons/CopyIcon";
-import { SpinnerIcon } from "../../../../assets/icons/SpinnerIcon";
-import { Button } from "../../../common/shadcn/button";
+import { CameraIcon } from "@/assets/icons/CameraIcon";
+import { CopyIcon } from "@/assets/icons/CopyIcon";
+import { SpinnerIcon } from "@/assets/icons/SpinnerIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "../../../common/shadcn/input-group";
+} from "@/components/common/shadcn/input-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+
 import { ProductDetailsProps } from "../types";
 import { ProductParameter } from "./ProductParameter";
 import { ProductPDF } from "./ProductPDF";

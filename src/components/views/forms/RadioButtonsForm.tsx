@@ -7,9 +7,12 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Label } from "../../common/shadcn/label";
-import { RadioGroup, RadioGroupItem } from "../../common/shadcn/radio-group";
+} from "@/components/common/shadcn/card";
+import { Label } from "@/components/common/shadcn/label";
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/components/common/shadcn/radio-group";
 
 /**
  * Showcase of radio button states: default,

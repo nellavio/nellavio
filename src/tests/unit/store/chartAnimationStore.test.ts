@@ -1,7 +1,7 @@
 import {
   type ChartPageId,
   useChartAnimationStore,
-} from "../../../store/chartAnimationStore";
+} from "@/store/chartAnimationStore";
 
 const initialState = {
   isInitialLoad: true,

@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 
-import { GithubIcon } from "../../../assets/icons/GithubIcon";
-import { LinkedinIcon } from "../../../assets/icons/LinkedinIcon";
-import { TwitterIcon } from "../../../assets/icons/TwitterIcon";
-import { Card } from "../../common/shadcn/card";
+import { GithubIcon } from "@/assets/icons/GithubIcon";
+import { LinkedinIcon } from "@/assets/icons/LinkedinIcon";
+import { TwitterIcon } from "@/assets/icons/TwitterIcon";
+import { Card } from "@/components/common/shadcn/card";
 
 type ProfileHeaderCardProps = {
   userData: {

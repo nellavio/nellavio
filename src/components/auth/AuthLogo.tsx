@@ -1,4 +1,4 @@
-import { LogoIcon } from "../../assets/icons/LogoIcon";
+import { LogoIcon } from "@/assets/icons/LogoIcon";
 
 /* Circle with logo for auth pages */
 export const AuthLogo = () => {

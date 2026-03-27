@@ -1,6 +1,6 @@
 import { Children, ReactNode } from "react";
 
-import { ArrowDownSimpleIcon } from "../../../../assets/icons/ArrowDownSimpleIcon";
+import { ArrowDownSimpleIcon } from "@/assets/icons/ArrowDownSimpleIcon";
 
 interface ExpandableDropdownSectionProps {
   children: ReactNode;

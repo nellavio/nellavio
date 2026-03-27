@@ -14,15 +14,15 @@ import { Edit, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
-import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
-import { Button } from "../../common/shadcn/button";
+import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
+import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Pagination,
   PaginationContent,
@@ -31,7 +31,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../../common/shadcn/pagination";
+} from "@/components/common/shadcn/pagination";
 
 type InventoryItem = {
   id: string;

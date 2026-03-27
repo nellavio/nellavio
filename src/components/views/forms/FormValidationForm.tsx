@@ -7,13 +7,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Form,
   FormControl,
@@ -21,8 +21,8 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "../../common/shadcn/form";
-import { Input } from "../../common/shadcn/input";
+} from "@/components/common/shadcn/form";
+import { Input } from "@/components/common/shadcn/input";
 
 /** Yup schema defining username (min 2 chars) and email validation rules. */
 const formSchema = yup.object({

@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 
-import { useNotificationsModal } from "../../../../components/layout/navbar/hooks/useNotifications";
-import type { Notification } from "../../../../components/layout/navbar/hooks/useNotificationsData";
+import { useNotificationsModal } from "@/components/layout/navbar/hooks/useNotifications";
+import type { Notification } from "@/components/layout/navbar/hooks/useNotificationsData";
 
 const mockNotifications: Notification[] = [
   {

@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
 
-import { useLayoutStore } from "../../../store/layoutStore";
+import { useLayoutStore } from "@/store/layoutStore";
 
 interface UseSettingsProps {
   open?: boolean;

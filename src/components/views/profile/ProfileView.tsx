@@ -3,8 +3,9 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { Card, CardContent } from "../../common/shadcn/card";
-import { Switch } from "../../common/shadcn/switch";
+import { Card, CardContent } from "@/components/common/shadcn/card";
+import { Switch } from "@/components/common/shadcn/switch";
+
 import { ProfileHeaderCard } from "./ProfileHeaderCard";
 import { ProfileSidebar } from "./ProfileSidebar";
 

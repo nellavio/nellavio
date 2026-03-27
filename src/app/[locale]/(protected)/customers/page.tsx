@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { PageWrapper } from "../../../../components/common/PageWrapper";
-import { CustomersView } from "../../../../components/views/customers/CustomersView";
-import { getData } from "../../../../services/getData";
+import { PageWrapper } from "@/components/common/PageWrapper";
+import { CustomersView } from "@/components/views/customers/CustomersView";
+import { getData } from "@/services/getData";
 
 const Customers = async ({
   params,

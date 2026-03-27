@@ -3,23 +3,23 @@
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 
-import { ChevronDownIcon } from "../../../../assets/icons/ChevronDownIcon";
-import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { Link, usePathname } from "../../../../i18n/navigation";
-import { useLayoutStore } from "../../../../store/layoutStore";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { ChevronDownIcon } from "@/assets/icons/ChevronDownIcon";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../../../common/shadcn/dropdown-menu";
+} from "@/components/common/shadcn/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useLayoutStore } from "@/store/layoutStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
 
 interface SubmenuItem {
   title: string;

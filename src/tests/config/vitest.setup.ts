@@ -117,7 +117,7 @@ vi.mock("next/link", () => ({
 }));
 
 // Mock i18n navigation (used by auth forms)
-vi.mock("../../i18n/navigation", () => ({
+vi.mock("@/i18n/navigation", () => ({
   Link: ({
     children,
     href,
@@ -136,7 +136,7 @@ vi.mock("../../i18n/navigation", () => ({
 }));
 
 // Mock auth services
-vi.mock("../../services/auth/auth-client", () => ({
+vi.mock("@/services/auth/auth-client", () => ({
   signIn: { email: vi.fn() },
   signUp: { email: vi.fn() },
   signOut: vi.fn(),

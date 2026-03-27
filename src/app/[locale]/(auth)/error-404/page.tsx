@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import { ErrorPageLayout } from "../../../../components/views/errorPages/ErrorPageLayout";
-import { SearchXIcon } from "../../../../components/views/errorPages/icons/SearchXIcon";
+import { ErrorPageLayout } from "@/components/views/errorPages/ErrorPageLayout";
+import { SearchXIcon } from "@/components/views/errorPages/icons/SearchXIcon";
 
 const Error404 = () => {
   return (

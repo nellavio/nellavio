@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 
-import { useCustomDateRangeDialog } from "../../../../components/layout/dateRangeSelect/useRangeSelect";
+import { useCustomDateRangeDialog } from "@/components/layout/dateRangeSelect/useRangeSelect";
 
 describe("useCustomDateRangeDialog", () => {
   const mockOnApply = vi.fn();

@@ -1,6 +1,7 @@
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { useLayoutStore } from "../../../../store/layoutStore";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useLayoutStore } from "@/store/layoutStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { MenuCategoryProps } from "../types";
 
 export const MenuCategory = ({ title }: MenuCategoryProps) => {

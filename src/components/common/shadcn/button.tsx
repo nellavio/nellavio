@@ -2,8 +2,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
-import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
-import { cn } from "../../../utils/classNames";
+import { SpinnerIcon } from "@/assets/icons/SpinnerIcon";
+import { cn } from "@/utils/classNames";
 
 /**
  * Style variants configuration for the Button component.

@@ -13,19 +13,19 @@ import { Columns, Edit, Eye } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
-import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
-import { FilterIcon } from "../../../assets/icons/FilterIcon";
-import { SortIcon } from "../../../assets/icons/SortIcon";
-import { Badge } from "../../common/shadcn/badge";
-import { Button } from "../../common/shadcn/button";
+import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
+import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+import { FilterIcon } from "@/assets/icons/FilterIcon";
+import { SortIcon } from "@/assets/icons/SortIcon";
+import { Badge } from "@/components/common/shadcn/badge";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Checkbox } from "../../common/shadcn/checkbox";
+} from "@/components/common/shadcn/card";
+import { Checkbox } from "@/components/common/shadcn/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,12 +34,12 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../common/shadcn/dropdown-menu";
+} from "@/components/common/shadcn/dropdown-menu";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../common/shadcn/popover";
+} from "@/components/common/shadcn/popover";
 
 type User = {
   id: number;

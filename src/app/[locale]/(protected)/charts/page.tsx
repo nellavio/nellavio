@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import { PageWrapper } from "../../../../components/common/PageWrapper";
-import { ChartsView } from "../../../../components/views/charts/ChartsView";
+import { PageWrapper } from "@/components/common/PageWrapper";
+import { ChartsView } from "@/components/views/charts/ChartsView";
 
 const ChartsPage = () => {
   return (

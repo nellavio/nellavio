@@ -3,7 +3,8 @@
 import { AlertCircle, CheckCircle, Info, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { useToastStore } from "../../store/toastStore";
+import { useToastStore } from "@/store/toastStore";
+
 import { Alert, AlertDescription, AlertTitle } from "../common/shadcn/alert";
 
 const ICON_MAP = {

@@ -1,15 +1,16 @@
 import Link from "next/link";
 import React from "react";
 
-import { CheckIcon } from "../../../../assets/icons/CheckIcon";
-import { GithubIcon } from "../../../../assets/icons/GithubIcon";
-import { HistoryIcon } from "../../../../assets/icons/HistoryIcon";
-import { InfoIcon } from "../../../../assets/icons/InfoIcon";
-import { LanguageIcon } from "../../../../assets/icons/LanguageIcon";
-import { PaletteIcon } from "../../../../assets/icons/PaletteIcon";
-import { SettingsIcon } from "../../../../assets/icons/SettingsIcon";
-import { UserIcon } from "../../../../assets/icons/UserIcon";
-import { Link as NavigationLink } from "../../../../i18n/navigation";
+import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { GithubIcon } from "@/assets/icons/GithubIcon";
+import { HistoryIcon } from "@/assets/icons/HistoryIcon";
+import { InfoIcon } from "@/assets/icons/InfoIcon";
+import { LanguageIcon } from "@/assets/icons/LanguageIcon";
+import { PaletteIcon } from "@/assets/icons/PaletteIcon";
+import { SettingsIcon } from "@/assets/icons/SettingsIcon";
+import { UserIcon } from "@/assets/icons/UserIcon";
+import { Link as NavigationLink } from "@/i18n/navigation";
+
 import { UserMenuDropdownProps } from "../types";
 import { DropdownMenuItem } from "./DropdownMenuItem";
 

@@ -4,14 +4,15 @@ import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { BaseTooltip } from "../../../common/BaseTooltip";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+
 import { AssetPerformanceProps } from "../types";
 
 interface AssetDataWithColor {

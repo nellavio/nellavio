@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 
-import { useIsFirstRender } from "../../../hooks/useIsFirstRender";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
 
 describe("useIsFirstRender", () => {
   it("returns false after mount (effect has run)", () => {

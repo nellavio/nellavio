@@ -2,7 +2,7 @@ import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
-import { cn } from "../../../utils/classNames";
+import { cn } from "@/utils/classNames";
 
 /**
  * Style variants for the Label component.
@@ -29,7 +29,8 @@ const labelVariants = cva(
  * ```
  */
 interface LabelProps
-  extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>,
+  extends
+    React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>,
     VariantProps<typeof labelVariants> {
   withPointer?: boolean;
 }

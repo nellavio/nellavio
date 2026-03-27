@@ -1,9 +1,10 @@
 import { useTranslations } from "next-intl";
 
-import { ArrowLeftIcon } from "../../../assets/icons/ArrowLeftIcon";
-import { ArrowRightIcon } from "../../../assets/icons/ArrowRightIcon";
-import { menuConfig } from "../../../config/navigationConfig";
-import { useLayoutStore } from "../../../store/layoutStore";
+import { ArrowLeftIcon } from "@/assets/icons/ArrowLeftIcon";
+import { ArrowRightIcon } from "@/assets/icons/ArrowRightIcon";
+import { menuConfig } from "@/config/navigationConfig";
+import { useLayoutStore } from "@/store/layoutStore";
+
 import { Logo } from "./parts/Logo";
 import { MenuCategory } from "./parts/MenuCategory";
 import { MenuItem } from "./parts/MenuItem";

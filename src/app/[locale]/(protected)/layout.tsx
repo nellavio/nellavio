@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
-import { getSession } from "../../../services/auth/auth-server";
-import { isPresentationMode } from "../../../utils/presentationMode";
+import { getSession } from "@/services/auth/auth-server";
+import { isPresentationMode } from "@/utils/presentationMode";
 
 /**
  * Auth gate for all (protected) routes. Checks session once per layout render.

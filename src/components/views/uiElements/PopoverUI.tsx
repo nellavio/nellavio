@@ -3,21 +3,21 @@
 import { User } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Avatar, AvatarFallback } from "../../common/shadcn/avatar";
-import { Button } from "../../common/shadcn/button";
+import { Avatar, AvatarFallback } from "@/components/common/shadcn/avatar";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Input } from "../../common/shadcn/input";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/card";
+import { Input } from "@/components/common/shadcn/input";
+import { Label } from "@/components/common/shadcn/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../common/shadcn/popover";
+} from "@/components/common/shadcn/popover";
 
 /**
  * Showcase of popover variants: a dimensions form popover

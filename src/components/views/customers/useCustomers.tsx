@@ -7,9 +7,10 @@ import {
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { SpinnerIcon } from "../../../assets/icons/SpinnerIcon";
-import { useTable } from "../../../hooks/useTable";
-import { exportToXLSX } from "../../../utils/exportToXLSX";
+import { SpinnerIcon } from "@/assets/icons/SpinnerIcon";
+import { useTable } from "@/hooks/useTable";
+import { exportToXLSX } from "@/utils/exportToXLSX";
+
 import { Customer, CustomerColumns, CustomerFilters } from "./types";
 
 const columnHelper = createColumnHelper<CustomerColumns>();

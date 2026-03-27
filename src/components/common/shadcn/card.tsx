@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { type ReactNode } from "react";
 
-import { cn } from "../../../utils/classNames";
+import { cn } from "@/utils/classNames";
 
 /**
  * Style variants configuration for CardHeader component.

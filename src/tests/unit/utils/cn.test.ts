@@ -1,4 +1,4 @@
-import { cn } from "../../../utils/classNames";
+import { cn } from "@/utils/classNames";
 
 describe("cn (classNames utility)", () => {
   it("merges multiple Tailwind classes", () => {

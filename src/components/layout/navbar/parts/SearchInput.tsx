@@ -1,11 +1,12 @@
 import { forwardRef, useEffect, useRef } from "react";
 
-import { SearchIcon } from "../../../../assets/icons/SearchIcon";
+import { SearchIcon } from "@/assets/icons/SearchIcon";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "../../../common/shadcn/input-group";
+} from "@/components/common/shadcn/input-group";
+
 import { useSearchInput } from "../hooks/useSearchInput";
 
 interface SearchInputProps {

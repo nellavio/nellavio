@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import { ErrorPageLayout } from "../../../../components/views/errorPages/ErrorPageLayout";
-import { LockIcon } from "../../../../components/views/errorPages/icons/LockIcon";
+import { ErrorPageLayout } from "@/components/views/errorPages/ErrorPageLayout";
+import { LockIcon } from "@/components/views/errorPages/icons/LockIcon";
 
 const Error401 = () => {
   return (

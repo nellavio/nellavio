@@ -12,17 +12,18 @@ import {
   YAxis,
 } from "recharts";
 
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
-import { BaseTooltip } from "../../../common/BaseTooltip";
-import { Card, CardContent } from "../../../common/shadcn/card";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
+import { Card, CardContent } from "@/components/common/shadcn/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../common/shadcn/tabs";
+} from "@/components/common/shadcn/tabs";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { TodaySalesProps } from "../types";
 
 interface TodaySalesTooltipProps {

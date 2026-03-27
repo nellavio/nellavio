@@ -3,11 +3,12 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 
-import { useLayoutStore } from "../../../store/layoutStore";
-import { BREAKPOINTS } from "../../../styles/breakpoints";
-import { LoginModal } from "../../auth/LoginModal";
-import { LogoutModal } from "../../auth/LogoutModal";
-import { SignUpModal } from "../../auth/SignUpModal";
+import { LoginModal } from "@/components/auth/LoginModal";
+import { LogoutModal } from "@/components/auth/LogoutModal";
+import { SignUpModal } from "@/components/auth/SignUpModal";
+import { useLayoutStore } from "@/store/layoutStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { CONTENT_MAX_WIDTH } from "../Layout";
 import { Logo } from "../sideMenu/parts/Logo";
 import { SideMenuMobile } from "../sideMenu/SideMenuMobile";

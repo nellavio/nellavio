@@ -1,6 +1,7 @@
 "use client";
 
-import { useLayoutStore } from "../../../store/layoutStore";
+import { useLayoutStore } from "@/store/layoutStore";
+
 import { BestSellingProducts } from "./parts/BestSellingProducts";
 import { CustomerSatisfaction } from "./parts/CustomerSatisfaction";
 import { FourSmallCards } from "./parts/FourSmallCards";

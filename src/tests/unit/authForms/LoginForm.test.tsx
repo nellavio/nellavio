@@ -2,8 +2,8 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe } from "vitest-axe";
 
-import { LoginForm } from "../../../components/auth/LoginForm";
-import { renderWithProviders } from "../../utils/renderWithProviders";
+import { LoginForm } from "@/components/auth/LoginForm";
+import { renderWithProviders } from "@/tests/utils/renderWithProviders";
 
 describe("LoginForm", () => {
   it("renders email and password fields", () => {

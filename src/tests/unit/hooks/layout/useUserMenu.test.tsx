@@ -1,11 +1,11 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React, { useRef } from "react";
 
-import { useUserMenu } from "../../../../components/layout/navbar/hooks/useUserMenu";
+import { useUserMenu } from "@/components/layout/navbar/hooks/useUserMenu";
 import type {
   DropdownProps,
   NavbarDropdowns,
-} from "../../../../components/layout/navbar/types";
+} from "@/components/layout/navbar/types";
 
 const createMockDropdown = (isOpen = false): DropdownProps => ({
   isOpen,

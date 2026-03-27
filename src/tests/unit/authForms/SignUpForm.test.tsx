@@ -2,8 +2,8 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe } from "vitest-axe";
 
-import { SignUpForm } from "../../../components/auth/SignUpForm";
-import { renderWithProviders } from "../../utils/renderWithProviders";
+import { SignUpForm } from "@/components/auth/SignUpForm";
+import { renderWithProviders } from "@/tests/utils/renderWithProviders";
 
 describe("SignUpForm", () => {
   it("renders all form fields", () => {

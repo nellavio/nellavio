@@ -7,9 +7,9 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Label } from "../../common/shadcn/label";
-import { Textarea } from "../../common/shadcn/textarea";
+} from "@/components/common/shadcn/card";
+import { Label } from "@/components/common/shadcn/label";
+import { Textarea } from "@/components/common/shadcn/textarea";
 
 /**
  * Showcase of a multiline textarea input

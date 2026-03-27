@@ -1,12 +1,12 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 
-import { useHandleSignUp } from "../../../../hooks/auth/useHandleSignUp";
-import { signUp as _signUp } from "../../../../services/auth/auth-client";
+import { useHandleSignUp } from "@/hooks/auth/useHandleSignUp";
+import { signUp as _signUp } from "@/services/auth/auth-client";
 
 // signUp is always defined in test env (mocked in vitest.setup.ts)
 const signUp = _signUp as NonNullable<typeof _signUp>;
 
-vi.mock("../../../../utils/presentationMode", () => ({
+vi.mock("@/utils/presentationMode", () => ({
   isPresentationModeClient: vi.fn(() => false),
 }));
 
@@ -129,7 +129,7 @@ describe("useHandleSignUp", () => {
 
   it("shows alert in presentation mode", async () => {
     const { isPresentationModeClient } =
-      await import("../../../../utils/presentationMode");
+      await import("@/utils/presentationMode");
     vi.mocked(isPresentationModeClient).mockReturnValue(true);
 
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});

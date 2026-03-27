@@ -1,15 +1,16 @@
 import Link from "next/link";
 
-import { GithubIcon } from "../../../../assets/icons/GithubIcon";
-import { MailIcon } from "../../../../assets/icons/MailIcon";
-import { Button } from "../../../common/shadcn/button";
+import { GithubIcon } from "@/assets/icons/GithubIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import { useModalKeyboardScroll } from "../hooks/useModalKeyboardScroll";
 import { AboutModalProps } from "../types";
 

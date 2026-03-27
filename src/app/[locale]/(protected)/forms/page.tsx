@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import { PageWrapper } from "../../../../components/common/PageWrapper";
-import { FormsView } from "../../../../components/views/forms/FormsView";
+import { PageWrapper } from "@/components/common/PageWrapper";
+import { FormsView } from "@/components/views/forms/FormsView";
 
 const FormsPage = () => {
   return (

@@ -8,8 +8,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/card";
+import { Label } from "@/components/common/shadcn/label";
 
 /**
  * Showcase of a drag-and-drop file upload zone

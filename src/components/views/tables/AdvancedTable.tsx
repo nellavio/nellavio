@@ -14,17 +14,17 @@ import { Edit, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { ArrowDownIcon } from "../../../assets/icons/ArrowDownIcon";
-import { ArrowUpIcon } from "../../../assets/icons/ArrowUpIcon";
-import { Button } from "../../common/shadcn/button";
+import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
+import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Checkbox } from "../../common/shadcn/checkbox";
-import { Input } from "../../common/shadcn/input";
+} from "@/components/common/shadcn/card";
+import { Checkbox } from "@/components/common/shadcn/checkbox";
+import { Input } from "@/components/common/shadcn/input";
 
 type Transaction = {
   id: string;

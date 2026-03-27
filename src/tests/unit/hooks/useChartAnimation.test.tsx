@@ -1,8 +1,8 @@
 import { renderHook } from "@testing-library/react";
 
-import { useChartAnimation } from "../../../hooks/useChartAnimation";
-import { useChartAnimationStore } from "../../../store/chartAnimationStore";
-import { useLayoutStore } from "../../../store/layoutStore";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useChartAnimationStore } from "@/store/chartAnimationStore";
+import { useLayoutStore } from "@/store/layoutStore";
 
 describe("useChartAnimation", () => {
   beforeEach(() => {

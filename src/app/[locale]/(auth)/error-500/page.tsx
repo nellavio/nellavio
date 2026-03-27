@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import { ErrorPageLayout } from "../../../../components/views/errorPages/ErrorPageLayout";
-import { ServerCrashIcon } from "../../../../components/views/errorPages/icons/ServerCrashIcon";
+import { ErrorPageLayout } from "@/components/views/errorPages/ErrorPageLayout";
+import { ServerCrashIcon } from "@/components/views/errorPages/icons/ServerCrashIcon";
 
 const Error500 = () => {
   return (

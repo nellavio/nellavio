@@ -2,16 +2,17 @@
 
 import { Check } from "lucide-react";
 
-import { CalendarIcon } from "../../../assets/icons/CalendarIcon";
-import { ChevronDownIcon } from "../../../assets/icons/ChevronDownIcon";
-import { DATE_RANGE_PRESETS } from "../../../store/dateRangeStore";
+import { CalendarIcon } from "@/assets/icons/CalendarIcon";
+import { ChevronDownIcon } from "@/assets/icons/ChevronDownIcon";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../common/shadcn/dropdown-menu";
+} from "@/components/common/shadcn/dropdown-menu";
+import { DATE_RANGE_PRESETS } from "@/store/dateRangeStore";
+
 import { CustomDateRangeDialog } from "./CustomDateRangeDialog";
 import { useRangeSelect } from "./useRangeSelect";
 

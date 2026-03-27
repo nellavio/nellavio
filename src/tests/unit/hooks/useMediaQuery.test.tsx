@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 describe("useMediaQuery", () => {
   it("returns false when matchMedia matches is false (default mock)", () => {

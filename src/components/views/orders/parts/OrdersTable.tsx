@@ -1,8 +1,9 @@
 import { flexRender } from "@tanstack/react-table";
 import { useRef, useState } from "react";
 
-import { ArrowDownIcon } from "../../../../assets/icons/ArrowDownIcon";
-import { ArrowUpIcon } from "../../../../assets/icons/ArrowUpIcon";
+import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
+import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+
 import { OrdersTableProps, OrderType } from "../types";
 import { OrderModal } from "./OrderModal";
 

@@ -1,15 +1,16 @@
 import { useTranslations } from "next-intl";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
-import { useMediaQuery } from "../../../../hooks/useMediaQuery";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { ThreeSmallCardsProps } from "../types";
 
 export const ThreeSmallCards = ({

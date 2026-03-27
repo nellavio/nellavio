@@ -3,13 +3,13 @@
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Dialog,
   DialogContent,
@@ -18,7 +18,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
 
 /**
  * Showcase of dialog variants: a standard confirmation dialog

@@ -1,8 +1,8 @@
 import { renderHook } from "@testing-library/react";
 
-import { useGlobalHotkeys } from "../../../hooks/useGlobalHotkeys";
-import { useLayoutStore } from "../../../store/layoutStore";
-import { BREAKPOINTS } from "../../../styles/breakpoints";
+import { useGlobalHotkeys } from "@/hooks/useGlobalHotkeys";
+import { useLayoutStore } from "@/store/layoutStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
 
 describe("useGlobalHotkeys", () => {
   const originalInnerWidth = window.innerWidth;

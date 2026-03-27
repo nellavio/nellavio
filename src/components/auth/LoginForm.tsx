@@ -4,13 +4,14 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 
-import { EyeIcon } from "../../assets/icons/EyeIcon";
-import { EyeOffIcon } from "../../assets/icons/EyeOffIcon";
-import { MailIcon } from "../../assets/icons/MailIcon";
-import { PasswordIcon } from "../../assets/icons/PasswordIcon";
-import { useHandleLogin } from "../../hooks/auth/useHandleLogin";
-import { Link } from "../../i18n/navigation";
-import { useLayoutStore } from "../../store/layoutStore";
+import { EyeIcon } from "@/assets/icons/EyeIcon";
+import { EyeOffIcon } from "@/assets/icons/EyeOffIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { PasswordIcon } from "@/assets/icons/PasswordIcon";
+import { useHandleLogin } from "@/hooks/auth/useHandleLogin";
+import { Link } from "@/i18n/navigation";
+import { useLayoutStore } from "@/store/layoutStore";
+
 import { Button } from "../common/shadcn/button";
 import { Checkbox } from "../common/shadcn/checkbox";
 import {

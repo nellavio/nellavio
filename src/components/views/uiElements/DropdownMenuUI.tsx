@@ -4,13 +4,13 @@ import { Cloud, LogOut, Mail, Plus, Settings, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -26,7 +26,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../common/shadcn/dropdown-menu";
+} from "@/components/common/shadcn/dropdown-menu";
 
 /**
  * Showcase of dropdown menu variants: basic menu with icons and shortcuts,

@@ -7,9 +7,9 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Checkbox } from "../../common/shadcn/checkbox";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/card";
+import { Checkbox } from "@/components/common/shadcn/checkbox";
+import { Label } from "@/components/common/shadcn/label";
 
 /**
  * Showcase of checkbox states: default, checked,

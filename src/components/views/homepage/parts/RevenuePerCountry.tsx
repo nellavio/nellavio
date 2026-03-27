@@ -2,27 +2,28 @@ import { useTranslations } from "next-intl";
 import React, { lazy, Suspense } from "react";
 import { Geographies, Geography } from "react-simple-maps";
 
-import { AustraliaIcon } from "../../../../assets/icons/AustraliaIcon";
-import { EnglishIcon } from "../../../../assets/icons/EnglishIcon";
-import { FranceIcon } from "../../../../assets/icons/FranceIcon";
-import { NorwayIcon } from "../../../../assets/icons/NorwayIcon";
-import { PolishIcon } from "../../../../assets/icons/PolishIcon";
-import { SpinnerIcon } from "../../../../assets/icons/SpinnerIcon";
-import { UnitedStatesIcon } from "../../../../assets/icons/UnitedStatesIcon";
-import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { AustraliaIcon } from "@/assets/icons/AustraliaIcon";
+import { EnglishIcon } from "@/assets/icons/EnglishIcon";
+import { FranceIcon } from "@/assets/icons/FranceIcon";
+import { NorwayIcon } from "@/assets/icons/NorwayIcon";
+import { PolishIcon } from "@/assets/icons/PolishIcon";
+import { SpinnerIcon } from "@/assets/icons/SpinnerIcon";
+import { UnitedStatesIcon } from "@/assets/icons/UnitedStatesIcon";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
+} from "@/components/common/shadcn/tooltip";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { RevenuePerCountryProps } from "../types";
 
 const ComposableMapLazy = lazy(() =>

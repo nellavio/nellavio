@@ -1,4 +1,4 @@
-import type { CustomDateRange } from "../../../store/dateRangeStore";
+import type { CustomDateRange } from "@/store/dateRangeStore";
 
 export interface CustomDateRangeDialogProps {
   open: boolean;

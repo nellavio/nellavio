@@ -8,8 +8,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
-import { Progress } from "../../common/shadcn/progress";
+} from "@/components/common/shadcn/card";
+import { Progress } from "@/components/common/shadcn/progress";
 
 /**
  * Showcase of progress bar states: in-progress (66%),

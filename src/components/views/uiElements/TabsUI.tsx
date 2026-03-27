@@ -3,20 +3,20 @@
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Badge } from "../../common/shadcn/badge";
-import { Button } from "../../common/shadcn/button";
+import { Badge } from "@/components/common/shadcn/badge";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../common/shadcn/tabs";
+} from "@/components/common/shadcn/tabs";
 
 /**
  * Showcase of a three-tab layout (Account, Password, Settings)

@@ -2,13 +2,13 @@
 
 import { useTranslations } from "next-intl";
 
-import { Badge } from "../../common/shadcn/badge";
+import { Badge } from "@/components/common/shadcn/badge";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 
 /**
  * Showcase of badge variants: default, secondary,

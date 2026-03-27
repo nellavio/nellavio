@@ -2,13 +2,13 @@
 
 import { useTranslations } from "next-intl";
 
-import { Avatar, AvatarFallback } from "../../common/shadcn/avatar";
+import { Avatar, AvatarFallback } from "@/components/common/shadcn/avatar";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 
 /**
  * Showcase of avatar sizes (small, default, large)

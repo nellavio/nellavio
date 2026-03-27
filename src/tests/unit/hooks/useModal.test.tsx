@@ -1,6 +1,6 @@
 import { act, render, renderHook, screen } from "@testing-library/react";
 
-import { useModal } from "../../../hooks/useModal";
+import { useModal } from "@/hooks/useModal";
 
 const ModalTestComponent = () => {
   const { isOpen, toggle, close, ref } = useModal();

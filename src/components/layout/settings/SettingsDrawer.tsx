@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { GithubIcon } from "../../../assets/icons/GithubIcon";
+import { GithubIcon } from "@/assets/icons/GithubIcon";
 import {
   Drawer,
   DrawerClose,
@@ -11,16 +11,17 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../../common/shadcn/drawer";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/drawer";
+import { Label } from "@/components/common/shadcn/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../common/shadcn/select";
-import { Switch } from "../../common/shadcn/switch";
+} from "@/components/common/shadcn/select";
+import { Switch } from "@/components/common/shadcn/switch";
+
 import { HomepageLayoutSection } from "./parts/HomepageLayoutSection";
 import { SidebarModeSection } from "./parts/SidebarModeSection";
 import { useSettings } from "./useSettings";

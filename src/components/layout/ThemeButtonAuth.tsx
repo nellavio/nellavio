@@ -3,8 +3,8 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { MoonIcon } from "../../assets/icons/MoonIcon";
-import { SunIcon } from "../../assets/icons/SunIcon";
+import { MoonIcon } from "@/assets/icons/MoonIcon";
+import { SunIcon } from "@/assets/icons/SunIcon";
 
 export const ThemeButtonAuth = () => {
   const { theme, setTheme } = useTheme();

@@ -11,13 +11,14 @@ import {
   YAxis,
 } from "recharts";
 
-import { useChartAnimation } from "../../../../hooks/useChartAnimation";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { useChartAnimationStore } from "../../../../store/chartAnimationStore";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
-import { BaseTooltip } from "../../../common/BaseTooltip";
-import { Card, CardContent } from "../../../common/shadcn/card";
-import { Progress } from "../../../common/shadcn/progress";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
+import { Card, CardContent } from "@/components/common/shadcn/card";
+import { Progress } from "@/components/common/shadcn/progress";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { useChartAnimationStore } from "@/store/chartAnimationStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import {
   ProductProfit,
   TotalProfitProps,

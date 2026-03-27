@@ -4,14 +4,13 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
-import { cn } from "../../../utils/classNames";
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 import {
   Command,
   CommandEmpty,
@@ -19,13 +18,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "../../common/shadcn/command";
-import { Label } from "../../common/shadcn/label";
+} from "@/components/common/shadcn/command";
+import { Label } from "@/components/common/shadcn/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../common/shadcn/popover";
+} from "@/components/common/shadcn/popover";
 import {
   Select,
   SelectContent,
@@ -34,7 +33,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../common/shadcn/select";
+} from "@/components/common/shadcn/select";
+import { cn } from "@/utils/classNames";
 
 const frameworks = [
   { value: "next.js", label: "Next.js" },

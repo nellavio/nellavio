@@ -3,13 +3,13 @@
 import { Loader2, MessageSquare, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Button } from "../../common/shadcn/button";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../common/shadcn/card";
+} from "@/components/common/shadcn/card";
 
 /**
  * Showcase of button variants (default, secondary, destructive, etc.),

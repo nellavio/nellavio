@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
-import { PhoneIcon } from "../../../assets/icons/PhoneIcon";
-import { Card, CardContent } from "../../common/shadcn/card";
+import { PhoneIcon } from "@/assets/icons/PhoneIcon";
+import { Card, CardContent } from "@/components/common/shadcn/card";
 
 type ProfileSidebarProps = {
   userData: {

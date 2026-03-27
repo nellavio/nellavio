@@ -3,10 +3,10 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import path from "path";
 
-import type { Notification } from "../../../components/layout/navbar/hooks/useNotificationsData";
-import { NOTIFICATIONS_QUERY } from "../../../queries/NotificationsQuery";
-import { client } from "../../../services/apolloClient";
-import { hasValidBackendUrl } from "../../../utils/presentationMode";
+import type { Notification } from "@/components/layout/navbar/hooks/useNotificationsData";
+import { NOTIFICATIONS_QUERY } from "@/queries/NotificationsQuery";
+import { client } from "@/services/apolloClient";
+import { hasValidBackendUrl } from "@/utils/presentationMode";
 
 /**
  * Notifications API route. Reads from backendBackup.json when no valid

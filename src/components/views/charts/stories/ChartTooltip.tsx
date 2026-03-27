@@ -1,4 +1,4 @@
-import { BaseTooltip } from "../../../common/BaseTooltip";
+import { BaseTooltip } from "@/components/common/BaseTooltip";
 
 interface TooltipPayloadItem {
   name?: string;

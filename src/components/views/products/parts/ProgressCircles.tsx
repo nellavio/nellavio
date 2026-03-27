@@ -2,8 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { BREAKPOINTS } from "../../../../styles/breakpoints";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import { ProgressCirclesProps } from "../types";
 
 interface CircularProgressProps {

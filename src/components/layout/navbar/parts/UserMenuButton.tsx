@@ -1,12 +1,13 @@
-import { ArrowDownSimpleIcon } from "../../../../assets/icons/ArrowDownSimpleIcon";
-import { UserIcon } from "../../../../assets/icons/UserIcon";
-import { useIsFirstRender } from "../../../../hooks/useIsFirstRender";
+import { ArrowDownSimpleIcon } from "@/assets/icons/ArrowDownSimpleIcon";
+import { UserIcon } from "@/assets/icons/UserIcon";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "../../../common/shadcn/tooltip";
-import { SettingsDrawer } from "../../settings/SettingsDrawer";
+} from "@/components/common/shadcn/tooltip";
+import { SettingsDrawer } from "@/components/layout/settings/SettingsDrawer";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+
 import { useUserMenu } from "../hooks/useUserMenu";
 import { NAVBAR_TOOLTIPS_ENABLED, UserButtonProps } from "../types";
 import { UserMenuDropdown } from "./UserMenuDropdown";

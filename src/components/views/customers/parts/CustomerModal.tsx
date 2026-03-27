@@ -1,16 +1,17 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { PhoneIcon } from "../../../../assets/icons/PhoneIcon";
-import { SpinnerIcon } from "../../../../assets/icons/SpinnerIcon";
-import { Button } from "../../../common/shadcn/button";
+import { PhoneIcon } from "@/assets/icons/PhoneIcon";
+import { SpinnerIcon } from "@/assets/icons/SpinnerIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import { CustomerModalProps } from "../types";
 
 export const CustomerModal = ({

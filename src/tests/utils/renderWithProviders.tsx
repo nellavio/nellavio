@@ -1,7 +1,7 @@
 import { render, RenderOptions } from "@testing-library/react";
 import { ReactElement } from "react";
 
-import { TooltipProvider } from "../../components/common/shadcn/tooltip";
+import { TooltipProvider } from "@/components/common/shadcn/tooltip";
 
 /**
  * Wraps component with minimal providers needed for testing.

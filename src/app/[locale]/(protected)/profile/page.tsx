@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import { PageWrapper } from "../../../../components/common/PageWrapper";
-import { ProfileView } from "../../../../components/views/profile/ProfileView";
+import { PageWrapper } from "@/components/common/PageWrapper";
+import { ProfileView } from "@/components/views/profile/ProfileView";
 
 const Profile = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;

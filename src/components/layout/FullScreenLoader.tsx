@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 
-import { APP_DEFAULTS } from "../../config/appDefaults";
+import { APP_DEFAULTS } from "@/config/appDefaults";
 
 export const LOADER_DURATION_MS = APP_DEFAULTS.loaderDurationMs;
 export const CHART_ANIMATION_DELAY_MS = 600;

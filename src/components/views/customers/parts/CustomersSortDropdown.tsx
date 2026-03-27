@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
-import { SortIcon } from "../../../../assets/icons/SortIcon";
-import { Button } from "../../../common/shadcn/button";
+import { SortIcon } from "@/assets/icons/SortIcon";
+import { Button } from "@/components/common/shadcn/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,8 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../../common/shadcn/dropdown-menu";
+} from "@/components/common/shadcn/dropdown-menu";
+
 import { SortDropdownProps } from "../types";
 
 export const CustomersSortDropdown = ({

@@ -9,14 +9,15 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../../../common/shadcn/pagination";
+} from "@/components/common/shadcn/pagination";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../common/shadcn/select";
+} from "@/components/common/shadcn/select";
+
 import { OrdersPaginationProps } from "../types";
 
 export const OrdersPagination = ({

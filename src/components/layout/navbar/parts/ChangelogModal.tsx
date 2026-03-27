@@ -1,10 +1,11 @@
-import { SpinnerIcon } from "../../../../assets/icons/SpinnerIcon";
+import { SpinnerIcon } from "@/assets/icons/SpinnerIcon";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "../../../common/shadcn/dialog";
+} from "@/components/common/shadcn/dialog";
+
 import { useChangelogModal } from "../hooks/useChangelogModal";
 import { useModalKeyboardScroll } from "../hooks/useModalKeyboardScroll";
 import { ChangelogModalProps } from "../types";

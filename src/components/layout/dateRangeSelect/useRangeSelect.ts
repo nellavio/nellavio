@@ -2,15 +2,13 @@ import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 import type DatePicker from "react-datepicker";
 
-import { useIsFirstRender } from "../../../hooks/useIsFirstRender";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
-import type {
-  CustomDateRange,
-  DateRangePreset,
-} from "../../../store/dateRangeStore";
-import { useDateRangeStore } from "../../../store/dateRangeStore";
-import { useToastStore } from "../../../store/toastStore";
-import { BREAKPOINTS } from "../../../styles/breakpoints";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import type { CustomDateRange, DateRangePreset } from "@/store/dateRangeStore";
+import { useDateRangeStore } from "@/store/dateRangeStore";
+import { useToastStore } from "@/store/toastStore";
+import { BREAKPOINTS } from "@/styles/breakpoints";
+
 import type { CustomDateRangeDialogProps } from "./types";
 
 /**
