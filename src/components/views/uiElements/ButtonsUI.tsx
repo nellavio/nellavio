@@ -1,8 +1,10 @@
 "use client";
 
-import { Loader2, MessageSquare, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { Loader2Icon } from "@/assets/icons/Loader2Icon";
+import { MessageSquareIcon } from "@/assets/icons/MessageSquareIcon";
+import { PlusIcon } from "@/assets/icons/PlusIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -46,7 +48,7 @@ export const ButtonsUI = () => {
               <Button size="default">Default</Button>
               <Button size="lg">Large</Button>
               <Button size="icon">
-                <Plus className="h-4 w-4" />
+                <PlusIcon className="h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -55,15 +57,15 @@ export const ButtonsUI = () => {
             <span className="text-sm font-medium">Buttons with Icons</span>
             <div className="flex flex-wrap gap-3">
               <Button>
-                <MessageSquare className="mr-2 h-4 w-4" />
+                <MessageSquareIcon className="mr-2 h-4 w-4" />
                 With Icon
               </Button>
               <Button variant="outline">
-                <Plus className="mr-2 h-4 w-4" />
+                <PlusIcon className="mr-2 h-4 w-4" />
                 Add Item
               </Button>
               <Button disabled>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
                 Loading
               </Button>
             </div>

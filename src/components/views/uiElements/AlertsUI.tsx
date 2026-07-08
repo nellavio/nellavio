@@ -1,8 +1,10 @@
 "use client";
 
-import { AlertCircle, CheckCircle, Info } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
+import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
+import { InfoIcon } from "@/assets/icons/InfoIcon";
 import {
   Alert,
   AlertDescription,
@@ -32,7 +34,7 @@ export const AlertsUI = () => {
       <CardContent>
         <div className="flex flex-col gap-6">
           <Alert>
-            <Info className="h-4 w-4" />
+            <InfoIcon className="h-4 w-4" />
             <AlertTitle>Information</AlertTitle>
             <AlertDescription>
               This is an informational alert using the default variant from
@@ -40,14 +42,14 @@ export const AlertsUI = () => {
             </AlertDescription>
           </Alert>
           <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
+            <AlertCircleIcon className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>
               This is a destructive alert indicating an error or warning.
             </AlertDescription>
           </Alert>
           <Alert variant="success">
-            <CheckCircle className="h-4 w-4" />
+            <CheckCircleIcon className="h-4 w-4" />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>
               Your changes have been saved successfully.

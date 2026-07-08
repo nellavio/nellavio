@@ -1,8 +1,9 @@
 "use client";
 
-import { ChevronRight, Home } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { ChevronRightIcon } from "@/assets/icons/ChevronRightIcon";
+import { HomeIcon } from "@/assets/icons/HomeIcon";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -38,17 +39,17 @@ export const BreadcrumbsUI = () => {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink disabledLink>
-                  <Home className="h-4 w-4" />
+                  <HomeIcon className="h-4 w-4" />
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator>
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRightIcon className="h-4 w-4" />
               </BreadcrumbSeparator>
               <BreadcrumbItem>
                 <BreadcrumbLink disabledLink>Components</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator>
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRightIcon className="h-4 w-4" />
               </BreadcrumbSeparator>
               <BreadcrumbItem>
                 <BreadcrumbPage>UI Elements</BreadcrumbPage>

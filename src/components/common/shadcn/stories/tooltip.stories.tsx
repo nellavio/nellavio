@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { HelpCircle } from "lucide-react";
+
+import { HelpCircleIcon } from "@/assets/icons/HelpCircleIcon";
 
 import { Button } from "../button";
 import {
@@ -83,7 +84,7 @@ export const WithIcon: Story = {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button variant="outline" size="icon" aria-label="Help">
-              <HelpCircle className="h-4 w-4" />
+              <HelpCircleIcon className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>

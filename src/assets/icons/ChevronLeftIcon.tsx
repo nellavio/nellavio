@@ -1,21 +1,23 @@
 import * as React from "react";
 
-export const CheckIcon = ({
-  width = 25,
-  height = 25,
+export const ChevronLeftIcon = ({
+  width = 24,
+  height = 24,
   ...props
 }: React.SVGProps<SVGSVGElement>) => (
   <svg
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     width={width}
     height={height}
     {...props}
   >
-    <path
-      d="M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z"
-      fill="currentColor"
-    ></path>
+    <path d="m15 18-6-6 6-6" />
   </svg>
 );

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Plus } from "lucide-react";
+
+import { PlusIcon } from "@/assets/icons/PlusIcon";
 
 import { Button } from "../button";
 
@@ -114,7 +115,7 @@ export const Large: Story = {
 };
 
 export const WithIcon: Story = {
-  args: { icon: <Plus className="h-4 w-4" />, children: "Add Item" },
+  args: { icon: <PlusIcon className="h-4 w-4" />, children: "Add Item" },
 };
 
 export const Loading: Story = {

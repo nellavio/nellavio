@@ -1,8 +1,10 @@
 "use client";
 
-import { Mail, Settings, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { SettingsIcon } from "@/assets/icons/SettingsIcon";
+import { UserIcon } from "@/assets/icons/UserIcon";
 import {
   Card,
   CardContent,
@@ -43,15 +45,15 @@ export const CommandUI = () => {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>
-                <Mail className="mr-2 h-4 w-4" />
+                <MailIcon className="mr-2 h-4 w-4" />
                 <span>Email</span>
               </CommandItem>
               <CommandItem>
-                <User className="mr-2 h-4 w-4" />
+                <UserIcon className="mr-2 h-4 w-4" />
                 <span>Profile</span>
               </CommandItem>
               <CommandItem>
-                <Settings className="mr-2 h-4 w-4" />
+                <SettingsIcon className="mr-2 h-4 w-4" />
                 <span>Settings</span>
               </CommandItem>
             </CommandGroup>
