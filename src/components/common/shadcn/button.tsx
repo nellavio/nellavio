@@ -71,50 +71,45 @@ export interface ButtonProps
  * <Button icon={<PhoneIcon />}>Call</Button>
  * ```
  */
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      loading = false,
-      icon,
-      children,
-      disabled,
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        tabIndex={0}
-        {...props}
-        disabled={disabled || loading}
-        aria-busy={loading || undefined}
-      >
-        {asChild ? (
-          children
-        ) : loading ? (
-          <>
-            <div className="flex items-center justify-center">
-              <SpinnerIcon width={36} height={36} />
-            </div>
-            <span className="sr-only">{children}</span>
-          </>
-        ) : (
-          <>
-            {icon && <div className="mr-2">{icon}</div>}
-            {children}
-          </>
-        )}
-      </Comp>
-    );
-  },
-);
-Button.displayName = "Button";
+const Button = ({
+  className,
+  variant,
+  size,
+  asChild = false,
+  loading = false,
+  icon,
+  children,
+  disabled,
+  ref,
+  ...props
+}: ButtonProps & { ref?: React.Ref<HTMLButtonElement> }) => {
+  const Comp = asChild ? Slot : "button";
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      tabIndex={0}
+      {...props}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
+    >
+      {asChild ? (
+        children
+      ) : loading ? (
+        <>
+          <div className="flex items-center justify-center">
+            <SpinnerIcon width={36} height={36} />
+          </div>
+          <span className="sr-only">{children}</span>
+        </>
+      ) : (
+        <>
+          {icon && <div className="mr-2">{icon}</div>}
+          {children}
+        </>
+      )}
+    </Comp>
+  );
+};
 
 export { Button, buttonVariants };

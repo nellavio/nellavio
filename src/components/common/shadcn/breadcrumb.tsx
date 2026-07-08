@@ -15,13 +15,13 @@ import { cn } from "@/utils/classNames";
  * @param {React.ReactNode} [separator] - Custom separator element between items
  * @param {React.Ref} ref - Forwarded ref to the nav element
  */
-const Breadcrumb = React.forwardRef<
-  HTMLElement,
-  React.ComponentPropsWithoutRef<"nav"> & {
-    separator?: React.ReactNode;
-  }
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
-Breadcrumb.displayName = "Breadcrumb";
+const Breadcrumb = ({
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<"nav"> & {
+  separator?: React.ReactNode;
+  ref?: React.Ref<HTMLElement>;
+}) => <nav ref={ref} aria-label="breadcrumb" {...props} />;
 
 /**
  * Ordered list container for breadcrumb items.
@@ -32,10 +32,13 @@ Breadcrumb.displayName = "Breadcrumb";
  * @param {React.ReactNode} children - Breadcrumb items and separators
  * @param {React.Ref} ref - Forwarded ref to the ol element
  */
-const BreadcrumbList = React.forwardRef<
-  HTMLOListElement,
-  React.ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
+const BreadcrumbList = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<"ol"> & {
+  ref?: React.Ref<HTMLOListElement>;
+}) => (
   <ol
     ref={ref}
     className={cn(
@@ -44,8 +47,7 @@ const BreadcrumbList = React.forwardRef<
     )}
     {...props}
   />
-));
-BreadcrumbList.displayName = "BreadcrumbList";
+);
 
 /**
  * Individual breadcrumb item wrapper.
@@ -63,17 +65,19 @@ BreadcrumbList.displayName = "BreadcrumbList";
  * </BreadcrumbItem>
  * ```
  */
-const BreadcrumbItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
+const BreadcrumbItem = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<"li"> & {
+  ref?: React.Ref<HTMLLIElement>;
+}) => (
   <li
     ref={ref}
     className={cn("inline-flex items-center gap-1.5", className)}
     {...props}
   />
-));
-BreadcrumbItem.displayName = "BreadcrumbItem";
+);
 
 /**
  * Clickable link for navigating between breadcrumb levels.
@@ -94,13 +98,17 @@ BreadcrumbItem.displayName = "BreadcrumbItem";
  * </BreadcrumbLink>
  * ```
  */
-const BreadcrumbLink = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"a"> & {
-    asChild?: boolean;
-    disabledLink?: boolean;
-  }
->(({ asChild, disabledLink, className, ...props }, ref) => {
+const BreadcrumbLink = ({
+  asChild,
+  disabledLink,
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<"a"> & {
+  asChild?: boolean;
+  disabledLink?: boolean;
+  ref?: React.Ref<HTMLAnchorElement>;
+}) => {
   const Comp = disabledLink ? "span" : asChild ? Slot : "a";
 
   return (
@@ -114,8 +122,7 @@ const BreadcrumbLink = React.forwardRef<
       {...props}
     />
   );
-});
-BreadcrumbLink.displayName = "BreadcrumbLink";
+};
 
 /**
  * Current page indicator (non-clickable).
@@ -134,10 +141,13 @@ BreadcrumbLink.displayName = "BreadcrumbLink";
  * </BreadcrumbItem>
  * ```
  */
-const BreadcrumbPage = React.forwardRef<
-  HTMLSpanElement,
-  React.ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => (
+const BreadcrumbPage = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<"span"> & {
+  ref?: React.Ref<HTMLSpanElement>;
+}) => (
   <span
     ref={ref}
     role="link"
@@ -146,8 +156,7 @@ const BreadcrumbPage = React.forwardRef<
     className={cn("font-normal text-primaryText", className)}
     {...props}
   />
-));
-BreadcrumbPage.displayName = "BreadcrumbPage";
+);
 
 /**
  * Visual separator between breadcrumb items.

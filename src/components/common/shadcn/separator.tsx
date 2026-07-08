@@ -33,35 +33,29 @@ interface SeparatorProps extends React.ComponentPropsWithoutRef<
   color?: string;
 }
 
-const Separator = React.forwardRef<
-  React.ElementRef<typeof SeparatorPrimitive.Root>,
-  SeparatorProps
->(
-  (
-    {
+const Separator = ({
+  className,
+  orientation = "horizontal",
+  decorative = true,
+  color,
+  ref,
+  ...props
+}: SeparatorProps & {
+  ref?: React.Ref<React.ComponentRef<typeof SeparatorPrimitive.Root>>;
+}) => (
+  <SeparatorPrimitive.Root
+    ref={ref}
+    decorative={decorative}
+    orientation={orientation}
+    className={cn(
+      "shrink-0",
+      !color && "bg-inputBorder",
+      orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
       className,
-      orientation = "horizontal",
-      decorative = true,
-      color,
-      ...props
-    },
-    ref,
-  ) => (
-    <SeparatorPrimitive.Root
-      ref={ref}
-      decorative={decorative}
-      orientation={orientation}
-      className={cn(
-        "shrink-0",
-        !color && "bg-inputBorder",
-        orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
-        className,
-      )}
-      style={color ? { backgroundColor: color } : undefined}
-      {...props}
-    />
-  ),
+    )}
+    style={color ? { backgroundColor: color } : undefined}
+    {...props}
+  />
 );
-Separator.displayName = SeparatorPrimitive.Root.displayName;
 
 export { Separator };

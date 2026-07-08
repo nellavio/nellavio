@@ -28,20 +28,21 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
  * />
  * ```
  */
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <textarea
-        className={cn(
-          "flex min-h-20 w-full rounded-md border border-inputBorder bg-inputBg px-3 py-2 text-sm transition placeholder:text-secondaryText hover:border-inputBorderHover disabled:cursor-not-allowed disabled:opacity-50",
-          className,
-        )}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
-Textarea.displayName = "Textarea";
+const Textarea = ({
+  className,
+  ref,
+  ...props
+}: TextareaProps & { ref?: React.Ref<HTMLTextAreaElement> }) => {
+  return (
+    <textarea
+      className={cn(
+        "flex min-h-20 w-full rounded-md border border-inputBorder bg-inputBg px-3 py-2 text-sm transition placeholder:text-secondaryText hover:border-inputBorderHover disabled:cursor-not-allowed disabled:opacity-50",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    />
+  );
+};
 
 export { Textarea };

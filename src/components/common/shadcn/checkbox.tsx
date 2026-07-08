@@ -24,10 +24,14 @@ import { cn } from "@/utils/classNames";
  * <Label htmlFor="terms">Accept terms</Label>
  * ```
  */
-const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, onKeyDown, ...props }, ref) => (
+const Checkbox = ({
+  className,
+  onKeyDown,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
+  ref?: React.Ref<React.ComponentRef<typeof CheckboxPrimitive.Root>>;
+}) => (
   <CheckboxPrimitive.Root
     ref={ref}
     tabIndex={0}
@@ -55,7 +59,6 @@ const Checkbox = React.forwardRef<
       <Check className="h-4.5 w-4.5" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
-));
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
+);
 
 export { Checkbox };

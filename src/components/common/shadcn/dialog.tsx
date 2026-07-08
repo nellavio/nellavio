@@ -52,10 +52,13 @@ const DialogClose = DialogPrimitive.Close;
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.Ref} ref - Forwarded ref to the overlay element
  */
-const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
+const DialogOverlay = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> & {
+  ref?: React.Ref<React.ComponentRef<typeof DialogPrimitive.Overlay>>;
+}) => (
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
@@ -64,8 +67,7 @@ const DialogOverlay = React.forwardRef<
     )}
     {...props}
   />
-));
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+);
 
 /**
  * Main dialog content container with animations and close button.
@@ -86,10 +88,15 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
  * </DialogContent>
  * ```
  */
-const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, onOpenAutoFocus, ...props }, ref) => {
+const DialogContent = ({
+  className,
+  children,
+  onOpenAutoFocus,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+  ref?: React.Ref<React.ComponentRef<typeof DialogPrimitive.Content>>;
+}) => {
   const localRef = React.useRef<HTMLDivElement>(null);
 
   const handleOpenAutoFocus = (e: Event) => {
@@ -107,8 +114,12 @@ const DialogContent = React.forwardRef<
       <DialogPrimitive.Content
         ref={(node: HTMLDivElement | null) => {
           localRef.current = node;
-          if (typeof ref === "function") ref(node);
-          else if (ref) ref.current = node;
+          if (typeof ref === "function") {
+            ref(node);
+          } else if (ref && "current" in ref) {
+            (ref as React.MutableRefObject<HTMLDivElement | null>).current =
+              node;
+          }
         }}
         tabIndex={-1}
         className={cn(
@@ -129,8 +140,7 @@ const DialogContent = React.forwardRef<
       </DialogPrimitive.Content>
     </DialogPortal>
   );
-});
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+};
 
 /**
  * Header section for dialog title and description.
@@ -186,10 +196,13 @@ DialogFooter.displayName = "DialogFooter";
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.Ref} ref - Forwarded ref to the title element
  */
-const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
+const DialogTitle = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> & {
+  ref?: React.Ref<React.ComponentRef<typeof DialogPrimitive.Title>>;
+}) => (
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
@@ -198,8 +211,7 @@ const DialogTitle = React.forwardRef<
     )}
     {...props}
   />
-));
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
+);
 
 /**
  * Descriptive text providing context for the dialog.
@@ -208,17 +220,19 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.Ref} ref - Forwarded ref to the description element
  */
-const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
+const DialogDescription = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description> & {
+  ref?: React.Ref<React.ComponentRef<typeof DialogPrimitive.Description>>;
+}) => (
   <DialogPrimitive.Description
     ref={ref}
     className={cn("text-base text-primaryText", className)}
     {...props}
   />
-));
-DialogDescription.displayName = DialogPrimitive.Description.displayName;
+);
 
 export {
   Dialog,

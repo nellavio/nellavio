@@ -148,10 +148,13 @@ const FormItemContext = React.createContext<FormItemContextValue>(
  * </FormItem>
  * ```
  */
-const FormItem = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+const FormItem = ({
+  className,
+  ref,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   const id = React.useId();
 
   return (
@@ -159,8 +162,7 @@ const FormItem = React.forwardRef<
       <div ref={ref} className={cn("space-y-2", className)} {...props} />
     </FormItemContext.Provider>
   );
-});
-FormItem.displayName = "FormItem";
+};
 
 /**
  * Label component for form fields with error state styling.
@@ -175,10 +177,13 @@ FormItem.displayName = "FormItem";
  * <FormLabel>Email Address</FormLabel>
  * ```
  */
-const FormLabel = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
->(({ className, ...props }, ref) => {
+const FormLabel = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & {
+  ref?: React.Ref<React.ComponentRef<typeof LabelPrimitive.Root>>;
+}) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -189,8 +194,7 @@ const FormLabel = React.forwardRef<
       {...props}
     />
   );
-});
-FormLabel.displayName = "FormLabel";
+};
 
 /**
  * Wrapper for form control elements (inputs, selects, etc.).
@@ -206,10 +210,12 @@ FormLabel.displayName = "FormLabel";
  * </FormControl>
  * ```
  */
-const FormControl = React.forwardRef<
-  React.ElementRef<typeof Slot>,
-  React.ComponentPropsWithoutRef<typeof Slot>
->(({ ...props }, ref) => {
+const FormControl = ({
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Slot> & {
+  ref?: React.Ref<React.ComponentRef<typeof Slot>>;
+}) => {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 
@@ -226,8 +232,7 @@ const FormControl = React.forwardRef<
       {...props}
     />
   );
-});
-FormControl.displayName = "FormControl";
+};
 
 /**
  * Descriptive text for form fields providing additional context or instructions.
@@ -244,10 +249,13 @@ FormControl.displayName = "FormControl";
  * </FormDescription>
  * ```
  */
-const FormDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => {
+const FormDescription = ({
+  className,
+  ref,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement> & {
+  ref?: React.Ref<HTMLParagraphElement>;
+}) => {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -258,8 +266,7 @@ const FormDescription = React.forwardRef<
       {...props}
     />
   );
-});
-FormDescription.displayName = "FormDescription";
+};
 
 /**
  * Displays validation error messages for form fields.
@@ -276,10 +283,14 @@ FormDescription.displayName = "FormDescription";
  * <FormMessage />
  * ```
  */
-const FormMessage = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, children, ...props }, ref) => {
+const FormMessage = ({
+  className,
+  children,
+  ref,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement> & {
+  ref?: React.Ref<HTMLParagraphElement>;
+}) => {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message) : children;
 
@@ -295,8 +306,7 @@ const FormMessage = React.forwardRef<
       {...props}
     />
   );
-});
-FormMessage.displayName = "FormMessage";
+};
 
 export {
   Form,

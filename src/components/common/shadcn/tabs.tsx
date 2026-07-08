@@ -37,12 +37,15 @@ const Tabs = TabsPrimitive.Root;
  * </TabsList>
  * ```
  */
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
-    variant?: "default" | "line";
-  }
->(({ className, variant = "default", ...props }, ref) => (
+const TabsList = ({
+  className,
+  variant = "default",
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
+  variant?: "default" | "line";
+  ref?: React.Ref<React.ComponentRef<typeof TabsPrimitive.List>>;
+}) => (
   <TabsPrimitive.List
     ref={ref}
     className={cn(
@@ -55,8 +58,7 @@ const TabsList = React.forwardRef<
     )}
     {...props}
   />
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+);
 
 /**
  * Individual tab button that activates its corresponding content panel.
@@ -74,12 +76,15 @@ TabsList.displayName = TabsPrimitive.List.displayName;
  * </TabsTrigger>
  * ```
  */
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & {
-    variant?: "default" | "line";
-  }
->(({ className, variant = "default", ...props }, ref) => (
+const TabsTrigger = ({
+  className,
+  variant = "default",
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & {
+  variant?: "default" | "line";
+  ref?: React.Ref<React.ComponentRef<typeof TabsPrimitive.Trigger>>;
+}) => (
   <TabsPrimitive.Trigger
     ref={ref}
     tabIndex={0}
@@ -93,8 +98,7 @@ const TabsTrigger = React.forwardRef<
     )}
     {...props}
   />
-));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+);
 
 /**
  * Content panel that displays when its corresponding tab trigger is active.
@@ -111,16 +115,18 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
  * </TabsContent>
  * ```
  */
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+const TabsContent = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> & {
+  ref?: React.Ref<React.ComponentRef<typeof TabsPrimitive.Content>>;
+}) => (
   <TabsPrimitive.Content
     ref={ref}
     className={cn("mt-2", className)}
     {...props}
   />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+);
 
 export { Tabs, TabsContent, TabsList, TabsTrigger };

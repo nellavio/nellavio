@@ -24,10 +24,13 @@ import { cn } from "@/utils/classNames";
  * />
  * ```
  */
-const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => {
+const Slider = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> & {
+  ref?: React.Ref<React.ComponentRef<typeof SliderPrimitive.Root>>;
+}) => {
   const initialValue = Array.isArray(props.defaultValue)
     ? props.defaultValue
     : [props.defaultValue ?? 0];
@@ -59,7 +62,6 @@ const Slider = React.forwardRef<
       ))}
     </SliderPrimitive.Root>
   );
-});
-Slider.displayName = SliderPrimitive.Root.displayName;
+};
 
 export { Slider };
