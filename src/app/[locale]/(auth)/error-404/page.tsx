@@ -8,7 +8,6 @@ const Error404 = () => {
     <ErrorPageLayout
       code="404"
       titleKey="error404.title"
-      descriptionKey="error404.description"
       icon={<SearchXIcon />}
     />
   );

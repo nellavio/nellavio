@@ -16,7 +16,7 @@ const Customers = async ({
   const customersData = await getData("customers");
 
   return (
-    <PageWrapper pageName="Customers" dataForExport={customersData}>
+    <PageWrapper pageName="Customers">
       <CustomersView customers={customersData} />
     </PageWrapper>
   );

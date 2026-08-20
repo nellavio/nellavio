@@ -56,13 +56,13 @@ export const menuConfig: MenuConfigEntry[] = [
     Icon: AnalyticsIcon,
     path: "/analytics",
     sections: [
-      { id: "assetPerformance", titleKey: "assetPerformance" },
-      { id: "todaysSales", titleKey: "todaysSales" },
-      { id: "totalProfit", titleKey: "totalProfit" },
+      { id: "todaysSalesWide", titleKey: "todaysSales" },
       { id: "revenueTrends", titleKey: "revenueTrends" },
-      { id: "yearOverview", titleKey: "yearOverview" },
+      { id: "assetDonut", titleKey: "assetPerformance" },
+      { id: "latestOrders", titleKey: "latestOrders" },
+      { id: "topCustomers", titleKey: "topCustomers" },
       { id: "marketMetrics", titleKey: "marketMetrics" },
-      { id: "revenueDistribution", titleKey: "revenueDistribution" },
+      { id: "yearOverview", titleKey: "yearOverview" },
     ],
   },
   {

@@ -28,15 +28,12 @@ const Error = ({
       >
         <ServerCrashIcon />
       </div>
-      <h1 className="text-[7rem] xsm:text-[9rem] font-bold text-primaryText tracking-tight leading-none mb-6">
+      <h1 className="text-[6.3rem] xsm:text-[8.1rem] font-bold text-primaryText tracking-tight leading-none mb-6">
         500
       </h1>
-      <h2 className="text-2xl sm:text-3xl font-semibold text-primaryText mb-3 text-center">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-primaryText mb-10 text-center">
         {t("unexpectedError.title")}
       </h2>
-      <p className="text-base text-secondaryText text-center leading-relaxed mb-10 max-w-72 xsm:max-w-sm">
-        {t("unexpectedError.description")}
-      </p>
       <div className="flex gap-3">
         <Button
           variant="outline"

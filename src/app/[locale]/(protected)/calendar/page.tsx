@@ -16,7 +16,7 @@ export const Calendar = async ({
   const eventsData = await getData("events");
 
   return (
-    <PageWrapper pageName="Calendar" dataForExport={eventsData}>
+    <PageWrapper pageName="Calendar">
       <CalendarView calendarEvents={eventsData} />
     </PageWrapper>
   );

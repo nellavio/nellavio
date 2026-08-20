@@ -153,25 +153,68 @@
   },
   "analytics": {
     "assetPerformance": {
-      "title": "Wydajność aktywów"
+      "title": "Wydajność aktywów",
+      "totalValue": "Łącznie",
+      "sales": "Sprzedaż"
     },
     "todaySales": {
-      "title": "Dzisiejsza sprzedaż"
-    },
-    "totalProfit": {
-      "title": "Całkowity zysk"
+      "title": "Dzisiejsza sprzedaż",
+      "today": "Dzisiaj",
+      "yesterday": "Wczoraj",
+      "average": "Średnia",
+      "vsYesterday": "vs wczoraj",
+      "vsAverage": "vs średnia",
+      "comparisonLabel": "Porównanie",
+      "breakdown": "Podział sprzedaży",
+      "onlineStore": "Sklep online",
+      "mobileApp": "Aplikacja mobilna",
+      "inStore": "Sprzedaż stacjonarna",
+      "noteUp": "Sprzedaż wzrosła o {change}% {period}. Świetnie!",
+      "noteDown": "Sprzedaż spadła o {change}% {period}. Świetnie!",
+      "momentum": "Trzymaj tempo."
     },
     "revenueTrends": {
-      "title": "Trendy przychodów"
+      "title": "Trendy przychodów",
+      "sales": "Sprzedaż",
+      "profit": "Zysk"
     },
     "yearOverview": {
-      "title": "Przegląd roczny"
+      "title": "Przegląd roczny",
+      "tableCaption": "Roczny przegląd przychodów",
+      "month": "Miesiąc",
+      "phones": "Telefony",
+      "laptops": "Laptopy"
     },
     "marketMetrics": {
-      "title": "Wskażniki rynkowe"
+      "title": "Wskaźniki rynkowe",
+      "metrics": {
+        "salesVolume": "Wolumen sprzedaży",
+        "revenue": "Przychód",
+        "growthRate": "Tempo wzrostu",
+        "marketShare": "Udział w rynku",
+        "customerRating": "Ocena klientów",
+        "profitMargin": "Marża zysku"
+      }
     },
-    "revenueDistribution": {
-      "title": "Rozkład przychodów"
+    "recentTransactions": {
+      "titleAlt": "Ostatnie zamówienia",
+      "viewAll": "Zobacz wszystkie transakcje",
+      "completed": "Zrealizowane",
+      "pending": "Oczekujące"
+    },
+    "topCustomers": {
+      "title": "Najlepsi klienci",
+      "viewAll": "Zobacz wszystkich klientów",
+      "vip": "VIP",
+      "pro": "Pro",
+      "new": "Nowy"
+    },
+    "kpis": {
+      "sinceLastWeek": "Od zeszłego tygodnia",
+      "sales": "Sprzedaż",
+      "earnings": "Przychody",
+      "visitors": "Odwiedzający",
+      "orders": "Zamówienia"
     }
   },
   "calendar": {
@@ -268,11 +311,11 @@
         "customersCard": "Klienci",
         "assetPerformance": "Wydajność aktywów",
         "todaysSales": "Dzisiejsza sprzedaż",
-        "totalProfit": "Całkowity zysk",
+        "latestOrders": "Ostatnie zamówienia",
+        "topCustomers": "Najlepsi klienci",
         "revenueTrends": "Trendy przychodów",
         "yearOverview": "Przegląd roczny",
-        "marketMetrics": "Wskażniki rynkowe",
-        "revenueDistribution": "Rozkład przychodów",
+        "marketMetrics": "Wskaźniki rynkowe",
         "customers": "Klienci",
         "calendar": "Kalendarz",
         "orders": "Zamówienia",
@@ -614,20 +657,16 @@
     "backToHomepage": "Powrót do strony głównej",
     "tryAgain": "Spróbuj ponownie",
     "unexpectedError": {
-      "title": "Coś poszło nie tak",
-      "description": "Wystąpił nieoczekiwany błąd podczas ładowania tej strony."
+      "title": "Coś poszło nie tak"
     },
     "error401": {
-      "title": "Brak dostępu",
-      "description": "Nie masz uprawnień do wyświetlenia tej strony."
+      "title": "Brak dostępu"
     },
     "error404": {
-      "title": "Strona nie znaleziona",
-      "description": "Strona, której szukasz, mogła zostać przeniesiona lub usunięta."
+      "title": "Strona nie znaleziona"
     },
     "error500": {
-      "title": "Błąd serwera",
-      "description": "Coś poszło nie tak po naszej stronie podczas przetwarzania żądania."
+      "title": "Błąd serwera"
     }
   }
 }

@@ -22,15 +22,6 @@ export const ANALYTICS_QUERY = gql`
         average
         yesterday
       }
-      totalProfitProducts {
-        title
-        value
-        metric
-      }
-      totalProfitMonths {
-        month
-        sales
-      }
       yearOverview {
         name
         phones
@@ -43,10 +34,31 @@ export const ANALYTICS_QUERY = gql`
         laptops
         maxValue
       }
-      revenueDistribution {
+      kpis {
+        key
+        value
+        change
+        format
+      }
+      recentTransactions {
+        orderId
+        product
         category
-        inStore
-        online
+        amount
+        status
+      }
+      topCustomers {
+        name
+        handle
+        amount
+        tier
+      }
+      salesChannels {
+        key
+        share
+      }
+      summary {
+        todaySalesTotal
       }
     }
   }

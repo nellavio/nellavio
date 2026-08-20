@@ -5,12 +5,7 @@ import { LockIcon } from "@/components/views/errorPages/icons/LockIcon";
 
 const Error401 = () => {
   return (
-    <ErrorPageLayout
-      code="401"
-      titleKey="error401.title"
-      descriptionKey="error401.description"
-      icon={<LockIcon />}
-    />
+    <ErrorPageLayout code="401" titleKey="error401.title" icon={<LockIcon />} />
   );
 };
 

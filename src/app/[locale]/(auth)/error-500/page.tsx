@@ -8,7 +8,6 @@ const Error500 = () => {
     <ErrorPageLayout
       code="500"
       titleKey="error500.title"
-      descriptionKey="error500.description"
       icon={<ServerCrashIcon />}
     />
   );

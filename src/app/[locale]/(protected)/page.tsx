@@ -12,7 +12,7 @@ const Home = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const homepageData = await getData("homepage");
 
   return (
-    <PageWrapper pageName="Dashboard" dataForExport={homepageData}>
+    <PageWrapper pageName="Dashboard">
       <HomepageView homepageData={homepageData} />
     </PageWrapper>
   );

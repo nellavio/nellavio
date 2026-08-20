@@ -27,6 +27,10 @@
   --color-percentageBadgeRedText: rgb(180, 40, 60);
   --color-percentageBadgeGreenTextAccented: rgb(20, 120, 80);
   --color-percentageBadgeRedTextAccented: rgb(180, 40, 60);
+  --color-percentageBadgeGreenBg: rgb(35, 140, 99, 0.1);
+  --color-percentageBadgeRedBg: rgb(213, 61, 79, 0.1);
+  --color-percentageBadgeGreenBorder: rgb(35, 140, 99, 0.3);
+  --color-percentageBadgeRedBorder: rgb(213, 61, 79, 0.3);
   --color-destructiveAlertText: rgb(0, 0, 0, 0.9);
   --color-destructiveAlertIcon: rgb(220, 38, 38);
   --color-successAlertText: rgb(0, 0, 0, 0.9);
@@ -49,13 +53,20 @@
   --color-settingsDrawerDivider: rgb(0, 0, 0, 0.08);
   --color-fourCardIconGreen: rgb(35, 140, 110);
   --color-fourCardIconBlue: rgb(60, 120, 180);
+  --color-kpiIconGreen: rgb(35, 140, 110);
+  --color-kpiIconBlue: rgb(60, 120, 180);
+  --color-kpiIconPurple: rgb(124, 92, 196);
+  --color-kpiIconAmber: rgb(190, 130, 40);
+  --color-customerTierVip: rgb(190, 130, 40);
+  --color-customerTierPro: rgb(60, 120, 180);
+  --color-customerTierNew: rgb(35, 140, 110);
+  --color-salesBreakdownIcon: rgb(60, 160, 180);
 
   /* Backgrounds */
   --color-primaryBg: white;
   --color-secondaryBg: rgb(247, 247, 247);
   --color-authPageBg: rgb(219, 231, 255);
   --color-errorPageBg: rgb(255, 255, 255);
-  --color-assetPerformanceBarBg: rgb(235, 235, 235);
   --color-tabsBg: rgb(250, 250, 250);
   --color-tabListBg: rgb(240, 240, 245);
   --color-tabActiveBg: rgb(220, 220, 226);
@@ -96,9 +107,11 @@
   --color-chartPrimaryInverted: rgb(125, 214, 230);
   --color-chartSecondaryFill: rgb(125, 214, 230);
   --color-chartSecondaryDisabled: rgb(0, 0, 0, 0.1);
-  --color-chartMutedFill: rgb(125, 214, 230);
   --color-chartSecondaryInverted: rgb(118, 167, 247);
   --color-chartSecondaryAccent: rgb(83, 133, 198);
+  --color-chartTertiaryFill: rgb(126, 118, 219);
+  --color-chartQuaternaryFill: rgb(32, 148, 130);
+  --color-chartQuinaryFill: rgb(214, 78, 90);
   --color-loaderBg: white;
   --color-loaderCircleBg: rgb(60, 120, 220);
   --color-selectBg: rgb(255, 255, 255);
@@ -133,6 +146,8 @@
   --color-chipBg: white;
   --color-chipBgHover: rgb(61, 160, 208, 0.1);
   --color-mutedBg: rgb(247, 247, 247);
+  --color-salesNoteBg: rgb(0, 0, 0, 0.04);
+  --color-salesBreakdownIconBg: rgb(60, 160, 180, 0.13);
   --color-errorBg: rgb(195, 70, 70);
   --color-errorBgHover: rgb(175, 55, 55);
   --color-infoAlertBg: white;
@@ -164,6 +179,7 @@
   --color-roleBannedBadgeBg: rgb(254, 242, 242);
   --color-roleSelectBg: rgb(255, 255, 255);
   --color-roleSelectBgHover: rgb(249, 250, 251);
+  --color-dateRangeButtonBg: rgb(255, 255, 255, 0);
 
   /* Borders */
   --color-mainBorder: rgb(0, 0, 0, 0.12);
@@ -194,7 +210,7 @@
   --color-chartVerticalLine: rgb(0, 0, 0, 0.25);
   --color-chartCursorBg: rgb(0, 0, 0, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
-  --color-successAlertBorder: rgb(22, 163, 74, 0.5);
+  --color-successAlertBorder: rgb(0, 0, 0, 0.15);
   --color-authThemeButtonBorder: rgb(0, 0, 0, 0.12);
   --color-authThemeButtonBorderHover: rgb(0, 0, 0, 0.25);
   --color-roleAdminBadgeBorder: rgb(191, 219, 254);

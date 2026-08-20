@@ -20,12 +20,9 @@ const NotFound = () => {
       <h1 className="text-[7rem] xsm:text-[9rem] font-bold text-primaryText tracking-tight leading-none mb-6">
         404
       </h1>
-      <h2 className="text-2xl sm:text-3xl font-semibold text-primaryText mb-3 text-center">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-primaryText mb-10 text-center">
         {t("error404.title")}
       </h2>
-      <p className="text-base text-secondaryText text-center leading-relaxed mb-10 max-w-72 xsm:max-w-sm">
-        {t("error404.description")}
-      </p>
       <Button asChild className="rounded-xl px-6 py-3 h-auto">
         <Link href="/">{t("backToHomepage")}</Link>
       </Button>

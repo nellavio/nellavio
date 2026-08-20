@@ -12,7 +12,7 @@ const Orders = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const ordersData = await getData("orders");
 
   return (
-    <PageWrapper pageName="Orders" dataForExport={ordersData}>
+    <PageWrapper pageName="Orders">
       <OrdersView ordersData={ordersData} />
     </PageWrapper>
   );

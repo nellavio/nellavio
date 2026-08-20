@@ -16,7 +16,7 @@ const Products = async ({
   const productsData = await getData("products");
 
   return (
-    <PageWrapper pageName="Products" dataForExport={productsData}>
+    <PageWrapper pageName="Products">
       <ProductsView products={productsData} />
     </PageWrapper>
   );

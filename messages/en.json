@@ -153,25 +153,68 @@
   },
   "analytics": {
     "assetPerformance": {
-      "title": "Asset performance"
+      "title": "Asset performance",
+      "totalValue": "Total value",
+      "sales": "Sales"
     },
     "todaySales": {
-      "title": "Today's sales"
-    },
-    "totalProfit": {
-      "title": "Total profit"
+      "title": "Today's sales",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "average": "Average",
+      "vsYesterday": "vs yesterday",
+      "vsAverage": "vs average",
+      "comparisonLabel": "Comparison",
+      "breakdown": "Sales breakdown",
+      "onlineStore": "Online Store",
+      "mobileApp": "Mobile App",
+      "inStore": "In-store",
+      "noteUp": "Sales are up {change}% {period}. Great job!",
+      "noteDown": "Sales are down {change}% {period}. Great job!",
+      "momentum": "Keep up the momentum."
     },
     "revenueTrends": {
-      "title": "Revenue trends"
+      "title": "Revenue trends",
+      "sales": "Sales",
+      "profit": "Profit"
     },
     "yearOverview": {
-      "title": "Year overview"
+      "title": "Year overview",
+      "tableCaption": "Yearly revenue overview",
+      "month": "Month",
+      "phones": "Phones",
+      "laptops": "Laptops"
     },
     "marketMetrics": {
-      "title": "Market metrics"
+      "title": "Market metrics",
+      "metrics": {
+        "salesVolume": "Sales Volume",
+        "revenue": "Revenue",
+        "growthRate": "Growth Rate",
+        "marketShare": "Market Share",
+        "customerRating": "Customer Rating",
+        "profitMargin": "Profit Margin"
+      }
     },
-    "revenueDistribution": {
-      "title": "Revenue distribution"
+    "recentTransactions": {
+      "titleAlt": "Latest orders",
+      "viewAll": "View all transactions",
+      "completed": "Completed",
+      "pending": "Pending"
+    },
+    "topCustomers": {
+      "title": "Top customers",
+      "viewAll": "View all customers",
+      "vip": "VIP",
+      "pro": "Pro",
+      "new": "New"
+    },
+    "kpis": {
+      "sinceLastWeek": "Since last week",
+      "sales": "Sales",
+      "earnings": "Earnings",
+      "visitors": "Visitors",
+      "orders": "Orders"
     }
   },
   "calendar": {
@@ -269,11 +312,11 @@
         "customersCard": "Customers",
         "assetPerformance": "Asset performance",
         "todaysSales": "Today's sales",
-        "totalProfit": "Total profit",
+        "latestOrders": "Latest orders",
+        "topCustomers": "Top customers",
         "revenueTrends": "Revenue trends",
         "yearOverview": "Year overview",
         "marketMetrics": "Market metrics",
-        "revenueDistribution": "Revenue distribution",
         "customers": "Customers",
         "calendar": "Calendar",
         "orders": "Orders",
@@ -615,20 +658,16 @@
     "backToHomepage": "Back to Homepage",
     "tryAgain": "Try Again",
     "unexpectedError": {
-      "title": "Something Went Wrong",
-      "description": "An unexpected error occurred while loading this page."
+      "title": "Something Went Wrong"
     },
     "error401": {
-      "title": "Unauthorized",
-      "description": "You don't have permission to access this page."
+      "title": "Unauthorized"
     },
     "error404": {
-      "title": "Page Not Found",
-      "description": "The page you are looking for might have been moved or deleted."
+      "title": "Page Not Found"
     },
     "error500": {
-      "title": "Server Error",
-      "description": "Something went wrong on our end while processing your request."
+      "title": "Server Error"
     }
   }
 }

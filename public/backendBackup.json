@@ -193,73 +193,6 @@
         "yesterday": 12
       }
     ],
-    "totalProfitProducts": [
-      {
-        "title": "iPhone 80A",
-        "value": 38,
-        "metric": "$ 100,838"
-      },
-      {
-        "title": "OnePlus 30T",
-        "value": 34,
-        "metric": "$ 90,224"
-      },
-      {
-        "title": "MacBook Air X",
-        "value": 28,
-        "metric": "$ 74,301"
-      }
-    ],
-    "totalProfitMonths": [
-      {
-        "month": "Jan 21",
-        "sales": 2890
-      },
-      {
-        "month": "Feb 21",
-        "sales": 2009
-      },
-      {
-        "month": "Mar 21",
-        "sales": 2200
-      },
-      {
-        "month": "Apr 21",
-        "sales": 2550
-      },
-      {
-        "month": "May 21",
-        "sales": 2800
-      },
-      {
-        "month": "Jun 21",
-        "sales": 3050
-      },
-      {
-        "month": "Jul 21",
-        "sales": 2000
-      },
-      {
-        "month": "Aug 21",
-        "sales": 3100
-      },
-      {
-        "month": "Sep 21",
-        "sales": 3000
-      },
-      {
-        "month": "Oct 21",
-        "sales": 3150
-      },
-      {
-        "month": "Nov 21",
-        "sales": 2800
-      },
-      {
-        "month": "Dec 21",
-        "sales": 3350
-      }
-    ],
     "yearOverview": [
       {
         "name": "Jan",
@@ -372,38 +305,118 @@
         "maxValue": 100
       }
     ],
-    "revenueDistribution": [
+    "kpis": [
       {
-        "category": "laptops",
-        "inStore": 28000,
-        "online": 23200
+        "key": "sales",
+        "value": 24380,
+        "change": -3.65,
+        "format": "currency"
       },
       {
-        "category": "phones",
-        "inStore": 82000,
-        "online": 24500
+        "key": "earnings",
+        "value": 67400,
+        "change": 6.65,
+        "format": "currency"
       },
       {
-        "category": "chargers",
-        "inStore": 15000,
-        "online": 13900
+        "key": "visitors",
+        "value": 14212,
+        "change": 5.25,
+        "format": "number"
       },
       {
-        "category": "headphones",
-        "inStore": 18000,
-        "online": 19000
-      },
-      {
-        "category": "tablets",
-        "inStore": 64000,
-        "online": 58000
-      },
-      {
-        "category": "accessories",
-        "inStore": 27000,
-        "online": 20200
+        "key": "orders",
+        "value": 758,
+        "change": -2.25,
+        "format": "number"
       }
-    ]
+    ],
+    "recentTransactions": [
+      {
+        "orderId": "#7824",
+        "product": "MacBook Pro 16\"",
+        "category": "laptop",
+        "amount": 2499,
+        "status": "completed"
+      },
+      {
+        "orderId": "#7823",
+        "product": "iPhone 15 Pro",
+        "category": "phone",
+        "amount": 999,
+        "status": "completed"
+      },
+      {
+        "orderId": "#7822",
+        "product": "iPad Air",
+        "category": "tablet",
+        "amount": 599,
+        "status": "completed"
+      },
+      {
+        "orderId": "#7821",
+        "product": "Galaxy Watch 6",
+        "category": "watch",
+        "amount": 329,
+        "status": "pending"
+      },
+      {
+        "orderId": "#7820",
+        "product": "AirPods Pro",
+        "category": "audio",
+        "amount": 249,
+        "status": "completed"
+      }
+    ],
+    "topCustomers": [
+      {
+        "name": "Sophia Reyes",
+        "handle": "sophia@orbit.io",
+        "amount": 5640,
+        "tier": "vip"
+      },
+      {
+        "name": "Mason Cole",
+        "handle": "mason@flux.com",
+        "amount": 3890,
+        "tier": "pro"
+      },
+      {
+        "name": "Ava Whitman",
+        "handle": "ava@pixel.dev",
+        "amount": 2470,
+        "tier": "new"
+      },
+      {
+        "name": "Lucas Brandt",
+        "handle": "lucas@hexa.app",
+        "amount": 1920,
+        "tier": "pro"
+      },
+      {
+        "name": "Ethan Wu",
+        "handle": "ethan@drift.co",
+        "amount": 1340,
+        "tier": "new"
+      }
+    ],
+    "salesChannels": [
+      {
+        "key": "onlineStore",
+        "share": 72
+      },
+      {
+        "key": "mobileApp",
+        "share": 19
+      },
+      {
+        "key": "inStore",
+        "share": 9
+      }
+    ],
+    "summary": {
+      "todaySalesTotal": 2276000
+    }
   },
   "events": [
     {

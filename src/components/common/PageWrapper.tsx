@@ -67,7 +67,6 @@ const LAYOUT_STYLES = {
 interface PageWrapperProps {
   children: ReactNode;
   pageName?: string;
-  dataForExport?: unknown;
   enableBreadcrumbLink?: boolean;
 }
 

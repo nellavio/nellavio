@@ -1,11 +1,12 @@
 "use client";
 
-import { AssetPerformance } from "./parts/AssetPerformance";
+import { AssetDonut } from "./parts/AssetDonut";
+import { KpiCards } from "./parts/KpiCards";
 import { MarketMetrics } from "./parts/MarketMetrics";
-import { RevenueDistribution } from "./parts/RevenueDistribution";
+import { RecentTransactions } from "./parts/RecentTransactions";
 import { RevenueTrends } from "./parts/RevenueTrends";
 import { TodaySales } from "./parts/TodaySales";
-import { TotalProfit } from "./parts/TotalProfit";
+import { TopCustomers } from "./parts/TopCustomers";
 import { YearOverview } from "./parts/YearOverview";
 import { AnalyticsViewProps } from "./types";
 
@@ -13,55 +14,56 @@ export const AnalyticsView = ({ analyticsData }: AnalyticsViewProps) => {
   return (
     <>
       <h1 className="sr-only">Analytics</h1>
-      {/* First row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 3xl:grid-cols-3 gap-x-4 1xl:gap-x-6 gap-y-6">
-        <div className="lg:col-span-3 3xl:col-span-2">
-          {analyticsData?.assets && (
-            <AssetPerformance assetPerformanceData={analyticsData.assets} />
-          )}
-        </div>
-        <div className="lg:col-span-2 3xl:col-span-1">
-          {analyticsData?.todaySales && (
-            <TodaySales todaySalesData={analyticsData.todaySales} />
-          )}
-        </div>
-      </div>
-      {/* Second row */}
-      <div className="w-full flex flex-col lg:flex-row justify-between gap-4 1xl:gap-6">
-        <div className="w-full lg:w-1/3">
-          {analyticsData?.totalProfitProducts &&
-            analyticsData?.totalProfitMonths && (
-              <TotalProfit
-                totalProfitProducts={analyticsData.totalProfitProducts}
-                totalProfitSales={analyticsData.totalProfitMonths}
-              />
-            )}
-        </div>
-        <div className="w-full lg:w-2/3">
+      {/* First row — 4 KPI cards across full width */}
+      {analyticsData?.kpis && <KpiCards kpis={analyticsData.kpis} />}
+      {/* Second row — full-width today's sales */}
+      {analyticsData?.todaySales && analyticsData?.summary && (
+        <TodaySales
+          todaySalesData={analyticsData.todaySales}
+          todaySalesTotal={analyticsData.summary.todaySalesTotal}
+          salesChannels={analyticsData.salesChannels}
+          id="todaysSalesWide"
+          showBreakdown
+        />
+      )}
+      {/* Third + fourth rows — one grid so cards can share rows across them */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 1xl:gap-x-6 gap-y-4 1xl:gap-y-6">
+        <div className="md:col-span-2">
           {analyticsData?.revenueTrends && (
             <RevenueTrends revenueTrendsData={analyticsData.revenueTrends} />
           )}
         </div>
-      </div>
-      {/* Third row */}
-      {analyticsData?.yearOverview && (
-        <YearOverview yearOverviewData={analyticsData.yearOverview} />
-      )}
-      {/* Fourth row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-0 gap-x-4 1xl:gap-x-6 lg:gap-y-6">
         <div>
+          {analyticsData?.assets && (
+            <AssetDonut assetPerformanceData={analyticsData.assets} />
+          )}
+        </div>
+        {/* Market metrics — hidden below lg */}
+        <div className="hidden lg:block">
           {analyticsData?.marketMetrics && (
             <MarketMetrics marketMetricsData={analyticsData.marketMetrics} />
           )}
         </div>
         <div>
-          {analyticsData?.revenueDistribution && (
-            <RevenueDistribution
-              revenueDistributionData={analyticsData.revenueDistribution}
+          {analyticsData?.topCustomers && (
+            <TopCustomers topCustomersData={analyticsData.topCustomers} />
+          )}
+        </div>
+        {/* Latest orders — hidden between md and lg */}
+        <div className="md:hidden lg:block">
+          {analyticsData?.recentTransactions && (
+            <RecentTransactions
+              recentTransactionsData={analyticsData.recentTransactions}
+              titleKey="titleAlt"
+              id="latestOrders"
             />
           )}
         </div>
       </div>
+      {/* Fifth row — full-width year overview */}
+      {analyticsData?.yearOverview && (
+        <YearOverview yearOverviewData={analyticsData.yearOverview} />
+      )}
     </>
   );
 };

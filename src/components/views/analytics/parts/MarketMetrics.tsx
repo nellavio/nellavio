@@ -17,21 +17,36 @@ import {
   CardTitle,
 } from "@/components/common/shadcn/card";
 import { useChartAnimation } from "@/hooks/useChartAnimation";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import { BREAKPOINTS } from "@/styles/breakpoints";
 
 import { MarketMetricsProps, MarketMetricsTooltipProps } from "../types";
 
-const METRIC_LABELS: Record<string, string> = {
-  salesVolume: "Sales Volume",
-  revenue: "Revenue",
-  growthRate: "Growth Rate",
-  marketShare: "Market Share",
-  customerRating: "Customer Rating",
-  profitMargin: "Profit Margin",
-};
+const METRIC_KEYS = [
+  "salesVolume",
+  "revenue",
+  "growthRate",
+  "marketShare",
+  "customerRating",
+  "profitMargin",
+] as const;
 
-const formatMetricLabel = (key: string): string => {
-  const cleanKey = key.replace("analytics.marketMetrics.metrics.", "");
-  return METRIC_LABELS[cleanKey] ?? cleanKey;
+type MetricKey = (typeof METRIC_KEYS)[number];
+
+const isMetricKey = (key: string): key is MetricKey =>
+  METRIC_KEYS.includes(key as MetricKey);
+
+/**
+ * Returns a translator that maps a raw metric key coming from the API
+ * onto its localized label, falling back to the key itself.
+ */
+const useMetricLabel = () => {
+  const t = useTranslations("analytics.marketMetrics.metrics");
+
+  return (key: string): string => {
+    const cleanKey = key.replace("analytics.marketMetrics.metrics.", "");
+    return isMetricKey(cleanKey) ? t(cleanKey) : cleanKey;
+  };
 };
 
 const MarketMetricsTooltip = ({
@@ -39,12 +54,14 @@ const MarketMetricsTooltip = ({
   payload,
   label,
 }: MarketMetricsTooltipProps) => {
+  const metricLabel = useMetricLabel();
+
   if (!active || !payload || !payload.length || !label) return null;
 
   return (
-    <BaseTooltip title={formatMetricLabel(label)}>
+    <BaseTooltip title={metricLabel(label)}>
       {payload.map((entry, index) => {
-        const entryName = entry.name ? formatMetricLabel(entry.name) : "";
+        const entryName = entry.name ? metricLabel(entry.name) : "";
         const formattedValue = `${entry.value}%`;
         return (
           <p
@@ -76,8 +93,10 @@ interface LegendProps {
 const CustomLegend = (props: LegendProps) => {
   const { payload } = props;
 
+  const metricLabel = useMetricLabel();
+
   return (
-    <div className="flex flex-row justify-end gap-8 text-white w-full mt-0 lg:mt-0 mb-12 3xl:mb-6">
+    <div className="flex flex-row justify-end gap-8 w-full mt-0 lg:mt-0 mb-12 3xl:mb-6">
       {payload?.map((entry, index: number) => (
         <div key={index} className="flex items-center">
           <div
@@ -85,7 +104,7 @@ const CustomLegend = (props: LegendProps) => {
             style={{ backgroundColor: entry.color }}
           />
           <span className="text-sm text-primaryText">
-            {formatMetricLabel(entry.value)}
+            {metricLabel(entry.value)}
           </span>
         </div>
       ))}
@@ -96,8 +115,19 @@ const CustomLegend = (props: LegendProps) => {
 export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
   const t = useTranslations("analytics.marketMetrics");
 
+  const metricLabel = useMetricLabel();
+
+  const { width: windowWidth } = useWindowDimensions();
+
   const { shouldAnimate, animationBegin, isReady } =
     useChartAnimation("analytics");
+
+  /**
+   * The card sits in a 1/3 grid column, so below 1400px the polar labels
+   * ("Customer Rating") run out of horizontal room and get clipped.
+   * Pulling the radar in and shrinking the tick font frees that space.
+   */
+  const isWideViewport = windowWidth > BREAKPOINTS["1xl"];
 
   return (
     <Card className="hidden lg:block h-full" id="marketMetrics">
@@ -119,7 +149,7 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
               accessibilityLayer={false}
               cx="50%"
               cy="50%"
-              outerRadius="80%"
+              outerRadius={isWideViewport ? "80%" : "70%"}
               data={isReady ? marketMetricsData : []}
               className="pt-4 mt-4 lg:mt-0"
               tabIndex={-1}
@@ -127,8 +157,11 @@ export const MarketMetrics = ({ marketMetricsData }: MarketMetricsProps) => {
               <PolarGrid stroke={"var(--color-chartPrimaryGrid)"} />
               <PolarAngleAxis
                 dataKey="metric"
-                tick={{ fill: "rgba(255,255,255,0.65)", fontSize: 12 }}
-                tickFormatter={formatMetricLabel}
+                tick={{
+                  fill: "var(--color-chartAxisText)",
+                  fontSize: isWideViewport ? 12 : 10,
+                }}
+                tickFormatter={metricLabel}
               />
               <Tooltip
                 content={<MarketMetricsTooltip />}

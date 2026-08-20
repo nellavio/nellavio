@@ -45,13 +45,20 @@
   --color-settingsDrawerDivider: rgb(255, 255, 255, 0.06);
   --color-fourCardIconGreen: rgb(110, 220, 190);
   --color-fourCardIconBlue: rgb(130, 180, 240);
+  --color-kpiIconGreen: rgb(110, 220, 190);
+  --color-kpiIconBlue: rgb(130, 180, 240);
+  --color-kpiIconPurple: rgb(186, 160, 250);
+  --color-kpiIconAmber: rgb(245, 195, 120);
+  --color-customerTierVip: rgb(245, 195, 120);
+  --color-customerTierPro: rgb(130, 180, 240);
+  --color-customerTierNew: rgb(110, 220, 190);
+  --color-salesBreakdownIcon: rgb(83, 133, 198);
 
   /* Backgrounds */
   --color-primaryBg: rgb(28, 32, 37);
   --color-secondaryBg: rgb(22, 26, 31);
   --color-authPageBg: rgb(17, 21, 26);
   --color-errorPageBg: rgb(17, 21, 26);
-  --color-assetPerformanceBarBg: rgb(22, 26, 31);
   --color-tabsBg: rgb(27, 31, 36);
   --color-tabListBg: rgb(22, 26, 31);
   --color-tabActiveBg: rgb(28, 32, 37);
@@ -92,9 +99,11 @@
   --color-chartPrimaryInverted: rgb(61, 185, 133);
   --color-chartSecondaryFill: rgb(83, 133, 198);
   --color-chartSecondaryDisabled: rgb(255, 255, 255, 0.1);
-  --color-chartMutedFill: rgb(86, 92, 101);
   --color-chartSecondaryInverted: rgb(83, 133, 198);
   --color-chartSecondaryAccent: rgb(83, 133, 198);
+  --color-chartTertiaryFill: rgb(168, 162, 255);
+  --color-chartQuaternaryFill: rgb(100, 200, 180);
+  --color-chartQuinaryFill: rgb(255, 150, 150);
   --color-loaderBg: rgb(36, 40, 45);
   --color-loaderCircleBg: rgb(61, 185, 133);
   --color-selectBg: rgb(255, 255, 255, 0.05);
@@ -132,6 +141,8 @@
   --color-chipBg: rgb(255, 255, 255, 0.07);
   --color-chipBgHover: rgb(255, 255, 255, 0.1);
   --color-mutedBg: rgb(36, 39, 43);
+  --color-salesNoteBg: rgb(99, 99, 99, 0.09);
+  --color-salesBreakdownIconBg: rgb(83, 133, 198, 0.2);
   --color-errorBg: rgb(195, 70, 70);
   --color-errorBgHover: rgb(207, 89, 89);
   --color-infoAlertBg: rgb(34, 38, 43);
@@ -163,6 +174,7 @@
   --color-roleBannedBadgeBg: rgb(220, 38, 38, 0.1);
   --color-roleSelectBg: rgb(36, 39, 43);
   --color-roleSelectBgHover: rgb(42, 46, 51);
+  --color-dateRangeButtonBg: rgb(255, 255, 255, 0.02);
 
   /* Borders */
   --color-mainBorder: rgb(255, 255, 255, 0.05);
@@ -193,7 +205,7 @@
   --color-chartVerticalLine: rgb(255, 255, 255, 0.15);
   --color-chartCursorBg: rgb(255, 255, 255, 0.05);
   --color-destructiveAlertBorder: rgb(239, 68, 68, 0.5);
-  --color-successAlertBorder: rgb(22, 163, 74, 0.5);
+  --color-successAlertBorder: rgb(255, 255, 255, 0.15);
   --color-authThemeButtonBorder: rgb(255, 255, 255, 0.08);
   --color-authThemeButtonBorderHover: rgb(255, 255, 255, 0.18);
   --color-roleAdminBadgeBorder: rgb(37, 99, 235, 0.3);

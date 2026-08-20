@@ -16,7 +16,7 @@ const Analytics = async ({
   const analyticsData = await getData("analytics");
 
   return (
-    <PageWrapper pageName="Analytics" dataForExport={analyticsData}>
+    <PageWrapper pageName="Analytics">
       <AnalyticsView analyticsData={analyticsData} />
     </PageWrapper>
   );

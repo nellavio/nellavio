@@ -25,7 +25,7 @@ export const ProfileHeaderCard = ({
   return (
     <Card id="profileHeader" className="!pt-0 overflow-hidden">
       {/* Banner */}
-      <div className="h-40 max-3xl:h-32 max-2xl:h-28 relative bg-profileHeaderBg">
+      <div className="h-28 max-3xl:h-[5.6rem] max-2xl:h-[4.9rem] relative bg-profileHeaderBg">
         <div className="absolute -bottom-12 max-3xl:-bottom-10 left-1/2 -translate-x-1/2">
           <div className="w-24 h-24 max-3xl:w-20 max-3xl:h-20 rounded-full bg-primaryBg border-4 border-primaryBg flex items-center justify-center relative">
             <div className="w-full h-full rounded-full bg-gradient-to-br from-chartSecondaryBg to-chartPrimaryBg dark:from-[rgb(20,60,50)] dark:to-[rgb(55,150,120)] flex items-center justify-center text-white text-2xl max-3xl:text-xl font-bold">

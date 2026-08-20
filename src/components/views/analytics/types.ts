@@ -30,33 +30,63 @@ export interface TodaySalesDataUnit {
 
 export interface TodaySalesProps {
   todaySalesData: TodaySalesDataUnit[];
+  todaySalesTotal: number;
+  salesChannels?: SalesChannel[];
+  id?: string;
+  showBreakdown?: boolean;
 }
 
-export interface ProductProfit {
-  title: string;
-  value: number;
-  metric: string;
+export type SalesChannelKey = "onlineStore" | "mobileApp" | "inStore";
+
+export interface SalesChannel {
+  key: SalesChannelKey;
+  share: number;
 }
 
-export interface TotalMonthProfit {
-  month: string;
-  sales: number;
+export interface TodaySalesBreakdownProps {
+  channels: SalesChannel[];
+  change: number;
+  period: string;
 }
 
-export interface TotalProfitProps {
-  totalProfitProducts: ProductProfit[];
-  totalProfitSales: TotalMonthProfit[];
+export type TodaySalesComparison = "yesterday" | "average";
+
+export interface TodaySalesLegendProps {
+  comparison: TodaySalesComparison;
+  className?: string;
 }
 
-export interface TotalProfitTooltipProps {
-  active?: boolean;
-  payload?: Array<{ name: string; value: number; color?: string }>;
-  label?: string;
+export interface TodaySalesComparisonSelectProps {
+  value: TodaySalesComparison;
+  onChange: (value: TodaySalesComparison) => void;
+  className?: string;
 }
 
-export interface SingleProductData {
+export type ProductCategory = "phone" | "laptop" | "tablet" | "watch" | "audio";
+
+export interface RecentTransaction {
+  orderId: string;
+  product: string;
+  category: ProductCategory;
+  amount: number;
+  status: "completed" | "pending";
+}
+
+export interface RecentTransactionsProps {
+  recentTransactionsData: RecentTransaction[];
+  titleKey?: string;
+  id?: string;
+}
+
+export interface TopCustomer {
   name: string;
-  value: number;
+  handle: string;
+  amount: number;
+  tier: "vip" | "pro" | "new";
+}
+
+export interface TopCustomersProps {
+  topCustomersData: TopCustomer[];
 }
 
 export interface OverviewMonthData {
@@ -70,15 +100,36 @@ export interface YearOverviewProps {
   yearOverviewData: OverviewMonthData[];
 }
 
+export type AnalyticsKpiKey = "sales" | "earnings" | "visitors" | "orders";
+
+export type AnalyticsKpiFormat = "number" | "currency";
+
+export interface AnalyticsKpi {
+  key: AnalyticsKpiKey;
+  value: number;
+  change: number;
+  format: AnalyticsKpiFormat;
+}
+
+export interface KpiCardsProps {
+  kpis: AnalyticsKpi[];
+}
+
+export interface AnalyticsSummary {
+  todaySalesTotal: number;
+}
+
 interface AnalyticsData {
   assets: AssetPerformanceProps["assetPerformanceData"];
   revenueTrends: RevenueTrendsProps["revenueTrendsData"];
   todaySales: TodaySalesProps["todaySalesData"];
-  totalProfitProducts: TotalProfitProps["totalProfitProducts"];
-  totalProfitMonths: TotalProfitProps["totalProfitSales"];
   yearOverview: YearOverviewProps["yearOverviewData"];
   marketMetrics: MarketMetricsProps["marketMetricsData"];
-  revenueDistribution: RevenueDistributionProps["revenueDistributionData"];
+  kpis: KpiCardsProps["kpis"];
+  recentTransactions: RecentTransactionsProps["recentTransactionsData"];
+  topCustomers: TopCustomersProps["topCustomersData"];
+  salesChannels: SalesChannel[];
+  summary: AnalyticsSummary;
 }
 
 export interface AnalyticsViewProps {
@@ -99,29 +150,6 @@ export interface MarketMetricsProps {
 export interface MarketMetricsTooltipProps {
   active?: boolean;
   payload?: Array<{ name?: string; value?: number; color?: string }>;
-  label?: string;
-}
-
-export interface RevenueData {
-  category: string;
-  inStore: number;
-  online: number;
-}
-
-export interface RevenueDistributionProps {
-  revenueDistributionData: RevenueData[];
-}
-
-export interface RevenueTooltipPayloadItem {
-  name?: string;
-  value?: number;
-  color?: string;
-  dataKey?: string;
-}
-
-export interface RevenueDistributionTooltipProps {
-  active?: boolean;
-  payload?: RevenueTooltipPayloadItem[];
   label?: string;
 }
 

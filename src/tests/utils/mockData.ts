@@ -262,15 +262,37 @@ export const mockAnalyticsData: AnalyticsViewProps["analyticsData"] = {
     { hour: "00:00", today: 90, average: 66, yesterday: 23 },
     { hour: "02:00", today: 45, average: 40, yesterday: 32 },
   ],
-  totalProfitProducts: [
-    { title: "iPhone 80A", value: 38, metric: "$ 100,838" },
-  ],
-  totalProfitMonths: [{ month: "Jan 21", sales: 2890 }],
   yearOverview: [{ name: "Jan", phones: 3200, tablets: 850, laptops: 850 }],
   marketMetrics: [
     { metric: "salesVolume", phones: 95, laptops: 48, maxValue: 100 },
   ],
-  revenueDistribution: [{ category: "laptops", inStore: 28000, online: 23200 }],
+  kpis: [
+    { key: "sales", value: 2382, change: -3.65, format: "number" },
+    { key: "earnings", value: 21300, change: 6.65, format: "currency" },
+  ],
+  recentTransactions: [
+    {
+      orderId: "#7824",
+      product: 'MacBook Pro 16"',
+      category: "laptop",
+      amount: 2499,
+      status: "completed",
+    },
+  ],
+  topCustomers: [
+    {
+      name: "Sophia Reyes",
+      handle: "sophia@orbit.io",
+      amount: 5640,
+      tier: "vip",
+    },
+  ],
+  salesChannels: [
+    { key: "onlineStore", share: 72 },
+    { key: "mobileApp", share: 19 },
+    { key: "inStore", share: 9 },
+  ],
+  summary: { todaySalesTotal: 2276000 },
 };
 
 export const mockCalendarEvents: CalendarEvent[] = [

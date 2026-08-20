@@ -20,6 +20,7 @@ import {
 import { useChartAnimation } from "@/hooks/useChartAnimation";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import { BREAKPOINTS } from "@/styles/breakpoints";
+import { formatCurrency } from "@/utils/formatNumber";
 
 import {
   RevenueTrendsCustomLegendProps,
@@ -49,9 +50,7 @@ const RevenueTrendsTooltip = ({
             />
             {`${entry.name}:   `}
           </span>
-          <span className="pl-[0.7rem]">
-            ${Intl.NumberFormat("us").format(entry.value)}
-          </span>
+          <span className="pl-[0.7rem]">{formatCurrency(entry.value)}</span>
         </p>
       ))}
     </BaseTooltip>
@@ -60,7 +59,7 @@ const RevenueTrendsTooltip = ({
 
 const CustomLegend = ({ payload }: RevenueTrendsCustomLegendProps) => {
   return (
-    <div className="flex flex-row justify-end gap-8 text-white w-full mb-6">
+    <div className="flex flex-row justify-end gap-8 w-full mb-6">
       {payload?.map((entry, index) => (
         <div key={`legend-${index}`} className="flex items-center">
           <div
@@ -102,27 +101,31 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
     useChartAnimation("analytics");
 
   const getBarSize = () => {
-    if (windowWidth > BREAKPOINTS["1xl"]) return 24;
-    if (windowWidth > BREAKPOINTS.md) return 18;
-    if (windowWidth > BREAKPOINTS.sm) return 15;
+    if (windowWidth > BREAKPOINTS["2xl"]) return 24;
+    if (windowWidth > BREAKPOINTS["1xl"]) return 20;
+    if (windowWidth > BREAKPOINTS.md) return 16;
+    if (windowWidth > BREAKPOINTS.sm) return 14;
     return 10;
   };
 
-  const chartData =
-    windowWidth > BREAKPOINTS.xsm
-      ? revenueTrendsData.slice(-9)
-      : revenueTrendsData.slice(-4);
+  const getVisibleMonths = () => {
+    if (windowWidth > BREAKPOINTS.md) return 9;
+    if (windowWidth > BREAKPOINTS.xsm) return 7;
+    return 4;
+  };
+
+  const chartData = revenueTrendsData.slice(-getVisibleMonths());
 
   return (
-    <Card className="revenueTrendsCard" id="revenueTrends">
+    <Card className="revenueTrendsCard h-full flex flex-col" id="revenueTrends">
       <CardHeader>
         <CardTitle>{t("title")}</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-1 flex-col">
         <div
           role="img"
           aria-label="Revenue trends bar chart"
-          className="h-64 1xl:h-84 3xl:h-96"
+          className="flex-1 min-h-67 lg:min-h-56 1xl:min-h-72 3xl:min-h-76"
         >
           <ResponsiveContainer
             width="100%"
@@ -154,9 +157,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
                 axisLine={{ stroke: "var(--color-chartAxisLine)" }}
                 tickLine={false}
                 tick={{ fill: "var(--color-chartAxisText)", fontSize: 12 }}
-                tickFormatter={(value: number) =>
-                  `$${Intl.NumberFormat("us").format(value)}`
-                }
+                tickFormatter={(value: number) => formatCurrency(value)}
                 domain={[
                   0,
                   (dataMax: number) => Math.ceil(dataMax / 1000) * 1000,
@@ -166,7 +167,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
                 content={<RevenueTrendsTooltip />}
                 isAnimationActive={false}
                 cursor={{
-                  fill: "rgba(255,255,255,0.05)",
+                  fill: "var(--color-chartCursorBg)",
                   stroke: "var(--color-chartVerticalLine)",
                 }}
               />
@@ -177,7 +178,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
               />
               <Bar
                 dataKey="sales"
-                name="Sales"
+                name={t("sales")}
                 fill="var(--color-chartSecondaryInverted)"
                 radius={[4, 4, 0, 0]}
                 barSize={getBarSize()}
@@ -189,7 +190,7 @@ export const RevenueTrends = ({ revenueTrendsData }: RevenueTrendsProps) => {
               />
               <Bar
                 dataKey="profit"
-                name="Profit"
+                name={t("profit")}
                 fill="var(--color-chartPrimaryInverted)"
                 radius={[4, 4, 0, 0]}
                 barSize={getBarSize()}
