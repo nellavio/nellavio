@@ -1,6 +1,6 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { useDropdown } from "@/hooks/useDropdown";
 import { useSession } from "@/services/auth/auth-client";
@@ -15,7 +15,7 @@ import { NavbarDropdowns } from "../types";
  */
 export const useNavbar = () => {
   const { theme, setTheme } = useTheme();
-  const [currentLanguage, setCurrentLanguage] = useState("en");
+  const currentLanguage = useLocale();
   const isMobileMenuOpen = useLayoutStore((s) => s.isMobileMenuOpen);
   const toggleMobileMenu = useLayoutStore((s) => s.toggleMobileMenu);
   const isSideMenuOpen = useLayoutStore((s) => s.isSideMenuOpen);
@@ -58,18 +58,6 @@ export const useNavbar = () => {
   const languageDropdown = useDropdown();
   const searchDropdown = useDropdown();
   const notificationsDropdown = useDropdown();
-
-  /** Detects the active locale from the URL path prefix on mount. */
-  useEffect(() => {
-    const getCurrentLanguage = () => {
-      if (typeof window !== "undefined") {
-        const pathname = window.location.pathname;
-        return pathname.startsWith("/pl") ? "pl" : "en";
-      }
-      return "en";
-    };
-    setCurrentLanguage(getCurrentLanguage());
-  }, []);
 
   const selectTheme = (themeName: string) => {
     setTheme(themeName);
@@ -140,7 +128,6 @@ export const useNavbar = () => {
     theme,
     setTheme,
     currentLanguage,
-    setCurrentLanguage,
     isMobileMenuOpen,
     toggleMobileMenu,
     isSideMenuOpen,

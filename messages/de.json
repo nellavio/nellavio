@@ -128,20 +128,77 @@
     "mobileList": { "showAllProducts": "Alle Produkte anzeigen" }
   },
   "analytics": {
-    "assetPerformance": { "title": "Asset-Performance" },
-    "todaySales": { "title": "Heutige Verkäufe" },
-    "totalProfit": { "title": "Gesamtgewinn" },
-    "revenueTrends": { "title": "Umsatztrends" },
-    "yearOverview": { "title": "Jahresübersicht" },
-    "marketMetrics": { "title": "Marktkennzahlen" },
-    "revenueDistribution": { "title": "Umsatzverteilung" }
+    "assetPerformance": {
+      "title": "Asset-Performance",
+      "totalValue": "Gesamtwert",
+      "sales": "Verkäufe"
+    },
+    "todaySales": {
+      "title": "Heutige Verkäufe",
+      "today": "Heute",
+      "yesterday": "Gestern",
+      "average": "Durchschnitt",
+      "vsYesterday": "vs. gestern",
+      "vsAverage": "vs. Durchschnitt",
+      "comparisonLabel": "Vergleich",
+      "breakdown": "Verkaufsaufteilung",
+      "onlineStore": "Onlineshop",
+      "mobileApp": "Mobile App",
+      "inStore": "Ladengeschäft",
+      "noteUp": "Die Verkäufe sind um {change}% gestiegen ({period}). Gut gemacht!",
+      "noteDown": "Die Verkäufe sind um {change}% gesunken ({period}). Gut gemacht!",
+      "momentum": "Weiter so!"
+    },
+    "revenueTrends": {
+      "title": "Umsatztrends",
+      "sales": "Verkäufe",
+      "profit": "Gewinn"
+    },
+    "yearOverview": {
+      "title": "Jahresübersicht",
+      "tableCaption": "Jährliche Umsatzübersicht",
+      "month": "Monat",
+      "phones": "Telefone",
+      "laptops": "Laptops"
+    },
+    "marketMetrics": {
+      "title": "Marktkennzahlen",
+      "metrics": {
+        "salesVolume": "Absatzvolumen",
+        "revenue": "Umsatz",
+        "growthRate": "Wachstumsrate",
+        "marketShare": "Marktanteil",
+        "customerRating": "Kundenbewertung",
+        "profitMargin": "Gewinnmarge"
+      }
+    },
+    "recentTransactions": {
+      "titleAlt": "Neueste Bestellungen",
+      "viewAll": "Alle Transaktionen anzeigen",
+      "completed": "Abgeschlossen",
+      "pending": "Ausstehend"
+    },
+    "topCustomers": {
+      "title": "Top-Kunden",
+      "viewAll": "Alle Kunden anzeigen",
+      "vip": "VIP",
+      "pro": "Pro",
+      "new": "Neu"
+    },
+    "kpis": {
+      "sinceLastWeek": "Seit letzter Woche",
+      "sales": "Verkäufe",
+      "earnings": "Einnahmen",
+      "visitors": "Besucher",
+      "orders": "Bestellungen"
+    }
   },
   "calendar": {
     "deleteEventModalTitle": "Bist du sicher?",
-    "deleteEventModalSubtitle": "Bestätige, wenn du fortfahren möchtest",
-    "delete": "löschen",
-    "move": "verschieben",
-    "theEvent": "den Termin",
+    "deleteEventModalSubtitle": "Bitte bestätigen:",
+    "delete": "Löschen",
+    "move": "Verschieben",
+    "theEvent": "des Termins",
     "yes": "Ja",
     "cancel": "Abbrechen",
     "addEventModalTitle": "Neuer Termin",
@@ -195,7 +252,7 @@
   "navbar": {
     "auth": "Auth",
     "userProfile": "Benutzerprofil",
-    "about": "Über",
+    "about": "Über die App",
     "changelog": "Changelog",
     "english": "Englisch",
     "polish": "Polnisch",
@@ -229,17 +286,17 @@
         "customersCard": "Kunden",
         "assetPerformance": "Asset-Performance",
         "todaysSales": "Heutige Verkäufe",
-        "totalProfit": "Gesamtgewinn",
+        "latestOrders": "Neueste Bestellungen",
+        "topCustomers": "Top-Kunden",
         "revenueTrends": "Umsatztrends",
         "yearOverview": "Jahresübersicht",
         "marketMetrics": "Marktkennzahlen",
-        "revenueDistribution": "Umsatzverteilung",
         "customers": "Kunden",
         "calendar": "Kalender",
         "orders": "Bestellungen",
         "products": "Produkte",
         "profileHeader": "Profilkopf",
-        "about": "Über",
+        "about": "Über mich",
         "accountSettings": "Kontoeinstellungen",
         "recentActivity": "Letzte Aktivität",
         "buttons": "Buttons",
@@ -329,7 +386,7 @@
     "checkYourEmail": "Prüfe deine E-Mails",
     "checkYourEmailDesc": "Falls ein Konto für diese E-Mail existiert, haben wir Anweisungen zum Zurücksetzen gesendet.",
     "checkSpamFolder": "Nichts erhalten? Prüfe deinen Spam-Ordner.",
-    "backToSignInPrefix": "Moment, ich erinnere mich an mein Passwort...",
+    "backToSignInPrefix": "Ich erinnere mich doch...",
     "backToSignInLink": "Hier klicken",
     "confirmPassword": "Passwort bestätigen",
     "confirmPasswordRequired": "Bitte bestätige dein Passwort",
@@ -391,12 +448,12 @@
     "email": "E-Mail",
     "phone": "Telefon",
     "location": "Standort",
-    "socialLinks": "Social Links",
+    "socialLinks": "Soziale Netzwerke",
     "quickStats": "Kurzstatistiken",
     "totalOrders": "Bestellungen insgesamt",
     "completedTasks": "Abgeschlossene Aufgaben",
     "activeProjects": "Aktive Projekte",
-    "about": "Über",
+    "about": "Über mich",
     "accountSettings": "Kontoeinstellungen",
     "emailNotifications": "E-Mail-Benachrichtigungen",
     "emailNotificationsDesc": "Erhalte E-Mail-Updates zu deinem Konto",
@@ -462,7 +519,7 @@
     "thisMonth": "Dieser Monat",
     "lastQuarter": "Letztes Quartal",
     "thisYear": "Dieses Jahr",
-    "customRange": "Benutzerdefinierter Zeitraum",
+    "customRange": "Eigener Zeitraum",
     "from": "Von",
     "to": "Bis",
     "apply": "Anwenden",
@@ -482,7 +539,7 @@
     "alternativeFont": "Alternative Schriftart",
     "chartAnimations": "Diagramm-Animationen",
     "sidebarMode": "Sidebar-Modus",
-    "expanded": "Erweitert",
+    "expanded": "Ausgeklappt",
     "collapsed": "Eingeklappt",
     "fixedNavbar": "Fixierte Navbar",
     "githubRepository": "GitHub-Repository"
@@ -491,7 +548,7 @@
     "title": "Benachrichtigungen",
     "new": "Neu",
     "all": "Alle",
-    "readAll": "ALLE BENACHRICHTIGUNGEN LESEN",
+    "readAll": "ALLE ANZEIGEN",
     "close": "Schließen",
     "markRead": "Als gelesen markieren",
     "noNotifications": "Keine Benachrichtigungen vorhanden"
@@ -510,7 +567,7 @@
     "lineChart": "Liniendiagramm",
     "areaFillByValueChart": "Flächenfüllung nach Wert",
     "gradientPieChart": "Kreisdiagramm mit Verlauf",
-    "lineAreaChart": "Bestellungen- und Retourentrend"
+    "lineAreaChart": "Bestell- und Retourentrend"
   },
   "userManagement": {
     "title": "Benutzerverwaltung",
@@ -574,21 +631,9 @@
   "errorPages": {
     "backToHomepage": "Zur Startseite",
     "tryAgain": "Erneut versuchen",
-    "unexpectedError": {
-      "title": "Etwas ist schiefgelaufen",
-      "description": "Beim Laden dieser Seite ist ein unerwarteter Fehler aufgetreten."
-    },
-    "error401": {
-      "title": "Nicht autorisiert",
-      "description": "Du hast keine Berechtigung, auf diese Seite zuzugreifen."
-    },
-    "error404": {
-      "title": "Seite nicht gefunden",
-      "description": "Die gesuchte Seite wurde möglicherweise verschoben oder gelöscht."
-    },
-    "error500": {
-      "title": "Serverfehler",
-      "description": "Bei der Verarbeitung deiner Anfrage ist serverseitig etwas schiefgelaufen."
-    }
+    "unexpectedError": { "title": "Etwas ist schiefgelaufen" },
+    "error401": { "title": "Nicht autorisiert" },
+    "error404": { "title": "Seite nicht gefunden" },
+    "error500": { "title": "Serverfehler" }
   }
 }

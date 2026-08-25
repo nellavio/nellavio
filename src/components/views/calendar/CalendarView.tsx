@@ -1,5 +1,6 @@
 "use client";
 
+import deLocale from "@fullcalendar/core/locales/de";
 import plLocale from "@fullcalendar/core/locales/pl";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -13,6 +14,8 @@ import { AddEventModal } from "./parts/AddEventModal";
 import { RemoveEventModal } from "./parts/RemoveEventModal";
 import { CalendarViewProps } from "./types";
 import { useCalendar } from "./useCalendar";
+
+const FULLCALENDAR_LOCALES = { de: deLocale, pl: plLocale } as const;
 
 export const CalendarView = ({ calendarEvents }: CalendarViewProps) => {
   const t = useTranslations("calendar");
@@ -82,7 +85,10 @@ export const CalendarView = ({ calendarEvents }: CalendarViewProps) => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
         }}
-        locale={locale === "pl" ? plLocale : "en"}
+        locale={
+          FULLCALENDAR_LOCALES[locale as keyof typeof FULLCALENDAR_LOCALES] ??
+          "en"
+        }
       />
       {modalOpen && (
         <RemoveEventModal

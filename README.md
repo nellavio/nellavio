@@ -5,12 +5,6 @@
     </summary>
   </ul>
 </div>
-<h4 align="center">Open source dashboard starter built with Next.js 16, TypeScript and Tailwind 4</h4>
-<div align="center">
-
-[Live Demo](https://demo.nellavio.com) &nbsp; [Getting Started](#quickstart) &nbsp; [Changelog](https://github.com/nellavio/nellavio/blob/main/CHANGELOG.md)
-
-</div>
 <div align="center">
   <a href="https://github.com/nellavio/nellavio/network/members" style="text-decoration: none;">
     <img src="https://img.shields.io/github/forks/nellavio/nellavio?style=flat&color=blue" alt="Forks" />
@@ -22,6 +16,13 @@
     <img src="https://img.shields.io/github/package-json/v/nellavio/nellavio?color=green" alt="Version" />
   </a>
 </div>
+<h4 align="center">Open source dashboard starter built with Next.js 16, TypeScript and Tailwind 4</h4>
+<div align="center">
+
+[Live Demo](https://demo.nellavio.com) &nbsp; [Getting Started](#quickstart) &nbsp; [Changelog](https://github.com/nellavio/nellavio/blob/main/CHANGELOG.md)
+
+</div>
+
 <br />
 <div align="center">
   <img src="https://github.com/user-attachments/assets/d143f2da-8aec-4a5d-914a-46f15aadf2d4" alt="Nellavio Dashboard" width="800" />
@@ -246,6 +247,7 @@ For remote hosting, you can easily deploy your own instance of Nellavio dashboar
 1. Create a new JSON file in `messages/` (e.g. `de.json`) based on `en.json`
 2. Add the locale to `src/i18n/routing.ts` in the `locales` array
 3. Add a language option in `UserMenuDropdown.tsx`
+4. Add the matching FullCalendar locale to `FULLCALENDAR_LOCALES` in `CalendarView.tsx`
 
 #### Set up the first admin
 
