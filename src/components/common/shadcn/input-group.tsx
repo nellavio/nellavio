@@ -34,10 +34,14 @@ const InputGroupContext = React.createContext<InputGroupContextValue>({
  * </InputGroup>
  * ```
  */
-const InputGroup = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => {
+const InputGroup = ({
+  className,
+  children,
+  ref,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   const childrenArray = React.Children.toArray(children);
 
   const checkAddonAlignment = (
@@ -86,8 +90,7 @@ const InputGroup = React.forwardRef<
       </div>
     </InputGroupContext.Provider>
   );
-});
-InputGroup.displayName = "InputGroup";
+};
 
 /**
  * Style variants configuration for the InputGroupAddon component.
@@ -131,17 +134,20 @@ interface InputGroupAddonProps
  * </InputGroupAddon>
  * ```
  */
-const InputGroupAddon = React.forwardRef<HTMLDivElement, InputGroupAddonProps>(
-  ({ className, align, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(inputGroupAddonVariants({ align }), className)}
-        {...props}
-      />
-    );
-  },
-);
+const InputGroupAddon = ({
+  className,
+  align,
+  ref,
+  ...props
+}: InputGroupAddonProps & { ref?: React.Ref<HTMLDivElement> }) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(inputGroupAddonVariants({ align }), className)}
+      {...props}
+    />
+  );
+};
 InputGroupAddon.displayName = "InputGroupAddon";
 
 /**
@@ -192,31 +198,29 @@ interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
  * </InputGroupAddon>
  * ```
  */
-const InputGroupButton = React.forwardRef<
-  HTMLButtonElement,
-  InputGroupButtonProps
->(
-  (
-    { className, variant = "ghost", size = "xs", type = "button", ...props },
-    ref,
-  ) => {
-    return (
-      <button
-        ref={ref}
-        type={type}
-        tabIndex={0}
-        className={cn(
-          buttonVariants({ variant, size: "default" }),
-          inputGroupButtonVariants({ size }),
-          "pointer-events-auto text-grayIcon stroke-grayIcon",
-          className,
-        )}
-        {...props}
-      />
-    );
-  },
-);
-InputGroupButton.displayName = "InputGroupButton";
+const InputGroupButton = ({
+  className,
+  variant = "ghost",
+  size = "xs",
+  type = "button",
+  ref,
+  ...props
+}: InputGroupButtonProps & { ref?: React.Ref<HTMLButtonElement> }) => {
+  return (
+    <button
+      ref={ref}
+      type={type}
+      tabIndex={0}
+      className={cn(
+        buttonVariants({ variant, size: "default" }),
+        inputGroupButtonVariants({ size }),
+        "pointer-events-auto text-grayIcon stroke-grayIcon",
+        className,
+      )}
+      {...props}
+    />
+  );
+};
 
 /**
  * Text display component for non-interactive content within InputGroupAddon.
@@ -233,10 +237,13 @@ InputGroupButton.displayName = "InputGroupButton";
  * </InputGroupAddon>
  * ```
  */
-const InputGroupText = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+const InputGroupText = ({
+  className,
+  ref,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & {
+  ref?: React.Ref<HTMLDivElement>;
+}) => {
   return (
     <div
       ref={ref}
@@ -247,8 +254,7 @@ const InputGroupText = React.forwardRef<
       {...props}
     />
   );
-});
-InputGroupText.displayName = "InputGroupText";
+};
 
 /**
  * Style variants configuration for the InputGroupInput component.
@@ -297,10 +303,14 @@ interface InputGroupInputProps
  * </InputGroup>
  * ```
  */
-const InputGroupInput = React.forwardRef<
-  HTMLInputElement,
-  InputGroupInputProps
->(({ className, type, variant, fixedHeight, ...props }, ref) => {
+const InputGroupInput = ({
+  className,
+  type,
+  variant,
+  fixedHeight,
+  ref,
+  ...props
+}: InputGroupInputProps & { ref?: React.Ref<HTMLInputElement> }) => {
   const { hasLeftAddon, hasRightAddon } = React.useContext(InputGroupContext);
 
   return (
@@ -318,8 +328,7 @@ const InputGroupInput = React.forwardRef<
       {...props}
     />
   );
-});
-InputGroupInput.displayName = "InputGroupInput";
+};
 
 interface InputGroupTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
@@ -341,10 +350,11 @@ interface InputGroupTextareaProps extends React.TextareaHTMLAttributes<HTMLTextA
  * </InputGroup>
  * ```
  */
-const InputGroupTextarea = React.forwardRef<
-  HTMLTextAreaElement,
-  InputGroupTextareaProps
->(({ className, ...props }, ref) => {
+const InputGroupTextarea = ({
+  className,
+  ref,
+  ...props
+}: InputGroupTextareaProps & { ref?: React.Ref<HTMLTextAreaElement> }) => {
   return (
     <textarea
       className={cn(
@@ -356,8 +366,7 @@ const InputGroupTextarea = React.forwardRef<
       {...props}
     />
   );
-});
-InputGroupTextarea.displayName = "InputGroupTextarea";
+};
 
 export {
   InputGroup,

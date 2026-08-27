@@ -35,16 +35,19 @@ interface LabelProps
   withPointer?: boolean;
 }
 
-const Label = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  LabelProps
->(({ className, withPointer, ...props }, ref) => (
+const Label = ({
+  className,
+  withPointer,
+  ref,
+  ...props
+}: LabelProps & {
+  ref?: React.Ref<React.ComponentRef<typeof LabelPrimitive.Root>>;
+}) => (
   <LabelPrimitive.Root
     ref={ref}
     className={cn(labelVariants(), withPointer && "cursor-pointer", className)}
     {...props}
   />
-));
-Label.displayName = LabelPrimitive.Root.displayName;
+);
 
 export { Label };

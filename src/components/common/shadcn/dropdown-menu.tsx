@@ -80,12 +80,16 @@ const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
  * </DropdownMenuSub>
  * ```
  */
-const DropdownMenuSubTrigger = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
-    inset?: boolean;
-  }
->(({ className, inset, children, ...props }, ref) => (
+const DropdownMenuSubTrigger = ({
+  className,
+  inset,
+  children,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
+  inset?: boolean;
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.SubTrigger>>;
+}) => (
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
@@ -98,9 +102,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {children}
     <ChevronRight className="ml-auto" />
   </DropdownMenuPrimitive.SubTrigger>
-));
-DropdownMenuSubTrigger.displayName =
-  DropdownMenuPrimitive.SubTrigger.displayName;
+);
 
 /**
  * Content container for nested submenus with animations.
@@ -110,10 +112,13 @@ DropdownMenuSubTrigger.displayName =
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.Ref} ref - Forwarded ref to the content element
  */
-const DropdownMenuSubContent = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
->(({ className, ...props }, ref) => (
+const DropdownMenuSubContent = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent> & {
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.SubContent>>;
+}) => (
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
@@ -122,9 +127,7 @@ const DropdownMenuSubContent = React.forwardRef<
     )}
     {...props}
   />
-));
-DropdownMenuSubContent.displayName =
-  DropdownMenuPrimitive.SubContent.displayName;
+);
 
 /**
  * Main content container for the dropdown menu.
@@ -143,46 +146,46 @@ DropdownMenuSubContent.displayName =
  * </DropdownMenuContent>
  * ```
  */
-const DropdownMenuContent = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
->(
-  (
-    { className, sideOffset = 4, loop = true, onCloseAutoFocus, ...props },
-    ref,
-  ) => {
-    const closedWithPointerRef = React.useRef(false);
+const DropdownMenuContent = ({
+  className,
+  sideOffset = 4,
+  loop = true,
+  onCloseAutoFocus,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & {
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.Content>>;
+}) => {
+  const closedWithPointerRef = React.useRef(false);
 
-    return (
-      <DropdownMenuPrimitive.Portal>
-        <DropdownMenuPrimitive.Content
-          ref={ref}
-          sideOffset={sideOffset}
-          loop={loop}
-          className={cn(
-            "z-50 min-w-32 overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-            className,
-          )}
-          onPointerDown={() => {
-            closedWithPointerRef.current = true;
-          }}
-          onPointerDownOutside={() => {
-            closedWithPointerRef.current = true;
-          }}
-          onCloseAutoFocus={(e) => {
-            if (closedWithPointerRef.current) {
-              e.preventDefault();
-              closedWithPointerRef.current = false;
-            }
-            onCloseAutoFocus?.(e);
-          }}
-          {...props}
-        />
-      </DropdownMenuPrimitive.Portal>
-    );
-  },
-);
-DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
+  return (
+    <DropdownMenuPrimitive.Portal>
+      <DropdownMenuPrimitive.Content
+        ref={ref}
+        sideOffset={sideOffset}
+        loop={loop}
+        className={cn(
+          "z-50 min-w-32 overflow-hidden rounded-md border border-inputBorder bg-dropdownBg p-1 text-primaryText shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className,
+        )}
+        onPointerDown={() => {
+          closedWithPointerRef.current = true;
+        }}
+        onPointerDownOutside={() => {
+          closedWithPointerRef.current = true;
+        }}
+        onCloseAutoFocus={(e) => {
+          if (closedWithPointerRef.current) {
+            e.preventDefault();
+            closedWithPointerRef.current = false;
+          }
+          onCloseAutoFocus?.(e);
+        }}
+        {...props}
+      />
+    </DropdownMenuPrimitive.Portal>
+  );
+};
 
 /**
  * Interactive menu item that triggers an action when selected.
@@ -201,12 +204,15 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
  * </DropdownMenuItem>
  * ```
  */
-const DropdownMenuItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
-    inset?: boolean;
-  }
->(({ className, inset, ...props }, ref) => (
+const DropdownMenuItem = ({
+  className,
+  inset,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
+  inset?: boolean;
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.Item>>;
+}) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
@@ -216,8 +222,7 @@ const DropdownMenuItem = React.forwardRef<
     )}
     {...props}
   />
-));
-DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
+);
 
 /**
  * Menu item with checkbox functionality for toggling options.
@@ -235,10 +240,17 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
  * </DropdownMenuCheckboxItem>
  * ```
  */
-const DropdownMenuCheckboxItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
->(({ className, children, checked, ...props }, ref) => (
+const DropdownMenuCheckboxItem = ({
+  className,
+  children,
+  checked,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem> & {
+  ref?: React.Ref<
+    React.ComponentRef<typeof DropdownMenuPrimitive.CheckboxItem>
+  >;
+}) => (
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
@@ -255,9 +267,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     </span>
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
-));
-DropdownMenuCheckboxItem.displayName =
-  DropdownMenuPrimitive.CheckboxItem.displayName;
+);
 
 /**
  * Menu item for radio group selection with single choice behavior.
@@ -275,10 +285,14 @@ DropdownMenuCheckboxItem.displayName =
  * </DropdownMenuRadioGroup>
  * ```
  */
-const DropdownMenuRadioItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
->(({ className, children, ...props }, ref) => (
+const DropdownMenuRadioItem = ({
+  className,
+  children,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem> & {
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.RadioItem>>;
+}) => (
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
@@ -294,8 +308,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     </span>
     {children}
   </DropdownMenuPrimitive.RadioItem>
-));
-DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
+);
 
 /**
  * Non-interactive label for grouping or describing menu items.
@@ -313,12 +326,15 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
  * <DropdownMenuItem>Settings</DropdownMenuItem>
  * ```
  */
-const DropdownMenuLabel = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Label>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
-    inset?: boolean;
-  }
->(({ className, inset, ...props }, ref) => (
+const DropdownMenuLabel = ({
+  className,
+  inset,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
+  inset?: boolean;
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.Label>>;
+}) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
     className={cn(
@@ -328,8 +344,7 @@ const DropdownMenuLabel = React.forwardRef<
     )}
     {...props}
   />
-));
-DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
+);
 
 /**
  * Visual divider line between menu items or groups.
@@ -338,17 +353,19 @@ DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.Ref} ref - Forwarded ref to the separator element
  */
-const DropdownMenuSeparator = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
->(({ className, ...props }, ref) => (
+const DropdownMenuSeparator = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator> & {
+  ref?: React.Ref<React.ComponentRef<typeof DropdownMenuPrimitive.Separator>>;
+}) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
     className={cn("-mx-1 my-1 h-px bg-mainBorder", className)}
     {...props}
   />
-));
-DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
+);
 
 /**
  * Keyboard shortcut hint displayed alongside menu items.

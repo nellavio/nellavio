@@ -24,17 +24,19 @@ import { cn } from "@/utils/classNames";
  * </RadioGroup>
  * ```
  */
-const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, ...props }, ref) => (
+const RadioGroup = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
+  ref?: React.Ref<React.ComponentRef<typeof RadioGroupPrimitive.Root>>;
+}) => (
   <RadioGroupPrimitive.Root
     className={cn("grid gap-3", className)}
     {...props}
     ref={ref}
   />
-));
-RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
+);
 
 /**
  * Individual radio button item within a RadioGroup.
@@ -50,10 +52,14 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
  * <RadioGroupItem value="default" id="r1" />
  * ```
  */
-const RadioGroupItem = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, onKeyDown, ...props }, ref) => (
+const RadioGroupItem = ({
+  className,
+  onKeyDown,
+  ref,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & {
+  ref?: React.Ref<React.ComponentRef<typeof RadioGroupPrimitive.Item>>;
+}) => (
   <RadioGroupPrimitive.Item
     ref={ref}
     tabIndex={0}
@@ -74,7 +80,6 @@ const RadioGroupItem = React.forwardRef<
       <Circle className="absolute top-1/2 left-1/2 h-2.75 w-2.75 -translate-x-1/2 -translate-y-1/2 fill-current text-current" />
     </RadioGroupPrimitive.Indicator>
   </RadioGroupPrimitive.Item>
-));
-RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
+);
 
 export { RadioGroup, RadioGroupItem };
