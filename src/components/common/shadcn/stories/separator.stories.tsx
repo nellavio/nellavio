@@ -17,7 +17,7 @@ Built on Radix UI Separator primitive with proper semantic HTML and ARIA attribu
 - \`className\` - Additional CSS classes to apply
 - \`orientation\` - Direction: \`horizontal\`, \`vertical\`
 - \`decorative\` - Whether the separator is purely decorative (affects ARIA)
-- \`ref\` - Forwarded ref to the separator element
+- \`ref\` - Ref to the separator element
         `,
       },
     },

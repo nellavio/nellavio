@@ -19,7 +19,7 @@ const labelVariants = cva(
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the label element
+ * @param {React.Ref} ref - Ref to the label element
  * @param {React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>} props - Radix Label props
  *
  * @example

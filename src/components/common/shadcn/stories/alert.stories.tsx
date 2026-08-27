@@ -18,7 +18,7 @@ Supports optional icons and multiple visual variants for different message types
 - \`className\` - Additional CSS classes to apply
 - \`variant\` - Visual style variant: \`default\`, \`destructive\`, \`success\`
 - \`children\` - Alert content including title and description
-- \`ref\` - Forwarded ref to the alert container element
+- \`ref\` - Ref to the alert container element
 
 **Subcomponents:**
 - \`AlertTitle\` - Title heading for the alert notification

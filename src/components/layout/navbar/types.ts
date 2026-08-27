@@ -100,7 +100,7 @@ export interface SubMenuState {
 export interface UserMenuDropdownProps {
   menuRef: React.RefObject<HTMLDivElement | null>;
   handleMenuKeyDown: (e: React.KeyboardEvent) => void;
-  suppressTooltipRef: React.MutableRefObject<boolean>;
+  suppressTooltipRef: React.RefObject<boolean>;
   t: (key: string) => string;
   pathname: string;
   currentLanguage: string;

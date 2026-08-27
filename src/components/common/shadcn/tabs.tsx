@@ -28,7 +28,7 @@ const Tabs = TabsPrimitive.Root;
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {('default'|'line')} [variant='default'] - Visual style variant
- * @param {React.Ref} ref - Forwarded ref to the list element
+ * @param {React.Ref} ref - Ref to the list element
  *
  * @example
  * ```tsx
@@ -67,7 +67,7 @@ const TabsList = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {('default'|'line')} [variant='default'] - Visual style variant matching TabsList
- * @param {React.Ref} ref - Forwarded ref to the button element
+ * @param {React.Ref} ref - Ref to the button element
  *
  * @example
  * ```tsx
@@ -106,7 +106,7 @@ const TabsTrigger = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the content element
+ * @param {React.Ref} ref - Ref to the content element
  *
  * @example
  * ```tsx

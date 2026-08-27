@@ -20,7 +20,7 @@ Built on Radix UI Checkbox primitive with accessibility and keyboard support.
 - \`defaultChecked\` - Default checked state (uncontrolled)
 - \`onCheckedChange\` - Callback when checked state changes
 - \`disabled\` - Disabled state
-- \`ref\` - Forwarded ref to the checkbox element
+- \`ref\` - Ref to the checkbox element
         `,
       },
     },

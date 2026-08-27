@@ -22,7 +22,7 @@ const InputGroupContext = React.createContext<InputGroupContextValue>({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - InputGroupInput and InputGroupAddon components
- * @param {React.Ref} ref - Forwarded ref to the container element
+ * @param {React.Ref} ref - Ref to the container element
  *
  * @example
  * ```tsx
@@ -125,7 +125,7 @@ interface InputGroupAddonProps
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {('inline-start'|'inline-end'|'block-start'|'block-end')} [align='inline-start'] - Position of the addon
- * @param {React.Ref} ref - Forwarded ref to the addon element
+ * @param {React.Ref} ref - Ref to the addon element
  *
  * @example
  * ```tsx
@@ -148,6 +148,11 @@ const InputGroupAddon = ({
     />
   );
 };
+/**
+ * Intentionally kept after the forwardRef migration: `InputGroup` inspects
+ * `child.type.displayName` to detect addons and derive the input padding.
+ * Removing this breaks the padding silently - no type error, no lint error.
+ */
 InputGroupAddon.displayName = "InputGroupAddon";
 
 /**
@@ -187,7 +192,7 @@ interface InputGroupButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
  * @param {string} [className] - Additional CSS classes to apply
  * @param {('default'|'destructive'|'outline'|'secondary'|'ghost'|'link')} [variant='ghost'] - Button style variant
  * @param {('xs'|'icon-xs'|'sm'|'icon-sm')} [size='xs'] - Button size variant
- * @param {React.Ref} ref - Forwarded ref to the button element
+ * @param {React.Ref} ref - Ref to the button element
  *
  * @example
  * ```tsx
@@ -228,7 +233,7 @@ const InputGroupButton = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the text container element
+ * @param {React.Ref} ref - Ref to the text container element
  *
  * @example
  * ```tsx
@@ -293,7 +298,7 @@ interface InputGroupInputProps
  * @param {string} [type] - HTML input type attribute
  * @param {('default'|'navbarSearch')} [variant='default'] - Visual style variant
  * @param {boolean} [fixedHeight] - Forces fixed height regardless of responsive breakpoints
- * @param {React.Ref} ref - Forwarded ref to the input element
+ * @param {React.Ref} ref - Ref to the input element
  *
  * @example
  * ```tsx
@@ -338,7 +343,7 @@ interface InputGroupTextareaProps extends React.TextareaHTMLAttributes<HTMLTextA
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the textarea element
+ * @param {React.Ref} ref - Ref to the textarea element
  *
  * @example
  * ```tsx

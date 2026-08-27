@@ -43,7 +43,7 @@ const SelectValue = SelectPrimitive.Value;
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Trigger content (typically SelectValue)
- * @param {React.Ref} ref - Forwarded ref to the trigger element
+ * @param {React.Ref} ref - Ref to the trigger element
  */
 const SelectTrigger = ({
   className,
@@ -74,7 +74,7 @@ const SelectTrigger = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the button element
+ * @param {React.Ref} ref - Ref to the button element
  */
 const SelectScrollUpButton = ({
   className,
@@ -100,7 +100,7 @@ const SelectScrollUpButton = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the button element
+ * @param {React.Ref} ref - Ref to the button element
  */
 const SelectScrollDownButton = ({
   className,
@@ -129,7 +129,7 @@ const SelectScrollDownButton = ({
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Select items and groups
  * @param {('popper'|'item-aligned')} [position='popper'] - Positioning strategy
- * @param {React.Ref} ref - Forwarded ref to the content element
+ * @param {React.Ref} ref - Ref to the content element
  *
  * @example
  * ```tsx
@@ -181,7 +181,7 @@ const SelectContent = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the label element
+ * @param {React.Ref} ref - Ref to the label element
  *
  * @example
  * ```tsx
@@ -219,7 +219,7 @@ const SelectLabel = ({
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Item label text
  * @param {string} value - Unique value for this option
- * @param {React.Ref} ref - Forwarded ref to the item element
+ * @param {React.Ref} ref - Ref to the item element
  *
  * @example
  * ```tsx
@@ -257,7 +257,7 @@ const SelectItem = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the separator element
+ * @param {React.Ref} ref - Ref to the separator element
  */
 const SelectSeparator = ({
   className,

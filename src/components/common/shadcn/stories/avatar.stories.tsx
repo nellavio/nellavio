@@ -16,7 +16,7 @@ Built on Radix UI Avatar primitive with automatic fallback handling when images 
 **Props:**
 - \`className\` - Additional CSS classes for custom sizing (e.g. \`h-8 w-8\`, \`h-16 w-16\`)
 - \`children\` - Avatar content (typically AvatarImage and AvatarFallback)
-- \`ref\` - Forwarded ref to the avatar container
+- \`ref\` - Ref to the avatar container
 
 **Subcomponents:**
 - \`AvatarImage\` - Displays the user's profile picture

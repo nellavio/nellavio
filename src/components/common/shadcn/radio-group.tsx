@@ -11,7 +11,7 @@ import { cn } from "@/utils/classNames";
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the radio group element
+ * @param {React.Ref} ref - Ref to the radio group element
  * @param {React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>} props - Radix RadioGroup props
  *
  * @example
@@ -45,7 +45,7 @@ const RadioGroup = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {string} value - Unique value for this radio option
- * @param {React.Ref} ref - Forwarded ref to the radio item element
+ * @param {React.Ref} ref - Ref to the radio item element
  *
  * @example
  * ```tsx

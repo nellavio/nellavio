@@ -11,7 +11,7 @@ import { cn } from "@/utils/classNames";
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the checkbox element
+ * @param {React.Ref} ref - Ref to the checkbox element
  * @param {React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>} props - Radix Checkbox props
  *
  * @example

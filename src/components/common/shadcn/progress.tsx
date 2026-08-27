@@ -18,7 +18,7 @@ interface ProgressProps extends React.ComponentPropsWithoutRef<
  * @param {string} [className] - Additional CSS classes to apply
  * @param {number} [value] - Current progress value (0-100)
  * @param {string} [indicatorColor] - Custom CSS color for the indicator
- * @param {React.Ref} ref - Forwarded ref to the progress root element
+ * @param {React.Ref} ref - Ref to the progress root element
  *
  * @example
  * ```tsx

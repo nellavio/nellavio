@@ -50,7 +50,7 @@ const DialogClose = DialogPrimitive.Close;
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the overlay element
+ * @param {React.Ref} ref - Ref to the overlay element
  */
 const DialogOverlay = ({
   className,
@@ -76,7 +76,7 @@ const DialogOverlay = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Dialog content
- * @param {React.Ref} ref - Forwarded ref to the content element
+ * @param {React.Ref} ref - Ref to the content element
  *
  * @example
  * ```tsx
@@ -114,12 +114,8 @@ const DialogContent = ({
       <DialogPrimitive.Content
         ref={(node: HTMLDivElement | null) => {
           localRef.current = node;
-          if (typeof ref === "function") {
-            ref(node);
-          } else if (ref && "current" in ref) {
-            (ref as React.MutableRefObject<HTMLDivElement | null>).current =
-              node;
-          }
+          if (typeof ref === "function") ref(node);
+          else if (ref) ref.current = node;
         }}
         tabIndex={-1}
         className={cn(
@@ -160,7 +156,6 @@ const DialogHeader = ({
     {...props}
   />
 );
-DialogHeader.displayName = "DialogHeader";
 
 /**
  * Footer section typically containing action buttons.
@@ -187,14 +182,13 @@ const DialogFooter = ({
     {...props}
   />
 );
-DialogFooter.displayName = "DialogFooter";
 
 /**
  * Title heading for the dialog.
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the title element
+ * @param {React.Ref} ref - Ref to the title element
  */
 const DialogTitle = ({
   className,
@@ -218,7 +212,7 @@ const DialogTitle = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the description element
+ * @param {React.Ref} ref - Ref to the description element
  */
 const DialogDescription = ({
   className,

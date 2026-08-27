@@ -54,7 +54,7 @@ const TooltipPortal = TooltipPrimitive.Portal;
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {number} [sideOffset=4] - Distance in pixels from the trigger element
- * @param {React.Ref} ref - Forwarded ref to the content element
+ * @param {React.Ref} ref - Ref to the content element
  *
  * @example
  * ```tsx

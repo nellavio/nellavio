@@ -134,7 +134,7 @@ const FormItemContext = React.createContext<FormItemContextValue>(
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the container div
+ * @param {React.Ref} ref - Ref to the container div
  *
  * @example
  * ```tsx
@@ -170,7 +170,7 @@ const FormItem = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the label element
+ * @param {React.Ref} ref - Ref to the label element
  *
  * @example
  * ```tsx
@@ -201,7 +201,7 @@ const FormLabel = ({
  * Provides proper ARIA attributes for accessibility and error states.
  *
  * @component
- * @param {React.Ref} ref - Forwarded ref to the control element
+ * @param {React.Ref} ref - Ref to the control element
  *
  * @example
  * ```tsx
@@ -240,7 +240,7 @@ const FormControl = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the paragraph element
+ * @param {React.Ref} ref - Ref to the paragraph element
  *
  * @example
  * ```tsx
@@ -276,7 +276,7 @@ const FormDescription = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} [children] - Custom error message content
- * @param {React.Ref} ref - Forwarded ref to the paragraph element
+ * @param {React.Ref} ref - Ref to the paragraph element
  *
  * @example
  * ```tsx

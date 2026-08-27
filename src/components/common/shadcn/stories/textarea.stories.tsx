@@ -19,7 +19,7 @@ Supports all standard HTML textarea attributes.
 - \`placeholder\` - Placeholder text
 - \`rows\` - Number of visible rows
 - \`disabled\` - Disabled state
-- \`ref\` - Forwarded ref to the textarea element
+- \`ref\` - Ref to the textarea element
         `,
       },
     },

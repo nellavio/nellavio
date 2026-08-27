@@ -12,7 +12,7 @@ import { cn } from "@/utils/classNames";
  * @param {string} [className] - Additional CSS classes to apply
  * @param {('horizontal'|'vertical')} [orientation='horizontal'] - Direction of the separator
  * @param {boolean} [decorative=true] - Whether the separator is purely decorative (affects ARIA)
- * @param {React.Ref} ref - Forwarded ref to the separator element
+ * @param {React.Ref} ref - Ref to the separator element
  *
  * @example
  * ```tsx

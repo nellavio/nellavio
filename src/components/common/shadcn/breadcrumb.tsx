@@ -13,7 +13,7 @@ import { cn } from "@/utils/classNames";
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Breadcrumb content (typically BreadcrumbList)
  * @param {React.ReactNode} [separator] - Custom separator element between items
- * @param {React.Ref} ref - Forwarded ref to the nav element
+ * @param {React.Ref} ref - Ref to the nav element
  */
 const Breadcrumb = ({
   ref,
@@ -30,7 +30,7 @@ const Breadcrumb = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Breadcrumb items and separators
- * @param {React.Ref} ref - Forwarded ref to the ol element
+ * @param {React.Ref} ref - Ref to the ol element
  */
 const BreadcrumbList = ({
   className,
@@ -56,7 +56,7 @@ const BreadcrumbList = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Content (typically BreadcrumbLink or BreadcrumbPage)
- * @param {React.Ref} ref - Forwarded ref to the li element
+ * @param {React.Ref} ref - Ref to the li element
  *
  * @example
  * ```tsx
@@ -89,7 +89,7 @@ const BreadcrumbItem = ({
  * @param {string} [className] - Additional CSS classes to apply
  * @param {string} [href] - URL to navigate to
  * @param {React.ReactNode} children - Link text content
- * @param {React.Ref} ref - Forwarded ref to the anchor element
+ * @param {React.Ref} ref - Ref to the anchor element
  *
  * @example
  * ```tsx
@@ -132,7 +132,7 @@ const BreadcrumbLink = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Current page name
- * @param {React.Ref} ref - Forwarded ref to the span element
+ * @param {React.Ref} ref - Ref to the span element
  *
  * @example
  * ```tsx
@@ -189,7 +189,6 @@ const BreadcrumbSeparator = ({
     {children ?? <ChevronRight />}
   </li>
 );
-BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
 /**
  * Ellipsis indicator for collapsed breadcrumb items.
@@ -215,7 +214,6 @@ const BreadcrumbEllipsis = ({
     <span className="sr-only">More</span>
   </span>
 );
-BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
 export {
   Breadcrumb,

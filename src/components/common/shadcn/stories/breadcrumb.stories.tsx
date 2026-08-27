@@ -25,7 +25,7 @@ Provides semantic navigation structure with proper ARIA labels for accessibility
 **Props:**
 - \`className\` - Additional CSS classes to apply
 - \`children\` - Breadcrumb content (typically BreadcrumbList)
-- \`ref\` - Forwarded ref to the nav element
+- \`ref\` - Ref to the nav element
 
 **Subcomponents:**
 - \`BreadcrumbList\` - Ordered list container with flexbox layout

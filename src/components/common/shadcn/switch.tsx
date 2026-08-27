@@ -10,7 +10,7 @@ import { cn } from "@/utils/classNames";
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the switch element
+ * @param {React.Ref} ref - Ref to the switch element
  * @param {React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>} props - Radix Switch props
  *
  * @example

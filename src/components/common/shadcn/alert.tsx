@@ -39,7 +39,7 @@ const alertVariants = cva(
  * @param {string} [className] - Additional CSS classes to apply
  * @param {('default'|'destructive'|'success')} [variant='default'] - Visual style variant
  * @param {React.ReactNode} children - Alert content including title and description
- * @param {React.Ref} ref - Forwarded ref to the alert container
+ * @param {React.Ref} ref - Ref to the alert container
  *
  * @example
  * ```tsx
@@ -75,7 +75,7 @@ const Alert = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Title text content
- * @param {React.Ref} ref - Forwarded ref to the heading element
+ * @param {React.Ref} ref - Ref to the heading element
  *
  * @example
  * ```tsx
@@ -105,7 +105,7 @@ const AlertTitle = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Description content (can include paragraphs, links, etc.)
- * @param {React.Ref} ref - Forwarded ref to the description container
+ * @param {React.Ref} ref - Ref to the description container
  *
  * @example
  * ```tsx

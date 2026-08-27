@@ -17,7 +17,7 @@ Built on Radix UI Progress primitive with smooth transitions and customizable co
 - \`className\` - Additional CSS classes to apply
 - \`value\` - Current progress value (0-100)
 - \`indicatorColor\` - Custom CSS color for the indicator
-- \`ref\` - Forwarded ref to the progress root element
+- \`ref\` - Ref to the progress root element
         `,
       },
     },

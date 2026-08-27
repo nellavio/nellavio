@@ -19,7 +19,7 @@ Supports all standard HTML input types and attributes.
 - \`type\` - HTML input type: \`text\`, \`email\`, \`password\`, \`number\`, etc.
 - \`placeholder\` - Placeholder text
 - \`disabled\` - Disabled state
-- \`ref\` - Forwarded ref to the input element
+- \`ref\` - Ref to the input element
         `,
       },
     },

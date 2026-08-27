@@ -13,7 +13,7 @@ import { Dialog, DialogContent } from "./dialog";
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the command element
+ * @param {React.Ref} ref - Ref to the command element
  */
 const Command = ({
   className,
@@ -71,7 +71,7 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the input element
+ * @param {React.Ref} ref - Ref to the input element
  */
 const CommandInput = ({
   className,
@@ -101,7 +101,7 @@ const CommandInput = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the list element
+ * @param {React.Ref} ref - Ref to the list element
  */
 const CommandList = ({
   className,
@@ -121,7 +121,7 @@ const CommandList = ({
  * Empty state message displayed when no items match the search.
  *
  * @component
- * @param {React.Ref} ref - Forwarded ref to the empty element
+ * @param {React.Ref} ref - Ref to the empty element
  */
 const CommandEmpty = ({
   ref,
@@ -141,7 +141,7 @@ const CommandEmpty = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the group element
+ * @param {React.Ref} ref - Ref to the group element
  */
 const CommandGroup = ({
   className,
@@ -165,7 +165,7 @@ const CommandGroup = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the separator element
+ * @param {React.Ref} ref - Ref to the separator element
  */
 const CommandSeparator = ({
   className,
@@ -187,7 +187,7 @@ const CommandSeparator = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the item element
+ * @param {React.Ref} ref - Ref to the item element
  */
 const CommandItem = ({
   className,
@@ -234,7 +234,6 @@ const CommandShortcut = ({
     />
   );
 };
-CommandShortcut.displayName = "CommandShortcut";
 
 export {
   Command,

@@ -11,7 +11,7 @@ import { cn } from "@/utils/classNames";
  * @component
  * @param {string} [className] - Additional CSS classes to apply for custom styling
  * @param {React.ReactNode} children - Avatar content (typically AvatarImage and AvatarFallback)
- * @param {React.Ref} ref - Forwarded ref to the avatar container
+ * @param {React.Ref} ref - Ref to the avatar container
  *
  * @example
  * ```tsx
@@ -49,7 +49,7 @@ const Avatar = ({
  * @param {string} alt - Alternative text for accessibility (required for screen readers)
  * @param {string} [className] - Additional CSS classes to apply
  * @param {Function} [onLoadingStatusChange] - Callback when image loading status changes
- * @param {React.Ref} ref - Forwarded ref to the image element
+ * @param {React.Ref} ref - Ref to the image element
  *
  * @example
  * ```tsx
@@ -83,7 +83,7 @@ const AvatarImage = ({
  * @param {string} [className] - Additional CSS classes to apply
  * @param {React.ReactNode} children - Fallback content (typically initials or icon)
  * @param {number} [delayMs] - Delay in milliseconds before showing fallback (prevents flash)
- * @param {React.Ref} ref - Forwarded ref to the fallback element
+ * @param {React.Ref} ref - Ref to the fallback element
  *
  * @example
  * ```tsx

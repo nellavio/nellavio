@@ -68,7 +68,7 @@ const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {boolean} [inset] - Apply left padding to align with other inset items
- * @param {React.Ref} ref - Forwarded ref to the trigger element
+ * @param {React.Ref} ref - Ref to the trigger element
  *
  * @example
  * ```tsx
@@ -110,7 +110,7 @@ const DropdownMenuSubTrigger = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the content element
+ * @param {React.Ref} ref - Ref to the content element
  */
 const DropdownMenuSubContent = ({
   className,
@@ -136,7 +136,7 @@ const DropdownMenuSubContent = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {number} [sideOffset=4] - Distance in pixels from the trigger element
- * @param {React.Ref} ref - Forwarded ref to the content element
+ * @param {React.Ref} ref - Ref to the content element
  *
  * @example
  * ```tsx
@@ -194,7 +194,7 @@ const DropdownMenuContent = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {boolean} [inset] - Apply left padding to align with items that have icons
- * @param {React.Ref} ref - Forwarded ref to the item element
+ * @param {React.Ref} ref - Ref to the item element
  *
  * @example
  * ```tsx
@@ -231,7 +231,7 @@ const DropdownMenuItem = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {boolean} [checked] - Whether the item is currently checked
- * @param {React.Ref} ref - Forwarded ref to the item element
+ * @param {React.Ref} ref - Ref to the item element
  *
  * @example
  * ```tsx
@@ -275,7 +275,7 @@ const DropdownMenuCheckboxItem = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the item element
+ * @param {React.Ref} ref - Ref to the item element
  *
  * @example
  * ```tsx
@@ -317,7 +317,7 @@ const DropdownMenuRadioItem = ({
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {boolean} [inset] - Apply left padding to align with other inset items
- * @param {React.Ref} ref - Forwarded ref to the label element
+ * @param {React.Ref} ref - Ref to the label element
  *
  * @example
  * ```tsx
@@ -351,7 +351,7 @@ const DropdownMenuLabel = ({
  *
  * @component
  * @param {string} [className] - Additional CSS classes to apply
- * @param {React.Ref} ref - Forwarded ref to the separator element
+ * @param {React.Ref} ref - Ref to the separator element
  */
 const DropdownMenuSeparator = ({
   className,
@@ -393,7 +393,6 @@ const DropdownMenuShortcut = ({
     />
   );
 };
-DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
 
 export {
   DropdownMenu,

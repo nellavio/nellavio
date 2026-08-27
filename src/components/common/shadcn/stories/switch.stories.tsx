@@ -20,7 +20,7 @@ Built on Radix UI Switch primitive with smooth transitions and accessibility sup
 - \`defaultChecked\` - Default checked state (uncontrolled)
 - \`onCheckedChange\` - Callback when checked state changes
 - \`disabled\` - Disabled state
-- \`ref\` - Forwarded ref to the switch element
+- \`ref\` - Ref to the switch element
         `,
       },
     },

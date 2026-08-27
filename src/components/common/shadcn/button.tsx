@@ -60,7 +60,7 @@ export interface ButtonProps
  * @param {boolean} [asChild=false] - Render as Radix Slot for composition
  * @param {boolean} [loading=false] - Loading state with spinner
  * @param {React.ReactNode} [icon] - Optional icon rendered before children
- * @param {React.Ref} ref - Forwarded ref to the button element
+ * @param {React.Ref} ref - Ref to the button element
  *
  * @example
  * ```tsx

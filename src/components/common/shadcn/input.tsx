@@ -12,7 +12,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {string} [type] - HTML input type (text, email, password, etc.)
- * @param {React.Ref} ref - Forwarded ref to the input element
+ * @param {React.Ref} ref - Ref to the input element
  * @param {InputProps} props - Standard HTML input attributes
  *
  * @example

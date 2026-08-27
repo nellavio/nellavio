@@ -11,7 +11,7 @@ import { cn } from "@/utils/classNames";
  * @component
  * @param {string} [className] - Additional CSS classes to apply
  * @param {number|number[]} [defaultValue] - Initial value(s) for the slider
- * @param {React.Ref} ref - Forwarded ref to the slider root element
+ * @param {React.Ref} ref - Ref to the slider root element
  * @param {React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>} props - Radix Slider props
  *
  * @example
