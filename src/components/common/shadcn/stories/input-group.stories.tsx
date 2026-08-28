@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { DollarIcon } from "@/assets/icons/DollarIcon";
-import { MailIcon } from "@/assets/icons/MailIcon";
-import { SearchIcon } from "@/assets/icons/SearchIcon";
+import { MailLineIcon } from "@/assets/icons/MailLineIcon";
+import { SearchLineIcon } from "@/assets/icons/SearchLineIcon";
 
 import {
   InputGroup,
@@ -69,7 +69,7 @@ export const WithLeftIcon: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <SearchIcon className="h-4 w-4" />
+          <SearchLineIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder={placeholder as string}
@@ -94,7 +94,7 @@ export const WithRightIcon: Story = {
           disabled={disabled as boolean}
         />
         <InputGroupAddon align="inline-end">
-          <MailIcon className="h-4 w-4" />
+          <MailLineIcon className="h-4 w-4" />
         </InputGroupAddon>
       </InputGroup>
     );
@@ -110,14 +110,14 @@ export const WithBothIcons: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <SearchIcon className="h-4 w-4" />
+          <SearchLineIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder={placeholder as string}
           disabled={disabled as boolean}
         />
         <InputGroupAddon align="inline-end">
-          <MailIcon className="h-4 w-4" />
+          <MailLineIcon className="h-4 w-4" />
         </InputGroupAddon>
       </InputGroup>
     );
@@ -158,7 +158,7 @@ export const Disabled: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <SearchIcon className="h-4 w-4" />
+          <SearchLineIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder={placeholder as string}

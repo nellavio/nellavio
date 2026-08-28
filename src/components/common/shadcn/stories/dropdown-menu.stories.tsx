@@ -3,12 +3,12 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { CloudIcon } from "@/assets/icons/CloudIcon";
 import { CreditCardIcon } from "@/assets/icons/CreditCardIcon";
 import { KeyboardIcon } from "@/assets/icons/KeyboardIcon";
-import { LogoutIcon } from "@/assets/icons/LogoutIcon";
-import { MailIcon } from "@/assets/icons/MailIcon";
+import { LogoutLineIcon } from "@/assets/icons/LogoutLineIcon";
+import { MailLineIcon } from "@/assets/icons/MailLineIcon";
 import { MessageSquareIcon } from "@/assets/icons/MessageSquareIcon";
 import { PlusCircleIcon } from "@/assets/icons/PlusCircleIcon";
-import { SettingsIcon } from "@/assets/icons/SettingsIcon";
-import { UserIcon } from "@/assets/icons/UserIcon";
+import { SettingsLineIcon } from "@/assets/icons/SettingsLineIcon";
+import { UserLineIcon } from "@/assets/icons/UserLineIcon";
 
 import { Button } from "../button";
 import {
@@ -72,16 +72,16 @@ export const Default: Story = {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem>
-          <UserIcon className="mr-2 h-4 w-4" />
+          <UserLineIcon className="mr-2 h-4 w-4" />
           Profile
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <SettingsIcon className="mr-2 h-4 w-4" />
+          <SettingsLineIcon className="mr-2 h-4 w-4" />
           Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogoutIcon className="mr-2 h-4 w-4" />
+          <LogoutLineIcon className="mr-2 h-4 w-4" />
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -100,7 +100,7 @@ export const WithLabelsAndGroups: Story = {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <UserIcon className="mr-2 h-4 w-4" />
+            <UserLineIcon className="mr-2 h-4 w-4" />
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -110,7 +110,7 @@ export const WithLabelsAndGroups: Story = {
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <SettingsIcon className="mr-2 h-4 w-4" />
+            <SettingsLineIcon className="mr-2 h-4 w-4" />
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -122,7 +122,7 @@ export const WithLabelsAndGroups: Story = {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogoutIcon className="mr-2 h-4 w-4" />
+          <LogoutLineIcon className="mr-2 h-4 w-4" />
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -139,7 +139,7 @@ export const WithSubmenu: Story = {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuItem>
-          <MailIcon className="mr-2 h-4 w-4" />
+          <MailLineIcon className="mr-2 h-4 w-4" />
           Email
         </DropdownMenuItem>
         <DropdownMenuItem>
@@ -154,7 +154,7 @@ export const WithSubmenu: Story = {
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             <DropdownMenuItem>
-              <MailIcon className="mr-2 h-4 w-4" />
+              <MailLineIcon className="mr-2 h-4 w-4" />
               Email invite
             </DropdownMenuItem>
             <DropdownMenuItem>

@@ -11,7 +11,6 @@ export const BellIcon = ({
     viewBox="0 0 512 512"
     width={width}
     height={height}
-    stroke="currentColor"
     {...props}
   >
     <path

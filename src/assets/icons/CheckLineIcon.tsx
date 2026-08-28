@@ -3,9 +3,9 @@ import type { SVGProps } from "react";
 /**
  * COLLECTION: Lucide
  * LICENSE: ISC License
- * SOURCE: https://lucide.dev/icons/house
+ * SOURCE: https://lucide.dev/icons/check
  */
-export const HomeIcon = (props: SVGProps<SVGSVGElement>) => (
+export const CheckLineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,6 @@ export const HomeIcon = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     {...props}
   >
-    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-    <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    <path d="M20 6 9 17l-5-5" />
   </svg>
 );

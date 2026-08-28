@@ -3,7 +3,7 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 
-import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { CheckLineIcon } from "@/assets/icons/CheckLineIcon";
 import { ChevronRightIcon } from "@/assets/icons/ChevronRightIcon";
 import { cn } from "@/utils/classNames";
 
@@ -263,7 +263,7 @@ const DropdownMenuCheckboxItem = ({
   >
     <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <CheckIcon className="h-4 w-4" />
+        <CheckLineIcon className="h-4 w-4" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -304,7 +304,7 @@ const DropdownMenuRadioItem = ({
   >
     <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <CheckIcon className="h-4 w-4" />
+        <CheckLineIcon className="h-4 w-4" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

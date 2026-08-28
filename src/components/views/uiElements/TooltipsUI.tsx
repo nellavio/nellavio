@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
-import { BellIcon } from "@/assets/icons/BellIcon";
+import { BellLineIcon } from "@/assets/icons/BellLineIcon";
 import { HelpCircleIcon } from "@/assets/icons/HelpCircleIcon";
-import { MailIcon } from "@/assets/icons/MailIcon";
+import { MailLineIcon } from "@/assets/icons/MailLineIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -47,7 +47,7 @@ export const TooltipsUI = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="outline" size="icon">
-                  <MailIcon className="h-4 w-4" />
+                  <MailLineIcon className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -57,7 +57,7 @@ export const TooltipsUI = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="outline" size="icon">
-                  <BellIcon className="h-4 w-4" />
+                  <BellLineIcon className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="bottom">

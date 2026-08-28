@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
 import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
-import { InfoIcon } from "@/assets/icons/InfoIcon";
+import { InfoCircleIcon } from "@/assets/icons/InfoCircleIcon";
 import {
   Alert,
   AlertDescription,
@@ -34,7 +34,7 @@ export const AlertsUI = () => {
       <CardContent>
         <div className="flex flex-col gap-6">
           <Alert>
-            <InfoIcon className="h-4 w-4" />
+            <InfoCircleIcon className="h-4 w-4" />
             <AlertTitle>Information</AlertTitle>
             <AlertDescription>
               This is an informational alert using the default variant from

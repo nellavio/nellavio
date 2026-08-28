@@ -4,11 +4,11 @@ import { useTranslations } from "next-intl";
 import * as React from "react";
 
 import { CloudIcon } from "@/assets/icons/CloudIcon";
-import { LogoutIcon } from "@/assets/icons/LogoutIcon";
-import { MailIcon } from "@/assets/icons/MailIcon";
+import { LogoutLineIcon } from "@/assets/icons/LogoutLineIcon";
+import { MailLineIcon } from "@/assets/icons/MailLineIcon";
 import { PlusIcon } from "@/assets/icons/PlusIcon";
-import { SettingsIcon } from "@/assets/icons/SettingsIcon";
-import { UserIcon } from "@/assets/icons/UserIcon";
+import { SettingsLineIcon } from "@/assets/icons/SettingsLineIcon";
+import { UserLineIcon } from "@/assets/icons/UserLineIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -62,17 +62,17 @@ export const DropdownMenuUI = () => {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <UserIcon className="mr-2 h-4 w-4" />
+                  <UserLineIcon className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                   <DropdownMenuShortcut>Ctrl+P</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <SettingsIcon className="mr-2 h-4 w-4" />
+                  <SettingsLineIcon className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                   <DropdownMenuShortcut>Ctrl+S</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <MailIcon className="mr-2 h-4 w-4" />
+                  <MailLineIcon className="mr-2 h-4 w-4" />
                   <span>Messages</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -84,7 +84,7 @@ export const DropdownMenuUI = () => {
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
                   <DropdownMenuItem>
-                    <MailIcon className="mr-2 h-4 w-4" />
+                    <MailLineIcon className="mr-2 h-4 w-4" />
                     <span>Email</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
@@ -95,7 +95,7 @@ export const DropdownMenuUI = () => {
               </DropdownMenuSub>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <LogoutIcon className="mr-2 h-4 w-4" />
+                <LogoutLineIcon className="mr-2 h-4 w-4" />
                 <span>Log out</span>
                 <DropdownMenuShortcut>Ctrl+Q</DropdownMenuShortcut>
               </DropdownMenuItem>

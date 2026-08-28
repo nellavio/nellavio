@@ -12,7 +12,6 @@ export const SearchIcon = ({
     viewBox="0 0 24 24"
     strokeWidth="1.5"
     fill="none"
-    stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     className={cn("w-4 h-4 3xl:w-5 3xl:h-5", className)}

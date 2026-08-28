@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { EyeIcon } from "@/assets/icons/EyeIcon";
 import { EyeOffIcon } from "@/assets/icons/EyeOffIcon";
-import { MailIcon } from "@/assets/icons/MailIcon";
+import { MailLineIcon } from "@/assets/icons/MailLineIcon";
 import {
   Card,
   CardContent,
@@ -90,7 +90,7 @@ export const InputFieldsForm = () => {
           <div className="grid w-full max-w-sm items-center gap-[0.8rem]">
             <Label htmlFor="email-icon">Input with Icon</Label>
             <div className="relative">
-              <MailIcon className="absolute left-2.5 top-[0.725rem] h-4 w-4 text-secondaryText" />
+              <MailLineIcon className="absolute left-2.5 top-[0.725rem] h-4 w-4 text-secondaryText" />
               <Input type="email" placeholder="Email" className="pl-8" />
             </div>
           </div>

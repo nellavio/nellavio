@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import { UserIcon } from "@/assets/icons/UserIcon";
+import { UserLineIcon } from "@/assets/icons/UserLineIcon";
 import { Avatar, AvatarFallback } from "@/components/common/shadcn/avatar";
 import { Button } from "@/components/common/shadcn/button";
 import {
@@ -76,7 +76,7 @@ export const PopoverUI = () => {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <UserIcon className="mr-2 h-4 w-4" />
+                <UserLineIcon className="mr-2 h-4 w-4" />
                 User Profile
               </Button>
             </PopoverTrigger>

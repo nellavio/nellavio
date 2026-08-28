@@ -1,5 +1,10 @@
 import * as React from "react";
 
+/**
+ * COLLECTION: Lucide
+ * LICENSE: ISC License (portions derived from Feather, MIT License)
+ * SOURCE: https://lucide.dev/icons/
+ */
 export const PlusCircleIcon = ({
   width = 24,
   height = 24,

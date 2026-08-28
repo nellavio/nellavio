@@ -16,7 +16,7 @@ import * as React from "react";
 import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
 import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
 import { EditIcon } from "@/assets/icons/EditIcon";
-import { SearchIcon } from "@/assets/icons/SearchIcon";
+import { SearchLineIcon } from "@/assets/icons/SearchLineIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -338,7 +338,7 @@ export const InventoryTable = () => {
             className="h-8 w-8"
             aria-label="Search product"
           >
-            <SearchIcon className="h-4 w-4" />
+            <SearchLineIcon className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"

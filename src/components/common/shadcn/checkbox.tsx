@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as React from "react";
 
-import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { CheckLineIcon } from "@/assets/icons/CheckLineIcon";
 import { cn } from "@/utils/classNames";
 
 /**
@@ -36,7 +36,7 @@ const Checkbox = ({
     ref={ref}
     tabIndex={0}
     className={cn(
-      "peer h-4.5 w-4.5 shrink-0 rounded-sm border border-checkboxBorder transition-colors disabled:cursor-not-allowed disabled:border-checkboxBorderDisabled disabled:opacity-50 data-[state=unchecked]:hover:border-checkboxUncheckedBorderHover data-[state=checked]:bg-containedButtonBg data-[state=checked]:text-white data-[state=checked]:border-containedButtonBg",
+      "peer h-4.5 w-4.5 shrink-0 rounded-sm border border-checkboxBorder disabled:cursor-not-allowed disabled:border-checkboxBorderDisabled disabled:opacity-50 data-[state=unchecked]:hover:border-checkboxUncheckedBorderHover data-[state=checked]:bg-containedButtonBg data-[state=checked]:text-white data-[state=checked]:border-containedButtonBg",
       className,
     )}
     onKeyDown={(e) => {
@@ -54,9 +54,9 @@ const Checkbox = ({
     {...props}
   >
     <CheckboxPrimitive.Indicator
-      className={cn("flex items-center justify-center text-white")}
+      className={cn("flex items-center justify-center text-current")}
     >
-      <CheckIcon className="h-4.5 w-4.5" />
+      <CheckLineIcon className="h-4.5 w-4.5" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 );

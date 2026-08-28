@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
 import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
-import { InfoIcon } from "@/assets/icons/InfoIcon";
+import { InfoCircleIcon } from "@/assets/icons/InfoCircleIcon";
 
 import { Alert, AlertDescription, AlertTitle } from "../alert";
 
@@ -60,7 +60,7 @@ export const Default: Story = {
     const { title, description, ...rest } = args as Record<string, unknown>;
     return (
       <Alert {...rest}>
-        <InfoIcon className="h-4 w-4" />
+        <InfoCircleIcon className="h-4 w-4" />
         <AlertTitle>{title as string}</AlertTitle>
         <AlertDescription>{description as string}</AlertDescription>
       </Alert>

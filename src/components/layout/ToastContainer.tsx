@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 
 import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
 import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
-import { CloseIcon } from "@/assets/icons/CloseIcon";
-import { InfoIcon } from "@/assets/icons/InfoIcon";
+import { CloseLineIcon } from "@/assets/icons/CloseLineIcon";
+import { InfoCircleIcon } from "@/assets/icons/InfoCircleIcon";
 import { useToastStore } from "@/store/toastStore";
 
 import { Alert, AlertDescription, AlertTitle } from "../common/shadcn/alert";
 
 const ICON_MAP = {
-  default: InfoIcon,
+  default: InfoCircleIcon,
   destructive: AlertCircleIcon,
   success: CheckCircleIcon,
 } as const;
@@ -55,7 +55,7 @@ const ToastItem = ({
           className="absolute top-3 right-3 p-1 rounded-md opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
           aria-label="Close notification"
         >
-          <CloseIcon className="h-4 w-4" />
+          <CloseLineIcon className="h-4 w-4" />
         </button>
       </Alert>
     </div>

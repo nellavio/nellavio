@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
-import { MailIcon } from "@/assets/icons/MailIcon";
-import { SettingsIcon } from "@/assets/icons/SettingsIcon";
-import { UserIcon } from "@/assets/icons/UserIcon";
+import { MailLineIcon } from "@/assets/icons/MailLineIcon";
+import { SettingsLineIcon } from "@/assets/icons/SettingsLineIcon";
+import { UserLineIcon } from "@/assets/icons/UserLineIcon";
 import {
   Card,
   CardContent,
@@ -45,15 +45,15 @@ export const CommandUI = () => {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>
-                <MailIcon className="mr-2 h-4 w-4" />
+                <MailLineIcon className="mr-2 h-4 w-4" />
                 <span>Email</span>
               </CommandItem>
               <CommandItem>
-                <UserIcon className="mr-2 h-4 w-4" />
+                <UserLineIcon className="mr-2 h-4 w-4" />
                 <span>Profile</span>
               </CommandItem>
               <CommandItem>
-                <SettingsIcon className="mr-2 h-4 w-4" />
+                <SettingsLineIcon className="mr-2 h-4 w-4" />
                 <span>Settings</span>
               </CommandItem>
             </CommandGroup>

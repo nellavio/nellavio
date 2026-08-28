@@ -16,7 +16,7 @@ import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
 import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
 import { ColumnsIcon } from "@/assets/icons/ColumnsIcon";
 import { EditIcon } from "@/assets/icons/EditIcon";
-import { EyeIcon } from "@/assets/icons/EyeIcon";
+import { EyeLineIcon } from "@/assets/icons/EyeLineIcon";
 import { FilterIcon } from "@/assets/icons/FilterIcon";
 import { SortIcon } from "@/assets/icons/SortIcon";
 import { Badge } from "@/components/common/shadcn/badge";
@@ -263,7 +263,7 @@ export const UserTable = () => {
             className="h-8 w-8"
             aria-label="View user details"
           >
-            <EyeIcon className="h-4 w-4" />
+            <EyeLineIcon className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { CheckLineIcon } from "@/assets/icons/CheckLineIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -114,7 +114,7 @@ export const FormValidationForm = () => {
             </Button>
             {isSubmitted && (
               <p className="flex items-center gap-2 text-sm text-greenBadgeText mt-3">
-                <CheckIcon className="h-4 w-4" />
+                <CheckLineIcon className="h-4 w-4" />
                 Form submitted
               </p>
             )}

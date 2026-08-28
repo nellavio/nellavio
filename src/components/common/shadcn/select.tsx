@@ -1,7 +1,7 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
 import * as React from "react";
 
-import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { CheckLineIcon } from "@/assets/icons/CheckLineIcon";
 import { ChevronDownIcon } from "@/assets/icons/ChevronDownIcon";
 import { ChevronUpIcon } from "@/assets/icons/ChevronUpIcon";
 import { cn } from "@/utils/classNames";
@@ -244,9 +244,9 @@ const SelectItem = ({
     )}
     {...props}
   >
-    <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="flex h-3.5 w-3.5 items-center justify-center mr-2 shrink-0">
       <SelectPrimitive.ItemIndicator>
-        <CheckIcon className="h-4 w-4" />
+        <CheckLineIcon className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
 
