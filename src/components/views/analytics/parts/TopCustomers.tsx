@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { ArrowRightLineIcon } from "@/assets/icons/ArrowRightLineIcon";
 import {
   Card,
   CardContent,
@@ -86,7 +86,7 @@ export const TopCustomers = ({ topCustomersData }: TopCustomersProps) => {
           className="mt-4 flex items-center justify-center gap-1 text-xs 1xl:text-sm text-coloredLinkText hover:underline"
         >
           {t("viewAll")}
-          <ArrowRight className="h-3.5 w-3.5" />
+          <ArrowRightLineIcon className="h-3.5 w-3.5" />
         </Link>
       </CardContent>
     </Card>

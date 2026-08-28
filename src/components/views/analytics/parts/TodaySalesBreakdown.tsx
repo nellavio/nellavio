@@ -1,17 +1,19 @@
 "use client";
 
-import {
-  Monitor,
-  Smartphone,
-  Store,
-  TrendingDown,
-  TrendingUp,
-} from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { MonitorIcon } from "@/assets/icons/MonitorIcon";
+import { SmartphoneIcon } from "@/assets/icons/SmartphoneIcon";
+import { StoreIcon } from "@/assets/icons/StoreIcon";
+import { TrendingDownIcon } from "@/assets/icons/TrendingDownIcon";
+import { TrendingUpIcon } from "@/assets/icons/TrendingUpIcon";
 import { Progress } from "@/components/common/shadcn/progress";
 
-import { SalesChannelKey, TodaySalesBreakdownProps } from "../types";
+import {
+  IconComponent,
+  SalesChannelKey,
+  TodaySalesBreakdownProps,
+} from "../types";
 
 const CHANNEL_ORDER: SalesChannelKey[] = [
   "onlineStore",
@@ -21,20 +23,20 @@ const CHANNEL_ORDER: SalesChannelKey[] = [
 
 const CHANNEL_CONFIG: Record<
   SalesChannelKey,
-  { icon: typeof Monitor; badge: string; bar: string }
+  { icon: IconComponent; badge: string; bar: string }
 > = {
   onlineStore: {
-    icon: Monitor,
+    icon: MonitorIcon,
     badge: "bg-salesBreakdownIconBg text-salesBreakdownIcon",
     bar: "var(--color-chartSecondaryFill)",
   },
   mobileApp: {
-    icon: Smartphone,
+    icon: SmartphoneIcon,
     badge: "bg-chartPrimaryFill/20 text-chartPrimaryFill",
     bar: "var(--color-chartPrimaryFill)",
   },
   inStore: {
-    icon: Store,
+    icon: StoreIcon,
     badge: "bg-chartTertiaryFill/20 text-chartTertiaryFill",
     bar: "var(--color-chartTertiaryFill)",
   },
@@ -49,7 +51,7 @@ export const TodaySalesBreakdown = ({
   const t = useTranslations("analytics.todaySales");
 
   const isUp = change >= 0;
-  const NoteIcon = isUp ? TrendingUp : TrendingDown;
+  const NoteIcon = isUp ? TrendingUpIcon : TrendingDownIcon;
 
   const orderedChannels = CHANNEL_ORDER.flatMap((key) =>
     channels.filter((channel) => channel.key === key),

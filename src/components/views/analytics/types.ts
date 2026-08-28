@@ -1,3 +1,8 @@
+import type { ComponentType, SVGProps } from "react";
+
+/** Local SVG icon component accepting standard svg props. */
+export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+
 export interface Asset {
   name: string;
   industry: string;

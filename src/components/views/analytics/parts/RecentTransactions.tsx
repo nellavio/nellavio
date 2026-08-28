@@ -1,8 +1,10 @@
 "use client";
 
-import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { ArrowRightLineIcon } from "@/assets/icons/ArrowRightLineIcon";
+import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
+import { ClockIcon } from "@/assets/icons/ClockIcon";
 import {
   Card,
   CardContent,
@@ -12,15 +14,19 @@ import {
 import { Link } from "@/i18n/navigation";
 import { formatCurrency } from "@/utils/formatNumber";
 
-import { RecentTransaction, RecentTransactionsProps } from "../types";
+import {
+  IconComponent,
+  RecentTransaction,
+  RecentTransactionsProps,
+} from "../types";
 import { PRODUCT_ICON } from "../utils/productIcon";
 
 const STATUS_CONFIG: Record<
   RecentTransaction["status"],
-  { color: string; icon: typeof CheckCircle2 }
+  { color: string; icon: IconComponent }
 > = {
-  completed: { color: "text-greenBadgeText", icon: CheckCircle2 },
-  pending: { color: "text-orangeBadgeText", icon: Clock },
+  completed: { color: "text-greenBadgeText", icon: CheckCircleIcon },
+  pending: { color: "text-orangeBadgeText", icon: ClockIcon },
 };
 
 export const RecentTransactions = ({
@@ -80,7 +86,7 @@ export const RecentTransactions = ({
           className="mt-4 flex items-center justify-center gap-1 text-xs 1xl:text-sm text-coloredLinkText hover:underline"
         >
           {t("viewAll")}
-          <ArrowRight className="h-3.5 w-3.5" />
+          <ArrowRightLineIcon className="h-3.5 w-3.5" />
         </Link>
       </CardContent>
     </Card>

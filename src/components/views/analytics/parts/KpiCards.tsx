@@ -1,18 +1,15 @@
 "use client";
 
-import {
-  DollarSign,
-  type LucideIcon,
-  ShoppingCart,
-  Truck,
-  Users,
-} from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { DollarIcon } from "@/assets/icons/DollarIcon";
+import { ShoppingCartIcon } from "@/assets/icons/ShoppingCartIcon";
+import { TruckIcon } from "@/assets/icons/TruckIcon";
+import { UsersLineIcon } from "@/assets/icons/UsersLineIcon";
 import { Card, CardContent } from "@/components/common/shadcn/card";
 import { formatCurrency, formatNumber } from "@/utils/formatNumber";
 
-import { AnalyticsKpiKey, KpiCardsProps } from "../types";
+import { AnalyticsKpiKey, IconComponent, KpiCardsProps } from "../types";
 
 const KPI_ORDER: AnalyticsKpiKey[] = [
   "sales",
@@ -21,11 +18,11 @@ const KPI_ORDER: AnalyticsKpiKey[] = [
   "orders",
 ];
 
-const KPI_ICON: Record<AnalyticsKpiKey, LucideIcon> = {
-  sales: Truck,
-  earnings: DollarSign,
-  visitors: Users,
-  orders: ShoppingCart,
+const KPI_ICON: Record<AnalyticsKpiKey, IconComponent> = {
+  sales: TruckIcon,
+  earnings: DollarIcon,
+  visitors: UsersLineIcon,
+  orders: ShoppingCartIcon,
 };
 
 const ICON_STYLES = [
