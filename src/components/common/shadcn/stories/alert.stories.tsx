@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { AlertCircle, CheckCircle, Info } from "lucide-react";
+
+import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
+import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
+import { InfoIcon } from "@/assets/icons/InfoIcon";
 
 import { Alert, AlertDescription, AlertTitle } from "../alert";
 
@@ -57,7 +60,7 @@ export const Default: Story = {
     const { title, description, ...rest } = args as Record<string, unknown>;
     return (
       <Alert {...rest}>
-        <Info className="h-4 w-4" />
+        <InfoIcon className="h-4 w-4" />
         <AlertTitle>{title as string}</AlertTitle>
         <AlertDescription>{description as string}</AlertDescription>
       </Alert>
@@ -71,7 +74,7 @@ export const Destructive: Story = {
     const { title, description, ...rest } = args as Record<string, unknown>;
     return (
       <Alert {...rest}>
-        <AlertCircle className="h-4 w-4" />
+        <AlertCircleIcon className="h-4 w-4" />
         <AlertTitle>{title as string}</AlertTitle>
         <AlertDescription>{description as string}</AlertDescription>
       </Alert>
@@ -89,7 +92,7 @@ export const Success: Story = {
     const { title, description, ...rest } = args as Record<string, unknown>;
     return (
       <Alert {...rest}>
-        <CheckCircle className="h-4 w-4" />
+        <CheckCircleIcon className="h-4 w-4" />
         <AlertTitle>{title as string}</AlertTitle>
         <AlertDescription>{description as string}</AlertDescription>
       </Alert>

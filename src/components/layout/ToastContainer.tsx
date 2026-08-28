@@ -1,16 +1,19 @@
 "use client";
 
-import { AlertCircle, CheckCircle, Info, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
+import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
+import { CloseIcon } from "@/assets/icons/CloseIcon";
+import { InfoIcon } from "@/assets/icons/InfoIcon";
 import { useToastStore } from "@/store/toastStore";
 
 import { Alert, AlertDescription, AlertTitle } from "../common/shadcn/alert";
 
 const ICON_MAP = {
-  default: Info,
-  destructive: AlertCircle,
-  success: CheckCircle,
+  default: InfoIcon,
+  destructive: AlertCircleIcon,
+  success: CheckCircleIcon,
 } as const;
 
 const ToastItem = ({
@@ -52,7 +55,7 @@ const ToastItem = ({
           className="absolute top-3 right-3 p-1 rounded-md opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
           aria-label="Close notification"
         >
-          <X className="h-4 w-4" />
+          <CloseIcon className="h-4 w-4" />
         </button>
       </Alert>
     </div>

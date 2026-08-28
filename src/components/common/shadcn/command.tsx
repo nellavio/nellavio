@@ -1,8 +1,8 @@
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
-import { Search } from "lucide-react";
 import * as React from "react";
 
+import { SearchIcon } from "@/assets/icons/SearchIcon";
 import { cn } from "@/utils/classNames";
 
 import { Dialog, DialogContent } from "./dialog";
@@ -81,10 +81,10 @@ const CommandInput = ({
   ref?: React.Ref<React.ComponentRef<typeof CommandPrimitive.Input>>;
 }) => (
   <div
-    className="flex items-center border-b border-inputBorder px-3"
+    className="flex items-center border-b border-mainBorder px-3"
     cmdk-input-wrapper=""
   >
-    <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+    <SearchIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(

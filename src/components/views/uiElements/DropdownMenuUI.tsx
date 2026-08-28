@@ -1,9 +1,14 @@
 "use client";
 
-import { Cloud, LogOut, Mail, Plus, Settings, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
+import { CloudIcon } from "@/assets/icons/CloudIcon";
+import { LogoutIcon } from "@/assets/icons/LogoutIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { PlusIcon } from "@/assets/icons/PlusIcon";
+import { SettingsIcon } from "@/assets/icons/SettingsIcon";
+import { UserIcon } from "@/assets/icons/UserIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -57,40 +62,40 @@ export const DropdownMenuUI = () => {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
+                  <UserIcon className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                   <DropdownMenuShortcut>Ctrl+P</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
+                  <SettingsIcon className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                   <DropdownMenuShortcut>Ctrl+S</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Mail className="mr-2 h-4 w-4" />
+                  <MailIcon className="mr-2 h-4 w-4" />
                   <span>Messages</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <Plus className="mr-2 h-4 w-4" />
+                  <PlusIcon className="mr-2 h-4 w-4" />
                   <span>Invite users</span>
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
                   <DropdownMenuItem>
-                    <Mail className="mr-2 h-4 w-4" />
+                    <MailIcon className="mr-2 h-4 w-4" />
                     <span>Email</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Cloud className="mr-2 h-4 w-4" />
+                    <CloudIcon className="mr-2 h-4 w-4" />
                     <span>Cloud</span>
                   </DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
+                <LogoutIcon className="mr-2 h-4 w-4" />
                 <span>Log out</span>
                 <DropdownMenuShortcut>Ctrl+Q</DropdownMenuShortcut>
               </DropdownMenuItem>

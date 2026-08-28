@@ -10,12 +10,13 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { Edit, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
 import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
 import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+import { EditIcon } from "@/assets/icons/EditIcon";
+import { Trash2Icon } from "@/assets/icons/Trash2Icon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -279,7 +280,7 @@ export const AdvancedTable = () => {
             className="h-8 w-8"
             aria-label="Edit row"
           >
-            <Edit className="h-4 w-4" />
+            <EditIcon className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
@@ -287,7 +288,7 @@ export const AdvancedTable = () => {
             className="h-8 w-8 text-red-500 hover:text-red-600"
             aria-label="Delete row"
           >
-            <Trash2 className="h-4 w-4" />
+            <Trash2Icon className="h-4 w-4" />
           </Button>
         </div>
       ),

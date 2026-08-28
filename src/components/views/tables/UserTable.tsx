@@ -9,12 +9,14 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { Columns, Edit, Eye } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
 import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
 import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+import { ColumnsIcon } from "@/assets/icons/ColumnsIcon";
+import { EditIcon } from "@/assets/icons/EditIcon";
+import { EyeIcon } from "@/assets/icons/EyeIcon";
 import { FilterIcon } from "@/assets/icons/FilterIcon";
 import { SortIcon } from "@/assets/icons/SortIcon";
 import { Badge } from "@/components/common/shadcn/badge";
@@ -261,7 +263,7 @@ export const UserTable = () => {
             className="h-8 w-8"
             aria-label="View user details"
           >
-            <Eye className="h-4 w-4" />
+            <EyeIcon className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
@@ -269,7 +271,7 @@ export const UserTable = () => {
             className="h-8 w-8"
             aria-label="Edit user"
           >
-            <Edit className="h-4 w-4" />
+            <EditIcon className="h-4 w-4" />
           </Button>
         </div>
       ),
@@ -319,7 +321,7 @@ export const UserTable = () => {
                     variant="outline"
                     className="h-full py-2 px-4 text-sm max-xsm:w-full"
                   >
-                    <Columns className="h-4 w-4 mr-2" />
+                    <ColumnsIcon className="h-4 w-4 mr-2" />
                     Columns
                   </Button>
                 </PopoverTrigger>

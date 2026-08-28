@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { DollarSign, Mail, Search } from "lucide-react";
+
+import { DollarIcon } from "@/assets/icons/DollarIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { SearchIcon } from "@/assets/icons/SearchIcon";
 
 import {
   InputGroup,
@@ -66,7 +69,7 @@ export const WithLeftIcon: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <Search className="h-4 w-4" />
+          <SearchIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder={placeholder as string}
@@ -91,7 +94,7 @@ export const WithRightIcon: Story = {
           disabled={disabled as boolean}
         />
         <InputGroupAddon align="inline-end">
-          <Mail className="h-4 w-4" />
+          <MailIcon className="h-4 w-4" />
         </InputGroupAddon>
       </InputGroup>
     );
@@ -107,14 +110,14 @@ export const WithBothIcons: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <Search className="h-4 w-4" />
+          <SearchIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder={placeholder as string}
           disabled={disabled as boolean}
         />
         <InputGroupAddon align="inline-end">
-          <Mail className="h-4 w-4" />
+          <MailIcon className="h-4 w-4" />
         </InputGroupAddon>
       </InputGroup>
     );
@@ -130,7 +133,7 @@ export const WithText: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <DollarSign className="h-4 w-4" />
+          <DollarIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           type="number"
@@ -155,7 +158,7 @@ export const Disabled: Story = {
     return (
       <InputGroup>
         <InputGroupAddon align="inline-start">
-          <Search className="h-4 w-4" />
+          <SearchIcon className="h-4 w-4" />
         </InputGroupAddon>
         <InputGroupInput
           placeholder={placeholder as string}

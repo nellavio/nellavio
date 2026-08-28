@@ -1,8 +1,10 @@
 "use client";
 
-import { Bell, HelpCircle, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { BellIcon } from "@/assets/icons/BellIcon";
+import { HelpCircleIcon } from "@/assets/icons/HelpCircleIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -45,7 +47,7 @@ export const TooltipsUI = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="outline" size="icon">
-                  <Mail className="h-4 w-4" />
+                  <MailIcon className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -55,7 +57,7 @@ export const TooltipsUI = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="outline" size="icon">
-                  <Bell className="h-4 w-4" />
+                  <BellIcon className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="bottom">
@@ -65,7 +67,7 @@ export const TooltipsUI = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="outline" size="icon">
-                  <HelpCircle className="h-4 w-4" />
+                  <HelpCircleIcon className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="left">

@@ -1,9 +1,9 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { useRef } from "react";
 
 import { CalendarIcon } from "@/assets/icons/CalendarIcon";
+import { CheckIcon } from "@/assets/icons/CheckIcon";
 import { ChevronDownIcon } from "@/assets/icons/ChevronDownIcon";
 import {
   DropdownMenu,
@@ -62,7 +62,7 @@ export const DateRangeSelector = () => {
                 className="pl-2 pr-2"
               >
                 <span className="flex h-3.5 w-3.5 items-center justify-center shrink-0">
-                  {isActive && <Check className="h-4 w-4" />}
+                  {isActive && <CheckIcon className="h-4 w-4" />}
                 </span>
                 <span>{t(preset)}</span>
               </DropdownMenuItem>
@@ -74,7 +74,7 @@ export const DateRangeSelector = () => {
             className="pl-2 pr-2"
           >
             <span className="flex h-3.5 w-3.5 items-center justify-center shrink-0">
-              {selectedPreset === "custom" && <Check className="h-4 w-4" />}
+              {selectedPreset === "custom" && <CheckIcon className="h-4 w-4" />}
             </span>
             <span>{t("customRange")}</span>
           </DropdownMenuItem>

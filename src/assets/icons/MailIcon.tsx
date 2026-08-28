@@ -1,10 +1,17 @@
-export const MailIcon = () => (
+import * as React from "react";
+
+export const MailIcon = ({
+  width = "21",
+  height = "21",
+  ...props
+}: React.SVGProps<SVGSVGElement>) => (
   <svg
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
-    width="21"
-    height="21"
+    width={width}
+    height={height}
+    {...props}
   >
     <rect
       x="48"

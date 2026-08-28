@@ -1,8 +1,8 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { CheckIcon } from "@/assets/icons/CheckIcon";
 import { Badge } from "@/components/common/shadcn/badge";
 import { Button } from "@/components/common/shadcn/button";
 import {
@@ -47,7 +47,7 @@ export const TabsUI = () => {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-500" />
+              <CheckIcon className="h-5 w-5 text-green-500" />
               <span className="text-sm">Account is verified</span>
             </div>
           </TabsContent>

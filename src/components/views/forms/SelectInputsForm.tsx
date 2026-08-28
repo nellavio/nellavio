@@ -1,9 +1,10 @@
 "use client";
 
-import { Check, ChevronsUpDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
+import { CheckIcon } from "@/assets/icons/CheckIcon";
+import { ChevronsUpDownIcon } from "@/assets/icons/ChevronsUpDownIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -96,7 +97,7 @@ export const SelectInputsForm = () => {
                         (framework) => framework.value === comboboxValue,
                       )?.label
                     : "Select framework..."}
-                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-50 p-0" align="start">
@@ -118,7 +119,7 @@ export const SelectInputsForm = () => {
                             setOpenCombobox(false);
                           }}
                         >
-                          <Check
+                          <CheckIcon
                             className={cn(
                               "mr-2 h-4 w-4",
                               comboboxValue === framework.value

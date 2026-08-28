@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Slash } from "lucide-react";
+
+import { SlashIcon } from "@/assets/icons/SlashIcon";
 
 import {
   Breadcrumb,
@@ -82,13 +83,13 @@ export const WithCustomSeparator: Story = {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <Slash className="h-4 w-4" />
+          <SlashIcon className="h-4 w-4" />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <Slash className="h-4 w-4" />
+          <SlashIcon className="h-4 w-4" />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Settings</BreadcrumbPage>

@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import {
-  Cloud,
-  CreditCard,
-  Keyboard,
-  LogOut,
-  Mail,
-  MessageSquare,
-  PlusCircle,
-  Settings,
-  User,
-} from "lucide-react";
+
+import { CloudIcon } from "@/assets/icons/CloudIcon";
+import { CreditCardIcon } from "@/assets/icons/CreditCardIcon";
+import { KeyboardIcon } from "@/assets/icons/KeyboardIcon";
+import { LogoutIcon } from "@/assets/icons/LogoutIcon";
+import { MailIcon } from "@/assets/icons/MailIcon";
+import { MessageSquareIcon } from "@/assets/icons/MessageSquareIcon";
+import { PlusCircleIcon } from "@/assets/icons/PlusCircleIcon";
+import { SettingsIcon } from "@/assets/icons/SettingsIcon";
+import { UserIcon } from "@/assets/icons/UserIcon";
 
 import { Button } from "../button";
 import {
@@ -73,16 +72,16 @@ export const Default: Story = {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem>
-          <User className="mr-2 h-4 w-4" />
+          <UserIcon className="mr-2 h-4 w-4" />
           Profile
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Settings className="mr-2 h-4 w-4" />
+          <SettingsIcon className="mr-2 h-4 w-4" />
           Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
+          <LogoutIcon className="mr-2 h-4 w-4" />
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -101,29 +100,29 @@ export const WithLabelsAndGroups: Story = {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
+            <UserIcon className="mr-2 h-4 w-4" />
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
+            <CreditCardIcon className="mr-2 h-4 w-4" />
             Billing
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Settings className="mr-2 h-4 w-4" />
+            <SettingsIcon className="mr-2 h-4 w-4" />
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Keyboard className="mr-2 h-4 w-4" />
+            <KeyboardIcon className="mr-2 h-4 w-4" />
             Shortcuts
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
+          <LogoutIcon className="mr-2 h-4 w-4" />
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -140,33 +139,33 @@ export const WithSubmenu: Story = {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuItem>
-          <Mail className="mr-2 h-4 w-4" />
+          <MailIcon className="mr-2 h-4 w-4" />
           Email
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <MessageSquare className="mr-2 h-4 w-4" />
+          <MessageSquareIcon className="mr-2 h-4 w-4" />
           Message
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <PlusCircle className="mr-2 h-4 w-4" />
+            <PlusCircleIcon className="mr-2 h-4 w-4" />
             Invite users
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             <DropdownMenuItem>
-              <Mail className="mr-2 h-4 w-4" />
+              <MailIcon className="mr-2 h-4 w-4" />
               Email invite
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <MessageSquare className="mr-2 h-4 w-4" />
+              <MessageSquareIcon className="mr-2 h-4 w-4" />
               Message invite
             </DropdownMenuItem>
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Cloud className="mr-2 h-4 w-4" />
+          <CloudIcon className="mr-2 h-4 w-4" />
           API
         </DropdownMenuItem>
       </DropdownMenuContent>

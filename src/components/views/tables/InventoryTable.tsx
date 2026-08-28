@@ -10,12 +10,13 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { Edit, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
 import { ArrowDownIcon } from "@/assets/icons/ArrowDownIcon";
 import { ArrowUpIcon } from "@/assets/icons/ArrowUpIcon";
+import { EditIcon } from "@/assets/icons/EditIcon";
+import { SearchIcon } from "@/assets/icons/SearchIcon";
 import { Button } from "@/components/common/shadcn/button";
 import {
   Card,
@@ -337,7 +338,7 @@ export const InventoryTable = () => {
             className="h-8 w-8"
             aria-label="Search product"
           >
-            <Search className="h-4 w-4" />
+            <SearchIcon className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
@@ -345,7 +346,7 @@ export const InventoryTable = () => {
             className="h-8 w-8"
             aria-label="Edit product"
           >
-            <Edit className="h-4 w-4" />
+            <EditIcon className="h-4 w-4" />
           </Button>
         </div>
       ),
